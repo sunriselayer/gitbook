@@ -74,6 +74,6 @@ Speaking of the future, our goal is to become the most utilized JPY stablecoin a
 
 ## **Q,Who’s running it?**
 
-It is operated by Botany LLP(Yu Kimura, Takeru Shimojima, Kenji Yanagisawa). It is mainly developed by the members of CauchyE, Inc.
+It is operated by Botany LLP(Yu Kimura, Takeru Shimojima, Kenji Yanagisawa). It is mainly developed by the members of [CauchyE, Inc](https://cauchye.com).
 
 #### &#x20;
