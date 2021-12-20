@@ -8,3 +8,5 @@ The UnUniFi Protocol will allow users to smoothly generate and trade a variety o
 
 ## Road map
 
+[https://cauchye.notion.site/2e949743f1ec438f8e2e2c57f824605b?v=58a2554bbb634fda887202f0562bbfa6](https://cauchye.notion.site/2e949743f1ec438f8e2e2c57f824605b?v=58a2554bbb634fda887202f0562bbfa6)
+
