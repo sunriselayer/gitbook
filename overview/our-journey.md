@@ -1,6 +1,6 @@
 # Our Journey
 
-## UnUniFi Protocol's Vision
+## Mission
 
 **Connect, decentralize, and activate the liquidity of various markets.**
 
