@@ -36,8 +36,6 @@ This means that by owning and staking GUU, users can vote to change certain para
 
 Users can also delegate GUU to the validators who manage its blockchain and compete for newly minted GUU, allocating votes to them to earn a portion of the stability fees paid by users closing their CDPs.
 
-Like many other cryptocurrencies, the supply of GUU tokens is also limited, meaning that according to the software’s rules, there will only ever be 1 million GUU.
-
 ## **Q,Why Use GUU?**
 
 UnUniFi Protocol may be appealing based on its ability to provide cryptocurrency owners with access to decentralized lending services.
@@ -63,14 +61,6 @@ If the debt-to-collateral value drops below a specified threshold, the collatera
 There is no repayment deadline. The borrowed JPU can be used indefinitely.\
 &#x20;You can withdraw your collateral at any time by returning the JPU.\
 &#x20;You can also withdraw excess collateral at any time as long as you maintain a minimum collateral ratio.
-
-## **Q,What sales activities are planned to increase the use cases of JPU?**
-
-First of all, we think there is no doubt that the demand for stablecoin pegged to the Japanese Yen will increase. This is because the decentralized economy of the Japanese or Japanese market will expand. This is also a global trend.\
-&#x20;Pegged tokens issued by a decentralized system where everyone is free to use the same rules, where there is no fraud, no malfunction, no downtime, no intermediaries, are perceived as legitimate, and any third party can use JPU to start a business or use it for business.\
-&#x20;The UnUniFi Protocol will be a cloud feature for this purpose.
-
-Speaking of the future, our goal is to become the most utilized JPY stablecoin and to be used as the base currency for regional/internal currencies throughout Japan. Therefore, we are planning to negotiate with local governments and companies all over Japan. This is a vision of the future that is only possible through the use of Cosmos technology, which advocates interoperability (connecting each blockchain).
 
 ## **Q,Who’s running it?**
 
