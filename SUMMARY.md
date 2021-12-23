@@ -12,7 +12,6 @@
 ## Tutorial
 
 * [How to join in UnUniFi Testnet](tutorial/how-to-join-in-ununifi-testnet.md)
-* [How to mint JPU, EUU](tutorial/how-to-mint-jpu-euu.md)
 
 ## Resources
 
