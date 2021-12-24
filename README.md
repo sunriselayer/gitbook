@@ -6,7 +6,7 @@ description: Synthetic Assets pegged to JPY, EUR, index of tokens, etc. on Cosmo
 
 ## UnUniFi Protocol
 
-White paper:[https://ununifi.io/assets/download/UnUniFi%20Whitepaper.pdf](https://ununifi.io/assets/download/UnUniFi%20Whitepaper.pdf)
+White paper:[https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf](https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf)
 
 UnUniFi Protocol is a decentralized finance(DeFi) platform that provides tools and features that allow users to create a collateralized deposit position, like that of MakerDao, to synthesize a number of assets pegged to legal currency, real-life assets, like stocks or commodities, crypto assets, and index of tokens,etc. Trading can be done by any person anywhere in the world, so the entry barrier is lowered to accommodate easy access to the financial market. Thanks to the technology used by the UnUniFi Protocol, users can manage and trade tokenized assets by creating synthetic assets without ever owning the actual stock or commodity they represent. Generally speaking, synthetic assets enable far more liquidity across global exchanges, swap protocols, and wallets than traditional derivatives are even remotely capable of. Synthetic assets make tokenizing and trading anything a reality. By enabling anything to be tokenized and brought onto the blockchain, synthetic assets unlock untold pools of global liquidity.Apart from simple market buying/selling and derivatives trading, synthetic assets create possibilities for seemingly infinite markets and combinations for new sources of value.
 
