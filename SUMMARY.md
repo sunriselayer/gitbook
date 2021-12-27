@@ -19,5 +19,4 @@
 ## Links
 
 * [Twitter](https://twitter.com/ununifi)
-* [Medium](https://medium.com/@ununifi\_protocol)
 * [Discord](https://discord.com/invite/gxEkFyu5rn)
