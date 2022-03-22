@@ -3,24 +3,9 @@
 ## **Q,What can I do with UnUniFi Protocol?**
 
 The UnUniFi Protocol has four primary use-cases: \
+・As long as users pledge NFTs to UnUniFi, the rewards will come in on their own through the automatic operation of the issued stable coins. And it is also possible to issue synthetic assets using cryptocurrencies as collateral. \
 ・Users can generate Synthetic assets, by locking collateral(including JPU, EUU, USU) in a smart contract. \
-・Users can trade any Synthetic assets on blockchain. \
 ・Users may stake JPU, EUU or USU for a yield. When earning interest income, there is a huge demand for using coins with low price volatility as collateral. \
-・Users may take out a series of collateralized loans to create synthetic leverage for any supported crypto asset. For instance, it is possible to lock BTC and mint JPU, EUU or USU to buy BTC, hence creating a leveraged long position on BTC. There will be more use cases in the future.\
-
-
-## **Q,Which crypto assets can be used as collateral?**
-
-On UnUniFi Protocol is bringing collateralized debt positions (CDPs) to the Cosmos interchain ecosystem. With the UnUniFi Protocol users are able to borrow a JPY-pegged stablecoin (JPU) against their crypto collateral. Initially, BTC can be used as collateral, and there are plans to deal with other major crypto assets.
-
-#### **What’s so great about the** UnUniFi Protocol**?（=Points of Difference）**
-
-![](https://cdn-images-1.medium.com/max/1600/1\*DaeyKpbTM6k1830gfqyJtg.png)
-
-\
-
-
-The value proposition of the stablecoins proposed in this protocol is that they are crypto-backed stablecoins, decentralized, multi-collateralized, and scalable. In addition to issuing stablecoins, this protocol will issue synthetic assets pegged to the index of tokens on GameFi, Metaverse and NFT, which have been heating up recently. The UnUniFi Protocol aims to expand the size of the market by introducing a new investment approach to the existing crypto asset market, and the blockchain itself aims to be decentralized based on principles.
 
 ## **Q,How is GUU different from JPU?**
 
