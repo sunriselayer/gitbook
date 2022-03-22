@@ -2,9 +2,7 @@
 
 ## Mission
 
-**Connect, decentralize, and activate the liquidity of various markets.**
-
-The UnUniFi Protocol will allow users to smoothly generate and trade a variety of Synthetic assets on the blockchain. The UnUniFi will issue stablecoins pegged to JPY, EUR, USD, or especially index tokens on GameFi, Metaverse and NFT, which has yet to be realized by any protocol. This will enable the world to develop a new kind of finance that goes beyond existing finance and will contribute to further boosting the heated GameFi, Metaverse and NFT markets.&#x20;
+**Give all NFTs the opportunity to DeFi.**
 
 ## Road map
 
