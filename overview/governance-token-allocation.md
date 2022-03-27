@@ -5,8 +5,9 @@ We absolutely do not do initial coin offerings or token sales. Every token will 
 | Usage                                | Percentage of usage / supply  |
 | ------------------------------------ | ----------------------------- |
 | **Ecosystem Development**            | 30%                           |
-| **Assignment for validators**        | 30%                           |
+| **Assignment for validators**        | 15%                           |
 | **Assignment for UnUniFi team**      | 20%                           |
-| **Marketing**                        | 9%                            |
+| **Marketing**                        | 14%                           |
 | **Advisor**                          | 1%                            |
 | **Assignment for business partners** | 10%                           |
+| **Treasury**                         | 10%                           |
