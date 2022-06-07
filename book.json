@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "page-treeview",
+    "expand-active-chapter",
+    "collapsible-chapters",
+    "atoc",
+    "-sharing"
+  ],
+  "pluginsConfig": {
+    "page-treeview": {
+      "copyright": ""
+    }
+  }
+}
