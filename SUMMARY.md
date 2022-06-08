@@ -8,11 +8,13 @@
 * [Our Journey](overview/our-journey.md)
 
 ## TUTORIAL
-* [How to join in UnUniFi Testnet](tutorial/how-to-join-in-ununifi-testnet.md)
+* [Wallets](tutorial/wallet.md)
+* [Staking](tutorial/staking.md)
 
 ## NODES & VALIDATORS
 * [ununifid Installation and Setup](validators/ununifid-installation-and-setup.md)
-* [Joining mainnet](validators/joining_mainnet.md)
+* [Setting up Cosmovisor](validators/setting-cosmovisor.md)
+* [Joining mainnet](validators/validate-mainnet.md)
 
 
 ## RESOURCE
