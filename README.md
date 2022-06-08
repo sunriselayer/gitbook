@@ -22,3 +22,12 @@ JPU, EUU or USU is a digital asset drawn from the UnUniFi Protocol on Cosmos Net
 ## GUU
 
 GUU is a utility token for governance or commission used in the UnUniFi Protocol. The Governance token of UnUniFi Protocol has three primary use-case: It requires a small amount of GUU as fees when conducting any transaction on the UnUniFi blockchain. Rewards for delegators participating in the UnUniFi Protocol operation. GUU tokens are used to vote on adjusting CDP parameters.
+
+## How to build Gitbook 
+
+The way to build in local:
+```
+npm install -g gitbook-cli
+gitbook install
+gitbook serve
+```

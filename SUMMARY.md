@@ -1,22 +1,20 @@
-# Table of contents
-
-* [What is UnUniFi Protocol ?](README.md)
-
-## Overview
-
+## UnUniFi
+* [Introduction](README.md)
 * [UnUniFi Protocol CDP](overview/ununifi-protocol-cdp.md)
 * [Governance Token Allocation](overview/governance-token-allocation.md)
 * [Our Journey](overview/our-journey.md)
 
-## Tutorial
+## TUTORIAL
+* [Wallets](tutorial/wallet.md)
+* [Staking](tutorial/staking.md)
 
-* [How to join in UnUniFi Testnet](tutorial/how-to-join-in-ununifi-testnet.md)
-
-## Resources
-
+## NODES & VALIDATORS
+* [ununifid Installation and Setup](validators/ununifid-installation-and-setup.md)
+* [Setting up Cosmovisor](validators/setting-cosmovisor.md)
+* [Joining mainnet](validators/validate-mainnet.md)
+## RESOURCE
 * [FAQ](resources/faq.md)
 
-## Links
-
+## LINKS
 * [Twitter](https://twitter.com/ununifi)
 * [Discord](https://discord.com/invite/gxEkFyu5rn)
