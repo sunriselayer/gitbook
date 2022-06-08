@@ -1,25 +1,26 @@
 # Table of contents
 
-* [What is UnUniFi Protocol ?](README.md)
+* [Introduction](README.md)
 
-* Overview
+* OVERVIEW
   * [UnUniFi Protocol CDP](overview/ununifi-protocol-cdp.md)
   * [Governance Token Allocation](overview/governance-token-allocation.md)
   * [Our Journey](overview/our-journey.md)
 
 * [DEVElOP](develop/README.md)
-  * Network
+  * [Network](develop/network/README.md)
+    * [Joining mainnet](develop/network/joining_mainnet.md)
 
 * [VALIDATE](validate/README.md)
   * Testnet
-  * Mainnet
+  * [Mainnet](validate/validate_mainnet.md)
 
-* Tutorial
+* TUTORIAL
   * [How to join in UnUniFi Testnet](tutorial/how-to-join-in-ununifi-testnet.md)
 
-* Resources
+* RESOURCE
   * [FAQ](resources/faq.md)
 
-* Links
+* LINKS
   * [Twitter](https://twitter.com/ununifi)
   * [Discord](https://discord.com/invite/gxEkFyu5rn)
