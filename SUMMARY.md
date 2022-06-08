@@ -1,8 +1,5 @@
-# Table of contents
-
-## [Introduction](README.md)
-
-## OVERVIEW
+## UnUniFi
+* [Introduction](README.md)
 * [UnUniFi Protocol CDP](overview/ununifi-protocol-cdp.md)
 * [Governance Token Allocation](overview/governance-token-allocation.md)
 * [Our Journey](overview/our-journey.md)
@@ -15,8 +12,6 @@
 * [ununifid Installation and Setup](validators/ununifid-installation-and-setup.md)
 * [Setting up Cosmovisor](validators/setting-cosmovisor.md)
 * [Joining mainnet](validators/validate-mainnet.md)
-
-
 ## RESOURCE
 * [FAQ](resources/faq.md)
 
