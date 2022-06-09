@@ -1,0 +1,22 @@
+# Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
+
+requestInfoReplyComment: >
+We would appreciate it if you could provide us with more info about this issue!
+ 
+requestInfoLabelToAdd: request-more-info
+
+# Comment to be posted to on first time issues
+newIssueWelcomeComment: >
+   Thanks for opening your first issue here! Be sure to follow the issue template!
+   If not, your issue is possibly eliminated by bot. 
+   And, please put your simple thought, like good experience or smooth UI/Ux etc, 
+   into feedback channel of our discord guild.
+ 
+# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcom
+ 
+ 
+# Comment to be posted to on PRs from first time contributors in your repository
+# newPRWelcomeComment: >
+#  Thanks for opening this pull request! Please check out our contributing guidelines.
+ 
+# Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
