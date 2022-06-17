@@ -21,6 +21,7 @@ Please install Go v1.18 or later.
 ```
 wget https://golang.org/dl/go1.18.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
+sudo apt install golang-go  # version 2:1.13~1ubuntu2
 ```
 
 ***Build Juno from source***
