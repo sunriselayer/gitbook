@@ -28,7 +28,7 @@ sudo tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
 git clone https://github.com/CosmosContracts/juno
 cd juno
 git fetch
-git checkout 3.0.0
+git checkout v3.0.0
 make install
 ```
 To confirm that the installation has succeeded, you can run:
