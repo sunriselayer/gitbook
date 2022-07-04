@@ -28,7 +28,7 @@ echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/UnUniFi/network/
 echo "export SETUP_NODE_CONFIG_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
-echo "export DAEMON_NAME=$TARGET" >> ~/.bash_profile
+echo "export DAEMON_NAME=\$TARGET" >> ~/.bash_profile
 # This value will be different for each node.
 echo "export DAEMON_HOME=$HOME/.ununifi" >> ~/.bash_profile
 echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> ~/.bash_profile
