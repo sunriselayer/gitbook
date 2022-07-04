@@ -22,13 +22,13 @@ sudo apt-get install make build-essential gcc git jq chrony -y
 Follow the instructions [here](https://go.dev/doc/install) to install Go.
 For an Ubuntu LTS, you can probably use:
 ```Bash
-# Please install Go v1.18 or later
+# Please install Go v1.17
 # from $HOME dir
-$ wget https://golang.org/dl/go1.18.2.linux-amd64.tar.gz
+$ wget https://go.dev/dl/go1.17.linux-amd64.tar.gz
 $ sudo rm -rf /usr/local/go
-$ sudo tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.17.linux-amd64.tar.gz
 $ go version
-go version go1.18.2 linux/amd64
+go version go1.17 linux/amd64
 ```
 Unless you want to configure in a non standard way, then set these in the `.bash_profile` in the user's `home` (i.e. ~/) folder.
 ```Bash
