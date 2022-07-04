@@ -66,13 +66,13 @@ Description=Cosmovisor daemon
 After=network-online.target
 [Service]
 Environment="DAEMON_NAME=ununifid"
-Environment="DAEMON_HOME=$HOME/.ununifi"
+Environment="DAEMON_HOME=/home/<your-user>/.ununifi"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
-User=$USER
-ExecStart=$HOME/go/bin/cosmovisor start
+User=<your-user>
+ExecStart=/home/<your-user>/go/bin/cosmovisor start
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
