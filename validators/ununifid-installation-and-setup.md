@@ -14,9 +14,9 @@ Validator Node Server
 ### Install pre-requisites
 ```Bash
 # update the local package list and install any available upgrades
-sudo apt-get update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 # install toolchain and ensure accurate time synchronization
-sudo apt-get install make build-essential gcc git jq chrony -y
+sudo apt install build-essential git jq -y
 ```
 ### Install Go
 Follow the instructions [here](https://go.dev/doc/install) to install Go.
