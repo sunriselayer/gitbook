@@ -6,9 +6,7 @@ description: >-
 
 # Mainnet Upgrades
 
-{% hint style="info" %}
 Release procedures for validators and node operators are explained [here](https://github.com/UnUniFI/chain/blob/main/RELEASES.md). The `RELEASES.md` file in UnUniFi's GitHub repo is the canonical source of truth for release processes.
-{% endhint %}
 
 The UnUniFi Network mainnet is regularly upgraded to provide the latest security patches, Cosmos SDK module integrations and performance improvements.
 
@@ -36,12 +34,12 @@ Where emergency security patches are required, node operators are notified via t
 If you want ununifid to upgrade automatically, do the following steps prior to the upgrade height:
 
 ```shell
-mkdir -p ~/.ununifi/cosmovisor/upgrades/$NEW_VERSION/bin
+mkdir -p $DAEMON_HOME/cosmovisor/upgrades/$NEW_VERSION/bin
 cd $HOME/$CHAIN_REPO
 git pull
 git checkout $NEW_VERSION
 make build
-cp build/ununifid ~/.ununifi/cosmovisor/upgrades/$NEW_VERSION/bin
+cp build/ununifid $DAEMON_HOME/cosmovisor/upgrades/$NEW_VERSION/bin
 ```
 
 If you are setting true for automatic download in cosmosvisor, you don't need to do this. But, it's not recommended for validators.
