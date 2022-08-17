@@ -43,3 +43,5 @@ git checkout $NEW_VERSION
 make build
 cp build/ununifid ~/.ununifi/cosmovisor/upgrades/$NEW_VERSION/bin
 ```
+
+If you are setting true for automatic download in cosmosvisor, you don't need to do this. But, it's not recommended for validators.
