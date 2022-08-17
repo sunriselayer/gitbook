@@ -30,3 +30,16 @@ Node operators are then required to swap the binary for the planned upgrade bina
 ### Unplanned upgrade
 
 Where emergency security patches are required, node operators are notified via the official discord validator channels. Node operators will be required to halt their nodes manually at the required upgrade height, swap the patched binary and restart their nodes. After all node operators have upgraded and started their nodes the network will continue in the upgraded state.
+
+### Update Daemon for upgrade
+
+If you want ununifid to upgrade automatically, do the following steps prior to the upgrade height:
+
+```shell
+mkdir -p ~/.ununifi/cosmovisor/upgrades/$NEW_VERSION/bin
+cd $HOME/$CHAIN_REPO
+git pull
+git checkout $NEW_VERSION
+make build
+cp build/ununifid ~/.ununifi/cosmovisor/upgrades/$NEW_VERSION/bin
+```
