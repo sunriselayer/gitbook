@@ -12,6 +12,8 @@
 * [ununifid Installation and Setup](validators/ununifid-installation-and-setup.md)
 * [Setting up Cosmovisor](validators/setting-cosmovisor.md)
 * [Joining mainnet](validators/validate-mainnet.md)
+* [Mainnet Upgrades](validators/mainnet-upgrades.md)
+
 ## RESOURCE
 * [FAQ](resources/faq.md)
 
