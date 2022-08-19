@@ -34,12 +34,15 @@ Where emergency security patches are required, node operators are notified via t
 If you want ununifid to upgrade automatically, do the following steps prior to the upgrade height:
 
 ```shell
-mkdir -p $DAEMON_HOME/cosmovisor/upgrades/$NEW_VERSION/bin
+export UPGRADE_NAME= # upgrade name
+export NEW_VERSION= # release version for upgrade
+
+mkdir -p $DAEMON_HOME/cosmovisor/upgrades/$UPGRADE_NAME/bin
 cd $HOME/$CHAIN_REPO
 git pull
 git checkout $NEW_VERSION
 make build
-cp build/ununifid $DAEMON_HOME/cosmovisor/upgrades/$NEW_VERSION/bin
+cp build/ununifid $DAEMON_HOME/cosmovisor/upgrades/$UPGRADE_NAME/bin
 ```
 
 If you are setting true for automatic download in cosmosvisor, you don't need to do this. But, it's not recommended for validators.
