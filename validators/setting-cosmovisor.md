@@ -31,7 +31,7 @@ echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
 echo "export DAEMON_NAME=\$TARGET" >> ~/.bash_profile
 # This value will be different for each node.
 echo "export DAEMON_HOME=$HOME/.ununifi" >> ~/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> ~/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> ~/.bash_profile
 echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.bash_profile
 echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bash_profile
 echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.bash_profile
