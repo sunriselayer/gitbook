@@ -29,6 +29,18 @@ Node operators are then required to swap the binary for the planned upgrade bina
 
 Where emergency security patches are required, node operators are notified via the official discord validator channels. Node operators will be required to halt their nodes manually at the required upgrade height, swap the patched binary and restart their nodes. After all node operators have upgraded and started their nodes the network will continue in the upgraded state.
 
+## Upgrade Path
+
+In order to sync a node with the current UnUniFi mainnet, you will need to follow these steps:
+
+### Genesis binary
+
+The genesis binary is [v1.0.0-beta.1](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-beta.1). This binary should be used with genesis file. Refer to instructions details in [Joining Mainnet](validate-mainnet.md)
+
+### First Software upgrade
+
+Binary version is [v1.0.0-beta.3.1](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-beta.3.1).
+
 ### Update Daemon for upgrade
 
 If you want ununifid to upgrade automatically, do the following steps prior to the upgrade height:
