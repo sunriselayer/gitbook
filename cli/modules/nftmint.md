@@ -27,7 +27,7 @@ description: >-
 Query the class attributes by class-id.
 
 ```text
-ununifid query nftmint class-attributes [flags]
+ununifid query nftmint class-attributes [class-id] [flags]
 ```
 
 **Flags:**
@@ -50,7 +50,7 @@ ununifid query nftmint class-attributes [flags]
 Query classIDs which have the class name.
 
 ```text
-ununifid query nftmint class-ids-by-name [flags]
+ununifid query nftmint class-ids-by-name [class-name] [flags]
 ```
 
 **Flags:**
@@ -72,7 +72,7 @@ ununifid query nftmint class-ids-by-name [flags]
 Query classIDs owned by the owner address.
 
 ```text
-ununifid query nftmint class-ids-by-owner [flags]
+ununifid query nftmint class-ids-by-owner [owner-address] [flags]
 ```
 
 **Flags:**
@@ -95,7 +95,7 @@ ununifid query nftmint class-ids-by-owner [flags]
 Query nft minter with class and nft id.
 
 ```text
-ununifid query nftmint nft-minter [flags]
+ununifid query nftmint nft-minter [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
