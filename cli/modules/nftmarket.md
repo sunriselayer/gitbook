@@ -1,10 +1,10 @@
 ---
 description: >-
-  nfsmarket module allows you to manage assets for accounts loaded into the local
+  nftmarket module allows you to manage assets for accounts loaded into the local
   keys module
 ---
 
-# nfsmarket
+# nftmarket
 
 ## Available Commands
 
