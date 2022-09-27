@@ -1,7 +1,6 @@
 ---
 description: >-
-  nftmarket module allows you to manage assets for accounts loaded into the local
-  keys module
+  nftmarket module allows you to manage assets for accounts loaded into the local keys module
 ---
 
 # nftmarket
