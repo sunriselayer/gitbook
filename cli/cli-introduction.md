@@ -24,6 +24,12 @@ The UnUniFi `key` data is saved in the working directory of `ununifid`. You can 
 By default, `ununifid` uses `tcp://localhost:26657` as the RPC address to connect to the UnUniFi network.  
 This default configuration assumes that the machine executing `ununifid` is running as a full-node.
 
+The RPC address can be specified to connect to any full-node with an exposed RPC port by adding the --node flag when executing ununifid
+
+{% hint style="info" %}
+*https://a.lcd.ununifi.cauchye.net:443* is available.
+{% endhint %}
+
 ### Global Flags <a href="#global-flags" id="global-flags"></a>
 
 All commands have the following global flags:
