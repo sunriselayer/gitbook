@@ -205,11 +205,6 @@ ununifid tx nftmint mint-nft [class-id] [nft-id] [receiver] --from [sender] [fla
 
 **Flags:**
 
-| Name, shorthand      | Type   | Required | Default                 | Description |
-| :------------------- | :----- | :------- | :---------------------- | :---------- |
-| --class-uri          | string |          |                         | Content URI for class |
-| --description        | string |          |                         | Description for denom |
-
 {% hint style="info" %}
 Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
 {% endhint %}
