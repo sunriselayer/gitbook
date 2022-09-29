@@ -14,6 +14,14 @@
 * [Joining mainnet](validators/validate-mainnet.md)
 * [Mainnet Upgrades](validators/mainnet-upgrades.md)
 
+## Command-Line Interface (CLI)
+
+* [Introduction](cli/cli-introduction.md)
+* [Useful CLI Commands](cli/ununifid-cli-commands.md)
+* [Module Reference](cli/modules/README.md)
+  * [nftmint](cli/modules/nftmint.md)
+  * [nftmarket](cli/modules/nftmarket.md)
+
 ## RESOURCE
 * [FAQ](resources/faq.md)
 
