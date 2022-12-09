@@ -1,5 +1,7 @@
 # How to use UnUniFi Application Plugin
 
+[UnUniFi Application (Bubble plugin)](https://bubble.io/plugin/ununifi-application-1661304597546x724719328208093200)
+
 On Bubble App, UnUniFi Application Plugin supports sending transactions and retrieving information related to NFT functions in the UnUniFi blockchain.
 
 This is mainly composed of `API calls` and `Elements`.
@@ -10,12 +12,14 @@ UnUniFi Application Plugin depends on the following projects.
 - [cosmos-client-ts](https://github.com/cosmos-client/cosmos-client-ts)
 - [ununifi-ts](https://github.com/cosmos-client/ununifi-ts)
 
+The usage ofCosmos SDK Application Plugin is the same; use this to implement the standard Cosmos SDK transactions.
+
+[Cosmos SDK Application (Bubble plugin)](https://bubble.io/plugin/cosmos-sdk-application-1661304565115x325886041951305700)
+
 ## How to install
 
 Open your App source page and select `Plugins` in the sidebar.
 Install the latest plugin `UnUniFi Application`.
-
-Plugin page <https://bubble.io/plugin/ununifi-application-1661304597546x724719328208093200>
 
 ![plugin](https://user-images.githubusercontent.com/29295263/192484786-328707cb-dcef-42a6-9775-e81fe2794650.jpg)
 
