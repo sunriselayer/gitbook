@@ -22,7 +22,7 @@ First, Add Plugin's Element to your App and set some parameters.
 
 Second, in Keplr Element, enter information about the chain to be connected.
 
-![keplr-param](https://user-images.githubusercontent.com/29295263/207234030-2b091324-5bdc-456a-beef-a8b0cfee0156.png)
+![keplr-param](https://user-images.githubusercontent.com/29295263/207309400-e088ccea-3bea-4fde-910f-13f6c111d889.png)
 
 Next, in Cosmos Tx Basis Element, enter same infomation as Keplr and Keplr Element's `public_key` & `address`. Also, set any `log_level`.
 
@@ -47,9 +47,9 @@ In `set_msg`, `type_url` & `value` are needed to set. Set from UnUniFi Plugin El
 
 ![workflow-msg](https://user-images.githubusercontent.com/29295263/207236967-1c375802-770c-48f0-a9ca-42b476eaf6ac.png)
 
-Third, add signature in Keplr. set `sign` by Keplr when `tx_created` event. Set `authInfoHex`, `accountNumString` & `bodyHex` from Cosmos SDK Tx Basis Element.
+Third, add signature in Keplr. set `sign` by Keplr when `tx_created` event. Set `auth_info_hex`, `account_num_string` & `body_hex` from Cosmos SDK Tx Basis Element.
 
-![workflow-keplr](https://user-images.githubusercontent.com/29295263/207237537-24d216e0-1018-41d5-9d32-d47d4e1ce924.png)
+![workflow-keplr](https://user-images.githubusercontent.com/29295263/207309078-7c2b265b-72ff-41e1-b020-472e27beee8f.png)
 
 Finally, broadcast transaction. use `broadcast_tx` by Cosmos SDK Tx Basis when `sined` event. Set `signed_body_hex`, `signed_auth_info_hex` & `signature` from Keplr Element.
 
