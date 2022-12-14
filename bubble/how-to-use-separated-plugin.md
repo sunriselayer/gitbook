@@ -1,4 +1,6 @@
-# How to use UnUniFi Plugin
+# UnUniFi Plugin (Advanced)
+
+## How to use UnUniFi Plugin
 
 If you are not knowledgeable about Cosmos blockchain transactions, please use the UnUniFi Application Plugin.
 
