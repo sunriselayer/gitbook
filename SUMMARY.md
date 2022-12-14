@@ -12,8 +12,8 @@
 
 ## BUBBLE
 
-* [Application Plugin](bubble/how-to-use-application-plugin.md)
-* [Single Function Plugin](bubble/how-to-use-separated-plugin.md)
+* [UnUniFi Application Plugin](bubble/how-to-use-application-plugin.md)
+* [UnUniFi Plugin (Advanced)](bubble/how-to-use-separated-plugin.md)
 
 ## NODES & VALIDATORS
 

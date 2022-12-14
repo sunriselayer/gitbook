@@ -1,4 +1,6 @@
-# How to use UnUniFi Application Plugin
+# UnUniFi Application Plugin
+
+## How to use UnUniFi Application Plugin
 
 [UnUniFi Application (Bubble plugin)](https://bubble.io/plugin/ununifi-application-1661304597546x724719328208093200)
 
