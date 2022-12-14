@@ -1,8 +1,6 @@
 ---
-
 description: >-
-Decentralized cross-chain NFT marketplace/ platform with auto DeFi yield
-
+  Decentralized cross-chain NFT marketplace/ platform with auto DeFi yield
 ---
 
 # UnUniFi Protocol Developer Documentation
