@@ -6,7 +6,7 @@
   This is the asking price to purchase NFT. If the lister decides to sell at this price, you can buy at this price.
 - Deposit Amount
   Deposit to be paid at the time of bidding. Must exceed minimum deposit rate.
-  {% math %}depositAmount >= bidAmount * minimumDepositRate{% endmath %}
+  {% math %}depositAmount \geq bidAmount \times minimumDepositRate{% endmath %}
 - Interest Rate
   Set the interest rates.
 - Expiration Date

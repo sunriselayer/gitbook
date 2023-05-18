@@ -1,6 +1,7 @@
-UnUniFi Installation and Setup 
-=
+# UnUniFi Installation and Setup
+
 Instruction to install the ununifid binary
+
 ## Choose an Operating System
 
 The operating system you use for your node is entirely your personal preference. You will be able to compile the ununifid daemon on most modern linux distributions and recent versions of macOS
@@ -31,13 +32,13 @@ Follow the instructions [here](https://go.dev/doc/install) to install Go.
 For an Ubuntu LTS, you can probably use:
 
 ```Bash
-# Please install Go v1.17
+# Please install Go v1.19
 # from $HOME dir
-$ wget https://go.dev/dl/go1.17.linux-amd64.tar.gz
+$ wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
 $ sudo rm -rf /usr/local/go
-$ sudo tar -C /usr/local -xzf go1.17.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
 $ go version
-go version go1.17 linux/amd64
+go version go1.19 linux/amd64
 ```
 
 Unless you want to configure in a non standard way, then set these in the `.bash_profile` in the user's `home` (i.e. ~/) folder.
@@ -63,7 +64,7 @@ Clone the UnUniFi blockchain repository, check out the given branch, and build i
 # from $HOME dir
 git clone https://github.com/UnUniFi/chain chain_repo  
 cd chain_repo
-git checkout v1.0.0-beta.3.1
+git checkout v2.0.0
 make install
 ```
 
