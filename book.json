@@ -2,7 +2,10 @@
   "plugins": [
     "page-treeview",
     "atoc",
-    "-sharing"
+    "hints",
+    "tabs",
+    "tabs2",
+    "katex"
   ],
   "pluginsConfig": {
     "page-treeview": {
