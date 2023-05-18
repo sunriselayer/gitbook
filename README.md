@@ -1,6 +1,6 @@
 ---
 description: >-
-  Decentralized cross-chain NFT marketplace/ platform with auto DeFi yield
+  NFT-Fi Platform with DeFi tools built on Cosmos
 ---
 
 # UnUniFi Protocol Developer Documentation
@@ -13,26 +13,20 @@ description: >-
 
 White paper:[https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf](https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf)
 
-UnUniFi Protocol is a decentralized finance(DeFi) platform that provides tools and features that allow users to create a collateralized deposit position, to synthesize a number of assets pegged to legal currency using NFTs and cryptocurrencies as collateral. As long as your NFTs are pledged as collateral, some rewards will come in on their own through the automatic DeFi of the issued stablecoins. The mission is “Give all NFTs the opportunity to DeFi”.
+UnUniFi Protocol is an NFT-Fi Platform with DeFi tools, built via Layer1 app-specific blockchain (ASBC) in the Cosmos Network.
+UnUniFi provides the tools and features necessary to integrate peer-to-peer DeFi functionality into NFT ecosystems, with an internal NFT marketplace and crosschain products developed for both retail and institutional users.
+This includes the first NFTFi Platform to create a proprietary NFT valuation algorithm calculated using real demand data, while allowing users to engage in DeFi activities to generate earnings or rewards from a variety
+of lending/borrowing/financing activities and third party protocols relating to NFTs, through an interchain yield aggregator. UnUniFi provides the infrastructure to be the NFT-Fi Hub for Cosmos and beyond. Our mission is to ”Give all NFTs the opportunity to DeFi”.
 
-### Decentralized
+### NFT-Fi
 
-UnUniFi Protocol is non-custodial. Users can mint/redeem JPU, EUU, USU or other synthetic assets without permission.
+Use our NFTFi Platform by either listing your NFT on the marketplace or bidding on a listed NFT. Our unique bidding mechanism allows for liquidity aggregation. Listing an NFT collateralizes it, allowing you access to flexible loans or simply accepting a bid to quickly sell your NFT.
 
-### JPU, EUU, USU
+For more information, visit [NFT Backed Loan](overview/nft-backed-loan.md) page.
 
-JPU, EUU or USU is a digital asset drawn from the UnUniFi Protocol on Cosmos Network. The price of JPU, EUU or USU are nearly equal to that of JPY, EUR or USD. A user can supply NFTs, BTC or other cryptocurrencies to UnUniFi Protocol, borrow JPU, EUU or USU, and exchange that JPU, EUU or USU for other assets, goods, or services. Once the JPU, EUU or USU is repaid to UnUniFi Protocol, the user regains full access to their supplied assets. The Stablecoins(JPU,EUU,USU) of UnUniFi Protocol has five primary use-cases: Users can draw JPU, EUU or USU, by locking collateral in a smart contract. Users may stake JPU, EUU or USU for a yield. When earning interest income, there is a huge demand for using coins with low price volatility as collateral. Users may take out a series of collateralized loans to create synthetic leverage for any supported crypto asset. For instance, it is possible to lock BTC and mint JPU, EUU or USU to buy BTC, hence creating a leveraged long position on BTC. Users can use JPU, EUU or USU on any chain connected to the Cosmos network. Users can issue a variety of Synthetic assets collateralized by JPU, EUU or USU.
 
-### GUU
+### InterChain Yield Aggregator
 
-GUU is a utility token for governance or commission used in the UnUniFi Protocol. The Governance token of UnUniFi Protocol has three primary use-case: It requires a small amount of GUU as fees when conducting any transaction on the UnUniFi blockchain. Rewards for delegators participating in the UnUniFi Protocol operation. GUU tokens are used to vote on adjusting CDP parameters.
+Users can then generate automatic DeFi yield on their assets using our Interchain Yield Aggregator.
 
-### How to build Gitbook
-
-The way to build in local:
-
-```
-npm install -g gitbook-cli
-gitbook install
-gitbook serve
-```
+For more information, visit [interchain yield aggregator](overview/interchain-yield-aggregator.md) page.
