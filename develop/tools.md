@@ -2,7 +2,7 @@
 
 ## cosmos-client-ts
 
-The cosmos-client-ts is a library of Cosmos Client for `Typescript` Application.
+The cosmos-client-ts is a library of Cosmos Client for `Javascript` or `Typescript` Application.
 It can be used for frontend application development with Angular, Vue, React, etc.
 
 For more information, visit [cosmos-client](tools/cosmos-client.md) page
