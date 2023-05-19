@@ -23,8 +23,8 @@
     * [Module Commands](cli/modules/README.md)
       * [NFT Mint](cli/modules/nftmint.md)
       * [NFT Market](cli/modules/nftmarket.md)
-      <!-- * [Yield Aggregator](cli/modules/yield-aggregator.md)
-      * [Derivatives](cli/modules/derivatives.md) -->
+      * [Yield Aggregator](cli/modules/yield-aggregator.md)
+      * [Derivatives](cli/modules/derivatives.md)
 * [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
 
