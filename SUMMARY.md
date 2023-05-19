@@ -17,7 +17,7 @@
 
 * [IYA Strategy](develop/strategy.md)
 * [Developer Tools](develop/tools.md)
-  * [Cosmos-client](develop/tools/cosmos-client.md)
+  * [Cosmos Client TS](develop/tools/cosmos-client.md)
   * [UnUniFid](cli/cli-introduction.md)  
     * [Basic Commands](cli/ununifid-cli-commands.md)
     * [Module Commands](cli/modules/README.md)
