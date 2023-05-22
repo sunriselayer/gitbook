@@ -22,6 +22,13 @@ The yield-aggregator module allows you to manage assets and earn yield.
 
 [Yield Aggregator CLI Command](yield-aggregator.md)
 
+## CosmWasm
+
+The cosmwasm module allows you to manage CosmWasm smart contract.
+This is used to add the Yield Aggregator strategy.
+
+[CosmWasm CLI Command](cosmwasm.md)
+
 ## Derivatives
 
 The derivatives module allows you to manage assets through derivatives.
