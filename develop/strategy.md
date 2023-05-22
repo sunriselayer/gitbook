@@ -2,9 +2,11 @@
 
 All developer can deploy their created Strategy contracts to the UnUniFi protocol without permission.
 Development requires knowledge of **CosmWasm**.
-For more information about CosmWasm, visit [CosmWasm Academy](https://cosmwasm.getlearnworlds.com) site.
+For more information about CosmWasm, visit [CosmWasm Document](https://docs.cosmwasm.com/docs/) site.
 
 Yield aggregator is expecting following endpoints to be exposed by strategy contract.
+
+For more information on CosmWasm CLI commands such as deploy, see [CosmWasm CLI](../cli/modules/cosmwasm.md) page
 
 ## Message
 
