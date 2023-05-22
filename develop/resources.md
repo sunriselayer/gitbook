@@ -23,9 +23,13 @@ Cosmos SDK Rest & gRPC Gateway: [v1.cosmos.network](https://v1.cosmos.network/rp
 | **a.lcd.ununifi.cauchye.net** | UnUniFi mainnet |
 | **b.lcd.ununifi.cauchye.net** | UnUniFi mainnet |
 
-- the gRPC server (default port: 9090)
-- the REST server (default port: 1317)
-- the CometBFT RPC endpoint (default port: 26657)
+### Available Ports
+
+| Port                 | Function                          |
+| -------------------- | --------------------------------- |
+| 9090                 | gRPC server                       |
+| 1317 (https: 1318)   | REST server                       |
+| 26657 (https: 26658) | CometBFT RPC endpoint (websocket) |
 
 ## Testnet
 
@@ -33,12 +37,17 @@ There are currently 3 public testnet chains.
 
 - Testnet
   For mainnet development
+  <https://test.ununifi.io/>
 - Lab
   Includes features planned for next release
+  <https://lab-testnet.ununifi.io/>
 - Alpha
   Includes unstable and up-to-date features
+  <https://alpha-test.ununifi.io/>
 
-| Node                               | Network         |
+All testnets have Explorer & Portal.
+
+| Endpoint                           | Network         |
 | ---------------------------------- | --------------- |
 | **a.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
 | **b.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
@@ -46,3 +55,13 @@ There are currently 3 public testnet chains.
 | **d.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
 | **ununifi-beta-test.cauchye.net**  | UnUniFi Lab     |
 | **ununifi-alpha-test.cauchye.net** | UnUniFi Alpha   |
+
+### Available Ports (Testnet)
+
+| Port                 | Function                          |
+| -------------------- | --------------------------------- |
+| 9090                 | gRPC server                       |
+| 1317 (https: 1318)   | REST server                       |
+| 26657 (https: 26658) | CometBFT RPC endpoint (websocket) |
+| 8000 (https: 8001)   | Faucet for BTC                    |
+| 8002 (https: 8003)   | Faucet for GUU & USDC             |
