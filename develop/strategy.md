@@ -6,7 +6,7 @@ Yield aggregator is expecting following endpoints to be exposed by strategy cont
 
 ## Message
 
-```rs
+```rust
     pub enum ExecuteMsg {
         Stake(StakeMsg),
         Unstake(UnstakeMsg),
@@ -31,7 +31,7 @@ On `Unstake`, unstaking amount is put Uint128 variable on `UnstakeMsg`
 
 ## Query
 
-````rs
+````rust
     pub enum QueryMsg {
         Bonded { addr: String },
         Unbonding { addr: String },
@@ -53,7 +53,7 @@ Here `addr` is the address of vault, or individual addresses that deposit funds 
 
 `Fee` returns `FeeInfo` object that has configuration of fees.
 
-```rs
+```rust
 pub struct FeeInfo {
     pub deposit_fee_rate: Decimal,
     pub withdraw_fee_rate: Decimal,
