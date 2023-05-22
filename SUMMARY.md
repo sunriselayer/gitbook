@@ -18,12 +18,13 @@
 * [IYA Strategy](develop/strategy.md)
 * [Developer Tools](develop/tools.md)
   * [Cosmos Client TS](develop/tools/cosmos-client.md)
-  * [UnUniFid](cli/cli-introduction.md)  
+  * [ununifid](cli/cli-introduction.md)  
     * [Basic Commands](cli/ununifid-cli-commands.md)
     * [Module Commands](cli/modules/README.md)
       * [NFT Mint](cli/modules/nftmint.md)
       * [NFT Market](cli/modules/nftmarket.md)
       * [Yield Aggregator](cli/modules/yield-aggregator.md)
+      * [CosmWasm](cli/modules/cosmwasm.md)
       * [Derivatives](cli/modules/derivatives.md)
 * [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
@@ -31,7 +32,8 @@
 ## NODES & VALIDATORS
 
 * [Setting up Cosmovisor](validators/setting-cosmovisor.md)
-* [Joining mainnet](validators/validate-mainnet.md)
+* [Joining Mainnet](validators/validate-mainnet.md)
+* [Joining Testnet](validators/joining-testnet.md)
 * [Mainnet Upgrades](validators/mainnet-upgrades.md)
 
 ## LINKS

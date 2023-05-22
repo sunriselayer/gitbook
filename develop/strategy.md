@@ -2,13 +2,17 @@
 
 All developer can deploy their created Strategy contracts to the UnUniFi protocol without permission.
 Development requires knowledge of **CosmWasm**.
-For more information about CosmWasm, visit [CosmWasm Academy](https://cosmwasm.getlearnworlds.com) site.
+For more information about CosmWasm, visit [CosmWasm Document](https://docs.cosmwasm.com/docs/) site.
+
+If first time, please refer to [CosmWasm Academy](https://cosmwasm.getlearnworlds.com) as well.
 
 Yield aggregator is expecting following endpoints to be exposed by strategy contract.
 
+For more information on CosmWasm CLI commands such as deploy, see [CosmWasm CLI](../cli/modules/cosmwasm.md) page.
+
 ## Message
 
-```rs
+```rust
     pub enum ExecuteMsg {
         Stake(StakeMsg),
         Unstake(UnstakeMsg),
@@ -33,7 +37,7 @@ On `Unstake`, unstaking amount is put Uint128 variable on `UnstakeMsg`
 
 ## Query
 
-````rs
+````rust
     pub enum QueryMsg {
         Bonded { addr: String },
         Unbonding { addr: String },
@@ -55,7 +59,7 @@ Here `addr` is the address of vault, or individual addresses that deposit funds 
 
 `Fee` returns `FeeInfo` object that has configuration of fees.
 
-```rs
+```rust
 pub struct FeeInfo {
     pub deposit_fee_rate: Decimal,
     pub withdraw_fee_rate: Decimal,

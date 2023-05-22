@@ -61,6 +61,8 @@ Common flags for the nftmarket query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
+## Query
+
 ### ununifid query nftmarket bidder_bids <a id="query-cdp_list"></a>
 
 shows bids by bidder.
@@ -262,6 +264,8 @@ Common flags for the nftmarket tx command are summarized.
 | --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
+
+## Tx
 
 ### ununifid tx nftmarket borrow <a id="tx-borrow"></a>
 

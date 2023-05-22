@@ -50,6 +50,8 @@ Common flags for the derivatives query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
+## Query
+
 ### ununifid query derivatives positions <a id="query-positions"></a>
 
 shows the positions owned by the designated address.
@@ -177,6 +179,8 @@ Common flags for the derivatives tx command are summarized.
 | --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
+
+## Tx
 
 ### ununifid tx derivatives open-position <a id="tx-open-position"></a>
 
