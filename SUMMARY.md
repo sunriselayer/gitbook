@@ -16,26 +16,23 @@
 ## Develop
 
 * [IYA Strategy](develop/strategy.md)
-<!-- * [Frontend](develop/frontend.md)
+* [Developer Tools](develop/tools.md)
+  * [Cosmos Client TS](develop/tools/cosmos-client.md)
+  * [UnUniFid](cli/cli-introduction.md)  
+    * [Basic Commands](cli/ununifid-cli-commands.md)
+    * [Module Commands](cli/modules/README.md)
+      * [NFT Mint](cli/modules/nftmint.md)
+      * [NFT Market](cli/modules/nftmarket.md)
+      * [Yield Aggregator](cli/modules/yield-aggregator.md)
+      * [Derivatives](cli/modules/derivatives.md)
+* [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
-* [Resources](develop/resources.md) -->
 
 ## NODES & VALIDATORS
 
-* [ununifid Installation and Setup](validators/ununifid-installation-and-setup.md)
 * [Setting up Cosmovisor](validators/setting-cosmovisor.md)
 * [Joining mainnet](validators/validate-mainnet.md)
 * [Mainnet Upgrades](validators/mainnet-upgrades.md)
-
-## Advanced
-
-<!-- * [Governance](gov/README.md) -->
-* [Command-Line Interface (CLI)](cli/README.md)
-  * [Introduction](cli/cli-introduction.md)
-  * [Useful CLI Commands](cli/ununifid-cli-commands.md)
-  * [Module Reference](cli/modules/README.md)
-    * [nftmint](cli/modules/nftmint.md)
-    * [nftmarket](cli/modules/nftmarket.md)
 
 ## LINKS
 

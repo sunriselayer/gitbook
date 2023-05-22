@@ -1,6 +1,8 @@
 # Strategy Contract for UnUniFi Yield Aggregator
 
 All developer can deploy their created Strategy contracts to the UnUniFi protocol without permission.
+Development requires knowledge of **CosmWasm**.
+For more information about CosmWasm, visit [CosmWasm Academy](https://cosmwasm.getlearnworlds.com) site.
 
 Yield aggregator is expecting following endpoints to be exposed by strategy contract.
 

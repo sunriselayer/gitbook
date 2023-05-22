@@ -1,46 +1,35 @@
 ---
 description: >-
-  The nftmarket module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
+  The derivatives module allows you to manage assets through derivatives.
 ---
 
-# nftmarket
-
-## Available Commands
+# derivatives
 
 **Query:**
 
-  | Name                                            | Description                                       |
-  | :---------------------------------------------- | :------------------------------------------------ |
-  | [bidder_bids](nftmarket.md#query-bidder_bids)   | shows bids by bidder                              |
-  | [cdp_list](nftmarket.md#query-cdp_list)         | shows cdps                                        |
-  | [liquidation](nftmarket.md#query-liquidation)   | shows liquidation date                            |
-  | [listed_class](nftmarket.md#query-listed_class) | shows listed nft ids and uris in defined class-id |
-  | [listed_nfts](nftmarket.md#query-listed_nfts)   | shows listed nfts on the market                   |
-  | [loan](nftmarket.md#query-loan)                 | shows nft loan                                    |
-  | [loans](nftmarket.md#query-loans)               | shows loans                                       |
-  | [nft_bids](nftmarket.md#query-nft_bids)         | shows nft bids                                    |
-  | [nft_listing](nftmarket.md#query-nft_listing)   | shows nft listing                                 |
-  | [params](nftmarket.md#query-params)             | shows params                                      |
-  | [rewards](nftmarket.md#query-rewards)           | shows rewards of an address                       |
+| Name                                                    | Description                                                                 |
+| :------------------------------------------------------ | :-------------------------------------------------------------------------- |
+| [positions](derivatives.md#query-positions)             | shows the positions owned by the designated address                         |
+| [available-assets](derivatives.md#query-assets)         | shows the available amount of all assets in the pool                        |
+| [available-asset](derivatives.md#query-asset)           | shows the available amount of the asset                                     |
+| [lpt-nominal-apy](derivatives.md#query-lpt-nominal-apy) | shows the nominal Annual Percent Yield between beforeHeight and afterHeight |
+| [lpt-real-apy](derivatives.md#query-lpt-real-apy)       | shows the real Annual Percent Yield between beforeHeight and afterHeight    |
+| [params](derivatives.md#query-params)                   | shows the parameters of the module                                          |
 
 **Tx:**
 
-  | Name                                                 | Description                        |
-  | :--------------------------------------------------- | :--------------------------------- |
-  | [borrow](nftmarket.md#tx-borrow)                     | borrow denom                       |
-  | [cancel_listing](nftmarket.md#tx-cancel_listing)     | Cancel nft listing                 |
-  | [cancelbid](nftmarket.md#tx-cancelbid)               | Cancel bid on nft                  |
-  | [endlisting](nftmarket.md#tx-endlisting)             | end listing                        |
-  | [listing](nftmarket.md#tx-listing)                   | Creates a new listing              |
-  | [mint](nftmarket.md#tx-mint)                         | Mint an nft                        |
-  | [pay_fullbid](nftmarket.md#tx-pay_fullbid)           | Pay full bid on nft                |
-  | [placebid](nftmarket.md#tx-placebid)                 | Creates a new place bid            |
-  | [repay](nftmarket.md#tx-repay)                       | repay loan on nft                  |
-  | [selling_decision](nftmarket.md#tx-selling_decision) | broadcast selling decision message |
+| Name                                                       | Description                            |
+| :--------------------------------------------------------- | :------------------------------------- |
+| [open-position](derivatives.md#tx-open-position)           | derivatives open position subcommands  |
+| [close-position](derivatives.md#tx-close-position)         | derivatives close position subcommands |
+| [report-liquidation](derivatives.md#tx-report-liquidation) | report liquidation needed position     |
+| [report-levy-period](derivatives.md#tx-report-levy-period) | report levy needed position            |
+| [deposit-to-pool](derivatives.md#tx-deposit-to-pool)       | deposit to pool                        |
+| [withdraw-from-pool](derivatives.md#tx-withdraw-from-pool) | withdraw from pool                     |
 
-## Common flags in nftmarket query <a id="common-query-flags"></a>
+## Common flags in derivatives query <a id="common-query-flags"></a>
 
-Common flags for the nftmarket query command are summarized.
+Common flags for the derivatives query command are summarized.
 
 **Flags:**
 
@@ -61,167 +50,93 @@ Common flags for the nftmarket query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
-### ununifid query nftmarket bidder_bids <a id="query-cdp_list"></a>
+### ununifid query derivatives positions <a id="query-positions"></a>
 
-shows bids by bidder.
+shows the positions owned by the designated address.
 
 ```bash
-ununifid query nftmarket bidder_bids [bidder] [flags]
+ununifid query derivatives positions [address] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket cdp_list <a id="query-cdp_list"></a>
+### ununifid query derivatives available-assets <a id="query-available-assets"></a>
 
-shows cdps.
+shows the available amount of all assets in the pool.
 
 ```bash
-ununifid query nftmarket cdp_list [flags]
+ununifid query derivatives available-assets [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket liquidation <a id="query-liquidation"></a>
+### ununifid query derivatives available-asset <a id="query-available-asset"></a>
 
-shows liquidation date.
+shows the available amount of the asset.
 
 ```bash
-ununifid query nftmarket liquidation [class-id] [nft-id] [flags]
+ununifid query derivatives available-asset [denom] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_class <a id="query-listed_class"></a>
+### ununifid query derivatives lpt-nominal-apy <a id="query-lpt-nominal-apy"></a>
 
-shows listed nft ids and uris in defined class-id.
+shows the nominal Annual Percent Yield between beforeHeight and afterHeight.
 
 ```bash
-ununifid query nftmarket listed_class [class-id] [nft-limit] [flags]
+ununifid query derivatives lpt-nominal-apy [beforeHeight] [afterHeight] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_nfts <a id="query-listed_nfts"></a>
+### ununifid query derivatives lpt-real-apy <a id="query-lpt-real-apy"></a>
 
-shows listed nfts on the market.
-
-```bash
-ununifid query nftmarket listed_nfts [flags]
-```
-
-**Flags:**
-
-| Name, shorthand | Type   | Required | Default | Description       |
-| :-------------- | :----- | :------- | :------ | :---------------- |
-| --owner         | string |          |         | nft owner address |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket loan <a id="query-loan"></a>
-
-shows nft loan.
+shows the real Annual Percent Yield between beforeHeight and afterHeight.
 
 ```bash
-ununifid query nftmarket loan [class-id] [nft-id] [flags]
+ununifid query derivatives lpt-real-apy [beforeHeight] [afterHeight] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket loans <a id="query-loans"></a>
+### ununifid query derivatives params <a id="query-params"></a>
 
-shows loans.
+shows the parameters of the module.
 
 ```bash
-ununifid query nftmarket loans [flags]
+ununifid query derivatives params [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in derivatives query](derivatives.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket nft_bids <a id="query-nft_bids"></a>
+## Common flags in derivatives tx <a id="common-tx-flags"></a>
 
-shows nft bids.
-
-```bash
-ununifid query nftmarket nft_bids [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket nft_listing <a id="query-nft_listing"></a>
-
-shows nft listing.
-
-```bash
-ununifid query nftmarket nft_listing [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket params <a id="query-params"></a>
-
-shows params.
-
-```bash
-ununifid query nftmarket params [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket rewards <a id="query-rewards"></a>
-
-shows rewards of an address.
-
-```bash
-ununifid query nftmarket rewards [address] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-## Common flags in nftmarket tx <a id="common-tx-flags"></a>
-
-Common flags for the nftmarket tx command are summarized.
+Common flags for the derivatives tx command are summarized.
 
 **Flags:**
 
@@ -263,152 +178,96 @@ Common flags for the nftmarket tx command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
-### ununifid tx nftmarket borrow <a id="tx-borrow"></a>
+### ununifid tx derivatives open-position <a id="tx-open-position"></a>
 
-borrow denom.
-
-```bash
-ununifid tx nftmarket borrow [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket cancel_listing <a id="tx-cancel_listing"></a>
-
-Cancel nft listing.
+derivatives open position.
 
 ```bash
-ununifid tx nftmarket cancel_listing [class-id] [nft-id] [flags]
+ununifid tx derivatives open-position [command]
 ```
 
-**Flags:**
+**Command:**
 
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket cancelbid <a id="tx-cancelbid"></a>
-
-Cancel bid on nft.
-
-```bash
-ununifid tx nftmarket cancelbid [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket endlisting <a id="tx-endlisting"></a>
-
-end listing.
-
-```bash
-ununifid tx nftmarket endlisting [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket listing <a id="tx-listing"></a>
-
-Creates a new listing.
-
-```bash
-ununifid tx nftmarket listing [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-| Name, shorthand   | Type   | Required | Default | Description     |
-| :---------------- | :----- | :------- | :------ | :-------------- |
-| --bid-active-rank | uint   | 1        |         | bid active rank |
-| --bid-token       | string | uguu     |         | bid token       |
-| --min-bid         | uint   | 1        |         | min bid amount  |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket mint <a id="tx-mint"></a>
-
-Mint an nft.
-
-```bash
-ununifid tx nftmarket mint [class-id] [nft-id] [uri] [uri-hash] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket pay_fullbid <a id="tx-pay_fullbid"></a>
-
-Pay full bid on nft.
-
-```bash
-ununifid tx nftmarket pay_fullbid [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket placebid <a id="tx-placebid"></a>
-
-Creates a new place bid.
-
-```bash
-ununifid tx nftmarket placebid [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-| Name, shorthand         | Type | Required | Default | Description        |
+| Name, shorthand | Type | Required | Default | Description |
 | :---------------------- | :--- | :------- | :------ | :----------------- |
-| -p, --automatic-payment |      |          |         | automation payment |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket repay <a id="tx-repay"></a>
-
-repay loan on nft.
+| perpetual-futures | | | | open perpetual futures position |
 
 ```bash
-ununifid tx nftmarket repay [class-id] [nft-id] [amount] [flags]
+ununifid tx derivatives open-position perpetual-futures [margin] [base-denom] [quote-denom] [long/short] [position-size] [leverage] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket selling_decision <a id="tx-selling_decision"></a>
+### ununifid tx derivatives close-position <a id="tx-close-position"></a>
 
-broadcast selling decision message.
+derivatives close position.
 
 ```bash
-ununifid tx nftmarket selling_decision [class-id] [nft-id] [flags]
+ununifid tx derivatives close-position [position-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx derivatives report-liquidation <a id="tx-report-liquidation"></a>
+
+report liquidation needed position.
+
+```bash
+ununifid tx derivatives report-liquidation [position-id] [reward-recipient] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx derivatives report-levy-period <a id="tx-report-levy-period"></a>
+
+report levy needed position.
+
+```bash
+ununifid tx derivatives report-levy-period [position-id] [reward-recipient] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx derivatives deposit-to-pool <a id="tx-deposit-to-pool"></a>
+
+deposit to pool.
+
+```bash
+ununifid tx derivatives deposit-to-pool [amount] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx derivatives withdraw-from-pool <a id="tx-withdraw-from-pool"></a>
+
+withdraw from pool.
+
+```bash
+ununifid tx derivatives withdraw-from-pool [amount] [redeem-denom] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in derivatives tx](derivatives.md#common-tx-flags) for details of flags.
 {% endhint %}
