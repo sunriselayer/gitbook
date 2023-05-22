@@ -1,46 +1,34 @@
 ---
 description: >-
-  The nftmarket module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
+  The yield-aggregator module allows you to manage assets and earn yield.
 ---
 
-# nftmarket
-
-## Available Commands
+# yield-aggregator
 
 **Query:**
 
-  | Name                                            | Description                                       |
-  | :---------------------------------------------- | :------------------------------------------------ |
-  | [bidder_bids](nftmarket.md#query-bidder_bids)   | shows bids by bidder                              |
-  | [cdp_list](nftmarket.md#query-cdp_list)         | shows cdps                                        |
-  | [liquidation](nftmarket.md#query-liquidation)   | shows liquidation date                            |
-  | [listed_class](nftmarket.md#query-listed_class) | shows listed nft ids and uris in defined class-id |
-  | [listed_nfts](nftmarket.md#query-listed_nfts)   | shows listed nfts on the market                   |
-  | [loan](nftmarket.md#query-loan)                 | shows nft loan                                    |
-  | [loans](nftmarket.md#query-loans)               | shows loans                                       |
-  | [nft_bids](nftmarket.md#query-nft_bids)         | shows nft bids                                    |
-  | [nft_listing](nftmarket.md#query-nft_listing)   | shows nft listing                                 |
-  | [params](nftmarket.md#query-params)             | shows params                                      |
-  | [rewards](nftmarket.md#query-rewards)           | shows rewards of an address                       |
+| Name                                                     | Description                        |
+| :------------------------------------------------------- | :--------------------------------- |
+| [list-vault](yield-aggregator.md#query-list-vault)       | list all vault                     |
+| [show-vault](yield-aggregator.md#query-show-vault)       | shows a vault                      |
+| [list-strategy](yield-aggregator.md#query-list-strategy) | list all strategies                |
+| [show-strategy](yield-aggregator.md#query-show-strategy) | shows a strategy                   |
+| [params](yield-aggregator.md#query-params)               | shows the parameters of the module |
 
 **Tx:**
 
-  | Name                                                 | Description                        |
-  | :--------------------------------------------------- | :--------------------------------- |
-  | [borrow](nftmarket.md#tx-borrow)                     | borrow denom                       |
-  | [cancel_listing](nftmarket.md#tx-cancel_listing)     | Cancel nft listing                 |
-  | [cancelbid](nftmarket.md#tx-cancelbid)               | Cancel bid on nft                  |
-  | [endlisting](nftmarket.md#tx-endlisting)             | end listing                        |
-  | [listing](nftmarket.md#tx-listing)                   | Creates a new listing              |
-  | [mint](nftmarket.md#tx-mint)                         | Mint an nft                        |
-  | [pay_fullbid](nftmarket.md#tx-pay_fullbid)           | Pay full bid on nft                |
-  | [placebid](nftmarket.md#tx-placebid)                 | Creates a new place bid            |
-  | [repay](nftmarket.md#tx-repay)                       | repay loan on nft                  |
-  | [selling_decision](nftmarket.md#tx-selling_decision) | broadcast selling decision message |
+| Name                                                                        | Description                         |
+| :-------------------------------------------------------------------------- | :---------------------------------- |
+| [create-vault](yield-aggregator.md#tx-create-vault)                         | create a new vault                  |
+| [delete-vault](yield-aggregator.md#tx-delete-vault)                         | delete the vault                    |
+| [transfer-vault-ownership](yield-aggregator.md#tx-transfer-vault-ownership) | transfer the ownership of a vault   |
+| [deposit-to-vault](yield-aggregator.md#tx-deposit-to-vault)                 | deposit to the vault                |
+| [withdraw-from-vault](yield-aggregator.md#tx-withdraw-from-vault)           | withdraw from the vault             |
+| [proposal-add-strategy](yield-aggregator.md#tx-proposal-add-strategy)       | Submit a proposal to add a strategy |
 
-## Common flags in nftmarket query <a id="common-query-flags"></a>
+## Common flags in yield-aggregator query <a id="common-query-flags"></a>
 
-Common flags for the nftmarket query command are summarized.
+Common flags for the yield-aggregator query command are summarized.
 
 **Flags:**
 
@@ -61,167 +49,79 @@ Common flags for the nftmarket query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
-### ununifid query nftmarket bidder_bids <a id="query-cdp_list"></a>
+### ununifid query yieldaggregator list-vault <a id="query-list-vault"></a>
 
-shows bids by bidder.
+list all vaults.
 
 ```bash
-ununifid query nftmarket bidder_bids [bidder] [flags]
+ununifid query yieldaggregator list-vault [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket cdp_list <a id="query-cdp_list"></a>
+### ununifid query yieldaggregator show-vault <a id="query-show-vault"></a>
 
-shows cdps.
+shows a vault.
 
 ```bash
-ununifid query nftmarket cdp_list [flags]
+ununifid query yieldaggregator show-vault [vault-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket liquidation <a id="query-liquidation"></a>
+### ununifid query yieldaggregator list-strategy <a id="query-list-strategy"></a>
 
-shows liquidation date.
+list all strategies.
 
 ```bash
-ununifid query nftmarket liquidation [class-id] [nft-id] [flags]
+ununifid query yieldaggregator list-strategy [vault-denom] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_class <a id="query-listed_class"></a>
+### ununifid query yieldaggregator show-strategy <a id="query-show-strategy"></a>
 
-shows listed nft ids and uris in defined class-id.
+shows a strategy.
 
 ```bash
-ununifid query nftmarket listed_class [class-id] [nft-limit] [flags]
+ununifid query yieldaggregator show-strategy [vault-denom] [strategy-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_nfts <a id="query-listed_nfts"></a>
+### ununifid query yieldaggregator params <a id="query-params"></a>
 
-shows listed nfts on the market.
-
-```bash
-ununifid query nftmarket listed_nfts [flags]
-```
-
-**Flags:**
-
-| Name, shorthand | Type   | Required | Default | Description       |
-| :-------------- | :----- | :------- | :------ | :---------------- |
-| --owner         | string |          |         | nft owner address |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket loan <a id="query-loan"></a>
-
-shows nft loan.
+shows the parameters of the module
 
 ```bash
-ununifid query nftmarket loan [class-id] [nft-id] [flags]
+ununifid query yieldaggregator params [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket loans <a id="query-loans"></a>
+## Common flags in yield-aggregator tx <a id="common-tx-flags"></a>
 
-shows loans.
-
-```bash
-ununifid query nftmarket loans [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket nft_bids <a id="query-nft_bids"></a>
-
-shows nft bids.
-
-```bash
-ununifid query nftmarket nft_bids [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket nft_listing <a id="query-nft_listing"></a>
-
-shows nft listing.
-
-```bash
-ununifid query nftmarket nft_listing [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket params <a id="query-params"></a>
-
-shows params.
-
-```bash
-ununifid query nftmarket params [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket rewards <a id="query-rewards"></a>
-
-shows rewards of an address.
-
-```bash
-ununifid query nftmarket rewards [address] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-## Common flags in nftmarket tx <a id="common-tx-flags"></a>
-
-Common flags for the nftmarket tx command are summarized.
+Common flags for the yield-aggregator tx command are summarized.
 
 **Flags:**
 
@@ -263,152 +163,86 @@ Common flags for the nftmarket tx command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
-### ununifid tx nftmarket borrow <a id="tx-borrow"></a>
+### ununifid tx yieldaggregator create-vault <a id="tx-create-vault"></a>
 
-borrow denom.
+create a new vault.
 
 ```bash
-ununifid tx nftmarket borrow [class-id] [nft-id] [amount] [flags]
+ununifid tx yieldaggregator create-vault [denom] [commission-rate] [withdraw-reserve-rate] [fee] [deposit] [strategyWeights] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket cancel_listing <a id="tx-cancel_listing"></a>
+### ununifid tx yieldaggregator delete-vault <a id="tx-delete-vault"></a>
 
-Cancel nft listing.
+delete the vault.
 
 ```bash
-ununifid tx nftmarket cancel_listing [class-id] [nft-id] [flags]
+ununifid tx yieldaggregator delete-vault [id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket cancelbid <a id="tx-cancelbid"></a>
+### ununifid tx yieldaggregator transfer-vault-ownership <a id="tx-transfer-vault-ownership"></a>
 
-Cancel bid on nft.
+transfer the ownership of a vault.
 
 ```bash
-ununifid tx nftmarket cancelbid [class-id] [nft-id] [flags]
+ununifid tx yieldaggregator transfer-vault-ownership [id] [recipient] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket endlisting <a id="tx-endlisting"></a>
+### ununifid tx yieldaggregator deposit-to-vault <a id="tx-deposit-to-vault"></a>
 
-end listing.
+deposit to the vault.
 
 ```bash
-ununifid tx nftmarket endlisting [class-id] [nft-id] [flags]
+ununifid tx yieldaggregator deposit-to-vault [id] [principal-amount] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket listing <a id="tx-listing"></a>
+### ununifid tx yieldaggregator withdraw-from-vault <a id="tx-withdraw-from-vault"></a>
 
-Creates a new listing.
+withdraw from the vault.
 
 ```bash
-ununifid tx nftmarket listing [class-id] [nft-id] [flags]
+ununifid tx yieldaggregator withdraw-from-vault [id] [vault-token-amount] [flags]
 ```
 
 **Flags:**
 
-| Name, shorthand   | Type   | Required | Default | Description     |
-| :---------------- | :----- | :------- | :------ | :-------------- |
-| --bid-active-rank | uint   | 1        |         | bid active rank |
-| --bid-token       | string | uguu     |         | bid token       |
-| --min-bid         | uint   | 1        |         | min bid amount  |
-
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket mint <a id="tx-mint"></a>
+### ununifid tx yieldaggregator proposal-add-strategy <a id="tx-proposal-add-strategy"></a>
 
-Mint an nft.
+Submit a proposal to add a strategy.
 
 ```bash
-ununifid tx nftmarket mint [class-id] [nft-id] [uri] [uri-hash] [flags]
+ununifid tx yieldaggregator proposal-add-strategy [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket pay_fullbid <a id="tx-pay_fullbid"></a>
-
-Pay full bid on nft.
-
-```bash
-ununifid tx nftmarket pay_fullbid [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket placebid <a id="tx-placebid"></a>
-
-Creates a new place bid.
-
-```bash
-ununifid tx nftmarket placebid [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-| Name, shorthand         | Type | Required | Default | Description        |
-| :---------------------- | :--- | :------- | :------ | :----------------- |
-| -p, --automatic-payment |      |          |         | automation payment |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket repay <a id="tx-repay"></a>
-
-repay loan on nft.
-
-```bash
-ununifid tx nftmarket repay [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket selling_decision <a id="tx-selling_decision"></a>
-
-broadcast selling decision message.
-
-```bash
-ununifid tx nftmarket selling_decision [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
 {% endhint %}

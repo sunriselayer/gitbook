@@ -30,3 +30,9 @@ For more information, visit [NFT Backed Loan](overview/nft-backed-loan.md) page.
 Users can then generate automatic DeFi yield on their assets using our Interchain Yield Aggregator.
 
 For more information, visit [interchain yield aggregator](overview/interchain-yield-aggregator.md) page.
+
+### Derivatives
+
+In UnUniFi protocol, perpetual futures and perpetual options trading are provided. Tokens procured through NFT-Fi can be operated within the UnUniFi protocol.
+
+For more information, visit [derivatives](overview/derivatives.md) page.
