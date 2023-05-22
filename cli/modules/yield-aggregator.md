@@ -49,6 +49,8 @@ Common flags for the yield-aggregator query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
+## Query
+
 ### ununifid query yieldaggregator list-vault <a id="query-list-vault"></a>
 
 list all vaults.
@@ -162,6 +164,8 @@ Common flags for the yield-aggregator tx command are summarized.
 | --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
+
+## Tx
 
 ### ununifid tx yieldaggregator create-vault <a id="tx-create-vault"></a>
 

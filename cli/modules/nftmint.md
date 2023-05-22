@@ -51,6 +51,8 @@ Common flags for the nftmint query command are summarized.
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
 
+## Query
+
 ### ununifid query nftmint class-attributes <a id="query-nftmint-class-attributes"></a>
 
 Query the class attributes by class-id.
@@ -164,6 +166,8 @@ Common flags for the nftmint tx command are summarized.
 | --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
 | --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         |        |          |                | print out full stack trace on errors                                          |
+
+## Tx
 
 ### ununifid tx nftmint burn-nft <a id="tx-nftmint-burn-nft"></a>
 
