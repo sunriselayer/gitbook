@@ -18,10 +18,10 @@ Download OpenAPI specification: [swagger.yaml](https://github.com/UnUniFi/chain/
 
 Cosmos SDK Rest & gRPC Gateway: [v1.cosmos.network](https://v1.cosmos.network/rpc)
 
-| Endpoint                      | Network         |
-| ----------------------------- | --------------- |
-| **a.lcd.ununifi.cauchye.net** | UnUniFi mainnet |
-| **b.lcd.ununifi.cauchye.net** | UnUniFi mainnet |
+| Endpoint                      | Network         | Chain ID        |
+| ----------------------------- | --------------- | --------------- |
+| **a.lcd.ununifi.cauchye.net** | UnUniFi mainnet | ununifi-beta-v1 |
+| **b.lcd.ununifi.cauchye.net** | UnUniFi mainnet | ununifi-beta-v1 |
 
 ### Available Ports
 
@@ -47,14 +47,14 @@ There are currently 3 public testnet chains.
 
 All testnets have Explorer & Portal.
 
-| Endpoint                           | Network         |
-| ---------------------------------- | --------------- |
-| **a.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
-| **b.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
-| **c.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
-| **d.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet |
-| **ununifi-beta-test.cauchye.net**  | UnUniFi Lab     |
-| **ununifi-alpha-test.cauchye.net** | UnUniFi Alpha   |
+| Endpoint                           | Network         | chain ID           |
+| ---------------------------------- | --------------- | ------------------ |
+| **a.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
+| **b.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
+| **c.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
+| **d.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
+| **ununifi-beta-test.cauchye.net**  | UnUniFi Lab     | ununifi-beta       |
+| **ununifi-alpha-test.cauchye.net** | UnUniFi Alpha   | ununifi-alpha-test |
 
 ### Available Ports (Testnet)
 
