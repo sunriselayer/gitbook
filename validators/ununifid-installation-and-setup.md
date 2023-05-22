@@ -1,4 +1,4 @@
-# UnUniFid
+# ununifid
 
 Instruction to install the ununifid binary
 
