@@ -31,7 +31,8 @@
 ## NODES & VALIDATORS
 
 * [Setting up Cosmovisor](validators/setting-cosmovisor.md)
-* [Joining mainnet](validators/validate-mainnet.md)
+* [Joining Mainnet](validators/validate-mainnet.md)
+* [Joining Testnet](validators/joining-testnet.md)
 * [Mainnet Upgrades](validators/mainnet-upgrades.md)
 
 ## LINKS
