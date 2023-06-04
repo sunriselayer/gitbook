@@ -1,6 +1,6 @@
 # Strategy contracts for Interchain Yield Aggregator
 
-Development requires the knowledge of [CosmWasm](./cosmwasm.md).
+Development requires the knowledge of [CosmWasm](../cosmwasm.md).
 
 ## Basic idea
 
