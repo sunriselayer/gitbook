@@ -1,4 +1,4 @@
-# Strategy Contract for Interchain Yield Aggregator
+# Strategy contracts for Interchain Yield Aggregator
 
 Development requires the knowledge of [CosmWasm](./cosmwasm.md).
 

@@ -9,7 +9,7 @@ There are two ways to develop yield aggregator strategies or front-end applicati
 Strategy Development requires a little financial knowledge and knowledge of CosmWasm & Rust.
 You can earn commission fees when the strategies you create are used by many users.
 
-For more information, see [Strategy Contract](strategy.md) page.
+For more information, see [IYA Strategy](iya-strategy.md) page.
 
 ## Q, How can I develop a front-end app?
 
