@@ -7,32 +7,14 @@ description: >-
 
 [https://ununifi.gitbook.io](https://ununifi.gitbook.io)
 
-## What is UnUniFi Protocol ?
+## What is UnUniFi?
 
-### UnUniFi Protocol
+In the rapidly evolving landscape of blockchain technology, the convergence of Non-Fungible Tokens (NFTs) and decentralized finance (DeFi) has given rise to innovative possibilities. UnUniFi, a sector-specific blockchain, aims to revolutionize the NFT-Fi space by providing a fast, open, and interoperable smart contracts layer1 blockchain optimized for NFT-Fi infrastructure. With its focus on cross-chain capabilities and a suite of powerful dApps, UnUniFi is poised to unlock the full potential of NFTs and DeFi. UnUniFi believes the ethos of “NFT-Fi” encompasses both a significant technical expansion in DeFi technologies and a pioneering exploration of NFT utilities. Let’s delve into what UnUniFi is all about and explore its core offerings.
 
-White paper:[https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf](https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf)
-
-UnUniFi Protocol is an NFT-Fi Platform with DeFi tools, built via Layer1 app-specific blockchain (ASBC) in the Cosmos Network.
-UnUniFi provides the tools and features necessary to integrate peer-to-peer DeFi functionality into NFT ecosystems, with an internal NFT marketplace and crosschain products developed for both retail and institutional users.
-This includes the first NFTFi Platform to create a proprietary NFT valuation algorithm calculated using real demand data, while allowing users to engage in DeFi activities to generate earnings or rewards from a variety
-of lending/borrowing/financing activities and third party protocols relating to NFTs, through an interchain yield aggregator. UnUniFi provides the infrastructure to be the NFT-Fi Hub for Cosmos and beyond. Our mission is to ”Give all NFTs the opportunity to DeFi”.
-
-### NFT-Fi
-
-Use our NFTFi Platform by either listing your NFT on the marketplace or bidding on a listed NFT. Our unique bidding mechanism allows for liquidity aggregation. Listing an NFT collateralizes it, allowing you access to flexible loans or simply accepting a bid to quickly sell your NFT.
-
-For more information, visit [NFT Backed Loan](overview/nft-backed-loan.md) page.
+To see the detail, visit [this Medium article](https://medium.com/@ununifi/ununifi-unlocking-the-power-of-nft-fi-on-our-cross-chain-layer-1-blockchain-c2673cfbb674).
 
 
-### InterChain Yield Aggregator
+### Resources
 
-Users can then generate automatic DeFi yield on their assets using our Interchain Yield Aggregator.
-
-For more information, visit [interchain yield aggregator](overview/interchain-yield-aggregator.md) page.
-
-### Derivatives
-
-In UnUniFi protocol, perpetual futures and perpetual options trading are provided. Tokens procured through NFT-Fi can be operated within the UnUniFi protocol.
-
-For more information, visit [derivatives](overview/derivatives.md) page.
+- [Whitepaper](https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf)
+- [Roadmap](https://cauchye.notion.site/2e949743f1ec438f8e2e2c57f824605b?v=58a2554bbb634fda887202f0562bbfa6)
