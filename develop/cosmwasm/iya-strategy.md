@@ -11,18 +11,18 @@ Strategy contracts have to follow the interface described below.
 ## ExecuteMsg
 
 ```rust
-    pub enum ExecuteMsg {
-        Stake(StakeMsg),
-        Unstake(UnstakeMsg),
-    }
+pub enum ExecuteMsg {
+    Stake(StakeMsg),
+    Unstake(UnstakeMsg),
+}
 
-    #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-    pub struct StakeMsg {}
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct StakeMsg {}
 
-    #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-    pub struct UnstakeMsg {
-        pub amount: Uint128,
-    }
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct UnstakeMsg {
+    pub amount: Uint128,
+}
 ```
 
 ### `ExecuteMsg::Stake`
@@ -36,11 +36,11 @@ On `ExecuteMsg::Unstake`, unstaking amount is put Uint128 variable on `UnstakeMs
 ## QueryMsg
 
 ````rust
-    pub enum QueryMsg {
-        Bonded { addr: String },
-        Unbonding { addr: String },
-        Fee {},
-    }
+pub enum QueryMsg {
+    Bonded { addr: String },
+    Unbonding { addr: String },
+    Fee {},
+}
 ````
 
 ### `QueryMsg::Bonded`
