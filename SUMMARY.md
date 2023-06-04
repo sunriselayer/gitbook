@@ -26,7 +26,7 @@
     * [nftbackedloan](cli/modules/nftbackedloan.md)
     * [nftfactory](cli/modules/nftfactory.md)
     * [yieldaggregator](cli/modules/yieldaggregator.md)
-    * [wasm](cli/modules/cosmwasm.md)
+    * [wasm](cli/modules/wasm.md)
 * [Frontend](develop/frontend.md)
 * [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
