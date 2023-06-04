@@ -1,6 +1,6 @@
 ---
 description: >-
-  NFT-Fi Platform with DeFi tools built on Cosmos
+  UnUniFi is a fast, open, interoperable smart contracts layer 1 blockchain optimized for NFT-Fi infrastructure.
 ---
 
 # UnUniFi Documentation
