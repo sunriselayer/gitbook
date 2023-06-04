@@ -1,34 +1,46 @@
 ---
 description: >-
-  The yield-aggregator module allows you to manage assets and earn yield.
+  The `nftbackedloan` module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
 ---
 
-# yield-aggregator
+# `nftbackedloan`
+
+## Available Commands
 
 **Query:**
 
-| Name                                                     | Description                        |
-| :------------------------------------------------------- | :--------------------------------- |
-| [list-vault](yield-aggregator.md#query-list-vault)       | list all vault                     |
-| [show-vault](yield-aggregator.md#query-show-vault)       | shows a vault                      |
-| [list-strategy](yield-aggregator.md#query-list-strategy) | list all strategies                |
-| [show-strategy](yield-aggregator.md#query-show-strategy) | shows a strategy                   |
-| [params](yield-aggregator.md#query-params)               | shows the parameters of the module |
+  | Name                                            | Description                                       |
+  | :---------------------------------------------- | :------------------------------------------------ |
+  | [bidder_bids](nftbackedloan.md#query-bidder_bids)   | shows bids by bidder                              |
+  | [cdp_list](nftbackedloan.md#query-cdp_list)         | shows cdps                                        |
+  | [liquidation](nftbackedloan.md#query-liquidation)   | shows liquidation date                            |
+  | [listed_class](nftbackedloan.md#query-listed_class) | shows listed nft ids and uris in defined class-id |
+  | [listed_nfts](nftbackedloan.md#query-listed_nfts)   | shows listed nfts on the market                   |
+  | [loan](nftbackedloan.md#query-loan)                 | shows nft loan                                    |
+  | [loans](nftbackedloan.md#query-loans)               | shows loans                                       |
+  | [nft_bids](nftbackedloan.md#query-nft_bids)         | shows nft bids                                    |
+  | [nft_listing](nftbackedloan.md#query-nft_listing)   | shows nft listing                                 |
+  | [params](nftbackedloan.md#query-params)             | shows params                                      |
+  | [rewards](nftbackedloan.md#query-rewards)           | shows rewards of an address                       |
 
 **Tx:**
 
-| Name                                                                        | Description                         |
-| :-------------------------------------------------------------------------- | :---------------------------------- |
-| [create-vault](yield-aggregator.md#tx-create-vault)                         | create a new vault                  |
-| [delete-vault](yield-aggregator.md#tx-delete-vault)                         | delete the vault                    |
-| [transfer-vault-ownership](yield-aggregator.md#tx-transfer-vault-ownership) | transfer the ownership of a vault   |
-| [deposit-to-vault](yield-aggregator.md#tx-deposit-to-vault)                 | deposit to the vault                |
-| [withdraw-from-vault](yield-aggregator.md#tx-withdraw-from-vault)           | withdraw from the vault             |
-| [proposal-add-strategy](yield-aggregator.md#tx-proposal-add-strategy)       | Submit a proposal to add a strategy |
+  | Name                                                 | Description                        |
+  | :--------------------------------------------------- | :--------------------------------- |
+  | [borrow](nftbackedloan.md#tx-borrow)                     | borrow denom                       |
+  | [cancel_listing](nftbackedloan.md#tx-cancel_listing)     | Cancel nft listing                 |
+  | [cancelbid](nftbackedloan.md#tx-cancelbid)               | Cancel bid on nft                  |
+  | [endlisting](nftbackedloan.md#tx-endlisting)             | end listing                        |
+  | [listing](nftbackedloan.md#tx-listing)                   | Creates a new listing              |
+  | [mint](nftbackedloan.md#tx-mint)                         | Mint an nft                        |
+  | [pay_fullbid](nftbackedloan.md#tx-pay_fullbid)           | Pay full bid on nft                |
+  | [placebid](nftbackedloan.md#tx-placebid)                 | Creates a new place bid            |
+  | [repay](nftbackedloan.md#tx-repay)                       | repay loan on nft                  |
+  | [selling_decision](nftbackedloan.md#tx-selling_decision) | broadcast selling decision message |
 
-## Common flags in yield-aggregator query <a id="common-query-flags"></a>
+## Common flags in nftbackedloan query <a id="common-query-flags"></a>
 
-Common flags for the yield-aggregator query command are summarized.
+Common flags for the `nftbackedloan` query command are summarized.
 
 **Flags:**
 
@@ -51,79 +63,167 @@ Common flags for the yield-aggregator query command are summarized.
 
 ## Query
 
-### ununifid query yieldaggregator list-vault <a id="query-list-vault"></a>
+### ununifid query nftbackedloan bidder_bids <a id="query-cdp_list"></a>
 
-list all vaults.
+shows bids by bidder.
 
 ```bash
-ununifid query yieldaggregator list-vault [flags]
+ununifid query nftbackedloan bidder_bids [bidder] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query yieldaggregator show-vault <a id="query-show-vault"></a>
+### ununifid query nftbackedloan cdp_list <a id="query-cdp_list"></a>
 
-shows a vault.
+shows cdps.
 
 ```bash
-ununifid query yieldaggregator show-vault [vault-id] [flags]
+ununifid query nftbackedloan cdp_list [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query yieldaggregator list-strategy <a id="query-list-strategy"></a>
+### ununifid query nftbackedloan liquidation <a id="query-liquidation"></a>
 
-list all strategies.
+shows liquidation date.
 
 ```bash
-ununifid query yieldaggregator list-strategy [vault-denom] [flags]
+ununifid query nftbackedloan liquidation [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query yieldaggregator show-strategy <a id="query-show-strategy"></a>
+### ununifid query nftbackedloan listed_class <a id="query-listed_class"></a>
 
-shows a strategy.
+shows listed nft ids and uris in defined class-id.
 
 ```bash
-ununifid query yieldaggregator show-strategy [vault-denom] [strategy-id] [flags]
+ununifid query nftbackedloan listed_class [class-id] [nft-limit] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query yieldaggregator params <a id="query-params"></a>
+### ununifid query nftbackedloan listed_nfts <a id="query-listed_nfts"></a>
 
-shows the parameters of the module
+shows listed nfts on the market.
 
 ```bash
-ununifid query yieldaggregator params [flags]
+ununifid query nftbackedloan listed_nfts [flags]
+```
+
+**Flags:**
+
+| Name, shorthand | Type   | Required | Default | Description       |
+| :-------------- | :----- | :------- | :------ | :---------------- |
+| --owner         | string |          |         | nft owner address |
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+### ununifid query nftbackedloan loan <a id="query-loan"></a>
+
+shows nft loan.
+
+```bash
+ununifid query nftbackedloan loan [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator query](yield-aggregator.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
 {% endhint %}
 
-## Common flags in yield-aggregator tx <a id="common-tx-flags"></a>
+### ununifid query nftbackedloan loans <a id="query-loans"></a>
 
-Common flags for the yield-aggregator tx command are summarized.
+shows loans.
+
+```bash
+ununifid query nftbackedloan loans [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+### ununifid query nftbackedloan nft_bids <a id="query-nft_bids"></a>
+
+shows nft bids.
+
+```bash
+ununifid query nftbackedloan nft_bids [class_id] [nft_id] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+### ununifid query nftbackedloan nft_listing <a id="query-nft_listing"></a>
+
+shows nft listing.
+
+```bash
+ununifid query nftbackedloan nft_listing [class_id] [nft_id] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+### ununifid query nftbackedloan params <a id="query-params"></a>
+
+shows params.
+
+```bash
+ununifid query nftbackedloan params [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+### ununifid query nftbackedloan rewards <a id="query-rewards"></a>
+
+shows rewards of an address.
+
+```bash
+ununifid query nftbackedloan rewards [address] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan query](nftbackedloan.md#common-query-flags) for details of flags.
+{% endhint %}
+
+## Common flags in nftbackedloan tx <a id="common-tx-flags"></a>
+
+Common flags for the nftbackedloan tx command are summarized.
 
 **Flags:**
 
@@ -167,86 +267,152 @@ Common flags for the yield-aggregator tx command are summarized.
 
 ## Tx
 
-### ununifid tx yieldaggregator create-vault <a id="tx-create-vault"></a>
+### ununifid tx nftbackedloan borrow <a id="tx-borrow"></a>
 
-create a new vault.
+borrow denom.
 
 ```bash
-ununifid tx yieldaggregator create-vault [denom] [commission-rate] [withdraw-reserve-rate] [fee] [deposit] [strategyWeights] [flags]
+ununifid tx nftbackedloan borrow [class-id] [nft-id] [amount] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx yieldaggregator delete-vault <a id="tx-delete-vault"></a>
+### ununifid tx nftbackedloan cancel_listing <a id="tx-cancel_listing"></a>
 
-delete the vault.
+Cancel nft listing.
 
 ```bash
-ununifid tx yieldaggregator delete-vault [id] [flags]
+ununifid tx nftbackedloan cancel_listing [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx yieldaggregator transfer-vault-ownership <a id="tx-transfer-vault-ownership"></a>
+### ununifid tx nftbackedloan cancelbid <a id="tx-cancelbid"></a>
 
-transfer the ownership of a vault.
+Cancel bid on nft.
 
 ```bash
-ununifid tx yieldaggregator transfer-vault-ownership [id] [recipient] [flags]
+ununifid tx nftbackedloan cancelbid [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx yieldaggregator deposit-to-vault <a id="tx-deposit-to-vault"></a>
+### ununifid tx nftbackedloan endlisting <a id="tx-endlisting"></a>
 
-deposit to the vault.
+end listing.
 
 ```bash
-ununifid tx yieldaggregator deposit-to-vault [id] [principal-amount] [flags]
+ununifid tx nftbackedloan endlisting [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx yieldaggregator withdraw-from-vault <a id="tx-withdraw-from-vault"></a>
+### ununifid tx nftbackedloan listing <a id="tx-listing"></a>
 
-withdraw from the vault.
+Creates a new listing.
 
 ```bash
-ununifid tx yieldaggregator withdraw-from-vault [id] [vault-token-amount] [flags]
+ununifid tx nftbackedloan listing [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
+| Name, shorthand   | Type   | Required | Default | Description     |
+| :---------------- | :----- | :------- | :------ | :-------------- |
+| --bid-active-rank | uint   | 1        |         | bid active rank |
+| --bid-token       | string | uguu     |         | bid token       |
+| --min-bid         | uint   | 1        |         | min bid amount  |
+
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx yieldaggregator proposal-add-strategy <a id="tx-proposal-add-strategy"></a>
+### ununifid tx nftbackedloan mint <a id="tx-mint"></a>
 
-Submit a proposal to add a strategy.
+Mint an nft.
 
 ```bash
-ununifid tx yieldaggregator proposal-add-strategy [flags]
+ununifid tx nftbackedloan mint [class-id] [nft-id] [uri] [uri-hash] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in yield-aggregator tx](yield-aggregator.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx nftbackedloan pay_fullbid <a id="tx-pay_fullbid"></a>
+
+Pay full bid on nft.
+
+```bash
+ununifid tx nftbackedloan pay_fullbid [class-id] [nft-id] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx nftbackedloan placebid <a id="tx-placebid"></a>
+
+Creates a new place bid.
+
+```bash
+ununifid tx nftbackedloan placebid [class-id] [nft-id] [amount] [flags]
+```
+
+**Flags:**
+
+| Name, shorthand         | Type | Required | Default | Description        |
+| :---------------------- | :--- | :------- | :------ | :----------------- |
+| -p, --automatic-payment |      |          |         | automation payment |
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx nftbackedloan repay <a id="tx-repay"></a>
+
+repay loan on nft.
+
+```bash
+ununifid tx nftbackedloan repay [class-id] [nft-id] [amount] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
+{% endhint %}
+
+### ununifid tx nftbackedloan selling_decision <a id="tx-selling_decision"></a>
+
+broadcast selling decision message.
+
+```bash
+ununifid tx nftbackedloan selling_decision [class-id] [nft-id] [flags]
+```
+
+**Flags:**
+
+{% hint style="info" %}
+Please refer to [Common flags in nftbackedloan tx](nftbackedloan.md#common-tx-flags) for details of flags.
 {% endhint %}

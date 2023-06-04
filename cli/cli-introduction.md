@@ -45,8 +45,10 @@ All commands have the following global flags:
 
 ### Module Commands <a href="#module-commands" id="module-commands"></a>
 
-| **Subcommand**                          | **Description**                                               |
-| --------------------------------------- | ------------------------------------------------------------- |
-| [nftmint](modules/nftmint.md)           | nftmint subcommands for the feature to mint NFTs on UnUniFi.  |
-| [nftmarket](modules/nftmarket.md)       | stablecoins can be minted with NFT as collateral.             |
-
+| **Subcommand**                                | **Description**                                               |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| [derivatives](modules/derivatives.md)         | For perpetual futures and perpetual options  |
+| [nftbackedloan](modules/nftbackedloan.md)     | For NFT backed loan             |
+| [nftfactory](modules/nftfactory.md)           | For creating original NFTs  |
+| [wasm](modules/wasm.md)                       | For CosmWasm smart contracts  |
+| [yieldaggregator](modules/yieldaggregator.md) | For Interchain Yield Aggregator  |

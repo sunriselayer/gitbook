@@ -1,36 +1,34 @@
 ---
 description: >-
-  The nftmint module provides the feature to mint NFTs on UnUniFi. Users can mint collective NFTs by sending specific messages.
+  The `yieldaggregator` module allows you to manage assets and earn yield.
 ---
 
-# nftmint
-
-## Available Commands
+# `yieldaggregator`
 
 **Query:**
 
-| Name                                                              | Description                               |
-| :---------------------------------------------------------------- | :---------------------------------------- |
-| [class-attributes](nftmint.md#query-nftmint-class-attributes)     | Query the class attributes by class-id    |
-| [class-ids-by-name](nftmint.md#query-nftmint-class-ids-by-name)   | Query classIDs which have the class name  |
-| [class-ids-by-owner](nftmint.md#query-nftmint-class-ids-by-owner) | Query classIDs owned by the owner address |
-| [nft-minter](nftmint.md#query-nftmint-nft-minter)                 | Query nft minter with class and nft id    |
-| [params](nftmint.md#query-nftmint-params)                         | shows params                              |
+| Name                                                     | Description                        |
+| :------------------------------------------------------- | :--------------------------------- |
+| [list-vault](yieldaggregator.md#query-list-vault)       | list all vault                     |
+| [show-vault](yieldaggregator.md#query-show-vault)       | shows a vault                      |
+| [list-strategy](yieldaggregator.md#query-list-strategy) | list all strategies                |
+| [show-strategy](yieldaggregator.md#query-show-strategy) | shows a strategy                   |
+| [params](yieldaggregator.md#query-params)               | shows the parameters of the module |
 
 **Tx:**
 
-| Name                                                                     | Description                                                                                              |
-| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| [burn-nft](nftmint.md#tx-nftmint-burn-nft)                               | burn specified NFT                                                                                       |
-| [create-class](nftmint.md#tx-nftmint-create-class)                       | create class for minting NFTs                                                                            |
-| [mint-nft](nftmint.md#tx-nftmint-mint-nft)                               | mint NFT under specific class by class-id                                                                |
-| [send-class](nftmint.md#tx-nftmint-send-class)                           | send the ownership of class                                                                              |
-| [update-base-token-uri](nftmint.md#tx-nftmint-update-base-token-uri)     | update the base token uri of class specified by class id and automatically change the belonging nft uris |
-| [update-token-supply-cap](nftmint.md#tx-nftmint-update-token-supply-cap) | update the token supply cap of class specified by class id                                               |
+| Name                                                                        | Description                         |
+| :-------------------------------------------------------------------------- | :---------------------------------- |
+| [create-vault](yieldaggregator.md#tx-create-vault)                         | create a new vault                  |
+| [delete-vault](yieldaggregator.md#tx-delete-vault)                         | delete the vault                    |
+| [transfer-vault-ownership](yieldaggregator.md#tx-transfer-vault-ownership) | transfer the ownership of a vault   |
+| [deposit-to-vault](yieldaggregator.md#tx-deposit-to-vault)                 | deposit to the vault                |
+| [withdraw-from-vault](yieldaggregator.md#tx-withdraw-from-vault)           | withdraw from the vault             |
+| [proposal-add-strategy](yieldaggregator.md#tx-proposal-add-strategy)       | Submit a proposal to add a strategy |
 
-## Common flags in nftmint query <a id="common-query-flags"></a>
+## Common flags in yieldaggregator query <a id="common-query-flags"></a>
 
-Common flags for the nftmint query command are summarized.
+Common flags for the `yieldaggregator` query command are summarized.
 
 **Flags:**
 
@@ -53,79 +51,79 @@ Common flags for the nftmint query command are summarized.
 
 ## Query
 
-### ununifid query nftmint class-attributes <a id="query-nftmint-class-attributes"></a>
+### ununifid query yieldaggregator list-vault <a id="query-list-vault"></a>
 
-Query the class attributes by class-id.
+list all vaults.
 
 ```bash
-ununifid query nftmint class-attributes [class-id] [flags]
+ununifid query yieldaggregator list-vault [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint query](nftmint.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator query](yieldaggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmint class-ids-by-name <a id="query-nftmint-class-ids-by-name"></a>
+### ununifid query yieldaggregator show-vault <a id="query-show-vault"></a>
 
-Query classIDs which have the class name.
+shows a vault.
 
 ```bash
-ununifid query nftmint class-ids-by-name [class-name] [flags]
+ununifid query yieldaggregator show-vault [vault-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint query](nftmint.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator query](yieldaggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmint class-ids-by-owner <a id="query-nftmint-class-ids-by-owner"></a>
+### ununifid query yieldaggregator list-strategy <a id="query-list-strategy"></a>
 
-Query classIDs owned by the owner address.
+list all strategies.
 
 ```bash
-ununifid query nftmint class-ids-by-owner [owner-address] [flags]
+ununifid query yieldaggregator list-strategy [vault-denom] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint query](nftmint.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator query](yieldaggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmint nft-minter <a id="query-nftmint-nft-minter"></a>
+### ununifid query yieldaggregator show-strategy <a id="query-show-strategy"></a>
 
-Query nft minter with class and nft id.
+shows a strategy.
 
 ```bash
-ununifid query nftmint nft-minter [class-id] [nft-id] [flags]
+ununifid query yieldaggregator show-strategy [vault-denom] [strategy-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint query](nftmint.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator query](yieldaggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmint params <a id="query-nftmint-params"></a>
+### ununifid query yieldaggregator params <a id="query-params"></a>
 
-shows params.
+shows the parameters of the module
 
 ```bash
-ununifid query nftmint params [flags]
+ununifid query yieldaggregator params [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint query](nftmint.md#common-query-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator query](yieldaggregator.md#common-query-flags) for details of flags.
 {% endhint %}
 
-## Common flags in nftmint tx <a id="common-tx-flags"></a>
+## Common flags in yieldaggregator tx <a id="common-tx-flags"></a>
 
-Common flags for the nftmint tx command are summarized.
+Common flags for the yieldaggregator tx command are summarized.
 
 **Flags:**
 
@@ -169,91 +167,86 @@ Common flags for the nftmint tx command are summarized.
 
 ## Tx
 
-### ununifid tx nftmint burn-nft <a id="tx-nftmint-burn-nft"></a>
+### ununifid tx yieldaggregator create-vault <a id="tx-create-vault"></a>
 
-burn specified NFT.
+create a new vault.
 
 ```bash
-ununifid tx nftmint burn-nft [class-id] [nft-id] --from [sender] [flags]
+ununifid tx yieldaggregator create-vault [denom] [commission-rate] [withdraw-reserve-rate] [fee] [deposit] [strategyWeights] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmint create-class <a id="tx-nftmint-create-class"></a>
+### ununifid tx yieldaggregator delete-vault <a id="tx-delete-vault"></a>
 
-create class for minting NFTs.
+delete the vault.
 
 ```bash
-ununifid tx nftmint create-class [class-name] [base-token-uri]] [token-supply-cap] [minting-permission] --from [sender] [flags]
+ununifid tx yieldaggregator delete-vault [id] [flags]
 ```
 
 **Flags:**
 
-| Name, shorthand | Type   | Required | Default | Description           |
-| :-------------- | :----- | :------- | :------ | :-------------------- |
-| --class-uri     | string |          |         | Content URI for class |
-| --description   | string |          |         | Description for denom |
-
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmint mint-nft <a id="tx-nftmint-mint-nft"></a>
+### ununifid tx yieldaggregator transfer-vault-ownership <a id="tx-transfer-vault-ownership"></a>
 
-mint NFT under specific class by class-id.
+transfer the ownership of a vault.
 
 ```bash
-ununifid tx nftmint mint-nft [class-id] [nft-id] [receiver] --from [sender] [flags]
+ununifid tx yieldaggregator transfer-vault-ownership [id] [recipient] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmint send-class <a id="tx-nftmint-send-class"></a>
+### ununifid tx yieldaggregator deposit-to-vault <a id="tx-deposit-to-vault"></a>
 
-send the ownership of class.
+deposit to the vault.
 
 ```bash
-ununifid tx nftmint send-class [class-id] [recipient] --from [sender] [flags]
+ununifid tx yieldaggregator deposit-to-vault [id] [principal-amount] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmint update-base-token-uri <a id="tx-nftmint-update-base-token-uri"></a>
+### ununifid tx yieldaggregator withdraw-from-vault <a id="tx-withdraw-from-vault"></a>
 
-update the base token uri of class specified by class id and automatically change the belonging nft uris.
+withdraw from the vault.
 
 ```bash
-ununifid tx nftmint update-base-token-uri [class-id] [base-token-uri] --from [sender] [flags]
+ununifid tx yieldaggregator withdraw-from-vault [id] [vault-token-amount] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmint update-token-supply-cap <a id="tx-nftmint-update-token-supply-cap"></a>
+### ununifid tx yieldaggregator proposal-add-strategy <a id="tx-proposal-add-strategy"></a>
 
-update the token supply cap of class specified by class id.
+Submit a proposal to add a strategy.
 
 ```bash
-ununifid tx nftmint update-token-supply-cap [class-id] [token-supply-cap] --from [sender] [flags]
+ununifid tx yieldaggregator proposal-add-strategy [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmint tx](nftmint.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in yieldaggregator tx](yieldaggregator.md#common-tx-flags) for details of flags.
 {% endhint %}

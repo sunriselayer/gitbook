@@ -1,46 +1,36 @@
 ---
 description: >-
-  The nftmarket module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
+  The `nftfactory` module provides the feature to mint NFTs on UnUniFi. Users can mint collective NFTs by sending specific messages.
 ---
 
-# nftmarket
+# `nftfactory`
 
 ## Available Commands
 
 **Query:**
 
-  | Name                                            | Description                                       |
-  | :---------------------------------------------- | :------------------------------------------------ |
-  | [bidder_bids](nftmarket.md#query-bidder_bids)   | shows bids by bidder                              |
-  | [cdp_list](nftmarket.md#query-cdp_list)         | shows cdps                                        |
-  | [liquidation](nftmarket.md#query-liquidation)   | shows liquidation date                            |
-  | [listed_class](nftmarket.md#query-listed_class) | shows listed nft ids and uris in defined class-id |
-  | [listed_nfts](nftmarket.md#query-listed_nfts)   | shows listed nfts on the market                   |
-  | [loan](nftmarket.md#query-loan)                 | shows nft loan                                    |
-  | [loans](nftmarket.md#query-loans)               | shows loans                                       |
-  | [nft_bids](nftmarket.md#query-nft_bids)         | shows nft bids                                    |
-  | [nft_listing](nftmarket.md#query-nft_listing)   | shows nft listing                                 |
-  | [params](nftmarket.md#query-params)             | shows params                                      |
-  | [rewards](nftmarket.md#query-rewards)           | shows rewards of an address                       |
+| Name                                                              | Description                               |
+| :---------------------------------------------------------------- | :---------------------------------------- |
+| [class-attributes](nftfactory.md#query-nftfactory-class-attributes)     | Query the class attributes by class-id    |
+| [class-ids-by-name](nftfactory.md#query-nftfactory-class-ids-by-name)   | Query classIDs which have the class name  |
+| [class-ids-by-owner](nftfactory.md#query-nftfactory-class-ids-by-owner) | Query classIDs owned by the owner address |
+| [nft-minter](nftfactory.md#query-nftfactory-nft-minter)                 | Query nft minter with class and nft id    |
+| [params](nftfactory.md#query-nftfactory-params)                         | shows params                              |
 
 **Tx:**
 
-  | Name                                                 | Description                        |
-  | :--------------------------------------------------- | :--------------------------------- |
-  | [borrow](nftmarket.md#tx-borrow)                     | borrow denom                       |
-  | [cancel_listing](nftmarket.md#tx-cancel_listing)     | Cancel nft listing                 |
-  | [cancelbid](nftmarket.md#tx-cancelbid)               | Cancel bid on nft                  |
-  | [endlisting](nftmarket.md#tx-endlisting)             | end listing                        |
-  | [listing](nftmarket.md#tx-listing)                   | Creates a new listing              |
-  | [mint](nftmarket.md#tx-mint)                         | Mint an nft                        |
-  | [pay_fullbid](nftmarket.md#tx-pay_fullbid)           | Pay full bid on nft                |
-  | [placebid](nftmarket.md#tx-placebid)                 | Creates a new place bid            |
-  | [repay](nftmarket.md#tx-repay)                       | repay loan on nft                  |
-  | [selling_decision](nftmarket.md#tx-selling_decision) | broadcast selling decision message |
+| Name                                                                     | Description                                                                                              |
+| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| [burn-nft](nftfactory.md#tx-nftfactory-burn-nft)                               | burn specified NFT                                                                                       |
+| [create-class](nftfactory.md#tx-nftfactory-create-class)                       | create class for minting NFTs                                                                            |
+| [mint-nft](nftfactory.md#tx-nftfactory-mint-nft)                               | mint NFT under specific class by class-id                                                                |
+| [send-class](nftfactory.md#tx-nftfactory-send-class)                           | send the ownership of class                                                                              |
+| [update-base-token-uri](nftfactory.md#tx-nftfactory-update-base-token-uri)     | update the base token uri of class specified by class id and automatically change the belonging nft uris |
+| [update-token-supply-cap](nftfactory.md#tx-nftfactory-update-token-supply-cap) | update the token supply cap of class specified by class id                                               |
 
-## Common flags in nftmarket query <a id="common-query-flags"></a>
+## Common flags in nftfactory query <a id="common-query-flags"></a>
 
-Common flags for the nftmarket query command are summarized.
+Common flags for the `nftfactory` query command are summarized.
 
 **Flags:**
 
@@ -63,167 +53,79 @@ Common flags for the nftmarket query command are summarized.
 
 ## Query
 
-### ununifid query nftmarket bidder_bids <a id="query-cdp_list"></a>
+### ununifid query nftfactory class-attributes <a id="query-nftfactory-class-attributes"></a>
 
-shows bids by bidder.
+Query the class attributes by class-id.
 
 ```bash
-ununifid query nftmarket bidder_bids [bidder] [flags]
+ununifid query nftfactory class-attributes [class-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftfactory query](nftfactory.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket cdp_list <a id="query-cdp_list"></a>
+### ununifid query nftfactory class-ids-by-name <a id="query-nftfactory-class-ids-by-name"></a>
 
-shows cdps.
+Query classIDs which have the class name.
 
 ```bash
-ununifid query nftmarket cdp_list [flags]
+ununifid query nftfactory class-ids-by-name [class-name] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftfactory query](nftfactory.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket liquidation <a id="query-liquidation"></a>
+### ununifid query nftfactory class-ids-by-owner <a id="query-nftfactory-class-ids-by-owner"></a>
 
-shows liquidation date.
+Query classIDs owned by the owner address.
 
 ```bash
-ununifid query nftmarket liquidation [class-id] [nft-id] [flags]
+ununifid query nftfactory class-ids-by-owner [owner-address] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftfactory query](nftfactory.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_class <a id="query-listed_class"></a>
+### ununifid query nftfactory nft-minter <a id="query-nftfactory-nft-minter"></a>
 
-shows listed nft ids and uris in defined class-id.
+Query nft minter with class and nft id.
 
 ```bash
-ununifid query nftmarket listed_class [class-id] [nft-limit] [flags]
+ununifid query nftfactory nft-minter [class-id] [nft-id] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftfactory query](nftfactory.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket listed_nfts <a id="query-listed_nfts"></a>
-
-shows listed nfts on the market.
-
-```bash
-ununifid query nftmarket listed_nfts [flags]
-```
-
-**Flags:**
-
-| Name, shorthand | Type   | Required | Default | Description       |
-| :-------------- | :----- | :------- | :------ | :---------------- |
-| --owner         | string |          |         | nft owner address |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket loan <a id="query-loan"></a>
-
-shows nft loan.
-
-```bash
-ununifid query nftmarket loan [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket loans <a id="query-loans"></a>
-
-shows loans.
-
-```bash
-ununifid query nftmarket loans [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket nft_bids <a id="query-nft_bids"></a>
-
-shows nft bids.
-
-```bash
-ununifid query nftmarket nft_bids [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket nft_listing <a id="query-nft_listing"></a>
-
-shows nft listing.
-
-```bash
-ununifid query nftmarket nft_listing [class_id] [nft_id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-### ununifid query nftmarket params <a id="query-params"></a>
+### ununifid query nftfactory params <a id="query-nftfactory-params"></a>
 
 shows params.
 
 ```bash
-ununifid query nftmarket params [flags]
+ununifid query nftfactory params [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
+Please refer to [Common flags in nftfactory query](nftfactory.md#common-query-flags) for details of flags.
 {% endhint %}
 
-### ununifid query nftmarket rewards <a id="query-rewards"></a>
+## Common flags in nftfactory tx <a id="common-tx-flags"></a>
 
-shows rewards of an address.
-
-```bash
-ununifid query nftmarket rewards [address] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket query](nftmarket.md#common-query-flags) for details of flags.
-{% endhint %}
-
-## Common flags in nftmarket tx <a id="common-tx-flags"></a>
-
-Common flags for the nftmarket tx command are summarized.
+Common flags for the nftfactory tx command are summarized.
 
 **Flags:**
 
@@ -267,152 +169,91 @@ Common flags for the nftmarket tx command are summarized.
 
 ## Tx
 
-### ununifid tx nftmarket borrow <a id="tx-borrow"></a>
+### ununifid tx nftfactory burn-nft <a id="tx-nftfactory-burn-nft"></a>
 
-borrow denom.
+burn specified NFT.
 
 ```bash
-ununifid tx nftmarket borrow [class-id] [nft-id] [amount] [flags]
+ununifid tx nftfactory burn-nft [class-id] [nft-id] --from [sender] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket cancel_listing <a id="tx-cancel_listing"></a>
+### ununifid tx nftfactory create-class <a id="tx-nftfactory-create-class"></a>
 
-Cancel nft listing.
+create class for minting NFTs.
 
 ```bash
-ununifid tx nftmarket cancel_listing [class-id] [nft-id] [flags]
+ununifid tx nftfactory create-class [class-name] [base-token-uri]] [token-supply-cap] [minting-permission] --from [sender] [flags]
 ```
 
 **Flags:**
 
+| Name, shorthand | Type   | Required | Default | Description           |
+| :-------------- | :----- | :------- | :------ | :-------------------- |
+| --class-uri     | string |          |         | Content URI for class |
+| --description   | string |          |         | Description for denom |
+
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket cancelbid <a id="tx-cancelbid"></a>
+### ununifid tx nftfactory mint-nft <a id="tx-nftfactory-mint-nft"></a>
 
-Cancel bid on nft.
+mint NFT under specific class by class-id.
 
 ```bash
-ununifid tx nftmarket cancelbid [class-id] [nft-id] [flags]
+ununifid tx nftfactory mint-nft [class-id] [nft-id] [receiver] --from [sender] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket endlisting <a id="tx-endlisting"></a>
+### ununifid tx nftfactory send-class <a id="tx-nftfactory-send-class"></a>
 
-end listing.
+send the ownership of class.
 
 ```bash
-ununifid tx nftmarket endlisting [class-id] [nft-id] [flags]
+ununifid tx nftfactory send-class [class-id] [recipient] --from [sender] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket listing <a id="tx-listing"></a>
+### ununifid tx nftfactory update-base-token-uri <a id="tx-nftfactory-update-base-token-uri"></a>
 
-Creates a new listing.
+update the base token uri of class specified by class id and automatically change the belonging nft uris.
 
 ```bash
-ununifid tx nftmarket listing [class-id] [nft-id] [flags]
+ununifid tx nftfactory update-base-token-uri [class-id] [base-token-uri] --from [sender] [flags]
 ```
 
 **Flags:**
 
-| Name, shorthand   | Type   | Required | Default | Description     |
-| :---------------- | :----- | :------- | :------ | :-------------- |
-| --bid-active-rank | uint   | 1        |         | bid active rank |
-| --bid-token       | string | uguu     |         | bid token       |
-| --min-bid         | uint   | 1        |         | min bid amount  |
-
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}
 
-### ununifid tx nftmarket mint <a id="tx-mint"></a>
+### ununifid tx nftfactory update-token-supply-cap <a id="tx-nftfactory-update-token-supply-cap"></a>
 
-Mint an nft.
+update the token supply cap of class specified by class id.
 
 ```bash
-ununifid tx nftmarket mint [class-id] [nft-id] [uri] [uri-hash] [flags]
+ununifid tx nftfactory update-token-supply-cap [class-id] [token-supply-cap] --from [sender] [flags]
 ```
 
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket pay_fullbid <a id="tx-pay_fullbid"></a>
-
-Pay full bid on nft.
-
-```bash
-ununifid tx nftmarket pay_fullbid [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket placebid <a id="tx-placebid"></a>
-
-Creates a new place bid.
-
-```bash
-ununifid tx nftmarket placebid [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-| Name, shorthand         | Type | Required | Default | Description        |
-| :---------------------- | :--- | :------- | :------ | :----------------- |
-| -p, --automatic-payment |      |          |         | automation payment |
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket repay <a id="tx-repay"></a>
-
-repay loan on nft.
-
-```bash
-ununifid tx nftmarket repay [class-id] [nft-id] [amount] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
-{% endhint %}
-
-### ununifid tx nftmarket selling_decision <a id="tx-selling_decision"></a>
-
-broadcast selling decision message.
-
-```bash
-ununifid tx nftmarket selling_decision [class-id] [nft-id] [flags]
-```
-
-**Flags:**
-
-{% hint style="info" %}
-Please refer to [Common flags in nftmarket tx](nftmarket.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in nftfactory tx](nftfactory.md#common-tx-flags) for details of flags.
 {% endhint %}

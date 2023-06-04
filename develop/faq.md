@@ -17,5 +17,5 @@ A client library is available to utilize the Cosmos SDK and UnUniFi functionalit
 [Cosmos Client TS](tools/cosmos-client.md) can be used to easily build applications using Typescript (Javascript).
 
 Your reward will be a portion of the commission for each transaction sent from the application you created.
-Registration for Ecosystem Incentive is required. 
+Registration for Ecosystem Incentive is required.
 See [Develop a Frontend Application](frontend.md) for details.

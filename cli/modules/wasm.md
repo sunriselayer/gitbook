@@ -1,44 +1,44 @@
 ---
 description: >-
-  The cosmwasm module allows you to manage CosmWasm smart contract.
+  The `wasm` module allows you to manage CosmWasm smart contract.
 ---
 
-# CosmWasm
+# `wasm`
 
 **Query:**
 
 | Name                                                               | Description                                                  |
 | :----------------------------------------------------------------- | :----------------------------------------------------------- |
-| [build-address](cosmwasm.md#build-address)                         | Build contract address                                       |
-| [code](cosmwasm.md#code)                                           | Downloads wasm bytecode for given code id                    |
-| [code-info](cosmwasm.md#code-info)                                 | Prints out metadata of a code id                             |
-| [contract](cosmwasm.md#contract)                                   | Prints out metadata of a contract given its address          |
-| [contract-history](cosmwasm.md#contract-history)                   | Prints out the code history for a contract given its address |
-| [contract-state](cosmwasm.md#contract-state)                       | Querying commands for the wasm module                        |
-| [libwasmvm-version](cosmwasm.md#libwasmvm-version)                 | Get libwasmvm version                                        |
-| [list-code](cosmwasm.md#list-code)                                 | List all wasm bytecode on the chain                          |
-| [list-contract-by-code](cosmwasm.md#list-contract-by-code)         | List wasm all bytecode on the chain for given code id        |
-| [list-contracts-by-creator](cosmwasm.md#list-contracts-by-creator) | List all contracts by creator                                |
-| [params](cosmwasm.md#params)                                       | Query the current wasm parameters                            |
-| [pinned](cosmwasm.md#pinned)                                       | List all pinned code ids                                     |
+| [build-address](wasm.md#build-address)                         | Build contract address                                       |
+| [code](wasm.md#code)                                           | Downloads wasm bytecode for given code id                    |
+| [code-info](wasm.md#code-info)                                 | Prints out metadata of a code id                             |
+| [contract](wasm.md#contract)                                   | Prints out metadata of a contract given its address          |
+| [contract-history](wasm.md#contract-history)                   | Prints out the code history for a contract given its address |
+| [contract-state](wasm.md#contract-state)                       | Querying commands for the wasm module                        |
+| [libwasmvm-version](wasm.md#libwasmvm-version)                 | Get libwasmvm version                                        |
+| [list-code](wasm.md#list-code)                                 | List all wasm bytecode on the chain                          |
+| [list-contract-by-code](wasm.md#list-contract-by-code)         | List wasm all bytecode on the chain for given code id        |
+| [list-contracts-by-creator](wasm.md#list-contracts-by-creator) | List all contracts by creator                                |
+| [params](wasm.md#params)                                       | Query the current wasm parameters                            |
+| [pinned](wasm.md#pinned)                                       | List all pinned code ids                                     |
 
 **Tx:**
 
 | Name                                                               | Description                                               |
 | :----------------------------------------------------------------- | :-------------------------------------------------------- |
-| [clear-contract-admin](cosmwasm.md#clear-contract-admin)           | Clears admin for a contract to prevent further migrations |
-| [execute](cosmwasm.md#execute)                                     | Execute a command on a wasm contract                      |
-| [grant](cosmwasm.md#grant)                                         | Grant authorization to an address                         |
-| [instantiate](cosmwasm.md#instantiate)                             | Instantiate a wasm contract                               |
-| [instantiate2](cosmwasm.md#instantiate2)                           | Instantiate a wasm contract with predictable address      |
-| [migrate](cosmwasm.md#migrate)                                     | Migrate a wasm contract to a new code version             |
-| [set-contract-admin](cosmwasm.md#set-contract-admin)               | Set new admin for a contract                              |
-| [store](cosmwasm.md#store)                                         | Upload a wasm binary                                      |
-| [update-instantiate-config](cosmwasm.md#update-instantiate-config) | Update instantiate config for a codeID                    |
+| [clear-contract-admin](wasm.md#clear-contract-admin)           | Clears admin for a contract to prevent further migrations |
+| [execute](wasm.md#execute)                                     | Execute a command on a wasm contract                      |
+| [grant](wasm.md#grant)                                         | Grant authorization to an address                         |
+| [instantiate](wasm.md#instantiate)                             | Instantiate a wasm contract                               |
+| [instantiate2](wasm.md#instantiate2)                           | Instantiate a wasm contract with predictable address      |
+| [migrate](wasm.md#migrate)                                     | Migrate a wasm contract to a new code version             |
+| [set-contract-admin](wasm.md#set-contract-admin)               | Set new admin for a contract                              |
+| [store](wasm.md#store)                                         | Upload a wasm binary                                      |
+| [update-instantiate-config](wasm.md#update-instantiate-config) | Update instantiate config for a codeID                    |
 
-## Common flags in cosmwasm query <a id="common-query-flags"></a>
+## Common flags in `wasm` query <a id="common-query-flags"></a>
 
-Common flags for the cosmwasm query command are summarized.
+Common flags for the `wasm` query command are summarized.
 
 **Flags:**
 
@@ -97,7 +97,7 @@ ununifid query wasm build-address [code-hash] [creator-address] [salt-hex-encode
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Encode flags](cosmwasm.md#encode-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Encode flags](wasm.md#encode-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm code <a id="code"></a>
@@ -111,7 +111,7 @@ ununifid query wasm code [code_id] [output filename] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm code-info <a id="code-info"></a>
@@ -125,7 +125,7 @@ ununifid query wasm code-info [code_id] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm contract <a id="contract"></a>
@@ -139,7 +139,7 @@ ununifid query wasm contract [bech32_address] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm contract-history <a id="contract-history"></a>
@@ -153,7 +153,7 @@ ununifid query wasm contract-history [bech32_address] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm contract-state <a id="contract-state"></a>
@@ -180,7 +180,7 @@ ununifid query wasm contract-state all [bech32_address] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ```bash
@@ -191,7 +191,7 @@ ununifid query wasm contract-state smart [bech32_address] [query] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Encode flags](cosmwasm.md#encode-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Encode flags](wasm.md#encode-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm libwasmvm-version <a id="libwasmvm-version"></a>
@@ -205,7 +205,7 @@ ununifid query wasm libwasmvm-version [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm list-code <a id="list-code"></a>
@@ -219,7 +219,7 @@ ununifid query wasm list-code [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm list-contract-by-code <a id="list-contract-by-code"></a>
@@ -233,7 +233,7 @@ ununifid query wasm list-contract-by-code [code_id] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm list-contracts-by-creator <a id="list-contracts-by-creator"></a>
@@ -247,7 +247,7 @@ ununifid query wasm list-contracts-by-creator [creator] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm params <a id="params"></a>
@@ -261,7 +261,7 @@ ununifid query wasm params [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
 {% endhint %}
 
 ### ununifid query wasm pinned <a id="pinned"></a>
@@ -275,7 +275,7 @@ ununifid query wasm pinned [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags](cosmwasm.md#common-query-flags) & [Pagination flags](cosmwasm.md#pagination-flags) for details of flags.
+Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
 {% endhint %}
 
 ## Common flags in nftmint tx <a id="common-tx-flags"></a>
@@ -335,7 +335,7 @@ ununifid tx wasm clear-contract-admin [contract_addr_bech32] [flags]```
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm execute <a id="execute"></a>
@@ -349,7 +349,7 @@ ununifid tx wasm execute [contract_addr_bech32] [json_encoded_send_args] --amoun
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm grant <a id="grant"></a>
@@ -373,7 +373,7 @@ $ ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-message
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm instantiate <a id="instantiate"></a>
@@ -395,7 +395,7 @@ $ ununifid tx wasm instantiate 1 '{"foo":"bar"}' --admin="$(ununifid keys show m
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm instantiate2 <a id="instantiate2"></a>
@@ -419,7 +419,7 @@ $ ununifid tx wasm instantiate2 1 '{"foo":"bar"}' $(echo -n "testing" | xxd -ps)
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm migrate <a id="migrate"></a>
@@ -433,7 +433,7 @@ ununifid tx wasm migrate [contract_addr_bech32] [new_code_id_int64] [json_encode
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm set-contract-admin <a id="set-contract-admin"></a>
@@ -447,7 +447,7 @@ ununifid tx wasm set-contract-admin [contract_addr_bech32] [new_admin_addr_bech3
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm store <a id="store"></a>
@@ -461,7 +461,7 @@ ununifid tx wasm store [wasm file] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}
 
 ### ununifid tx wasm update-instantiate-config <a id="update-instantiate-config"></a>
@@ -475,5 +475,5 @@ ununifid tx wasm update-instantiate-config [code_id_int64] [flags]
 **Flags:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](cosmwasm.md#common-tx-flags) for details of flags.
+Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
 {% endhint %}

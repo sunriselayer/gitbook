@@ -1,3 +1,3 @@
 # Wallet tutorial
 
-Comming soon...
+Under construction.
