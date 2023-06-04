@@ -1,3 +1,3 @@
 # Staking tutorial
 
-Comming soon...
+Under construction.

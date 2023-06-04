@@ -4,33 +4,32 @@ description: CLI reference for ununifid modules
 
 # Module Reference
 
-## NFT Mint
+## `derivatives`
 
-The nftmint module provides the feature to mint NFTs on UnUniFi. Users can mint collective NFTs by sending specific messages.
+`derivatives` module allows you to manage assets through derivatives.
 
-[NFT Mint CLI Command](nftmint.md)
+[`derivatives` CLI](derivatives.md)
 
-## NFT Market
+## `nftbackedloan`
 
-The nftmarket module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
+`nftbackedloan` module allows you to borrow tokens with NFTs as collateral. Also, can also lend tokens to NFT owners and earn interest.
 
-[NFT Market CLI Command](nftmarket.md)
+[`nftbackedloan` CLI](nftmarket.md)
 
-## Yield Aggregator
+## `nftfactory`
 
-The yield-aggregator module allows you to manage assets and earn yield.
+`nftfactory` module provides the feature to mint NFTs on UnUniFi. Users can mint collective NFTs by sending specific messages.
 
-[Yield Aggregator CLI Command](yield-aggregator.md)
+[`nftfactory` CLI](nftfactory.md)
 
-## CosmWasm
+## `wasm`
 
-The cosmwasm module allows you to manage CosmWasm smart contract.
-This is used to add the Yield Aggregator strategy.
+`wasm` module allows you to manage CosmWasm smart contract.
 
-[CosmWasm CLI Command](cosmwasm.md)
+[`wasm` CLI](wasm.md)
 
-## Derivatives
+## `yieldaggregator`
 
-The derivatives module allows you to manage assets through derivatives.
+`yieldaggregator` module allows you to manage assets and earn yield.
 
-[Derivatives CLI Command](derivatives.md)
+[`yieldaggregator` CLI](yieldaggregator.md)
