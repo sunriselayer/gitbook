@@ -6,8 +6,7 @@ This feature is available on the testnet, but does not yet exist on the mainnet.
 
 ## What is the NFT Backed Loan?
 
-The NFT Backed Loan is a type of NFT-Fi. Users can borrow tokens as collateral for NFTs.
-Collateral NFTs are published in the marketplace and tokens can be borrowed from users who bid on them. NFTs can also be sold.
+UnUniFi’s NFT Backed Loans dApp allows users to collateralize their NFT assets to access liquidity, while delivering fast, efficient, cross-chain matching between lenders and borrowers. UnUniFi’s unique lending model provides advantages such as low transaction fees, competitive valuations, and support for any NFT. Cross-chain matching also enables liquidity aggregation across chains. Lastly, UnUniFi’s oracle-free valuation mechanism protects retail users against price manipulation and provides valuations with respect to rarity, all based on real-time demand data. This mechanism creates a reliable and scalable NFT valuation service not just for retail users but also for institutional users as well.
 
 ### List NFT
 
