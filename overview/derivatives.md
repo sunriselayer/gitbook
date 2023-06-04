@@ -11,7 +11,7 @@ UnUniFi’s Derivatives dApp enables users to engage in innovative DeFi trading 
 ### Perpetual Futures
 
 The perpetual futures trading is a financial instrument used for long-term trading of assets without delivery.
-The model of Perpetual Futures totally follows GMX perpetual futures model.  
+The model of Perpetual Futures follows GMX perpetual futures model.  
 (ref: <https://gmxio.gitbook.io/gmx/>)
 
 Briefly saying, the tradings on the perpetual futures market are supported by a unique multi-asset pool that earns liquidity prodicers fees from market making, swap fees and leverage trading.  
