@@ -6,9 +6,7 @@ This feature is available on the testnet, but does not yet exist on the mainnet.
 
 ## What is the Derivatives?
 
-The Derivatives are financial instruments that derive their value from an underlying asset or index.
-
-In UnUniFi protocol, perpetual futures and perpetual options trading are provided.
+UnUniFi’s Derivatives dApp enables users to engage in innovative DeFi trading opportunities, while remaining integrated into the NFT ecosystem. Users can engage in derivatives trading, opening up opportunities for hedging, speculation, and risk management all from the same dashboard where NFT backed loans are serviced (users can even trade using assets issued from NFT loans). Created via an improved GMX model, the LP is stabilized, making it so that liquidity providers are less likely to lose money and larger positions can be serviced. Furthermore, users can utilize price index perps of NFTs or make positions of perps NFTs to use for NFT Backed Loans, further integrating the NFT & DeFi experience.
 
 ### Perpetual Futures
 
