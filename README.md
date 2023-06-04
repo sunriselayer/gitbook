@@ -3,9 +3,9 @@ description: >-
   NFT-Fi Platform with DeFi tools built on Cosmos
 ---
 
-# UnUniFi Protocol Developer Documentation
+# UnUniFi Documentation
 
-[https://ununifi.gitbook.io](https://ununifi.gitbook.io)
+[https://docs.ununifi.io](https://docs.ununifi.io)
 
 ## What is UnUniFi?
 
