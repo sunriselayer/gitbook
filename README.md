@@ -13,7 +13,6 @@ In the rapidly evolving landscape of blockchain technology, the convergence of N
 
 To see the detail, visit [this Medium article](https://medium.com/@ununifi/ununifi-unlocking-the-power-of-nft-fi-on-our-cross-chain-layer-1-blockchain-c2673cfbb674).
 
-
 ### Resources
 
 - [Whitepaper](https://ununifi.io/assets/download/UnUniFi-Whitepaper.pdf)

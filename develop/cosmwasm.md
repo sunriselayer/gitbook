@@ -1,8 +1,8 @@
 # CosmWasm
 
-All developer can deploy their **Strategy** contracts on UnUniFi without permission.
+All developers can deploy smart contracts made with **CosmWasm** on UnUniFi.
 Development requires the knowledge of **CosmWasm**.
-For more information about CosmWasm, visit [CosmWasm Document](https://docs.cosmwasm.com/docs/) site.
+For more information about CosmWasm, visit [CosmWasm Documentation](https://docs.cosmwasm.com/docs/).
 
 You can learn more at [CosmWasm Academy](https://cosmwasm.getlearnworlds.com) as well.
 
