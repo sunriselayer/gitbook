@@ -6,11 +6,7 @@ This feature is available on the testnet, but does not yet exist on the mainnet.
 
 ## What is the Yield Aggregator?
 
-The Yield Aggregator on the UnUniFi protocol is the function for yield aggregation.
-
-Users deposit their funds to the **Vault**, and then the funds earn yield automatically.
-
-In addition, it supports **interchain** yield aggregation. So this is also called as Interchain Yield Aggregator (IYA).
+UnUniFi’s Interchain Yield Aggregator dApp enables users to maximize their returns by automatically routing their capital to various DeFi protocols and optimized yield generation strategies (Auto DeFi Yield). Users can elect to use their own assets or even use assets issued from NFT loans and deposit their funds to the **Vault**, and then the funds earn yield automatically.. By seamlessly integrating with third-party protocols, UnUniFi empowers users to capitalize on diverse DeFi opportunities and foster cross-chain interoperability through unlimited third-party **Strategy** creation. Developers will be able to earn commissions for their strategies, incentivizing competitive strategy development on UnUniFi while increasing the number of strategies available to the user.
 
 ## What is the Vault?
 
