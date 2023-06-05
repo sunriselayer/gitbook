@@ -71,8 +71,12 @@ $$
 
 In easy expression, it means
 
-$$c p_{n+1}' \le d_{n+1}'$$
+$$
+  c p_{n+1}' \le d_{n+1}'
+$$
 
-$$s' = s + d_{n+1}' \le q'$$
+$$
+  s' = s + d_{n+1}' \le q'
+$$
 
 where $c$ means minimum deposit rate.
