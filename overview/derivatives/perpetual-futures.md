@@ -17,18 +17,18 @@ When a position is created, the corresponding amount of token in the pool will b
 
 A position will be liquidated if the losses and fees reduce the margin to the point where:  
 
-{% math %}
+$$
 RemainingMargin / (Price \times PositionSize / Leverage) \leq MarginMaintenanceRate
-{% endmath %}
+$$
 
 MaintenanceMarginRate is defined as a parameter in the protocol. The default value of it is `0.5`.  
 The values are all based on `QuoteTicker` of the protocol, in which the default value is `USD`.
 
 This is achieved through any user sending a `MsgReportLiquidation` tx. If the liquidation is needed, The reporter gets a portion of the commission fee based on the remaining margin. The remaining margin is then returned to the position owner after deducting a commission fee.
 
-{% math %}
+$$
 CommissionFee = RemainingMargin \times CommissionRate
-{% endmath %}
+$$
 
 The default value of CommissionRate is `0.001`.
 
@@ -39,12 +39,13 @@ There's no penalty for reporting a position that is not needed to be liquidated.
 Levy Period is set to reduce the imbalance in the positions of the entire market.
 If the Long positions are biased in the entire market, a imaginary funding fee will be deducted from the margin of the Long positions and added to the margin of the Short positions. At the same time, commission fees are also subtracted.
 
-{% math %}
+$$
 ImaginaryFundingFee = PositionSize \times ImaginaryFundingRate
-{% endmath %}
-{% math %}
+$$
+
+$$
 ImaginaryFundingRate = ImaginaryFundingCoefficient \times NetPosition (long - short) / TotalPosition (long + short)
-{% endmath %}
+$$
 
 The default value of `imaginary_funding_coefficient` is `0.0005`.
 
