@@ -79,4 +79,4 @@ $$
   s' = s + d_{n+1}' \le q'
 $$
 
-where $c$ means minimum deposit rate.
+where $$c$$ means minimum deposit rate.
