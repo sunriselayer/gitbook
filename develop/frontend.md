@@ -15,7 +15,7 @@ Please register via `Incentive` in the UnUniFi Portal. Rewards can be distribute
 After registration, the following JSON string is output.
 
 ```json
-{"version":"v1","incentive-unit-id":"UnUniFi Core"}
+{"version":"v1","recipient_container_id":"ununifi_core"}
 ```
 
 Add this to the `TxMemo` of Txs sent out by your application.
