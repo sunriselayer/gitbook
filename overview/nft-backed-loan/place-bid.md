@@ -3,14 +3,25 @@
 ## Bid Parameters
 
 - Bid Amount
+
   This is the asking price to purchase NFT. If the lister decides to sell at this price, you can buy at this price.
+
 - Deposit Amount
+
   Deposit to be paid at the time of bidding. Must exceed minimum deposit rate.
-  {% math %}depositAmount \geq bidAmount \times minimumDepositRate{% endmath %}
+
+  $$
+  depositAmount \geq bidAmount \times minimumDepositRate
+  $$
+
 - Interest Rate
+
   Set the interest rates.
+
 - Expiration Date
+
   Bid expiration date. If the lister borrowed from this bid, it will be repaid by this deadline.
+
 - Auto Payment (Default enable)
 
 ### Auto Payment
@@ -21,46 +32,51 @@ If there are insufficient balances at the time of liquidation, manual payment wi
 
 ## Definition
 
-- {% math %}i \in I{% endmath %}: index of bids
-- {% math %}n = |I|{% endmath %}: number of bids
-- {% math %}\{p_i\}_{i \in I}{% endmath %}: the price of {% math %}i{% endmath %} th bid
-- {% math %}\{d_i\}_{i \in I}{% endmath %}: the deposit amount of {% math %}i{% endmath %} th bid
-- {% math %}\{r_i\}_{i \in I}{% endmath %}: the interest rate of {% math %}i{% endmath %} th bid
-- {% math %}\{t_i\}_{i \in I}{% endmath %}: the expiration date of {% math %}i{% endmath %} th bid
-- {% math %}q = \frac{1}{n} \sum_{i \in I} p_i{% endmath %}
-- {% math %}s = \sum_{i \in I} d_i{% endmath %}: means the amount which lister can borrow with NFT as collateral
-- {% math %}\{a_i\}_{i \in I}{% endmath %}: means the amount borrowed from {% math %}i{% endmath %} th bid deposit
-- {% math %}b = \sum_{i \in I} a_i{% endmath %}
-- {% math %}i_p(j){% endmath %}: means the index of the {% math %}j{% endmath %} th highest price bid
-- {% math %}i_d(j){% endmath %}: means the index of the {% math %}j{% endmath %} th highest deposit amount bid
-- {% math %}i_r(j){% endmath %}: means the index of the {% math %}j{% endmath %} th lowest interest rate bid
-- {% math %}i_t(j){% endmath %}: means the index of the {% math %}j{% endmath %} th farthest expiration date bid
-- {% math %}c{% endmath %}: minimum deposit rate
+- $$i \in I$$: index of bids
+- $$n = |I|$$: number of bids
+- $$\{p_i\}_{i \in I}$$: the price of $$i$$ th bid
+- $$\{d_i\}_{i \in I}$$: the deposit amount of $$i$$th bid
+- $$\{r_i\}_{i \in I}$$: the interest rate of $$i$$th bid
+- $$\{t_i\}_{i \in I}$$: the expiration date of $$i$$th bid
+- $$q = \frac{1}{n} \sum_{i \in I} p_i$$
+- $$s = \sum_{i \in I} d_i$$: means the amount which lister can borrow with NFT as collateral
+- $$\{a_i\}_{i \in I}$$: means the amount borrowed from $i$ th bid deposit
+- $$b = \sum_{i \in I} a_i$$
+- $$i_p(j)$$: means the index of the $$j$$ th highest price bid
+- $$i_d(j)$$: means the index of the $$j$$ th highest deposit amount bid
+- $$i_r(j)$$: means the index of the $$j$$ th lowest interest rate bid
+- $$i_t(j)$$: means the index of the $$j$$ th farthest expiration date bid
+- $$c$$: minimum deposit rate
 
 ## New bid formulation
 
-When {% math %}(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}}){% endmath %} will be added to the set of bids, the new bids sequence will be
+When $$(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}})$$ will be added to the set of bids, the new bids sequence will be
 
-- {% math %}I' = I \cup \{n+1\}{% endmath %}
-- {% math %}n' = n + 1{% endmath %}
-- {% math %}\{p_i'\}_{i \in I'} = \{p_i\}_{i \in I} \cup \{p_{\text{new}}\}{% endmath %}
-- {% math %}\{d_i'\}_{i \in I'} = \{d_i\}_{i \in I} \cup \{d_{\text{new}}\}{% endmath %}
-- {% math %}\{r_i'\}_{i \in I'} = \{r_i\}_{i \in I} \cup \{r_{\text{new}}\}{% endmath %}
-- {% math %}\{t_i'\}_{i \in I'} = \{t_i\}_{i \in I} \cup \{t_{\text{new}}\}{% endmath %}
-- {% math %}q' = \frac{1}{n'} \sum_{i \in I'} p_i'{% endmath %}
-- {% math %}s' = \sum_{i \in I'} d_i'{% endmath %}
+- $$I' = I \cup \{n+1\}$$
+- $$n' = n + 1$$
+- $$\{p_i'\}_{i \in I'} = \{p_i\}_{i \in I} \cup \{p_{\text{new}}\}$$
+- $$\{d_i'\}_{i \in I'} = \{d_i\}_{i \in I} \cup \{d_{\text{new}}\}$$
+- $$\{r_i'\}_{i \in I'} = \{r_i\}_{i \in I} \cup \{r_{\text{new}}\}$$
+- $$\{t_i'\}_{i \in I'} = \{t_i\}_{i \in I} \cup \{t_{\text{new}}\}$$
+- $$q' = \frac{1}{n'} \sum_{i \in I'} p_i'$$
+- $$s' = \sum_{i \in I'} d_i'$$
 
 where the prime means the next state.
 
-The constraint of {% math %}d_{n+1}'{% endmath %} is
+The constraint of $$d_{n+1}'$$ is
 
-{% math %}
+$$
   c p_{n+1}' \le d_{n+1}' \le q' - s
-{% endmath %}
+$$
 
 In easy expression, it means
 
-- {% math %}c p_{n+1}' \le d_{n+1}'{% endmath %}
-- {% math %}s' = s + d_{n+1}' \le q'{% endmath %}
+$$
+  c p_{n+1}' \le d_{n+1}'
+$$
 
-where {% math %}c{% endmath %} means minimum deposit rate.
+$$
+  s' = s + d_{n+1}' \le q'
+$$
+
+where $$c$$ means minimum deposit rate.
