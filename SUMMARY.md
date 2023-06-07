@@ -15,6 +15,7 @@
 ## Develop
 
 * [CosmWasm](develop/cosmwasm.md)
+  * [Tutorial](develop/cosmwasm/tutorial.md)
   * [EventHook](develop/cosmwasm/event-hook.md)
   * [IYA strategy](develop/cosmwasm/iya-strategy.md)
 * [Developer Tools](develop/tools.md)
