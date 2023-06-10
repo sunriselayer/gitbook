@@ -29,6 +29,7 @@
     * [yieldaggregator](cli/modules/yieldaggregator.md)
     * [wasm](cli/modules/wasm.md)
 * [Frontend](develop/frontend.md)
+* [IBC Relayer](develop/relayer.md)
 * [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
 
