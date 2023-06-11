@@ -30,6 +30,9 @@
     * [wasm](cli/modules/wasm.md)
 * [Frontend](develop/frontend.md)
 * [IBC Relayer](develop/relayer.md)
+  * [CosmosHub](develop/relayer/cosmoshub.md)
+  * [Axelar](develop/relayer/axelar.md)
+  * [Neutron](develop/relayer/neutron.md)
 * [Resources](develop/resources.md)
 * [FAQ](develop/faq.md)
 
