@@ -25,9 +25,9 @@ echo word1 ... word12or24 > ~/mnemonic.txt
 
 ### Setting up config
 
-- [CosmosHub](./relayer/cosmoshub.md)
-- [Axelar](./relayer/axelar.md)
-- [Neutron](./relayer/neutron.md)
+- [CosmosHub](../develop/relayer/cosmoshub.md)
+- [Axelar](../develop/relayer/axelar.md)
+- [Neutron](../develop/relayer/neutron.md)
 
 ### Setting up daemon
 
