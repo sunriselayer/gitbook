@@ -146,7 +146,6 @@ denom = "uguu"
 policy = "allow"
 list = [[
     "transfer",
-    "channel-569",
 ]]
 
 [chains.packet_filter.min_fees]
@@ -197,6 +196,51 @@ host = "127.0.0.1"
 port = 3001
 
 [[chains]]
+id = "axelar-dojo-1"
+type = "CosmosSdk"
+rpc_addr = "https://rpc.axelar.bh.rocks/"
+websocket_addr = "wss://rpc.axelar.bh.rocks/websocket"
+grpc_addr = "https://axelar-mainnet-grpc.autostake.com/"
+rpc_timeout = "10s"
+batch_delay = "500ms"
+trusted_node = false
+account_prefix = "axelar"
+key_name = "keyaxelar"
+key_store_type = "Test"
+store_prefix = "ibc"
+default_gas = 100000
+max_gas = 400000
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 180000
+max_grpc_decoding_size = 33554432
+clock_drift = "5s"
+max_block_time = "30s"
+ccv_consumer_chain = false
+memo_prefix = ""
+sequential_batch_tx = false
+
+[chains.trust_threshold]
+numerator = "1"
+denominator = "3"
+
+[chains.gas_price]
+price = 0.1
+denom = "uaxl"
+
+[chains.packet_filter]
+policy = "allow"
+list = [[
+    "transfer",
+    "channel-78",
+]]
+
+[chains.packet_filter.min_fees]
+
+[chains.address_type]
+derivation = "cosmos"
+
+[[chains]]
 id = "ununifi-beta-v1"
 type = "CosmosSdk"
 rpc_addr = "http://a.lcd.ununifi.cauchye.net:26657"
@@ -233,7 +277,6 @@ denom = "uguu"
 policy = "allow"
 list = [[
     "transfer",
-    "channel-569",
 ]]
 
 [chains.packet_filter.min_fees]
@@ -371,7 +414,6 @@ denom = "uguu"
 policy = "allow"
 list = [[
     "transfer",
-    "channel-569",
 ]]
 
 [chains.packet_filter.min_fees]
