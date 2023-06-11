@@ -128,6 +128,7 @@ denom = "uguu"
 policy = "allow"
 list = [[
     "transfer",
+    "channel-1",
 ]]
 
 [chains.packet_filter.min_fees]
