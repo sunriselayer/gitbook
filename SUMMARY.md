@@ -16,8 +16,10 @@
 
 * [CosmWasm](develop/cosmwasm.md)
   * [Tutorial](develop/cosmwasm/tutorial.md)
-* [IYA strategy](develop/cosmwasm/iya-strategy.md)
-* [EventHook](develop/cosmwasm/event-hook.md)
+  * [Create Project](develop/cosmwasm/create-project.md)
+* [IYA Strategy](develop/iya-strategy.md)
+  * [Example](develop/iya-strategy/example.md)
+* [EventHook](develop/eventhook.md)
 * [Frontend](develop/frontend.md)
   * [Cosmos Client TS](develop/tools/cosmos-client.md)
 * [Resources](develop/resources.md)

@@ -12,10 +12,11 @@ The operating system you use for your node is entirely your personal preference.
 
 Validator Node Server
 
-- OS: Ubuntu 20.04
 - Memory: 8 GB or more
 - Storage: SSD 160 GB or more
 - The following ports: `26656` must be open for peer to peer communication between nodes.
+
+We will write examples as if you are using an Ubuntu LTS release.
 
 ## Install pre-requisites
 

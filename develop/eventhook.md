@@ -1,6 +1,8 @@
 # Event Hook contracts
 
-Under construction.
+{% hint style="warn" %}
+This feature is Under construction.
+{% endhint %}
 
 ## Basic idea
 
