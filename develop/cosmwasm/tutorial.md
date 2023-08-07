@@ -3,7 +3,7 @@
 ## How to use wasm CLI
 
 First of all, install `ununifid` to use wasm CLI and [Rust](https://www.rust-lang.org/tools/install).
-To learn how to install `ununifid`, see [here](../cli/cli-introduction.md)
+To learn how to install `ununifid`, see [here](../../cli/cli-introduction.md)
 
 There are two ways of using wasm CLI.
 
