@@ -11,7 +11,7 @@ description: >-
 `ununifid` is a command line client for the UnUniFi network. UnUniFi users can use `ununifid` to send transactions to the UnUniFi network and query the blockchain data.
 
 {% hint style="info" %}
-See [here](../validators/ununifid-installation-and-setup.md) for instructions on installing `ununifid`.
+See [here](../node/setup-ununifid.md) for instructions on installing `ununifid`.
 {% endhint %}
 
 ### Working Directory <a href="#working-directory" id="working-directory"></a>

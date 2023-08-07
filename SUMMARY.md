@@ -16,10 +16,16 @@
 
 * [CosmWasm](develop/cosmwasm.md)
   * [Tutorial](develop/cosmwasm/tutorial.md)
-  * [IYA strategy](develop/cosmwasm/iya-strategy.md)
-  * [EventHook](develop/cosmwasm/event-hook.md)
-* [Developer Tools](develop/tools.md)
+* [IYA strategy](develop/cosmwasm/iya-strategy.md)
+* [EventHook](develop/cosmwasm/event-hook.md)
+* [Frontend](develop/frontend.md)
   * [Cosmos Client TS](develop/tools/cosmos-client.md)
+* [Resources](develop/resources.md)
+* [FAQ](develop/faq.md)
+
+## NODES
+
+* [Setup ununifid](node/setup-ununifid.md)
 * [ununifid](cli/cli-introduction.md)  
   * [Basic Commands](cli/ununifid-cli-commands.md)
   * [Module Commands](cli/modules/README.md)
@@ -28,23 +34,17 @@
     * [nftfactory](cli/modules/nftfactory.md)
     * [yieldaggregator](cli/modules/yieldaggregator.md)
     * [wasm](cli/modules/wasm.md)
-* [Frontend](develop/frontend.md)
-* [IBC Relayer](develop/relayer.md)
-  * [CosmosHub](develop/relayer/cosmoshub.md)
-  * [Axelar](develop/relayer/axelar.md)
-  * [Neutron](develop/relayer/neutron.md)
-* [Resources](develop/resources.md)
-* [FAQ](develop/faq.md)
-
-## NODES & VALIDATORS
-
-* [Setting up Cosmovisor](validators/setting-cosmovisor.md)
-* [Joining Mainnet](validators/validate-mainnet.md)
-* [Joining Testnet](validators/joining-testnet.md)
-* [Mainnet Upgrades](validators/mainnet-upgrades.md)
+* [Build a Node](node/build-node.md)
+* [Build a Validator Node](node/build-validator-node.md)
+* [Setup Cosmovisor](node/setting-cosmovisor.md)
+* [Mainnet Upgrades](node/mainnet-upgrades.md)
+* [IBC Relayer](node/relayer.md)
+  * [CosmosHub](node/relayer/cosmoshub.md)
+  * [Neutron](node/relayer/neutron.md)
+  * [Axelar](node/relayer/axelar.md)
 
 ## LINKS
 
-* [Github](https://github.com/UnUniFi)
+* [GitHub](https://github.com/UnUniFi)
 * [Twitter](https://twitter.com/ununifi)
-* [Discord](https://discord.com/invite/gxEkFyu5rn)
+* [Discord](https://discord.com/invite/ununifi)

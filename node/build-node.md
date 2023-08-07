@@ -1,22 +1,8 @@
-# Validating on Mainnet
-
-Validators are responsible for committing new blocks in the blockchain. These validators participate in the consensus protocol by broadcasting votes which contain cryptographic signatures signed by each validator's private key.
-
-Validators and their delegators earn GUU as block provisions and tokens as transaction fees through execution of the Tendermint consensus protocol. Note that validators can set a commission percentage on the fees their delegators receive as additional incentive.
-
-Preparing your validator for mainnet involves a few extra considerations. They are detailed below, but a sensible checklist is:
-
-- How will you handle chain upgrades?
-  - consider: Cosmovisor
-- How will you know your node is up?
-  - consider: Monitoring and alerts
-- How will you mitigate DDOS attacks?
-  - consider: Sentry Nodes
-- How much storage will you need?
+# Build a Node
 
 ## Chain upgrades
 
-In order to streamline chain upgrades and minimise downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node
+For streamline chain upgrades and minimizing downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
 
 ## Backups
 
@@ -61,11 +47,11 @@ Managing backups is outside the scope of this documentation, but several validat
 
 It is anticipated that state-sync will soon work for wasm chains, although it does not currettly.
 
-# Joining Mainnet
+## Joining network
 
 General instructions to join the UnUniFi mainnet after network genesis.
 
-## Configuration of Shell Variables
+### Configuration of Shell Variables
 
 For this guide, we will be using shell variables. This will enable the use of the client commands verbatim. It is important to remember that shell commands are only valid for the current shell session, and if the shell session is closed, the shell variables will need to be re-defined.
 
@@ -77,28 +63,26 @@ To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should 
 
 The current UnUniFi Network `chain-id` is `ununifi-beta-v1`. Set the `CHAIN_ID`:
 
-```Bash
+For mainnet:
+
+```bash
 CHAIN_ID=ununifi-beta-v1
 ```
 
-### Set your moniker name
+For testnet:
 
-Choose your `<your-moniker>`, this can be any name of your choosing and will identify your validator in the explorer. Set the `MONIKER`:
-
-```Bash
-MONIKER=<your-moniker>
-# Example
-MONIKER="Validator 1"
+```bash
+CHAIN_ID=ununifi-test-v1
 ```
 
-### Set persistent peers
+### Set your server name
 
-Persistent peers will be required to tell your node where to connect to other nodes and join the network. To retrieve the peers for the chosen `chain-id`:
+Choose your `moniker`, it is just a name for your node. Set the `MONIKER`:
 
-```Bash
-# Set the base repo URL for mainnet & retrieve peers
-echo "export PEERS=\"fa38d2a851de43d34d9602956cd907eb3942ae89@a.ununifi.cauchye.net:26656,404ea79bd31b1734caacced7a057d78ae5b60348@b.ununifi.cauchye.net:26656,1357ac5cd92b215b05253b25d78cf485dd899d55@[2600:1f1c:534:8f02:7bf:6b31:3702:2265]:26656,25006d6b85daeac2234bcb94dafaa73861b43ee3@[2600:1f1c:534:8f02:a407:b1c6:e8f5:94b]:26656,caf792ed396dd7e737574a030ae8eabe19ecdf5c@[2600:1f1c:534:8f02:b0a4:dbf6:e50b:d64e]:26656,796c62bb2af411c140cf24ddc409dff76d9d61cf@[2600:1f1c:534:8f02:ca0e:14e9:8e60:989e]:26656,cea8d05b6e01188cf6481c55b7d1bc2f31de0eed@[2600:1f1c:534:8f02:ba43:1f69:e23a:df6b]:26656\"" >> ~/.bash_profile
-source .bash_profile
+```bash
+MONIKER=<moniker>
+# Example
+MONIKER="yu-kimura-server-1"
 ```
 
 ## Setting up the Node
@@ -107,7 +91,7 @@ These instructions will direct you on how to initialize your node, synchronize t
 
 ### Initialize the chain
 
-```Bash
+```bash
 ununifid init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
@@ -119,18 +103,45 @@ This will generate the following files in `~/.ununifi/config/`
 
 ### Download the genesis file
 
-```Bash
+For mainnet:
+
+```bash
 rm ~/.ununifi/config/genesis.json
 curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-beta-v1/genesis.json -o ~/.ununifi/config/genesis.json
 ```
 
-This will replace the genesis file created using `ununifid init` command with the mainnet `genesis.json`.
+For testnet:
+
+```bash
+rm ~/.ununifi/config/genesis.json
+curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-test-v1/genesis.json -o ~/.ununifi/config/genesis.json
+```
+
+This will replace the genesis file `genesis.json` created by `ununifid init` command.
 
 ### Set persistent peers
 
-Using the peers variable we set earlier, we can set the persistent_peers in `~/.ununifi/config/config.toml`:
+Persistent peers will be required to tell your node where to connect to other nodes and join the network. To retrieve the peers for the chosen `chain-id`:
 
-```Bash
+For mainnet:
+
+```bash
+# Set the base repo URL for mainnet & retrieve peers
+echo "export PEERS=\"fa38d2a851de43d34d9602956cd907eb3942ae89@a.ununifi.cauchye.net:26656,404ea79bd31b1734caacced7a057d78ae5b60348@b.ununifi.cauchye.net:26656,1357ac5cd92b215b05253b25d78cf485dd899d55@[2600:1f1c:534:8f02:7bf:6b31:3702:2265]:26656,25006d6b85daeac2234bcb94dafaa73861b43ee3@[2600:1f1c:534:8f02:a407:b1c6:e8f5:94b]:26656,caf792ed396dd7e737574a030ae8eabe19ecdf5c@[2600:1f1c:534:8f02:b0a4:dbf6:e50b:d64e]:26656,796c62bb2af411c140cf24ddc409dff76d9d61cf@[2600:1f1c:534:8f02:ca0e:14e9:8e60:989e]:26656,cea8d05b6e01188cf6481c55b7d1bc2f31de0eed@[2600:1f1c:534:8f02:ba43:1f69:e23a:df6b]:26656\"" >> ~/.bash_profile
+source .bash_profile
+```
+
+For testnet:
+
+```bash
+# Set the base repo URL for mainnet & retrieve peers
+echo "export PEERS=\"65710949120e28f8af12f81b75efd2a509280f70@a.ununifi-test-v1.cauchye.net:26656,b20e3aad6b1bf7dc2d1635c388f578f335b13466@b.ununifi-test-v1.cauchye.net:26656,a8d5662130dd127dfcf82314e7a5b379a95d9daf@c.ununifi-test-v1.cauchye.net:26656,59361cdca33b1abbf85b46adb62bb680c6d59768@d.ununifi-test-v1.cauchye.net:26656\"" >> ~/.bash_profile
+source .bash_profile
+```
+
+Using the peers variable above, we can set the persistent_peers in `~/.ununifi/config/config.toml`:
+
+```bash
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.ununifi/config/config.toml
 ```
 
@@ -190,36 +201,3 @@ curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
 If this command returns `true` then your node is still catching up. If it returns `false` then your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
-
-### Upgrade to a validator
-
-> Do not attempt to upgrade your node to a validator until the node is fully in sync as per the previous step.
-
-To upgrade the node to a validator, you will need to submit a create-validator transaction:
-
-```Bash
-ununifid tx staking create-validator \
-  --amount 1000000uguu \
-  --commission-max-change-rate "0.1" \
-  --commission-max-rate "0.20" \
-  --commission-rate "0.1" \
-  --min-self-delegation "1" \
-  --details "validators write bios too" \
-  --pubkey=$(ununifid tendermint show-validator) \
-  --moniker "$MONIKER" \
-  --chain-id $CHAIN_ID \
-  --gas-prices 0.025uguu \
-  --from <your-key>
-```
-
-> The above transaction is just an example. There are many more flags that can be set to customise your validator, such as your validator website, or keybase.io id, etc. To see a full list:
-> `ununifid tx staking create-validator --help`
-
-### Backup critical files
-
-There are certain files that you need to backup to be able to restore your validator if, for some reason, it damaged or lost in some way. Please make a secure backup of the following files located in `~/.ununifi/config/`:
-
-- `priv_validator_key.json`
-- `node_key.json`
-
-It is recommended that you encrypt the backup of these files.
