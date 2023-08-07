@@ -4,7 +4,7 @@
 This feature is available on the mainnet!
 {% endhint %}
 
-Development of IYA Strategy requires the knowledge of [CosmWasm](develop/cosmwasm.md).
+Development of IYA Strategy requires the knowledge of [CosmWasm](../develop/cosmwasm.md).
 
 ## Basic idea
 
