@@ -1,3 +1,3 @@
 # IYA Strategy Example
 
-See [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-example).
+Source codes are [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-example).

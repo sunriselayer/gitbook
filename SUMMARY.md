@@ -19,11 +19,11 @@
   * [Create Project](develop/cosmwasm/create-project.md)
 * [IYA Strategy](develop/iya-strategy.md)
   * [Example](develop/iya-strategy/example.md)
+  * [Osmosis](develop/iya-strategy/osmosis.md)
 * [EventHook](develop/eventhook.md)
 * [Frontend](develop/frontend.md)
-  * [Cosmos Client TS](develop/tools/cosmos-client.md)
+  * [Cosmos Client TS](develop/frontend/cosmos-client.md)
 * [Resources](develop/resources.md)
-* [FAQ](develop/faq.md)
 
 ## NODES
 

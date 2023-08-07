@@ -4,7 +4,7 @@
 This feature is available on the mainnet!
 {% endhint %}
 
-Development requires the knowledge of [CosmWasm](../cosmwasm.md).
+Development of IYA Strategy requires the knowledge of [CosmWasm](../cosmwasm.md).
 
 ## Basic idea
 
@@ -102,6 +102,6 @@ Otherwise, the proposal for registering the strategy will be rejected.
 
 - <https://github.com/UnUniFi/contracts/blob/main/packages/strategy/src/v0/msgs.rs>
 
-## Proposal
+## Proposal to register strategy
 
 Under construction.
