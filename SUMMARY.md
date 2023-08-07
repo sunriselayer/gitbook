@@ -16,8 +16,8 @@
 
 * [CosmWasm](develop/cosmwasm.md)
   * [Tutorial](develop/cosmwasm/tutorial.md)
+  * [IYA strategy](develop/cosmwasm/iya-strategy/v0.md)
   * [EventHook](develop/cosmwasm/event-hook.md)
-  * [IYA strategy](develop/cosmwasm/iya-strategy.md)
 * [Developer Tools](develop/tools.md)
   * [Cosmos Client TS](develop/tools/cosmos-client.md)
 * [ununifid](cli/cli-introduction.md)  
