@@ -200,4 +200,10 @@ After starting the `ununifid` daemon, the chain will begin to sync to the networ
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-If this command returns `true` then your node is still catching up. If it returns `false` then your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
+This command returning `true` means that your node is still catching up. Otherwise your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
+
+If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
+
+- [NodeStake](https://nodestake.top/ununifi)
+
+If you want to catch up from 0 height, you have to upgrade `ununifid` at each upgrade heights. See [mainnet-upgrades](../node/mainnet-upgrades.md).
