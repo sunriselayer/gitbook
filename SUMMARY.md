@@ -38,7 +38,7 @@
     * [wasm](cli/modules/wasm.md)
 * [Build a Node](node/build-node.md)
 * [Build a Validator Node](node/build-validator-node.md)
-* [Setup Cosmovisor](node/setting-cosmovisor.md)
+* [Setup Cosmovisor](node/setup-cosmovisor.md)
 * [Mainnet Upgrades](node/mainnet-upgrades.md)
 * [IBC Relayer](node/relayer.md)
   * [CosmosHub](node/relayer/cosmoshub.md)

@@ -39,7 +39,7 @@ The genesis binary is [v1.0.0-beta.1](https://github.com/UnUniFi/chain/releases/
 
 ### First Software upgrade
 
-Binary version is [v1.0.0-beta.3.1](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-beta.3.1).
+Binary version is [v1.0.0-v3.1.0](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-v3.1.0).
 
 ### Update Daemon for upgrade
 
