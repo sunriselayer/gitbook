@@ -205,5 +205,7 @@ This command returning `true` means that your node is still catching up. Otherwi
 If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
 
 - [NodeStake](https://nodestake.top/ununifi)
+- [NodeJumper](https://app.nodejumper.io/ununifi/sync)
+- [Nodeist](https://nodeist.net/Ununifi/)
 
 If you want to catch up from 0 height, you have to upgrade `ununifid` at each upgrade heights. See [mainnet-upgrades](../node/mainnet-upgrades.md).
