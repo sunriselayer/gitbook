@@ -24,6 +24,8 @@ UnUniFi’s Interchain Yield Aggregator dApp enables users to maximize their ret
   You can create a Vault by selecting the strategies to be used and their weights.
   The strategy weights cannot be changed. If you want to change the weights, abolish the vault and let them go to another vault of the same token.
 
+**Non developers can create a vault easily by using the web app, and earn fees!**
+
 ### What is the Strategy?
 
 Strategies are methods of how the tokens will be managed to earn a yield. Users can add available strategies through governance with proposals.
