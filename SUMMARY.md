@@ -1,6 +1,6 @@
 # UnUniFi
 
-## Learn
+## Overview
 
 * [About UnUniFi](README.md)
 * [NFT Backed Loan](overview/nft-backed-loan.md)
@@ -11,6 +11,7 @@
   * [Perpetual Futures](overview/derivatives/perpetual-futures.md)
   * [Liquidity Pool](overview/derivatives/pool.md)
 * [Governance Token Allocation](overview/governance-token-allocation.md)
+* [IBC Channels](overview/ibc-channels.md)
 
 ## Develop
 

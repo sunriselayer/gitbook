@@ -64,10 +64,4 @@ journalctl -u hermes.service -f
 | `neutron-1` | `07-tendermint-4` | `connection-3` |
 | `axelar-dojo-1` | `07-tendermint-5` | `connection-4` |
 
-## Channels
-
-| Chain ID | Port Id | Channel |
-| --- | --- | --- |
-| `cosmoshub-4` | `transfer` | `channel-0` |
-| `neutron-1` | `transfer` | `channel-1` |
-| `axelar-dojo-1` | `transfer` | `channel-2` |
+For channels, see [here](../overview/ibc-channels.md).

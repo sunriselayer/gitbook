@@ -38,7 +38,7 @@ ununifid tx staking create-validator \
 > The above transaction is just an example. There are many more flags that can be set to customise your validator, such as your validator website, or keybase.io id, etc. To see a full list:
 > `ununifid tx staking create-validator --help`
 
-### Backup critical files
+## Backup critical files
 
 There are certain files that you need to backup to be able to restore your validator if, for some reason, it damaged or lost in some way. Please make a secure backup of the following files located in `~/.ununifi/config/`:
 
@@ -46,3 +46,14 @@ There are certain files that you need to backup to be able to restore your valid
 - `node_key.json`
 
 It is recommended that you encrypt the backup of these files.
+
+## Additional incentives for validators
+
+The core team will delegate GUU to validators who serve following services:
+
+- IBC relayer
+  - `100000000uguu` delegation per channel
+- Node snapshot
+  - `10000000000uguu` delegation
+- REST API endpoints
+  - `10000000000uguu` delegation
