@@ -52,7 +52,7 @@ However, this Msg can be called by anyone (because this is not `SudoMsg`), so th
 
 ## QueryMsg
 
-````rust
+```rust
 #[cw_serde]
 #[derive(QueryResponses)]
 pub enum QueryMsg {
@@ -63,7 +63,7 @@ pub enum QueryMsg {
     #[returns(FeeResp)]
     Fee {},
 }
-````
+```
 
 ### `QueryMsg::Bonded`
 
@@ -105,3 +105,5 @@ Otherwise, the proposal for registering the strategy will be rejected.
 ## Proposal to register strategy
 
 Under construction.
+
+If it is urgent, please contact us directly.
