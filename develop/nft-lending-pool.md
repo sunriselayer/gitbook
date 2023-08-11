@@ -20,7 +20,7 @@ The program of the pool can be written as CosmWasm smart contract by third party
 #[derive(QueryResponses)]
 pub enum QueryMsg {
     #[returns(DenomResp)]
-    Denom { },
+    Denom {},
     #[returns(LoanLimitResp)]
     LoanLimit {
         class_id: String,
@@ -37,5 +37,6 @@ pub struct DenomResp {
 #[cw_serde]
 pub struct LoanLimitResp {
     amount: Uint128,
+    annual_interest_rate: Decimal,
 }
 ```
