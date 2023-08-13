@@ -10,7 +10,7 @@
 * [Derivatives](overview/derivatives.md)
   * [Perpetual Futures](overview/derivatives/perpetual-futures.md)
   * [Liquidity Pool](overview/derivatives/pool.md)
-* [Governance Token Allocation](overview/governance-token-allocation.md)
+* [Tokenomics](overview/tokenomics.md)
 * [IBC Channels](overview/ibc-channels.md)
 
 ## Develop
