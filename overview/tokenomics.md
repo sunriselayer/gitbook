@@ -18,9 +18,11 @@ We absolutely do not do initial coin offerings or token sales. Every token will 
 
 ### Transaction Fees
 
-Fees will be accumulated in the `FeePool` of `distribution` module in Cosmos SDK.
-
-We will burn all the GUU tokens in the pool via governance proposal.
+- Community Tax: 20% (We are planning to change this to 50%)
+  - We will burn GUU tokens via governance proposal.
+- Proposer Rewards: 80% (We are planning to change this to 50%)
+  - This is the reward for the proposer of the block in validators.
+  - This incentive secures the network.
 
 ### Core Module Comission Fees
 
