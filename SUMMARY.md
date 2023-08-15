@@ -7,6 +7,8 @@
   * [Bid](overview/nft-backed-loan/place-bid.md)
   * [Liquidation](overview/nft-backed-loan/liquidation.md)
 * [Interchain Yield Aggregator](overview/interchain-yield-aggregator.md)
+  * [Commission](overview/interchain-yield-aggregator/commission.md)
+  * [Withdraw Reserve Rate](overview/interchain-yield-aggregator/withdraw-reserve-rate.md)
 * [Derivatives](overview/derivatives.md)
   * [Perpetual Futures](overview/derivatives/perpetual-futures.md)
   * [Liquidity Pool](overview/derivatives/pool.md)
