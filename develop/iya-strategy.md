@@ -4,103 +4,54 @@
 This feature is available on the mainnet!
 {% endhint %}
 
-Development of IYA Strategy requires the knowledge of [CosmWasm](../develop/cosmwasm.md).
-
 ## Basic idea
 
 The `yieldaggregator` module on UnUniFi can call a functionality of the smart contracts that are registered as a **Strategy**.
 When users deposit their funds into the **Vault** on `yieldaggregator` module, the module will automatically allocate the funds to strategies that are contained in the **Vault**.
-Strategy contracts have to follow the interface described below.
+Strategy contracts satisfies the specific interface described [here](./iya-strategy/strategy-interface.md).
 
-## ExecuteMsg
+Example source codes are [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-example).
 
-```rust
-#[cw_serde]
-pub enum ExecuteMsg {
-    Stake(StakeMsg),
-    Unstake(UnstakeMsg),
-    ExecuteEpoch(ExecuteEpochMsg),
-}
+### Interchain Strategy
 
-#[cw_serde]
-pub struct StakeMsg {}
+Strategies that can completely run only on UnUniFi chain without interoperability, can be developed easily by the way described [here](./iya-strategy/strategy-interface.md).
 
-#[cw_serde]
-pub struct UnstakeMsg {
-    pub amount: Uint128,
-}
+However, developing interchain strategy only with CosmWasm smart contract on UnUniFi is not impossible but difficult.
+It is because Strategy contracts need to manage Interchain Account and Interchain Query, or something like that on EVM chains.
 
-#[cw_serde]
-pub struct ExecuteEpochMsg {}
+To mitigate the difficulty, you can combine some ways to develop strategy contracts.
 
-```
+- Developing contract on external CosmWasm chain with IBC Hooks
+- Developing contract on external EVM chain with Axelar
 
-### `ExecuteMsg::Stake`
+### Combination with contract on external CosmWasm chain
 
-On `ExecuteMsg::Stake`, staking amount is configured on `info.funds`.
+This way can be used for CosmWasm chains that is not requiring governance gate for deploying CosmWasm contracts, and supporting IBC Hooks module.
+For example, Neutron.
 
-### `ExecuteMsg::Unstake`
+Development of IYA Strategy requires the knowledge of [CosmWasm](../develop/cosmwasm.md).
 
-On `ExecuteMsg::Unstake`, unstaking amount is put as `Uint128` variable on `UnstakeMsg`.
+Details are described in [here](./iya-strategy/strategy-external-cosmwasm-ibchooks.md).
 
-### `ExecuteMsg::ExecuteEpoch`
+### Combination with contract on external EVM chain
 
-On `ExecuteMsg::ExecuteEpoch`, the strategy contract has to execute the periodical process of the strategy. For example, auto compounding.
+This way can be used for EVM chains.
+For example, Ethereum, Arbitrum, Avalanche c-chain, and Polygon.
 
-This Msg is called by `yieldaggregator` module periodically.
-However, this Msg can be called by anyone (because this is not `SudoMsg`), so the strategy contract must not implement logics that can be abused by malicious users.
+Details are described in [here](./iya-strategy/strategy-external-evm-axelar.md).
 
-## QueryMsg
+### Only with CosmWasm Strategy contract on UnUniFi
 
-```rust
-#[cw_serde]
-#[derive(QueryResponses)]
-pub enum QueryMsg {
-    #[returns(BondedResp)]
-    Bonded { addr: String },
-    #[returns(UnbondingResp)]
-    Unbonding { addr: String },
-    #[returns(FeeResp)]
-    Fee {},
-}
-```
+This way will be used for the strategy contracts that can't choose other ways.
+For example, Osmosis chain needs governance gate for deploying CosmWasm contracts.
+To avoid it, Osmosis LP farming strategy contract is developed with this way.
 
-### `QueryMsg::Bonded`
+For example, Sei chain doesn't support IBC Hooks.
+So, for example, Astroport LP farming strategy contract will be developed with this way.
 
-`QueryMsg::Bonded` needs following info for querying:
+#### Osmosis LP farming Strategy
 
-- `addr`: address of the **Vault** that deposit funds to the strategy.
-
-This query returns the amount of bonded tokens of the address.
-
-### Unbonding
-
-`QueryMsg::Unbonding` needs following info for querying:
-
-- `addr`: address of the **Vault** that deposit funds to the strategy.
-
-This query returns the amount unbonding tokens of the address.
-
-### `QueryMsg::Fee`
-
-`QueryMsg::Fee` needs no info for querying.
-
-This query returns `FeeResp` object that contains information of fees.
-
-```rust
-pub struct FeeResp {
-    pub deposit_fee_rate: Decimal,
-    pub withdraw_fee_rate: Decimal,
-    pub interest_fee_rate: Decimal,
-}
-```
-
-Developers who developed strategy contracts have to implement this query properly, to show how much fees are charged on the strategy to users.
-Otherwise, the proposal for registering the strategy will be rejected.
-
-### Source codes
-
-- <https://github.com/UnUniFi/contracts/blob/main/packages/strategy/src/v0/msgs.rs>
+Source codes are [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-osmosis).
 
 ## Proposal to register strategy
 
