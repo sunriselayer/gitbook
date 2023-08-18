@@ -24,7 +24,7 @@ UnUniFi’s Interchain Yield Aggregator dApp enables users to maximize their ret
   You can create a Vault by selecting the strategies to be used and their weights.
   The strategy weights cannot be changed. If you want to change the weights, abolish the vault and let them go to another vault of the same token.
 
-In the future, UnUniFi will supports the automatic rebalancing of allocation weight for strategies.
+In the future, UnUniFi will support the automatic rebalancing of allocation weight for strategies.
 This plan is under construction. In the current plan, validators will execute the script in IPFS that is designated by the vault creator, and validators will rebalance the allocation weight for strategies, following the result of the script.
 The result of the script will be processed by retrieving mean value of the result of the script from all validators. It is similar to oracle.
 
