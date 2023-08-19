@@ -13,7 +13,6 @@
 * [Derivatives](overview/derivatives.md)
   * [Perpetual Futures](overview/derivatives/perpetual-futures.md)
   * [Liquidity Pool](overview/derivatives/pool.md)
-* [NFT factory](overview/nftfactory.md)
 * [Tokenomics](overview/tokenomics.md)
 * [IBC Channels](overview/ibc-channels.md)
 
@@ -27,6 +26,7 @@
   * [Interface](develop/iya-strategy/strategy-interface.md)
   * [External CosmWasm chain with IBCHooks](develop/iya-strategy/strategy-external-cosmwasm-ibchooks.md)
   * [External EVM chain with Axelar](develop/iya-strategy/strategy-external-evm-axelar.md)
+* [NFT factory](develop/nftfactory.md)
 * [Frontend](develop/frontend.md)
   * [Cosmos Client TS](develop/frontend/cosmos-client.md)
 * [Resources](develop/resources.md)
