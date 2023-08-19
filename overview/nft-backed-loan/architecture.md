@@ -9,7 +9,7 @@ Though Peer-to-Pool lending depends on oracles, it can reduce the user operation
 
 By combining the two elements, the module can provide a new type of lending service.
 
-For developers, see [here](../develop/nft-lending-pool.md).
+For developers, see [here](../../../develop/nft-lending-pool.md).
 
 ## Generality of the architecture
 
