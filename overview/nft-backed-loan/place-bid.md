@@ -16,7 +16,7 @@
 
 - Interest Rate
 
-  Set the interest rates.
+  Set the annual interest rate to lend.
 
 - Expiration Date
 
@@ -30,53 +30,16 @@ Auto Payment is a feature that automatically pays the liquidation amount when th
 The bidder sets this when bidding.
 If there are insufficient balances at the time of liquidation, manual payment will be required.
 
-## Definition
+## Liquidation process
 
-- $$i \in I$$: index of bids
-- $$n = |I|$$: number of bids
-- $$\{p_i\}_{i \in I}$$: the price of $$i$$ th bid
-- $$\{d_i\}_{i \in I}$$: the deposit amount of $$i$$th bid
-- $$\{r_i\}_{i \in I}$$: the interest rate of $$i$$th bid
-- $$\{t_i\}_{i \in I}$$: the expiration date of $$i$$th bid
-- $$q = \frac{1}{n} \sum_{i \in I} p_i$$
-- $$s = \sum_{i \in I} d_i$$: means the amount which lister can borrow with NFT as collateral
-- $$\{a_i\}_{i \in I}$$: means the amount borrowed from $i$ th bid deposit
-- $$b = \sum_{i \in I} a_i$$
-- $$i_p(j)$$: means the index of the $$j$$ th highest price bid
-- $$i_d(j)$$: means the index of the $$j$$ th highest deposit amount bid
-- $$i_r(j)$$: means the index of the $$j$$ th lowest interest rate bid
-- $$i_t(j)$$: means the index of the $$j$$ th farthest expiration date bid
-- $$c$$: minimum deposit rate
+If the borrowed tokens are not returned by the bid's expiration date, a liquidation of the auction occurs.
 
-## New bid formulation
-
-When $$(p_{\text{new}}, d_{\text{new}}, r_{\text{new}}, t_{\text{new}})$$ will be added to the set of bids, the new bids sequence will be
-
-- $$I' = I \cup \{n+1\}$$
-- $$n' = n + 1$$
-- $$\{p_i'\}_{i \in I'} = \{p_i\}_{i \in I} \cup \{p_{\text{new}}\}$$
-- $$\{d_i'\}_{i \in I'} = \{d_i\}_{i \in I} \cup \{d_{\text{new}}\}$$
-- $$\{r_i'\}_{i \in I'} = \{r_i\}_{i \in I} \cup \{r_{\text{new}}\}$$
-- $$\{t_i'\}_{i \in I'} = \{t_i\}_{i \in I} \cup \{t_{\text{new}}\}$$
-- $$q' = \frac{1}{n'} \sum_{i \in I'} p_i'$$
-- $$s' = \sum_{i \in I'} d_i'$$
-
-where the prime means the next state.
-
-The constraint of $$d_{n+1}'$$ is
-
-$$
-  c p_{n+1}' \le d_{n+1}' \le q' - s
-$$
-
-In easy expression, it means
-
-$$
-  c p_{n+1}' \le d_{n+1}'
-$$
-
-$$
-  s' = s + d_{n+1}' \le q'
-$$
-
-where $$c$$ means minimum deposit rate.
+- The bidder must pay the remaining amount to settle (bid price - deposit price) by the payment deadline.
+- If the bidder does not pay the remaining amount, the deposit amount will be forfeited.
+- The winning bidder is determined by verifying the payment in descending order of deposit amount (not bid price), and the winning bidder is established once the payment is confirmed.
+- The guaranteed winning amount for the lister is only the total deposit price.
+- Unsuccessful bidders will have their deposits returned.
+- If interest accrues for the bidder, interest will be paid under the following conditions:
+  - If deposit interest < (winning bid amount - winning bidder's deposit amount): the bidder receives the full interest amount
+  - If deposit interest > (winning bid amount - winning bidder's deposit amount): the bidder receives a portion of the interest based on the proportion of all interest at the time of liquidation
+- If no bidder pays the liquidation amount, the NFT and the total deposit amount become the property of the lister.

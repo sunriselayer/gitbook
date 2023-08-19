@@ -4,8 +4,8 @@
 
 * [About UnUniFi](README.md)
 * [NFT Backed Loan](overview/nft-backed-loan.md)
+  * [List and Borrow](overview/nft-backed-loan/list-borrow.md)
   * [Bid](overview/nft-backed-loan/place-bid.md)
-  * [Liquidation](overview/nft-backed-loan/liquidation.md)
 * [Interchain Yield Aggregator](overview/interchain-yield-aggregator.md)
   * [Commission](overview/interchain-yield-aggregator/commission.md)
   * [Withdraw Reserve Rate](overview/interchain-yield-aggregator/withdraw-reserve-rate.md)
