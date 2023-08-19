@@ -12,6 +12,7 @@
 * [Derivatives](overview/derivatives.md)
   * [Perpetual Futures](overview/derivatives/perpetual-futures.md)
   * [Liquidity Pool](overview/derivatives/pool.md)
+* [NFT factory](overview/nftfactory.md)
 * [Tokenomics](overview/tokenomics.md)
 * [IBC Channels](overview/ibc-channels.md)
 
