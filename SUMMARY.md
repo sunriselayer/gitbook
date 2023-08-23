@@ -15,6 +15,7 @@
   * [Liquidity Pool](overview/derivatives/pool.md)
 * [Tokenomics](overview/tokenomics.md)
 * [IBC Channels](overview/ibc-channels.md)
+* [Security](overview/security.md)
 
 ## Develop
 
