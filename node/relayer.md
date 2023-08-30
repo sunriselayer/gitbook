@@ -60,8 +60,9 @@ journalctl -u hermes.service -f
 
 | Chain ID | Client | Connection |
 | --- | --- | --- |
-| `cosmoshub-4` | `07-tendermint-3` | `connection-2` |
+<!-- | `cosmoshub-4` | `07-tendermint-3` | `connection-2` |
 | `neutron-1` | `07-tendermint-4` | `connection-3` |
-| `axelar-dojo-1` | `07-tendermint-5` | `connection-4` |
+| `axelar-dojo-1` | `07-tendermint-5` | `connection-4` | -->
+| `osmosis-1` | `07-tendermint-8` | `connection-6` |
 
 For channels, see [here](../overview/ibc-channels.md).
