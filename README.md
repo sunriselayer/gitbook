@@ -1,6 +1,6 @@
 ---
 description: >-
-  UnUniFi is a fast, open, interoperable smart contracts layer 1 blockchain optimized for NFT-Fi infrastructure.
+  Aggregating the best DeFi + CeFi yield strategies for asset management for all investors
 ---
 
 # UnUniFi Documentation
@@ -9,9 +9,12 @@ description: >-
 
 ## What is UnUniFi?
 
-In the rapidly evolving landscape of blockchain technology, the convergence of Non-Fungible Tokens (NFTs) and decentralized finance (DeFi) has given rise to innovative possibilities. UnUniFi, a sector-specific blockchain, aims to revolutionize the NFT-Fi space by providing a fast, open, and interoperable smart contracts layer1 blockchain optimized for NFT-Fi infrastructure. With its focus on cross-chain capabilities and a suite of powerful dApps, UnUniFi is poised to unlock the full potential of NFTs and DeFi. UnUniFi believes the ethos of “NFT-Fi” encompasses both a significant technical expansion in DeFi technologies and a pioneering exploration of NFT utilities. Let’s delve into what UnUniFi is all about and explore its core offerings.
+Asset management platform that allows for the efficient operation of on-chain assets across other blockchains. The best yield generating strategies are aggregated cross-chain through integrations with many DeFi protocols and CeFi services. Professionally operated and custodied strategies are compliant for Institutional and Accredited Investors. One stop solution enabling individuals, DAOs, funds, and other protocols to earn yield against many opportunities, including DeFi, RWAs, Collateralized Assets, and more.
 
-To see the detail, visit [this Medium article](https://medium.com/@ununifi/ununifi-unlocking-the-power-of-nft-fi-on-our-cross-chain-layer-1-blockchain-c2673cfbb674).
+For a moment, UnUniFi will focus on expanding the strategies for asset management.
+In the future, NFT backed loan and derivatives will be added to the UnUniFi ecosystem, as a part of the asset management.
+
+To see the detail of NFT backed loan, visit [this Medium article](https://medium.com/@ununifi/ununifi-unlocking-the-power-of-nft-fi-on-our-cross-chain-layer-1-blockchain-c2673cfbb674).
 
 ### Resources
 
