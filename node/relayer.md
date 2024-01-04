@@ -2,12 +2,15 @@
 
 By setting up IBC relayer, you can create new connections and channels of IBC between UnUniFi and other blockchains.
 
-- [Go Relayer](https://github.com/cosmos/relayer)
-- [Hermes](https://hermes.informal.systems/)
-
 UnUniFi is registered in [Chain Registry](https://github.com/cosmos/chain-registry) as `ununifi`.
 
-## Setting up Relayer with Hermes
+## Setting up relayer with Go relayer (Recommended)
+
+You can see details [here](https://github.com/cosmos/relayer).
+
+At first, install [Go](https://go.dev/doc/install)
+
+## Setting up relayer with Rust relayer Hermes (Not recommended)
 
 At first, install [Rust](https://www.rust-lang.org/tools/install)
 
