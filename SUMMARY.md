@@ -1,6 +1,16 @@
-# UnUniFi
+# Sunrise / Gluon
 
-## Overview
+## Learn
+
+* [Sunrise](sunrise/learn/sunrise/overview)
+  * [Modular](sunrise/learn/sunrise/modular)
+  * [Restaking](sunrise/learn/sunrise/restaking)
+* [$SR](sunrise/learn/sr/overview)
+  * [Allocations](sunrise/learn/sr/allocation)
+  * [PoS](sunrise/learn/sr/pos)
+  * [Liquid Staking](sunrise/learn/sr/liquid-staking)
+
+## Deprecated (UnUniFi)
 
 * [About UnUniFi](README.md)
 * [Interchain Yield Aggregator](overview/interchain-yield-aggregator.md)
@@ -16,9 +26,6 @@
 * [Tokenomics](overview/tokenomics.md)
 * [IBC Channels](overview/ibc-channels.md)
 * [Security](overview/security.md)
-
-## Develop
-
 * [CosmWasm](develop/cosmwasm.md)
   * [Tutorial](develop/cosmwasm/tutorial.md)
   * [Create Project](develop/cosmwasm/create-project.md)
@@ -31,9 +38,6 @@
 * [Frontend](develop/frontend.md)
   * [Cosmos Client TS](develop/frontend/cosmos-client.md)
 * [Resources](develop/resources.md)
-
-## NODES
-
 * [Setup ununifid](node/setup-ununifid.md)
 * [ununifid](cli/cli-introduction.md)  
   * [Basic Commands](cli/ununifid-cli-commands.md)
@@ -46,9 +50,6 @@
 * [Setup Cosmovisor](node/setup-cosmovisor.md)
 * [Mainnet Upgrades](node/mainnet-upgrades.md)
 * [IBC Relayer](node/relayer.md)
-
-## LINKS
-
 * [GitHub](https://github.com/UnUniFi)
 * [Twitter](https://twitter.com/ununifi)
 * [Discord](https://discord.com/invite/ununifi)
