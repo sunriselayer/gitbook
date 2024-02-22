@@ -11,6 +11,13 @@
   * [PoS](sunrise/learn/sr/pos)
   * [Liquid Staking](sunrise/learn/sr/liquid-staking)
 
+## Node
+
+* [Build a Node](node/build-node.md)
+* [Build a Validator Node](node/build-validator-node.md)
+* [Setup Cosmovisor](node/setup-cosmovisor.md)
+* [IBC Relayer](node/relayer.md)
+
 ## Deprecated (UnUniFi)
 
 * [About UnUniFi](README.md)
