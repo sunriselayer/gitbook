@@ -2,14 +2,14 @@
 
 ## Learn
 
-* [Sunrise](sunrise/learn/sunrise/overview)
-  * [Modular](sunrise/learn/sunrise/modular)
-  * [Restaking](sunrise/learn/sunrise/restaking)
-  * [SPoL](sunrise/learn/sunrise/spol)
-* [$SR](sunrise/learn/sr/overview)
-  * [Allocations](sunrise/learn/sr/allocation)
-  * [PoS](sunrise/learn/sr/pos)
-  * [Liquid Staking](sunrise/learn/sr/liquid-staking)
+* [Sunrise](sunrise/learn/sunrise/overview.md)
+  * [Modular](sunrise/learn/sunrise/modular.md)
+  * [Restaking](sunrise/learn/sunrise/restaking.md)
+  * [SPoL](sunrise/learn/sunrise/spol.md)
+* [$SR](sunrise/learn/sr/overview.md)
+  * [Allocations](sunrise/learn/sr/allocation.md)
+  * [PoS](sunrise/learn/sr/pos.md)
+  * [Liquid Staking](sunrise/learn/sr/liquid-staking.md)
 
 ## Node
 
