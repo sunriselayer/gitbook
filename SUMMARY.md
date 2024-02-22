@@ -5,6 +5,7 @@
 * [Sunrise](sunrise/learn/sunrise/overview)
   * [Modular](sunrise/learn/sunrise/modular)
   * [Restaking](sunrise/learn/sunrise/restaking)
+  * [SPoL](sunrise/learn/sunrise/spol)
 * [$SR](sunrise/learn/sr/overview)
   * [Allocations](sunrise/learn/sr/allocation)
   * [PoS](sunrise/learn/sr/pos)
