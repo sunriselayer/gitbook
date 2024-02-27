@@ -19,6 +19,8 @@ In short, Data Availability (DA) layer plays a role of storing transaction data 
 
 ### Conventional rollup
 
+Example of Optimism:
+
 |||
 |---|---|
 | Execution layer | Optimism |
@@ -28,6 +30,8 @@ In short, Data Availability (DA) layer plays a role of storing transaction data 
 
 ### Smart contract rollup with altDA
 
+Example of Eclipse:
+
 |||
 |---|---|
 | Execution layer | Eclipse |
@@ -35,7 +39,9 @@ In short, Data Availability (DA) layer plays a role of storing transaction data 
 | Consensus layer | Ethereum |
 | Data Availability layer | Celestia |
 
-### Sovereign rollup on Sunrise
+### Sovereign rollup
+
+Example of Gluon:
 
 |||
 |---|---|
