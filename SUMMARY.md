@@ -3,6 +3,7 @@
 ## Learn
 
 * [Modular](sunrise/learn/modular/overview.md)
+  * [App chain thesis](sunrise/learn/modular/overview.md)
 * [Sunrise](sunrise/learn/sunrise/overview.md)
   * [Blob](sunrise/learn/sunrise/blob.md)
   * [BlobStream](sunrise/learn/sunrise/blobstream.md)

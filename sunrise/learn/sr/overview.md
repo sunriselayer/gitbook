@@ -24,11 +24,3 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 ## Listed exchanges
 
 - Coming soon
-
-## Usages
-
-### Staking
-
-### On-chain governance
-
-### Fee for BLOB space
