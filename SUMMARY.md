@@ -2,21 +2,25 @@
 
 ## Learn
 
+* [Modular](sunrise/learn/modular/overview.md)
 * [Sunrise](sunrise/learn/sunrise/overview.md)
-  * [Modular](sunrise/learn/sunrise/modular.md)
+  * [Blob](sunrise/learn/sunrise/blob.md)
+  * [BlobStream](sunrise/learn/sunrise/blobstream.md)
   * [Restaking](sunrise/learn/sunrise/restaking.md)
+  * [BlobGrant](sunrise/learn/sunrise/blobgrant.md)
+  * [Liquid Staking](sunrise/learn/sunrise/liquid-staking.md)
   * [SPoL](sunrise/learn/sunrise/spol.md)
 * [$SR](sunrise/learn/sr/overview.md)
   * [Allocations](sunrise/learn/sr/allocation.md)
   * [PoS](sunrise/learn/sr/pos.md)
-  * [Liquid Staking](sunrise/learn/sr/liquid-staking.md)
+  * [Usecases](sunrise/learn/sr/usecases.md)
 
 ## Node
 
-* [Build a Node](node/build-node.md)
-* [Build a Validator Node](node/build-validator-node.md)
-* [Setup Cosmovisor](node/setup-cosmovisor.md)
-* [IBC Relayer](node/relayer.md)
+* [Build a Node](sunrise/node/build-node.md)
+* [Build a Validator Node](sunrise/node/build-validator-node.md)
+* [Setup Cosmovisor](sunrise/node/setup-cosmovisor.md)
+* [IBC Relayer](sunrise/node/relayer.md)
 
 ## Deprecated (UnUniFi)
 
