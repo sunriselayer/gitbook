@@ -15,6 +15,7 @@
   * [Allocations](sunrise/learn/sr/allocation.md)
   * [PoS](sunrise/learn/sr/pos.md)
   * [Usecases](sunrise/learn/sr/usecases.md)
+* [FAQ](sunrise/learn/faq.md)
 
 ## Node
 
