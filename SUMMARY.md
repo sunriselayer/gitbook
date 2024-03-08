@@ -1,4 +1,6 @@
-# Sunrise / Gluon
+# Table of contents
+
+* [README](README.md)
 
 ## Learn
 
@@ -41,7 +43,7 @@
   * [Cosmos Client TS](develop/frontend/cosmos-client.md)
 * [Resources](develop/resources.md)
 * [Setup ununifid](node/setup-ununifid.md)
-* [ununifid](cli/cli-introduction.md)  
+* [ununifid](cli/cli-introduction.md)
   * [Basic Commands](cli/ununifid-cli-commands.md)
   * [Module Commands](cli/modules/README.md)
     * [wasm](cli/modules/wasm.md)
