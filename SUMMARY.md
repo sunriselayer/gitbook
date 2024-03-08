@@ -26,6 +26,10 @@
 * [Setup Cosmovisor](sunrise/node/setup-cosmovisor.md)
 * [IBC Relayer](sunrise/node/relayer.md)
 
+## Links
+
+* [GitHub](https://github.com/SunriseLayer)
+
 ## Deprecated (UnUniFi)
 
 * [IBC Channels](overview/ibc-channels.md)
