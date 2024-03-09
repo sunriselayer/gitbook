@@ -16,8 +16,8 @@
 * [$SR](sunrise/learn/sr/sr.md)
   * [Allocations](sunrise/learn/sr/allocation.md)
   * [PoS](sunrise/learn/sr/pos.md)
-  * [Usecases](sunrise/learn/sr/usecases.md)
 * [Gluon](sunrise/learn/gluon/gluon.md)
+  * [Interest Rate Swap](sunrise/learn/gluon/interest-rate-swap.md)
 * [$GLU](sunrise/learn/glu/glu.md)
 * [FAQ](sunrise/learn/faq.md)
 

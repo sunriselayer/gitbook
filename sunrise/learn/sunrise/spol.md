@@ -13,9 +13,9 @@ SPoL is a mechanism that can reward both participants at the same time.
 Imagine that there is a Sovereign rollup called XXX. The native token of XXX is called $XXX. The SPoL mechanism is as follows:
 
 - Gluon supports DEX pair of $XXX and $BondedSR, the Liquid Staking Token of $SR.
-  - The DEX pair is called $XXX/$BondedSR.
-- Gluon supports LP token of $XXX/$BondedSR.
-  - Let's call the LP token as $LP-XXX/$BondedSR.
-- Sunrise and Gluon supports staking of $LP-XXX/$BondedSR for Sovereign rollups.
+  - The DEX pair is called `XXX/BondedSR`.
+- Gluon supports LP token of `XXX/BondedSR`.
+  - Let's call the LP token as `LP-XXX/BondedSR`.
+- Sunrise and Gluon supports staking of `LP-XXX/BondedSR` for Sovereign rollups.
 
-In this mechanism, the participants can stake $LP-XXX/$BondedSR to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of $LP-XXX/$BondedSR with $XXX and $BondedSR at the same time, and make their token liquidity.
+In this mechanism, the participants can stake `LP-XXX/BondedSR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of `LP-XXX/BondedSR` with $XXX and $BondedSR at the same time, and make their token liquidity.
