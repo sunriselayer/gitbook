@@ -18,6 +18,7 @@
   * [PoS](sunrise/learn/sr/pos.md)
 * [Gluon](sunrise/learn/gluon/gluon.md)
   * [Interest Rate Swap](sunrise/learn/gluon/interest-rate-swap.md)
+  * [Liquidity Router](sunrise/learn/gluon/liquidity-router.md)
 * [$GLU](sunrise/learn/glu/glu.md)
 * [FAQ](sunrise/learn/faq.md)
 
