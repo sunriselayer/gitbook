@@ -6,6 +6,7 @@
 
 * [Modular](sunrise/learn/modular/modular.md)
   * [App chain thesis](sunrise/learn/modular/app-chain-thesis.md)
+  * [Interoperability](sunrise/learn/modular/interoperability.md)
 * [Sunrise](sunrise/learn/sunrise/sunrise.md)
   * [Blob](sunrise/learn/sunrise/blob.md)
   * [BlobStream](sunrise/learn/sunrise/blobstream.md)

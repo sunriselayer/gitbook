@@ -19,3 +19,5 @@ In addition, Sunrise has unique features:
 - Acceptance of any token for DA fee (BlobGrant)
 - Native Liquid Staking
 - Sovereign Proof of Liquidity (SPoL)
+
+Furthermore, Sunrise is IBC compatible.
