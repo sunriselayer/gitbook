@@ -7,7 +7,7 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 
 - Ticker: SR
 - Denom in the blockchain: `microSR`
-- Initial total supply: 1,000,000SR = `1_000_000_000_000microSR`
+- Initial total supply: 1,000,000,000SR = `1_000_000_000_000_000microSR`
 
 ## Usecases
 
