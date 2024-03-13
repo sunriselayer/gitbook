@@ -1,18 +1,16 @@
-# Relayer
+# IBC Relayer
 
-By setting up IBC relayer, you can create new connections and channels of IBC between Sunrise and other blockchains.
-
-<!-- UnUniFi is registered in [Chain Registry](https://github.com/cosmos/chain-registry) as `ununifi`. -->
+By setting up the IBC relayer, you can create new connections and channels of IBC between Sunrise and other blockchains.
 
 ## Setting up relayer with Go relayer (Recommended)
 
 You can see details [here](https://github.com/cosmos/relayer).
 
-At first, install [Go](https://go.dev/doc/install)
+First, install [Go](https://go.dev/doc/install)
 
 ## Setting up relayer with Rust relayer Hermes (Not recommended)
 
-At first, install [Rust](https://www.rust-lang.org/tools/install)
+First, install [Rust](https://www.rust-lang.org/tools/install)
 
 Then, run the commands below:
 
@@ -58,6 +56,3 @@ journalctl -u hermes.service -f
 ```
 
 ## Clients and Connections
-
-| Chain ID | Client | Connection |
-| --- | --- | --- |

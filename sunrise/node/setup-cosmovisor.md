@@ -2,8 +2,8 @@
 
 **For mainnet, it's recommended to use Cosmovisor to run your node.**
 
-Setting up Cosmovisor is relatively straightforward. However, it does expect certain environment variables and folder structure to be set. \
-Cosmovisor allows you to download binaries ahead of time for chain upgrades, meaning that you can do zero (or close to zero) downtime chain upgrades. It's also useful if your local timezone means that a chain upgrade will fall at a bad time. \
+Setting up Cosmovisor is relatively straightforward. However, it does expect certain environment variables and folder structure to be set.\
+Cosmovisor allows you to download binaries ahead of time for chain upgrades, meaning that you can do zero (or close to zero) downtime chain upgrades. It's also useful if your local timezone means that a chain upgrade will fall at a bad time.\
 Rather than having to do stressful ops tasks late at night, it's always better if you can automate them away, and that's what Cosmovisor tries to do.
 
 ## Install
@@ -68,9 +68,7 @@ cp ~/go/bin/$DAEMON_NAME $DAEMON_HOME/cosmovisor/genesis/bin
 
 ### Set up service
 
-Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `sunrised version`.
-Nevertheless, just as we would manage `sunrised` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example an error or reboot.
-First, create the service file:
+Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `sunrised version`. Nevertheless, just as we would manage `sunrised` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example, an error or reboot. First, create the service file:
 
 ```Bash
 sudo nano /lib/systemd/system/cosmovisor.service
@@ -103,8 +101,7 @@ WantedBy=multi-user.target
 
 ### Start Cosmovisor
 
-> !! If syncing from a snapshot, do not start Cosmovisor yet.
-> Finally, enable the service and start it.
+> !! If syncing from a snapshot, do not start Cosmovisor yet. Finally, enable the service and start it.
 
 ```Bash
 sudo systemctl daemon-reload

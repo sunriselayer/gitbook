@@ -1,6 +1,6 @@
 # BlobGrant
 
-Sunrise accepts any token for Data Availability (DA) fee. This feature is called BlobGrant.
+Sunrise accepts any token for a Data Availability (DA) fee. This feature is called BlobGrant.
 
 ## How it works
 
