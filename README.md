@@ -1,8 +1,9 @@
 ---
 description: >-
-  Sunrise Layer 1 for modular Data Availability and Gluon Sovereign rollup for strategic yield hub for modular era.
+  Sunrise Layer 1 for modular Data Availability and Gluon Sovereign rollup for
+  strategic yield hub for the modular era.
 ---
 
-# Sunrise / Gluon Documentation
+# README
 
 [https://docs.sunriselayer.io](https://docs.sunriselayer.io)

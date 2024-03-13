@@ -1,12 +1,10 @@
 # Interest Rate Swap
 
-Gluon serves a functionality to swap interest rate.
-It enables users to have fixed yield position or leveraged variable yield position for an interchain yield.
+Gluon serves as a functionality to swap interest rates. It enables users to have a fixed yield position or leveraged variable yield position for an interchain yield.
 
 ## Mechanism
 
-The fixed yield rate will be realized by using zero coupon bond.
-The basic mechanism is similar to Pendle finance.
+The fixed yield rate will be realized by using zero coupon bond. The basic mechanism is similar to Pendle finance.
 
 IRS(Interest Rate Swap) is to tokenize underlying yield asset (UT) into principal tokens and yield tokens.
 Principal tokens (PT) for fixed yield users and yield tokens (YT) for leveraged variable yield users.
@@ -97,8 +95,8 @@ Note: For the early access to the fund, user can sell PT for UT before maturity.
 
 ## Strategies
 
-Strategies can be extended by using CosmWasm smart contract.
-For example, stATOM strategy that is implemented by CosmWasm smart contract can be used for the fixed yield position of ATOM staking reward.
+Strategies can be extended by using the CosmWasm smart contract.
+For example, stATOM strategy that is implemented by the CosmWasm smart contract can be used for the fixed yield position of ATOM staking reward.
 
 ### IRS strategy restrictions
 
