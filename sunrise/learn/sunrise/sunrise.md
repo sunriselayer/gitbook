@@ -4,7 +4,7 @@ Sunrise is a L1 blockchain that supports building blockchains with a modular blo
 
 Sunrise has a mechanism called Data Availability Sampling, hence it can support any blockchain builders to build scalable blockchain.
 
-Sunrise DA layer has compatibility with the Celestia ecosystem. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, and so on) which support Celestia, can also support Sunrise easily.
+Sunrise DA layer has compatibility with the Celestia's architecture. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, and so on) which support Celestia, can also support Sunrise easily.
 
 Celestia-compatible features:
 
