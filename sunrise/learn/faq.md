@@ -10,7 +10,7 @@ Layer 2 blockchain developers or Sovereign rollup developers will use Sunrise di
 
 ## What is the $SR token used for?
 
-Go [here](broken-reference).
+Go [here](./sr/sr.md).
 
 ## Is Sunrise the same as Celestia?
 
