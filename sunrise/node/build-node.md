@@ -2,7 +2,7 @@
 
 ## Chain upgrades
 
-For streamline chain upgrades and minimizing downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
+For streamline chain upgrades and minimize downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
 
 ## Backups
 
@@ -10,19 +10,7 @@ If you are using a recent version of Cosmovisor, then the default configuration 
 
 ## Alerting and monitoring
 
-Alerting and monitoring is desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the box, and there are a variety of open-source tools. Recommended reading:
-
-<!-- ##### Alerting:
-
-- Tenderduty: https://github.com/blockpane/tenderduty
-- PANIC: https://github.com/SimplyVC/panic_cosmos
-
-##### Monitoring:
-
-- https://medium.com/solar-labs-team/cosmos-how-to-monitoring-your-validator-892a46298722
-- https://medium.com/simply-vc/cosmos-monitoring-and-alerting-for-validators-8e3f016c9567
-- https://chainflow.io/cosmos-validator-mission-control/
-- https://medium.com/cypher-core/cosmos-how-to-set-up-your-own-network-monitoring-dashboard-fe49c63a8271 -->
+Alerting and monitoring are desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the-box, and there are a variety of open-source tools. Recommended reading:
 
 ## Avoiding DDOS attacks
 
@@ -40,12 +28,12 @@ Disk space is likely to fill up, so having a plan for managing storage is key.
 
 If you are running sentry nodes:
 
-- 1TB storage for the full node will give you a lot of runway
-- 200GB each for the sentries with pruning should be sufficient
+* 1TB storage for the full node will give you a lot of runway
+* 200GB each for the sentries with pruning should be sufficient
 
 Managing backups is outside the scope of this documentation, but several validators keep public snapshots and backups.
 
-It is anticipated that state-sync will soon work for wasm chains, although it does not currettly.
+It is anticipated that state-sync will soon work for wasm chains, although it does not currently.
 
 ## Joining network
 
@@ -89,9 +77,9 @@ sunrised init "$MONIKER" --chain-id $CHAIN_ID
 
 This will generate the following files in `~/.sunrise/config/`
 
-- `genesis.json`
-- `node_key.json`
-- `priv_validator_key.json`
+* `genesis.json`
+* `node_key.json`
+* `priv_validator_key.json`
 
 ### Download the genesis file
 
@@ -131,7 +119,7 @@ echo "export PEERS=\"65710949120e28f8af12f81b75efd2a509280f70@a.ununifi-test-v1.
 source .bash_profile
 ```
 
-Using the peers variable above, we can set the persistent_peers in `~/.sunrise/config/config.toml`:
+Using the peers variable above, we can set the persistent\_peers in `~/.sunrise/config/config.toml`:
 
 ```bash
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.sunrise/config/config.toml
@@ -139,7 +127,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.sunri
 
 ### Set minimum gas prices
 
-For RPC nodes and Validator nodes we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
+For RPC nodes and Validator nodes, we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
 
 In `$HOME/.sunrise/config/app.toml`, set minimum gas prices:
 
@@ -149,15 +137,15 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uguu\"/" 
 
 ### Additional settings
 
-If you necessary, Edit config files `~/.sunrise/config/app.toml`
+If necessary, Edit config files `~/.sunrise/config/app.toml`
 
-- `pruning`
-- Enable defines if the API server should be enabled. `enable = true`
-- EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk). `enabled-unsafe-cors = true`
+* `pruning`
+* Enable defines if the API server should be enabled. `enable = true`
+* EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk). `enabled-unsafe-cors = true`
 
 ### Create (or restore) a local key pair
 
-Either create a new key pair, or restore an existing wallet for your validator:
+Either create a new key pair or restore an existing wallet for your validator:
 
 ```Bash
 # Create new keypair
@@ -177,7 +165,7 @@ You will require some SR tokens to bond to your validator. To be in the active s
 
 ### Setup cosmovisor and start the node
 
-Follow instructions to setup cosmovisor and start the node.
+Follow the instructions to set up cosmovisor and start the node.
 
 > Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
 
@@ -185,15 +173,15 @@ If you are not using Cosmovisor you can start node: `sunrised start`
 
 ### Syncing the node
 
-After starting the `sunrised` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node:
+After starting the `sunrised` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain but could take a very long time. To query the status of your node:
 
 ```Bash
 # Query via the RPC (default port: 26657)
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-This command returning `true` means that your node is still catching up. Otherwise your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
+This command returning `true` means that your node is still catching up. Otherwise, your node has caught up to the network's current block and you are safe to proceed to upgrade to a validator node.
 
-If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
+If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
 
-If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade heights. See [mainnet-upgrades](../node/mainnet-upgrades.md).
+If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade height. See [mainnet-upgrades](mainnet-upgrades.md).
