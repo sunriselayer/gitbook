@@ -45,7 +45,7 @@ For this guide, we will be using shell variables. This will enable the use of th
 
 If you want variables to persist for multiple sessions, then set them explicitly in your shell `.bash_profile`, as you did for the Go environment variables.
 
-To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should be named with ALL CAPS.
+To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should be named in ALL CAPS.
 
 ### Choose the required mainnet chain-id
 
