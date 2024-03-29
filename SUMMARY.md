@@ -11,8 +11,8 @@
   * [Blob](sunrise/learn/sunrise/blob.md)
   * [BlobStream](sunrise/learn/sunrise/blobstream.md)
   * [Restaking](sunrise/learn/sunrise/restaking.md)
-  * [Chain Abstraction](sunrise/learn//sunrise/chain-abstraction.md)
   * [BlobGrant](sunrise/learn/sunrise/blobgrant.md)
+  * [Archive](sunrise/learn/sunrise/archive.md)
   * [Liquid Staking](sunrise/learn/sunrise/liquid-staking.md)
   * [Liquidity Pool](sunrise/learn/sunrise/liquidity-pool.md)
   * [Liquidity Restaking](sunrise/learn/sunrise/liquidity-restaking.md)
@@ -23,6 +23,7 @@
 * [Gluon](sunrise/learn/gluon/gluon.md)
   * [Interest Rate Swap](sunrise/learn/gluon/interest-rate-swap.md)
   * [Liquidity Router](sunrise/learn/gluon/liquidity-router.md)
+  * [Chain Abstraction](sunrise/learn/gluon/chain-abstraction.md)
 * [$GLU](sunrise/learn/glu/glu.md)
 * [FAQ](sunrise/learn/faq.md)
 
