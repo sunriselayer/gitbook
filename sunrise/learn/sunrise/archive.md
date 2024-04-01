@@ -7,4 +7,4 @@ Sunrise hear the voices of the market like Blockchain Game developers that Layer
 So We will serve a mechanism to preserve full archive data as a network.
 It means that the operation of full archive nodes of Sunrise is not voluntary.
 
-`archive` module incentivizes people to run full archive nodes.
+`archive` module manage the long term data availability by periodically generate the DA attestations and the payment for the fee of long term DA attestation and data preservation.
