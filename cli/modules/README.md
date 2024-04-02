@@ -2,13 +2,13 @@
 description: CLI reference for ununifid modules
 ---
 
-# Module Reference
+# Module Commands
 
 ## `derivatives`
 
 `derivatives` module allows you to manage assets through derivatives.
 
-[`derivatives` CLI](derivatives.md)
+[`derivatives` CLI](broken-reference)
 
 ## `nftbackedloan`
 
