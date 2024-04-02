@@ -16,7 +16,6 @@
   * [Liquidity Pool](sunrise/learn/sunrise/liquidity-pool.md)
   * [SPoL](sunrise/learn/sunrise/spol.md)
   * [Liquidity Restaking](sunrise/learn/sunrise/liquidity-restaking.md)
-  * [Chain Abstraction](learn/sunrise/chain-abstraction.md)
   * [Restaking](sunrise/learn/sunrise/restaking.md)
 * [$SR](sunrise/learn/sr/sr.md)
   * [Allocations](sunrise/learn/sr/allocation.md)
