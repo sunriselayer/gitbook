@@ -11,6 +11,7 @@
   * [Blob](sunrise/learn/sunrise/blob.md)
   * [BlobStream](sunrise/learn/sunrise/blobstream.md)
   * [BlobGrant](sunrise/learn/sunrise/blobgrant.md)
+  * [DAS Incentive](sunrise/learn/sunrise/das-incentive.md)
   * [Archive](sunrise/learn/sunrise/archive.md)
   * [Liquid Staking](sunrise/learn/sunrise/liquid-staking.md)
   * [Liquidity Pool](sunrise/learn/sunrise/liquidity-pool.md)
