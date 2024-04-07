@@ -1,8 +1,6 @@
 # Sunrise
 
-Sunrise is a L1 blockchain that supports building blockchains with a modular blockchain paradigm, as a Data Availability layer. Any blockchain builders can use Sunrise for Data Availability. It means that data of the blockchains will be preserved in the Sunrise network.
-
-Sunrise has a mechanism called Data Availability Sampling, hence it can support any blockchain builders to build scalable blockchain.
+Sunrise is a L1 blockchain that serves Data Availability in the modular paradigm.
 
 Sunrise DA layer has compatibility with the Celestia's architecture. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, and so on) which support Celestia, can also support Sunrise easily.
 
@@ -13,9 +11,14 @@ Celestia-compatible features:
 
 In addition, Sunrise has unique features:
 
-* Acceptance of restaking
 * Acceptance of any token for DA fee (BlobGrant)
 * Native Liquid Staking
+* Liquidity Restaking
+* DAS Incentive
+* Incentive for optional long term data availability
 * Sovereign Proof of Liquidity (SPoL)
 
-Furthermore, Sunrise is IBC compatible.
+Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
+Sunrise also has a mechanism to incentivize DA network whereas other DA networks depends on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, game, and so on.
+
+Furthermore, Sunrise is IBC (Inter Blockchain Communication) compatible.
