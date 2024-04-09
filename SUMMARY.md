@@ -4,9 +4,6 @@
 
 ## Learn
 
-* [Modular](sunrise/learn/modular/modular.md)
-  * [App chain thesis](sunrise/learn/modular/app-chain-thesis.md)
-  * [Interoperability](sunrise/learn/modular/interoperability.md)
 * [Sunrise](sunrise/learn/sunrise/sunrise.md)
   * [Blob](sunrise/learn/sunrise/blob.md)
   * [BlobStream](sunrise/learn/sunrise/blobstream.md)
@@ -18,6 +15,9 @@
   * [SPoL](sunrise/learn/sunrise/spol.md)
   * [Liquidity Restaking](sunrise/learn/sunrise/liquidity-restaking.md)
   * [Restaking](sunrise/learn/sunrise/restaking.md)
+* [Modular](sunrise/learn/modular/modular.md)
+  * [App chain thesis](sunrise/learn/modular/app-chain-thesis.md)
+  * [Interoperability](sunrise/learn/modular/interoperability.md)
 * [$SR](sunrise/learn/sr/sr.md)
   * [Allocations](sunrise/learn/sr/allocation.md)
   * [PoS](sunrise/learn/sr/pos.md)
