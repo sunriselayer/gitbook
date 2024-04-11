@@ -1,16 +1,18 @@
 # IBC Relayer
 
-By setting up the IBC relayer, you can create new connections and channels of IBC between Sunrise and other blockchains.
+By setting up IBC relayer, you can create new connections and channels of IBC between UnUniFi and other blockchains.
+
+UnUniFi is registered in [Chain Registry](https://github.com/cosmos/chain-registry) as `ununifi`.
 
 ## Setting up relayer with Go relayer (Recommended)
 
 You can see details [here](https://github.com/cosmos/relayer).
 
-First, install [Go](https://go.dev/doc/install)
+At first, install [Go](https://go.dev/doc/install)
 
 ## Setting up relayer with Rust relayer Hermes (Not recommended)
 
-First, install [Rust](https://www.rust-lang.org/tools/install)
+At first, install [Rust](https://www.rust-lang.org/tools/install)
 
 Then, run the commands below:
 
@@ -26,7 +28,9 @@ echo word1 ... word12or24 > ~/mnemonic.txt
 
 ### Setting up config
 
-Under construction.
+* [CosmosHub](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/cosmoshub.md)
+* [Axelar](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/axelar.md)
+* [Neutron](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/neutron.md)
 
 ### Setting up daemon
 
@@ -56,3 +60,12 @@ journalctl -u hermes.service -f
 ```
 
 ## Clients and Connections
+
+| Chain ID        | Client            | Connection     |
+| --------------- | ----------------- | -------------- |
+| `osmosis-1`     | `07-tendermint-8` | `connection-6` |
+| `cosmoshub-4`   | `07-tendermint-3` | `connection-7` |
+| `axelar-dojo-1` | `07-tendermint-5` | `connection-8` |
+| `neutron-1`     | `07-tendermint-4` | `connection-9` |
+
+For channels, see [here](ibc-channels.md).

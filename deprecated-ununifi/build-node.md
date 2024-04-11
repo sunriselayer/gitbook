@@ -2,7 +2,7 @@
 
 ## Chain upgrades
 
-For streamline chain upgrades and minimize downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
+For streamline chain upgrades and minimizing downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
 
 ## Backups
 
@@ -10,7 +10,7 @@ If you are using a recent version of Cosmovisor, then the default configuration 
 
 ## Alerting and monitoring
 
-Alerting and monitoring are desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the-box, and there are a variety of open-source tools. Recommended reading:
+Alerting and monitoring is desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the box, and there are a variety of open-source tools. Recommended reading:
 
 ## Avoiding DDOS attacks
 
@@ -33,11 +33,11 @@ If you are running sentry nodes:
 
 Managing backups is outside the scope of this documentation, but several validators keep public snapshots and backups.
 
-It is anticipated that state-sync will soon work for wasm chains, although it does not currently.
+It is anticipated that state-sync will soon work for wasm chains, although it does not currettly.
 
 ## Joining network
 
-General instructions to join the Sunrise mainnet after network genesis.
+General instructions to join the UnUniFi mainnet after network genesis.
 
 ### Configuration of Shell Variables
 
@@ -45,14 +45,22 @@ For this guide, we will be using shell variables. This will enable the use of th
 
 If you want variables to persist for multiple sessions, then set them explicitly in your shell `.bash_profile`, as you did for the Go environment variables.
 
-To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should be named in ALL CAPS.
+To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should be named with ALL CAPS.
 
 ### Choose the required mainnet chain-id
+
+The current UnUniFi Network `chain-id` is `ununifi-beta-v1`. Set the `CHAIN_ID`:
+
+For mainnet:
+
+```bash
+CHAIN_ID=ununifi-beta-v1
+```
 
 For testnet:
 
 ```bash
-CHAIN_ID=sunrise-test-1
+CHAIN_ID=ununifi-test-v1
 ```
 
 ### Set your server name
@@ -72,10 +80,10 @@ These instructions will direct you on how to initialize your node, synchronize t
 ### Initialize the chain
 
 ```bash
-sunrised init "$MONIKER" --chain-id $CHAIN_ID
+ununifid init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-This will generate the following files in `~/.sunrise/config/`
+This will generate the following files in `~/.ununifi/config/`
 
 * `genesis.json`
 * `node_key.json`
@@ -86,18 +94,18 @@ This will generate the following files in `~/.sunrise/config/`
 For mainnet:
 
 ```bash
-rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
+rm ~/.ununifi/config/genesis.json
+curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-beta-v1/genesis.json -o ~/.ununifi/config/genesis.json
 ```
 
 For testnet:
 
 ```bash
-rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
+rm ~/.ununifi/config/genesis.json
+curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-test-v1/genesis.json -o ~/.ununifi/config/genesis.json
 ```
 
-This will replace the genesis file `genesis.json` created by `sunrised init` command.
+This will replace the genesis file `genesis.json` created by `ununifid init` command.
 
 ### Set persistent peers
 
@@ -119,25 +127,25 @@ echo "export PEERS=\"65710949120e28f8af12f81b75efd2a509280f70@a.ununifi-test-v1.
 source .bash_profile
 ```
 
-Using the peers variable above, we can set the persistent\_peers in `~/.sunrise/config/config.toml`:
+Using the peers variable above, we can set the persistent\_peers in `~/.ununifi/config/config.toml`:
 
 ```bash
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.sunrise/config/config.toml
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.ununifi/config/config.toml
 ```
 
 ### Set minimum gas prices
 
-For RPC nodes and Validator nodes, we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
+For RPC nodes and Validator nodes we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
 
-In `$HOME/.sunrise/config/app.toml`, set minimum gas prices:
+In `$HOME/.ununifi/config/app.toml`, set minimum gas prices:
 
 ```Bash
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uguu\"/" $HOME/.sunrise/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uguu\"/" $HOME/.ununifi/config/app.toml
 ```
 
 ### Additional settings
 
-If necessary, Edit config files `~/.sunrise/config/app.toml`
+If you necessary, Edit config files `~/.ununifi/config/app.toml`
 
 * `pruning`
 * Enable defines if the API server should be enabled. `enable = true`
@@ -145,43 +153,48 @@ If necessary, Edit config files `~/.sunrise/config/app.toml`
 
 ### Create (or restore) a local key pair
 
-Either create a new key pair or restore an existing wallet for your validator:
+Either create a new key pair, or restore an existing wallet for your validator:
 
 ```Bash
 # Create new keypair
-sunrised keys add <your-key>
-# Restore existing sunrise wallet with mnemonic seed phrase.
+ununifid keys add <your-key>
+# Restore existing ununifi wallet with mnemonic seed phrase.
 # You will be prompted to enter mnemonic seed.
-sunrised keys add <your-key> --recover
+ununifid keys add <your-key> --recover
 # Query the keystore for your public address
-sunrised keys show <your-key> -a
+ununifid keys show <your-key> -a
 ```
 
 Replace `<your-key>` with a key name of your choosing.
 
-### Get some SR tokens
+### Get some UnUniFi tokens
 
-You will require some SR tokens to bond to your validator. To be in the active set you will need to have enough tokens.
+You will require some UnUniFi tokens to bond to your validator. To be in the active set you will need to have enough tokens.
 
 ### Setup cosmovisor and start the node
 
-Follow the instructions to set up cosmovisor and start the node.
+Follow instructions to setup cosmovisor and start the node.
 
 > Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
 
-If you are not using Cosmovisor you can start node: `sunrised start`
+If you are not using Cosmovisor you can start node: `ununifid start`
 
 ### Syncing the node
 
-After starting the `sunrised` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain but could take a very long time. To query the status of your node:
+After starting the `ununifid` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node:
 
 ```Bash
 # Query via the RPC (default port: 26657)
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-This command returning `true` means that your node is still catching up. Otherwise, your node has caught up to the network's current block and you are safe to proceed to upgrade to a validator node.
+This command returning `true` means that your node is still catching up. Otherwise your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
 
-If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
+If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
 
-If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade height. See [mainnet-upgrades](https://github.com/UnUniFi/gitbook/blob/main/sunrise/node/mainnet-upgrades.md).
+* [NodeStake](https://nodestake.top/ununifi)
+* [NodeJumper](https://app.nodejumper.io/ununifi/sync)
+* [Nodeist](https://nodeist.net/Ununifi/)
+* [genznodes](https://genznodes.dev/services/)
+
+If you want to catch up from 0 height, you have to upgrade `ununifid` at each upgrade heights. See [mainnet-upgrades](mainnet-upgrades.md).
