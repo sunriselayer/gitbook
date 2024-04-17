@@ -1,7 +1,7 @@
 ---
 description: >-
-  Sunrise is a Layer 1 blockchain protocol for modular data availability. Gluon
-  is a strategic yield for the modular era.
+  Sunrise is a specialized Data Availability Layer for Fee Abstraction and Proof
+  of Liquidity. Gluon is a Strategic Yield Hub for the Modular Era.
 ---
 
 # README
