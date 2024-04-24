@@ -49,6 +49,12 @@ To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should 
 
 ### Choose the required mainnet chain-id
 
+For mainnet:
+
+```bash
+CHAIN_ID=sunrise-1
+```
+
 For testnet:
 
 ```bash
