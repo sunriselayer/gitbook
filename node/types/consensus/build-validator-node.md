@@ -22,7 +22,7 @@ To upgrade the node to a validator, you will need to submit a create-validator t
 
 ```Bash
 sunrised tx staking create-validator \
-  --amount 1000000uguu \
+  --amount 1000000usr \
   --commission-max-change-rate "0.1" \
   --commission-max-rate "0.20" \
   --commission-rate "0.1" \

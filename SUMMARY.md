@@ -28,12 +28,22 @@
 * [$GLU](learn/glu.md)
 * [FAQ](learn/faq.md)
 
-## Node
+## Run a Sunrise Node
 
-* [Build a Node](node/build-node.md)
-* [Build a Validator Node](node/build-validator-node.md)
-* [Setup Cosmovisor](node/setup-cosmovisor.md)
-* [IBC Relayer](node/relayer.md)
+* [Overview](node/README.md)
+* [Networks](node/networks/README.md)
+* [Types of Nodes](node/types/README.md)
+  * [Data Availability](node/types/data-availability/README.md)
+    * [Light Node](node/types/data-availability/light-node.md)
+    * [Full Node](node/types/data-availability/full-node.md)
+    * [Bridge Node](node/types/data-availability/bridge-node.md)
+  * [Consensus](node/types/consensus/README.md)
+    * [Full Consensus Node](node/types/consensus/full-consensus-node.md)
+    * [Validator Node](node/types/consensus/validator-node.md)
+    * [Setup Cosmovisor](node/types/consensus/setup-cosmovisor.md)
+  * [IBC Relayers](node/types/ibc-relayers/README.md)
+* [Resources](node/resources/README.md)
+  * [Environment](node/resources/environment.md)
 
 ## Links
 
