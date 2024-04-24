@@ -30,7 +30,6 @@
 
 ## Run a Sunrise Node
 
-* [Overview](node/README.md)
 * [Networks](node/networks/README.md)
 * [Types of Nodes](node/types/README.md)
   * [Data Availability](node/types/data-availability/README.md)
