@@ -15,8 +15,6 @@ First, go and get cosmovisor (recommended approach):
 go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 ```
 
-> !! When using cosmovisor, make sure that you do not have auto download of binaries on.
-
 ### Add environment variables to your shell
 
 Some environment variables must be set to appropriate values for each node and each network.
@@ -84,7 +82,7 @@ After=network-online.target
 Environment="DAEMON_NAME=sunrised"
 Environment="DAEMON_HOME=/home/<your-user>/.sunrise"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false" // if want auto-upgrade, set true
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
 User=<your-user>
@@ -97,7 +95,7 @@ LimitNPROC=infinity
 WantedBy=multi-user.target
 ```
 
-> !! A description of what the environment variables do can be found [here](https://docs.cosmos.network/master/run-node/cosmovisor.html). Change them depending on your setup.
+> !! A description of what the environment variables do can be found [here](https://docs.cosmos.network/main/run-node/cosmovisor.html). Change them depending on your setup.
 
 ### Start Cosmovisor
 
