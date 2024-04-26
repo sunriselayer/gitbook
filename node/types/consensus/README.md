@@ -5,9 +5,9 @@
 - [Validator node](../consensus/build-validator-node.md): This type of node participates in consensus by producing and voting on blocks.
 - [Full consensus node](../consensus/build-full-node.md): A sunrise-app Full node to sync blockchain history.
 
-:::note info
+{% hint style='working' %}
 When running a validator node, a bridge node is required. See [this section](../data-availability/bridge-node.md).
-:::
+{% endhint %}
 
 ### Requirements
 

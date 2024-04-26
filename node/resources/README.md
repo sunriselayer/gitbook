@@ -10,11 +10,11 @@
 | 1317  | TCP      | REST   | `tcp://localhost:1317`  | `~/.sunrise/config/app.toml`    |
 | 26657 | TCP      | RPC    | `tcp://127.0.0.1:26657` | `~/.sunrise/config/config.toml` |
 
-:::note warn
+{% hint style='info' %}
 Since cosmos-sdk v0.50.0, only internal connection is allowed by default.
 To publish, be sure to rewrite it as follows
 `0.0.0.0:9090`, `tcp://0.0.0.0:1317`, `tcp://0.0.0.0:26657`
-:::
+{% endhint %}
 
 ### Data Availability
 

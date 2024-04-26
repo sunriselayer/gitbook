@@ -18,7 +18,7 @@ The main network of Sunrise. Use tokens with real value.
 | Software     | Version                                                                         |
 | ------------ | ------------------------------------------------------------------------------- |
 | sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
-| sunrise-node | [v0.0.4](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
+| sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
 
 ## Testnet
 
@@ -38,4 +38,4 @@ This network is used to test operations on the mainnet. Normally, the same envir
 | Software     | Version                                                                         |
 | ------------ | ------------------------------------------------------------------------------- |
 | sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
-| sunrise-node | [v0.0.4](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
+| sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |

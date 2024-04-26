@@ -44,6 +44,12 @@
 * [Resources](node/resources/README.md)
   * [Environment](node/resources/environment.md)
 
+## Run a Gluon Node
+
+* [Networks](gluon-node/networks/README.md)
+* [Node](gluon-node/nodes/README.md)
+  * [Validator Node](gluon-node/nodes/validator-node.md)
+
 ## Links
 
 * [GitHub](https://github.com/SunriseLayer)

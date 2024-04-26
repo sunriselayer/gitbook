@@ -8,14 +8,14 @@
 
 If you are looking to run a consensus node, please follow [the consensus node tutorial](../consensus/README.md).
 
-:::note info
+{% hint style='working' %}
 When running a validator node, a bridge node is required. See [this section](../data-availability/bridge-node.md).
-:::
+{% endhint %}
 
 ### Requirements
 
 | Type         | CPU    | Mem    | Disk      | Bandwidth |
 | ------------ | ------ | ------ | --------- | --------- |
-| Bridge       | 6 Core | 4 GB   | 10 TB SSD  | 1 Gbps    |
-| Full Storage | 4 Core | 4 GB   | 10 TB SSD  | 1 Gbps    |
+| Bridge       | 6 Core | 4 GB   | 10 TB SSD | 1 Gbps    |
+| Full Storage | 4 Core | 4 GB   | 10 TB SSD | 1 Gbps    |
 | Light        | 2 Core | 500 MB | 50 GB SSD | 56 Kbps   |
