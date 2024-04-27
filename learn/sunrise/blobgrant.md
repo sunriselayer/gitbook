@@ -1,9 +1,16 @@
 # BlobGrant
 
-Sunrise accepts any token for a Data Availability (DA) fee. This feature is called BlobGrant.
+Sunrise realize Feeless DA. This feature is realized by `x/blobgrant` module.
 
 ## How it works
 
-Gluon, a Sovereign rollup Layer 2 of Sunrise serves a functionality to stake any token via IBC interoperability. By submitting the proof via IBC from Gluon to Sunrise that the token is correctly locked in Gluon, Sunrise will permit the L2 operator to post Blob Tx until consuming a certain amount of gas.
+- Users register their address in the `x/blobgrant` module with the certain transaction format.
+  - Users can designate the another address for posting the blobs without fee.
+- Users will mint LP tokens in the `x/liquiditypool` module for the pool they like.
+- Then the address for posting the blobs, will receive the DA usage grant token.
+  - The denom of the grant token is `blobgrant/[expiry]`. It has an expiry date to prevent from the spamming.
 
-The locked funds in Gluon will be finally released for Sunrise validators as an IBC bridged token after the vesting period.
+## Why users should use Sunrise?
+
+- Users can use DA without fee.
+- Liquidity providing is needed in some DEXs in any case. Then there is no reason not to provide liquidity to Sunrise.

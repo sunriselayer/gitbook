@@ -11,12 +11,9 @@ Celestia-compatible features:
 
 In addition, Sunrise has unique features:
 
-* Acceptance of any token for DA fee (BlobGrant)
-* Native Liquid Staking
-* Liquidity Restaking
-* DAS Incentive
-* Incentive for optional long term data availability
-* Sovereign Proof of Liquidity (SPoL)
+* Proof of Liquidity
+* Feeless DA (BlobGrant)
+* Incentive for optional long term data availability (Archive)
 
 Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
 Sunrise also has a mechanism to incentivize DA network whereas other DA networks depends on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, game, and so on.
