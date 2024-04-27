@@ -1,6 +1,7 @@
-# Feeless DA
+# DA Fee Abstraction
 
-Sunrise realize "Feeless DA". This feature is realized by `x/blobgrant` module.
+Sunrise realize "DA Fee Abstraction". This feature is realized by `x/blobgrant` module.
+Developers can use the blob spaces of Sunrise without fee only with providing liquidity to the liquidity pool on Sunrise.
 
 ## How it works
 

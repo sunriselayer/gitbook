@@ -38,7 +38,7 @@ These histories of the evolution are partially intaken in Sunrise model.
 
 - `$SR`: Sunrise native token for staking and fee as you know. It is a transferrable token.
 - `$SRGM`: Sunrise governance multiplier. It is a non transferrable token. It multiplies the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
-- Feeless DA: [`x/blobgrant`](./feeless-da.md) module distributes the grant token for DA usage without fee.
+- DA Fee Abstraction: [`x/blobgrant`](./da-fee-abstraction.md) module distributes the grant token for DA usage without fee.
 
 The flow will be like this:
 
@@ -53,7 +53,7 @@ The flow will be like this:
 We cut off the separation model of the staking token and the fee token because of several reasons:
 
 - To enable the native token to capture the large value, the native token should have the right to be used for the staking and governance. Only the utility for the fee is not enough for capturing the value.
-- We can enable the Feeless DA for the usage of DA which is the most important feature of Sunrise.
+- We can enable the [DA Fee Abstraction](./da-fee-abstraction.md) which is the most important feature of Sunrise.
 - We can abstract the fee token in the future only if there is a on chain price ratio data of `$SR` token and other tokens to swap internally, and we have it in [Liquidity Pool](./liquidity-pool.md) module as TWAP.
 
 Furthermore, we think the value of `$SR` can coexist with PoL by using `$SRGM` which doesn't enhance the voting power of LP token staking.

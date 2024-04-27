@@ -12,7 +12,7 @@ Celestia-compatible features:
 In addition, Sunrise has unique features:
 
 * Proof of Liquidity
-* Feeless DA
+* DA Fee Abstraction
 * Incentive for optional long term data availability
 
 Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
