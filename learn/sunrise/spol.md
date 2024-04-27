@@ -11,9 +11,9 @@ In general, crypto-asset projects must reward the participants of the community 
 
 It is difficult to reward these participants at the same time with conventional methods. SPoL is a mechanism that can reward both participants at the same time.
 
-By using SPoL mechanism, Sovereign rollup can utilize LP token `LP-XXX/BondedSR` that is issued via [Liquidity Pool module](liquidity-pool.md) and easily swap their native token with the rich liquidity seamlessly through IBC interoperability with Gluon.
+By using SPoL mechanism, Sovereign rollup can utilize the LST of LP token `LST-LP-XXX/SR` for its supplementary staking asset.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2024-04-02 at 09.46.23.png" alt=""><figcaption></figcaption></figure>
 
-In this mechanism, the participants can stake `LP-XXX/BondedSR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of `LP-XXX/BondedSR` with $XXX and $BondedSR at the same time, and make their token liquidity.
+In this mechanism, the participants can stake the LST of LP token `LST-LP-XXX/SR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/SR` with $XXX and $BondedSR at the same time, and make their token liquidity.
 

@@ -13,6 +13,7 @@ In addition, Sunrise has unique features:
 
 * Proof of Liquidity
 * DA Fee Abstraction
+* Sovereign Proof of Liquidity (SPoL)
 * Incentive for optional long term data availability
 
 Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
@@ -49,6 +50,7 @@ The protocol will capture these values
 * `x/liquiditystaking` module
 * `x/gauge` module
 * `x/votingreward` module
+* `x/spol` module
 
 ### Future possibility of the integration
 

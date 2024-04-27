@@ -8,6 +8,7 @@
   * [Liquidity Pool](learn/sunrise/liquidity-pool.md)
   * [DA Fee Abstraction](learn/sunrise/da-fee-abstraction.md)
   * [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
+  * [SPoL](learn/sunrise/spol.md)
   * [DAS Incentive](learn/sunrise/das-incentive.md)
   * [Archive](learn/sunrise/archive.md)
 * [$SR](learn/sr/README.md)
