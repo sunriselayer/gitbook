@@ -1,7 +1,5 @@
 # Table of contents
 
-* [README](README.md)
-
 ## Learn
 
 * [Sunrise](learn/sunrise/README.md)
@@ -18,7 +16,6 @@
 * [Gluon](learn/gluon/README.md)
   * [Interest Rate Swap](learn/gluon/interest-rate-swap.md)
 * [$GLU](learn/glu.md)
-* [FAQ](learn/faq.md)
 * [Thesis](learn/thesis/README.md)
   * [App chain thesis](learn/thesis/app-chain-thesis.md)
   * [Interoperability](learn/thesis/interoperability.md)
@@ -48,6 +45,8 @@
 ## Links
 
 * [GitHub](https://github.com/SunriseLayer)
+* [Discord](https://discord.com/invite/sunrise)
+* [X (Twitter)](https://twitter.com/SunriseLayer)
 
 ## Deprecated (UnUniFi)
 
