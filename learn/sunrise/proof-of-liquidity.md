@@ -2,7 +2,7 @@
 
 Proof of Liquidity enable to use LP tokens minted by Liquidity Pool for staking in Sunrise Proof of Stake.
 `x/proofofliquidity` module will provide the functionality only for that but Proof of Liquidity ecosystem doesn't consist of itself only.
-Proof of Liquidity ecosystem consists of modules `x/liquidityincentive` and `x/liquidityreward` to enhance the engagement of the users and sustainability of the ecosystem.
+Proof of Liquidity ecosystem consists of modules `x/liquidityincentive` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem.
 
 ## Gauge voting
 

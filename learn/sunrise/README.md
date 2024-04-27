@@ -12,8 +12,8 @@ Celestia-compatible features:
 In addition, Sunrise has unique features:
 
 * Proof of Liquidity
-* Feeless DA (BlobGrant)
-* Incentive for optional long term data availability (Archive)
+* Feeless DA (BlobGrant module)
+* Incentive for optional long term data availability
 
 Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
 Sunrise also has a mechanism to incentivize DA network whereas other DA networks depends on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, game, and so on.
@@ -25,3 +25,27 @@ The protocol will capture these values
 * The revenue of tx fees
 * The revenue of swap fees in the liquidity pool
 * MEV captured with [Skip Protocol](https://docs.skip.money/blocksdk/overview/)
+
+## Why should developers use Sunrise?
+
+* Users can use DA without fee only with liquidity providing.
+* Liquidity providing is needed in some DEXs in any case. Then there is no reason not to provide liquidity to Sunrise.
+
+## Integration stages
+
+### Sunrise v0: Minimum Viable Product
+
+* Blob module
+* BlobStream module
+* Staking supports only `$SR`
+
+### Sunrise v1: Complete user experiences
+
+* LiquidityPool module
+* BlobGrant module
+
+### Sunrise v2
+
+* ProofOfLiquidity module
+* LiquidityIncentive module
+* VotingReward module
