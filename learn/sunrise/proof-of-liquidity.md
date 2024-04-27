@@ -1,7 +1,9 @@
 # Proof of Liquidity
 
-Proof of Liquidity enable to use LP tokens minted by Liquidity Pool for staking in Sunrise Proof of Stake.
-`x/proofofliquidity` module will provide the functionality only for that but Proof of Liquidity ecosystem doesn't consist of itself only.
+Proof of Liquidity enables users to use LP tokens minted by Liquidity Pool for staking in Sunrise.
+It enhances the total market cap of staked assets to acquire and hijack the Sunrise network.
+
+`x/proofofliquidity` module will provide the functionality only for that but Proof of Liquidity ecosystem doesn't consist of itself and for security purpose only.
 Proof of Liquidity ecosystem consists of modules `x/liquidityincentive` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem.
 
 ## Gauge voting
@@ -48,7 +50,7 @@ The flow will be like this:
 - People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$SRGM` for the incentive for liquidity providers.
 - The voter for each pool will receive the reward from the profit of the pool.
 
-We cut off the separation model of the staking token and the fee token because the fee token due to several reasons:
+We cut off the separation model of the staking token and the fee token because of several reasons:
 
 - To enable the native token to capture the large value, the native token should have the right to be used for the staking and governance. Only the utility for the fee is not enough for capturing the value.
 - We can enable the Feeless DA for the usage of DA which is the most important feature of Sunrise.
