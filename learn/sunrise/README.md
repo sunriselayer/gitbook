@@ -12,7 +12,7 @@ Celestia-compatible features:
 In addition, Sunrise has unique features:
 
 * Proof of Liquidity
-* Feeless DA (BlobGrant module)
+* Feeless DA
 * Incentive for optional long term data availability
 
 Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
@@ -35,22 +35,22 @@ The protocol will capture these values
 
 ### Sunrise v0: Minimum Viable Product
 
-* Blob module
-* BlobStream module
+* `x/blob` module
+* `x/blobstream` module
 * Staking supports only `$SR`
 
 ### Sunrise v1: Complete user experiences
 
-* LiquidityPool module
-* BlobGrant module
+* `x/liquiditypool` module
+* `x/blobgrant` module
 
 ### Sunrise v2: Security and Incentive
 
-* ProofOfLiquidity module
-* LiquidityIncentive module
-* VotingReward module
+* `x/liquiditystaking` module
+* `x/gauge` module
+* `x/votingreward` module
 
 ### Future possibility of the integration
 
-* DasIncentive module
-* Archive module
+* DasIncentive
+* Long term data persistence

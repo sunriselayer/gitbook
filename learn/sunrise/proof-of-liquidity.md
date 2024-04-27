@@ -2,9 +2,9 @@
 
 Proof of Liquidity enables users to use LP tokens minted by Liquidity Pool for staking in Sunrise.
 It enhances the total market cap of staked assets to acquire and hijack the Sunrise network.
+This part is realized by `x/liquiditystaking` module.
 
-`x/proofofliquidity` module will provide the functionality only for that but Proof of Liquidity ecosystem doesn't consist of itself and for security purpose only.
-Proof of Liquidity ecosystem consists of modules `x/liquidityincentive` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem.
+However, Proof of Liquidity ecosystem consists of modules `x/gauge` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem. It is not only for the security.
 
 ## Gauge voting
 
@@ -38,16 +38,16 @@ These histories of the evolution are partially intaken in Sunrise model.
 
 - `$SR`: Sunrise native token for staking and fee as you know. It is a transferrable token.
 - `$SRGM`: Sunrise governance multiplier. It is a non transferrable token. It multiplies the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
-- Feeless DA: [BlobGrant](./blobgrant.md) module distribute the grant token for DA usage without fee.
+- Feeless DA: [`x/blobgrant`](./blobgrant.md) module distributes the grant token for DA usage without fee.
 
 The flow will be like this:
 
 - Some users mint LP tokens in the `x/liquiditypool` module.
-- The users the LP tokens in the `x/proofofliquidity` module.
+- The users stake the LP tokens in the `x/liquiditystaking` module.
   - They will get `$SRGM` for the reward.
 - Some users stake `$SR` token in the `x/staking` module
   - `$SRGM` multiplies the voting power of `$SR` staking (not for LP tokens staking).
-- People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$SRGM` for the incentive for liquidity providers.
+- People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SRGM` for the incentive for liquidity providers.
 - The voter for each pool will receive the reward from the profit of the pool.
 
 We cut off the separation model of the staking token and the fee token because of several reasons:
