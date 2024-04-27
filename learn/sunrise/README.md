@@ -44,8 +44,10 @@ The protocol will capture these values
 * LiquidityPool module
 * BlobGrant module
 
-### Sunrise v2
+### Sunrise v2: Security and Incentive
 
 * ProofOfLiquidity module
 * LiquidityIncentive module
 * VotingReward module
+* DasIncentive module
+* Archive module
