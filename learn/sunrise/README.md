@@ -23,5 +23,5 @@ Furthermore, Sunrise is IBC (Inter Blockchain Communication) compatible.
 The protocol will capture these values
 
 * The revenue of tx fees
-* The revenue of liquidity pools
-* MEV especially due to the liquidity pool
+* The revenue of swap fees in the liquidity pool
+* MEV captured with [Skip Protocol](https://docs.skip.money/blocksdk/overview/)

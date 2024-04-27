@@ -12,6 +12,13 @@ This module supports Concentrated Liquidity while the LP tokens are still fungib
 Before creating the pool, the pair of tokens have to be registered.
 The notion of `1` Pair will be linked to `N` Pools.
 
+There are some restrictions for the pair registration while the pair consists of `base_token / quote_token`:
+
+- `$SR` can't be the base token.
+- If the quote token is not `$SR`, the pair of `quote_token / $SR` must be registered already.
+
+These rules are for enabling to calculate the `$SR` converted value of LP tokens by using [TWAP](#twap) to use them in [Proof of Liquidity](./proof-of-liquidity.md).
+
 ### Pool
 
 In contrast to Uniswap V3, each user can't designate the range of providing the concentrated liquidity in the same pool.
@@ -39,4 +46,3 @@ $$
 
 Sunrise chain will record the last prices of the pool periodically, and they will be used for calculating Time Weighted Average Price.
 TWAP will be utilized for calculating the voting power from the LP tokens by using the price ratio to `$SR` token.
-The LP token of `XXX/USDC` is also able to be used for Proof of Liquidity only if there is a pair of `USDC/SR` and the TWAP of `USDC/SR` is available.
