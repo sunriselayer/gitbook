@@ -49,5 +49,8 @@ The protocol will capture these values
 * ProofOfLiquidity module
 * LiquidityIncentive module
 * VotingReward module
+
+### Future possibility of the integration
+
 * DasIncentive module
 * Archive module
