@@ -19,3 +19,9 @@ Sunrise utilizes Proof of Liquidity mechanism to enhance the security of Sunrise
 Sunrise also has a mechanism to incentivize DA network whereas other DA networks depends on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, game, and so on.
 
 Furthermore, Sunrise is IBC (Inter Blockchain Communication) compatible.
+
+The protocol will capture these values
+
+* The revenue of tx fees
+* The revenue of liquidity pools
+* MEV especially due to the liquidity pool

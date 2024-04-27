@@ -1,8 +1,9 @@
 # Liquidity Pool
 
 This module is for minting LP tokens of `XXX/SR` with AMM mechanism.
-This module supports Concentrated Liquidity while the LP tokens are still fungible.
 LP tokens can be used for Proof of Liquidity for Sunrise L1, and also can be used for Sovereign Proof of Liquidity for L2s on Sunrise.
+
+This module supports Concentrated Liquidity while the LP tokens are still fungible.
 
 ## Notions
 

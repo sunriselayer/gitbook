@@ -25,7 +25,7 @@ The blog of [Flow of Value](https://blog.berachain.com/blog/flow-of-value-examin
 The important point of the model is
 
 - Making the staking token `$BGT` non transferrable. It enables to utilize the all supply of the staking token purely for staking without the need for holding it for the fee.
-- There is no interest in dApps on Ethereum for the sustainability of the DEXs, whereas the dApps on Berachain are always interested in the sustainability of Berachain PoL.
+- There is no interest in dApps on Ethereum for the sustainability of the DEXs, whereas the dApps on Berachain are always interested in the engagement of Berachain PoL.
 
 ## Sunrise model
 
@@ -53,3 +53,5 @@ We cut off the separation model of the staking token and the fee token because t
 
 Furthermore, we think the value of `$SR` can coexist with PoL by using `$SRGM` which doesn't enhance the voting power of LP token staking.
 It means that `$SRGM` only enhance the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
+
+Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
