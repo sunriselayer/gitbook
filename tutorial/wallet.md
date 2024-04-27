@@ -1,3 +1,0 @@
-# Wallet tutorial
-
-Under construction.

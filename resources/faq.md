@@ -1,3 +1,0 @@
-# FAQ
-
-Under reconstruction.
