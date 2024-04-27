@@ -6,7 +6,7 @@
   * [Blob](learn/sunrise/blob.md)
   * [BlobStream](learn/sunrise/blobstream.md)
   * [Liquidity Pool](learn/sunrise/liquidity-pool.md)
-  * [BlobGrant](learn/sunrise/blobgrant.md)
+  * [Feeless DA](learn/sunrise/feeless-da.md)
   * [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   * [DAS Incentive](learn/sunrise/das-incentive.md)
   * [Archive](learn/sunrise/archive.md)

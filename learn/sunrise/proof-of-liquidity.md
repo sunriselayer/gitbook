@@ -38,7 +38,7 @@ These histories of the evolution are partially intaken in Sunrise model.
 
 - `$SR`: Sunrise native token for staking and fee as you know. It is a transferrable token.
 - `$SRGM`: Sunrise governance multiplier. It is a non transferrable token. It multiplies the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
-- Feeless DA: [`x/blobgrant`](./blobgrant.md) module distributes the grant token for DA usage without fee.
+- Feeless DA: [`x/blobgrant`](./feeless-da.md) module distributes the grant token for DA usage without fee.
 
 The flow will be like this:
 
