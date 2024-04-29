@@ -2,7 +2,7 @@
 
 ## Learn
 
-* [Sunrise](learn/sunrise/README.md)
+* [Sunrise](README.md)
   * [Blob](learn/sunrise/blob.md)
   * [BlobStream](learn/sunrise/blobstream.md)
   * [Liquidity Pool](learn/sunrise/liquidity-pool.md)
