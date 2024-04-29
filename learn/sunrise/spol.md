@@ -13,7 +13,4 @@ It is difficult to reward these participants at the same time with conventional 
 
 By using SPoL mechanism, Sovereign rollup can utilize the LST of LP token `LST-LP-XXX/SR` for its supplementary staking asset.
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2024-04-02 at 09.46.23.png" alt=""><figcaption></figcaption></figure>
-
-In this mechanism, the participants can stake the LST of LP token `LST-LP-XXX/SR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/SR` with $XXX and $BondedSR at the same time, and make their token liquidity.
-
+In this mechanism, the participants can stake the LST of LP token `LST-LP-XXX/SR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/SR` to enhance the economic security, and make the liquidity of their token.
