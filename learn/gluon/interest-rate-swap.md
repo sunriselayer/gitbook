@@ -58,8 +58,8 @@ When `t=0.999...`, this formula acts like `xy=k` When `t=0`, this formula acts l
 #### Adding liquidity for underlying token and PT
 
 * User should pass `trancheId`, `shareOutAmount` and `tokenInMaxs`
-* If the existing pool's empty, put full tokens (`tokenInMaxs`) and issue `OneShare` token
-* If the existing pool's not empty, calculate `neededLpLiquidity` from `shareOutAmount`
+* If the existing pool is empty, put full tokens (`tokenInMaxs`) and issue `OneShare` token
+* If the existing pool is not empty, calculate `neededLpLiquidity` from `shareOutAmount`
   * Ensure `tokenInMaxs` is enough for `neededLpLiquidity`
   * Put `neededLpLiquidity` and issue `shareOutAmount`
 

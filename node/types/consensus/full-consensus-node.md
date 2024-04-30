@@ -1,4 +1,4 @@
-# Sunrise Full Consensus Node
+# Full Consensus Node
 
 Full consensus nodes allow you to sync blockchain history in the Sunrise consensus layer.
 
@@ -6,7 +6,7 @@ Full consensus nodes allow you to sync blockchain history in the Sunrise consens
 
 For streamline chain upgrades and minimize downtime, you may want to set up [Cosmovisor](https://docs.cosmos.network/main/build/tooling/cosmovisor) to manage your node.
 
-Follow [the Cosmovisor tutorial](./setup-cosmovisor.md)
+Follow [the Cosmovisor tutorial](setup-cosmovisor.md)
 
 To automate on-chain upgrades, set the following options.
 
@@ -26,17 +26,16 @@ Alerting and monitoring are desirable as well - you are encouraged to explore so
 
 The following hardware minimum requirements are recommended for running the validator node:
 
-- Memory: 8 GB RAM (minimum)
-- CPU: 4 cores
-- Disk: 250 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+* Memory: 8 GB RAM (minimum)
+* CPU: 4 cores
+* Disk: 250 GB SSD Storage
+* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 If you are not using pruning, you are running an archive node, and it is recommended to have 500 GB of SSD storage.
 
 ## Dependencies
 
-The tutorial is done on Ubuntu 22.04 (LTS).
-Follow [the environment tutorial](../../resources/enviromant.md)
+The tutorial is done on Ubuntu 22.04 (LTS). Follow [the environment tutorial](../../resources/enviromant.md)
 
 ## Run the full consensus node
 
@@ -61,9 +60,9 @@ sunrised init "$MONIKER" --chain-id $CHAIN_ID
 
 This will generate the following files in `~/.sunrise/config/`
 
-- `genesis.json`
-- `node_key.json`
-- `priv_validator_key.json`
+* `genesis.json`
+* `node_key.json`
+* `priv_validator_key.json`
 
 ## Download the genesis file
 
@@ -103,13 +102,13 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025usr\"/" $
 
 If necessary, Edit config files `~/.sunrise/config/app.toml`
 
-- Enable defines if the API server should be enabled.
+* Enable defines if the API server should be enabled.
 
 ```bash
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.sunrise/config/app.toml;
 ```
 
-- EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
+* EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 
 ```bash
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.sunrise/config/app.toml;
@@ -171,7 +170,7 @@ You will require some SR tokens to bond to your validator. To be in the active s
 
 Follow the instructions to set up Cosmovisor and start the node.
 
-{% hint style='tip' %}
+{% hint style="info" %}
 Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
 {% endhint %}
 
@@ -194,4 +193,4 @@ This command returning `true` means that your node is still catching up. Otherwi
 
 If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
 
-If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade heights.
+If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade height.
