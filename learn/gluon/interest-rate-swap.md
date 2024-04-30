@@ -11,7 +11,7 @@ IRS(Interest Rate Swap) is to tokenize underlying yield asset (UT) into principa
 ### Terminology
 
 * Vault (IRSVault): On-chain registered record with strategy contract & cycle to periodically create tranches.
-* Tranche (IRSTranche): A pool with lifetime, where it manages PT/YT token mints, burns, and swaps with underlying tokens.
+* Tranche (IRSTranche): A pool with a lifetime, where it manages PT/YT token mints, burns, and swaps with underlying tokens.
 * UT: Underlying token (e.g. ATOM)
 * UYT: Underlying yield token (e.g. stATOM)
 * PT: Principal token
@@ -22,7 +22,7 @@ IRS(Interest Rate Swap) is to tokenize underlying yield asset (UT) into principa
 
 #### Why special AMM is needed for PT and YT is:
 
-PT's price will automatically fluctuate following the maturity because PT is zero-coupon bond (fixed yield). Hence if it is vanilla AMM, it will force LPers to have impermanent loss inevitably.
+PT's price will automatically fluctuate following the maturity because PT is a zero-coupon bond (fixed yield). Hence if it is vanilla AMM, it will force LPers to have impermanent loss inevitably.
 
 #### Formula
 
@@ -36,11 +36,11 @@ When `t=0.999...`, this formula acts like `xy=k` When `t=0`, this formula acts l
 
 * Fixed Yield Tranche: Similar to buying principal token in Pendle
 * Leveraged Variable Yield Tranche: Similar to buying yield token in Pendle
-* Liquidity Pool: The swap fee income is stable and it has low Impermanent Loss. PT's price will automatically fluctuate following the maturity because PT is zero-coupon bond (fixed yield).
+* Liquidity Pool: The swap fee income is stable and it has low Impermanent Loss. PT's price will automatically fluctuate following the maturity because PT is a zero-coupon bond (fixed yield).
 
 #### Minting PT/YT
 
-* Transfer underlying assets to IRS vault account
+* Transfer underlying assets to the IRS vault account
 * Calculate PT/YT mint amount
   * PT amount: `depositUnderlying * (1-(strategyAmount-ptSupply)/ytSupply)` (`(strategyUTAmount-ptSupply)/ytSupply` is 1YT value(UT based))
   * YT amount: `depositUnderlying`
@@ -50,16 +50,16 @@ When `t=0.999...`, this formula acts like `xy=k` When `t=0`, this formula acts l
 #### Redeeming PT/YT pair before maturity
 
 * User should pass `redeemAmount` and `maxPtYtIns`
-* Calculate required PT/YT amount from requested redeem amount (The ratio between Pt Supply : Yt Supply and Pt / Yt amount redeemed should be same)
+* Calculate the required PT/YT amount from the requested redeemed amount (The ratio between Pt Supply : Yt Supply and Pt / Yt amount redeemed should be the same)
 * Check `maxPtYtIns`'s enough
-* Burn PT/YT coins from user
+* Burn PT/YT coins from the user
 * Execute unstake from strategy to `sender` for redeemAmount
 
 #### Adding liquidity for underlying token and PT
 
 * User should pass `trancheId`, `shareOutAmount` and `tokenInMaxs`
-* If existing pool's empty, put full tokens (`tokenInMaxs`) and issue `OneShare` token
-* If existing pool's not empty, calculate `neededLpLiquidity` from `shareOutAmount`
+* If the existing pool's empty, put full tokens (`tokenInMaxs`) and issue `OneShare` token
+* If the existing pool's not empty, calculate `neededLpLiquidity` from `shareOutAmount`
   * Ensure `tokenInMaxs` is enough for `neededLpLiquidity`
   * Put `neededLpLiquidity` and issue `shareOutAmount`
 
@@ -67,27 +67,27 @@ When `t=0.999...`, this formula acts like `xy=k` When `t=0`, this formula acts l
 
 * Swap UT for PT on amm pool
 
-Note: For the early access to the fund, user can sell PT for UT before maturity.
+Note: For early access to the fund, the user can sell PT for UT before maturity.
 
 #### Buying YT for leveraged variable yield
 
 * User should pass `requiredYtAmount` and `tokenIn`
-* Calculate required UT deposit to get `requiredYtAmount`
-* Take loan for required UT amount from liquidity pool
+* Calculate the required UT deposit to get `requiredYtAmount`
+* Take a loan for the required UT amount from the liquidity pool
 * Mint PT and YT with loan
 * Sell minted PT tokens for UT on AMM
-* Payback loan with tokenIn and received UT from PT swap
+* Payback loan with `tokenIn` and received UT from PT swap
 
 #### Redeeming PT after maturity
 
-* Burn PT tokens from user's account
+* Burn PT tokens from the user's account
 * Calculate redeemAmount (stATOM amount) from ptAmount and redemption rate (stATOM -> ATOM)
 * Execute unstake from strategy to `sender` for redeemAmount
 
 #### Redeeming YT after maturity
 
-* Calculate redemption amount from `ytAmount` - `ytRate * ytAmount` (`ytRate = (strategyUtAmount - ptSupply) / ytSupply`)
-* Burn `ytAmount` from user's balance
+* Calculate the redemption amount from `ytAmount` - `ytRate * ytAmount` (`ytRate = (strategyUtAmount - ptSupply) / ytSupply`)
+* Burn `ytAmount` from the user's balance
 * Execute unstake from strategy to `sender` for redeemAmount
 
 ## Strategies
