@@ -29,7 +29,7 @@ The protocol generates revenue through three distinct streams.
 ## Why should developers use Sunrise?
 
 * Users can utilize DA by liquidity providing without the need for a fee.
-* While numerous DEXs already exist, they offer limited differentiation for token issuers. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DEXs that lack comparable benefits.
+* While numerous DEXs already exist, they offer limited differentiation for token issuers. L2 developers will always need to provide liquidity despite Sunrise's existence. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DA Layers and DEXs that lack comparable benefits.
 
 ## Integration stages
 

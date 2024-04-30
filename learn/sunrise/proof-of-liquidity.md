@@ -2,7 +2,7 @@
 
 Proof of Liquidity enables users to use LP tokens minted by Liquidity Pool for staking in Sunrise. It enhances the total market cap of staked assets to acquire and hijack the Sunrise network. This part is realized by `x/liquiditystaking` module.
 
-However, Proof of Liquidity ecosystem consists of modules `x/gauge` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem. It is not only for the security.
+However, the Proof of Liquidity ecosystem consists of modules `x/gauge` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem. It is not only for the security.
 
 ## Gauge voting
 
@@ -12,7 +12,7 @@ There is an example of [Pancake Swap Docs](https://docs.pancakeswap.finance/prod
 
 ## ve(3,3)
 
-The model "ve(3,3)" is an enhanced version of the model "ve" by combining the idea of the model "(3,3)". It contains a gauge voting system with "ve" voting mechanism, but the novelty of this mechanism is that the voter for each pool can get a reward from the profit of the pool. This mechanism incentivizes the stakers to vote for the pool which has the potential to get more profit.
+The model "ve(3,3)" is an enhanced version of the model "ve" by combining the idea of the model "(3,3)". It contains a gauge voting system with "ve" voting mechanism, but the novelty of this mechanism is that the voter for each pool can get a reward from the profit of the pool. This mechanism incentivizes stakers to vote for the pool which has the potential to get more profit.
 
 ## Berachain model
 

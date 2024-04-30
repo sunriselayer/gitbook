@@ -13,13 +13,13 @@ Before creating the pool, the pair of tokens have to be registered. The notion o
 There are some restrictions for the pair registration while the pair consists of `base_token / quote_token`:
 
 * `$SR` can't be the base token.
-* If the quote token is not `$SR`, the pair of `quote_token / $SR` must be registered.
+* If the quote token is not `$SR`, the pair  `quote_token / $SR` must be registered.
 
 These rules enable the calculation of `$SR` converted value of LP tokens by using [TWAP](liquidity-pool.md#twap) to use them in [Proof of Liquidity](proof-of-liquidity.md).
 
 ### Pool
 
-In contrast to Uniswap V3, each user can't designate the range of providing the concentrated liquidity in the same pool. Each pool has a fixed range of liquidity provision, and users will decide which pool to provide liquidity. This design enables making the LP tokens fungible.
+In contrast to Uniswap V3, each user can't designate the range of providing concentrated liquidity in the same pool. Each pool has a fixed range of liquidity provision, and users will decide which pool to provide liquidity. This design enables making the LP tokens fungible.
 
 The range of the concentrated liquidity can be changed and the funds can be rebalanced by the governance in `x/group` module for each pool.
 

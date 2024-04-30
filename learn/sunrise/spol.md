@@ -11,6 +11,6 @@ In general, crypto-asset projects must reward the participants of the community 
 
 It is difficult to reward these participants at the same time with conventional methods. SPoL is a mechanism that can reward both participants at the same time.
 
-By using SPoL mechanism, Sovereign rollup can utilize the LST of LP token `LST-LP-XXX/SR` for its supplementary staking asset.
+By using the SPoL mechanism, Sovereign rollup can utilize the LST of the LP token `LST-LP-XXX/SR` for its supplementary staking asset.
 
-In this mechanism, the participants can stake the LST of LP token `LST-LP-XXX/SR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/SR` to enhance the economic security, and make the liquidity of their token.
+In this mechanism, the participants can stake the LST of the LP token `LST-LP-XXX/SR` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/SR` to enhance the economic security and make the liquidity of their token.
