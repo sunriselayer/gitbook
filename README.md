@@ -2,7 +2,7 @@
 
 Sunrise is an L1 blockchain that serves Data Availability in the modular paradigm.
 
-Sunrise DA layer has compatibility with the Celestia's architecture. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, and so on) which support Celestia, can also support Sunrise easily.
+Sunrise DA layer has compatibility with Celestia's architecture. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, and so on) which support Celestia, can also support Sunrise easily.
 
 Celestia-compatible features:
 
@@ -29,7 +29,7 @@ The protocol generates revenue through three distinct streams.
 ## Why should developers use Sunrise?
 
 * Users can utilize DA by liquidity providing without the need for a fee.
-* Liquidity provision is a fundamental requirement for many DEXs to function effectively. As such, there is a compelling incentive for users to contribute liquidity to the Sunrise protocol.
+* While numerous DEXs already exist, they offer limited differentiation for token issuers. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DEXs that lack comparable benefits.
 
 ## Integration stages
 
