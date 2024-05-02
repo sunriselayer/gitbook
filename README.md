@@ -33,7 +33,7 @@ The protocol generates revenue through three distinct streams.
 
 ## Integration stages
 
-### Sunrise v0: Minimum Viable Product
+### Sunrise v1: Minimum Viable Product
 
 * `x/blob` module
 * `x/blobstream` module
@@ -46,7 +46,7 @@ The protocol generates revenue through three distinct streams.
 * `x/liquiditystaking` module
 * `x/gauge` module
 * `x/votingreward` module
-* `x/spol` module
+* Sovereign Proof of Liquidity for Sovereign rollups
 
 ### Future possibility of the integration
 

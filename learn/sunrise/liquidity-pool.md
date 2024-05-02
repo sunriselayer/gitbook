@@ -51,6 +51,24 @@ where
 
 * `f_i` is the function that uniquely determines the range and allocation of the liquidity in pool `i`.
 
+For example, Uniswap V2 like AMM can be described as
+
+$$
+\begin{aligned}
+  f(x, y, k) &= xy - k = 0 \\
+  &\iff xy = k
+\end{aligned}
+$$
+
+Uniswap V3 like Concentrated Liquidity MM can be described as
+
+$$
+\begin{aligned}
+  f(x, y, k) &= \left(x + \sqrt{\frac{k}{p_b}} \right) \left(y + \sqrt{k p_a} \right) - k = 0 \\
+  &\iff \left(x + \sqrt{\frac{k}{p_b}} \right) \left(y + \sqrt{k p_a} \right) = k
+\end{aligned}
+$$
+
 Then, the change of token amounts without consideration of fees can be described as below
 
 $$
