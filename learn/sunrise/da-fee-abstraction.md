@@ -8,5 +8,5 @@ Sunrise has "DA Fee Abstraction". This feature is realized by `x/blobgrant` modu
   * Users can designate another address for posting the blobs without a fee.
 * Users will mint LP tokens in the `x/liquiditypool` module for the pool they like.
 * Then the address for posting the blobs with [`x/blob`](blob.md) module will receive the DA usage grant token.
-  * The denomination of the grant token is `blobgrant/[expiry]`. It has an expiry date to prevent spamming.
+  * The denomination of the grant token is `blobgrant/[expiry]`. It has an expiry block height to prevent spamming.
   * This is non-transferrable token.
