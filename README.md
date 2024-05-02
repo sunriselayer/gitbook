@@ -37,12 +37,9 @@ The protocol generates revenue through three distinct streams.
 
 * `x/blob` module
 * `x/blobstream` module
-* Staking supports only `$SR`
-
-### Sunrise v1: Complete user experiences
-
 * `x/liquiditypool` module
 * `x/blobgrant` module
+* Staking supports only `$SR`
 
 ### Sunrise v2: Security and Incentive
 
