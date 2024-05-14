@@ -15,10 +15,34 @@ The following hardware minimum requirements are recommended for running the vali
 
 First, follow the instructions on [setting up a full consensus node](./full-consensus-node.md).
 
-```bash
-MONIKER="your_moniker"
-VALIDATOR_WALLET="validator"
+### Optional: Reset working directory
 
+If you have already initialized a working directory for sunrised in the past, you must clean up before reinitialized a new directory. You can do so by running the following command:
+
+```bash
+sunrised tendermint unsafe-reset-all
+```
+
+### Initialize a working directory
+
+Run the following command:
+
+```bash
+CHAIN_ID=sunrise-1
+MONIKER="validator-name"
+sunrised init "$MONIKER" --chain-id $CHAIN_ID
+```
+
+### Create a new key
+
+```bash
+VALIDATOR_WALLET="validator"
+sunrised keys add $VALIDATOR_WALLET --keyring-backend test
+```
+
+### Create Validator
+
+```bash
 sunrised tx staking create-validator [path/to/validator.json] \
     --chain-id=$CHAIN_ID \
     --from=$VALIDATOR_WALLET \
