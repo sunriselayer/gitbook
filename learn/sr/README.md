@@ -10,7 +10,7 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 
 ## $SRG
 
-$SR token can be used for staking.
+$SRG token can be used for staking.
 The staked amount will be calculated as a voting power for the governance.
 
 ### Usecases
