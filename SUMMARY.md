@@ -38,6 +38,7 @@
     * [Bridge Node](node/types/data-availability/bridge-node.md)
   * [Consensus](node/types/consensus/README.md)
     * [Full Consensus Node](node/types/consensus/full-consensus-node.md)
+    * [Validator Node (Genesis)](node/types/consensus/genesis-validator.md)
     * [Validator Node](node/types/consensus/validator-node.md)
     * [Setup Cosmovisor](node/types/consensus/setup-cosmovisor.md)
   * [IBC Relayers](node/types/ibc-relayers/README.md)
