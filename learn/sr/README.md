@@ -1,6 +1,6 @@
 # $SR
 
-$SR token is the native token of Sunrise network. $SR token can be used for staking. The staked amount will be calculated as a voting power for the governance.
+$SR token is the native token of Sunrise network. $SR token can be used for fee.
 
 $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the blockchain means 1 SR in the real world.
 
@@ -8,15 +8,20 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 * Denom in the blockchain: `microSR`
 * Initial total supply: 1,000,000,000SR = `1_000_000_000_000_000microSR`
 
-## Usecases
+## $SRG
 
-### Staking
+$SR token can be used for staking.
+The staked amount will be calculated as a voting power for the governance.
 
-$SR can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+### Usecases
 
-## Inflation rate schedule
+#### Staking
 
-### On chain parameters
+$SRG can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+
+### Inflation rate schedule
+
+#### On chain parameters
 
 The actual inflation rate will vary from the target inflation rate according to the bonded ratio.
 
@@ -25,7 +30,7 @@ The actual inflation rate will vary from the target inflation rate according to 
 | Max inflation | 10% |
 | Min inflation | 6%  |
 
-### Off chain parameters
+#### Off chain parameters
 
 |                            |    |
 | -------------------------- | -- |
