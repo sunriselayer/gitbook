@@ -31,26 +31,15 @@ The important point of the model is
 
 The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
 
-* `$SR`: Sunrise native token for staking and fee. It is a transferrable token.
-* `$SRGM`: Sunrise governance multiplier. It is a non transferrable token. It multiplies the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
-* DA Fee Abstraction: [`x/blobgrant`](da-fee-abstraction.md) module distributes the grant token for DA usage without fee.
+* `$SRG`: Non transferrable token for staking.
+* `$SR`: STransferrable token for a fee.
 
 The flow will be like this:
 
 * Some users mint LP tokens in the `x/liquiditypool` module.
-* The users stake the LP tokens in the `x/liquiditystaking` module.
-  * They will get `$SRGM` for the reward.
-* Some users stake `$SR` token in the `x/staking` module
-  * `$SRGM` multiplies the voting power of `$SR` staking (not for LP tokens staking).
-* People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SRGM` for the incentive for liquidity providers.
+  * They will get `$SRG` for the reward.
+* Some users stake `$SRG` token in the `x/staking` module
+* People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SRG` for the incentive for liquidity providers.
 * The voter for each pool will receive the reward from the profit of the pool.
-
-We cut off the separation model of the staking token and the fee token because of several reasons:
-
-* To enable the native token to capture the large value, the native token should have the right to be used for the staking and governance. Only the utility for the fee is not enough to capture the value.
-* We can enable the [DA Fee Abstraction](da-fee-abstraction.md) which is the most important feature of Sunrise.
-* We can abstract the fee token in the future only if there is an on chain price ratio data of `$SR` token and other tokens to swap internally, and we have it in [Liquidity Pool](liquidity-pool.md) module as TWAP.
-
-Furthermore, we think the value of `$SR` can coexist with PoL by using `$SRGM` which doesn't enhance the voting power of LP token staking. It means that `$SRGM` only enhances the voting power and the proportion of receiving the profit of the protocol, for `$SR` staking.
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".

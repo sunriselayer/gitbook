@@ -1,6 +1,6 @@
 # PoS
 
-Sunrise's Proof of Stake mechanism is based on Cosmos SDK staking module, which supports Delegated Proof of Stake. So even if you can't build a validator node, you can stake your $SR by using the delegation function and participate in block validations and governances.
+Sunrise's Proof of Stake mechanism is based on Cosmos SDK staking module, which supports Delegated Proof of Stake. So even if you can't build a validator node, you can stake your `$SRG` by using the delegation function and participate in block validations and governances.
 
 ## How to do staking
 
