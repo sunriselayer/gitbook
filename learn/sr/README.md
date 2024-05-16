@@ -6,12 +6,22 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 
 * Ticker: SR
 * Denom in the blockchain: `microSR`
-* Initial total supply: 1,000,000,000SR = `1_000_000_000_000_000microSR`
+* Supply cap: 1,000,000,000SR = `1_000_000_000_000_000microSR`
+
+$SR can be minted by burning $SSR with the following rule.
+
+$$
+  \text{OutputSR} = \text{InputSSR} \times \frac{\text{SRMaxSupply}-\text{SRCurrentSupply}}{\text{SSRCurrentSupply}}
+$$
 
 ## $SSR
 
 $SSR token can be used for staking.
 The staked amount will be calculated as a voting power for the governance.
+
+* Ticker: SSR
+* Denom in the blockchain: `microSSR`
+* Supply in genesis block: 1,000,000,000SSR = `1_000_000_000_000_000microSSR`
 
 ### Usecases
 
