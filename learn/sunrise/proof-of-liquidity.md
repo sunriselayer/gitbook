@@ -31,15 +31,15 @@ The important point of the model is
 
 The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
 
-* `$SRG`: Non transferrable token for staking.
+* `$SSR`: Non transferrable token for staking.
 * `$SR`: STransferrable token for a fee.
 
 The flow will be like this:
 
 * Some users mint LP tokens in the `x/liquiditypool` module.
-  * They will get `$SRG` for the reward.
-* Some users stake `$SRG` token in the `x/staking` module
-* People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SRG` for the incentive for liquidity providers.
+  * They will get `$SSR` for the reward.
+* Some users stake `$SSR` token in the `x/staking` module
+* People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SSR` for the incentive for liquidity providers.
 * The voter for each pool will receive the reward from the profit of the pool.
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
