@@ -8,10 +8,10 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 * Denom in the blockchain: `microSR`
 * Supply cap: 1,000,000,000SR = `1_000_000_000_000_000microSR`
 
-$SR can be minted by burning $SSR with the following rule.
+$SR can be minted by burning $SSR 1 to 1 if the following rule satisfies:
 
 $$
-  \text{OutputSR} = \text{InputSSR} \times \min\left(1, \frac{\text{MaxSupplySR}}{\text{CurrentSupplySSR}} \right) \ \text{if} \ \text{CurrentSupplySR} + \text{OutputSR} \le \text{MaxSupplySR}
+  \text{if} \ \text{CurrentSupplySR} + \text{OutputSR} \le \text{MaxSupplySR}
 $$
 
 ## $SSR
