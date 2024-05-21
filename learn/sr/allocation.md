@@ -1,4 +1,4 @@
-# $SR allocations
+# $SSR and $SR allocations
 
 ||||
 |---|---|---|
@@ -7,3 +7,5 @@
 | Initial Core contributors | Full lock for 6 months and unlocks continuously for 30 months | 25% |
 | R&D Ecosystem | Unlocks continuously for 6 months at grant | 33% |
 | Early backers | Full lock for 6 months and unlocks continuously for 18 months | 30% |
+
+Some parts will be converted to $SR in the genesis.

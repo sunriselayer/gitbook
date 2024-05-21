@@ -1,8 +1,6 @@
 # Proof of Liquidity
 
-Proof of Liquidity enables users to use LP tokens minted by Liquidity Pool for staking in Sunrise. It enhances the total market cap of staked assets to acquire and hijack the Sunrise network. This part is realized by `x/liquiditystaking` module.
-
-However, the Proof of Liquidity ecosystem consists of modules `x/gauge` and `x/votingreward` to enhance the engagement of the users and sustainability of the ecosystem. It is not only for the security.
+Proof of Liquidity sybil resistance mechanism utilizes the history of providing liquidity for the voting power in the network.
 
 ## Gauge voting
 
@@ -36,10 +34,20 @@ The Sunrise model incorporates and builds upon selected historical developments 
 
 The flow will be like this:
 
-* Some users mint LP tokens in the `x/liquiditypool` module.
+* Some users provide liquidity in the `x/liquiditypool` module.
   * They will get `$SSR` for the reward.
 * Some users stake `$SSR` token in the `x/staking` module
-* People who have voting power can vote for the pool in the `x/gauge` module which pool should get `$SSR` for the incentive for liquidity providers.
+* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$SSR` for the incentive for liquidity providers.
 * The voter for each pool will receive the reward from the profit of the pool.
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
+
+## How to do staking
+
+* Keplr dashboard
+
+## Specs
+
+* Blockchain framework: Cosmos SDK v0.50.2
+* Consensus algorithm: CometBFT (Tendermint)
+* Validator set size: 100

@@ -11,7 +11,7 @@ $SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the
 $SR can be minted by burning $SSR with the following rule.
 
 $$
-  \text{OutputSR} = \text{InputSSR} \times \min\left(1, \frac{\text{CurrentSupplySR}}{\text{CurrentSupplySSR}} \right) \ \text{if} \ \text{CurrentSupplySR} + \text{OutputSR} \le \text{MaxSupplySR}
+  \text{OutputSR} = \text{InputSSR} \times \min\left(1, \frac{\text{MaxSupplySR}}{\text{CurrentSupplySSR}} \right) \ \text{if} \ \text{CurrentSupplySR} + \text{OutputSR} \le \text{MaxSupplySR}
 $$
 
 ## $SSR
