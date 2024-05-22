@@ -1,10 +1,15 @@
+---
+cover: .gitbook/assets/Sunrise Cover.png
+coverY: 0
+---
+
 # Sunrise
 
 Sunrise is a specialized Data Availability (DA) Layer for Fee Abstraction and Proof of Liquidity, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.\
 \
 Sunrise extend's Berachain's Proof of Liquidity (PoL) model to rollups and L2s, while retaining compabitility with Celestia architecture. A modular cross-chain yield hub (Gluon) is deployed as a Sovereign Rollup (L2) onto the Sunrise L1 blockchain. This yield hub and Sunrise communicate directly to enable the provision of liquidity (replication of PoL) in exchange for blobspace, allowing for a scaling solution with less net-value extract than pre-existing AltDA providers. PoL on Sunrise mutually increases security and liquidity for both the rollup and Sunrise, a parrallel flywheel effect to PoL as seen on Berachain.
 
-Compatibility with Celestia architecture minimizes onboarding difficulty for rollups. This also means that Sunrise is natively IBC compatible. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, etc.) that support Celestia, will automatically be compatible with Sunrise.&#x20;
+Compatibility with Celestia architecture minimizes onboarding difficulty for rollups. This also means that Sunrise is natively IBC compatible. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, etc.) that support Celestia, will automatically be compatible with Sunrise.
 
 ### Sunrise Functions:
 
@@ -22,7 +27,7 @@ Sunrise unique functions:
 
 ### Proof of Liquidity x Data Availability
 
-As mentioned above, Sunrise utilizes Proof of Liquidity to enhance the security of the Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.&#x20;
+As mentioned above, Sunrise utilizes Proof of Liquidity to enhance the security of the Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
 
 Sunrise also has a mechanism to incentivize DA network whereas other DA networks depend on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, Gaming, and so on.
 
