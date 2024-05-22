@@ -5,6 +5,8 @@ coverY: 0
 
 # Sunrise
 
+\*Our documentation is under construction and is being updated regularly, please check back for updates\*
+
 Sunrise is a specialized Data Availability (DA) Layer for Fee Abstraction and Proof of Liquidity, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.\
 \
 Sunrise extend's Berachain's Proof of Liquidity (PoL) model to rollups and L2s, while retaining compabitility with Celestia architecture. A modular cross-chain yield hub (Gluon) is deployed as a Sovereign Rollup (L2) onto the Sunrise L1 blockchain. This yield hub and Sunrise communicate directly to enable the provision of liquidity (replication of PoL) in exchange for blobspace, allowing for a scaling solution with less net-value extract than pre-existing AltDA providers. PoL on Sunrise mutually increases security and liquidity for both the rollup and Sunrise, a parrallel flywheel effect to PoL as seen on Berachain.
