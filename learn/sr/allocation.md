@@ -1,11 +1,11 @@
 # Allocations
 
-|                                           |                                                               |     |
-| ----------------------------------------- | ------------------------------------------------------------- | --- |
-| Community allocation 1 Genesis drop       | Unlocked at launch                                            | 7%  |
-| Community allocation 2 Future initiatives | Announced later                                               | 5%  |
-| Initial Core contributors                 | Full lock for 6 months and unlocks continuously for 30 months | 25% |
-| Ecosystem                                 | Unlocks continuously for 6 months at grant                    | 33% |
-| Early backers                             | Full lock for 6 months and unlocks continuously for 18 months | 30% |
+|                                           |                                                             |                  |
+| ----------------------------------------- | ----------------------------------------------------------- | ---------------- |
+| Community allocation 1 Genesis drop       | <p>50% unlocked at launch<br>50% full lock for 9 months</p> | 7%               |
+| Community allocation 2 Future initiatives | To be determined                                            | 5%               |
+| Initial Core contributors                 | To be determined                                            | To be determined |
+| Ecosystem                                 | To be determined                                            | To be determined |
+| Early backers                             | To be determined                                            | 30%              |
 
 Some parts will be converted to $SR in the genesis.
