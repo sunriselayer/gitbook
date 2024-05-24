@@ -17,7 +17,7 @@ The model "ve(3,3)" is an enhanced version of the model "ve" by combining the id
 * `$BGT`: Non transferrable token for staking.
 * `$BERA`: Transferrable token for a fee.
 
-The blog  [Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer) by Berachain is a good resource for understanding the model.
+The blog [Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer) by Berachain is a good resource for understanding the model.
 
 The important point of the model is
 
@@ -29,15 +29,15 @@ The important point of the model is
 
 The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
 
-* `$SSR`: Non transferrable token for staking.
-* `$SR`: STransferrable token for a fee.
+* `$VRISE`: Non transferrable token for staking.
+* `$RISE`: STransferrable token for a fee.
 
 The flow will be like this:
 
 * Some users provide liquidity in the `x/liquiditypool` module.
-  * They will get `$SSR` for the reward.
-* Some users stake `$SSR` token in the `x/staking` module
-* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$SSR` for the incentive for liquidity providers.
+  * They will get `$VRISE` for the reward.
+* Some users stake `$VRISE` token in the `x/staking` module
+* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$VRISE` for the incentive for liquidity providers.
 * The voter for each pool will receive the reward from the profit of the pool.
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
