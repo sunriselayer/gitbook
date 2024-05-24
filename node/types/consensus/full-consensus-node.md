@@ -162,9 +162,9 @@ sunrised keys show <your-key> -a
 
 Replace `<your-key>` with a key name of your choosing.
 
-### Get some SR tokens
+### Get some RISE tokens
 
-You will require some SR tokens to bond to your validator. To be in the active set you will need to have enough tokens.
+You will require some RISE tokens to bond to your validator. To be in the active set you will need to have enough tokens.
 
 ### Start the consensus node
 

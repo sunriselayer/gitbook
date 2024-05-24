@@ -1,4 +1,4 @@
-# Sunrise Validator Node
+# Validator Node
 
 Validator nodes allow you to participate in consensus in the Sunrise network.
 
@@ -6,14 +6,14 @@ Validator nodes allow you to participate in consensus in the Sunrise network.
 
 The following hardware minimum requirements are recommended for running the validator node:
 
-- Memory: 8 GB RAM (minimum)
-- CPU: 6 cores
-- Disk: 500 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+* Memory: 8 GB RAM (minimum)
+* CPU: 6 cores
+* Disk: 500 GB SSD Storage
+* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 ## Run the Node
 
-First, follow the instructions on [setting up a full consensus node](./full-consensus-node.md).
+First, follow the instructions on [setting up a full consensus node](full-consensus-node.md).
 
 ### Optional: Reset working directory
 
@@ -73,18 +73,18 @@ Next, edit `~/.sunrise/config/config.toml`
 
 There are certain files that you need to backup to be able to restore your validator if, for some reason, it is damaged or lost in some way. Please make a secure backup of the following files located in `~/.sunrise/config/`:
 
-- `priv_validator_key.json`
-- `node_key.json`
+* `priv_validator_key.json`
+* `node_key.json`
 
 It is recommended that you encrypt the backup of these files.
 
 ## Additional incentives for validators
 
-The core team will delegate SR to validators who serve the following services:
+The core team will delegate RISE to validators who serve the following services:
 
-- IBC relayer
-  - `100000000microSR` delegation per channel
-- Node snapshot
-  - `10000000000microSR` delegation
-- REST API endpoints
-  - `10000000000microSR` delegation
+* IBC relayer
+  * `100000000microRISE` delegation per channel
+* Node snapshot
+  * `10000000000microRISE` delegation
+* REST API endpoints
+  * `10000000000microRISE` delegation
