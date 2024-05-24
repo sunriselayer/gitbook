@@ -1,7 +1,6 @@
-# Development Environment
+# Environment
 
-This is development environment to run Sunrise software.
-This environment can be used for development, building binaries, and running nodes.
+This is development environment to run Sunrise software. This environment can be used for development, building binaries, and running nodes.
 
 ## Install Dependencies
 
@@ -18,9 +17,9 @@ Install Golang
 
 ```bash
 wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz
+sudo rm -rf /urise/local/go && sudo tar -C /urise/local -xzf go1.22.2.linux-amd64.tar.gz
 rm go1.22.2.linux-amd64.tar.gz
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bashrc
+echo "export PATH=$PATH:/urise/local/go/bin:$HOME/go/bin" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 

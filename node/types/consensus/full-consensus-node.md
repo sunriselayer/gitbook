@@ -95,7 +95,7 @@ For RPC nodes and Validator nodes, we recommend setting the following minimum-ga
 In `$HOME/.sunrise/config/app.toml`, set minimum gas prices:
 
 ```Bash
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025usr\"/" $HOME/.sunrise/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025urise\"/" $HOME/.sunrise/config/app.toml
 ```
 
 ### Option: Additional settings

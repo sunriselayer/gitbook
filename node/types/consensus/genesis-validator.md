@@ -1,24 +1,23 @@
-# Sunrise Validator Node (Genesis)
+# Validator Node (Genesis)
 
 Validator nodes allow you to participate in consensus in the Sunrise network.
 
-{% hint style="warn" %}
-You can only join as a validator in this way before the network starts(genesis).
-If the network has already started, please see [this tutorial](./validator-node.md).
+{% hint style="info" %}
+You can only join as a validator in this way before the network starts(genesis). If the network has already started, please see [this tutorial](validator-node.md).
 {% endhint %}
 
 ## Hardware requirements
 
 The following hardware minimum requirements are recommended for running the validator node:
 
-- Memory: 8 GB RAM (minimum)
-- CPU: 6 cores
-- Disk: 500 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+* Memory: 8 GB RAM (minimum)
+* CPU: 6 cores
+* Disk: 500 GB SSD Storage
+* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 ## Run the Node
 
-First, follow the instructions on [setting up a full consensus node](./full-consensus-node.md).
+First, follow the instructions on [setting up a full consensus node](full-consensus-node.md).
 
 ### Optional: Reset working directory
 
@@ -48,7 +47,7 @@ sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ### Create the genesis transaction for new chain
 
 ```bash
-STAKING_AMOUNT=1000000usr
+STAKING_AMOUNT=1000000urise
 sunrised genesis gentx $VALIDATOR_WALLET $STAKING_AMOUNT --chain-id $CHAIN_ID \
    --pubkey=$(sunrised tendermint show-validator) \
    --moniker=$MONIKER \

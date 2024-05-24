@@ -47,14 +47,14 @@ sunrised tx staking create-validator [path/to/validator.json] \
     --chain-id=$CHAIN_ID \
     --from=$VALIDATOR_WALLET \
     --keyring-backend=test \
-    --fees=21000usr \
+    --fees=21000urise \
     --gas=220000
 ```
 
 ```json
 {
         "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"oWg2ISpLF405Jcm2vXV+2v4fnjodh6aafuIdeoW+rUw="},
-        "amount": "1000000usr",
+        "amount": "1000000urise",
         "moniker": "myvalidator",
         "identity": "optional identity signature (ex. UPort or Keybase)",
         "website": "validator's (optional) website",
