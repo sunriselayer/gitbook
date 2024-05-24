@@ -8,4 +8,4 @@
 | Ecosystem                                 | To be determined                                            | To be determined |
 | Early backers                             | To be determined                                            | To be determined |
 
-Some parts will be converted to $SR in the genesis.
+Some parts will be converted to $RISE in the genesis.
