@@ -13,7 +13,7 @@
   * [SPoL](learn/sunrise/spol.md)
   * [DAS Incentive](learn/sunrise/das-incentive.md)
   * [Archive](learn/sunrise/archive.md)
-* [$SR](learn/sr/README.md)
+* [$RISE](learn/sr/README.md)
   * [Allocations](learn/sr/allocation.md)
 * [Gluon](learn/gluon/README.md)
   * [Interest Rate Swap](learn/gluon/interest-rate-swap.md)

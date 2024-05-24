@@ -1,35 +1,32 @@
-# $SR
+# $RISE
 
-$SR token is the native token of Sunrise network. $SR token can be used for fee.
+$RISE token is the native token of Sunrise network. $RISE token can be used for fee.
 
-$SR is preserved as `usr` in the Sunrise blockchain. `1000000usr` in the blockchain means 1 SR in the real world.
+$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the blockchain means 1 RISE in the real world.
 
-* Ticker: SR
-* Denom in the blockchain: `usr`
-* Alias in the blockchain: `microSR`
-* Supply cap: 1,000,000,000SR = `1_000_000_000_000_000microSR`
+* Ticker: RISE
+* Denom in the blockchain: `urise`
+* Alias in the blockchain: `microRISE`
+* Supply cap: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
 
-$SR can be minted by burning $SSR 1 to 1 if the following rule satisfies:
+$RISE can be minted by burning $VRISE 1 to 1 if the following rule satisfies:
 
-$$
-  \text{if} \ \text{CurrentSupplySR} + \text{OutputSR} \le \text{MaxSupplySR}
-$$
+<figure><img src="../../.gitbook/assets/Screenshot 2024-05-24 at 15.36.50.png" alt="" width="563"><figcaption></figcaption></figure>
 
-## $SSR
+## $VRISE
 
-$SSR token can be used for staking.
-The staked amount will be calculated as a voting power for the governance.
+$VRISE token can be used for staking. The staked amount will be calculated as a voting power for the governance.
 
-* Ticker: SSR
-* Denom in the blockchain: `ussr`
-* Alias in the blockchain: `microSSR`
-* Supply in genesis block: 1,000,000,000SSR = `1_000_000_000_000_000microSSR`
+* Ticker: VRISE
+* Denom in the blockchain: `uvrise`
+* Alias in the blockchain: `microVRISE`
+* Supply in genesis block: 1,000,000,000VRISE = `1_000_000_000_000_000microVRISE`
 
 ### Usecases
 
 #### Staking
 
-$SSR can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+$VRISE can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
 
 ### Inflation rate schedule
 
