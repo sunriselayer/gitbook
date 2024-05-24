@@ -2,10 +2,11 @@
 
 $SR token is the native token of Sunrise network. $SR token can be used for fee.
 
-$SR is preserved as `microSR` in the Sunrise blockchain. `1000000microSR` in the blockchain means 1 SR in the real world.
+$SR is preserved as `usr` in the Sunrise blockchain. `1000000usr` in the blockchain means 1 SR in the real world.
 
 * Ticker: SR
-* Denom in the blockchain: `microSR`
+* Denom in the blockchain: `usr`
+* Alias in the blockchain: `microSR`
 * Supply cap: 1,000,000,000SR = `1_000_000_000_000_000microSR`
 
 $SR can be minted by burning $SSR 1 to 1 if the following rule satisfies:
@@ -20,7 +21,8 @@ $SSR token can be used for staking.
 The staked amount will be calculated as a voting power for the governance.
 
 * Ticker: SSR
-* Denom in the blockchain: `microSSR`
+* Denom in the blockchain: `ussr`
+* Alias in the blockchain: `microSSR`
 * Supply in genesis block: 1,000,000,000SSR = `1_000_000_000_000_000microSSR`
 
 ### Usecases
