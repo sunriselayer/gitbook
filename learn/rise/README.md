@@ -15,7 +15,7 @@ $RISE can be minted by burning $VRISE 1 to 1 if the following rule satisfies:
 
 ## $VRISE
 
-$VRISE token can be used for staking. The staked amount will be calculated as a voting power for the governance.
+$VRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
 
 * Ticker: VRISE
 * Denom in the blockchain: `uvrise`
