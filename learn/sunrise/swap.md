@@ -1,5 +1,7 @@
 # Swap
 
+The module `x/swap` serves the functionalities to swap tokens with the liquidity in `x/liquiditypool` module.
+
 ## Params
 
 This module has these params
