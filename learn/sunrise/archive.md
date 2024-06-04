@@ -4,4 +4,4 @@ Generally modular Data Availability layer serves data availability for a certain
 
 Sunrise hears the voices of the market like Blockchain Game developers that Layer 2 BCGs want the persistence of the data even after the L2 state gets finalized, to utilize the gaming history. So we will serve as a mechanism to preserve full archive data in the DA network.
 
-`archive` module manages the long term data availability by periodically generating the DA attestations and the payment for the fee of long term DA attestation and data preservation.
+We continue to investigate for solving problems.
