@@ -47,7 +47,7 @@ Users can claim fee rewards for providing liquidity.
 
 ## MsgCollectIncentives
 
-Users can claim $VRISE token as an incentive for providing liquidity.
+Users can claim $vRISE token as an incentive for providing liquidity.
 
 * `position_ids`: The list of position ids to collect incentives
 

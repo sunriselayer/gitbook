@@ -9,24 +9,24 @@ $RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the b
 * Alias in the blockchain: `microRISE`
 * Supply cap: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
 
-$RISE can be minted by burning $VRISE 1 to 1 if the following rule satisfies:
+$RISE can be minted by burning $vRISE 1 to 1 if the following rule satisfies:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-05-24 at 15.36.50.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="broken-reference" alt="" width="563"><figcaption></figcaption></figure>
 
-## $VRISE
+## $vRISE
 
-$VRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
+$vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
 
-* Ticker: VRISE
+* Ticker: vRISE
 * Denom in the blockchain: `uvrise`
-* Alias in the blockchain: `microVRISE`
-* Supply in genesis block: 1,000,000,000VRISE = `1_000_000_000_000_000microVRISE`
+* Alias in the blockchain: `microvRISE`
+* Supply in genesis block: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
 
 ### Usecases
 
 #### Staking
 
-$VRISE can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+$vRISE can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
 
 ### Inflation rate schedule
 

@@ -29,15 +29,15 @@ The important point of the model is
 
 The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
 
-* `$VRISE`: Non transferrable token for staking.
+* `$vRISE`: Non transferrable token for staking.
 * `$RISE`: STransferrable token for a fee.
 
 The flow will be like this:
 
 * Some users provide liquidity in the `x/liquiditypool` module.
-  * They will get `$VRISE` for the reward.
-* Some users stake `$VRISE` token in the `x/staking` module
-* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$VRISE` for the incentive for liquidity providers.
+  * They will get `$vRISE` for the reward.
+* Some users stake `$vRISE` token in the `x/staking` module
+* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$vRISE` for the incentive for liquidity providers.
 * The voter for each pool will receive the reward from the profit of the pool.
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
