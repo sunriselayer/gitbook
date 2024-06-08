@@ -65,3 +65,24 @@ Ultimately it means that Data Availability Sampling will be done only for blob d
 
 In the Sunrise v1 architecture, correctness of the 2-dimensional Reed Solomon encoding is guaranteed by the fraud proof.
 By substituting the fraud proof with the KZG commitment, we can reduce time to the attestation of the data availability.
+
+### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    autonumber
+    User ->> IPFS: Upload BLOB
+    User ->> Validator Set: Tx set with BLOB URI
+    Validator Set ->> Block Body: BLOB URI set
+    IPFS ->> Validator Set: Download BLOB set
+    Validator Set --> Validator Set: ABCI Vote Extension to oraclize BLOB hash set
+    Validator Set ->> Block Body: BLOB hash set
+    Validator Set --> Validator Set: Erasure coding BLOB set
+    Validator Set ->> Block Header: BLOB set erasure coded hash
+    Validator Set ->> Block Header: KZG commitment
+    Block Body ->> Full Storage Bridge Node: BLOB URI set
+    IPFS ->> Full Storage Bridge Node: Download BLOB set
+    Full Storage Bridge Node --> Full Storage Bridge Node: Erasure coding BLOB set
+    Block Header ->> Light Node: BLOB erasure coded hash
+    Full Storage Bridge Node ->> Light Node: Data Availability Sampling
+```
