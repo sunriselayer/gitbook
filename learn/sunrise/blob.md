@@ -48,11 +48,8 @@ When the sizes of `BlobTx`s get larger, the throughput of the network will be li
 
 To mitigate this bottleneck, we will do these things:
 
-1. Abolishing the `BlobTx` type and changing the `MsgPayForBlob`
-1. User side execution of 2-dimension Reed Solomon encoding to generate the extended BLOB data
-1. Users directly uploading the shares of extended data to the storage network like IPFS, Arweave, etc.
-1. Users posting the tx with URI list of the shares of extended data to the Sunrise consensus network
-1. Introducing the field for storing the merkle root of the list of extended data shares URI in the `Header` message.
+1. Off chain execution of 2-dimension Reed Solomon encoding to generate the extended BLOB data
+1. Using off chain distributed file transfer system / storage like IPFS, Arweave, etc.
 
 In this new design, `MsgPayForBlob` will contain the URIs of extended data shares.
 The value is assumed to be the URI of the IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
@@ -72,18 +69,20 @@ Due to the design of user side execution of 2-dimension Reed Solomon encoding, t
 ```mermaid
 sequenceDiagram
     autonumber
-    User -->User: 2-dimension Reed Solomon encoding
-    User ->> IPFS / Arweave: Upload extended BLOB data shares
-    User ->> Validator Set: Tx with extended data shares URIs
-    Validator Set ->> Block Body: Extended data shares URIs
-    Validator Set ->> Block Header: Merkle root
-    Block Body ->> Prover Full Node: Extended data shares URIs
-    Prover Full Node ->> Validator Set: Tx with KZG commitment
-    Validator Set ->> Block Body: KZG commitments
-    Validator Set ->> Block Header: Merkle root
-    Block Body ->> Prover Full Node: KZG commitments
-    Block Header ->> DAS Light Node: Merkle root
-    Prover Full Node ->> DAS Light Node: Extended data shares URIs
-    Prover Full Node ->> DAS Light Node: KZG commitments
-    IPFS / Arweave ->> DAS Light Node: Data Availability Sampling
+    User ->> Prover Light Node: BLOB data and fee
+    Prover Light Node --> Prover Light Node: 2-dimension Reed Solomon encoding
+    Prover Light Node ->> IPFS / Arweave: Extended data shares
+    Prover Light Node ->> Other Prover Light Nodes: Extended data shares URIs
+    Prover Light Node ->> Other Prover Light Nodes: KZG commitment
+    IPFS / Arweave ->> Other Prover Light Nodes: Data Availability Sampling
+    Other Prover Light Nodes --> Other Prover Light Nodes: Verify KZG commitment
+    Prover Light Node ->> Validator Set: Extended data shares URIs
+    Prover Light Node ->> Validator Set: KZG commitment
+    Validator Set ->> Prover Light Node: Tx receipt
+    Prover Light Node ->> Other Prover Light Nodes: Tx receipt
+    Prover Light Node ->> User: Tx receipt
+    Other Prover Light Nodes ->> Validator Set: Vote for Data Availability
+    Validator Set ->> Other Prover Light Nodes: Reward
+    Validator Set ->> Block Body: DA Attestations
+    Validator Set ->> Block Header: Merkle root of DA Attestations
 ```
