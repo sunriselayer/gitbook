@@ -72,18 +72,18 @@ Due to the design of user side execution of 2-dimension Reed Solomon encoding, t
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> IPFS / Arweave: Upload BLOB data
+    User -->User: 2-dimension Reed Solomon encoding
+    User ->> IPFS / Arweave: Upload extended BLOB data shares
     User ->> Validator Set: Tx with extended data shares URIs
     Validator Set ->> Block Body: Extended data shares URIs
-    Validator Set ->> Block Header: Merkle root of the extended data shares URIs
+    Validator Set ->> Block Header: Merkle root
     Block Body ->> Prover Full Node: Extended data shares URIs
     Prover Full Node ->> Validator Set: Tx with KZG commitment
     Validator Set ->> Block Body: KZG commitments
-    Validator Set ->> Block Header: Merkle root of KZG commitments
+    Validator Set ->> Block Header: Merkle root
     Block Body ->> Prover Full Node: KZG commitments
-    Block Header ->> Light Node: Merkle root of the extended data shares URIs
-    Block Header ->> Light Node: Merkle root of KZG commitments
-    Prover Full Node ->> Light Node: Extended data shares URIs
-    Prover Full Node ->> Light Node: KZG commitments
-    IPFS / Arweave ->> Light Node: Data Availability Sampling
+    Block Header ->> DAS Light Node: Merkle root
+    Prover Full Node ->> DAS Light Node: Extended data shares URIs
+    Prover Full Node ->> DAS Light Node: KZG commitments
+    IPFS / Arweave ->> DAS Light Node: Data Availability Sampling
 ```
