@@ -49,15 +49,15 @@ When the sizes of `BlobTx`s get larger, the throughput of the network will be li
 To mitigate this bottleneck, we will do these things:
 
 1. Abolishing the `BlobTx` type and changing the `MsgPayForBlob`
-1. Introducing the field for storing the hash of 2-dimension Reed Solomon encoding in the `Header` message.
+1. User side execution of 2-dimension Reed Solomon encoding to generate the extended BLOB data
+1. Users directly uploading the shares of extended data to the storage network like IPFS, Arweave, etc.
+1. Users posting the tx with URI list of the shares of extended data to the Sunrise consensus network
+1. Introducing the field for storing the merkle root of the list of extended data shares URI in the `Header` message.
 
-In this new design, `MsgPayForBlob` will include the field `string blob_uri`.
-The value is assumed to be the URI of the IPFS `"ipfs://[ipfs-cid]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
+In this new design, `MsgPayForBlob` will contain the URIs of extended data shares.
+The value is assumed to be the URI of the IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
 
-When the block proposer is in the process of proposing a block, the proposer will download the blob data from the IPFS network and calculate the 2-dimension Reed Solomon encoding of the blob data.
-The customization of the block production process will be implemented by using the interface of ABCI.
-
-The hash of the 2-dimension Reed Solomon encoding will be stored in the `Header` message.
+In the consensus network, 2-dimension reed solomon encoding is not executed anymore. Only the merkle root of the list of extended data shares URI will be stored in the `Header` message.
 
 Ultimately it means that Data Availability Sampling will be done only for blob data off-chain, not the entire tx data in the block. Data Availability light nodes still can do Data Availability sampling only with downloading the block header and a few sizes of the data share of 2-dimension Reed Solomon encoding.
 
@@ -65,24 +65,25 @@ Ultimately it means that Data Availability Sampling will be done only for blob d
 
 In the Sunrise v1 architecture, correctness of the 2-dimensional Reed Solomon encoding is guaranteed by the fraud proof.
 By substituting the fraud proof with the KZG commitment, we can reduce time to the attestation of the data availability.
+Due to the design of user side execution of 2-dimension Reed Solomon encoding, the KZG commitment will be done by the prover full node for each BLOB data.
 
 ### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> IPFS: Upload BLOB
-    User ->> Validator Set: Tx set with BLOB URI
-    Validator Set ->> Block Body: BLOB URI set
-    IPFS ->> Validator Set: Download BLOB set
-    Validator Set --> Validator Set: ABCI Vote Extension to oraclize BLOB hash set
-    Validator Set ->> Block Body: BLOB hash set
-    Validator Set --> Validator Set: Erasure coding BLOB set
-    Validator Set ->> Block Header: BLOB set erasure coded hash
-    Validator Set ->> Block Header: KZG commitment
-    Block Body ->> Full Storage Bridge Node: BLOB URI set
-    IPFS ->> Full Storage Bridge Node: Download BLOB set
-    Full Storage Bridge Node --> Full Storage Bridge Node: Erasure coding BLOB set
-    Block Header ->> Light Node: BLOB erasure coded hash
-    Full Storage Bridge Node ->> Light Node: Data Availability Sampling
+    User ->> IPFS / Arweave: Upload BLOB data
+    User ->> Validator Set: Tx with extended data shares URIs
+    Validator Set ->> Block Body: Extended data shares URIs
+    Validator Set ->> Block Header: Merkle root of the extended data shares URIs
+    Block Body ->> Prover Full Node: Extended data shares URIs
+    Prover Full Node ->> Validator Set: Tx with KZG commitment
+    Validator Set ->> Block Body: KZG commitments
+    Validator Set ->> Block Header: Merkle root of KZG commitments
+    Block Body ->> Prover Full Node: KZG commitments
+    Block Header ->> Light Node: Merkle root of the extended data shares URIs
+    Block Header ->> Light Node: Merkle root of KZG commitments
+    Prover Full Node ->> Light Node: Extended data shares URIs
+    Prover Full Node ->> Light Node: KZG commitments
+    IPFS / Arweave ->> Light Node: Data Availability Sampling
 ```
