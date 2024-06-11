@@ -35,15 +35,17 @@ If you are not using pruning, you are running an archive node, and it is recomme
 
 ## Dependencies
 
-The tutorial is done on Ubuntu 22.04 (LTS). Follow [the environment tutorial](../../resources/enviromant.md)
+The tutorial is done on Ubuntu 22.04 (LTS). Follow [the environment tutorial](../../resources/environment.md)
 
 ## Run the full consensus node
 
 ### Install
 
+[Install Go](https://go.dev/doc/install) 1.22
+
 ```bash
-git clone https://github.com/SunriseLayer/sunrise-app.git
-cd sunrise-node
+git clone https://github.com/SunriseLayer/sunrise.git
+cd sunrise
 git checkout $TAG
 make install
 ```

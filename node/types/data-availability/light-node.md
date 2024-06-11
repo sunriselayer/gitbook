@@ -21,8 +21,8 @@ Follow [the environment tutorial](../../resources/enviromant.md)
 ### Install
 
 ```bash
-git clone https://github.com/SunriseLayer/sunrise-node.git
-cd sunrise-node
+git clone https://github.com/SunriseLayer/sunrise-da.git
+cd sunrise-da
 git checkout $TAG
 make build
 sudo make install
