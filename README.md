@@ -24,8 +24,8 @@ Sunrise unique functions:
 
 - DA Fee Abstraction
 - Proof of Liquidity (PoL)
-- Sovereign Proof of Liquidity (SPoL)
-- Incentivization for optional data storage
+- Long term Data Retrievable off chain BLOB Data Availability
+- Sovereign Proof of Liquidity featured by Gluon
 
 ### Proof of Liquidity x Data Availability
 

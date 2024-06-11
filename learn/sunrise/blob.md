@@ -44,7 +44,7 @@ message Header {
 ```
 
 In this design, trivially all full nodes have to transfer and download the txs data in the mempool.
-When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool.
+When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool. This will be an obstacle to apply the Data Availability technology for full-onchain AI, gaming, social and so on.
 
 To mitigate this bottleneck, we will do these things:
 
@@ -57,6 +57,11 @@ The value is assumed to be the URI of the IPFS `"ipfs://[ipfs-cid]"` or Arweave 
 In the consensus network, 2-dimension reed solomon encoding is not executed anymore. Only the merkle root of the list of extended data shares URI will be stored in the `Header` message.
 
 Ultimately it means that Data Availability Sampling will be done only for blob data off-chain, not the entire tx data in the block. Data Availability light nodes still can do Data Availability sampling only with downloading the block header and a few sizes of the data share of 2-dimension Reed Solomon encoding.
+
+In this design, "Data Retrievability" is easy to control by using external storage / file system like IPFS and Arweave whereas the Data Retrievability is not guaranteed by other ecosystem which serve Data Availability. The reason why Data Retrievability is not guaranteed by other ecosystem which serve Data Availability is that it is not needed to preserve the tx data of Optimistic Rollups after the challenge period for fraud proofs, or ZK Rollups after the submission of validity proofs.
+
+Furthermore, the decentralization of the network will get better. In the design of executing 2-dimension Reed Solomon encoding by validators, the required resource of validators will be increased by the size of the tx data in the block and it will lead to the concentration of the network to small number of validators.
+In the new design, the resource of running Prover Light Node is very light. The more Prover Light Node in the Network, the more off chain blob data can be attested for their Data Availability.
 
 ### KZG Commitment
 
