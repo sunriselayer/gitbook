@@ -22,16 +22,16 @@ Celestia-compatible functions:
 
 Sunrise unique functions:
 
-- DA Fee Abstraction
 - Proof of Liquidity (PoL)
-- Long term Data Retrievable off chain BLOB Data Availability
-- Sovereign Proof of Liquidity featured by Gluon
+- DA Fee Abstraction
+- Off Chain Blob Data Availability (Sunrise DA v2)
+- Sovereign Proof of Liquidity by Gluon
 
 ### Proof of Liquidity x Data Availability
 
 As mentioned above, Sunrise utilizes Proof of Liquidity to enhance the security of the Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
 
-Sunrise also has a mechanism to incentivize DA network whereas other DA networks depend on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also full-onchain new technologies like AI, Gaming, and so on.
+Sunrise also has a mechanism to incentivize DA network whereas other DA networks depend on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also fully on-chain new technologies like AI, Gaming, and so on.
 
 ### Revenue (Fee Structure)
 
@@ -60,9 +60,5 @@ The protocol generates revenue through three distinct streams.
 
 ### Sunrise v2: Security and Incentive
 
-- Sovereign Proof of Liquidity for Sovereign rollups
-
-### Future Integrations (Exploratory)
-
-- DAS Incentive
-- Long Term Data Storage Rollup
+- Off Chain Blob Data Availability (Sunrise DA v2)
+- Sovereign Proof of Liquidity by Gluon

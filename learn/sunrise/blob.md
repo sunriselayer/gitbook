@@ -4,12 +4,10 @@ The module `x/blob` is the Celestia-compatible module of Sunrise.
 
 This module allows L2 operators to post the data to the Sunrise network. The data will be stored in the Sunrise network until the L2 transactions are finalized in the L1 blockchain.
 
-## Blob Sunrise v2
-
-### OFf Chain Blob Data
+## OFf Chain Blob Data (Data Availability v2)
 
 After successfully launching the Sunrise v1 as a specialized Data Availability Layer for Proof of Liquidity,
-we will introduce an upgrade for Blob features in Sunrise v2, to realize the usecases of Data Availability for full-onchain AI, gaming, social and so on. Gluon will be the first place to realize the full on chain AI with Sunrise DA.
+we will introduce an upgrade for Blob features in Sunrise v2, to realize the usecases of Data Availability for fully on-chain AI, gaming, social and so on. Gluon will be the first place to realize the full on chain AI with Sunrise DA.
 
 In the Sunrise v1 architecture, `data_hash` is replaced with the merkle root of the extended data with 2-dimension Reed Solomon encoding. The data means the txs data in the block.
 
@@ -44,7 +42,7 @@ message Header {
 ```
 
 In this design, trivially all full nodes have to transfer and download the txs data in the mempool.
-When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool. This will be an obstacle to apply the Data Availability technology for full-onchain AI, gaming, social and so on.
+When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool. This will be an obstacle to apply the Data Availability technology for fully on-chain AI, gaming, social and so on.
 
 To mitigate this bottleneck, we will do these things:
 
@@ -62,6 +60,13 @@ In this design, "Data Retrievability" is easy to control by using external stora
 
 Furthermore, the decentralization of the network will get better. In the design of executing 2-dimension Reed Solomon encoding by validators, the required resource of validators will be increased by the size of the tx data in the block and it will lead to the concentration of the network to small number of validators.
 In the new design, the resource of running Prover Light Node is very light. The more Prover Light Node in the Network, the more off chain blob data can be attested for their Data Availability.
+
+In conclusion, there are benefits:
+
+- The throughput of the network will be increased
+- Easy to control the long term Data Retrievability
+  - Applications for fully on-chain AI, gaming, social and so on can be realized
+- The decentralization of the network will be improved
 
 ### KZG Commitment
 
