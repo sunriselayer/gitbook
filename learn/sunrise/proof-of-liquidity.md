@@ -42,9 +42,9 @@ The flow will be like this:
 
 Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
 
-## How to do staking
+## How to do stake $vRISE
 
-* Keplr dashboard
+* Sunrise Web App
 
 ## Specs
 
