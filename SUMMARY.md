@@ -1,8 +1,12 @@
 # Table of contents
 
-## Learn
+## Home
 
 - [Sunrise](README.md)
+
+## Learn
+
+- Sunrise
   - [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   - [DA Fee Abstraction](learn/sunrise/da-fee-abstraction.md)
   - [Blob](learn/sunrise/blob.md)

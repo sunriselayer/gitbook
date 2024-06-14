@@ -5,7 +5,7 @@ coverY: 0
 
 # Sunrise
 
-\*Our documentation is under construction and is being updated regularly, please check back for updates\*
+**Our documentation is under construction and is being updated regularly, please check back for updates.**
 
 Sunrise is a specialized Data Availability (DA) Layer for Fee Abstraction and Proof of Liquidity, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.\
 \
@@ -13,7 +13,7 @@ Sunrise extend's Berachain's Proof of Liquidity (PoL) model to rollups and L2s, 
 
 Compatibility with Celestia architecture minimizes onboarding difficulty for rollups. This also means that Sunrise is natively IBC compatible. Rollup-as-a-Service (RaaS) providers who integrated Celestia can integrate Sunrise easily, and Rollup SDKs (e.g. OP stack, Polygon CDK, Rollkit, Sovereign SDK, etc.) that support Celestia, will automatically be compatible with Sunrise.
 
-### Sunrise Functions:
+## Sunrise Functions
 
 Celestia-compatible functions:
 
