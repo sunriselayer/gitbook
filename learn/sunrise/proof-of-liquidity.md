@@ -48,6 +48,15 @@ Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise D
 
 ## Specs
 
-* Blockchain framework: Cosmos SDK v0.50.2
 * Consensus algorithm: CometBFT (Tendermint)
-* Validator set size: 100
+  * Investigation for Mysticeti is in progress.
+* Blockchain application framework: Cosmos SDK v0.50.2
+* Maximum validator set size: 100
+
+### Mysticeti
+
+[Mysticeti](https://sui.io/mysticeti) is the latest consensus protocol adopted in the next version of Sui.
+
+Our basic idea is same to the [article](https://www.paradigm.xyz/2022/07/experiment-narwhal-bullshark-cosmos-stack) which Paradigm tried PoC to use Narwhal and Bullshark with ABCI.
+
+We are investigating the adoption of Mysticeti to ABCI and further Sunrise, to enhance the throughput of Sunrise.
