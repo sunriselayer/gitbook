@@ -85,10 +85,10 @@ In conclusion, there are benefits:
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> Publisher: BLOB data
-    Publisher --> Publisher: Erasure coding
-    Publisher ->> Decentralized Storage: Upload data shards
-    Publisher ->> Sunrise: MsgPublishData
+    User ->> Publisher node: BLOB data
+    Publisher node --> Publisher node: Erasure coding
+    Publisher node ->> Decentralized Storage: Upload data shards
+    Publisher node ->> Sunrise: MsgPublishData
     Sunrise ->> Validator set: Start Vote Extension
     Validator set ->> Sunrise: Vote Data Availability with ZKP
 ```
@@ -97,28 +97,64 @@ sequenceDiagram
 
 ### Terms and Notation
 
-- $n$: Total number of erasure coded shards
-- $t$: Threshold (minimum number of shards required to prove the possession)
-- $s_i$: The $i$-th erasure coded data shard
-- $H$: The hash function
+Total number of erasure coded shards:
+
+$$
+  n
+$$
+
+Threshold (minimum number of shards required to prove the possession):
+
+$$
+  t
+$$
+
+The i-th erasure coded data shard:
+
+$$
+  s_i
+$$
+
+The hash function:
+
+$$
+  H
+$$
 
 ### Overview
 
-This system verifies the possession of data shard hash `H(s_i)` without exposing `H(s_i)`.
+This system verifies the possession of data shard hash
+
+$$
+  H(s_i)
+$$
+
+without exposing
+
+$$
+  H(s_i)
+$$
 
 ### Zero-Knowledge Proof System
 
 #### Public Inputs
 
-- $\{H^2(s_i)\}_{i=1}^n$
-- $t$: Threshold
+$$\{H^2(s_i)\}_{i=1}^n, t$$
 
 #### Private Inputs
 
-- $I$: Index set of shards
-- $\{H(s_i)\}_{i \in I}$
+$$I, \{H(s_i)\}_{i \in I}$$
 
 #### ZKP Circuit Constraints
 
-- For each $i$, verify $H^2(s_i) = H^2(s_i)_{public}$
-- $t \le |I|$
+For each `i`, verify
+
+$$
+  H^2(s_i) = H^2(s_i)_{public}
+$$
+
+Verify
+
+$$
+  t \le |I|
+$$
