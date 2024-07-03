@@ -50,7 +50,7 @@ To mitigate this bottleneck, we will do these things:
 1. Using off chain distributed file transfer system / storage like IPFS, Arweave, etc.
 
 In this new design, `MsgPublishData` will have the URI of metadata that has URIs of erasure-coded data shares.
-The value is assumed to be the URI of the IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
+The value is assumed to be the URI of decentralized storage / file transfer system like IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
 
 In the consensus network, erasure encoding is not executed anymore. Only the double hash of erasure coded shard data will be included in `MsgPublishData`.
 
@@ -81,3 +81,44 @@ In conclusion, there are benefits:
 - Easy to control the long term Data Retrievability
   - Applications for fully on-chain AI, gaming, social and so on can be realized
 - The decentralization of the network will be improved
+
+```mermaid
+sequenceDiagram
+    autonumber
+    User ->> Publisher: BLOB data
+    Publisher --> Publisher: Erasure coding
+    Publisher ->> Decentralized Storage: Upload data shards
+    Publisher ->> Sunrise: MsgPublishData
+    Sunrise ->> Validator set: Start Vote Extension
+    Validator set ->> Sunrise: Vote Data Availability with ZKP
+```
+
+## Specification for Zero-Knowledge Proof
+
+### Terms and Notation
+
+- $n$: Total number of erasure coded shards
+- $t$: Threshold (minimum number of shards required to prove the possession)
+- $s_i$: The $i$-th erasure coded data shard
+- $H$: The hash function
+
+### Overview
+
+This system verifies the possession of data shard hash `H(s_i)` without exposing `H(s_i)`.
+
+### Zero-Knowledge Proof System
+
+#### Public Inputs
+
+- $\{H^2(s_i)\}_{i=1}^n$
+- $t$: Threshold
+
+#### Private Inputs
+
+- $I$: Index set of shards
+- $\{H(s_i)\}_{i \in I}$
+
+#### ZKP Circuit Constraints
+
+- For each $i$, verify $H^2(s_i) = H^2(s_i)_{public}$
+- $t \le |I|$
