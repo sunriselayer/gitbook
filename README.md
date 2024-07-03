@@ -39,7 +39,7 @@ The protocol generates revenue through three distinct streams.
 
 - Transaction fees
 - Swap fees in the liquidity pool
-- MEV captured with [Skip Protocol](https://docs.skip.money/blocksdk/overview/)
+- MEV captured with [Skip Protocol](https://docs.skip.money/)
 
 ### Why should developers use Sunrise?
 
