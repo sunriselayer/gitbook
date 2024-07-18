@@ -158,3 +158,14 @@ Verify
 $$
   t \le |I|
 $$
+
+## Comparison Between On-chain DA attestation and Off-chain DA attestation
+
+||On-chain DA attestation|Off-chain DA attestation|
+|---|---|---|
+|Data Corruption Durability|〇|〇|
+|Scalability of Tx Mempools|×|〇|
+|Control of Data Retrievability|×|〇|
+|Mitigation of Load of Validators|×|〇|
+|Resistance to False-Positive DA Attestation|〇|〇※|
+|Examples|Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G |
