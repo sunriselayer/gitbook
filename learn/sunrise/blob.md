@@ -165,8 +165,18 @@ $$
 ||On-chain DA attestation|Off-chain DA attestation|
 |---|---|---|
 |Data Corruption Durability|〇|〇|
-|Scalability of Tx Mempools|×|〇|
-|Control of Data Retrievability|×|〇|
-|Mitigation of Load of Validators|×|〇|
-|Resistance to False-Positive DA Attestation|〇|〇※|
+|Tx Mempool Scalability|×|〇|
+|Data Retrievability Control|×|〇|
+|Validators Load Mitigation|×|〇|
+|False-Positive DA Attestation Resistance|〇|〇※|
 |Examples|Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G |
+
+### Data Corruption Durability
+
+### Tx Mempool Scalability
+
+### Data Retrievability Control
+
+### Validators Load Mitigation
+
+### False-Positive DA Attestation Resistance
