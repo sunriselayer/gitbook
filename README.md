@@ -7,7 +7,7 @@ coverY: 0
 
 **Our documentation is under construction and is being updated regularly, please check back for updates.**
 
-Sunrise is a specialized Data Availability (DA) Layer for Fee Abstraction and Proof of Liquidity, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.\
+Sunrise is a specialized Data Availability (DA) Layer for Proof of Liquidity and Fee Abstraction, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.\
 \
 Sunrise extend's Berachain's Proof of Liquidity (PoL) model to rollups and L2s, while retaining compabitility with Celestia architecture. A modular cross-chain yield hub (Gluon) is deployed as a Sovereign Rollup (L2) onto the Sunrise L1 blockchain. This yield hub and Sunrise communicate directly to enable the provision of liquidity (replication of PoL) in exchange for blobspace, allowing for a scaling solution with less net-value extract than pre-existing AltDA providers. PoL on Sunrise mutually increases security and liquidity for both the rollup and Sunrise, a parrallel flywheel effect to PoL as seen on Berachain.
 
@@ -17,15 +17,15 @@ Compatibility with Celestia architecture minimizes onboarding difficulty for rol
 
 Celestia-compatible functions:
 
-- Blob Tx
-- BlobStream
+* Blob Tx
+* BlobStream
 
 Sunrise unique functions:
 
-- Proof of Liquidity (PoL)
-- DA Fee Abstraction
-- Off Chain Blob Data Availability (Sunrise DA v2)
-- Sovereign Proof of Liquidity by Gluon
+* Proof of Liquidity (PoL)
+* DA Fee Abstraction
+* Off Chain Blob Data Availability (Sunrise DA v2)
+* Sovereign Proof of Liquidity by Gluon
 
 ### Proof of Liquidity x Data Availability
 
@@ -37,28 +37,28 @@ Sunrise also has a mechanism to incentivize DA network whereas other DA networks
 
 The protocol generates revenue through three distinct streams.
 
-- Transaction fees
-- Swap fees in the liquidity pool
-- MEV captured with [Skip Protocol](https://docs.skip.money/)
+* Transaction fees
+* Swap fees in the liquidity pool
+* MEV captured with [Skip Protocol](https://docs.skip.money/)
 
 ### Why should developers use Sunrise?
 
-- Users can utilize DA by liquidity providing without the need for a fee.
-- While numerous DEXs already exist, they offer limited differentiation for token issuers. L2 developers will always need to provide liquidity despite Sunrise's existence. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DA Layers and DEXs that lack comparable benefits.
+* Users can utilize DA by liquidity providing without the need for a fee.
+* While numerous DEXs already exist, they offer limited differentiation for token issuers. L2 developers will always need to provide liquidity despite Sunrise's existence. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DA Layers and DEXs that lack comparable benefits.
 
 ### Integration Stages
 
 ### Sunrise v1: DAWN
 
-- `x/blob` module
-- `x/blobstream` module
-- `x/tokenconverter` module
-- `x/liquiditypool` module
-- `x/liquidityincentive` module
-- `x/swap` module
-- `x/fee` module
+* `x/blob` module
+* `x/blobstream` module
+* `x/tokenconverter` module
+* `x/liquiditypool` module
+* `x/liquidityincentive` module
+* `x/swap` module
+* `x/fee` module
 
 ### Sunrise v2: Security and Incentive
 
-- Off Chain Blob Data Availability (Sunrise DA v2)
-- Sovereign Proof of Liquidity by Gluon
+* Off Chain Blob Data Availability (Sunrise DA v2)
+* Sovereign Proof of Liquidity by Gluon
