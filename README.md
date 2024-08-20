@@ -25,21 +25,13 @@ Sunrise unique functions:
 * Proof of Liquidity (PoL)
 * DA Fee Abstraction
 * Off Chain Blob Data Availability (Sunrise DA v2)
-* Sovereign Proof of Liquidity by Gluon
+* Sovereign Proof of Liquidity via Gluon
 
 ### Proof of Liquidity x Data Availability
 
-As mentioned above, Sunrise utilizes Proof of Liquidity to enhance the security of the Sunrise L1, and the liquidity and sovereignty of L2s on Sunrise.
+Sunrise utilizes Proof of Liquidity to enhance the DA experience, while providing a mutually beneficial environment to increase the liquidity and sovereignty of both L2s on Sunrise, and the Sunrise L1 itself.
 
-Sunrise also has a mechanism to incentivize DA network whereas other DA networks depend on altruism or voluntary contributions, hence Sunrise can enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also fully on-chain new technologies like AI, Gaming, and so on.
-
-### Revenue (Fee Structure)
-
-The protocol generates revenue through three distinct streams.
-
-* Transaction fees
-* Swap fees in the liquidity pool
-* MEV captured with [Skip Protocol](https://docs.skip.money/)
+Sunrise can also incentivize the DA network whereas other DA networks depend on altruism or voluntary contributions, thus enabling Sunrise to enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also explore fully on-chain new technologies like AI, Gaming, and more.
 
 ### Why should developers use Sunrise?
 
@@ -48,7 +40,7 @@ The protocol generates revenue through three distinct streams.
 
 ### Integration Stages
 
-### Sunrise v1: DAWN
+### Sunrise v1: Awakening
 
 * `x/blob` module
 * `x/blobstream` module
@@ -58,7 +50,15 @@ The protocol generates revenue through three distinct streams.
 * `x/swap` module
 * `x/fee` module
 
-### Sunrise v2: Security and Incentive
+### Sunrise v2:
 
 * Off Chain Blob Data Availability (Sunrise DA v2)
-* Sovereign Proof of Liquidity by Gluon
+* Sovereign Proof of Liquidity via Gluon
+
+### Revenue (Fee Structure)
+
+The protocol generates revenue through three distinct streams.
+
+* Transaction fees
+* Swap fees in the liquidity pool
+* MEV captured with [Skip Protocol](https://docs.skip.money/)
