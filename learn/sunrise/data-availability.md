@@ -100,9 +100,15 @@ sequenceDiagram
 
 ### Terms and Notation
 
-- Total number of erasure coded shards: $$ n $$
-- The i-th erasure coded data shard: $$s_i$$
 - The hash function: $$H$$
+- Set of validators: $$ V $$
+- Set of data shards: $$ S_d $$
+- Set of parity shards: $$ S_p $$
+- Set of shards: $$ S $$
+
+$$
+  S = S_d \cup S_p
+$$
 
 ### Overview
 
@@ -110,35 +116,25 @@ This system verifies the possession of data shard hash $$ H(s_i) $$ without expo
 
 ### Zero-Knowledge Proof System
 
+The circuit is for one shard $$ s \in S $$.
+
 #### Public Inputs
 
-- $$\{H_{\text{public}}^2(s_i)\}_{i=1}^n$$
+- $$ H_{\text{public}}^2(s)$$
 
 #### Private Inputs
 
-- $$I$$
-- $$\{H_{\text{private}}(s_i)\}_{i \in I}$$
+- $$ H_{\text{private}}(s) $$
 
-#### ZKP Circuit Constraints
-
-For each `i`, verify
+#### Circuit Constraints
 
 $$
-  H_{\text{public}}^2(s_i) = H(H_{\text{private}}(s_i))
+  H_{\text{public}}^2(s) = H(H_{\text{private}}(s))
 $$
 
 ## The condition of Data Availability
 
 ### Notations
-
-- Set of validators: $$ V $$
-- Set of data shards: $$ S_d $$
-- Set of parity shards: $$ S_p $$
-- Set of shards: $$ S $$
-
-$$
-  S = \{s_i\}_{i=1}^n = S_d \cup S_p
-$$
 
 - Replication Factor (Based only on data shards): $$ r $$
 - Replication Factor (Based on including parity shards): $$ r_p $$
