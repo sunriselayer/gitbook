@@ -148,30 +148,48 @@ $$
   H^2(s_i) = H^2(s_i)_{public}
 $$
 
-## The condition of Data Availability for each shard
+## The condition of Data Availability
+
+### Requirements for each validator to prove Data Availability
 
 - 10 validators: `v_1`, ..., `v_10`
 - 20 shards: `s_1`, ..., `s_20`
-- Replication factor is 3: `r = 3`
+  - 10 Data shards
+  - 10 Parity shards
+- Replication factor is 6: `r = 6`
+- Replication factor with Parity is 3: `r_p = replication_factor * data_shard_count / (data_shard_count + parity_shard_count) = 3`
 - Each validator submits 6 shards proofs
   - `3 * 20 / 10 = 6`
-- Threshold: `2/3`
 
-### Case A: valid shard `s_1`
+#### Case A: valid shard `s_1`
 
 - Validator `v_1`, `v_3` and `v_9` 's proof contain shard `s_1` and other 5 shards
 - Validator `v_3` failed to contain the validity of shard `s_1` in its proof
 - However validator `v_1` and `v_9` succeeded to contain the validity of shard `s_1` in its proof
   - `len(zkp_including_this_shard)` is 2
-  - `len(zkp_including_this_shard) / r >= 2/3` satisfies
+  - `len(zkp_including_this_shard) / r_p >= 2/3` satisfies
 
-### Case B: invalid shard `s_2`
+#### Case B: invalid shard `s_2`
 
 - Validator `v_2`, `v_4` and `v_10` 's proof contain shard `s_2` and other 5 shards
 - Validator `v_2` and `v_4` failed to contain the validity of shard `s_2` in its proof
 - Only validator `v_10` succeeded to contain the validity of shard `s_2` in its proof
   - `len(zkp_including_this_shard)` is 1
-  - `len(zkp_including_this_shard) / replication_factor >= 2/3` doesn't satisfy
+  - `len(zkp_including_this_shard) / r_p >= 2/3` doesn't satisfy
+
+### Requirements for tally to prove Data Availability
+
+#### Case X: shard s_1, s_3-s_11 are valid with the condition above
+
+- `valid_shards` is 10
+- `len(shards)` is 20
+- `valid_shards / len(shards) => data_shard_count / (data_shard_count + parity_shard_count)` satisfies
+
+#### Case Y: Only shard s_1, s_3 are valid with the condition above
+
+- `valid_shards` is 2
+- `len(shards)` is 20
+- `valid_shards / len(shards) => data_shard_count / (data_shard_count + parity_shard_count)` doesn't satisfy
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
