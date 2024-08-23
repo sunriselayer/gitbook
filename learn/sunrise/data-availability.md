@@ -1,6 +1,6 @@
 # Blob
 
-The module `x/blob` is the Celestia-compatible module of Sunrise.
+The deprecated module `x/blob` is the Celestia-compatible module of Sunrise.
 
 This module allows L2 operators to post the data to the Sunrise network. The data will be stored in the Sunrise network until the L2 transactions are finalized in the L1 blockchain.
 
@@ -86,12 +86,14 @@ In conclusion, there are benefits:
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> Publisher node: BLOB data
-    Publisher node --> Publisher node: Erasure coding
-    Publisher node ->> Decentralized Storage: Upload data shards
-    Publisher node ->> Sunrise: MsgPublishData
-    Sunrise ->> Validator set: Start Vote Extension
-    Validator set ->> Sunrise: Vote Data Availability with ZKP
+    User ->> Publisher Node: BLOB data
+    Publisher Node --> Publisher Node: Erasure coding
+    Publisher Node ->> Decentralized Storage: Upload data shards
+    Publisher Node ->> Sunrise: MsgPublishData
+    Sunrise ->> Validator Set: Start Vote Extension
+    Validator Set ->> Sunrise: Vote Data Availability
+    Publisher Node ->> Sunrise: Fraud Challenge if it is needed
+    Validator Set ->> Sunrise: Zero Knowledge Validity Proof if challenge is submitted
 ```
 
 ## Specification for Zero-Knowledge Proof
@@ -134,30 +136,102 @@ $$
 
 #### Public Inputs
 
-$$\{H^2(s_i)\}_{i=1}^n, t$$
+$$\{H_{\text{public}}^2(s_i)\}_{i=1}^n$$
 
 #### Private Inputs
 
-$$I, \{H(s_i)\}_{i \in I}$$
+$$I, \{H_{\text{private}}(s_i)\}_{i \in I}$$
 
 #### ZKP Circuit Constraints
 
 For each `i`, verify
 
 $$
-  H^2(s_i) = H^2(s_i)_{public}
+  H_{\text{public}}^2(s_i) = H(H_{\text{private}}(s_i))
 $$
 
 ## The condition of Data Availability
 
-### Requirements for each validator to prove Data Availability
+### Notations
+
+Set of validators:
+
+$$
+  V
+$$
+
+Set of data shards:
+
+$$
+  S_d
+$$
+
+Set of parity shards:
+
+$$
+  S_p
+$$
+
+Set of shards:
+
+$$
+  S = \{s_i\}_{i=1}^n = S_d \cup S_p
+$$
+
+Replication Factor (Based only on data shards):
+
+$$
+  r
+$$
+
+Replication Factor (Based on including parity shards):
+
+$$
+  r_p = r \frac{|S_d|}{|S_d| + |S_p|}
+$$
+
+Set of proofs submitted by a validator `v`
+
+$$
+  Z_v
+$$
+
+$$
+  \forall v \in V, \ |Z_v| = r_p \frac{|S_d| + |S_p|}{|V|}
+$$
+
+Set of valid proofs for a shard `s`
+
+$$
+  Z_s
+$$
+
+### Requirements for each shard to prove Data Availability
+
+$$
+  \frac{|Z_s|}{r_p} \ge \frac{2}{3}
+$$
+
+Set of shards which satisfy this condition will be
+
+$$
+  S^{\text{available}}
+$$
+
+### Requirements for tally to prove Data Availability
+
+$$
+  \frac{|S^{\text{available}}|}{|S|} \ge \frac{|S_d|}{|S_d| + |S_p|} \Rightarrow |S^{\text{available}}| \ge |S_d|
+$$
+
+#### Example parameters
 
 - 10 validators: `v_1`, ..., `v_10`
 - 20 shards: `s_1`, ..., `s_20`
-  - 10 Data shards
-  - 10 Parity shards
-- Replication factor is 6: `r = 6`
-- Replication factor with Parity is 3: `r_p = replication_factor * data_shard_count / (data_shard_count + parity_shard_count) = 3`
+  - 10 data shards
+  - 10 parity shards
+- `r = 6`
+- `r_p = 6 * 10 / (10 + 10) = 3`
 - Each validator submits 6 shards proofs
   - `3 * 20 / 10 = 6`
 
@@ -166,18 +240,16 @@ $$
 - Validator `v_1`, `v_3` and `v_9` 's proof contain shard `s_1` and other 5 shards
 - Validator `v_3` failed to contain the validity of shard `s_1` in its proof
 - However validator `v_1` and `v_9` succeeded to contain the validity of shard `s_1` in its proof
-  - `len(zkp_including_this_shard)` is 2
-  - `len(zkp_including_this_shard) / r_p >= 2/3` satisfies
+  - `|Z_{s_1}|` is 2
+  - `|Z_{s_1}| / r_p >= 2/3` satisfies
 
 #### Case B: invalid shard `s_2`
 
 - Validator `v_2`, `v_4` and `v_10` 's proof contain shard `s_2` and other 5 shards
 - Validator `v_2` and `v_4` failed to contain the validity of shard `s_2` in its proof
 - Only validator `v_10` succeeded to contain the validity of shard `s_2` in its proof
-  - `len(zkp_including_this_shard)` is 1
-  - `len(zkp_including_this_shard) / r_p >= 2/3` doesn't satisfy
-
-### Requirements for tally to prove Data Availability
+  - `|Z_{s_2}|` is 1
+  - `|Z_{s_2}| / r_p >= 2/3` doesn't satisfy
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 

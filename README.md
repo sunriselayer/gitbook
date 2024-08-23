@@ -50,7 +50,7 @@ Sunrise can also incentivize the DA network whereas other DA networks depend on 
 * `x/swap` module
 * `x/fee` module
 
-### Sunrise v2:
+### Sunrise v2
 
 * Off Chain Blob Data Availability (Sunrise DA v2)
 * Sovereign Proof of Liquidity via Gluon
