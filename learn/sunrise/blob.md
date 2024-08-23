@@ -104,12 +104,6 @@ $$
   n
 $$
 
-Threshold (minimum number of shards required to prove the possession):
-
-$$
-  t
-$$
-
 The i-th erasure coded data shard:
 
 $$
@@ -154,12 +148,6 @@ $$
   H^2(s_i) = H^2(s_i)_{public}
 $$
 
-Verify
-
-$$
-  t \le |I|
-$$
-
 ## The condition of Data Availability for each shard
 
 - 10 validators: `v_1`, ..., `v_10`
@@ -169,7 +157,7 @@ $$
   - `3 * 20 / 10 = 6`
 - Threshold: `2/3`
 
-### case A: valid shard `s_1`
+### Case A: valid shard `s_1`
 
 - Validator `v_1`, `v_3` and `v_9` 's proof contain shard `s_1` and other 5 shards
 - Validator `v_3` failed to contain the validity of shard `s_1` in its proof
@@ -177,7 +165,7 @@ $$
   - `len(zkp_including_this_shard)` is 2
   - `len(zkp_including_this_shard) / r >= 2/3` satisfies
 
-### case B: invalid shard `s_2`
+### Case B: invalid shard `s_2`
 
 - Validator `v_2`, `v_4` and `v_10` 's proof contain shard `s_2` and other 5 shards
 - Validator `v_2` and `v_4` failed to contain the validity of shard `s_2` in its proof
