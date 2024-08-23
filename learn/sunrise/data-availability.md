@@ -100,23 +100,9 @@ sequenceDiagram
 
 ### Terms and Notation
 
-Total number of erasure coded shards:
-
-$$
-  n
-$$
-
-The i-th erasure coded data shard:
-
-$$
-  s_i
-$$
-
-The hash function:
-
-$$
-  H
-$$
+- Total number of erasure coded shards: $$ n $$
+- The i-th erasure coded data shard: $$s_i$$
+- The hash function: $$H$$
 
 ### Overview
 
@@ -136,11 +122,12 @@ $$
 
 #### Public Inputs
 
-$$\{H_{\text{public}}^2(s_i)\}_{i=1}^n$$
+- $$\{H_{\text{public}}^2(s_i)\}_{i=1}^n$$
 
 #### Private Inputs
 
-$$I, \{H_{\text{private}}(s_i)\}_{i \in I}$$
+- $$I$$
+- $$\{H_{\text{private}}(s_i)\}_{i \in I}$$
 
 #### ZKP Circuit Constraints
 
