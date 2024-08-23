@@ -106,17 +106,7 @@ sequenceDiagram
 
 ### Overview
 
-This system verifies the possession of data shard hash
-
-$$
-  H(s_i)
-$$
-
-without exposing
-
-$$
-  H(s_i)
-$$
+This system verifies the possession of data shard hash $$ H(s_i) $$ without exposing $$ H(s_i) $$
 
 ### Zero-Knowledge Proof System
 
@@ -141,57 +131,29 @@ $$
 
 ### Notations
 
-Set of validators:
-
-$$
-  V
-$$
-
-Set of data shards:
-
-$$
-  S_d
-$$
-
-Set of parity shards:
-
-$$
-  S_p
-$$
-
-Set of shards:
+- Set of validators: $$ V $$
+- Set of data shards: $$ S_d $$
+- Set of parity shards: $$ S_p $$
+- Set of shards: $$ S $$
 
 $$
   S = \{s_i\}_{i=1}^n = S_d \cup S_p
 $$
 
-Replication Factor (Based only on data shards):
-
-$$
-  r
-$$
-
-Replication Factor (Based on including parity shards):
+- Replication Factor (Based only on data shards): $$ r $$
+- Replication Factor (Based on including parity shards): $$ r_p $$
 
 $$
   r_p = r \frac{|S_d|}{|S_d| + |S_p|}
 $$
 
-Set of proofs submitted by a validator `v`
-
-$$
-  Z_v
-$$
+- Set of proofs submitted by a validator `v`: $$ Z_v $$
 
 $$
   \forall v \in V, \ |Z_v| = r_p \frac{|S_d| + |S_p|}{|V|}
 $$
 
-Set of valid proofs for a shard `s`
-
-$$
-  Z_s
-$$
+- Set of valid proofs for a shard `s`: $$ Z_s $$
 
 ### Requirements for each shard to prove Data Availability
 
@@ -208,7 +170,10 @@ $$
 ### Requirements for tally to prove Data Availability
 
 $$
-  \frac{|S^{\text{available}}|}{|S|} \ge \frac{|S_d|}{|S_d| + |S_p|} \Rightarrow |S^{\text{available}}| \ge |S_d|
+\begin{aligned}
+  \frac{|S^{\text{available}}|}{|S|} &\ge \frac{|S_d|}{|S_d| + |S_p|} \\
+\Rightarrow |S^{\text{available}}| &\ge |S_d|
+\end{aligned}
 $$
 
 #### Example parameters
@@ -240,15 +205,15 @@ $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
-- `valid_shards` is 10
-- `len(shards)` is 20
-- `valid_shards / len(shards) => data_shard_count / (data_shard_count + parity_shard_count)` satisfies
+- `|S^valid|` is 10
+- `|S_d|` is 10
+- `|S^valid| => |S_d|` satisfies
 
 #### Case Y: Only shard s_1, s_3 are valid with the condition above
 
-- `valid_shards` is 2
-- `len(shards)` is 20
-- `valid_shards / len(shards) => data_shard_count / (data_shard_count + parity_shard_count)` doesn't satisfy
+- `|S^valid|` is 2
+- `|S_d|` is 10
+- `|S^valid| => |S_d|` doesn't satisfy
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
