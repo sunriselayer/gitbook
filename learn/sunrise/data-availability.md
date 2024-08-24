@@ -146,7 +146,7 @@ $$
 - Set of proofs submitted by a validator `v`: $$ Z_v $$
 
 $$
-  \forall v \in V, \ |Z_v| = r_p \frac{|S_d| + |S_p|}{|V|}
+  \forall v \in V, \ |Z_v| = r_p \frac{|S_d| + |S_p|}{|V|} = r\frac{|S_d|}{|V|}
 $$
 
 - Set of valid proofs for a shard `s`: $$ Z_s $$
@@ -160,56 +160,56 @@ $$
 Set of shards which satisfy this condition will be
 
 $$
-  S^{\text{available}}
+  S^\text{available}
 $$
 
 ### Requirements for tally to prove Data Availability
 
 $$
 \begin{aligned}
-  \frac{|S^{\text{available}}|}{|S|} &\ge \frac{|S_d|}{|S_d| + |S_p|} \\
-\Rightarrow |S^{\text{available}}| &\ge |S_d|
+  \frac{|S^\text{available}|}{|S|} &\ge \frac{|S_d|}{|S_d| + |S_p|} \\
+\Rightarrow |S^\text{available}| &\ge |S_d|
 \end{aligned}
 $$
 
 #### Example parameters
 
-- 10 validators: `v_1`, ..., `v_10`
-- 20 shards: `s_1`, ..., `s_20`
+- 10 validators: $$ v_1 , ..., v_{10} $$
+- 20 shards: $$ s_1, ..., s_{20} $$
   - 10 data shards
   - 10 parity shards
-- `r = 6`
-- `r_p = 6 * 10 / (10 + 10) = 3`
+- $$ r = 6 $$
+- $$ r_p = 6 \times \frac{10}{10 + 10} = 3 $$
 - Each validator submits 6 shards proofs
-  - `3 * 20 / 10 = 6`
+  - $$ 3 \times \frac{20}{10} = 6 $$
 
 #### Case A: valid shard `s_1`
 
-- Validator `v_1`, `v_3` and `v_9` 's proof contain shard `s_1` and other 5 shards
-- Validator `v_3` failed to contain the validity of shard `s_1` in its proof
-- However validator `v_1` and `v_9` succeeded to contain the validity of shard `s_1` in its proof
-  - `|Z_{s_1}|` is 2
-  - `|Z_{s_1}| / r_p >= 2/3` satisfies
+- Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
+- Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
+- However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
+  - $$ |Z_{s_1}|  = 2 $$
+  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
-- Validator `v_2`, `v_4` and `v_10` 's proof contain shard `s_2` and other 5 shards
-- Validator `v_2` and `v_4` failed to contain the validity of shard `s_2` in its proof
-- Only validator `v_10` succeeded to contain the validity of shard `s_2` in its proof
-  - `|Z_{s_2}|` is 1
-  - `|Z_{s_2}| / r_p >= 2/3` doesn't satisfy
+- Validator $$ v_2 $$, $$ v_4 $$ and $$ v_10 $$ 's proof contain shard $$ s_2 $$ and other 5 shards
+- Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
+- Only validator $$ v_10 $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
+  - $$ |Z_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
-- `|S^valid|` is 10
-- `|S_d|` is 10
-- `|S^valid| => |S_d|` satisfies
+- $$ |S^\text{available}| = 10 $$
+- $$ |S_d| = 10 $$
+- It satisfies $$ |S^\text{available}| \ge |S_d| $$
 
 #### Case Y: Only shard s_1, s_3 are valid with the condition above
 
-- `|S^valid|` is 2
-- `|S_d|` is 10
-- `|S^valid| => |S_d|` doesn't satisfy
+- $$ |S^\text{available}| = 2 $$
+- $$ |S_d| = 10 $$
+- It doesn't satisfy $$ |S^\text{available}| \ge |S_d| $$
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
