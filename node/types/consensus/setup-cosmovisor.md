@@ -82,7 +82,7 @@ After=network-online.target
 Environment="DAEMON_NAME=sunrised"
 Environment="DAEMON_HOME=/home/<your-user>/.sunrise"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false" // if want auto-upgrade, set true
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true" // Recommend
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
 User=<your-user>
