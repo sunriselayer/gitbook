@@ -79,13 +79,13 @@ For testnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
+curl -L https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
 ## Option: Set persistent peers
 
 ```bash
-PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
+PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
 echo $PERSISTENT_PEERS
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" $HOME/.sunrise/config/config.toml
 ```

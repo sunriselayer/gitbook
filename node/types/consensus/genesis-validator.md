@@ -32,7 +32,7 @@ sunrised tendermint unsafe-reset-all
 Run the following command:
 
 ```bash
-CHAIN_ID=sunrise-test-1
+CHAIN_ID=sunrise-test-0.2
 MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```

@@ -6,19 +6,11 @@ The main network of Sunrise. Use tokens with real value.
 
 ### Mainnet Details
 
-| Detail       | Value       |
-| ------------ | ----------- |
-| Chain ID     | `sunrise-1` |
-| Genesis hash | ``          |
-| Genesis file |             |
-| Peers file   |             |
+Coming soon
 
 ### Mainnet Software
 
-| Software     | Version                                                                         |
-| ------------ | ------------------------------------------------------------------------------- |
-| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
-| sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
+Coming soon
 
 ## Testnet
 
@@ -26,16 +18,10 @@ This network is used to test operations on the mainnet. Normally, the same envir
 
 ### Testnet Details
 
-| Detail       | Value            |
-| ------------ | ---------------- |
-| Chain ID     | `sunrise-test-1` |
-| Genesis hash | ``               |
-| Genesis file |                  |
-| Peers file   |                  |
+[sunrise-test-0.2](https://github.com/sunriselayer/network/tree/main/sunrise-test-0.2)
 
 ### Testnet Software
 
-| Software     | Version                                                                         |
-| ------------ | ------------------------------------------------------------------------------- |
-| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
-| sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
+Please check our proposals and community for the latest binary.
+
+[Consensus Node](https://github.com/sunriselayer/sunrise/releases)

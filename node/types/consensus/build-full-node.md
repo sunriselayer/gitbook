@@ -58,7 +58,7 @@ CHAIN_ID=sunrise-1
 For testnet:
 
 ```bash
-CHAIN_ID=sunrise-test-1
+CHAIN_ID=sunrise-test-0.2
 ```
 
 ### Set your server name
@@ -93,14 +93,14 @@ For mainnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
+curl -L https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
 For testnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
+curl -L https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-test-0.2/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
 This will replace the genesis file `genesis.json` created by `sunrised init` command.
