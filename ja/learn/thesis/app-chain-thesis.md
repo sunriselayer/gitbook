@@ -1,22 +1,22 @@
-# App chain thesis
+# **App chain thesis（アプリケーションチェーン**のテーゼ**）**
 
-In the IBC (Inter Blockchain Communication) ecosystem, the concept of "app chain thesis" has been proposed. The core idea is that by building a Layer 1 blockchain for each dApp and then connecting them by using IBC interoperability, we can achieve a scalable and secure blockchain ecosystem.
+IBC（Inter Blockchain Communication）エコシステムでは、「アプリケーションチェーンのテーゼ」という概念が提案されています。その核心的なアイデアは、各 dApp のために Layer 1 ブロックチェーンを構築し、それらを IBC の Interoperability（相互運用性）を利用して接続することで、スケーラブルでセキュアなブロックチェーンエコシステムを実現することができるというものです。
 
-Let's rename this "Monolithic app chain thesis".
+この「Monolithic app chain thesis」（モノリシック・アプリケーションチェーンチェーンのテーゼ）を改名しましょう。
 
-However, there is one weakness in the app chain thesis. Because it requires gathering the validators set for each app chain, the load of the core team of the app chain is heavy. This is called "validator bootstrapping problem".
+しかし、アプリケーションチェーンチェーンのテーゼには 1 つの弱点があります。各アプリチェーンのバリデータセットを集める必要があるため、アプリチェーンのコアチームの負荷が重くなります。これを「Validator Bootstrapping Problem」（バリデータブートストラッピングの問題）と呼びます。
 
-Due to this weakness, the IBC ecosystem has grown but hasn't reached the level the IBC ecosystem predicted.
+この弱点のため、IBC エコシステムは成長してきましたが、IBC エコシステムが予測したレベルには達していません。
 
-Now, there is a modular blockchain paradigm that can solve the validator bootstrapping problem when we build an app specific blockchain.
+現在、アプリケーション固有のブロックチェーンを構築する際にバリデータブートストラッピングの問題を解決できるモジュラーブロックチェーンのパラダイムがあります。
 
-By using Sovereign rollup technology, we can build a blockchain that is compatible with the IBC ecosystem and can solve the validator bootstrapping problem at the same time.
+Sovereign Rollup 技術を使用することで、IBC エコシステムと互換性のあるブロックチェーンを構築し、同時にバリデータブートストラッピングの問題を解決することができます。
 
-We call this "Modular app chain thesis".
+これを「Modular app chain thesis」（モジュラーアプリチェーンのテーゼ）と呼びます。
 
-## Smart contract is not the only way to build a dApp
+スマートコントラクトは dApp を構築する唯一の方法ではありません。
 
-We think that we can express a metaphor of ways of building dApps:
+dApp を構築する方法のメタファーを表現できると考えています：
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
@@ -24,8 +24,8 @@ We think that we can express a metaphor of ways of building dApps:
 | Modular app specific chain    | Virtual private server |
 | Monolithic app specific chain | Dedicated server       |
 
-Smart contracts are often affected by the traffic of other dApps. This is like a shared server. On the other hand, monolithic app specific chains are like dedicated servers. They are not affected by the traffic of other dApps, but they are expensive to bootstrap validators.
+スマートコントラクトは他の dApp のトラフィックの影響を受けやすいです。これは共有サーバーのようなものです。一方、モノリシック・アプリケーションの固有チェーンは専用サーバーのようなものです。他の dApp のトラフィックの影響を受けませんが、バリデータのブートストラッピングが高コストです。
 
-Modular app specific chains are like virtual private servers. They are almost not affected by the traffic of other dApps, and they are not expensive to bootstrap validators.
+モジュラー・アプリケーションの固有チェーンは仮想プライベートサーバーのようなものです。他の dApp のトラフィックの影響をほとんど受けず、バリデータのブートストラッピングも高価ではありません。
 
-As VPS grows to IaaS, Raas (Rollup as a Service) will grow and allow us to build a scalable and secure blockchain ecosystem as easily as deploying smart contracts.
+VPS が IaaS に成長するように、RaaS（Rollup as a Service）も成長し、スマートコントラクトを展開するのと同じくらい簡単にスケーラブルでセキュアなブロックチェーンエコシステムを構築することができるようになります。

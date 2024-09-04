@@ -1,12 +1,12 @@
-# Interoperability
+# **Interoperability**（インターオペラビリティ）
 
-Sovereign rollup is a new type of Layer 2 solution that is different from conventional Smart contract rollup.
+Sovereign Rollup（ソブリン・ロールアップ）は、従来のスマートコントラクト・ロールアップとは異なる新しいレイヤー 2 のソリューションです。
 
-In the conventional Smart contract rollup, there is an "enshrined bridge" that enables users to bridge their tokens between the L1 settlement layer and the L2 execution layer. The role of verifying the validity of the bridge is played by the rollup contract. So this bridge is called "enshrined."
+従来のスマートコントラクト・ロールアップでは、「Enshrined Bridge」（埋め込まれたブリッジ）と呼ばれるものがあり、ユーザーは L1 の決済層と L2 の実行層の間でトークンをブリッジすることができます。ブリッジの有効性を検証する役割はロールアップコントラクトが果たします。そのため、このブリッジは「Enshrined Bridge」（埋め込まれたブリッジ）と呼ばれています。
 
-On the other hand, Sovereign rollup has no enshrined bridge. The sovereign rollup side plays a role in verifying the validity of the bridge. With this architecture, Sovereign rollup has a flexible space to design the bridges or interoperability. In concrete, Sovereign rollup can support IBC (Inter Blockchain Communication) interoperability.
+一方、ソブリン・ロールアップには Enshrined Bridge はありません。ソブリン・ロールアップ側がブリッジの有効性を検証する役割を果たします。このアーキテクチャにより、ソブリン・ロールアップはブリッジや相互運用性を柔軟に設計するためのスペースを持っています。具体的には、ソブリン・ロールアップは IBC（インターブロックチェーン通信）の Interoperability（相互運用性）をサポートすることができます。
 
-At this moment, these SDKs are known to support the IBC of Sovereign rollup:
+現時点では、以下の SDK がソブリン・ロールアップの IBC をサポートしていることが知られています:
 
-* Rollkit
-* Sovereign SDK
+- Rollkit
+- Sovereign SDK

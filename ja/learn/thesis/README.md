@@ -1,25 +1,25 @@
-# Modular
+# **Thesis（テーゼ）**
 
-## Monolithic vs Modular
+## Monolithic vs Modular（モノリシック vs モジュラー）
 
-There are four layers in a blockchain:
+ブロックチェーンには 4 つのレイヤーがあります：
 
-* Execution layer
-* Settlement layer
-* Consensus layer
-* Data Availability layer
+- Execution layer（実行レイヤー）
+- Settlement layer（決済レイヤー）
+- Consensus layer（コンセンサスレイヤー）
+- Data Availability layer（ブロックチェーンデータ可用性レイヤー）
 
-"Modular blockchain" is a paradigm that combines these separated layers, and allows us to build a scalable blockchain.
+「モジュラー・ブロックチェーン」は、これらの分離されたレイヤーを組み合わせ、スケーラブルなブロックチェーンを構築することができるパラダイムです。
 
-## Data Availability layer
+## ブロックチェーンデータ可用性レイヤー
 
-In short, the Data Availability (DA) layer plays a role of storing transaction data of Layer 2 blockchains until the L2 transactions are finalized in the L1 blockchain.
+簡単に言うと、ブロックチェーンデータ可用性（DA）レイヤーは、L2 トランザクションが L1 ブロックチェーンで最終的に Finalize（確定）するまで、L2 ブロックチェーンのトランザクションデータを保存する役割を果たします。
 
-## Combinations of layers
+## レイヤーの組み合わせ
 
-### Conventional rollup
+### 従来のロールアップ
 
-Example of Optimism:
+Optimism の例：
 
 |                         |          |
 | ----------------------- | -------- |
@@ -28,9 +28,9 @@ Example of Optimism:
 | Consensus layer         | Ethereum |
 | Data Availability layer | Ethereum |
 
-### Smart contract rollup with altDA
+### altDA を使用したスマートコントラクトロールアップ
 
-Example of Eclipse:
+Eclipse の例：
 
 |                         |          |
 | ----------------------- | -------- |
@@ -39,9 +39,9 @@ Example of Eclipse:
 | Consensus layer         | Ethereum |
 | Data Availability layer | Celestia |
 
-### Sovereign rollup
+### ソブリンロールアップ
 
-Example of Gluon:
+Gluon の例：
 
 |                         |         |
 | ----------------------- | ------- |
