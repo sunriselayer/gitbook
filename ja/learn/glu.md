@@ -1,8 +1,6 @@
 # $GLU
 
-$GLU token is the native token of the Gluon Sovereign rollup on Sunrise. It was formerly $GUU token on UnUniFi Layer 1 app chain.
+$GLUトークンは、Sunrise上のGluon Sovereign rollupのネイティブトークンです。以前はUnUniFi Layer 1アプリチェーン上の$GUU トークンでした。$GLU は、Gluon Sovereign rollup 内で microGLU として保持されています。ブロックチェーン上の 1000000microGLU は、現実世界では 1 GLU を意味します。
 
-$GLU is preserved as `microGLU` in the Gluon Sovereign rollup. `1000000microGLU` in the blockchain means 1 GLU in the real world.
-
-* Ticker: GLU
-* Denom in the blockchain: `microGLU`
+- Ticker: GLU
+- Denom in the blockchain: `microGLU`
