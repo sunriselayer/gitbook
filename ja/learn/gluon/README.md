@@ -1,8 +1,7 @@
 # Gluon
 
-Gluon is a sovereign rollup on Sunrise. It is a strategic yield hub for the modular era.
-Formerly it was called UnUniFi, a Layer 1 app chain.
+Gluon は Sunrise 上の Sovereign Rollup です。それはモジュラー時代の戦略的なイールドハブです。レイヤー 1 のアプリチェーンである前身は UnUniFi が前身です。
 
-Gluon can also play a role as a friendly interface for liquidity providing into Sunrise.
+Gluon は、Sunrise への流動性提供のフレンドリーなインタフェースとしても機能することができます。
 
-Gluon will also be the first place to realize the full on chain AI with Sunrise DA. [details](../sunrise/blob.md)
+また、Gluon は、Sunrise DA と共にフルンチェーン AI を実現する最初の場所になる予定です。[詳細はこちら](https://docs.sunriselayer.io/learn/sunrise/blob)

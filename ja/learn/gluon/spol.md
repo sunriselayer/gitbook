@@ -1,16 +1,15 @@
 # SPoL
 
-As we described before, we integrate some unique features in Sunrise as a DA layer. One of them is Sovereign Proof of Liquidity (SPoL).
+前述の通り、Sunrise では DA レイヤーとしていくつかのユニークな機能を統合しています。そのうちの 1 つが Sovereign Proof of Liquidity（SPoL）です。
+**Key Value: Mutual Increase in Security and Liquidity**（セキュリティと流動性の相互増加）
 
-**Key Value: Mutual Increase in Security and Liquidity**
+一般的に、暗号資産プロジェクトは以下のコミュニティ参加者に報酬を与える必要があります：
 
-In general, crypto-asset projects must reward the participants of the community who do the following:
+- ガバナンスへの参加
+- 流動性の提供
 
-* Participating in the governance
-* Providing liquidity
+これらの参加者を同時に報酬することは、従来の方法では困難です。SPoL は、両方の参加者に同時に報酬を与えることができる仕組みです。
 
-It is difficult to reward these participants at the same time with conventional methods. SPoL is a mechanism that can reward both participants at the same time.
+SPoL メカニズムを使用することで、Sovereign ロールアップは補完的なステーキング資産として LP トークン`LST-LP-XXX/RISE`の LST を利用することができます。
 
-By using the SPoL mechanism, Sovereign rollup can utilize the LST of the LP token `LST-LP-XXX/RISE` for its supplementary staking asset.
-
-In this mechanism, the participants can stake the LST of the LP token `LST-LP-XXX/RISE` to the Sovereign rollup XXX. Sovereign rollup projects can reward the stakers of the LST of LP token `LST-LP-XXX/RISE` to enhance the economic security and make the liquidity of their token.
+このメカニズムでは、参加者は LP トークン`LST-LP-XXX/RISE`の LST を Sovereign Rollup XXX にステーキングすることができます。Sovereign Rollup プロジェクトは、LST のステーカーに報酬を与えることで経済的なセキュリティを向上させ、トークンの流動性を高めることができます。
