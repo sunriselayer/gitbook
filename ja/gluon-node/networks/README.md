@@ -2,7 +2,7 @@
 
 ## Mainnet
 
-The main network of Gluon. Use tokens with real value.
+Gluon のメインネットです。実際に資産価値を持つトークンを使用します。
 
 ### Mainnet Details
 
@@ -16,7 +16,7 @@ The main network of Gluon. Use tokens with real value.
 
 ## Testnet
 
-This network is used to test operations on the mainnet. Normally, the same environment as the mainnet is provided, but tokens have no value.
+このネットワークは、メインネット上の操作をテストするために使用されます。通常、メインネットと同じ環境が提供されますが、トークンには資産価値がありません。
 
 ### Testnet Details
 

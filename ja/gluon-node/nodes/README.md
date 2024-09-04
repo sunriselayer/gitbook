@@ -1,50 +1,49 @@
 # Gluon Full Node
 
-Full nodes are general instructions to join the Gluon mainnet after network genesis.
+フルノードは、ネットワークのジェネシス後に Gluon メインネットに参加するための一般的な手順です。
 
-## Chain upgrades
+## Chain upgrades（チェーンアップグレード）
 
-For streamline chain upgrades and minimize downtime, you may want to set up [Cosmovisor](https://docs.cosmos.network/main/build/tooling/cosmovisor) to manage your node.
+チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、[Cosmovisor](https://docs.cosmos.network/main/build/tooling/cosmovisor)を設定してノードを管理することをお勧めします。
 
-Follow [the Cosmovisor tutorial](../../node/types/consensus/setup-cosmovisor.md)
+[Cosmovisor のチュートリアル](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus/setup-cosmovisor)に従ってください。
 
-To automate on-chain upgrades, set the following options.
+オンチェーンアップグレードを自動化するには、次のオプションを設定してください。
 
 ```yml
 DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 ```
 
-## Backups
+## Backups（バックアップ）
 
-If you are using a recent version of Cosmovisor, then the default configuration is that a state backup will be created before upgrades are applied. This can be turned off using [environment flags](https://docs.cosmos.network/main/build/tooling/cosmovisor#command-line-arguments-and-environment-variables).
+最近のバージョンの Cosmovisor を使用している場合、デフォルトの設定では、アップグレードを適用する前に状態のバックアップが作成されます。これを無効にするには、環境フラグを使用してください。
 
-## Alerting and monitoring
+## Alerting and monitoring（アラートとモニタリング）
 
-Alerting and monitoring are desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the-box, and there are a variety of open-source tools.
+アラートと監視も望ましいため、ソリューションを検討し、自分の環境に合ったものを見つけることをお勧めします。Prometheus は標準で利用可能で、さまざまなオープンソースツールがあります。
 
-## Hardware requirements
+## Hardware requirements（ハードウェア要件）
 
-The following hardware minimum requirements are recommended for running the validator node:
+バリデータノードを実行するために、以下の最低ハードウェア要件が推奨されます：
 
-- Memory: 32 GB RAM (or equivalent swap file set up)
+- Memory: 32 GB RAM (もしくは同等のスワップファイルの設定が必要です)
 - CPU: 8 cores (4 physical core) x86_64
-- Disk: 1 TB SSD Storage (See below for details)
+- Disk: 1 TB SSD Storage (詳細は下記を参照してください)
 - Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
-An archival node (pruning = "nothing") should have at least 64GB of dedicated memory
+アーカイブノード（`pruning = "nothing"`）には、少なくとも 64GB の専用メモリが必要です。
 
-- An archival node (pruning = "nothing") grows at a rate of ~100 GB per month Current total disk usage is 6TB, so a larger disk would be necessary.
-- A full pruning node (pruning = "everything") grows at a rate of ~5 GB per month
-- A default pruning node (pruning = "default") grows at a rate of ~25 GB per month
+- アーカイブノード（`pruning = "nothing"`）は、毎月約 100GB のペースで成長します。現在の総ディスク使用量は 6TB であるため、より大容量のディスクが必要です。
+- フルプルーニングノード（`pruning = "everything"`）は、毎月約 5GB のペースで成長します。
+- デフォルトプルーニングノード（`pruning = "default"`）は、毎月約 25GB のペースで成長します。
 
-## Dependencies
+## Dependencies（依存関係）
 
-The tutorial is done on Ubuntu 22.04 (LTS).
-Follow [the environment tutorial](../../node/resources/enviromant.md)
+チュートリアルは Ubuntu 22.04 (LTS)で行われています。[環境設定のチュートリアル](https://github.com/SunriseLayer/gitbook/blob/main/node/resources/enviromant.md)に従ってください。
 
-## Run the node
+## Run the node（ノードを実行する）
 
-### Install
+### Install（インストール）
 
 ```bash
 git clone https://github.com/UnUniFi/chain.git
@@ -53,9 +52,9 @@ git checkout $TAG
 make install
 ```
 
-### Initialize
+### Initialize（初期化）
 
-Set `chain-id` & `moniker`. `moniker` is just a name for your node.
+`chain-id` と `moniker` を設定してください。`moniker` はノードの名前として使用されます。
 
 ```bash
 CHAIN_ID=gluon-1
@@ -63,13 +62,13 @@ MONIKER="node-name"
 gluond init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-This will generate the following files in `~/.gluon/config/`
+これにより、`~/.gluon/config/` に以下のファイルが生成されます。
 
 - `genesis.json`
 - `node_key.json`
 - `priv_validator_key.json`
 
-## Download the genesis file
+## Download the genesis file（ジェネシスファイルをダウンロードする）
 
 For mainnet:
 
@@ -85,9 +84,9 @@ rm ~/.gluon/config/genesis.json
 curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-test-v1/genesis.json -o ~/.gluon/config/genesis.json
 ```
 
-## Option: Set persistent peers
+## Option: Set persistent peers（永続的ピアを設定する）
 
-Persistent peers will be required to tell your node where to connect to other nodes and join the network. To retrieve the peers for the chosen `chain-id`:
+Persistent peers（永続的ピア）は、あなたのノードが他のノードと接続し、ネットワークに参加するために必要です。選択した `chain-id`: に対応するピアを取得するには、以下の手順を実行してください。
 
 ```Bash
 # Set the base repo URL for mainnet & retrieve peers
@@ -96,47 +95,47 @@ source .bash_profile
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.gluon/config/config.toml
 ```
 
-### Set minimum gas prices
+### Set minimum gas prices（最低ガス価格を設定する）
 
-For RPC nodes and Validator nodes, we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
+RPC ノードおよびバリデータノードについて、以下の最低ガス価格の設定を推奨します。私たちはパーミッションレスの WASM チェーンであるため、この設定はコントラクトスパムや潜在的な WASM コントラクトの攻撃ベクターから保護するのに役立ちます。
 
-In `$HOME/.gluon/config/app.toml`, set minimum gas prices:
+`$HOME/.gluon/config/app.toml` にて、最低ガス価格を設定してください：
 
 ```Bash
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uglu\"/" $HOME/.gluon/config/app.toml
 ```
 
-### Option: Additional settings
+### Option: Additional settings（追加設定）
 
-If necessary, Edit config files `~/.gluon/config/app.toml`
+必要に応じて、`~/.gluon/config/app.toml`の設定ファイルを編集してください。
 
-- Enable defines if the API server should be enabled.
+- `enable`は、API サーバーを有効にするかどうかを定義します。
 
 ```bash
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.gluon/config/app.toml;
 ```
 
-- EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
+- `EnableUnsafeCORS` は、CORS を有効にするかどうかを定義します（安全ではないため、使用は自己責任で行ってください）。
 
 ```bash
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.gluon/config/app.toml;
 ```
 
-#### Accessing historical state
+#### Accessing historical state（過去のステートへのアクセス）
 
-If you want to query the historical state — for example, you might want to know the balance of a wallet at a given height in the past — you should run an archive node with `pruning = "nothing"` in `app.toml`. Note that this configuration is resource-intensive and will require significant storage:
+過去のステートを照会したい場合、たとえば、過去の特定のブロック高でのウォレットの残高を知りたい場合は、`app.toml` で `pruning = "nothing"` に設定したアーカイブノードを実行する必要があります。この設定はリソースを多く消費し、かなりのストレージが必要になることに注意してください。
 
 ```toml
 pruning = "nothing"
 ```
 
-If you want to save on storage requirements, consider using `pruning = "everything"` in app.toml to prune everything.
+ストレージの要件を節約したい場合は、`app.toml` で `pruning = "everything"` を設定して、すべてをプルーニングすることを検討してください。
 
 ```toml
 pruning = "everything"
 ```
 
-### Create (or restore) a local key pair
+### Create (or restore) a local key pair（ローカルキーペアを作成する）
 
 Either create a new key pair or restore an existing wallet for your validator:
 
@@ -150,40 +149,40 @@ gluond keys add <your-key> --recover
 gluond keys show <your-key> -a
 ```
 
-### Get some GLU tokens
+### Get some GLU tokens（GLU トークンを取得する）
 
-You will require some GLU tokens to bond to your validator. To be in the active set you will need to have enough tokens.
+バリデーターとの結合には GLU トークンが必要です。アクティブセットに入るには、十分なトークンが必要です。
 
-### Start the consensus node
+### Start the consensus node（コンセンサスノードの起動）
 
-Follow the instructions to set up Cosmovisor and start the node.
+Cosmovisor の設定手順に従い、ノードを起動してください。
 
 {% hint style='tip' %}
-Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
+Cosmovisor の使用は完全に任意です。Cosmovisor を使用しない場合は、バリデータがダウンタイムに陥ったり、ジャイルされたりしないように、ネットワークのアップグレードに必ず対応する必要があります
 {% endhint %}
 
-If you are not using Cosmovisor, run the following:
+Cosmovisor を使用しない場合は、次のコマンドを実行してください。
 
 ```bash
 gluond start
 ```
 
-### Syncing the node
+### Syncing the node（ノードの同期）
 
-After starting the `gluond` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain but could take a very long time. To query the status of your node:
+`gluond` デーモンを起動すると、チェーンがネットワークと同期し始めます。ネットワークとの同期時間は、環境やブロックチェーンの現在のサイズによって異なりますが、非常に長い時間がかかる可能性があります。ノードのステータスを照会するには、次のコマンドを実行してください。
 
 ```Bash
 # Query via the RPC (default port: 26657)
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-This command returning `true` means that your node is still catching up. Otherwise, your node has caught up to the network's current block and you are safe to proceed to upgrade to a validator node.
+このコマンドが `true` を返す場合、ノードはまだ同期中であることを意味します。それ以外の場合、ノードはネットワークの最新ブロックに追いついており、バリデータノードへのアップグレードを安全に進めることができます。
 
-If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
+最新のブロックに追いつく時間を短縮したい場合は、他のノードからスナップショットを使用することを検討してください。
 
 - [NodeStake](https://nodestake.top/ununifi)
 - [NodeJumper](https://app.nodejumper.io/ununifi/sync)
 - [Nodeist](https://nodeist.net/Ununifi/)
 - [genznodes](https://genznodes.dev/services/)
 
-If you want to catch up from 0 height, you have to upgrade `gluond` at each upgrade heights.
+ブロック高 0 から追いつきたい場合、各アップグレードのブロック高で `gluond` をアップグレードする必要があります。
