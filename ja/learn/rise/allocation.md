@@ -1,4 +1,4 @@
-# Allocations
+# Allocation（トークンアロケーション）
 
 |                                           |                                                             |                  |
 | ----------------------------------------- | ----------------------------------------------------------- | ---------------- |
@@ -8,4 +8,4 @@
 | Ecosystem                                 | To be determined                                            | To be determined |
 | Early backers                             | To be determined                                            | To be determined |
 
-Some parts will be converted to $RISE in the genesis.
+一部はジェネシス時に$RISE に変換されます。

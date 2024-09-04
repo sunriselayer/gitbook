@@ -1,54 +1,56 @@
-# $RISE
+# **$RISE**
 
-$RISE token is the native token of Sunrise network. $RISE token can be used for fee.
+- Sunrise v1: DAWN: Sunrise v1: DAWN
+- Sovereign SDK: Sovereign SDK
+- Sovereign Proof of Liquidity: ソブリン・プルーフ・オブ・リクイディティ
 
-$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the blockchain means 1 RISE in the real world.
+$RISEトークンはSunriseネットワークのネイティブトークンです。$RISE トークンは SUNRISE ネットワークのネイティブトークンです。$RISE トークンは手数料に使用することができます。
 
-* Ticker: RISE
-* Denom in the blockchain: `urise`
-* Alias in the blockchain: `microRISE`
-* Supply cap: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
+Sunrise ブロックチェーンでは、**`urise`**として$RISE が保持されます。ブロックチェーン上の**`1000000urise`**は、現実世界での 1RISE を意味します。
 
-$RISE can be minted by burning $vRISE 1 to 1 if the following rule satisfies:
+- Ticker（ティッカーシンボル）: RISE
+- Denom in the blockchain（ブロックチェーン上の通貨単位）: **`urise`**
+- Alias in the blockchain（ブロックチェーン上のアライアス）: **`microRISE`**
+- Supply cap（最大供給量）: 1,000,000,000RISE = **`1_000_000_000_000_000microRISE`**
 
-<figure><img src="broken-reference" alt="" width="563"><figcaption></figcaption></figure>
+以下のルールを満たす場合、1$vRISEを1にバーンすることで$RISE を作成することができます:
 
 ## $vRISE
 
-$vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
+$vRISE トークンはステーキング用の譲渡不可トークンです。ステーキングされた量はガバナンスの Voting Power（投票力）として計算されます。
 
-* Ticker: vRISE
-* Denom in the blockchain: `uvrise`
-* Alias in the blockchain: `microvRISE`
-* Supply in genesis block: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
+- Ticker（ティッカーシンボル）: vRISE
+- Denom in the blockchain（ブロックチェーン上の通貨単位）: **`uvrise`**
+- Alias in the blockchain（ブロックチェーン上のアライアス）: **`microvRISE`**
+- Supply in genesis block（ジェネシスブロックの供給量）: 1,000,000,000vRISE = **`1_000_000_000_000_000microVRISE`**
 
-### Usecases
+## ユースケース
 
-#### Staking
+### ステーキング
 
-$vRISE can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+$vRISE は Sunrise ネットワークにステーキングすることができます。ステーキングされた量はガバナンスの Voting Power（投票力）として計算されます。さらに、ステーカーへの報酬はステーキングされた量に比例して分配されます。
 
-### Inflation rate schedule
+## インフレーションレートスケジュール
 
-#### On chain parameters
+### オンチェーンパラメータ
 
-The actual inflation rate will vary from the target inflation rate according to the bonded ratio.
+実際のインフレ率は、ボンデッド比率に応じて目標インフレ率から変動します。
 
 |               |     |
 | ------------- | --- |
 | Max inflation | 10% |
 | Min inflation | 6%  |
 
-#### Off chain parameters
+### オフチェーンパラメータ
 
-|                            |    |
-| -------------------------- | -- |
-| Disinflation rate per year | 8% |
-| Converged inflation        | 2% |
+|                            |     |
+| -------------------------- | --- |
+| Disinflation rate per year | 8%  |
+| Converged inflation        | 2%  |
 
-### Simulations
+### シミュレーション
 
-#### Low bonded ratio
+### Low bonded ratio（低拘束比率）
 
 | Year | Inflation  |
 | ---- | ---------- |
@@ -73,7 +75,7 @@ The actual inflation rate will vary from the target inflation rate according to 
 | 18   | 2.229364%  |
 | 19   | 2.051014%  |
 
-#### High bonded ratio
+### High bonded ratio（高拘束比率）
 
 | Year | Inflation |
 | ---- | --------- |
@@ -98,18 +100,18 @@ The actual inflation rate will vary from the target inflation rate according to 
 | 18   | 2.000000% |
 | 19   | 2.000000% |
 
-## Supported wallet applications
+## サポートされているウォレットアプリケーション
 
-### Wallets that support Cosmos blockchains
+### Cosmos ブロックチェーンをサポートするウォレット
 
-* Keplr
-* Leap
-* XDEFI
+- Keplr
+- Leap
+- XDEFI
 
-### Command Line Interface (CLI)
+### コマンドラインインターフェース（CLI）
 
-* sunrised
+- sunrised
 
-## Listed exchanges
+## 上場されている取引所
 
-* Coming soon
+- Coming soon
