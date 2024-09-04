@@ -1,18 +1,17 @@
 # Overview to running nodes on Sunrise
 
-There are many ways you can participate in the Sunrise [networks](../networks/README.md).
-Sunrise node operators can run several options on the network.
+[Sunrise ネットワーク](https://docs.sunriselayer.io/run-a-sunrise-node/networks)への参加方法は多岐にわたります。Sunrise のノード運用者は、ネットワーク上でいくつかの選択肢を実行することができます。
 
 ## Consensus
 
-- [Validator node](./consensus/build-validator-node.md): This type of node participates in consensus by producing and voting on blocks.
-- [Full consensus node](./consensus/build-full-node.md): A sunrise-app Full node to sync blockchain history.
+- [Validator node](https://github.com/SunriseLayer/gitbook/blob/main/node/types/consensus/build-validator-node.md)（バリデーターノード）：このタイプのノードはブロック生成と投票によってコンセンサスに参加します。
+- [Full consensus node](https://github.com/SunriseLayer/gitbook/blob/main/node/types/consensus/build-full-node.md)（フルコンセンサスノード）: ブロックチェーンの履歴を同期する Sunrise-app のフルノード。
 
 ## Data Availability
 
-- [Bridge node](./data-availability/bridge-node.md): This node bridges blocks between the Data-Availability network and the Consensus network.
-- [Full storage node](./data-availability/full-node.md): This node stores all the data but does not connect to Consensus.
-- [Light node](./data-availability/light-node.md): Light clients conduct data availability sampling on the Data Availability network.
+- [Bridge Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node)（ブリッジノード）: データ可用性ネットワークとコンセンサスネットワーク間でブロックをブリッジするノード。
+- [Full Storage Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node)（フルストレージノード）: すべてのデータを保存するが、コンセンサスネットワークには接続しないノード。
+- [Light Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node)（ライトノード）: データ可用性ネットワーク上でデータ可用性サンプリングを行うライトクライアント。
 
 ## Requirements
 
@@ -25,4 +24,4 @@ Sunrise node operators can run several options on the network.
 | Validator      | 6 Core | 8 GB   | 500 GB SSD | 1 Gbps    |
 | Full Consensus | 4 Core | 8 GB   | 250 GB SSD | 1 Gbps    |
 
-You can learn more about how to set up each different node by going through each tutorial guide.
+各チュートリアル ガイドを参照することで、さまざまなノードのセットアップ方法について詳しく学ぶことができます。
