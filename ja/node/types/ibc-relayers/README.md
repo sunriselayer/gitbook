@@ -1,18 +1,18 @@
-# IBC Relayer
+# **IBC Relayers**
 
-By setting up the IBC relayer, you can create new connections and channels of IBC between Sunrise and other blockchains.
+IBC リレイヤーを設定することで、Sunrise と他のブロックチェーン間で新しい IBC の接続やチャネルを作成することができます。
 
-## Setting up relayer with Go relayer (Recommended)
+## Go リレイヤーを使用したリレイヤーの設定（推奨）
 
-You can see details [here](https://github.com/cosmos/relayer).
+[詳細](https://github.com/cosmos/relayer)はここで確認できます。
 
-First, install [Go](https://go.dev/doc/install)
+まず、[Go](https://go.dev/doc/install)をインストールしてください。
 
-## Setting up relayer with Rust relayer Hermes (Not recommended)
+## Rust リレイヤーの Hermes を使用したリレイヤーの設定（非推奨）
 
-First, install [Rust](https://www.rust-lang.org/tools/install)
+まず、[Rust](https://www.rust-lang.org/tools/install)をインストールしてください。
 
-Then, run the commands below:
+次に、以下のコマンドを実行してください。
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -24,11 +24,11 @@ hermes version
 echo word1 ... word12or24 > ~/mnemonic.txt
 ```
 
-### Setting up config
+### config の設定
 
 Under construction.
 
-### Setting up daemon
+### daemon の設定
 
 ```bash
 sudo tee /etc/systemd/system/hermes.service > /dev/null <<EOF
@@ -49,7 +49,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart hermes
 ```
 
-### Monitoring daemon
+### daemon のモニタリング
 
 ```bash
 journalctl -u hermes.service -f
