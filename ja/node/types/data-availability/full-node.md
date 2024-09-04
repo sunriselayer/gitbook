@@ -1,24 +1,23 @@
 # Sunrise Full storage Node
 
-The Full storage nodes do not connect to sunrise-app (hence not a full consensus node), but stores all the data.
+フルストレージノードは `sunrise-app`（したがってフルコンセンサスノードではありません）に接続しませんが、すべてのデータを保存します。
 
-## Hardware requirements
+## Hardware requirements（ハードウェア要件）
 
-The following hardware minimum requirements are recommended for running the Full storage node:
+フルストレージノードを実行するために推奨される最小限のハードウェア要件は以下の通りです。
 
-- Memory: 4 GB RAM (minimum)
+- Memory: 4 GB RAM (最小)
 - CPU: 4 cores
 - Disk: 10 TB SSD Storage
 - Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
-## Dependencies
+## Dependencies（依存関係）
 
-The tutorial is done on Ubuntu 22.04 (LTS).
-Follow [the environment tutorial](../../resources/enviromant.md)
+このチュートリアルは Ubuntu 22.04（LTS）で実行されます。[環境構築チュートリアル](https://github.com/SunriseLayer/gitbook/blob/main/node/resources/enviromant.md)に従ってください。
 
-## Run the Full storage node
+## Run the Full storage node（フルストレージノードの実行）
 
-### Install
+### Install（インストール）
 
 ```bash
 git clone https://github.com/SunriseLayer/sunrise-da.git
@@ -28,7 +27,7 @@ make build
 sudo make install
 ```
 
-### Initialize
+### Initialize（初期化）
 
 ```bash
 sunrise full init --p2p.network <NETWORK>
@@ -40,9 +39,9 @@ example:
 sunrise full init --p2p.network private
 ```
 
-### Run the Node
+### Run the Node（ノードの実行）
 
-Start the full storage node with a connection to a validator node's gRPC endpoint (normally port :9090):
+フルストレージノードを、バリデータノードの gRPC エンドポイント（通常は Port:9090）への接続と共に起動します。
 
 ```bash
 sunrise full start --core.ip <URI> --p2p.network <NETWORK>

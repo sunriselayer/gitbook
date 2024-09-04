@@ -1,24 +1,23 @@
 # Sunrise Light Node
 
-The Light nodes ensure data availability. This is the most common way to interact with Sunrise networks.
+ライトノードはブロックチェーンのデータ可用性を確保します。これは Sunrise ネットワークと通信する最も一般的な方法です。
 
-## Hardware requirements
+## Hardware requirements（ハードウェア要件）
 
-The following hardware minimum requirements are recommended for running the Light node:
+以下は、ライトノードを実行するために推奨される最小限のハードウェア要件です。
 
-- Memory: 500 GB RAM (minimum)
-- CPU: 2 cores
-- Disk: 50 GB SSD Storage
+- メモリ: 500 GB RAM（最小）
+- CPU: 2 core
+- ディスク: 50 GB SSD ストレージ
 - Bandwidth: 56 Kbps for Download/56 Kbps for Upload
 
-## Dependencies
+## Dependencies（依存関係）
 
-The tutorial is done on Ubuntu 22.04 (LTS).
-Follow [the environment tutorial](../../resources/enviromant.md)
+このチュートリアルは Ubuntu 22.04（LTS）で実行されます。[環境構築チュートリアル](https://github.com/SunriseLayer/gitbook/blob/main/node/resources/enviromant.md)に従ってください。
 
-## Run the Light node
+## Run the Light node（ライトノードの実行）
 
-### Install
+### Install（インストール）
 
 ```bash
 git clone https://github.com/SunriseLayer/sunrise-da.git
@@ -28,7 +27,7 @@ make build
 sudo make install
 ```
 
-### Initialize
+### Initialize（初期化）
 
 ```bash
 sunrise light init --p2p.network <NETWORK>
@@ -40,9 +39,9 @@ example:
 sunrise light init --p2p.network private
 ```
 
-### Run the Node
+### Run the Node（ノードの実行）
 
-Start the light node with a connection to a validator node's gRPC endpoint (normally port :9090):
+ライトノードを起動し、バリデータノードの gRPC エンドポイント（通常は port：9090）に接続します。
 
 ```bash
 sunrise light start --core.ip <URI> --p2p.network <NETWORK>

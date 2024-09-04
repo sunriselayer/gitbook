@@ -1,15 +1,15 @@
 # Data Availability Nodes
 
-## Overview
+## 概要
 
-- [Bridge node](../data-availability/bridge-node.md): This node bridges blocks between the Data-Availability network and the Consensus network.
-- [Full storage node](../data-availability/full-node.md): This node stores all the data but does not connect to Consensus.
-- [Light node](../data-availability/light-node.md): Light clients conduct data availability sampling on the Data Availability network.
+- [**ブリッジノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node): このノードは、データ可用性ネットワークとコンセンサスネットワークの間でブロックの橋渡しを行います。
+- [**フルストレージノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node): このノードはすべてのデータを保存しますが、コンセンサスネットワークには接続しません。
+- [**ライトノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node): ライトクライアントは、データ可用性ネットワーク上でデータ可用性サンプリングを実施します。
 
-If you are looking to run a consensus node, please follow [the consensus node tutorial](../consensus/README.md).
+コンセンサスノードを実行する場合は、[**コンセンサスノードのチュートリアル**](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus)に従ってください。
 
 {% hint style='working' %}
-When running a validator node, a bridge node is required. See [this section](../data-availability/bridge-node.md).
+バリデータノードを実行する場合、ブリッジノードが必要です。[このセクション](../data-availability/bridge-node.md)を参照してください。
 {% endhint %}
 
 ### Requirements
