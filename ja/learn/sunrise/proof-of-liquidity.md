@@ -1,62 +1,64 @@
 # Proof of Liquidity
 
-Proof of Liquidity sybil resistance mechanism utilizes the history of providing liquidity for the voting power in the network.
+- Sovereign Proof of Liquidity: ソブリン・プルーフ・オブ・リクイディティ
+- Proof of Liquidity: プルーフ・オブ・リクイディティ
+- Sunrise v1: DAWN: Sunrise v1: DAWN
 
-## Gauge voting
+Proof of Liquidity のシビル耐性メカニズムは、ネットワーク内の投票力に対する流動性の提供履歴を利用しています。
 
-Many DEXs have a gauge voting system to incentivize the liquidity providers. Typically the incentive is given by the inflation of the native token of the DEX, and it is not sustainable.
+## **Gauge voting（**ゲージ投票**）**
 
-There is an example of [Pancake Swap Docs](https://docs.pancakeswap.finance/products/vecake/gauges-voting)
+多くの DEX は、流動性プロバイダーにインセンティブを与えるためにゲージ投票システムを採用しています。通常、インセンティブは DEX のネイティブトークンのインフレーションによって与えられ、持続可能ではありません。
+
+[Pancake Swap Docs](https://docs.pancakeswap.finance/products/vecake/gauges-voting)に例があります。
 
 ## ve(3,3)
 
-The model "ve(3,3)" is an enhanced version of the model "ve" by combining the idea of the model "(3,3)". It contains a gauge voting system with "ve" voting mechanism, but the novelty of this mechanism is that the voter for each pool can get a reward from the profit of the pool. This mechanism incentivizes stakers to vote for the pool which has the potential to get more profit.
+モデル「ve(3,3)」は、モデル「ve」のアイデアとモデル「(3,3)」のアイデアを組み合わせたバージョンアップ版です。このメカニズムには「ve」投票メカニズムを備えたゲージ投票システムが含まれていますが、このメカニズムの新しさは、各プールの投票者がプールの利益から報酬を得ることができる点です。このメカニズムにより、ステーカーはより多くの利益を得る可能性のあるプールに投票することがインセンティブとなります。
 
-## Berachain model
+## Berachain モデル
 
-* `$BGT`: Non transferrable token for staking.
-* `$BERA`: Transferrable token for a fee.
+- `$BGT`: ステーキング用の譲渡不可能トークン
+- `$BERA`: 手数料用の譲渡可能トークン
 
-The blog [Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer) by Berachain is a good resource for understanding the model.
+Berachain のブログ[Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)は、このモデルを理解するための良いリソースです。
 
-The important point of the model is
+このモデルの重要なポイントは以下の通りです：
 
-* By making the staking token `$BGT` non transferrable. It enables the utilization of the staking token purely for staking without the need for holding it for the fee.
-* The inflation rewards will be distributed with `$BGT` token which doesn't lead to the dilution of `$BERA` token.
-* There is no interest in dApps on Ethereum for the sustainability of the DEXs, whereas the dApps on Berachain are always interested in the engagement of Berachain PoL.
+1. ステーキングトークン `$BGT` を譲渡不可能にすることで、手数料のために保有する必要なく、純粋にステーキング目的でのみトークンを利用できるようになります。
+2. インフレーション報酬は `$BGT` トークンで配布されるため、`$BERA` トークンの価値の希薄化につながりません。
+3. Ethereum 上の dApp では DEX の持続可能性に関心が向けられていませんが、Berachain 上の dApp は常に Berachain の PoL（Proof of Liquidity）への参加に関心を持っています。
 
-## Sunrise model
+## Sunrise モデル
 
-The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
+Sunrise モデルは、その基盤となるアーキテクチャと設計原則において、厳選された過去の開発成果と進化の過程を取り入れ、それらを基に構築されています。
 
-* `$vRISE`: Non transferrable token for staking.
-* `$RISE`: STransferrable token for a fee.
+- `$vRISE`：ステーキング用の譲渡不可能トークン
+- `$RISE`：手数料用の譲渡可能トークン
 
-The flow will be like this:
+システムの流れは以下のようになります：
 
-* Some users provide liquidity in the `x/liquiditypool` module.
-  * They will get `$vRISE` for the reward.
-* Some users stake `$vRISE` token in the `x/staking` module
-* People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$vRISE` for the incentive for liquidity providers.
-* The voter for each pool will receive the reward from the profit of the pool.
+1. 一部のユーザーが `x/liquiditypool` モジュールで流動性を提供します。
+   - 報酬として `$vRISE` を獲得します。
+2. 一部のユーザーが `x/staking` モジュールで `$vRISE` トークンをステーキングします。
+3. 投票権を持つ人々は、`x/liquidityincentive` モジュールで、どのプールが流動性提供者へのインセンティブとして `$vRISE` を受け取るべきかを投票できます。
+4. 各プールの投票者は、そのプールの利益から報酬を受け取ります。
 
-Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
+Sunrise PoL（Proof of Liquidity）は、「Sunrise DA を使用する dApp は Sunrise PoL への参加に関心がある」という Berachain の考え方を引き継いでいます。
 
-## How to stake $vRISE
+## $vRISE のステーキング方法
 
-* Sunrise Web App
+- Sunrise Web App
 
-## Specs
+## 仕様
 
-* Consensus algorithm: CometBFT (Tendermint)
-  * Investigation for Mysticeti is in progress.
-* Blockchain application framework: Cosmos SDK v0.50.2
-* Maximum validator set size: 100
+- コンセンサスアルゴリズム：CometBFT（Tendermint）
+  - Mysticeti のリサーチが進行中です。
+- ブロックチェーンアプリケーションフレームワーク：Cosmos SDK v0.50.2
+- 最大バリデータセットサイズ：100
 
-### Mysticeti
+## Mysticeti
 
-[Mysticeti](https://sui.io/mysticeti) is the latest consensus protocol adopted in the next version of Sui.
-
-Our basic idea is same to the [article](https://www.paradigm.xyz/2022/07/experiment-narwhal-bullshark-cosmos-stack) which Paradigm tried PoC to use Narwhal and Bullshark with ABCI.
-
-We are investigating the adoption of Mysticeti to ABCI and further Sunrise, to enhance the throughput of Sunrise.
+[Mysticeti](https://sui.io/mysticeti)は、Sui の次期バージョンで採用される最新のコンセンサスプロトコルです。
+私たちの基本的な考え方は、Paradigm が Narwhal と Bullshark を ABCI と共に使用する PoC（概念実証）を試みた記事と同様です。
+私たちは、Sunrise の処理能力を向上させるため、Mysticeti を ABCI に、さらには Sunrise に適用することを検討しています。

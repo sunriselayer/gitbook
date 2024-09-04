@@ -1,3 +1,3 @@
 # Fee
 
-The module `x/fee` serves the functionalities to burn $RISE tokens used as fees.
+`x/fee`モジュールは、手数料として使用された$RISE トークンを焼却する機能を提供します。

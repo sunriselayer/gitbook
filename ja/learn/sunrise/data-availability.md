@@ -1,15 +1,14 @@
 # Blob
 
-The deprecated module `x/blob` is the Celestia-compatible module of Sunrise.
+`x/blob`モジュールは、Sunrise の非推奨となった Celestia 互換モジュールです。
 
-This module allows L2 operators to post the data to the Sunrise network. The data will be stored in the Sunrise network until the L2 transactions are finalized in the L1 blockchain.
+このモジュールにより、L2 オペレーターは Sunrise ネットワークにデータを投稿できます。データは L1 ブロックチェーンで L2 トランザクションが Finalize（確定）するまで、Sunrise ネットワークに保存されます。
 
-## Off Chain Blob Data (Data Availability v2)
+## Off Chain Blob Data（ブロックチェーン外部ブロブデータの公開検証性） (Data Availability v2)
 
-After successfully launching the Sunrise v1 as a specialized Data Availability Layer for Proof of Liquidity,
-we will introduce an upgrade for Blob features in Sunrise v2, to realize the usecases of Data Availability for fully on-chain AI, gaming, social and so on. Gluon will be the first place to realize the full on chain AI with Sunrise DA.
+Proof of Liquidity のための特殊な Data Availability Layer（ブロックチェーンのデータ可用性レイヤー）として Sunrise v1 の立ち上げに成功した後、Sunrise v2 で BLOB 機能のアップグレードを導入し、フルオンチェーンの AI やゲーム、ソーシャルサービスなどのデータ可用性のユースケースを実現します。Gluon が Sunrise DA を使用してフルオンチェーン AI を最初に実現する場所となります。
 
-In the Sunrise v1 architecture, `data_hash` is replaced with the merkle root of the erasure-coded data with 2-dimension Reed Solomon encoding. The data means the txs data in the block. Data Availability Sampling technology plays a role of mitigating the running costs of full nodes with big blocks by enabling the light nodes to verify the data availability without downloading the entire block data.
+Sunrise v1 のアーキテクチャでは、`data_hash`が 2-dimension Reed Solomon encoding（2 次元リードソロモン符号化）による erasure-coded data（消失訂正符号化データ）のマークルルートに置き換えられます。ここでのデータはブロック内のトランザクションデータを指します。Data Availability Sampling technology（データ可用性サンプリング技術）により、ライトノードがブロック全体をダウンロードせずにデータ可用性を検証できるようになり、大きなブロックを持つフルノードの運用コストを軽減します。
 
 [`CometBFT types.proto`](https://github.com/cometbft/cometbft/blob/main/proto/cometbft/types/v1/types.proto)
 
@@ -42,18 +41,14 @@ message Header {
 }
 ```
 
-In this design, trivially all full nodes have to transfer and download the txs data in the mempool.
-When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool. This will be an obstacle to apply the Data Availability technology for the usage of large BLOB data on decentralized applications, for example, fully on-chain AI, gaming, social and so on.
+この設計では、すべてのフルノードが単純に mempool（メモリプール）内のトランザクションデータを転送およびダウンロードする必要があります。`BlobTx`（Blob トランザクション）のサイズが大きくなると、ネットワークのスループットは mempool（メモリプール）内のトランザクション転送によって制限されます。これは、完全オンチェーンの AI、ゲーム、ソーシャルなど、分散アプリケーションでの大規模 BLOB データの使用にデータ可用性技術を適用する際の障害となります。
 
-To mitigate this bottleneck, we will do these things:
+このボトルネックを緩和するために、以下の対策を行います：
 
-1. Off chain execution of erasure encoding to generate the erasure-coded BLOB data
-1. Using off chain distributed file transfer system / storage like IPFS, Arweave, etc.
+1. erasure-coded BLOB data（消失訂正符号化 BLOB データ）を生成するための erasure encoding（消失訂正符号化）のオフチェーン実行
+2. IPFS や Arweave などのオフチェーン分散ファイル転送システム/ストレージの使用
 
-In this new design, `MsgPublishData` will have the URI of metadata that has URIs of erasure-coded data shares.
-The value is assumed to be the URI of decentralized storage / file transfer system like IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
-
-In the consensus network, erasure encoding is not executed anymore. Only the double hash of erasure coded shard data will be included in `MsgPublishData`.
+この新しい設計では、`MsgPublishData`は消失訂正符号化されたデータシェアの URI を持つメタデータの URI を含みます。この値は IPS の`"ipfs://[ipfs-cid]"`や Arweave の`"ar://[hash]"`などの分散ストレージ/ファイル転送システムの URI であると想定され、`BlobTx`には含まれないため、blob データは Sunrise のオンチェーンには存在しません。
 
 ```protobuf
 message MsgPublishData {
@@ -70,18 +65,15 @@ message Metadata {
 }
 ```
 
-Data Availability will be attested through zero knowledge proof using `shard_double_hashed` by proving that the validators can know the hash of shard data without disclosing them.
+データ可用性はゼロ知識証明を使用して証明されます。具体的には、`shard_double_hashed` を用いて、バリデーターがシャードデータを開示せずにそのハッシュを知ることができることを証明します。
+現在、この処理は [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions)で行われることが想定されています。
+この設計では、IPFS や Arweave などの外部ストレージ/ファイルシステムを使用することで、「長期的なデータ取得可能性」("long term Data Retrievability")を簡単に制御できます。一方で、他のデータ可用性を提供するエコシステムでは長期的なデータ取得可能性が保証されていません。これは、Optimistic Rollups の 不正証明(fraud proofs)のチャレンジ期間後や、ZK Rollups の有効性証明(validity proofs)の提出後には、トランザクションデータを保持する必要がないためです。
+結論として、以下の利点があります：
 
-Currently it is assumed to do this process in [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
-
-In this design, "long term Data Retrievability" is easy to control by using external storage / file system like IPFS and Arweave whereas the Data Retrievability is not guaranteed by other ecosystem which serve Data Availability. The reason why long term Data Retrievability is not guaranteed by other ecosystem which serve Data Availability is that it is not needed to preserve the tx data of Optimistic Rollups after the challenge period for fraud proofs, or ZK Rollups after the submission of validity proofs.
-
-In conclusion, there are benefits:
-
-- The throughput of the network will be increased due to the block size
-- Easy to control the long term Data Retrievability
-  - Applications for fully on-chain AI, gaming, social and so on can be realized
-- The decentralization of the network will be improved
+- ブロックサイズの増加によりネットワークのスループットが向上します
+- 長期的なデータ取得可能性を容易に制御できます
+  - フルオンチェーン AI、ゲーム、ソーシャルなどのアプリケーションが実現可能になります
+- ネットワークの分散化が改善されます
 
 ```mermaid
 sequenceDiagram
@@ -96,9 +88,9 @@ sequenceDiagram
     Validator Set ->> Sunrise: Zero Knowledge Validity Proof if challenge is submitted
 ```
 
-## Specification for Zero-Knowledge Proof
+## Specification for Zero-Knowledge Proof（ゼロ知識証明の仕様）
 
-### Terms and Notation
+### Terms and Notation（用語と表記法）
 
 - The hash function: $$H$$
 - Set of validators: $$ V $$
@@ -110,31 +102,31 @@ $$
   S = S_d \cup S_p
 $$
 
-### Overview
+### 概要
 
-This system verifies the possession of data shard hash $$ H(s_i) $$ without exposing $$ H(s_i) $$
+このシステムは、データシャードのハッシュ$$ H(s_i) $$を公開することなく、$$ H(s_i) $$の所有を検証します。
 
 ### Zero-Knowledge Proof System
 
-The circuit is for one shard $$ s \in S $$.
+この回路は 1 つのシャード $$ s \in S $$ に対するものです。
 
-#### Public Inputs
+#### Public Inputs（公開入力）
 
-- $$ H_{\text{public}}^2(s)$$
+- $$ H\_{\text{public}}^2(s)$$
 
-#### Private Inputs
+#### Private Inputs（秘密入力）
 
-- $$ H_{\text{private}}(s) $$
+- $$ H\_{\text{private}}(s) $$
 
-#### Circuit Constraints
+#### Circuit Constraints（回路の制約条件）
 
 $$
   H_{\text{public}}^2(s) = H(H_{\text{private}}(s))
 $$
 
-## The condition of Data Availability
+## The condition of Data Availability（データ可用性の条件）
 
-### Notations
+### Notations（表記法）
 
 - Replication Factor (Based only on data shards): $$ r $$
 - Replication Factor (Based on including parity shards): $$ r_p $$
@@ -174,8 +166,8 @@ $$
 
 #### Example parameters
 
-- 10 validators: $$ v_1 , ..., v_{10} $$
-- 20 shards: $$ s_1, ..., s_{20} $$
+- 10 validators: $$ v*1 , ..., v*{10} $$
+- 20 shards: $$ s*1, ..., s*{20} $$
   - 10 data shards
   - 10 parity shards
 - $$ r = 6 $$
@@ -188,16 +180,16 @@ $$
 - Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
 - Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
 - However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
-  - $$ |Z_{s_1}|  = 2 $$
-  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z\_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
 - Validator $$ v_2 $$, $$ v_4 $$ and $$ v_10 $$ 's proof contain shard $$ s_2 $$ and other 5 shards
 - Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
 - Only validator $$ v_10 $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
-  - $$ |Z_{s_2}| = 1 $$
-  - It doesn't satisfy $$ \frac{|Z_{s_2}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z\_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
@@ -213,14 +205,14 @@ $$
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
-||On-chain DA attestation|Off-chain DA attestation|
-|---|---|---|
-|Data Corruption Durability|〇|〇|
-|Tx Mempool Scalability|×|〇|
-|Data Retrievability Control|×|〇|
-|Validators Load Mitigation|×|〇|
-|False-Positive DA Attestation Resistance|〇|〇※|
-|Examples|Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G |
+|                                          | On-chain DA attestation              | Off-chain DA attestation |
+| ---------------------------------------- | ------------------------------------ | ------------------------ |
+| Data Corruption Durability               | 〇                                   | 〇                       |
+| Tx Mempool Scalability                   | ×                                    | 〇                       |
+| Data Retrievability Control              | ×                                    | 〇                       |
+| Validators Load Mitigation               | ×                                    | 〇                       |
+| False-Positive DA Attestation Resistance | 〇                                   | 〇※                      |
+| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G   |
 
 ### Data Corruption Durability
 

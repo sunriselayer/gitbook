@@ -1,63 +1,65 @@
-# Liquidity Incentive
+# Liquidity Incentive 　（流動性インセンティブ）
 
-The module `x/liquiditincentive` serves the functionalities to distirbute incentive rewards for liquidity providers in Liquidity Pools.
+`x/liquiditincentive`モジュールは、流動性プールの流動性提供者に対してインセンティブ報酬を分配する機能を提供します。
 
-## Epoch
+## Epoch（エポック）
 
-Each epoch has these parameters
+各エポックには以下のパラメータがあります:
 
-* `start_block`
-* `end_block`
-* `gauges`
+- `start_block`: 開始ブロック
+- `end_block`: 終了ブロック
+- `gauges`: ゲージのリスト
 
-### Gauge
+### Gauge（ゲージ）
 
-Each gauge is linked to a Liquidity pool with the following parameters.
+各ゲージは流動性プールにリンクされており、以下のパラメータを持ちます:
 
-* `pool_id`
-* `previous_epoch_id`
-* `ratio`
-
-`previous_epoch_id` is usually the previous epoch. And, `ratio` is the Voting Power voted for that gauge.
+- `pool_id`: プール ID
+- `previous_epoch_id`: 前回のエポック ID(通常は直前のエポック)
+- `ratio`: そのゲージに投票された投票力の比率
 
 ## MsgVoteGauge
 
-Users can vote for the gauge.
+ユーザーはゲージに投票できます:
 
-* `weights`: The list of what Percentage of voting power to vote for the gauge.
+- `weights`: 各ゲージに投票する投票力の割合のリスト
 
-The sum of the weights must be less than or equal to 1 (100%).
+重みの合計は 1(100%)以下である必要があります。
 
-## Tally of votes
+## 投票の集計
 
-The votes will be tallied at the start of each epoch.
+投票は各エポックの開始時に集計されます:
 
-1. Tally the votes by validators. The validator votes include delegated voting power.
-1. Tally the non-validated ballots. If the address is delegated to a validator, its own voting power is deducted from the validator's votes.
+1. バリデーターの投票を集計します。バリデーターの投票には委任された投票力が含まれます。
+2. バリデーター以外の投票を集計します。アドレスがバリデーターに委任されている場合、その投票力はバリデーターの投票から差し引かれます。
 
-### Example
+### 例
 
-#### Addresses
+#### Addresses（アドレス）
 
-Validator A 1000vRISE
-Delegator B 200vRISE (100vRISE delegated to Validator A)
+- バリデーター A: 1000vRISE
+- 委任者 B: 200vRISE (100vRISE をバリデーター A に委任)
 
-#### Pools
+#### Pools（プール）
 
-Liquidity Pool #1
-Liquidity Pool #2
+- 流動性プール#1
+- 流動性プール#2
 
-#### Votes
+#### Votes（投票）
 
-A votes Pool #1 & #2 (50% & 50%)
-B votes Pool #1 (100%)
+- A はプール#1 と#2 に投票 (50%ずつ)
+- B はプール#1 に投票 (100%)
 
-#### Result
+#### 結果
 
-1. Only A voted
-Pool #1's voting power: 550vRISE
-Pool #2's voting power: 550vRISE
+1. A のみが投票した場合:
 
-2. A & B voted
-Pool #1's voting power: 700vRISE (500 + 200)
-Pool #2's voting power: 650vRISE
+   - Pool #1's voting power: 550vRISE
+   - Pool #2's voting power: 550vRISE
+
+2. A と B の両方が投票した場合:
+   - プール#2 の投票力: 650vRISE
+   - Pool #1's voting power: 700vRISE (500 + 200)
+   - Pool #2's voting power: 650vRISE
+
+この仕組みにより、流動性プールへの投票を通じてインセンティブの分配が決定されます。

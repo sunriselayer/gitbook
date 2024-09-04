@@ -1,27 +1,23 @@
 # Swap
 
-The module `x/swap` serves the functionalities to swap tokens with the liquidity in `x/liquiditypool` module.
+`x/swap`モジュールは、`x/liquiditypool`モジュール内の流動性を使用してトークンをスワップする機能を提供します。
 
-## Params
+**パラメータ**
+このモジュールには以下のパラメータがあります：
 
-This module has these params
+- `interface_fee_rate`（インターフェース手数料率）：インターフェースプロバイダー（例：フロントエンドのウェブアプリケーションプロバイダー）は、スワップトランザクションの手数料から一定の割合を受け取ることができます。
 
-- `interface_fee_rate`: Interface providers (e.g. frontend web-app provider) can receive a certain rate of the fee from the swap tx.
+**MsgSwapExactAmountIn**（正確な入力量でのスワップメッセージ）
+このメッセージを含むトランザクションを送信することで、ユーザーは入力量を指定してトークンをスワップできます。
 
-## MsgSwapExactAmountIn
-
-By sending tx with this msg, users can swap tokens with designating the amount for input.
-
-## MsgConvertExactAmountOut
-
-By sending tx with this msg, users can swap tokens with designating the amount for output.
+**MsgConvertExactAmountOut**（正確な出力量でのスワップメッセージ）
+このメッセージを含むトランザクションを送信することで、ユーザーは出力量を指定してトークンをスワップできます。
 
 ## Route
 
-This module accepts a swap route with recursive struct.
+このモジュールは、再帰的な構造を持つ Swap Route（スワップルート）を受け入れます。
 
-```protobuf
-
+```typescript
 message RoutePool {
   uint64 pool_id = 1;
 }
@@ -57,13 +53,13 @@ message Route {
 }
 ```
 
-## ICS20 Middleware
+## **ICS20 ミドルウェア**
 
-Swap functions also can be executed by ICS20 token transfer packet automatically.
+スワップ機能は、ICS20 トークン転送パケットによって自動的に実行することもできます。
 
-### Metadata
+### **Metadata（メタデータ）**
 
-JSON string of marshalled `PacketMetadata` should be inserted in the `memo` field of ICS20 transfer packet.
+マーシャリングされた`PacketMetadata`の JSON 文字列を ICS20 転送パケットの`memo`フィールドに挿入する必要があります。
 
 ```typescript
 type PacketMetadata = {
@@ -100,11 +96,11 @@ type ForwardMetadata = {
 };
 ```
 
-`ForwardMetadata` is quoted from [Packet Forward Middleware](https://github.com/cosmos/ibc-apps/tree/main/middleware/packet-forward-middleware).
+`ForwardMetadata`は、[Packet Forward Middleware](https://github.com/cosmos/ibc-apps/tree/main/middleware/packet-forward-middleware)（パケットフォワードミドルウェア）から引用されています。
 
-### Sequence diagrams
+## **Sequence diagrams**
 
-#### Neither Return nor Forward
+### **Neither Return nor Forward（返還も転送もしない）**
 
 ```mermaid
 sequenceDiagram
@@ -115,7 +111,7 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-#### Forward
+### **Forward（転送）**
 
 ```mermaid
 sequenceDiagram
@@ -130,10 +126,9 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-#### Change and Forward
+**Change and Forward（変更と転送）**
 
-If the exact output amount is designated for the swap, the remainder input amount will occur.
-There is a function to automatically refund the remainder input amount.
+スワップに対して正確な出力量が指定された場合、余剰の入力量が発生します。余剰の入力量を自動的に払い戻す機能があります。
 
 ```mermaid
 sequenceDiagram
@@ -151,6 +146,6 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-### Receiver address
+**Receiver address（受信者アドレス）**
 
-After the swapping has been executed, the acknowledgement of "Transfer token X" will be always success even if the next change / forward packet failed. The swapped funds are preserved in the balance of the receiver address.
+スワップが実行された後、次の変更/転送パケットが失敗した場合でも、「トークン X の転送」の確認は常に成功します。スワップされた資金は受信者アドレスの残高に保持されます。
