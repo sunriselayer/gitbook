@@ -11,8 +11,7 @@
 | 26657 | TCP      | RPC    | `tcp://127.0.0.1:26657` | `~/.sunrise/config/config.toml` |
 
 {% hint style='info' %}
-Since cosmos-sdk v0.50.0, only internal connection is allowed by default.
-To publish, be sure to rewrite it as follows
+cosmos-sdk v0.50.0 以降、デフォルトでは内部接続のみが許可されています。公開するには、必ず以下のように書き換えてください：
 `0.0.0.0:9090`, `tcp://0.0.0.0:1317`, `tcp://0.0.0.0:26657`
 {% endhint %}
 

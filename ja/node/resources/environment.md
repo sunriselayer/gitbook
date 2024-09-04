@@ -1,8 +1,8 @@
 # Environment
 
-This is development environment to run Sunrise software. This environment can be used for development, building binaries, and running nodes.
+これは Sunrise ソフトウェアを実行するための開発環境です。この環境は、開発、バイナリのビルド、およびノードの実行に使用できます。
 
-## Install Dependencies
+## Install Dependencies（依存関係のインストール）
 
 ### Ubuntu
 
