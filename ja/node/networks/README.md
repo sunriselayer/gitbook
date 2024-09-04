@@ -2,9 +2,9 @@
 
 ## Mainnet
 
-The main network of Sunrise. Use tokens with real value.
+Sunrise のメインネットワーク。実際に資産価値を持つトークンを使用します。
 
-### Mainnet Details
+### Mainnet Details（メインネットの詳細）
 
 | Detail       | Value       |
 | ------------ | ----------- |
@@ -15,14 +15,14 @@ The main network of Sunrise. Use tokens with real value.
 
 ### Mainnet Software
 
-| Software     | Version                                                                         |
-| ------------ | ------------------------------------------------------------------------------- |
-| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
+| Software     | Version                                                                              |
+| ------------ | ------------------------------------------------------------------------------------ |
+| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)            |
 | sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
 
 ## Testnet
 
-This network is used to test operations on the mainnet. Normally, the same environment as the mainnet is provided, but tokens have no value.
+このネットワークはメインネットでの操作をテストするために使用されます。通常、メインネットと同じ環境が提供されますが、トークンには資産価値がありません。
 
 ### Testnet Details
 
@@ -35,7 +35,7 @@ This network is used to test operations on the mainnet. Normally, the same envir
 
 ### Testnet Software
 
-| Software     | Version                                                                         |
-| ------------ | ------------------------------------------------------------------------------- |
-| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)       |
+| Software     | Version                                                                              |
+| ------------ | ------------------------------------------------------------------------------------ |
+| sunrise-app  | [v0.0.4](https://github.com/SunriseLayer/sunrise-app/releases/tag/v0.0.4)            |
 | sunrise-node | [v0.13.1-sr2](https://github.com/SunriseLayer/sunrise-node/releases/tag/v0.13.1-sr2) |
