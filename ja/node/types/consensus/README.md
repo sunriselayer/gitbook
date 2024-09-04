@@ -1,12 +1,12 @@
-# Consensus Nodes
+# Consensus Nodes（コンセンサスノード）
 
 ## Overview
 
-- [Validator node](../consensus/build-validator-node.md): This type of node participates in consensus by producing and voting on blocks.
-- [Full consensus node](../consensus/build-full-node.md): A sunrise-app Full node to sync blockchain history.
+- [Validator node](https://github.com/SunriseLayer/gitbook/blob/main/node/types/consensus/build-validator-node.md)（バリデータノード）：このタイプのノードは、ブロックの生成と投票によってコンセンサスに参加します。
+- [Full consensus node](https://github.com/SunriseLayer/gitbook/blob/main/node/types/consensus/build-full-node.md)（フルコンセンサスノード）：ブロックチェーンの履歴を同期する `sunrise-app` のフルノード。
 
 {% hint style='working' %}
-When running a validator node, a bridge node is required. See [this section](../data-availability/bridge-node.md).
+バリデータノードを運用する際には、ブリッジノード(bridge node)が必要となります。詳細は[このセクション](../data-availability/bridge-node.md).をご覧ください。
 {% endhint %}
 
 ### Requirements

@@ -6,18 +6,21 @@ Setting up Cosmovisor is relatively straightforward. However, it does expect cer
 Cosmovisor allows you to download binaries ahead of time for chain upgrades, meaning that you can do zero (or close to zero) downtime chain upgrades. It's also useful if your local timezone means that a chain upgrade will fall at a bad time.\
 Rather than having to do stressful ops tasks late at night, it's always better if you can automate them away, and that's what Cosmovisor tries to do.
 
-## Install
+メインネットでは、Cosmovisor を使用してノードを実行することをお勧めします。
+Cosmovisor のセットアップは比較的簡単です。ただし、特定の環境変数とフォルダ構造を設定する必要があります。Cosmovisor を使用すると、チェーンのアップグレードに備えて事前にバイナリをダウンロードできるため、ダウンタイムがゼロ（またはほぼゼロ）のチェーンアップグレードが可能になります。また、お住まいのタイムゾーンの関係でチェーンのアップグレードが不都合な時間に行われる場合にも便利です。深夜にストレスの多い運用タスクを行うよりも、可能な限り自動化する方が常に良いでしょう。それが Cosmovisor の目指すところです。
 
-First, go and get cosmovisor (recommended approach):
+## Install（インストール）
+
+まず、cosmovisor を入手します（推奨方法）。
 
 ```Bash
 # to target a specific version:
 go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 ```
 
-### Add environment variables to your shell
+### Add environment variables to your shell（シェルに環境変数を追加する）
 
-Some environment variables must be set to appropriate values for each node and each network.
+各ノードと各ネットワークに適した値を設定するために、いくつかの環境変数を設定する必要があります。
 
 ```Bash
 echo "export CHAIN_REPO=https://github.com/sunrise-layer/sunrise-app" >> ~/.bash_profile
@@ -41,13 +44,13 @@ echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bash_profile
 echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.bash_profile
 ```
 
-Then source your profile to have access to these variables:
+プロファイルをソースして、これらの変数にアクセスできるようにします：
 
 ```Bash
 source ~/.bash_profile
 ```
 
-### Set up folder structure
+### Set up folder structure（フォルダ構造を設定する）
 
 ```Bash
 mkdir -p $DAEMON_HOME/cosmovisor
@@ -56,23 +59,23 @@ mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades
 ```
 
-### Set up genesis binary
+### Set up genesis binary（ジェネシスバイナリを設定する）
 
-Cosmovisor needs to know which binary to use at genesis. We put this in `$DAEMON_HOME/cosmovisor/genesis/bin`
+Cosmovisor はジェネシス時にどのバイナリを使用するかを知る必要があります。これを `$DAEMON_HOME/cosmovisor/genesis/bin` に配置します。
 
 ```Bash
 cp ~/go/bin/$DAEMON_NAME $DAEMON_HOME/cosmovisor/genesis/bin
 ```
 
-### Set up service
+### Set up service（サービスを設定する）
 
-Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `sunrised version`. Nevertheless, just as we would manage `sunrised` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example, an error or reboot. First, create the service file:
+Cosmovisor に送信されたコマンドは、基盤となるバイナリに送信されます。たとえば、`cosmovisor version` と入力するのは、`sunrised version` と入力するのと同じです。しかし、`sunrised` をプロセスマネージャーで管理するのと同様に、エラーや再起動など何かが発生した場合には、Cosmovisor が自動的に再起動されるようにしたいと考えています。まず、サービスファイルを作成します。
 
 ```Bash
 sudo nano /lib/systemd/system/cosmovisor.service
 ```
 
-Change the contents of the below to match your setup
+以下の内容を自分の設定に合わせて変更してください。
 
 ```Bash
 [Unit]
@@ -95,11 +98,11 @@ LimitNPROC=infinity
 WantedBy=multi-user.target
 ```
 
-> !! A description of what the environment variables do can be found [here](https://docs.cosmos.network/main/run-node/cosmovisor.html). Change them depending on your setup.
+> !! 環境変数が何をするかについての説明は、[こちら](https://docs.cosmos.network/main/run-node/cosmovisor.html)にあります。自分の設定に応じて、それらを変更してください。
 
-### Start Cosmovisor
+### Start Cosmovisor（Cosmovisor を起動する）
 
-> !! If syncing from a snapshot, do not start Cosmovisor yet. Finally, enable the service and start it.
+> !! スナップショットから同期している場合は、まだ Cosmovisor を起動しないでください。最後に、サービスを有効化して起動します。
 
 ```Bash
 sudo systemctl daemon-reload
@@ -108,13 +111,13 @@ sudo systemctl enable cosmovisor
 sudo systemctl start cosmovisor
 ```
 
-Check it is running using:
+以下のコマンドを使用して、正常に実行されているか確認してください。
 
 ```Bash
 sudo systemctl status cosmovisor
 ```
 
-If you need to monitor the service after launch, you can view the logs using:
+サービスの起動後にモニタリングが必要な場合は、以下のコマンドでログを表示できます。
 
 ```Bash
 sudo journalctl -u cosmovisor -f -o cat
