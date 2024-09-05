@@ -81,7 +81,7 @@ Example: For mainnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
+curl -L https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
 ### Set minimum gas prices
