@@ -20,22 +20,22 @@ go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 Some environment variables must be set to appropriate values for each node and each network.
 
 ```Bash
-echo "export CHAIN_REPO=https://github.com/sunrise-layer/sunrise-app" >> ~/.bash_profile
+echo "export CHAIN_REPO=https://github.com/sunriselayer/sunrise" >> ~/.bash_profile
 echo "export CHAIN_REPO_BRANCHE=main" >> ~/.bash_profile
 echo "export TARGET=sunrised" >> ~/.bash_profile
 echo "export TARGET_HOME=.sunrise" >> ~/.bash_profile
 # This value will be different for each node.
 echo "export MONIKER=<your-moniker>" >> ~/.bash_profile
-echo "export CHAIN_ID=sunrise-v1" >> ~/.bash_profile
 # This value is example of mainnet.
-echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/genesis.json" >> ~/.bash_profile
+echo "export CHAIN_ID=sunrise-1" >> ~/.bash_profile
+echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/genesis.json" >> ~/.bash_profile
 echo "export SETUP_NODE_CONFIG_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
 echo "export DAEMON_NAME=\$TARGET" >> ~/.bash_profile
 # This value will be different for each node.
-echo "export DAEMON_HOME=$HOME/.ununifi" >> ~/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> ~/.bash_profile
+echo "export DAEMON_HOME=$HOME/.sunrise" >> ~/.bash_profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> ~/.bash_profile
 echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.bash_profile
 echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bash_profile
 echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.bash_profile
@@ -60,8 +60,11 @@ mkdir -p $DAEMON_HOME/cosmovisor/upgrades
 
 Cosmovisor needs to know which binary to use at genesis. We put this in `$DAEMON_HOME/cosmovisor/genesis/bin`
 
+Check [our Github](https://github.com/sunriselayer/network) to know the binary version of genesis.
+
 ```Bash
-cp ~/go/bin/$DAEMON_NAME $DAEMON_HOME/cosmovisor/genesis/bin
+wget https://github.com/sunriselayer/sunrise/releases/download/<version>/sunrised
+cp sunrised $DAEMON_HOME/cosmovisor/genesis/bin
 ```
 
 ### Set up service
@@ -69,7 +72,7 @@ cp ~/go/bin/$DAEMON_NAME $DAEMON_HOME/cosmovisor/genesis/bin
 Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `sunrised version`. Nevertheless, just as we would manage `sunrised` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example, an error or reboot. First, create the service file:
 
 ```Bash
-sudo nano /lib/systemd/system/cosmovisor.service
+sudo vi /lib/systemd/system/cosmovisor.service
 ```
 
 Change the contents of the below to match your setup
@@ -82,7 +85,7 @@ After=network-online.target
 Environment="DAEMON_NAME=sunrised"
 Environment="DAEMON_HOME=/home/<your-user>/.sunrise"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false" // if want auto-upgrade, set true
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true" // Recommend
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
 User=<your-user>
@@ -95,11 +98,15 @@ LimitNPROC=infinity
 WantedBy=multi-user.target
 ```
 
-> !! A description of what the environment variables do can be found [here](https://docs.cosmos.network/main/run-node/cosmovisor.html). Change them depending on your setup.
+{% hint style="info" %}
+A description of what the environment variables do can be found [here](https://docs.cosmos.network/main/run-node/cosmovisor.html). Change them depending on your setup.
+{% endhint %}
 
 ### Start Cosmovisor
 
-> !! If syncing from a snapshot, do not start Cosmovisor yet. Finally, enable the service and start it.
+{% hint style="warning" %}
+If syncing from a snapshot, do not start Cosmovisor yet. Download the snapshot and extract it to `$HOME/.sunrise/data`. Finally, enable the service and start it.
+{% endhint %}
 
 ```Bash
 sudo systemctl daemon-reload

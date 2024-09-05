@@ -40,6 +40,7 @@
     * [Setup Cosmovisor](node/types/consensus/setup-cosmovisor.md)
   * [IBC Relayers](node/types/ibc-relayers/README.md)
 * [Resources](node/resources/README.md)
+  * [Upgrade](node/resources/upgrade.md)
   * [Environment](node/resources/environment.md)
 
 ## Run a Gluon Node
@@ -50,7 +51,7 @@
 
 ## Links
 
-* [GitHub](https://github.com/SunriseLayer)
+* [GitHub](https://github.com/sunriselayer)
 * [Discord](https://discord.com/invite/sunrise)
 * [X (Twitter)](https://twitter.com/SunriseLayer)
 

@@ -28,10 +28,12 @@ sunrised tendermint unsafe-reset-all
 Run the following command:
 
 ```bash
-CHAIN_ID=sunrise-1
+CHAIN_ID=sunrise-1 # For mainnet
 MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
+
+Check [our Github](https://github.com/sunriselayer/network) to know the current chain-id.
 
 ### Create a new key
 

@@ -6,7 +6,7 @@ Full consensus nodes allow you to sync blockchain history in the Sunrise consens
 
 For streamline chain upgrades and minimize downtime, you may want to set up [Cosmovisor](https://docs.cosmos.network/main/build/tooling/cosmovisor) to manage your node.
 
-Follow [the Cosmovisor tutorial](setup-cosmovisor.md)
+Follow [Cosmovisor tutorial](setup-cosmovisor.md)
 
 To automate on-chain upgrades, set the following options.
 
@@ -44,18 +44,25 @@ The tutorial is done on Ubuntu 22.04 (LTS). Follow [the environment tutorial](..
 [Install Go](https://go.dev/doc/install) 1.22
 
 ```bash
-git clone https://github.com/SunriseLayer/sunrise.git
+git clone https://github.com/sunriselayer/sunrise.git
 cd sunrise
 git checkout $TAG
 make install
 ```
+
+{% hint style="info" %}
+When synchronizing from the genesis, use the binary version as of the genesis.
+If you are using snapshots, you must check the height of the snapshot and use the binary at that height.
+
+See [upgrade doc](../../resources/upgrade.md) for more details.
+{% endhint %}
 
 ### Initialize
 
 Set `chain-id` & `moniker`. `moniker` is just a name for your node.
 
 ```bash
-CHAIN_ID=sunrise-1
+CHAIN_ID=sunrise-1 // mainnet
 MONIKER="node-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
@@ -68,26 +75,13 @@ This will generate the following files in `~/.sunrise/config/`
 
 ## Download the genesis file
 
-For mainnet:
+Check the `genesis.json` of the currently running network on [our Github](https://github.com/sunriselayer/network)
+
+Example: For mainnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
 curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
-```
-
-For testnet:
-
-```bash
-rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
-```
-
-## Option: Set persistent peers
-
-```bash
-PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
-echo $PERSISTENT_PEERS
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" $HOME/.sunrise/config/config.toml
 ```
 
 ### Set minimum gas prices
@@ -100,20 +94,56 @@ In `$HOME/.sunrise/config/app.toml`, set minimum gas prices:
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025urise\"/" $HOME/.sunrise/config/app.toml
 ```
 
+{% hint style="warning" %}
+Do NOT set too high gas prices. If you are a validator, your proposed block will not include transactions. This reduces the number of transactions the entire network can process.
+{% endhint %}
+
+### Option: Set seeds & persistent peers
+
+* Seeds
+
+"Seeds" provides a list of other validators that a newly joining validator should initially connect to.
+Once a validator connects to the network, it primarily relies on `persistent_peers` for connections, reducing the importance of `seeds`.
+
+```bash
+SEEDS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/seeds.txt | tr '\n' ',')
+echo $SEEDS
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.sunrise/config/config.toml
+```
+
+* Persistent Peers
+
+"Persistent Peers" is a list of trusted validators that the validator should maintain connections with at all times.
+Connections to validators listed in persistent_peers are prioritized to maintain network stability.
+
+```bash
+PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
+echo $PERSISTENT_PEERS
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" $HOME/.sunrise/config/config.toml
+```
+
 ### Option: Additional settings
 
-If necessary, Edit config files `~/.sunrise/config/app.toml`
+If necessary, Edit config files `$HOME/.sunrise/config/app.toml`
 
 * Enable defines if the API server should be enabled.
 
 ```bash
-sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.sunrise/config/app.toml;
+sed -i '/\[api\]/,+3 s/enable = false/enable = true/' $HOME/.sunrise/config/app.toml;
 ```
 
 * EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 
 ```bash
-sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.sunrise/config/app.toml;
+sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' $HOME/.sunrise/config/app.toml;
+```
+
+* By default, RPC and REST are not public, so if you want to make it a public node, configure as follows
+
+```bash
+sed -i 's/address = "localhost:9090"/address = "0.0.0.0:9090"/' $HOME/.sunrise/config/app.toml;
+sed -i 's#address = "tcp://localhost:1317"#address = "tcp://0.0.0.0:1317"#' $HOME/.sunrise/config/app.toml;
+sed -i 's#laddr = "tcp://127.0.0.1:26657"#laddr = "tcp://0.0.0.0:26657"#' $HOME/.sunrise/config/config.toml;
 ```
 
 ### Storage and pruning configurations
@@ -166,11 +196,12 @@ Replace `<your-key>` with a key name of your choosing.
 
 ### Get some RISE tokens
 
-You will require some RISE tokens to bond to your validator. To be in the active set you will need to have enough tokens.
+You will require some vRISE tokens to bond to your validator (and some RISE tokens for fees). To be in the active set you will need to have enough tokens.
 
 ### Start the consensus node
 
 Follow the instructions to set up Cosmovisor and start the node.
+See [Cosmovisor tutorial](setup-cosmovisor.md)
 
 {% hint style="info" %}
 Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
@@ -196,3 +227,4 @@ This command returning `true` means that your node is still catching up. Otherwi
 If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
 
 If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade height.
+If Cosmovisor is running and automatic download option is enabled, the upgrade will also be processed automatically.

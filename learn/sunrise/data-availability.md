@@ -9,6 +9,8 @@ This module allows L2 operators to post the data to the Sunrise network. The dat
 After successfully launching the Sunrise v1 as a specialized Data Availability Layer for Proof of Liquidity,
 we will introduce an upgrade for Blob features in Sunrise v2, to realize the usecases of Data Availability for fully on-chain AI, gaming, social and so on. Gluon will be the first place to realize the full on chain AI with Sunrise DA.
 
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/da) for details.
+
 In the Sunrise v1 architecture, `data_hash` is replaced with the merkle root of the erasure-coded data with 2-dimension Reed Solomon encoding. The data means the txs data in the block. Data Availability Sampling technology plays a role of mitigating the running costs of full nodes with big blocks by enabling the light nodes to verify the data availability without downloading the entire block data.
 
 [`CometBFT types.proto`](https://github.com/cometbft/cometbft/blob/main/proto/cometbft/types/v1/types.proto)
