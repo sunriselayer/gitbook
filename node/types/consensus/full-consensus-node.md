@@ -81,7 +81,7 @@ Example: For mainnet:
 
 ```bash
 rm ~/.sunrise/config/genesis.json
-curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
+curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/sunrise-1/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
 ### Set minimum gas prices
@@ -106,7 +106,7 @@ Do NOT set too high gas prices. If you are a validator, your proposed block will
 Once a validator connects to the network, it primarily relies on `persistent_peers` for connections, reducing the importance of `seeds`.
 
 ```bash
-SEEDS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/seeds.txt | tr '\n' ',')
+SEEDS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/seeds.txt | tr '\n' ',')
 echo $SEEDS
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.sunrise/config/config.toml
 ```
@@ -117,7 +117,7 @@ sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.sunrise/config/config.t
 Connections to validators listed in persistent_peers are prioritized to maintain network stability.
 
 ```bash
-PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
+PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/peers.txt | tr '\n' ',')
 echo $PERSISTENT_PEERS
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" $HOME/.sunrise/config/config.toml
 ```

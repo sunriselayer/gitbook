@@ -28,7 +28,7 @@ echo "export TARGET_HOME=.sunrise" >> ~/.bash_profile
 echo "export MONIKER=<your-moniker>" >> ~/.bash_profile
 # This value is example of mainnet.
 echo "export CHAIN_ID=sunrise-1" >> ~/.bash_profile
-echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/sunriselayer/network/main/launch/sunrise-1/genesis.json" >> ~/.bash_profile
+echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/genesis.json" >> ~/.bash_profile
 echo "export SETUP_NODE_CONFIG_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
