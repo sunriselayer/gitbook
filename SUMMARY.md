@@ -10,7 +10,7 @@
   * [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   * [DA Fee Abstraction](learn/sunrise/da-fee-abstraction.md)
   * [Data Availability](learn/sunrise/data-availability.md)
-  * [Gauges Voting](learn/sunrise/geuges-voting.md)
+  * [Gauges Voting](learn/sunrise/gauges-voting.md)
   * [Liquidity Pool](learn/sunrise/liquidity-pool.md)
   * [Liquidity Incentive](learn/sunrise/liquidity-incentive.md)
   * [Swap](learn/sunrise/swap.md)
