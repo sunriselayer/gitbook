@@ -51,7 +51,7 @@
 
 ## Links
 
-* [GitHub](https://github.com/SunriseLayer)
+* [GitHub](https://github.com/sunriselayer)
 * [Discord](https://discord.com/invite/sunrise)
 * [X (Twitter)](https://twitter.com/SunriseLayer)
 
