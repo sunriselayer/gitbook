@@ -14,7 +14,7 @@ This feature is available on the testnet, but does not yet exist on the mainnet.
 {% endhint %}
 
 The Ecosystem Incentive of the UnUniFi protocol is designed to reward application developers.
-Thw developers will be rewarded with a portion of the Tx Gas bill served from their apps.
+The developers will be rewarded with a portion of the Tx Gas bill served from their apps.
 
 Registration is required to use this feature.
 Please register via `Incentive` in the UnUniFi Portal. Rewards can be distributed to multiple addresses.
@@ -22,7 +22,7 @@ Please register via `Incentive` in the UnUniFi Portal. Rewards can be distribute
 After registration, the following JSON string is output.
 
 ```json
-{"version":"v1","recipient_container_id":"ununifi_core"}
+{ "version": "v1", "recipient_container_id": "ununifi_core" }
 ```
 
 Add this to the `TxMemo` of Txs sent out by your application.
