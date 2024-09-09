@@ -26,10 +26,10 @@ Alerting and monitoring are desirable as well - you are encouraged to explore so
 
 The following hardware minimum requirements are recommended for running the validator node:
 
-* Memory: 8 GB RAM (minimum)
-* CPU: 4 cores
-* Disk: 250 GB SSD Storage
-* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- Memory: 8 GB RAM (minimum)
+- CPU: 4 cores
+- Disk: 250 GB SSD Storage
+- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 If you are not using pruning, you are running an archive node, and it is recommended to have 500 GB of SSD storage.
 
@@ -69,9 +69,9 @@ sunrised init "$MONIKER" --chain-id $CHAIN_ID
 
 This will generate the following files in `~/.sunrise/config/`
 
-* `genesis.json`
-* `node_key.json`
-* `priv_validator_key.json`
+- `genesis.json`
+- `node_key.json`
+- `priv_validator_key.json`
 
 ## Download the genesis file
 
@@ -100,7 +100,7 @@ Do NOT set too high gas prices. If you are a validator, your proposed block will
 
 ### Option: Set seeds & persistent peers
 
-* Seeds
+- Seeds
 
 "Seeds" provides a list of other validators that a newly joining validator should initially connect to.
 Once a validator connects to the network, it primarily relies on `persistent_peers` for connections, reducing the importance of `seeds`.
@@ -111,7 +111,7 @@ echo $SEEDS
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.sunrise/config/config.toml
 ```
 
-* Persistent Peers
+- Persistent Peers
 
 "Persistent Peers" is a list of trusted validators that the validator should maintain connections with at all times.
 Connections to validators listed in persistent_peers are prioritized to maintain network stability.
@@ -126,19 +126,19 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"
 
 If necessary, Edit config files `$HOME/.sunrise/config/app.toml`
 
-* Enable defines if the API server should be enabled.
+- Enable defines if the API server should be enabled.
 
 ```bash
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' $HOME/.sunrise/config/app.toml;
 ```
 
-* EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
+- EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk).
 
 ```bash
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' $HOME/.sunrise/config/app.toml;
 ```
 
-* By default, RPC and REST are not public, so if you want to make it a public node, configure as follows
+- By default, RPC and REST are not public, so if you want to make it a public node, configure as follows
 
 ```bash
 sed -i 's/address = "localhost:9090"/address = "0.0.0.0:9090"/' $HOME/.sunrise/config/app.toml;

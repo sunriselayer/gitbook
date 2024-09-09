@@ -43,7 +43,7 @@ The command hermes config auto provides a way to automatically generate a config
 You must set each parameter yourself for the testnet. See the [documentation](https://hermes.informal.systems/documentation/configuration/index.html) for more details.
 
 ```bash
-hermes config auto --output $HOME/.hermes/config.toml --chain <ibc-0>:<key-ibc-0> <ibc-1>:<key-ibc-1> --chain 
+hermes config auto --output $HOME/.hermes/config.toml --chain <ibc-0>:<key-ibc-0> <ibc-1>:<key-ibc-1> --chain
 ```
 
 #### Add a new relay path
@@ -94,7 +94,6 @@ Once the configuration is complete, you can start the relayer with the following
 ```bash
 hermes start
 ```
-
 
 ### Setting up daemon
 

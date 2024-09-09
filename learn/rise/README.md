@@ -4,10 +4,10 @@ $RISE token is the native token of Sunrise network. $RISE token can be used for 
 
 $RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the blockchain means 1 RISE in the real world.
 
-* Ticker: RISE
-* Denom in the blockchain: `urise`
-* Alias in the blockchain: `microRISE`
-* Supply cap: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
+- Ticker: RISE
+- Denom in the blockchain: `urise`
+- Alias in the blockchain: `microRISE`
+- Supply cap: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
 
 $RISE can be minted by burning $vRISE 1 to 1 if the following rule satisfies:
 
@@ -17,10 +17,10 @@ $RISE can be minted by burning $vRISE 1 to 1 if the following rule satisfies:
 
 $vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
 
-* Ticker: vRISE
-* Denom in the blockchain: `uvrise`
-* Alias in the blockchain: `microvRISE`
-* Supply in genesis block: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
+- Ticker: vRISE
+- Denom in the blockchain: `uvrise`
+- Alias in the blockchain: `microvRISE`
+- Supply in genesis block: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
 
 ### Usecases
 
@@ -41,10 +41,10 @@ The actual inflation rate will vary from the target inflation rate according to 
 
 #### Off chain parameters
 
-|                            |    |
-| -------------------------- | -- |
-| Disinflation rate per year | 8% |
-| Converged inflation        | 2% |
+|                            |     |
+| -------------------------- | --- |
+| Disinflation rate per year | 8%  |
+| Converged inflation        | 2%  |
 
 ### Simulations
 
@@ -102,14 +102,14 @@ The actual inflation rate will vary from the target inflation rate according to 
 
 ### Wallets that support Cosmos blockchains
 
-* Keplr
-* Leap
-* XDEFI
+- Keplr
+- Leap
+- XDEFI
 
 ### Command Line Interface (CLI)
 
-* sunrised
+- sunrised
 
 ## Listed exchanges
 
-* Coming soon
+- Coming soon

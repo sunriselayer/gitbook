@@ -5,6 +5,7 @@ Instruction to install the ununifid binary
 ## Choose an Operating System
 
 The operating system you use for your node is entirely your personal preference. You will be able to compile the ununifid daemon on most modern linux distributions and recent versions of macOS
+
 > For the tutorial, it is assumed that you are using an Ubuntu LTS release.
 > If you have chosen a different operating system, you will need to modify your commands to suit your operating system.
 
@@ -63,7 +64,7 @@ Clone the UnUniFi blockchain repository, check out the given branch, and build i
 
 ```Bash
 # from $HOME dir
-git clone https://github.com/UnUniFi/chain chain_repo  
+git clone https://github.com/UnUniFi/chain chain_repo
 cd chain_repo
 git checkout v3.1.0
 make install

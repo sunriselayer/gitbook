@@ -10,10 +10,10 @@ You can only join as a validator in this way before the network starts(genesis).
 
 The following hardware minimum requirements are recommended for running the validator node:
 
-* Memory: 8 GB RAM (minimum)
-* CPU: 6 cores
-* Disk: 500 GB SSD Storage
-* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- Memory: 8 GB RAM (minimum)
+- CPU: 6 cores
+- Disk: 500 GB SSD Storage
+- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 ## Run the Node
 
@@ -67,7 +67,7 @@ You will find the generated gentx JSON file inside `$HOME/.sunrised/config/gentx
 To register your gentx, run the commands as follows and create a pull-request on GitHub.
 
 ```bash
- mv $HOME/.sunrised/config/gentx/gentx-*.json $HOME/.sunrised/config/gentx/gentx-${MONIKER}.json 
+ mv $HOME/.sunrised/config/gentx/gentx-*.json $HOME/.sunrised/config/gentx/gentx-${MONIKER}.json
  git clone https://github.com/sunriselayer/public-testnet/
  cd public-testnet
  git checkout -b gentx/$MONIKER

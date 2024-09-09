@@ -122,11 +122,11 @@ The circuit is for one shard $$ s \in S $$.
 
 #### Public Inputs
 
-- $$ H_{\text{public}}^2(s)$$
+- $$ H\_{\text{public}}^2(s)$$
 
 #### Private Inputs
 
-- $$ H_{\text{private}}(s) $$
+- $$ H\_{\text{private}}(s) $$
 
 #### Circuit Constraints
 
@@ -176,8 +176,8 @@ $$
 
 #### Example parameters
 
-- 10 validators: $$ v_1 , ..., v_{10} $$
-- 20 shards: $$ s_1, ..., s_{20} $$
+- 10 validators: $$ v*1 , ..., v*{10} $$
+- 20 shards: $$ s*1, ..., s*{20} $$
   - 10 data shards
   - 10 parity shards
 - $$ r = 6 $$
@@ -190,16 +190,16 @@ $$
 - Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
 - Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
 - However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
-  - $$ |Z_{s_1}|  = 2 $$
-  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z\_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
 - Validator $$ v_2 $$, $$ v_4 $$ and $$ v_10 $$ 's proof contain shard $$ s_2 $$ and other 5 shards
 - Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
 - Only validator $$ v_10 $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
-  - $$ |Z_{s_2}| = 1 $$
-  - It doesn't satisfy $$ \frac{|Z_{s_2}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z\_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
@@ -215,14 +215,14 @@ $$
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
-||On-chain DA attestation|Off-chain DA attestation|
-|---|---|---|
-|Data Corruption Durability|〇|〇|
-|Tx Mempool Scalability|×|〇|
-|Data Retrievability Control|×|〇|
-|Validators Load Mitigation|×|〇|
-|False-Positive DA Attestation Resistance|〇|〇※|
-|Examples|Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G |
+|                                          | On-chain DA attestation              | Off-chain DA attestation |
+| ---------------------------------------- | ------------------------------------ | ------------------------ |
+| Data Corruption Durability               | 〇                                   | 〇                       |
+| Tx Mempool Scalability                   | ×                                    | 〇                       |
+| Data Retrievability Control              | ×                                    | 〇                       |
+| Validators Load Mitigation               | ×                                    | 〇                       |
+| False-Positive DA Attestation Resistance | 〇                                   | 〇※                      |
+| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G   |
 
 ### Data Corruption Durability
 

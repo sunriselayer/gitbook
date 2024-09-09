@@ -3,8 +3,9 @@
 # Summary
 
 # Proposal
+
 ---
 
 ### Author Checklist
-- [ ] Not duplicate issue
 
+- [ ] Not duplicate issue

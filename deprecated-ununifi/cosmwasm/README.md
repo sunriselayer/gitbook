@@ -4,8 +4,8 @@ All developers can deploy smart contracts made with **CosmWasm** on UnUniFi. Dev
 
 You can replace `wasmd` with `ununifid` in the sentences of the following pages:
 
-* [Setting up Environment](https://docs.cosmwasm.com/docs/getting-started/setting-env)
-* [Deployment and Interaction](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract)
+- [Setting up Environment](https://docs.cosmwasm.com/docs/getting-started/setting-env)
+- [Deployment and Interaction](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract)
 
 You can learn more at [CosmWasm Academy](https://academy.cosmwasm.com/) as well.
 

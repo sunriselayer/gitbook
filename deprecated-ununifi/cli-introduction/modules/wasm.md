@@ -7,8 +7,8 @@ description: >-
 
 **Query:**
 
-| Name                                                               | Description                                                  |
-| :----------------------------------------------------------------- | :----------------------------------------------------------- |
+| Name                                                           | Description                                                  |
+| :------------------------------------------------------------- | :----------------------------------------------------------- |
 | [build-address](wasm.md#build-address)                         | Build contract address                                       |
 | [code](wasm.md#code)                                           | Downloads wasm bytecode for given code id                    |
 | [code-info](wasm.md#code-info)                                 | Prints out metadata of a code id                             |
@@ -24,8 +24,8 @@ description: >-
 
 **Tx:**
 
-| Name                                                               | Description                                               |
-| :----------------------------------------------------------------- | :-------------------------------------------------------- |
+| Name                                                           | Description                                               |
+| :------------------------------------------------------------- | :-------------------------------------------------------- |
 | [clear-contract-admin](wasm.md#clear-contract-admin)           | Clears admin for a contract to prevent further migrations |
 | [execute](wasm.md#execute)                                     | Execute a command on a wasm contract                      |
 | [grant](wasm.md#grant)                                         | Grant authorization to an address                         |
