@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+  // "eslint.codeActionsOnSave.mode": "all",
+  // "typescript.referencesCodeLens.enabled": true,
+  // "typescript.tsdk": "node_modules/typescript/lib"
+  // "typescript.referencesCodeLens.showOnAllFunctions": true,
+  // "typescript.implementationsCodeLens.enabled": true,
+  // "typescript.suggest.completeFunctionCalls": true,
+  // "javascript.preferences.jsxAttributeCompletionStyle": "braces",
+  // "typescript.preferences.jsxAttributeCompletionStyle": "braces",
+  // "git.autofetch": true,
+}
