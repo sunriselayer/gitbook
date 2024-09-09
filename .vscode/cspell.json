@@ -1,0 +1,136 @@
+/*
+|--------------------------------------------------------------------------
+| cSpell Settings
+|--------------------------------------------------------------------------
+|
+| how to use(https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+|
+*/{
+  "version": "0.2", // Version of the setting file.  Always 0.2
+  "language": "en", // The Language local to use when spell checking. "en", "en-US" and "en-GB" are currently supported by default.
+  "maxNumberOfProblems": 10, // Controls the maximum number of spelling errors per document.
+  "minWordLength": 3, // The minimum length of a word before checking it against a dictionary.
+  "enabled": true, // Enable / Disable the spell checker.
+  "allowCompoundWords": true, // Enable / Disable compound words like 'errormessage'
+  "ignoreWords": [], // Words to be ignored and not suggested.
+  "flagWords": [], // flagWords - list of words to be always considered incorrect
+  /**
+   * words - list of words to be always considered correct
+   */
+  "words": [
+    "'nprogress'",
+    "Astar",
+    "AVAX",
+    "axios",
+    "Binance",
+    "Bnb",
+    "OKX",
+    "Coincheck",
+    "bitFlyer",
+    "Bitbank",
+    "BTC",
+    "boj",
+    "BSC",
+    "Bybit",
+    "CDN",
+    "Chainable",
+    "CHOKIDAR_USEPOLLING",
+    "clsx",
+    "Consolas",
+    "discoverability",
+    "env",
+    "ERC",
+    "ETH",
+    "etherscan",
+    "firebasestorage",
+    "fortawesome",
+    "fsa",
+    "gocthamall",
+    "Graphik",
+    "hatena",
+    "hoge",
+    "hookform",
+    "img",
+    "IoPricetagOutline",
+    "ipfs",
+    "JPYC",
+    "JWT",
+    "keccak",
+    "klaytn",
+    "lazyimagenoblur",
+    "linaria",
+    "MATIC",
+    "maxage",
+    "Menlo",
+    "meti",
+    "monospace",
+    "moralis",
+    "mumbaiscan",
+    "Neue",
+    "nikolovlazar",
+    "noopener",
+    "noreferrer",
+    "Noto",
+    "nta",
+    "ntc",
+    "OGP",
+    "onigiriman",
+    "PBAC",
+    "polygonscan",
+    "preconnect",
+    "prettierrc",
+    "Ray",
+    "reactDocgen",
+    "Regex",
+    "regx",
+    "rpc",
+    "SDN",
+    "Seo",
+    "Shibuya",
+    "Shiden",
+    "signin",
+    "srcset",
+    "supabase",
+    "SVL",
+    "swr",
+    "Tahoma",
+    "tofunft",
+    "uid",
+    "Unlockable",
+    "Vercel",
+    "wagmi",
+    "WEBP",
+    "wevp",
+    "WIP",
+    "xsmall",
+    "zod",
+    "Zoomex",
+    "zustand"
+  ],
+  /**
+   * Specify paths/files to ignore.
+   */
+  "ignorePaths": [
+    "node_modules",
+    "**/.DS_Store",
+    "vscode-extension",
+    ".git",
+    "*.dll",
+    "package.json",
+    "package-lock.json",
+    "yarn.lock",
+    ".next",
+    "next-env.d.ts",
+    "global.d.ts",
+    "next.config.js",
+    "tsconfig.json",
+    ".eslintrc.js",
+    ".prettierrc",
+    "cypress.json",
+    "mockServiceWorker.js",
+    "reportWebVitals.ts",
+    ".env",
+    ".env.example",
+    ".env.local"
+  ]
+}

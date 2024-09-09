@@ -1,0 +1,5 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker", // スペルチェック。必ず入れること
+  ]
+}
