@@ -8,5 +8,5 @@ On the other hand, Sovereign rollup has no enshrined bridge. The sovereign rollu
 
 At this moment, these SDKs are known to support the IBC of Sovereign rollup:
 
-* Rollkit
-* Sovereign SDK
+- Rollkit
+- Sovereign SDK

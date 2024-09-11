@@ -28,4 +28,4 @@ Smart contracts are often affected by the traffic of other dApps. This is like a
 
 Modular app specific chains are like virtual private servers. They are almost not affected by the traffic of other dApps, and they are not expensive to bootstrap validators.
 
-As VPS grows to IaaS, Raas (Rollup as a Service) will grow and allow us to build a scalable and secure blockchain ecosystem as easily as deploying smart contracts.
+As VPS grows to IaaS, RaaS (Rollup as a Service) will grow and allow us to build a scalable and secure blockchain ecosystem as easily as deploying smart contracts.

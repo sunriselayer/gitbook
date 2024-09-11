@@ -39,8 +39,8 @@ All commands have the following global flags:
 | --chain-id      | string |          |                | The network Chain ID                                                          |
 | --help          | string |          |                | Print help message                                                            |
 | --home          | string |          | $HOME/.ununifi | Directory for config and data                                                 |
-| --log\_format   | string |          | plain          | The Logging format (json \| plain)                                            |
-| --log\_level    | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
+| --log_format    | string |          | plain          | The Logging format (json \| plain)                                            |
+| --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
 | --trace         | string |          |                | Print out full stack trace on errors                                          |
 
 ### Module Commands <a href="#module-commands" id="module-commands"></a>

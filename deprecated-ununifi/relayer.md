@@ -28,9 +28,9 @@ echo word1 ... word12or24 > ~/mnemonic.txt
 
 ### Setting up config
 
-* [CosmosHub](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/cosmoshub.md)
-* [Axelar](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/axelar.md)
-* [Neutron](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/neutron.md)
+- [CosmosHub](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/cosmoshub.md)
+- [Axelar](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/axelar.md)
+- [Neutron](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/neutron.md)
 
 ### Setting up daemon
 

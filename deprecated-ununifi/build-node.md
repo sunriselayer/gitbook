@@ -28,8 +28,8 @@ Disk space is likely to fill up, so having a plan for managing storage is key.
 
 If you are running sentry nodes:
 
-* 1TB storage for the full node will give you a lot of runway
-* 200GB each for the sentries with pruning should be sufficient
+- 1TB storage for the full node will give you a lot of runway
+- 200GB each for the sentries with pruning should be sufficient
 
 Managing backups is outside the scope of this documentation, but several validators keep public snapshots and backups.
 
@@ -85,9 +85,9 @@ ununifid init "$MONIKER" --chain-id $CHAIN_ID
 
 This will generate the following files in `~/.ununifi/config/`
 
-* `genesis.json`
-* `node_key.json`
-* `priv_validator_key.json`
+- `genesis.json`
+- `node_key.json`
+- `priv_validator_key.json`
 
 ### Download the genesis file
 
@@ -127,7 +127,7 @@ echo "export PEERS=\"65710949120e28f8af12f81b75efd2a509280f70@a.ununifi-test-v1.
 source .bash_profile
 ```
 
-Using the peers variable above, we can set the persistent\_peers in `~/.ununifi/config/config.toml`:
+Using the peers variable above, we can set the persistent_peers in `~/.ununifi/config/config.toml`:
 
 ```bash
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.ununifi/config/config.toml
@@ -147,9 +147,9 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uguu\"/" 
 
 If you necessary, Edit config files `~/.ununifi/config/app.toml`
 
-* `pruning`
-* Enable defines if the API server should be enabled. `enable = true`
-* EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk). `enabled-unsafe-cors = true`
+- `pruning`
+- Enable defines if the API server should be enabled. `enable = true`
+- EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk). `enabled-unsafe-cors = true`
 
 ### Create (or restore) a local key pair
 
@@ -192,9 +192,9 @@ This command returning `true` means that your node is still catching up. Otherwi
 
 If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
 
-* [NodeStake](https://nodestake.top/ununifi)
-* [NodeJumper](https://app.nodejumper.io/ununifi/sync)
-* [Nodeist](https://nodeist.net/Ununifi/)
-* [genznodes](https://genznodes.dev/services/)
+- [NodeStake](https://nodestake.top/ununifi)
+- [NodeJumper](https://app.nodejumper.io/ununifi/sync)
+- [Nodeist](https://nodeist.net/Ununifi/)
+- [genznodes](https://genznodes.dev/services/)
 
 If you want to catch up from 0 height, you have to upgrade `ununifid` at each upgrade heights. See [mainnet-upgrades](mainnet-upgrades.md).

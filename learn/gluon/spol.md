@@ -6,8 +6,8 @@ As we described before, we integrate some unique features in Sunrise as a DA lay
 
 In general, crypto-asset projects must reward the participants of the community who do the following:
 
-* Participating in the governance
-* Providing liquidity
+- Participating in the governance
+- Providing liquidity
 
 It is difficult to reward these participants at the same time with conventional methods. SPoL is a mechanism that can reward both participants at the same time.
 

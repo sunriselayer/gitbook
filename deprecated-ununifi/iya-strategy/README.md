@@ -18,8 +18,8 @@ However, developing interchain strategy only with CosmWasm smart contract on UnU
 
 To mitigate the difficulty, you can combine some ways to develop strategy contracts.
 
-* Developing contract on external CosmWasm chain with IBC Hooks
-* Developing contract on external EVM chain with Axelar
+- Developing contract on external CosmWasm chain with IBC Hooks
+- Developing contract on external EVM chain with Axelar
 
 ### Combination with contract on external CosmWasm chain
 

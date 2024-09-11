@@ -30,12 +30,13 @@ Voting is possible even if you do not have vRISE; your vRISE balance at the star
 Go to "View Current Gauges Voting" on the Governance tab.
 
 - Current Votes
+
   - Epoch Blocks
-How many blocks the Epoch is updated. It is determined by on-chain governance.
+    How many blocks the Epoch is updated. It is determined by on-chain governance.
   - Staking Rewards Ratio
-What percentage of vRISE originally issued to Staking is allocated to gauges. It is determined by on-chain governance.
+    What percentage of vRISE originally issued to Staking is allocated to gauges. It is determined by on-chain governance.
   - Votes Cast
-How many people are voting.
+    How many people are voting.
 
 - Current Epoch
 

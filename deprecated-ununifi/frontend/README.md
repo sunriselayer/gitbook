@@ -12,7 +12,7 @@ You can use these libraries to develop a frontend application.
 {% hint style="warn" %}
 This feature is available on the testnet, but does not yet exist on the mainnet.
 {% endhint %}
-
+s
 The Ecosystem Incentive of the UnUniFi protocol is designed to reward application developers.
 The developers will be rewarded with a portion of the Tx Gas bill served from their apps.
 
