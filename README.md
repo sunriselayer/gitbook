@@ -38,22 +38,14 @@ Sunrise can also incentivize the DA network whereas other DA networks depend on 
 - Users can utilize DA by liquidity providing without the need for a fee.
 - While numerous DEXs already exist, they offer limited differentiation for token issuers. L2 developers will always need to provide liquidity despite Sunrise's existence. However, by providing liquidity to Sunrise's DEX, token issuers gain access to additional utilities through Sunrise's DA, incentivizing them to choose Sunrise over other DA Layers and DEXs that lack comparable benefits.
 
-### Integration Stages
+### Modules
 
-### Sunrise v1: Awakening
-
-- `x/blob` module
-- `x/blobstream` module
+- `x/da` module
 - `x/tokenconverter` module
 - `x/liquiditypool` module
 - `x/liquidityincentive` module
 - `x/swap` module
 - `x/fee` module
-
-### Sunrise v2
-
-- Off Chain Blob Data Availability (Sunrise DA v2)
-- Sovereign Proof of Liquidity via Gluon
 
 ### Revenue (Fee Structure)
 
