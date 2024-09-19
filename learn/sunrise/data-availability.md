@@ -153,7 +153,7 @@ $$
 
 ### Requirements for each shard to prove Data Availability
 
-- Set of valid proofs for a shard `s`: $$ Z_s $$
+- Set of valid proofs for a shard `s` from validators engaged in this shard: $$ Z_s $$
 
 $$
   \frac{|Z_s|}{r_p} \ge \frac{2}{3}
@@ -186,8 +186,8 @@ $$
 - Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
 - Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
 - However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
-  - $$ |Z\_{s_1}| = 2 $$
-  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
@@ -208,6 +208,10 @@ $$
 - $$ |S^\text{available}| = 2 $$
 - $$ |S_d| = 10 $$
 - It doesn't satisfy $$ |S^\text{available}| \ge |S_d| $$
+
+### Slashing condition for each validator
+
+- Set of valid proofs from a validator `v` for shards engaging in: $$ Z_v $$
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
