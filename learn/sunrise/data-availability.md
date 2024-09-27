@@ -122,11 +122,11 @@ The circuit is for one shard $$ s \in S $$.
 
 #### Public Inputs
 
-- $$ H\_{\text{public}}^2(s)$$
+- $$ H_{\text{public}}^2(s)$$
 
 #### Private Inputs
 
-- $$ H\_{\text{private}}(s) $$
+- $$ H_{\text{private}}(s) $$
 
 #### Circuit Constraints
 
@@ -145,25 +145,21 @@ $$
   r_p = r \frac{|S_d|}{|S_d| + |S_p|}
 $$
 
-- Set of proofs submitted by a validator `v`: $$ Z_v $$
+- The number of shards each validator is engaged in: $$ n $$
 
 $$
-  \forall v \in V, \ |Z_v| = r_p \frac{|S_d| + |S_p|}{|V|} = r\frac{|S_d|}{|V|}
+  n = \text{ceil}\left( r_p \frac{|S_d| + |S_p|}{|V|} \right) = \text{ceil} \left( r\frac{|S_d|}{|V|} \right)
 $$
-
-- Set of valid proofs for a shard `s`: $$ Z_s $$
 
 ### Requirements for each shard to prove Data Availability
+
+- Set of valid proofs for a shard `s` from validators engaged in this shard: $$ Z_s $$
 
 $$
   \frac{|Z_s|}{r_p} \ge \frac{2}{3}
 $$
 
-Set of shards which satisfy this condition will be
-
-$$
-  S^\text{available}
-$$
+- Set of shards which satisfy this condition: $$ S^\text{available} $$
 
 ### Requirements for tally to prove Data Availability
 
@@ -176,8 +172,8 @@ $$
 
 #### Example parameters
 
-- 10 validators: $$ v*1 , ..., v*{10} $$
-- 20 shards: $$ s*1, ..., s*{20} $$
+- 10 validators: $$ v_1 , ..., v_{10} $$
+- 20 shards: $$ s_1, ..., s_{20} $$
   - 10 data shards
   - 10 parity shards
 - $$ r = 6 $$
@@ -190,16 +186,16 @@ $$
 - Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
 - Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
 - However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
-  - $$ |Z\_{s_1}| = 2 $$
-  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
-- Validator $$ v_2 $$, $$ v_4 $$ and $$ v_10 $$ 's proof contain shard $$ s_2 $$ and other 5 shards
+- Validator $$ v_2 $$, $$ v_4 $$ and $$ v_{10} $$ 's proof contain shard $$ s_2 $$ and other 5 shards
 - Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
-- Only validator $$ v_10 $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
-  - $$ |Z\_{s_2}| = 1 $$
-  - It doesn't satisfy $$ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $$
+- Only validator $$ v_{10} $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
+  - $$ |Z_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
@@ -212,6 +208,10 @@ $$
 - $$ |S^\text{available}| = 2 $$
 - $$ |S_d| = 10 $$
 - It doesn't satisfy $$ |S^\text{available}| \ge |S_d| $$
+
+### Slashing condition for each validator
+
+- Set of valid proofs from a validator `v` for shards engaging in: $$ Z_v $$
 
 ## Comparison Between On-chain DA attestation and Off-chain DA attestation
 
