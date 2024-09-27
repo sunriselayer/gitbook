@@ -80,6 +80,3 @@
 - [Setup Cosmovisor](deprecated-ununifi/setup-cosmovisor.md)
 - [Mainnet Upgrades](deprecated-ununifi/mainnet-upgrades.md)
 - [IBC Relayer](deprecated-ununifi/relayer.md)
-- [GitHub](https://github.com/UnUniFi)
-- [Twitter](https://twitter.com/ununifi)
-- [Discord](https://discord.com/invite/ununifi)
