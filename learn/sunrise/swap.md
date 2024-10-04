@@ -167,8 +167,8 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-**Receiver address（受信者アドレス）**
+**Receiver Address Handling**
 
-スワップが実行された後、次の変更/転送パケットが失敗した場合でも、「トークン X の転送」の確認は常に成功します。スワップされた資金は受信者アドレスの残高に保持されます。
+After the swap, even if a subsequent change or transfer fails, the confirmation of "token X transfer" will always succeed. The swapped tokens remain in the receiver's account.
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/swap) for more details.
