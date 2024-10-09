@@ -1,50 +1,51 @@
 # Proof of Liquidity
 
-- Sovereign Proof of Liquidity: ソブリン・プルーフ・オブ・リクイディティ
-- Proof of Liquidity: プルーフ・オブ・リクイディティ
-- Sunrise v1: DAWN: Sunrise v1: DAWN
-
-Proof of Liquidity のシビル耐性メカニズムは、ネットワーク内の投票力に対する流動性の提供履歴を利用しています。
+Proof of Liquidity（流動性の証明）という シビル攻撃耐性メカニズムは、ネットワーク内の Voting Power（投票力）として流動性提供の履歴を利用します。
 
 ## **Gauge voting（**ゲージ投票**）**
 
-多くの DEX は、流動性プロバイダーにインセンティブを与えるためにゲージ投票システムを採用しています。通常、インセンティブは DEX のネイティブトークンのインフレーションによって与えられ、持続可能ではありません。
+多くの DEX には、流動性提供者にインセンティブを与えるための Gauge Voting（ゲージ投票）システムがあります。通常、このインセンティブは DEX のネイティブトークンのインフレーションによって提供されますが、これはサスティナブルではありません。
 
 [Pancake Swap Docs](https://docs.pancakeswap.finance/products/vecake/gauges-voting)に例があります。
 
 ## ve(3,3)
 
-モデル「ve(3,3)」は、モデル「ve」のアイデアとモデル「(3,3)」のアイデアを組み合わせたバージョンアップ版です。このメカニズムには「ve」投票メカニズムを備えたゲージ投票システムが含まれていますが、このメカニズムの新しさは、各プールの投票者がプールの利益から報酬を得ることができる点です。このメカニズムにより、ステーカーはより多くの利益を得る可能性のあるプールに投票することがインセンティブとなります。
+「ve(3,3)」モデルは、「(3,3)」モデルのアイデアを組み合わせることで「ve」モデルを強化したバージョンです。このモデルには「ve」投票メカニズムを持つ Gauge Voting システムが含まれていますが、このメカニズムの新しい点は、各プールの投票者がプールの利益から報酬を得られることです。このメカニズムは、より多くの利益を得る可能性のあるプールに投票するよう、ステーカーにインセンティブを与えます。
 
 ## Berachain モデル
 
 - `$BGT`: ステーキング用の譲渡不可能トークン
-- `$BERA`: 手数料用の譲渡可能トークン
+- `$BERA`: ネットワーク手数料（GAS）用の譲渡可能トークン
 
-Berachain のブログ[Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)は、このモデルを理解するための良いリソースです。
+下記の Berachain のブログ記事は、このモデルを理解するための良いリソースです。
+[Flow of Value: Examining the differences between PoS and PoL - a case for a new paradigm in sustainable incentive alignment at the protocol layer](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)
 
-このモデルの重要なポイントは以下の通りです：
+{% hint style="info" %}
+※日本語訳記事はこちら: [価値の流れ：PoS と PoL の違いを検証 - プロトコル層における持続可能なインセンティブ調整の新しいパラダイムの事例](https://qiita.com/nft/items/33c1d74a5f235c7113e2)
+{% endhint %}
 
-1. ステーキングトークン `$BGT` を譲渡不可能にすることで、手数料のために保有する必要なく、純粋にステーキング目的でのみトークンを利用できるようになります。
-2. インフレーション報酬は `$BGT` トークンで配布されるため、`$BERA` トークンの価値の希薄化につながりません。
-3. Ethereum 上の dApp では DEX の持続可能性に関心が向けられていませんが、Berachain 上の dApp は常に Berachain の PoL（Proof of Liquidity）への参加に関心を持っています。
+この モデルの重要な点は以下の通りです:
+
+- ステーキングトークンである`$BGT`を譲渡不可能にすることで、手数料のために保有する必要なく、純粋にステーキングのためにステーキングトークンを利用できるようになります
+- インフレーション報酬は`$BGT`トークンで分配されるため、`$BERA`トークンの希薄化につながりません
+- Ethereum の dApps は DEX の持続可能性に関心がありませんが、Berachain 上の dApps は常に Berachain の PoL（Proof of Liquidity）への参加に関心を持っています
 
 ## Sunrise モデル
 
-Sunrise モデルは、その基盤となるアーキテクチャと設計原則において、厳選された過去の開発成果と進化の過程を取り入れ、それらを基に構築されています。
+Sunrise モデルは、その基盤となるアーキテクチャと設計原則に、厳選された過去の開発成果と進化の過程を取り入れ、それらを基に構築されています。
 
-- `$vRISE`：ステーキング用の譲渡不可能トークン
-- `$RISE`：手数料用の譲渡可能トークン
+- `$vRISE`: ステーキング用の譲渡不可能トークン。
+- `$RISE`: 手数料用の譲渡可能トークン。
 
-システムの流れは以下のようになります：
+フローは以下のようになります：
 
-1. 一部のユーザーが `x/liquiditypool` モジュールで流動性を提供します。
-   - 報酬として `$vRISE` を獲得します。
-2. 一部のユーザーが `x/staking` モジュールで `$vRISE` トークンをステーキングします。
-3. 投票権を持つ人々は、`x/liquidityincentive` モジュールで、どのプールが流動性提供者へのインセンティブとして `$vRISE` を受け取るべきかを投票できます。
-4. 各プールの投票者は、そのプールの利益から報酬を受け取ります。
+- 一部のユーザーが`x/liquiditypool`モジュールで流動性を提供します
+  - 報酬として`$vRISE`を獲得します
+- 一部のユーザーが`x/staking`モジュールで`$vRISE`トークンをステーキングします
+- Voting Power を持つ人々は、`x/liquidityincentive`モジュールで、どのプールが流動性提供者へのインセンティブとして`$vRISE`を獲得すべきかを投票できます
+- 各プールの投票者は、プールの利益から報酬を受け取ります。
 
-Sunrise PoL（Proof of Liquidity）は、「Sunrise DA を使用する dApp は Sunrise PoL への参加に関心がある」という Berachain の考え方を引き継いでいます。
+Sunrise PoL は、「Sunrise DA を使用する dApps は Sunrise PoL への参加に関心がある」という Berachain の視点を継承しています。
 
 ## $vRISE のステーキング方法
 
@@ -53,7 +54,7 @@ Sunrise PoL（Proof of Liquidity）は、「Sunrise DA を使用する dApp は 
 ## 仕様
 
 - コンセンサスアルゴリズム：CometBFT（Tendermint）
-  - Mysticeti のリサーチが進行中です。
+  - Mysticeti のリサーチが進行中です
 - ブロックチェーンアプリケーションフレームワーク：Cosmos SDK v0.50.2
 - 最大バリデータセットサイズ：100
 
