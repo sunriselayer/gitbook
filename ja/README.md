@@ -1,5 +1,4 @@
 ---
-description: 日本語テスト
 cover: .gitbook/assets/Sunrise Cover.png
 coverY: 0
 ---
