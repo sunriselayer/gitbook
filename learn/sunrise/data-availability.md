@@ -122,11 +122,11 @@ The circuit is for one shard $$ s \in S $$.
 
 #### Public Inputs
 
-- $$ H_{\text{public}}^2(s)$$
+- $$ H\_{\text{public}}^2(s)$$
 
 #### Private Inputs
 
-- $$ H_{\text{private}}(s) $$
+- $$ H\_{\text{private}}(s) $$
 
 #### Circuit Constraints
 
@@ -172,8 +172,8 @@ $$
 
 #### Example parameters
 
-- 10 validators: $$ v_1 , ..., v_{10} $$
-- 20 shards: $$ s_1, ..., s_{20} $$
+- 10 validators: $$ v*1 , ..., v*{10} $$
+- 20 shards: $$ s*1, ..., s*{20} $$
   - 10 data shards
   - 10 parity shards
 - $$ r = 6 $$
@@ -186,16 +186,16 @@ $$
 - Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
 - Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
 - However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
-  - $$ |Z_{s_1}| = 2 $$
-  - It satisfies $$ \frac{|Z_{s_1}|}{r_p} \ge \frac{2}{3} $$
+  - $$ |Z\_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
-- Validator $$ v_2 $$, $$ v_4 $$ and $$ v_{10} $$ 's proof contain shard $$ s_2 $$ and other 5 shards
+- Validator $$ v*2 $$, $$ v_4 $$ and $$ v*{10} $$ 's proof contain shard $$ s_2 $$ and other 5 shards
 - Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
-- Only validator $$ v_{10} $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
-  - $$ |Z_{s_2}| = 1 $$
-  - It doesn't satisfy $$ \frac{|Z_{s_2}|}{r_p} \ge \frac{2}{3} $$
+- Only validator $$ v\_{10} $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
+  - $$ |Z\_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
@@ -226,10 +226,34 @@ $$
 
 ### Data Corruption Durability
 
+In both on-chain and off-chain DA attestations, data corruption durability refers to the ability of the system to detect and prevent corruption of the data.
+
+On-chain attestation, such as Celestia or Sunrise V1, ensures that data is durably available because it is stored directly on-chain, and any tampering or loss of data can be immediately detected by validators.
+
+Off-chain attestation (e.g., Sunrise V2) relies on external systems (like IPFS or Arweave) but can still achieve similar durability by verifying the integrity of the data through erasure coding and zero-knowledge proofs.
+
 ### Tx Mempool Scalability
+
+Transaction mempool scalability is a major limitation in on-chain DA systems. As the size of transactions (such as `BlobTxs`) grows, the transaction mempool, which temporarily holds pending transactions, can become overloaded, limiting throughput and scalability.
+
+In off-chain DA systems, this limitation is mitigated by storing large amounts of data externally, with only the necessary hashes or metadata being stored on-chain. This allows for greater scalability and the ability to process larger volumes of data without congesting the mempool.
 
 ### Data Retrievability Control
 
+In on-chain DA systems, data retrievability is often tied to the consensus mechanism, which means the data must remain available as long as it is needed for consensus (e.g., fraud proofs or validity proofs). However, long-term data retrievability is not always guaranteed once the consensus is finalized.
+
+Off-chain DA systems, such as Sunrise V2, provide more flexible control over data retrievability because the data is stored in decentralized storage systems (like IPFS or Arweave). This allows for longer-term retention of data and better control over how long data remains accessible.
+
 ### Validators Load Mitigation
 
+On-chain DA attestation places a heavier load on validators since they are responsible for verifying the data availability directly on-chain. As transaction sizes grow, the computational and storage demands on validators increase, potentially limiting decentralization.
+
+In contrast, off-chain DA attestation significantly reduces the load on validators by outsourcing data storage and retrieval to external systems. Validators only need to verify the availability of data shards through erasure coding and zero-knowledge proofs, which lightens their processing and storage requirements.
+
 ### False-Positive DA Attestation Resistance
+
+False-positive DA attestation refers to situations where a system incorrectly attests that data is available when, in reality, it is not.
+
+On-chain DA attestation, used by systems like Celestia and Sunrise V1, has strong resistance to false positives since all the data is stored and verified directly on-chain, making it difficult to falsely claim that data is available when it is not.
+
+In off-chain DA attestation (e.g., Sunrise V2), false-positive resistance is maintained through the use of zero-knowledge proofs and cryptographic commitments like erasure coding. By verifying the double-hashed values of shard data, validators can ensure that the data is indeed available without needing to store or directly access the entire data set. However, there may still be edge cases where off-chain storage solutions or network latency could introduce opportunities for false-positive attestations, though these are minimized by careful design and redundancy in the verification process.
