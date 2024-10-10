@@ -1,40 +1,35 @@
-# **$RISE**
+# $RISE
 
-- Sunrise v1: DAWN: Sunrise v1: DAWN
-- Sovereign SDK: Sovereign SDK
-- Sovereign Proof of Liquidity: ソブリン・プルーフ・オブ・リクイディティ
+$RISE トークンは Sunrise ネットワークのネイティブトークンです。$RISE トークンは手数料として使用できます。
+$RISE は Sunrise ブロックチェーン上では `urise` として保存されます。ブロックチェーン上の `1000000urise` は現実世界の 1 RISE に相当します。
 
-$RISEトークンはSunriseネットワークのネイティブトークンです。$RISE トークンは SUNRISE ネットワークのネイティブトークンです。$RISE トークンは手数料に使用することができます。
+- Ticker（トークンティッカー）: RISE
+- ブロックチェーン上の Denom（デノム）: `urise`
+- ブロックチェーン上のエイリアス: `microRISE`
+- Supply cap（供給上限）: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
 
-Sunrise ブロックチェーンでは、**`urise`**として$RISE が保持されます。ブロックチェーン上の**`1000000urise`**は、現実世界での 1RISE を意味します。
-
-- Ticker（ティッカーシンボル）: RISE
-- Denom in the blockchain（ブロックチェーン上の通貨単位）: **`urise`**
-- Alias in the blockchain（ブロックチェーン上のアライアス）: **`microRISE`**
-- Supply cap（最大供給量）: 1,000,000,000RISE = **`1_000_000_000_000_000microRISE`**
-
-以下のルールを満たす場合、1$vRISEを1にバーンすることで$RISE を作成することができます:
+以下のルールを満たす場合、$vRISE を 1 対 1 でバーンすることで $RISE をミントできます：
 
 ## $vRISE
 
-$vRISE トークンはステーキング用の譲渡不可トークンです。ステーキングされた量はガバナンスの Voting Power（投票力）として計算されます。
+$vRISE トークンは、ステーキング用の譲渡不可能なトークンです。ステーキングされた量は、ガバナンスのための Voting Power（投票力）として計算されます。
 
-- Ticker（ティッカーシンボル）: vRISE
-- Denom in the blockchain（ブロックチェーン上の通貨単位）: **`uvrise`**
-- Alias in the blockchain（ブロックチェーン上のアライアス）: **`microvRISE`**
-- Supply in genesis block（ジェネシスブロックの供給量）: 1,000,000,000vRISE = **`1_000_000_000_000_000microVRISE`**
+- Ticker（トークンティッカー: vRISE
+- ブロックチェーン上の Denom（デノム）: `uvrise`
+- ブロックチェーン上のエイリアス: `microvRISE`
+- ジェネシスブロックでの供給量: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
 
 ## ユースケース
 
 ### ステーキング
 
-$vRISE は Sunrise ネットワークにステーキングすることができます。ステーキングされた量はガバナンスの Voting Power（投票力）として計算されます。さらに、ステーカーへの報酬はステーキングされた量に比例して分配されます。
+$vRISE は Sunrise ネットワークにステーキングできます。ステーキングされた量は、ガバナンスのための Voting Power（投票力）として計算されます。さらに、ステーカーへの報酬はステーキング量に応じて分配されます。
 
-## インフレーションレートスケジュール
+### インフレ率スケジュール
 
 ### オンチェーンパラメータ
 
-実際のインフレ率は、ボンデッド比率に応じて目標インフレ率から変動します。
+実際のインフレ率は、ボンド比率に応じて目標インフレ率から変動します。
 
 |               |     |
 | ------------- | --- |
