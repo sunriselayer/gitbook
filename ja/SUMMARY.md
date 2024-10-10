@@ -2,11 +2,11 @@
 
 ## Home
 
-- [Sunrise](README.md)
+- [👋 Sunrise](README.md)
 
-## Learn
+## 📜 Learn
 
-- [Sunrise](learn/sunrise/README.md)
+- [🌆 Sunrise](learn/sunrise/README.md)
   - [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   - [DA Fee Abstraction](learn/sunrise/da-fee-abstraction.md)
   - [Data Availability](learn/sunrise/data-availability.md)
@@ -16,17 +16,17 @@
   - [Swap](learn/sunrise/swap.md)
   - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
-- [$RISE](learn/rise/README.md)
+- [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
-- [Gluon](learn/gluon/README.md)
+- [🏦 Gluon](learn/gluon/README.md)
   - [Interest Rate Swap](learn/gluon/interest-rate-swap.md)
   - [SPoL](learn/gluon/spol.md)
-- [$GLU](learn/glu.md)
-- [Thesis](learn/thesis/README.md)
+- [💴 $GLU](learn/glu.md)
+- [🎓 Thesis](learn/thesis/README.md)
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
 
-## Run a Sunrise Node
+## 🏗️ Run a Sunrise Node
 
 - [Networks](node/networks/README.md)
 - [Types of Nodes](node/types/README.md)
@@ -44,19 +44,24 @@
   - [Upgrade](node/resources/upgrade.md)
   - [Environment](node/resources/environment.md)
 
-## Run a Gluon Node
+## 🏗️ Run a Gluon Node
 
 - [Networks](gluon-node/networks/README.md)
 - [Node](gluon-node/nodes/README.md)
   - [Validator Node](gluon-node/nodes/validator-node.md)
 
-## Links
+## 🔗 Links
 
 - [GitHub](https://github.com/sunriselayer)
 - [Discord](https://discord.com/invite/sunrise)
 - [X (Twitter)](https://twitter.com/SunriseLayer)
+- [X (Twitter) 日本](https://twitter.com/SunriseLayerJP)
+- [Medium](https://sunriselayer.medium.com/)
+- [Medium 日本語](https://medium.com/sunrise-jp)
+- [Qiita Organization](https://qiita.com/organizations/sunriselayer)
+- [Zenn Publication](https://zenn.dev/p/sunriselayerjp)
 
-## Deprecated (UnUniFi)
+## 📓 Deprecated (UnUniFi)
 
 - [IBC Channels](deprecated-ununifi/ibc-channels.md)
 - [Security](deprecated-ununifi/security.md)
