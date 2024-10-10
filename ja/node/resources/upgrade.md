@@ -1,28 +1,28 @@
-# Upgrade
+# アップグレード
 
-Sunrise is upgraded with on-chain governance.
+Sunrise はオンチェーンガバナンスによってアップグレードされます。
 
-## Soft Fork
+## ソフトフォーク
 
-In the case of a soft fork, the chain ID is not changed, and the binary version is changed. In addition, the upgrade handler will handle the process. The details will be described in each upgrade proposal.
+ソフトフォークの場合、チェーン ID は変更されず、バイナリのバージョンが変更されます。さらに、アップグレードハンドラーがプロセスを処理します。詳細は各アップグレード提案で説明されます。
 
-Automatic upgrade is available when running Cosmovisor.
-See [the Cosmovisor tutorial](setup-cosmovisor.md) for how to set up.
+Cosmovisor を実行している場合、自動アップグレードが利用可能です。
+設定方法については[Cosmovisor チュートリアル](setup-cosmovisor.md)をご覧ください。
 
-If you do not use CosmoVisor, please change the binaries yourself
+Cosmovisor を使用しない場合は、バイナリを自身で変更してください。
 
-## Hard Fork
+## ハードフォーク
 
-A hard fork may be executed to apply changes that cannot be accommodated by a soft fork.
+ソフトフォークでは対応できない変更を適用するために、ハードフォークが実行される場合があります。
 
-`genesis.json` is changed and the new block starts at height 1.
-In many cases the chain ID will be changed.
+`genesis.json`が変更され、新しいブロックが height 1 から開始されます。
+多くの場合、チェーン ID も変更されます。
 
-## Testnet
+## テストネット
 
-When synchronizing chains from the genesis, follow this guide and use the binary version current at the time of the genesis.
+ジェネシスからチェーンを同期する場合は、このガイドに従い、ジェネシス時点の最新のバイナリバージョンを使用してください。
 <https://github.com/sunriselayer/network/tree/main/sunrise-test-0.2>
 
-## Mainnet
+## メインネット
 
-Coming soon
+近日公開予定

@@ -1,4 +1,4 @@
-# Overview to running nodes on Sunrise
+# Sunrise でノードを実行するための概要
 
 [Sunrise ネットワーク](https://docs.sunriselayer.io/run-a-sunrise-node/networks)への参加方法は多岐にわたります。Sunrise のノード運用者は、ネットワーク上でいくつかの選択肢を実行することができます。
 
@@ -13,7 +13,7 @@
 - [Full Storage Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node)（フルストレージノード）: すべてのデータを保存するが、コンセンサスネットワークには接続しないノード。
 - [Light Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node)（ライトノード）: データ可用性ネットワーク上でデータ可用性サンプリングを行うライトクライアント。
 
-## Requirements
+## 要件
 
 | Type           | CPU    | Mem    | Disk       | Bandwidth |
 | -------------- | ------ | ------ | ---------- | --------- |
