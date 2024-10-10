@@ -2,17 +2,17 @@
 
 ## 概要
 
-- [**ブリッジノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node): このノードは、データ可用性ネットワークとコンセンサスネットワークの間でブロックの橋渡しを行います。
-- [**フルストレージノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node): このノードはすべてのデータを保存しますが、コンセンサスネットワークには接続しません。
-- [**ライトノード**](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node): ライトクライアントは、データ可用性ネットワーク上でデータ可用性サンプリングを実施します。
+- [ブリッジノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node): このノードは、データ可用性ネットワークとコンセンサスネットワークの間でブロックの橋渡しを行います
+- [フルストレージノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node): このノードはすべてのデータを保存しますが、コンセンサスネットワークには接続しません
+- [ライトノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node): ライトクライアントは、データ可用性ネットワーク上でデータ可用性サンプリングを実施します
 
-コンセンサスノードを実行する場合は、[**コンセンサスノードのチュートリアル**](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus)に従ってください。
+コンセンサスノードを実行する場合は、[コンセンサスノードのチュートリアル](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus)に従ってください。
 
 {% hint style='working' %}
 バリデータノードを実行する場合、ブリッジノードが必要です。[このセクション](../data-availability/bridge-node.md)を参照してください。
 {% endhint %}
 
-### Requirements
+### 要件
 
 | Type         | CPU    | Mem    | Disk      | Bandwidth |
 | ------------ | ------ | ------ | --------- | --------- |

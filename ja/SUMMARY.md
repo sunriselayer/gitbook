@@ -10,10 +10,11 @@
   - [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   - [DA Fee Abstraction](learn/sunrise/da-fee-abstraction.md)
   - [Data Availability](learn/sunrise/data-availability.md)
-  - [TokenConverter](learn/sunrise/token-converter.md)
+  - [Gauges Voting](learn/sunrise/gauges-voting.md)
   - [Liquidity Pool](learn/sunrise/liquidity-pool.md)
   - [Liquidity Incentive](learn/sunrise/liquidity-incentive.md)
   - [Swap](learn/sunrise/swap.md)
+  - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
 - [$RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
@@ -40,6 +41,7 @@
     - [Setup Cosmovisor](node/types/consensus/setup-cosmovisor.md)
   - [IBC Relayers](node/types/ibc-relayers/README.md)
 - [Resources](node/resources/README.md)
+  - [Upgrade](node/resources/upgrade.md)
   - [Environment](node/resources/environment.md)
 
 ## Run a Gluon Node
@@ -50,7 +52,7 @@
 
 ## Links
 
-- [GitHub](https://github.com/SunriseLayer)
+- [GitHub](https://github.com/sunriselayer)
 - [Discord](https://discord.com/invite/sunrise)
 - [X (Twitter)](https://twitter.com/SunriseLayer)
 
@@ -78,6 +80,3 @@
 - [Setup Cosmovisor](deprecated-ununifi/setup-cosmovisor.md)
 - [Mainnet Upgrades](deprecated-ununifi/mainnet-upgrades.md)
 - [IBC Relayer](deprecated-ununifi/relayer.md)
-- [GitHub](https://github.com/UnUniFi)
-- [Twitter](https://twitter.com/ununifi)
-- [Discord](https://discord.com/invite/ununifi)

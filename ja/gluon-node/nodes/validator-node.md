@@ -2,7 +2,7 @@
 
 バリデータノードは、Gluon ネットワークでコンセンサスに参加することを可能にします。Gluon は、Sunrise のソブリンロールアップ上で動作しています。
 
-## Run the Node（ノードを実行する）
+## ノードを実行する
 
 まず、[フルノードの設定手順](https://docs.sunriselayer.io/run-a-gluon-node/nodes)に従ってください。
 
@@ -39,7 +39,7 @@ gluond tx staking create-validator [path/to/validator.json] \
 
 次に、`~/.gluon/config/config.toml` を編集してください。
 
-## Backup（バックアップ）
+## バックアップ
 
 何らかの理由でバリデータが損傷したり、失われたりした場合に復元できるように、以下のファイルをバックアップしておく必要があります。`~/.gluon/config/` にある以下のファイルを安全にバックアップしてください：
 

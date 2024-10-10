@@ -1,8 +1,8 @@
-# Validator Node
+# Validator Node（バリデータノード）
 
 バリデータノードを使用すると、Sunrise ネットワークのコンセンサスに参加することができます。
 
-## Hardware requirements（ハードウェア要件）
+## ハードウェア要件
 
 バリデータノードを実行するために推奨される最小限のハードウェア要件は以下の通りです：
 
@@ -11,11 +11,11 @@
 - Disk: 500 GB SSD Storage
 - Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
-## Run the Node（ノードの実行）
+## ノードの実行
 
 まず、[フルコンセンサスノードの設定手順](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus/full-consensus-node)に従ってください。
 
-### Optional: Reset working directory（作業ディレクトリのリセット）
+### オプション: 作業ディレクトリのリセット
 
 過去に `sunrised` の作業ディレクトリをすでに初期化している場合、新しいディレクトリを再初期化する前にクリーンアップする必要があります。以下のコマンドを実行することでクリーンアップができます。
 
@@ -23,7 +23,7 @@
 sunrised tendermint unsafe-reset-all
 ```
 
-### Initialize a working directory（作業ディレクトリの初期化）
+### 作業ディレクトリの初期化
 
 次のコマンドを実行してください。
 
@@ -33,14 +33,14 @@ MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-### Create a new key（新しいキーの作成）
+### 新しいキーの作成
 
 ```bash
 VALIDATOR_WALLET="validator"
 sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ```
 
-### Create Validator（バリデータの作成）
+### バリデータの作成
 
 ```bash
 sunrised tx staking create-validator [path/to/validator.json] \
@@ -72,7 +72,7 @@ sunrised tx staking create-validator [path/to/validator.json] \
 
 次に、`~/.sunrise/config/config.toml` を編集します。
 
-## Backup（バックアップ）
+## バックアップ
 
 何らかの理由でバリデータが損傷したり失われたりした場合に復元できるよう、特定のファイルをバックアップする必要があります。`~/.sunrise/config/` にある以下のファイルを安全にバックアップしてください。
 
@@ -81,7 +81,7 @@ sunrised tx staking create-validator [path/to/validator.json] \
 
 これらのファイルのバックアップは暗号化することをお勧めします。
 
-## Additional incentives for validators（バリデータへの追加のインセンティブ）
+## バリデータへの追加のインセンティブ
 
 コアチームは、以下のサービスを提供するバリデータに対して RISE をデリゲートします。
 

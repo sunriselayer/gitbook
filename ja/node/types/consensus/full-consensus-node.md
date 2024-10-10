@@ -2,7 +2,7 @@
 
 フルコンセンサスノードを使用すると、Sunrise のコンセンサス層でブロックチェーンの履歴を同期することができます。
 
-## Chain upgrades（チェーンアップグレード）
+## チェーンアップグレード
 
 チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、ノードの管理に Cosmovisor を設定することをお勧めします。
 Cosmovisor のチュートリアルに従ってください。
@@ -12,15 +12,15 @@ Cosmovisor のチュートリアルに従ってください。
 DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 ```
 
-## Backups（バックアップ）
+## バックアップ
 
 新しいバージョンの Cosmovisor を使用している場合、デフォルトの設定ではアップグレードが適用される前にステートのバックアップが作成されます。この機能は[環境フラグ](https://docs.cosmos.network/main/build/tooling/cosmovisor#command-line-arguments-and-environment-variables)を使用してオフにすることができます。
 
-## Alerting and monitoring（アラートとモニタリング）
+## アラートとモニタリング
 
 アラートとモニタリングも望ましいでしょう - あなたの環境に適したソリューションを探索し、見つけることをお勧めします。Prometheus はすぐに利用可能であり、さまざまなオープンソースツールが存在します。
 
-## Hardware requirements（ハードウェア要件）
+## ハードウェア要件
 
 バリデータノードを実行するために推奨される最小限のハードウェア要件は以下の通りです。
 
@@ -29,16 +29,15 @@ DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 - Disk: 250 GB SSD Storage
 - Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
-If you are not using pruning, you are running an archive node, and it is recommended to have 500 GB of SSD storage.
 プルーニングを使用していない場合はアーカイブノードを運用していることになり、500 GB の SSD ストレージを用意することが推奨されます。
 
-## Dependencies（依存関係）
+## 依存関係
 
 このチュートリアルは Ubuntu 22.04（LTS）で実行されます。[環境構築](../../resources/environment.md)のチュートリアルに従ってください。
 
-## Run the full consensus node（フルコンセンサスノードの実行）
+## フルコンセンサスノードの実行
 
-### Install（インストール）
+### インストール
 
 [Install Go](https://go.dev/doc/install) 1.22
 
@@ -49,7 +48,7 @@ git checkout $TAG
 make install
 ```
 
-### Initialize（初期化）
+### 初期化
 
 `chain-id` と `moniker` を設定します。`moniker` はノードの名前です。
 
@@ -65,7 +64,7 @@ sunrised init "$MONIKER" --chain-id $CHAIN_ID
 - `node_key.json`
 - `priv_validator_key.json`
 
-## Download the genesis file（ジェネシスファイルをダウンロードする）
+## ジェネシスファイルをダウンロードする
 
 For mainnet:
 
@@ -81,7 +80,7 @@ rm ~/.sunrise/config/genesis.json
 curl -L https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-test-1/genesis.json -o ~/.sunrise/config/genesis.json
 ```
 
-## Option: Set persistent peers（永続的なピアを設定する）
+## オプション: Persistent Peers（永続的なピア）を設定する
 
 ```bash
 PERSISTENT_PEERS=$(curl -sL https://raw.githubusercontent.com/sunrise-layer/network/main/launch/sunrise-1/peers.txt | tr '\n' ',')
@@ -89,7 +88,7 @@ echo $PERSISTENT_PEERS
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PERSISTENT_PEERS\"/" $HOME/.sunrise/config/config.toml
 ```
 
-### Set minimum gas prices（最小ガス価格の設定）
+### 最小ガス価格の設定
 
 RPC ノードとバリデータノードについては、以下の最小ガス価格（minimum-gas-prices）を設定することをお勧めします。私たちはパーミッションレスな Wasm チェーンであるため、この設定はコントラクトのスパムや潜在的な Wasm コントラクト攻撃ベクトルからの保護に役立ちます。
 
@@ -99,7 +98,7 @@ RPC ノードとバリデータノードについては、以下の最小ガス�
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025urise\"/" $HOME/.sunrise/config/app.toml
 ```
 
-### Option: Additional settings（追加の設定）
+### オプション: 追加の設定
 
 必要に応じて、設定ファイル `~/.sunrise/config/app.toml` を編集してください。
 
@@ -115,17 +114,17 @@ sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.sunrise/config/app.toml
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.sunrise/config/app.toml;
 ```
 
-### Storage and pruning configurations（ストレージとプルーニングの設定）
+### ストレージとプルーニングの設定
 
 コンセンサスノードが sunrise-node ブリッジノードに接続されている場合、トランザクションのインデックス作成を有効にし、すべてのブロックデータを保持する必要があります。これは `config.toml` で以下の設定を行うことで実現できます。
 
-#### Enable transaction indexing（トランザクションのインデックス化を有効にする）
+#### トランザクションのインデックス化を有効にする
 
 ```toml
 indexer = "kv"
 ```
 
-#### Retain all block data（すべてのブロックデータを保持する）
+#### すべてのブロックデータを保持する
 
 そして、`app.toml` では、`min-retain-blocks` をデフォルト設定のままにしておく必要があります。
 
@@ -133,9 +132,9 @@ indexer = "kv"
 min-retain-blocks = 0
 ```
 
-#### Accessing historical state（過去のステートへのアクセス）
+#### Historical State（過去のステート）へのアクセス
 
-過去のステートを照会したい場合 — 例えば、過去の特定のブロック高におけるウォレットの残高を知りたい場合など — `app.toml` で `pruning = "nothing"` を設定して、アーカイブノードを実行する必要があります。ただし、この設定はリソースを多く消費し、大量のストレージを必要とすることに注意してください。
+Historical State（過去のステート）を照会したい場合 — 例えば、過去の特定のブロック高におけるウォレットの残高を知りたい場合など — `app.toml` で `pruning = "nothing"` を設定して、アーカイブノードを実行する必要があります。ただし、この設定はリソースを多く消費し、大量のストレージを必要とすることに注意してください。
 
 ```toml
 pruning = "nothing"
@@ -147,7 +146,7 @@ pruning = "nothing"
 pruning = "everything"
 ```
 
-### Create (or restore) a local key pair（ローカルなキーペアの作成（または復元））
+### ローカルキーペアの作成（または復元）
 
 バリデーター用に新しいキーペアを作成するか、既存のウォレットを復元します。
 
@@ -163,11 +162,11 @@ sunrised keys show <your-key> -a
 
 `<your-key>`  を選んだキー名に置き換えてください。
 
-### Get some RISE tokens（RISE トークンを取得する）
+### RISE トークンを取得する
 
 バリデータと結合するには、RISE トークンが必要です。アクティブセットに入るには、十分なトークンが必要です。
 
-### Start the consensus node（コンセンサスノードを起動する）
+### コンセンサスノードを起動する
 
 Cosmovisor の設定とノードの起動については、以下の手順に従ってください。
 
@@ -181,7 +180,7 @@ Cosmovisor を使用しない場合は、次のコマンドを実行してくだ
 sunrised start
 ```
 
-### Syncing the node（ノードの同期）
+### ノードの同期
 
 `sunrised` デーモンを起動すると、チェーンはネットワークとの同期を開始します。ネットワークとの同期にかかる時間は、あなたの設定と現在のブロックチェーンのサイズによって異なりますが、非常に長い時間がかかる可能性があります。ノードのステータスを確認するには：
 

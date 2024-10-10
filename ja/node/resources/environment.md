@@ -1,8 +1,8 @@
-# Environment
+# 環境
 
 これは Sunrise ソフトウェアを実行するための開発環境です。この環境は、開発、バイナリのビルド、およびノードの実行に使用できます。
 
-## Install Dependencies（依存関係のインストール）
+## 依存関係のインストール
 
 ### Ubuntu
 
@@ -11,7 +11,7 @@ sudo apt update
 sudo apt install -y tar wget aria2 clang pkg-config libssl-dev jq build-essential git make ncdu
 ```
 
-### Install Golang
+### Golang のインストール
 
 Install Golang
 
@@ -23,7 +23,7 @@ echo "export PATH=$PATH:/urise/local/go/bin:$HOME/go/bin" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-Check Go version
+Go のバージョンを確認する。
 
 ```bash
 go version
