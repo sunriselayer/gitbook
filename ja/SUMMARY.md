@@ -55,6 +55,11 @@
 - [GitHub](https://github.com/sunriselayer)
 - [Discord](https://discord.com/invite/sunrise)
 - [X (Twitter)](https://twitter.com/SunriseLayer)
+- [X (Twitter) 日本](https://twitter.com/SunriseLayerJP)
+- [Medium](https://sunriselayer.medium.com/)
+- [Medium 日本語](https://medium.com/sunrise-jp)
+- [Qiita Organization](https://qiita.com/organizations/sunriselayer)
+- [Zenn Publication](https://zenn.dev/p/sunriselayerjp)
 
 ## 📓 Deprecated (UnUniFi)
 

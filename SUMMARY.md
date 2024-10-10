@@ -55,6 +55,8 @@
 - [GitHub](https://github.com/sunriselayer)
 - [Discord](https://discord.com/invite/sunrise)
 - [X (Twitter)](https://twitter.com/SunriseLayer)
+- [Medium](https://sunriselayer.medium.com/)
+- [dev.to](https://dev.to/sunriselayer_dev)
 
 ## 📓 Deprecated (UnUniFi)
 
