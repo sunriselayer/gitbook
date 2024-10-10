@@ -2,7 +2,7 @@
 
 フルノードは、ネットワークのジェネシス後に Gluon メインネットに参加するための一般的な手順です。
 
-## Chain upgrades（チェーンアップグレード）
+## チェーンアップグレード
 
 チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、[Cosmovisor](https://docs.cosmos.network/main/build/tooling/cosmovisor)を設定してノードを管理することをお勧めします。
 
@@ -14,15 +14,15 @@
 DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 ```
 
-## Backups（バックアップ）
+## バックアップ
 
 最近のバージョンの Cosmovisor を使用している場合、デフォルトの設定では、アップグレードを適用する前に状態のバックアップが作成されます。これを無効にするには、環境フラグを使用してください。
 
-## Alerting and monitoring（アラートとモニタリング）
+## アラートとモニタリング
 
 アラートと監視も望ましいため、ソリューションを検討し、自分の環境に合ったものを見つけることをお勧めします。Prometheus は標準で利用可能で、さまざまなオープンソースツールがあります。
 
-## Hardware requirements（ハードウェア要件）
+## ハードウェア要件
 
 バリデータノードを実行するために、以下の最低ハードウェア要件が推奨されます：
 
@@ -37,13 +37,13 @@ DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 - フルプルーニングノード（`pruning = "everything"`）は、毎月約 5GB のペースで成長します。
 - デフォルトプルーニングノード（`pruning = "default"`）は、毎月約 25GB のペースで成長します。
 
-## Dependencies（依存関係）
+## 依存関係
 
 チュートリアルは Ubuntu 22.04 (LTS)で行われています。[環境設定のチュートリアル](https://github.com/SunriseLayer/gitbook/blob/main/node/resources/enviromant.md)に従ってください。
 
-## Run the node（ノードを実行する）
+## ノードを実行する
 
-### Install（インストール）
+### インストール
 
 ```bash
 git clone https://github.com/UnUniFi/chain.git
@@ -52,7 +52,7 @@ git checkout $TAG
 make install
 ```
 
-### Initialize（初期化）
+### 初期化
 
 `chain-id` と `moniker` を設定してください。`moniker` はノードの名前として使用されます。
 
@@ -68,7 +68,7 @@ gluond init "$MONIKER" --chain-id $CHAIN_ID
 - `node_key.json`
 - `priv_validator_key.json`
 
-## Download the genesis file（ジェネシスファイルをダウンロードする）
+## ジェネシスファイルをダウンロードする
 
 For mainnet:
 
@@ -84,7 +84,7 @@ rm ~/.gluon/config/genesis.json
 curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-test-v1/genesis.json -o ~/.gluon/config/genesis.json
 ```
 
-## Option: Set persistent peers（永続的ピアを設定する）
+## オプション: Persistent peers（永続的ピア）を設定する
 
 Persistent peers（永続的ピア）は、あなたのノードが他のノードと接続し、ネットワークに参加するために必要です。選択した `chain-id`: に対応するピアを取得するには、以下の手順を実行してください。
 
@@ -95,7 +95,7 @@ source .bash_profile
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.gluon/config/config.toml
 ```
 
-### Set minimum gas prices（最低ガス価格を設定する）
+### 最低ガス価格を設定する
 
 RPC ノードおよびバリデータノードについて、以下の最低ガス価格の設定を推奨します。私たちはパーミッションレスの WASM チェーンであるため、この設定はコントラクトスパムや潜在的な WASM コントラクトの攻撃ベクターから保護するのに役立ちます。
 
@@ -105,7 +105,7 @@ RPC ノードおよびバリデータノードについて、以下の最低ガ�
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uglu\"/" $HOME/.gluon/config/app.toml
 ```
 
-### Option: Additional settings（追加設定）
+### オプション: 追加設定
 
 必要に応じて、`~/.gluon/config/app.toml`の設定ファイルを編集してください。
 
@@ -121,9 +121,9 @@ sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.gluon/config/app.toml;
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.gluon/config/app.toml;
 ```
 
-#### Accessing historical state（過去のステートへのアクセス）
+#### Historical State（過去のステート）へのアクセス
 
-過去のステートを照会したい場合、たとえば、過去の特定のブロック高でのウォレットの残高を知りたい場合は、`app.toml` で `pruning = "nothing"` に設定したアーカイブノードを実行する必要があります。この設定はリソースを多く消費し、かなりのストレージが必要になることに注意してください。
+Historical State（過去のステート）を照会したい場合、たとえば、過去の特定のブロック高でのウォレットの残高を知りたい場合は、`app.toml` で `pruning = "nothing"` に設定したアーカイブノードを実行する必要があります。この設定はリソースを多く消費し、かなりのストレージが必要になることに注意してください。
 
 ```toml
 pruning = "nothing"
@@ -135,7 +135,7 @@ pruning = "nothing"
 pruning = "everything"
 ```
 
-### Create (or restore) a local key pair（ローカルキーペアを作成する）
+### ローカルキーペアを作成（または復元）する
 
 Either create a new key pair or restore an existing wallet for your validator:
 
@@ -149,11 +149,11 @@ gluond keys add <your-key> --recover
 gluond keys show <your-key> -a
 ```
 
-### Get some GLU tokens（GLU トークンを取得する）
+### GLU トークンを取得する
 
 バリデーターとの結合には GLU トークンが必要です。アクティブセットに入るには、十分なトークンが必要です。
 
-### Start the consensus node（コンセンサスノードの起動）
+### コンセンサスノードの起動
 
 Cosmovisor の設定手順に従い、ノードを起動してください。
 
@@ -167,7 +167,7 @@ Cosmovisor を使用しない場合は、次のコマンドを実行してくだ
 gluond start
 ```
 
-### Syncing the node（ノードの同期）
+### ノードの同期
 
 `gluond` デーモンを起動すると、チェーンがネットワークと同期し始めます。ネットワークとの同期時間は、環境やブロックチェーンの現在のサイズによって異なりますが、非常に長い時間がかかる可能性があります。ノードのステータスを照会するには、次のコマンドを実行してください。
 
