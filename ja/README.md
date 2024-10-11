@@ -1,5 +1,5 @@
 ---
-cover: .gitbook/assets/Sunrise Cover.png
+cover: "https://docs.sunriselayer.io/~gitbook/image?url=https%3A%2F%2F2266606840-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FrxxXEtGyjYAxBiCC8ci9%252Fuploads%252FcaQjilDTsi4wmN5jZr1q%252FSunrise%2520Cover.png%3Falt%3Dmedia%26token%3D53df6129-5381-4dca-8b8f-0574bb07b38b&width=1248&dpr=2&quality=100&sign=622a953&sv=1"
 coverY: 0
 ---
 
