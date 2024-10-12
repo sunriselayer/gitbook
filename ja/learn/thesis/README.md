@@ -1,13 +1,13 @@
-# **Thesis（テーゼ）**
+# 🎓 Thesis
 
 ## Monolithic vs Modular（モノリシック vs モジュラー）
 
 ブロックチェーンには 4 つのレイヤーがあります：
 
-- Execution layer（実行層）
-- Settlement layer（決済層）
-- Consensus layer（コンセンサス層）
-- Data Availability layer（データ可用性層）
+* Execution layer（実行層）
+* Settlement layer（決済層）
+* Consensus layer（コンセンサス層）
+* Data Availability layer（データ可用性層）
 
 「モジュラーブロックチェーン」は、これらの分離されたレイヤーを組み合わせ、スケーラブルなブロックチェーンを構築することを可能にするパラダイムです。
 
@@ -55,5 +55,5 @@ Gluon の例：
 
 [『モジュラーブロックチェーンの概要と潮流 ～ブロックチェーンを性能向上させる技術～』](https://www.jri.co.jp/page.jsp?id=108637)（日本総研）
 
-[『モジュラー・ブロックチェーン（Modular Blockchain）の可能性』](https://writing.tanelabs.com/%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%a9%e3%83%bc%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3modular-blockchain%e3%81%ae%e5%8f%af%e8%83%bd%e6%80%a7)（Tané - Writing）
+[『モジュラー・ブロックチェーン（Modular Blockchain）の可能性』](https://writing.tanelabs.com/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%BC%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3modular-blockchain%E3%81%AE%E5%8F%AF%E8%83%BD%E6%80%A7)（Tané - Writing）
 {% endhint %}

@@ -4,9 +4,7 @@
 
 ## チェーンアップグレード
 
-チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、ノードの管理に Cosmovisor を設定することをお勧めします。
-Cosmovisor のチュートリアルに従ってください。
-オンチェーンアップグレードを自動化するには、以下のオプションを設定します。
+チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、ノードの管理に Cosmovisor を設定することをお勧めします。 Cosmovisor のチュートリアルに従ってください。 オンチェーンアップグレードを自動化するには、以下のオプションを設定します。
 
 ```yml
 DAEMON_ALLOW_DOWNLOAD_BINARIES=true
@@ -24,10 +22,10 @@ DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 
 バリデータノードを実行するために推奨される最小限のハードウェア要件は以下の通りです。
 
-- Memory: 8 GB RAM (最小)
-- CPU: 4 cores
-- Disk: 250 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+* Memory: 8 GB RAM (最小)
+* CPU: 4 cores
+* Disk: 250 GB SSD Storage
+* Bandwidth: 1 Gbps for Download/1 Gbps for Upload
 
 プルーニングを使用していない場合はアーカイブノードを運用していることになり、500 GB の SSD ストレージを用意することが推奨されます。
 
@@ -60,9 +58,9 @@ sunrised init "$MONIKER" --chain-id $CHAIN_ID
 
 これにより、`~/.sunrise/config/`に以下のファイルが生成されます。
 
-- `genesis.json`
-- `node_key.json`
-- `priv_validator_key.json`
+* `genesis.json`
+* `node_key.json`
+* `priv_validator_key.json`
 
 ## ジェネシスファイルをダウンロードする
 
@@ -102,13 +100,13 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025urise\"/"
 
 必要に応じて、設定ファイル `~/.sunrise/config/app.toml` を編集してください。
 
-- Enable は、API サーバーを有効にするかどうかを定義します。
+* Enable は、API サーバーを有効にするかどうかを定義します。
 
 ```bash
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.sunrise/config/app.toml;
 ```
 
-- `EnableUnsafeCORS`は、CORS を有効にするかどうかを定義します（安全ではありません - 自己責任で使用してください）。
+* `EnableUnsafeCORS`は、CORS を有効にするかどうかを定義します（安全ではありません - 自己責任で使用してください）。
 
 ```bash
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.sunrise/config/app.toml;
@@ -160,7 +158,7 @@ sunrised keys add <your-key> --recover
 sunrised keys show <your-key> -a
 ```
 
-`<your-key>`  を選んだキー名に置き換えてください。
+`<your-key>`  を選んだキー名に置き換えてください。
 
 ### RISE トークンを取得する
 

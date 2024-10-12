@@ -1,4 +1,4 @@
-# Gluon
+# 🏦 Gluon
 
 Gluon は Sunrise 上の Sovereign Rollup（ソブリンロールアップ）です。これはモジュラー時代の戦略的イールドハブです。以前は UnUniFi というレイヤー 1 アプリチェーンと呼ばれていました。
 

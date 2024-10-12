@@ -3,7 +3,7 @@ cover: .gitbook/assets/Sunrise_Cover.png
 coverY: 0
 ---
 
-# Sunrise 日本語ドキュメント
+# 👋 Sunrise
 
 **ドキュメントは現在作成中であり、定期的に更新されています。最新の情報については、後日再度ご確認ください。**
 
@@ -15,15 +15,15 @@ Celestia アーキテクチャとの互換性により、ロールアップの�
 
 Celestia 互換機能：
 
-- Blob Tx
-- BlobStream
+* Blob Tx
+* BlobStream
 
 Sunrise 固有の機能：
 
-- Proof of Liquidity（PoL）
-- DA Fee Abstraction（DA 手数料抽象化）
-- Off Chain Blob Data Availability（オフチェーンによる Blob Data の公開検証性）（Sunrise DA v2）
-- Sovereign Proof of Liquidity by Gluon（Gluon による主権的な流動性証明）
+* Proof of Liquidity（PoL）
+* DA Fee Abstraction（DA 手数料抽象化）
+* Off Chain Blob Data Availability（オフチェーンによる Blob Data の公開検証性）（Sunrise DA v2）
+* Sovereign Proof of Liquidity by Gluon（Gluon による主権的な流動性証明）
 
 ## Proof of Liquidity x Data Availability
 
@@ -33,22 +33,22 @@ Sunrise は、Data Availability（DA）ネットワークにインセンティ�
 
 ## 開発者が Sunrise を使用すべき理由
 
-- ユーザーは手数料なしで流動性を提供することで DA を利用できます。
-- 多数の DEX（分散型取引所）がすでに存在していますが、トークン発行者にとっての差別化は限られています。Sunrise の存在に関わらず、L2 開発者は常に流動性を提供する必要があります。しかし、Sunrise の DEX に流動性を提供することで、トークン発行者は Sunrise の DA を通じて追加のユーティリティにアクセスできます。これにより、同様の利点を持たない他の DA レイヤーや DEX よりも Sunrise を選択する動機付けとなります。
+* ユーザーは手数料なしで流動性を提供することで DA を利用できます。
+* 多数の DEX（分散型取引所）がすでに存在していますが、トークン発行者にとっての差別化は限られています。Sunrise の存在に関わらず、L2 開発者は常に流動性を提供する必要があります。しかし、Sunrise の DEX に流動性を提供することで、トークン発行者は Sunrise の DA を通じて追加のユーティリティにアクセスできます。これにより、同様の利点を持たない他の DA レイヤーや DEX よりも Sunrise を選択する動機付けとなります。
 
 ## Modules
 
-- `x/da` モジュール
-- `x/tokenconverter` モジュール
-- `x/liquiditypool` モジュール
-- `x/liquidityincentive` モジュール
-- `x/swap` モジュール
-- `x/fee` モジュール
+* `x/da` モジュール
+* `x/tokenconverter` モジュール
+* `x/liquiditypool` モジュール
+* `x/liquidityincentive` モジュール
+* `x/swap` モジュール
+* `x/fee` モジュール
 
 ### 収益（手数料構造）
 
 プロトコルは 3 つの異なる収益源を通じて収益を生み出します。
 
-- Transaction fees（トランザクション手数料）
-- Swap fees in the liquidity pool（流動性プールでのスワップ手数料）
-- MEV captured with [Skip Protocol](https://docs.skip.money/)（Skip Protocol を使用して捕捉される MEV（Miner Extractable Value））
+* Transaction fees（トランザクション手数料）
+* Swap fees in the liquidity pool（流動性プールでのスワップ手数料）
+* MEV captured with [Skip Protocol](https://docs.skip.money/)（Skip Protocol を使用して捕捉される MEV（Miner Extractable Value））
