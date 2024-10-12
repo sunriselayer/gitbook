@@ -1,5 +1,5 @@
 ---
-cover: /assets/Sunrise_Cover.png
+cover: .gitbook/assets/Sunrise_Cover.png
 coverY: 0
 ---
 
