@@ -1,17 +1,16 @@
-# Blob
+## Off-Chain Blob Data (Data Availability v2)
 
-The deprecated module `x/blob` is the Celestia-compatible module of Sunrise.
+Sunrise v2 is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications like gaming. To achieve this, Sunrise combines *Data Availability Sampling (DAS)* with *zero-knowledge proof (ZKP) verification*, optimizing both network performance and data availability.
 
-This module allows L2 operators to post the data to the Sunrise network. The data will be stored in the Sunrise network until the L2 transactions are finalized in the L1 blockchain.
+### Key Features of Sunrise v2
 
-## Off Chain Blob Data (Data Availability v2)
+Several enhancements in Sunrise v2 increase throughput, decentralization, and long-term data retrievability:
 
-After successfully launching the Sunrise v1 as a specialized Data Availability Layer for Proof of Liquidity,
-we will introduce an upgrade for Blob features in Sunrise v2, to realize the usecases of Data Availability for fully on-chain AI, gaming, social and so on. Gluon will be the first place to realize the full on chain AI with Sunrise DA.
+- **Off-chain Erasure Encoding:** Blob data is erasure-coded off-chain, minimizing the computational and storage load on validators.
 
-See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/da) for details.
+- **Off-chain Storage Integration:** Utilizing decentralized storage solutions such as IPFS and Arweave, data shards are stored externally. MsgPublishData includes only a metadata URI pointing to these erasure-coded data shares, reducing the on-chain block size requirements for Blob transactions and enhancing scalability.
 
-In the Sunrise v1 architecture, `data_hash` is replaced with the merkle root of the erasure-coded data with 2-dimension Reed Solomon encoding. The data means the txs data in the block. Data Availability Sampling technology plays a role of mitigating the running costs of full nodes with big blocks by enabling the light nodes to verify the data availability without downloading the entire block data.
+The architecture of Sunrise can be seen as a **blend between DAC and DA layers with DAS**, balancing throughput and trust models for a range of applications.
 
 [`CometBFT types.proto`](https://github.com/cometbft/cometbft/blob/main/proto/cometbft/types/v1/types.proto)
 
@@ -43,19 +42,19 @@ message Header {
   bytes proposer_address = 14;  // original proposer of the block
 }
 ```
+#### Design for Optimized Data Transfer
 
-In this design, trivially all full nodes have to transfer and download the txs data in the mempool.
-When the sizes of `BlobTx`s get larger, the throughput of the network will be limited by the txs transfer in the mempool. This will be an obstacle to apply the Data Availability technology for the usage of large BLOB data on decentralized applications, for example, fully on-chain AI, gaming, social and so on.
+In this setup, full nodes must transfer and download transaction data within the mempool. 
 
-To mitigate this bottleneck, we will do these things:
+As `BlobTx` sizes grow, the network’s throughput could be limited by these transaction transfers, creating challenges for applications handling large blob data.
 
-1. Off chain execution of erasure encoding to generate the erasure-coded BLOB data
-1. Using off chain distributed file transfer system / storage like IPFS, Arweave, etc.
 
-In this new design, `MsgPublishData` will have the URI of metadata that has URIs of erasure-coded data shares.
-The value is assumed to be the URI of decentralized storage / file transfer system like IPFS `"ipfs://[ipfs-cid]"` or Arweave `"ar://[hash]"`, and it will not be contained by `BlobTx` hence the blob data will not be on-chain of Sunrise.
+When the sizes of `BlobTxs` get larger, the throughput of the network will be limited by the txs transfer in the mempool. 
 
-In the consensus network, erasure encoding is not executed anymore. Only the double hash of erasure coded shard data will be included in `MsgPublishData`.
+To address this, Sunrise v2 implements the following solutions:
+
+ 1. *Off-chain Erasure Encoding:* Blob data is encoded off-chain to reduce validator load.
+ 2. *External Storage:* Blob data is stored on decentralized storage platforms like IPFS and Arweave. Rather than containing blob data on-chain, MsgPublishData holds a metadata URI pointing to erasure-coded data shares.
 
 ```protobuf
 message MsgPublishData {
@@ -72,18 +71,21 @@ message Metadata {
 }
 ```
 
-Data Availability will be attested through zero knowledge proof using `shard_double_hashed` by proving that the validators can know the hash of shard data without disclosing them.
 
-Currently it is assumed to do this process in [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
+Data availability is confirmed through zero-knowledge proofs (ZKP) using double-hashed shard data (`shard_double_hashed`), allowing validators to verify the presence of shard data without revealing it. This integration is done through [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
 
-In this design, "long term Data Retrievability" is easy to control by using external storage / file system like IPFS and Arweave whereas the Data Retrievability is not guaranteed by other ecosystem which serve Data Availability. The reason why long term Data Retrievability is not guaranteed by other ecosystem which serve Data Availability is that it is not needed to preserve the tx data of Optimistic Rollups after the challenge period for fraud proofs, or ZK Rollups after the submission of validity proofs.
 
-In conclusion, there are benefits:
 
-- The throughput of the network will be increased due to the block size
-- Easy to control the long term Data Retrievability
-  - Applications for fully on-chain AI, gaming, social and so on can be realized
-- The decentralization of the network will be improved
+ 
+
+
+
+### Benefits of Sunrise v2
+
+- **Increased Network Throughput:** Larger block sizes are achievable by reducing on-chain storage needs.
+- **Enhanced Data Retrievability:** Storing data off-chain allows for flexible, long-term data retention.
+- **Improved Network Decentralization:** By reducing validator load, Sunrise supports a more decentralized network structure.
+
 
 ```mermaid
 sequenceDiagram
@@ -226,34 +228,37 @@ $$
 
 ### Data Corruption Durability
 
-In both on-chain and off-chain DA attestations, data corruption durability refers to the ability of the system to detect and prevent corruption of the data.
+In both on-chain and off-chain DA attestations, *data corruption durability* refers to the ability of the system to detect and prevent corruption of the data.
 
-On-chain attestation, such as Celestia or Sunrise V1, ensures that data is durably available because it is stored directly on-chain, and any tampering or loss of data can be immediately detected by validators.
+On-chain attestation, such as **Celestia or Sunrise V1**, ensures that data is durably available because it is stored directly on-chain, and any tampering or loss of data can be immediately detected by validators.
 
-Off-chain attestation (e.g., Sunrise V2) relies on external systems (like IPFS or Arweave) but can still achieve similar durability by verifying the integrity of the data through erasure coding and zero-knowledge proofs.
+Off-chain attestation (e.g., **Sunrise V2**) relies on external systems (like **IPFS or Arweave**) but can still achieve similar durability by verifying the integrity of the data through **erasure coding** and **zero-knowledge proofs**.
 
 ### Tx Mempool Scalability
 
-Transaction mempool scalability is a major limitation in on-chain DA systems. As the size of transactions (such as `BlobTxs`) grows, the transaction mempool, which temporarily holds pending transactions, can become overloaded, limiting throughput and scalability.
 
-In off-chain DA systems, this limitation is mitigated by storing large amounts of data externally, with only the necessary hashes or metadata being stored on-chain. This allows for greater scalability and the ability to process larger volumes of data without congesting the mempool.
+*Transaction mempool scalability* is a major limitation in on-chain DA systems. As the size of transactions (such as `BlobTxs`) grows, the transaction mempool, which temporarily holds pending transactions, can become overloaded, limiting throughput and scalability.
+
+In off-chain DA systems, this limitation is mitigated by storing large amounts of data externally, with only the necessary hashes or metadata being stored on-chain. This allows for **greater scalability** and the ability to process larger volumes of data without congesting the mempool.
 
 ### Data Retrievability Control
 
-In on-chain DA systems, data retrievability is often tied to the consensus mechanism, which means the data must remain available as long as it is needed for consensus (e.g., fraud proofs or validity proofs). However, long-term data retrievability is not always guaranteed once the consensus is finalized.
+In on-chain DA systems, *data retrievability* is often tied to the consensus mechanism, which means the data must remain available as long as it is needed for consensus (e.g., fraud proofs or validity proofs). However, long-term data retrievability is not always guaranteed once the consensus is finalized.
 
-Off-chain DA systems, such as Sunrise V2, provide more flexible control over data retrievability because the data is stored in decentralized storage systems (like IPFS or Arweave). This allows for longer-term retention of data and better control over how long data remains accessible.
+Off-chain DA systems, such as **Sunrise V2**, provide more flexible control over data retrievability because the data is stored in decentralized storage systems (like **IPFS or Arweave**). This allows for **longer-term retention of data** and better control over how long data remains accessible.
 
 ### Validators Load Mitigation
 
-On-chain DA attestation places a heavier load on validators since they are responsible for verifying the data availability directly on-chain. As transaction sizes grow, the computational and storage demands on validators increase, potentially limiting decentralization.
+On-chain DA attestation places a *heavier load* on validators since they are responsible for verifying the data availability directly on-chain. As transaction sizes grow, the computational and storage demands on validators increase, potentially limiting decentralization.
 
-In contrast, off-chain DA attestation significantly reduces the load on validators by outsourcing data storage and retrieval to external systems. Validators only need to verify the availability of data shards through erasure coding and zero-knowledge proofs, which lightens their processing and storage requirements.
+In contrast, off-chain DA attestation significantly reduces the load on validators by **outsourcing data storage** and retrieval to external systems. Validators only need to verify the availability of data shards through **erasure coding** and **zero-knowledge proofs**, which lightens their processing and storage requirements.
 
 ### False-Positive DA Attestation Resistance
 
-False-positive DA attestation refers to situations where a system incorrectly attests that data is available when, in reality, it is not.
+*False-positive DA attestation* refers to situations where a system incorrectly attests that data is available when, in reality, it is not.
 
-On-chain DA attestation, used by systems like Celestia and Sunrise V1, has strong resistance to false positives since all the data is stored and verified directly on-chain, making it difficult to falsely claim that data is available when it is not.
+On-chain DA attestation, used by systems **like Celestia and Sunrise V1**, has strong resistance to false positives since all the data is stored and verified directly on-chain, making it difficult to falsely claim that data is available when it is not.
 
-In off-chain DA attestation (e.g., Sunrise V2), false-positive resistance is maintained through the use of zero-knowledge proofs and cryptographic commitments like erasure coding. By verifying the double-hashed values of shard data, validators can ensure that the data is indeed available without needing to store or directly access the entire data set. However, there may still be edge cases where off-chain storage solutions or network latency could introduce opportunities for false-positive attestations, though these are minimized by careful design and redundancy in the verification process.
+In off-chain DA attestation (e.g., **Sunrise V2**), false-positive resistance is maintained through the use of **zero-knowledge proofs** and cryptographic commitments like **erasure coding**. By verifying the double-hashed values of shard data, validators can ensure that the data is indeed available without needing to store or directly access the entire data set. 
+
+However, there may still be edge cases where *off-chain storage solutions* or *network latency* could introduce opportunities for false-positive attestations, though these are minimized by careful design and redundancy in the verification process.
