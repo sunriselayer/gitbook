@@ -1,6 +1,6 @@
 ## Off-Chain Blob Data (Data Availability v2)
 
-Sunrise v2 is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications like gaming. To achieve this, Sunrise combines *Data Availability Sampling (DAS)* with *zero-knowledge proof (ZKP) verification*, optimizing both network performance and data availability.
+Sunrise v2 is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications even such as gaming. To achieve this, Sunrise combines *Data Availability Sampling (DAS)* with *zero-knowledge proof (ZKP) verification*, optimizing both network performance and data availability.
 
 ### Key Features of Sunrise v2
 

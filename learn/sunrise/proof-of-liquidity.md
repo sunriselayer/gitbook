@@ -29,8 +29,8 @@ The important point of the model is
 
 The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
 
-- `$vRISE`: Non transferrable token for staking.
-- `$RISE`: STransferrable token for a fee.
+- `$vRISE`: Non transferable token for staking.
+- `$RISE`: Transferable token for fees, serves as the native gas token
 
 The flow will be like this:
 
