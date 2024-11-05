@@ -2,21 +2,20 @@
 
 $RISE トークンは Sunrise ネットワークのネイティブトークンです。$RISE トークンは手数料として使用できます。 $RISE は Sunrise ブロックチェーン上では `urise` として保存されます。ブロックチェーン上の `1000000urise` は現実世界の 1 RISE に相当します。
 
-* Ticker（トークンティッカー）: RISE
-* ブロックチェーン上の Denom（デノム）: `urise`
-* ブロックチェーン上のエイリアス: `microRISE`
-* Supply cap（供給上限）: 1,000,000,000RISE = `1_000_000_000_000_000microRISE`
+- Ticker（トークンティッカー）: RISE
+- ブロックチェーン上の Denom（デノム）: `urise`
+- ブロックチェーン上のエイリアス: `microRISE`
 
-以下のルールを満たす場合、$vRISE を 1 対 1 でバーンすることで $RISE をミントできます：
+$vRISE を 1 対 1 でバーンすることで $RISE をミントできます。
 
 ## $vRISE
 
 $vRISE トークンは、ステーキング用の譲渡不可能なトークンです。ステーキングされた量は、ガバナンスのための Voting Power（投票力）として計算されます。
 
-* Ticker（トークンティッカー: vRISE
-* ブロックチェーン上の Denom（デノム）: `uvrise`
-* ブロックチェーン上のエイリアス: `microvRISE`
-* ジェネシスブロックでの供給量: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
+- Ticker（トークンティッカー: vRISE
+- ブロックチェーン上の Denom（デノム）: `uvrise`
+- ブロックチェーン上のエイリアス: `microvRISE`
+- ジェネシスブロックでの供給量: 1,000,000,000vRISE = `1_000_000_000_000_000microVRISE`
 
 ## ユースケース
 
@@ -37,10 +36,10 @@ $vRISE は Sunrise ネットワークにステーキングできます。ステ�
 
 ### オフチェーンパラメータ
 
-|                            |    |
-| -------------------------- | -- |
-| Disinflation rate per year | 8% |
-| Converged inflation        | 2% |
+|                            |     |
+| -------------------------- | --- |
+| Disinflation rate per year | 8%  |
+| Converged inflation        | 2%  |
 
 ### シミュレーション
 
@@ -98,14 +97,14 @@ $vRISE は Sunrise ネットワークにステーキングできます。ステ�
 
 ### Cosmos ブロックチェーンをサポートするウォレット
 
-* Keplr
-* Leap
-* XDEFI
+- Keplr
+- Leap
+- XDEFI
 
 ### コマンドラインインターフェース（CLI）
 
-* sunrised
+- sunrised
 
 ## 上場されている取引所
 
-* Coming soon
+- Coming soon
