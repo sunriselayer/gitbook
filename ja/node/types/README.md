@@ -9,9 +9,8 @@
 
 ## Data Availability
 
-- [Bridge Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node)（ブリッジノード）: データ可用性ネットワークとコンセンサスネットワーク間でブロックをブリッジするノード。
-- [Full Storage Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node)（フルストレージノード）: すべてのデータを保存するが、コンセンサスネットワークには接続しないノード。
-- [Light Node](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node)（ライトノード）: データ可用性ネットワーク上でデータ可用性サンプリングを行うライトクライアント。
+- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): OP Stack を使用した Sunrise L2 作成ガイド。
+- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): L2 と Sunrise チェーンを接続するソフトウェアのドキュメント。OP Stack がサポートされます。
 
 ## 要件
 
