@@ -3,7 +3,17 @@
 Sunrise's Data Availability Layer supports Layer 2 blockchains created using [OP Stack](https://github.com/ethereum-optimism/optimism)
 This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise Alt-DA](./alt-da.md). Data Availability layer is supported in Sunrise v0.3.0 and later.
 
-## How to set up OP-stack
+## How to set up OP Stack
+
+As an example, here is how to use OP Stack to create an L2 chain for the Ethereum Sepolia testnet and run it on the Sunrise's Data Availability Layer.
+
+```mermaid
+sequenceDiagram
+   autonumber
+   L2 ->> Ethereum Sepolia: Send Tx (e.g. token transfer)
+   Ethereum Sepolia --> L2: API & Tx Response
+   L2 ->> Sunrise: Send Block Data and Save
+```
 
 ### Dependencies
 
@@ -135,8 +145,10 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    ##################################################
 
    # RPC URL for the L1 network to interact with
-   export L1_RPC_URL=https://sepolia.infura.io/v3/1b6f3788180c4bd783b87844e3dcfc78
+   export L1_RPC_URL=https://sepolia.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
+
+   API key for RPC URL can be found in [Infura](https://www.infura.io/) or other providers.
 
 1. **Fund the addresses with enough Sepolia ETH, the optimism docs recommend the following:**
 
@@ -256,7 +268,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    openssl rand -hex 32 > jwt.txt
    ```
 
-1. **Copy genesis files into op-geth director**
+1. **Copy genesis files into op-geth directory**
 
    ```bash
    cp genesis.json ~/op-geth

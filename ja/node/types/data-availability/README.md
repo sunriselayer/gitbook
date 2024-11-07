@@ -2,10 +2,10 @@
 
 ## Overview
 
-- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): A guide to creating Sunrise L2 using OP Stack.
-- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): The documentation for software that connects L2 and Sunrise chains; OP Stack is supported.
+- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): OP Stack を使用して Sunrise の DA レイヤー上の L2 チェーンを作成します。
+- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): L2 チェーンと Sunrise を繋ぐソフトウェアです。現在、OP Stack がサポートされています。
 
-If you are looking to run a consensus node, please follow [the consensus node tutorial](../consensus/README.md).
+同時にコンセンサスノードを起動する場合は、 [the consensus node tutorial](../consensus/README.md)を参照してください。
 
 ### Requirements
 

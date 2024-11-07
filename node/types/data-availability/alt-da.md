@@ -31,7 +31,7 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    nano config.toml
    ```
 
-1. To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
+   To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
 
    Chage `home_path` to your .sunrise directory and `publisher_account` to your sunrised key's name
 

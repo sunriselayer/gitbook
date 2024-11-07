@@ -1,21 +1,21 @@
 # Sunrise Alt DA
 
-Sunrise Alt DA connects the L2 blockchain to Sunrise's Data Availability Layer.
-Currently, L2 chains created in the [OP Stack](./optimism.md) are supported.
+Sunrise Alt DA は L2 ブロックチェーンと Sunrise のデータ可用性レイヤーを接続するソフトウェアです。
+現在、[OP Stack](./optimism.md)を使用して作成された L2 チェーンをサポートしています。
 
-See [OP Stack](./optimism.md) for L2 chain side configuration.
+L2 側の設定については[OP Stack](./optimism.md)のページを参照してください。
 
 ## Sunrise Consensus Node
 
-Requires a networked Sunrise node to operate. [Networks](../../networks/README.md) running Sunrise v0.3.0 or higher support Data Availability Layer.
+動作には Sunrise のコンセンサス・フルノードが必要です。Sunrise v0.3.0 以上を実行しているネットワークがサポートされています。
 
-Follow the [Node Guide](../consensus/README.md) on how to create a consensus node.
+公開されている RPC か同じマシン上でコンセンサスノードを実行する必要があります。[Networks](../../networks/README.md)と[Node Guide](../consensus/README.md)のページを参照してください。
 
-## How to set up Alt DA
+## Surnise Alt DA のセットアップ
 
 ### sunrise-data
 
-1. Clone sunrise-data repo
+1. `sunrise-data`のリポジトリをクローン
 
    ```bash
    cd ~
@@ -24,16 +24,15 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    make install
    ```
 
-1. Create and edit `config.toml`
+1. `config.toml`を作成し、編集
 
    ```bash
    cp config.default.toml config.toml
    nano config.toml
    ```
 
-1. To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
-
-   Chage `home_path` to your .sunrise directory and `publisher_account` to your sunrised key's name
+   ローカル上の IPFS Daemon に接続する場合は、`ipfs_api_url`フィールドを空にします。
+   `home_path`をあなたの環境の.sunrise ディレクトリに設定します。また、`publisher_account`は設定している sunrised key の名前にします。
 
    ```toml
    [api]
@@ -53,15 +52,15 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    vote_extension_period=2
    ```
 
-1. Start Daemon
+1. Daemon を開始
 
    ```bash
    sunrise-data
    ```
 
-### Integrate IPFS
+### IPFS の統合
 
-1. Run IPFS
+1. IPFS の実行
 
    ```bash
    wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
@@ -72,7 +71,7 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    ipfs daemon
    ```
 
-1. Check the IPFS node ID and optionally share and add a remote peer
+   リモートのピアとして IPFS node ID を公開する必要がある場合は以下のコマンドで確認できます。
 
    ```bash
    ipfs id
@@ -80,7 +79,7 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
 
 ### sunrise-alt-da
 
-1. Clone sunrise-alt-da repo
+1. `sunrise-alt-da`のリポジトリをクローン
 
    ```bash
    cd ~
@@ -89,7 +88,7 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    make install
    ```
 
-1. Start DA Server
+1. DA Server を開始
 
    ```bash
     da-server --sunrise.server=http://localhost:8000 \
