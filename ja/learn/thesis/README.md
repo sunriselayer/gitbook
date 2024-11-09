@@ -4,16 +4,16 @@
 
 ブロックチェーンには 4 つのレイヤーがあります：
 
-* Execution layer（実行層）
-* Settlement layer（決済層）
-* Consensus layer（コンセンサス層）
-* Data Availability layer（データ可用性層）
+- Execution layer（実行層）
+- Settlement layer（決済層）
+- Consensus layer（コンセンサス層）
+- Data Availability layer（データ可用性レイヤー）
 
 「モジュラーブロックチェーン」は、これらの分離されたレイヤーを組み合わせ、スケーラブルなブロックチェーンを構築することを可能にするパラダイムです。
 
-## Data Availability layer（データ可用性層）
+## Data Availability layer（データ可用性レイヤー）
 
-簡単に言えば、DA Layer（データ可用性層）は、Layer 2（L2）ブロックチェーンのトランザクションデータが Layer 1（L1）ブロックチェーンで Finalize（確定）されるまで、そのデータを保存する役割を果たします。
+簡単に言えば、DA Layer（データ可用性レイヤー）は、Layer 2（L2）ブロックチェーンのトランザクションデータが Layer 1（L1）ブロックチェーンで Finalize（確定）されるまで、そのデータを保存する役割を果たします。
 
 ## レイヤーの組み合わせ
 

@@ -10,9 +10,8 @@ Sunrise node operators can run several options on the network.
 
 ## Data Availability
 
-- [Bridge node](./data-availability/bridge-node.md): This node bridges blocks between the Data-Availability network and the Consensus network.
-- [Full storage node](./data-availability/full-node.md): This node stores all the data but does not connect to Consensus.
-- [Light node](./data-availability/light-node.md): Light clients conduct data availability sampling on the Data Availability network.
+- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): A guide to creating Sunrise L2 using OP Stack.
+- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): The documentation for software that connects L2 and Sunrise chains; OP Stack is supported.
 
 ## Requirements
 

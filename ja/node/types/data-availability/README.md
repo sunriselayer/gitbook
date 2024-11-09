@@ -1,21 +1,14 @@
 # Data Availability Nodes
 
-## 概要
+## Overview
 
-- [ブリッジノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/bridge-node): このノードは、データ可用性ネットワークとコンセンサスネットワークの間でブロックの橋渡しを行います
-- [フルストレージノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/full-node): このノードはすべてのデータを保存しますが、コンセンサスネットワークには接続しません
-- [ライトノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/light-node): ライトクライアントは、データ可用性ネットワーク上でデータ可用性サンプリングを実施します
+- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): OP Stack を使用して Sunrise の DA レイヤー上の L2 チェーンを作成します。
+- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): L2 チェーンと Sunrise を繋ぐソフトウェアです。現在、OP Stack がサポートされています。
 
-コンセンサスノードを実行する場合は、[コンセンサスノードのチュートリアル](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus)に従ってください。
+同時にコンセンサスノードを起動する場合は、 [the consensus node tutorial](../consensus/README.md)を参照してください。
 
-{% hint style='working' %}
-バリデータノードを実行する場合、ブリッジノードが必要です。[このセクション](../data-availability/bridge-node.md)を参照してください。
-{% endhint %}
+### Requirements
 
-### 要件
-
-| Type         | CPU    | Mem    | Disk      | Bandwidth |
-| ------------ | ------ | ------ | --------- | --------- |
-| Bridge       | 6 Core | 4 GB   | 10 TB SSD | 1 Gbps    |
-| Full Storage | 4 Core | 4 GB   | 10 TB SSD | 1 Gbps    |
-| Light        | 2 Core | 500 MB | 50 GB SSD | 56 Kbps   |
+| Type              | CPU    | Mem   | Disk     | Bandwidth |
+| ----------------- | ------ | ----- | -------- | --------- |
+| OP Stack + Alt DA | 6 Core | 32 GB | 1 TB SSD | 1 Gbps    |
