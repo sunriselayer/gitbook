@@ -29,7 +29,7 @@
 ## 🛠️ Build L2s
 
 - [Supported L2 SDKs](build-l2s/supported-sdks.md)
-- [OP-Stack](build-l2s/optimism.md)
+- [OP Stack](build-l2s/optimism.md)
   - [Sunrise OP DA Server](build-l2s/op-da-server.md)
 - [Rollkit](build-l2s/rollkit.md)
 

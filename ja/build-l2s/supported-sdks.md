@@ -1,8 +1,9 @@
 # サポートされる L2 開発 SDK
 
-- [OP Stack](./optimism.md): OP Stack を使用して Sunrise の DA レイヤー上の L2 チェーンを作成します。
-  - [Sunrise OP DA Server](./op-da-server.md): OP Stack L2 チェーンと Sunrise を繋ぐソフトウェアです。
-- [Rollkit](./rollkit.md)
+- [OP Stack](https://docs.optimism.io/stack/getting-started)
+  - [Sunrise OP DA Server](https://github.com/sunriselayer/sunrise-op-da-server): OP Stack L2 ブロックチェーンと Sunrise L1 ブロックチェーンを繋ぐソフトウェアです。
+- [Rollkit](https://rollkit.dev/learn/intro)
+  - [Sunrise Rollkit](https://github.com/sunriselayer/sunrise-rollkit): Rollkit L2 ブロックチェーンと Sunrise L1 ブロックチェーンをを繋ぐソフトウェアです。
 
 同時にコンセンサスノードを起動する場合は、 [the consensus node tutorial](../node/types/consensus/README.md)を参照してください。
 

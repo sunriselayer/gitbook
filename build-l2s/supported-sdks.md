@@ -1,8 +1,9 @@
 # Supported L2 SDKs
 
-- [OP Stack](./optimism.md): A guide to creating Sunrise L2 using OP Stack.
-  - [Sunrise OP DA Server](./op-da-server.md): The documentation for software that connects OP Stack L2 and Sunrise chains.
-- [Rollkit](./rollkit.md)
+- [OP Stack](https://docs.optimism.io/stack/getting-started)
+  - [Sunrise OP DA Server](https://github.com/sunriselayer/sunrise-op-da-server): The software for connecting OP Stack L2 blockchain and Sunrise L1 blockchain.
+- [Rollkit](https://rollkit.dev/learn/intro)
+  - [Sunrise Rollkit](https://github.com/sunriselayer/sunrise-rollkit): The software for connecting Rollkit L2 blockchain and Sunrise L1 blockchain.
 
 If you are looking to run a consensus node, please follow [the consensus node tutorial](../node/types/consensus/README.md).
 
