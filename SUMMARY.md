@@ -29,9 +29,6 @@
 
 - [Networks](node/networks/README.md)
 - [Types of Nodes](node/types/README.md)
-  - [Data Availability](node/types/data-availability/README.md)
-    - [OP-Stack](node/types/data-availability/optimism.md)
-    - [Sunrise Alt DA](node/types/data-availability/alt-da.md)
   - [Consensus](node/types/consensus/README.md)
     - [Full Consensus Node](node/types/consensus/full-consensus-node.md)
     - [Validator Node (Genesis)](node/types/consensus/genesis-validator.md)
@@ -41,6 +38,12 @@
 - [Resources](node/resources/README.md)
   - [Upgrade](node/resources/upgrade.md)
   - [Environment](node/resources/environment.md)
+
+## 🛠️ Build L2s
+
+- [Data Availability](build-l2s/README.md)
+  - [OP-Stack](build-l2s/optimism.md)
+  - [Sunrise Alt DA](build-l2s/alt-da.md)
 
 ## 🏗️ Run a Gluon Node
 

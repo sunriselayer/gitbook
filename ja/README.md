@@ -13,17 +13,9 @@ Celestia アーキテクチャとの互換性により、ロールアップの�
 
 ## Sunrise の機能
 
-Celestia 互換機能：
-
-- Blob Tx
-- BlobStream
-
-Sunrise 固有の機能：
-
 - Proof of Liquidity（PoL）
 - DA Fee Abstraction（DA 手数料抽象化）
-- Off Chain Blob Data Availability（オフチェーンによる Blob Data の公開検証性）（Sunrise DA v2）
-- Sovereign Proof of Liquidity by Gluon（Gluon による主権的な流動性証明）
+- Off Chain Blob Data Availability（オフチェーンによる Blob Data の公開検証性）
 
 ## Proof of Liquidity x Data Availability
 
