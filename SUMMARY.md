@@ -27,9 +27,10 @@
 
 ## 🛠️ Build L2s
 
-- [Data Availability](build-l2s/README.md)
-  - [OP-Stack](build-l2s/optimism.md)
+- [Supported SDKs](build-l2s/supported-sdks.md)
+- [OP-Stack](build-l2s/optimism.md)
   - [Sunrise Alt DA](build-l2s/alt-da.md)
+- [Rollkit](build-l2s/rollkit.md)
 
 ## 🏗️ Run a Sunrise Node
 

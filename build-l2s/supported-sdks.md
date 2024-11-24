@@ -1,14 +1,12 @@
-# Build L2s
-
-## Overview
+# Supported L2 SDKs
 
 - [OP Stack](./optimism.md): A guide to creating Sunrise L2 using OP Stack.
-- [Sunrise OP DA Server](./op-da-server.md): The documentation for software that connects OP Stack L2 and Sunrise chains.
+  - [Sunrise OP DA Server](./op-da-server.md): The documentation for software that connects OP Stack L2 and Sunrise chains.
 - [Rollkit](./rollkit.md)
 
 If you are looking to run a consensus node, please follow [the consensus node tutorial](../node/types/consensus/README.md).
 
-### Requirements
+## Requirements
 
 | Type                    | CPU    | Mem   | Disk     | Bandwidth |
 | ----------------------- | ------ | ----- | -------- | --------- |
