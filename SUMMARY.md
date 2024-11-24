@@ -28,7 +28,7 @@
 ## 🛠️ Build L2 Blockchains
 
 - [Supported SDKs](build-l2-blockchains/supported-sdks.md)
-- [OP Stack](build-l2-blockchains/optimism.md)
+- [OP Stack](build-l2-blockchains/op-stack.md)
   - [Sunrise OP DA Server](build-l2-blockchains/op-da-server.md)
 - [Rollkit](build-l2-blockchains/rollkit.md)
 
