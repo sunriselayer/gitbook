@@ -4,7 +4,6 @@ $RISE トークンは Sunrise ネットワークのネイティブトークン�
 
 - Ticker（トークンティッカー）: RISE
 - ブロックチェーン上の Denom（デノム）: `urise`
-- ブロックチェーン上のエイリアス: `microRISE`
 
 $vRISE を 1 対 1 でバーンすることで $RISE をミントできます。
 

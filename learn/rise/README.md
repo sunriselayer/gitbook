@@ -6,7 +6,6 @@ $RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the b
 
 - Ticker: RISE
 - Denom in the blockchain: `urise`
-- Alias in the blockchain: `microRISE`
 
 $RISE can be minted by burning $vRISE 1 to 1.
 
