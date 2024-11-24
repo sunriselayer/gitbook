@@ -78,14 +78,14 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
    ipfs id
    ```
 
-### sunrise-alt-da
+### sunrise-op-da-server
 
-1. Clone sunrise-alt-da repo
+1. Clone sunrise-op-da-server repo
 
    ```bash
    cd ~
-   git clone https://github.com/sunriselayer/sunrise-alt-da.git
-   cd sunrise-alt-da
+   git clone https://github.com/sunriselayer/sunrise-op-da-server.git
+   cd sunrise-op-da-server
    make install
    ```
 

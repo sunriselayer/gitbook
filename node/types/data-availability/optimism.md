@@ -1,7 +1,7 @@
-# OP-Stack + Sunrise Alt DA
+# OP-Stack + Sunrise OP DA Server
 
 Sunrise's Data Availability Layer supports Layer 2 blockchains created using [OP Stack](https://github.com/ethereum-optimism/optimism)
-This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise Alt-DA](./alt-da.md). Data Availability layer is supported in Sunrise v0.3.0 and later.
+This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise OP DA Server](./op-da-server.md). Data Availability layer is supported in Sunrise v0.3.0 and later.
 
 ## How to set up OP Stack
 
@@ -286,9 +286,9 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
 ## Start L2
 
-**Before optimism start, set up sunrise & sunrise-alt-da, etc.**
+**Before optimism start, set up sunrise & sunrise-op-da-server, etc.**
 
-[**Sunrise Alt-DA**](./alt-da.md)
+[**Sunrise OP DA Server**](./op-da-server.md)
 
 1. **Start `op-geth`**
 
