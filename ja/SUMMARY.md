@@ -26,6 +26,12 @@
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
 
+## 🛠️ Build L2s
+
+- [Data Availability](build-l2s/README.md)
+  - [OP-Stack](build-l2s/optimism.md)
+  - [Sunrise Alt DA](build-l2s/alt-da.md)
+
 ## 🏗️ Run a Sunrise Node
 
 - [Networks](node/networks/README.md)
@@ -39,12 +45,6 @@
 - [Resources](node/resources/README.md)
   - [Upgrade](node/resources/upgrade.md)
   - [Environment](node/resources/environment.md)
-
-## 🛠️ Build L2s
-
-- [Data Availability](build-l2s/README.md)
-  - [OP-Stack](build-l2s/optimism.md)
-  - [Sunrise Alt DA](build-l2s/alt-da.md)
 
 ## 🏗️ Run a Gluon Node
 
