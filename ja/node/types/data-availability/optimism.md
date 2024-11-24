@@ -1,7 +1,7 @@
 # OP-Stack + Sunrise Alt DA
 
 Sunrise ブロックチェーンのデータ可用性レイヤー（DA レイヤー）は[OP Stack](https://github.com/ethereum-optimism/optimism)を使用して作成された L2 ブロックチェーンをサポートしています。
-ここでは OP Stack を使用して L2 チェーンを作成し、[Sunrise Alt-DA](./alt-da.md)を使用して Sunrise チェーンに接続する方法について説明します。
+ここでは OP Stack を使用して L2 チェーンを作成し、[Sunrise OP DA Server](./op-da-server.md)を使用して Sunrise チェーンに接続する方法について説明します。
 DA レイヤーは Sunrise v0.3.0 以降を実行しているネットワークでサポートされます。
 
 ## OP Stack のセットアップ
@@ -289,8 +289,8 @@ sequenceDiagram
 
 ## L2 チェーンの開始
 
-OP Stack で作成したチェーンを動作させる前に`sunrise-alt-da`と`sunrise-data`を動作させる必要があります。
-詳しくは[**Sunrise Alt-DA**](./alt-da.md)を参照してください。
+OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-server`と`sunrise-data`を動作させる必要があります。
+詳しくは[**Sunrise OP DA Server**](./op-da-server.md)を参照してください。
 
 1. `op-geth`を開始
 

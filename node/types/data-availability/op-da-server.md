@@ -1,6 +1,6 @@
-# Sunrise Alt DA
+# Sunrise OP DA Server
 
-Sunrise Alt DA connects the L2 blockchain to Sunrise's Data Availability Layer.
+Sunrise OP DA Server connects the L2 blockchain to Sunrise's Data Availability Layer.
 Currently, L2 chains created in the [OP Stack](./optimism.md) are supported.
 
 See [OP Stack](./optimism.md) for L2 chain side configuration.
@@ -11,7 +11,7 @@ Requires a networked Sunrise node to operate. [Networks](../../networks/README.m
 
 Follow the [Node Guide](../consensus/README.md) on how to create a consensus node.
 
-## How to set up Alt DA
+## How to set up OP DA Server
 
 ### sunrise-data
 

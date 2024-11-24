@@ -1,6 +1,6 @@
-# Sunrise Alt DA
+# Sunrise OP DA Server
 
-Sunrise Alt DA は L2 ブロックチェーンと Sunrise のデータ可用性レイヤーを接続するソフトウェアです。
+Sunrise OP DA Server は L2 ブロックチェーンと Sunrise のデータ可用性レイヤーを接続するソフトウェアです。
 現在、[OP Stack](./optimism.md)を使用して作成された L2 チェーンをサポートしています。
 
 L2 側の設定については[OP Stack](./optimism.md)のページを参照してください。
@@ -11,7 +11,7 @@ L2 側の設定については[OP Stack](./optimism.md)のページを参照し�
 
 公開されている RPC か同じマシン上でコンセンサスノードを実行する必要があります。[Networks](../../networks/README.md)と[Node Guide](../consensus/README.md)のページを参照してください。
 
-## Surnise Alt DA のセットアップ
+## Surnise OP DA Server のセットアップ
 
 ### sunrise-data
 
@@ -77,14 +77,14 @@ L2 側の設定については[OP Stack](./optimism.md)のページを参照し�
    ipfs id
    ```
 
-### sunrise-alt-da
+### sunrise-op-da-server
 
-1. `sunrise-alt-da`のリポジトリをクローン
+1. `sunrise-op-da-server`のリポジトリをクローン
 
    ```bash
    cd ~
-   git clone https://github.com/sunriselayer/sunrise-alt-da.git
-   cd sunrise-alt-da
+   git clone https://github.com/sunriselayer/sunrise-op-da-server.git
+   cd sunrise-op-da-server
    make install
    ```
 
