@@ -1,40 +1,8 @@
 {
   "recommendations": [
-    /**
-     * If you use VSCode, be sure to install it.
-     */
-    "streetsidesoftware.code-spell-checker" // Code Spell Checker
-
-    // /**
-    //  * Code Fomatter - Optional but recommended
-    //  */
-    // "formulahendry.auto-close-tag", // Auto-complete closing tags
-    // "formulahendry.auto-rename-tag", // When the start tag is changed, the end tag is also automatically changed
-    // "dbaeumer.vscode-eslint", // ESLint
-    // "esbenp.prettier-vscode", // Prettier
-    // "jock.svg", // svgのformat
-
-    // /**
-    //  * Git - Optional but useful
-    //  */
-    // // ##
-    // "mhutchie.git-graph",
-    // "eamodio.gitlens",
-
-    // /**
-    //  * Official AI by GitHub・VSCode - Optional but useful
-    //  */
-    // //
-    // "github.copilot",
-    // "github.copilot-labs",
-    // "visualstudioexptteam.vscodeintellicode",
-    // "visualstudioexptteam.intellicode-api-usage-examples",
-
-    // /**
-    //  * misc- Optional but useful
-    //  */
-    // //
-    // "ms-ceintl.vscode-language-pack-ja", // 日本語化
-    // "vscode-icons-team.vscode-icons" // Icon of VSCode becomes easier to see
+    "streetsidesoftware.code-spell-checker",
+    "bierner.markdown-mermaid",
+    "davidanson.vscode-markdownlint",
+    "esbenp.prettier-vscode"
   ]
 }
