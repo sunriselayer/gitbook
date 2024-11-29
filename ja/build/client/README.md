@@ -14,7 +14,15 @@ npm i @sunriselayer/client
 
 [Buf CLI](https://buf.build/docs/installation/)のインストールが必要です。
 
-{% code title="./buf.yaml" overflow="wrap" lineNumbers="true" %}
+以下のようなディレクトリ構造になるように 2 つの YAML ファイルを作成します。
+
+- `[project]`
+  - `src`
+    - `main.rs`
+  - `buf.gen.yaml`
+  - `buf.yaml`
+
+{% code title="buf.yaml" overflow="wrap" lineNumbers="true" %}
 
 ```yaml
 version: v2
@@ -28,7 +36,7 @@ deps:
 
 {% endcode %}
 
-{% code title="./buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
+{% code title="buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
 
 ```yaml
 version: v2
@@ -56,6 +64,8 @@ inputs:
 ```
 
 {% endcode %}
+
+`[project]`ディレクトリにて以下のコマンドを実行します。
 
 ```shell
 buf dep update

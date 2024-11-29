@@ -14,7 +14,15 @@ Currently there is no support for client library, but you can easily generate th
 
 Installing [Buf CLI](https://buf.build/docs/installation/) is required.
 
-{% code title="./buf.yaml" overflow="wrap" lineNumbers="true" %}
+You need to create two YAML files as follows.
+
+- `[project]`
+  - `src`
+    - `main.rs`
+  - `buf.gen.yaml`
+  - `buf.yaml`
+
+{% code title="buf.yaml" overflow="wrap" lineNumbers="true" %}
 
 ```yaml
 version: v2
@@ -28,7 +36,7 @@ deps:
 
 {% endcode %}
 
-{% code title="./buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
+{% code title="buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
 
 ```yaml
 version: v2
@@ -56,6 +64,8 @@ inputs:
 ```
 
 {% endcode %}
+
+In the `[project]` directory, run the following commands.
 
 ```shell
 buf dep update
