@@ -26,12 +26,13 @@
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
 
-## 🛠️ Build L2 Blockchains
+## 🛠️ Build
 
-- [Supported L2 SDKs](build-l2-blockchains/supported-sdks.md)
-- [OP Stack](build-l2-blockchains/op-stack.md)
-  - [Sunrise OP DA Server](build-l2-blockchains/op-da-server.md)
-- [Rollkit](build-l2-blockchains/rollkit.md)
+- [Client](build/client/README.md)
+- [L2 Blockchains](build/l2-blockchains/README.md)
+  - [Rollkit](build-l2-blockchains/rollkit.md)
+  - [OP Stack](build-l2-blockchains/op-stack.md)
+    - [Sunrise OP DA Server](build-l2-blockchains/op-da-server.md)
 
 ## 🏗️ Run a Sunrise Node
 

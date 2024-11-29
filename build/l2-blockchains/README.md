@@ -5,7 +5,7 @@
 - [Rollkit](https://rollkit.dev/learn/intro)
   - [Sunrise Rollkit](https://github.com/sunriselayer/sunrise-rollkit): The software for connecting Rollkit L2 blockchain and Sunrise L1 blockchain.
 
-If you are looking to run a consensus node, please follow [the consensus node tutorial](../node/types/consensus/README.md).
+If you are looking to run a consensus node, please follow [the consensus node tutorial](../../node/types/consensus/README.md).
 
 ## Requirements
 
