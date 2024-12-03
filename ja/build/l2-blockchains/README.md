@@ -1,7 +1,7 @@
 # サポートされる L2 開発 SDK
 
 - [Rollkit](https://rollkit.dev/learn/intro)
-  - [Sunrise Rollkit](https://github.com/sunriselayer/sunrise-rollkit): Rollkit L2 ブロックチェーンと Sunrise L1 ブロックチェーンをを繋ぐソフトウェアです。
+  - [Sunrise Rollkit](https://rollkit.dev/tutorials/execution/beaconkit): Rollkit L2 ブロックチェーンと Sunrise L1 ブロックチェーンをを繋ぐソフトウェアです。
   - [BeaconKit](https://rollkit.dev/tutorials/beaconkit): BeaconKit と Rollkit を組み合わせることにより、EVM 対応の L2 ブロックチェーンを開発できます。
 - [OP Stack](https://docs.optimism.io/stack/getting-started)
   - [Sunrise OP DA Server](https://github.com/sunriselayer/sunrise-op-da-server): OP Stack L2 ブロックチェーンと Sunrise L1 ブロックチェーンを繋ぐソフトウェアです。

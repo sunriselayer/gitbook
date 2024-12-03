@@ -2,7 +2,7 @@
 
 - [Rollkit](https://rollkit.dev/learn/intro)
   - [Sunrise Rollkit](https://github.com/sunriselayer/sunrise-rollkit): The software for connecting Rollkit L2 blockchain and Sunrise L1 blockchain.
-  - [BeaconKit](https://rollkit.dev/tutorials/beaconkit): By combining BeaconKit and Rollkit, EVM compatible L2 blockchain is possible to develop.
+  - [BeaconKit](https://rollkit.dev/tutorials/execution/beaconkit): By combining BeaconKit and Rollkit, EVM compatible L2 blockchain is possible to develop.
 - [OP Stack](https://docs.optimism.io/stack/getting-started)
   - [Sunrise OP DA Server](https://github.com/sunriselayer/sunrise-op-da-server): The software for connecting OP Stack L2 blockchain and Sunrise L1 blockchain.
 
