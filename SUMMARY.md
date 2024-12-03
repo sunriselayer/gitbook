@@ -16,7 +16,6 @@
   - [Swap](learn/sunrise/swap.md)
   - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
-  - [JavaScript client](learn/sunrise/javascript-client.md)
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
 - [🏦 Gluon](learn/gluon/README.md)
