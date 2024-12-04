@@ -1,60 +1,38 @@
-## Off-Chain Blob Data (Data Availability v2)
+# Data Availability
 
-Sunrise v2 is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications even such as gaming. To achieve this, Sunrise combines *Data Availability Sampling (DAS)* with *zero-knowledge proof (ZKP) verification*, optimizing both network performance and data availability.
+Sunrise v2 is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications. To achieve this, Sunrise adopts off-chain BLOB data and executes Erasure Coding for each Blob data, not entire block data.
 
-### Key Features of Sunrise v2
+## Key Features of Sunrise v2
 
 Several enhancements in Sunrise v2 increase throughput, decentralization, and long-term data retrievability:
 
-- **Off-chain Erasure Encoding:** Blob data is erasure-coded off-chain, minimizing the computational and storage load on validators.
+- **Off-chain Erasure Encoding:** BLOB data is erasure-coded off-chain, minimizing the computational and storage load on validators.
 
 - **Off-chain Storage Integration:** Utilizing decentralized storage solutions such as IPFS and Arweave, data shards are stored externally. MsgPublishData includes only a metadata URI pointing to these erasure-coded data shares, reducing the on-chain block size requirements for Blob transactions and enhancing scalability.
 
-The architecture of Sunrise can be seen as a **blend between DAC and DA layers with DAS**, balancing throughput and trust models for a range of applications.
+## Design patterns of other DA layers
 
-[`CometBFT types.proto`](https://github.com/cometbft/cometbft/blob/main/proto/cometbft/types/v1/types.proto)
+### Data Availability Committee
 
-```protobuf
-// Header defines the structure of a block header.
-message Header {
-  // basic block info
-  cometbft.version.v1.Consensus version  = 1 [(gogoproto.nullable) = false];
-  string                        chain_id = 2 [(gogoproto.customname) = "ChainID"];
-  int64                         height   = 3;
-  google.protobuf.Timestamp     time     = 4 [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
+Data Availability Committee (DAC) is the traditional method to construct alternative Data Availability layer with low costs.
 
-  // prev block info
-  BlockID last_block_id = 5 [(gogoproto.nullable) = false];
+However, in DAC, it is impossible for clients to verify whether Data Availability attested by the committee is true or false, without downloading entire BLOB data.
 
-  // hashes of block data
-  bytes last_commit_hash = 6;  // commit from validators from the last block
-  bytes data_hash        = 7;  // transactions
+### Data Availability Sampling
 
-  // hashes from the app output from the prev block
-  bytes validators_hash      = 8;   // validators for the current block
-  bytes next_validators_hash = 9;   // validators for the next block
-  bytes consensus_hash       = 10;  // consensus params for current block
-  bytes app_hash             = 11;  // state after txs from the previous block
-  bytes last_results_hash    = 12;  // root hash of all results from the txs from the previous block
+In the Data Availability layers which adopts Data Availability Sampling (DAS), block data are processed for Erasure Coding. Then clients can verify the Data Availability only with downloading a part of block data, and can verify the inclusion of BLOB data in the block by using Merkle Tree structure.
 
-  // consensus info
-  bytes evidence_hash    = 13;  // evidence included in the block
-  bytes proposer_address = 14;  // original proposer of the block
-}
-```
-#### Design for Optimized Data Transfer
+In typical DAS setup, full nodes must transfer and download transaction data within the mempool.
 
-In this setup, full nodes must transfer and download transaction data within the mempool. 
+As BLOB data sizes grow, the network’s throughput could be limited by these transaction transfers, creating challenges for applications handling large BLOB data.
 
-As `BlobTx` sizes grow, the network’s throughput could be limited by these transaction transfers, creating challenges for applications handling large blob data.
+### Sunrise's design
 
+To address these problems in DAC and DAS, Sunrise v2 implements the following solutions:
 
-When the sizes of `BlobTxs` get larger, the throughput of the network will be limited by the txs transfer in the mempool. 
-
-To address this, Sunrise v2 implements the following solutions:
-
- 1. *Off-chain Erasure Encoding:* Blob data is encoded off-chain to reduce validator load.
- 2. *External Storage:* Blob data is stored on decentralized storage platforms like IPFS and Arweave. Rather than containing blob data on-chain, MsgPublishData holds a metadata URI pointing to erasure-coded data shares.
+1. Off-chain Erasure Encoding: Blob data is processed for Erasure Coding in off-chain program, to reduce validator load.
+1. BLOB data sharding: Not the entire block data but each BLOB data are processed for Erasure Coding. Clients still can verify the Data Availability for each BLOB data only with repeating to download shards, without downloading entire data. Clients also can verify the inclusion of BLOB in the block by using Merkle Tree structure.
+1. *External Storage:* Blob data is stored on decentralized storage platforms like IPFS and Arweave. Rather than containing blob data on-chain, MsgPublishData holds a metadata URI pointing to erasure-coded data shares.
 
 ```protobuf
 message MsgPublishData {
@@ -71,21 +49,13 @@ message Metadata {
 }
 ```
 
-
-Data availability is confirmed through zero-knowledge proofs (ZKP) using double-hashed shard data (`shard_double_hashed`), allowing validators to verify the presence of shard data without revealing it. This integration is done through [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
-
-
-
- 
-
-
+Data availability is attested with Optimistic way. If the fraud proof is submitted to the Sunrise network, validators will submit Zero-Knowledge Proofs (ZKP) using double-hashed shard data (`shard_double_hashes`), allowing validators to verify the presence of shard data without revealing it. This integration is done through [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
 
 ### Benefits of Sunrise v2
 
 - **Increased Network Throughput:** Larger block sizes are achievable by reducing on-chain storage needs.
 - **Enhanced Data Retrievability:** Storing data off-chain allows for flexible, long-term data retention.
 - **Improved Network Decentralization:** By reducing validator load, Sunrise supports a more decentralized network structure.
-
 
 ```mermaid
 sequenceDiagram
@@ -236,8 +206,7 @@ Off-chain attestation (e.g., **Sunrise V2**) relies on external systems (like **
 
 ### Tx Mempool Scalability
 
-
-*Transaction mempool scalability* is a major limitation in on-chain DA systems. As the size of transactions (such as `BlobTxs`) grows, the transaction mempool, which temporarily holds pending transactions, can become overloaded, limiting throughput and scalability.
+*Transaction mempool scalability* is a major limitation in on-chain DA systems. As the size of BLOB data grows, the transaction mempool, which temporarily holds pending transactions, can become overloaded, limiting throughput and scalability.
 
 In off-chain DA systems, this limitation is mitigated by storing large amounts of data externally, with only the necessary hashes or metadata being stored on-chain. This allows for **greater scalability** and the ability to process larger volumes of data without congesting the mempool.
 
@@ -259,6 +228,6 @@ In contrast, off-chain DA attestation significantly reduces the load on validato
 
 On-chain DA attestation, used by systems **like Celestia and Sunrise V1**, has strong resistance to false positives since all the data is stored and verified directly on-chain, making it difficult to falsely claim that data is available when it is not.
 
-In off-chain DA attestation (e.g., **Sunrise V2**), false-positive resistance is maintained through the use of **zero-knowledge proofs** and cryptographic commitments like **erasure coding**. By verifying the double-hashed values of shard data, validators can ensure that the data is indeed available without needing to store or directly access the entire data set. 
+In off-chain DA attestation (e.g., **Sunrise V2**), false-positive resistance is maintained through the use of **zero-knowledge proofs** and cryptographic commitments like **erasure coding**. By verifying the double-hashed values of shard data, validators can ensure that the data is indeed available without needing to store or directly access the entire data set.
 
 However, there may still be edge cases where *off-chain storage solutions* or *network latency* could introduce opportunities for false-positive attestations, though these are minimized by careful design and redundancy in the verification process.
