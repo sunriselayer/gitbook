@@ -35,7 +35,7 @@ The actual inflation rate will vary from the target inflation rate according to 
 | Max inflation | 10% |
 | Min inflation | 6%  |
 
-#### Off chain parameters
+#### Theoretical parameters
 
 |                            |     |
 | -------------------------- | --- |
