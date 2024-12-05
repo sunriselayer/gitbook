@@ -12,7 +12,7 @@ The `x/fee` module in Sunrise serves as a critical component for managing transa
 
 **Bypass Denominations (bypass_denoms):** Certain denominations can bypass the standard fee denomination restrictions, allowing additional flexibility for specialized use cases.
 
-**Default Parameters:** The default burn_ratio is set to 0.5, meaning 50% of the transaction fees are burned.
+**Sunrise Configured Parameters:** The default burn_ratio is set to 0.5, meaning 50% of the transaction fees are burned.
 
 - The default fee_denom is "urise".
 
@@ -43,8 +43,8 @@ The x/fee module parameters can be configured dynamically, with validation enfor
 
   **Fee Deduction and Burning:**
 
-- When a transaction is processed, fees are deducted from the sender's account and sent to the fee collector module account.
-- The Burn method of the feeKeeper is invoked to burn the specified portion of the fees, reducing the supply of $RISE tokens.
+- When a transaction is processed, fees are deducted from the sender's account and a portion is sent to the fee collector module account.
+- The other portion is burnt, which reduces the supply of $RISE tokens.
 
     ```go
     func DeductFees(bankKeeper BankKeeper, ctx sdk.Context, acc sdk.AccountI, fees sdk.Coins, feeKeeper feekeeper.Keeper) error {
