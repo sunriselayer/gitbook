@@ -44,7 +44,7 @@ To get $vRISE, users need to provide liquidity in
 
 ### Formal expression
 
-- Year: $$ t \in \{0,\ 1,\ 2,\ \dots\}$$
+- Year: $$ t \in \{0,\ 1,\ 2,\ \dots\} $$
 - Supply of $RISE: $$ s_t^{\text{RISE}} $$
 - Supply of $vRISE: $$ s_t^{\text{vRISE}} $$
 - Supply: $$ s_t = s_t^{\text{RISE}} + s_t^{\text{vRISE}} $$
@@ -72,7 +72,8 @@ which means that tx fee is not burnt.
   because there must be burnt tx fees.
 - Zero Observed Inflation Rate doesn't mean zero rewards for validators and
   stakers. If $$ b_t > 0$$
-  , then $b_t$ amount of $vRISE will be minted for rewards.
+  , then $b_t$ amount of $vRISE will be minted for rewards
+- Inflation Rate Cap is strictly complied, so there is also a possibility of Observed Inflation Rate being negative value.
 
 | Year | Inflation Rate Cap |  Total Supply | Observed Inflation Rate |
 | ---- | -----------------: | ------------: | ----------------------: |
