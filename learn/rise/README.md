@@ -1,8 +1,10 @@
 # RISE
 
-$RISE token is the native token of Sunrise network. $RISE token can be used for fee. A part of RISE tx fee will be burnt in [Fee](../sunrise/fee.md) module.
+$RISE token is the native token of Sunrise network. $RISE token can be used for
+fee. A part of RISE tx fee will be burnt in [Fee](../sunrise/fee.md) module.
 
-$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the blockchain means 1 RISE in the real world.
+$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the
+blockchain means 1 RISE in the real world.
 
 - Ticker: RISE
 - Denom in the blockchain: `urise`
@@ -11,14 +13,18 @@ $RISE can be minted by burning $vRISE 1 to 1.
 
 ## vRISE
 
-$vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
+$vRISE token is a non-transferable token for staking. The staked amount will be
+calculated as a voting power for the governance.
 
 - Ticker: vRISE
 - Denom in the blockchain: `uvrise`
 
-$vRISE can be staked to the Sunrise network. The staked amount will be calculated as a voting power for the governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+$vRISE can be staked to the Sunrise network. The staked amount will be
+calculated as a voting power for the governance. Furthermore, the rewards for
+stakers will be distributed in proportion to the staked amount.
 
-To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/liquidity-pool.md).
+To get $vRISE, users need to provide liquidity in
+[Liquidity Pool](../sunrise/liquidity-pool.md).
 
 ## Tokenomics v2
 
@@ -33,7 +39,8 @@ To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/li
 - A part of `[Supply of $RISE]` is burnt when it is used as tx fees.
 - Supply will grow with following the Supply Cap and Inflation Rate Cap.
 - Observed Inflation Rate is different from Inflation Rate Cap.
-- Inflationally minted $vRISE will be distributed among stakers validators and delegators for rewards.
+- Inflationally minted $vRISE will be distributed among stakers validators and
+  delegators for rewards.
 
 ### Formal expression
 
@@ -48,42 +55,49 @@ To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/li
   - It must be satisfied: $$ s_t \le \bar{s} $$
 - Inflation Rate Cap: $$ \bar{\pi}_t $$
 - Tx fee burnt $RISE: $$ b_t $$
-- Supply transition: $$ s_{t+1} = \min\{(1 + \bar{\pi}_t) (s_t - b_t),\ \bar{s}\} $$
-- Inflation Rate Cap transition: $$ \bar{\pi}_{t+1} = \max\left\{(1 - \delta) \bar\pi_t,\ \text{0.02} \right\} $$
+- Supply transition:
+  $$ s_{t+1} = \min\{(1 + \bar{\pi}_t) (s_t - b_t),\ \bar{s}\} $$
+- Inflation Rate Cap transition:
+  $$ \bar{\pi}_{t+1} = \max\left\{(1 - \delta) \bar\pi_t,\ \text{0.02} \right\} $$
   - It means: $$ \min_t \bar{\pi}_t = \text{0.02} = \text{2\%} $$
 - Observed Inflation Rate: $$ \pi_t = \frac{s_{t+1} - s_t}{s_t} $$
 
 #### Simulation
 
-This simulation assumes that $$ b_t = 0 $$ which means that tx fee is not burnt.
+This simulation assumes that $$ b_t = 0 $$
 
-- During year 0 to 10, actual Inflation Rate will be lower than this simulation because there must be burnt tx fees.
-- Zero Observed Inflation Rate doesn't mean zero rewards for validators and stakers. If $$ b_t > 0$$, then $b_t$ amount of $vRISE will be minted for rewards.
+which means that tx fee is not burnt.
 
-|Year|Inflation Rate Cap|Total Supply|Observed Inflation Rate|
-|---|--:|--:|--:|
-|0|10.00%|500,000,000|10.00%|
-|1|9.20%|550,000,000|9.20%|
-|2|8.46%|600,600,000|8.46%|
-|3|7.79%|651,434,784|7.79%|
-|4|7.16%|702,161,229|7.16%|
-|5|6.59%|752,463,565|6.59%|
-|6|6.06%|802,057,048|6.06%|
-|7|5.58%|850,690,179|5.58%|
-|8|5.13%|898,145,641|5.13%|
-|9|4.72%|944,240,170|4.72%|
-|10|4.34%|988,823,543|1.13%|
-|11|4.00%|1,000,000,000|0.00%|
-|12|3.68%|1,000,000,000|0.00%|
-|13|3.38%|1,000,000,000|0.00%|
-|14|3.11%|1,000,000,000|0.00%|
-|15|2.86%|1,000,000,000|0.00%|
-|16|2.63%|1,000,000,000|0.00%|
-|17|2.42%|1,000,000,000|0.00%|
-|18|2.23%|1,000,000,000|0.00%|
-|19|2.05%|1,000,000,000|0.00%|
-|20|2.00%|1,000,000,000|0.00%|
-|21|2.00%|1,000,000,000|0.00%|
+- During year 0 to 10, actual Inflation Rate will be lower than this simulation
+  because there must be burnt tx fees.
+- Zero Observed Inflation Rate doesn't mean zero rewards for validators and
+  stakers. If $$ b_t > 0$$
+  , then $b_t$ amount of $vRISE will be minted for rewards.
+
+| Year | Inflation Rate Cap |  Total Supply | Observed Inflation Rate |
+| ---- | -----------------: | ------------: | ----------------------: |
+| 0    |             10.00% |   500,000,000 |                  10.00% |
+| 1    |              9.20% |   550,000,000 |                   9.20% |
+| 2    |              8.46% |   600,600,000 |                   8.46% |
+| 3    |              7.79% |   651,434,784 |                   7.79% |
+| 4    |              7.16% |   702,161,229 |                   7.16% |
+| 5    |              6.59% |   752,463,565 |                   6.59% |
+| 6    |              6.06% |   802,057,048 |                   6.06% |
+| 7    |              5.58% |   850,690,179 |                   5.58% |
+| 8    |              5.13% |   898,145,641 |                   5.13% |
+| 9    |              4.72% |   944,240,170 |                   4.72% |
+| 10   |              4.34% |   988,823,543 |                   1.13% |
+| 11   |              4.00% | 1,000,000,000 |                   0.00% |
+| 12   |              3.68% | 1,000,000,000 |                   0.00% |
+| 13   |              3.38% | 1,000,000,000 |                   0.00% |
+| 14   |              3.11% | 1,000,000,000 |                   0.00% |
+| 15   |              2.86% | 1,000,000,000 |                   0.00% |
+| 16   |              2.63% | 1,000,000,000 |                   0.00% |
+| 17   |              2.42% | 1,000,000,000 |                   0.00% |
+| 18   |              2.23% | 1,000,000,000 |                   0.00% |
+| 19   |              2.05% | 1,000,000,000 |                   0.00% |
+| 20   |              2.00% | 1,000,000,000 |                   0.00% |
+| 21   |              2.00% | 1,000,000,000 |                   0.00% |
 
 ## Tokenomics v1 (deprecated)
 
@@ -91,7 +105,8 @@ This simulation assumes that $$ b_t = 0 $$ which means that tx fee is not burnt.
 
 #### On chain parameters
 
-The actual inflation rate will vary from the target inflation rate according to the bonded ratio.
+The actual inflation rate will vary from the target inflation rate according to
+the bonded ratio.
 
 |               |     |
 | ------------- | --- |
@@ -100,10 +115,10 @@ The actual inflation rate will vary from the target inflation rate according to 
 
 #### Theoretical parameters
 
-|                            |     |
-| -------------------------- | --- |
-| Disinflation rate per year | 8%  |
-| Converged inflation        | 2%  |
+|                            |    |
+| -------------------------- | -- |
+| Disinflation rate per year | 8% |
+| Converged inflation        | 2% |
 
 ### Simulations
 
