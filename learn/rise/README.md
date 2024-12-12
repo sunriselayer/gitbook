@@ -1,13 +1,13 @@
 # RISE
 
 $RISE token is the native token of Sunrise network. $RISE token can be used for
-fee. A part of RISE tx fee will be burnt in [Fee](../sunrise/fee.md) module.
+fees. A part of RISE tx fee will be burnt in the [Fee](../sunrise/fee.md) module.
 
-$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` in the
-blockchain means 1 RISE in the real world.
+$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` on the
+Sunrise network converts to 1 RISE in the real world.
 
 - Ticker: RISE
-- Denom in the blockchain: `urise`
+  Denomination on blockchain: `urise`
 
 $RISE can be minted by burning $vRISE 1 to 1.
 
@@ -20,7 +20,7 @@ calculated as a voting power for the governance.
 - Denom in the blockchain: `uvrise`
 
 $vRISE can be staked to the Sunrise network. The staked amount will be
-calculated as a voting power for the governance. Furthermore, the rewards for
+calculated as voting power for governance. Furthermore, the rewards for
 stakers will be distributed in proportion to the staked amount.
 
 To get $vRISE, users need to provide liquidity in
