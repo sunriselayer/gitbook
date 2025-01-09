@@ -21,7 +21,7 @@ Sunrise extends Berachain’s Proof of Liquidity (PoL) model to rollups and L2s,
 
 Sunrise utilizes Proof of Liquidity to enhance the DA experience, while providing a mutually beneficial environment to increase the liquidity and sovereignty of both L2s on Sunrise, and the Sunrise L1 itself.
 
-Sunrise can also incentivize the DA network whereas other DA networks depend on altruism or voluntary contributions, thus enabling Sunrise to enhance the throughput of the DA network. This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also explore fully on-chain new technologies like AI, Gaming, and more.
+Sunrise incentivizes the data availability (DA) network primarily through its Proof of Liquidity (PoL) model rather than relying on purely altruistic or voluntary contributions. In practice, users or developers providing liquidity to certain whitelisted pools receive the right to publish data (i.e., blobspace) in return. This shifts DA fees from being paid in a single native token to a more flexible arrangement, where participants lock assets to earn blobspace. Because liquidity providers benefit financially, they have a direct stake in maintaining reliable and secure data availability, aligning incentives across the network.This feature and the incentive for optional long term data availability enables developers to build not only scalable L2s but also explore new fully on-chain  technologies like AI, Gaming, and more.
 
 ### Why should developers use Sunrise?
 
