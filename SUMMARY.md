@@ -29,6 +29,7 @@
 - [Client](build/client/README.md)
 - [L2 Blockchains](build/l2-blockchains/README.md)
   - [Rollkit](build/l2-blockchains/rollkit.md)
+    - [Sunrise Data](build/l2-blockchains/sunrise-data.md)
   - [OP Stack](build/l2-blockchains/op-stack.md)
     - [Sunrise OP DA Server](build/l2-blockchains/op-da-server.md)
 
