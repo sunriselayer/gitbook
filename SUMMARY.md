@@ -34,6 +34,7 @@
   - [OP Stack](build/l2-blockchains/op-stack.md)
     - [Sunrise OP DA Server](build/l2-blockchains/op-da-server.md)
 - [Validators](build/validators/README.md)
+  - [Proof of Data Availability](build/validators/data-availability-proof.md)
   - [Self Delegation](build/validators/self-delegation.md)
 
 ## 🏗️ Run a Sunrise Node
