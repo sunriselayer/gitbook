@@ -11,6 +11,9 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
 
 ### How to set up sunrise-data
 
+1. Running `sunrised`
+See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for setting up.
+
 1. Clone sunrise-data repo
 
    ```bash
@@ -29,33 +32,31 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
 
    To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
 
-   Chage `home_path` to your .sunrise directory and `publisher_account` to your sunrised key's name
+   Change `home_path` to your .sunrise directory and `publisher_account` to your sunrised key's name
 
    ```toml
    [api]
    port = 8000
    ipfs_api_url = ""
    ipfs_addrinfo = ""
-   submit_challenge = true
-   submit_proof = true
 
    [chain]
    addr_prefix="sunrise"
-   keyring_backend="test"
    home_path="/home/ubuntu/.sunrise"
-   publisher_account="validator" # your key name
-   fees="10000uvrise"
-   cometbft_rpc="http://localhost:26657" # or available RPC
-   vote_extension_period=2
+   keyring_backend="test"
+   sunrised_rpc="http://localhost:26657"
+   
+   [publish]
+   publisher_account="your_publisher_account"
+   publish_fees="10000urise"
+
+   [rollkit]
+   port=7980
+   data_shard_count=5
+   parity_shard_count=5
    ```
 
-1. Start Daemon
-
-   ```bash
-   sunrise-data
-   ```
-
-### Integrate IPFS
+### Run IPFS on local
 
 1. Run IPFS
 
@@ -72,4 +73,18 @@ Follow the [Node Guide](../consensus/README.md) on how to create a consensus nod
 
    ```bash
    ipfs id
+   ```
+
+### Start
+
+- Start Daemon for Rollkit
+
+   ```bash
+   sunrise-data rollkit
+   ```
+
+- Start Daemon for OP Stack
+
+   ```bash
+   sunrise-data api
    ```

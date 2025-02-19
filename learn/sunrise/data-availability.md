@@ -37,19 +37,34 @@ To address these problems in DAC and DAS, Sunrise v2 implements the following so
 ```protobuf
 message MsgPublishData {
   option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1;
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
   string metadata_uri = 2;
-  repeated bytes shard_double_hashes = 3;
-}
-
-message Metadata {
-  uint64 shard_size = 1;
-  uint64 shard_count = 2;
-  repeated string shard_uris = 3;
+  uint64 parity_shard_count = 3;
+  repeated bytes shard_double_hashes = 4;
+  string data_source_info = 5;
 }
 ```
 
 Data availability is attested with Optimistic way. If the fraud proof is submitted to the Sunrise network, validators will submit Zero-Knowledge Proofs (ZKP) using double-hashed shard data (`shard_double_hashes`), allowing validators to verify the presence of shard data without revealing it. This integration is done through [Vote Extension of ABCI 2.0](https://docs.cosmos.network/main/build/abci/vote-extensions).
+
+### Flow of proof
+
+Submitted data will have one of the following statuses
+
+1. CHALLENGE_PERIOD
+1. CHALLENGING
+1. VERIFIED
+1. REJECTED
+
+- CHALLENGE_PERIOD
+It will remain in this status for a certain period of time after it is submitted. It will change to `CHALLENGING` if it is submitted to shards with `MsgInvalidity` above the threshold. Otherwise, it becomes `VERIFIED`.
+- CHALLENGING
+The data may be invalid. Validators verify that the data is valid and submits proof. If the validated shard meets the criteria, it becomes `VERIFIED`; if not, it becomes `REJECTED`.
+The method of talling is explained in [Specification for Zero-Knowledge Proof](#specification-for-zero-knowledge-proof).
+- VERIFIED
+The MetadataUri of the data is taken into the block and can be referenced externally.
+- REJECTED
+The data was determined to be invalid as a result of validators' validation. The data is not taken into the block.
 
 ### Benefits of Sunrise v2
 
