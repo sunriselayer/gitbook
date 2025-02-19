@@ -18,7 +18,7 @@ This network is used to test operations on the mainnet. Normally, the same envir
 
 ### Testnet Details
 
-[sunrise-test-0.2](https://github.com/sunriselayer/network/tree/main/sunrise-test-0.2)
+[sunrise-test-0.2 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-0.2)
 
 | Detail | Value                                            |
 | ------ | ------------------------------------------------ |
@@ -41,7 +41,7 @@ Since our testnet does not support DA, please use it to test L2 chains, etc.
 
 ### DA Testnet Details
 
-[sunrise-test-da-1](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-1)
+[sunrise-test-da-1 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-1)
 
 | Detail | Value                                        |
 | ------ | -------------------------------------------- |
