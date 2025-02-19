@@ -28,19 +28,20 @@ In Sunrise, `seld-delegatable` is prefixed, as in `seld-delegatable-continuous-l
 The following Txs are supported with lockup accounts
 
 1. MsgSend
-1. MsgDelegate
+<!-- 1. MsgDelegate
 1. MsgUndelegate
-1. MsgWithdrawReward
+1. MsgWithdrawReward -->
 
 MsgSend can move unlocked funds to other accounts.
-MsgDelegate can also delegate locked funds.
-MsgWithdrawReward can claim the delegation reward to the validator. The reward is added to the lockup account and is subject to lockup.
+<!-- MsgDelegate can also delegate locked funds.
+MsgWithdrawReward can claim the delegation reward to the validator. The reward is added to the lockup account and is subject to lockup. -->
 
-Sunrise App will support these txs from lockup accounts.
+You can see the status of your lockup account by searching your account in [Risescan](https://risescan.sunriselayer.io). If you want to retrieve your lockup balance, go to [Sunrise App](https://app.sunriselayer.io/accounts/lockup) and send this tx.
+
 On CLI, use
 
 ```bash
-sunrised tx accounts execute <account-address> <execute-msg-type-url> <json-message> [flags]
+sunrised tx accounts execute <account-address> sunrise.accounts.self_delegatable_lockup.v1.MsgSend "{\"to_address\":\"sunrise1hdc7mgrxah8h8m9dusclvcgeqyq8lfvucurpqu\",\"amount\":[{\"amount\":\"4000\", \"denom\":\"urise\"}]}" [flags]
 ```
 
 ## Query
