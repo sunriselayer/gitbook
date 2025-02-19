@@ -54,3 +54,11 @@ Please check our proposals and community. See [sunrise-test-da-1](https://github
 Data Availability is supported in v0.3.0 and later.
 
 [Released Binary](https://github.com/sunriselayer/sunrise/releases)
+
+### DA Testnet Faucet
+
+RISE faucet is available for testing DA testnet.
+
+```bash
+curl https://da-faucet-requests-le6vcwy6pa-an.a.run.app/?address=<your_address>
+```
