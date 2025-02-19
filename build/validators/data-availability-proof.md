@@ -94,8 +94,35 @@ See [Validator Node](../../node/types/consensus/validator-node.md) for setting u
 
 ### Start to proof data
 
+On your sunrise-data directory,
+
 ```bash
 sunrise-data validator
+```
+
+Or register as a service
+
+```bash
+vi /etc/systemd/system/sunrise-data.service
+systemctl enable sunrise-data
+systemctl start sunrise-data
+```
+
+```service
+[Unit]
+Description = sunrise-data validator daemon
+After=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/sunrise-data
+ExecStart = /home/ubuntu/go/bin/sunrise-data validator
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=1400000
+
+[Install]
+WantedBy = multi-user.target
 ```
 
 If the setup is successful, the display will look like this
