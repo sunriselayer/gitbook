@@ -41,20 +41,25 @@ You can see the status of your lockup account by searching your account in [Rise
 On CLI, use
 
 ```bash
-sunrised tx accounts execute <account-address> sunrise.accounts.self_delegatable_lockup.v1.MsgSend "{\"to_address\":\"sunrise1hdc7mgrxah8h8m9dusclvcgeqyq8lfvucurpqu\",\"amount\":[{\"amount\":\"4000\", \"denom\":\"urise\"}]}" [flags]
+sunrised tx accounts execute [lockup-account-address] sunrise.accounts.self_delegatable_lockup.v1.MsgSend "{\"sender\":<owner-account-address>,\"to_address\":<recipient-account-address>,\"amount\":[{\"amount\":\"4000\", \"denom\":\"urise\"}]}" [flags]
 ```
 
 ## Query
 
+Use `x/selfdelegation` query and find your lockup accounts.
+
+```bash
+sunrised q selfdelegation lockup-accounts-by-owner [your-address]
+```
+
 The following queries are supported with lockup accounts
 
 1. QueryLockupAccountInfoRequest
-1. QueryLockingPeriodsRequest
 1. QuerySpendableAmountRequest
 
-Sunrise App & Risescan will support to display these info.
+Sunrise App & Risescan supports to display these info.
 On CLI, use
 
 ```bash
-sunrised query accounts query <account-address> <query-request-type-url> <json-message> [flags]
+sunrised query accounts query [lockup-account-address] [query-request-type-url] [json-message] [flags]
 ```

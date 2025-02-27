@@ -11,7 +11,7 @@ Validators can increase their Voting Power by staking &#36;RISE to themselves. T
 It creates a self-delegation proxy account if one does not exist. &#36;RISE is sent to the proxy account to start delegation.
 
 ```bash
-sunrised tx selfdelegation self-delegate <amount>
+sunrised tx selfdelegation self-delegate [amount] [flags]
 ```
 
 - MsgWithdrawSelfDelegationUnbonded
@@ -19,7 +19,7 @@ After Undelegate, after a certain period has expired, and when Unbonded, you can
 Undelegate can be done with Proxy Account Tx as described below.
 
 ```bash
-sunrised tx selfdelegation withdraw-self-delegation-unbonded <amount>
+sunrised tx selfdelegation withdraw-self-delegation-unbonded [amount] [flags]
 ```
 
 ## Self Delegation Proxy Account
@@ -27,6 +27,14 @@ sunrised tx selfdelegation withdraw-self-delegation-unbonded <amount>
 &#36;RISE self-delegation is processing through the Self Delegation Proxy Account.
 
 When self-delegation takes place, the &#36;RISE is moved to the Proxy Account. The Proxy Account converts the &#36;RISE to &#36;vRISE and acts as your delegator.
+
+### Query
+
+Use `x/selfdelegation` query and find your proxy account.
+
+```bash
+sunrised q selfdelegation self-delegation-proxy-account-by-owner [your-address]
+```
 
 ### Excute Msg
 
@@ -37,7 +45,7 @@ When self-delegation takes place, the &#36;RISE is moved to the Proxy Account. T
 On CLI, use
 
 ```bash
-sunrised tx accounts execute <account-address> <execute-msg-type-url> <json-message> [flags]
+sunrised tx accounts execute [proxy-account-address] [execute-msg-type-url] [json-message] [flags]
 ```
 
 - MsgUndelegate
@@ -109,7 +117,7 @@ The following Txs are supported with self-delegatable lockup accounts
 On CLI, use
 
 ```bash
-sunrised tx accounts execute <account-address> <execute-msg-type-url> <json-message> [flags]
+sunrised tx accounts execute [account-address] [execute-msg-type-url] [json-message] [flags]
 ```
 
 #### sunrise.accounts.self_delegatable_lockup.v1.MsgSelfDelegate
