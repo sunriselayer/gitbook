@@ -7,7 +7,7 @@ Welcome to the Sunrise Point Program! This program rewards users for their activ
 The Sunrise Point Program offers multiple ways to earn points through activities:
 
 - Daily
-  - Staking RISE tokens
+  - Staking vRISE tokens
   - Providing liquidity (LP)
 - Up to specific time
   - Referring new users
