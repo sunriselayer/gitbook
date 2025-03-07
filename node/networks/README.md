@@ -60,5 +60,27 @@ Data Availability is supported in v0.3.0 and later.
 RISE faucet is available for testing DA testnet.
 
 ```bash
-curl https://da-faucet-requests-le6vcwy6pa-an.a.run.app/?address=<your_address>
+curl https://da-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
+```
+
+### How to use sunrise-data on DA Testnet
+
+[sunrise-data](https://github.com/sunriselayer/sunrise-data) provides validator assistance and functionality for L2 chain publishers.
+
+See [Sunrise Data](../../build/l2-blockchains/sunrise-data.md) and [Proof of Data Availability](../../build/validators/data-availability-proof.md) for details.
+
+Use the same version of `sunrise-data` as the `sunrised` binary.
+
+```bash
+git clone https://github.com/sunriselayer/sunrise-data.git
+cd sunrise-data
+git checkout v0.4.0
+make build
+```
+
+For validators, run the following command to register a proof deputy from your validator.
+
+```bash
+sunrised tx da register-proof-deputy [deputy-address] \
+--from [your-validator] --chain-id sunrise-test-da-1 --fees 10000urise --gas 1000000 --yes
 ```
