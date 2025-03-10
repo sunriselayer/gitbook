@@ -26,7 +26,6 @@ Although validators can send tx themselves to send proof data, it is recommended
 sunrised tx da register-proof-deputy [deputy_address] \
    --from [your_validator_key] \
    --chain-id=$CHAIN_ID \
-   --keyring-backend=test \
    --fees=21000urise \
    --gas=220000
 ```
