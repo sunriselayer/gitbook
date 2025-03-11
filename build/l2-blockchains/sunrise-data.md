@@ -41,7 +41,7 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    ipfs_addrinfo = ""
 
    [chain]
-   addr_prefix="sunrise"
+   address_prefix="sunrise"
    home_path="/home/ubuntu/.sunrise"
    keyring_backend="test"
    sunrised_rpc="http://localhost:26657"
