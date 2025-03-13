@@ -231,15 +231,20 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    forge script scripts/deploy/Deploy.s.sol:Deploy \
    --broadcast --private-key $GS_ADMIN_PRIVATE_KEY \
    --rpc-url $L1_RPC_URL --slow
+   ```
 
+   L2 Allocs
+
+   ```bash
    CONTRACT_ADDRESSES_PATH=deployments/artifact.json \
    DEPLOY_CONFIG_PATH=deploy-config/getting-started.json \
    STATE_DUMP_PATH=deploy-config/statedump.json \
    forge script scripts/L2Genesis.s.sol:L2Genesis \
    --sig 'runWithStateDump()' \
    --chain 42069
-   ## YOUR_L2_CHAINID
    ```
+
+   Use your L2 chain id in `--chain`.
 
    > If you see a nondescript error that includes `EvmError: Revert` and `Script failed` then you likely need to change the `IMPL_SALT` environment variable. This variable determines the addresses of various smart contracts that are deployed via [CREATE2(opens in a new tab)](https://eips.ethereum.org/EIPS/eip-1014). If the same `IMPL_SALT` is used to deploy the same contracts twice, the second deployment will fail. **You can generate a new `IMPL_SALT` by running `direnv allow` anywhere in the Optimism Monorepo.**
 
