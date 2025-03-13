@@ -6,12 +6,14 @@ This is a guide to connecting an L2 chain created using Rollkit to Sunrise chain
 
 ## Sunrise Data
 
-**Before Rollkit start, set up sunrised & sunrise-data, etc.**
-
-[Sunrise Consensus Node](../../../node/types/consensus/README.md)
-
+**Before optimism start, set up sunrise-data.**
 [Sunrise Data Document](./sunrise-data.md)
+
+It is recommended to run the full consensus node locally, without relying on an external RPC.
+[Sunrise Consensus Node Document](../../../node/types/consensus/README.md)
 
 ## Rollkit
 
-See [Rollkit](./rollkit.md) to start Rollkit L2 chain.
+Start your Rollkit L2 chain.
+
+[Rollkit L2 Chain Document](./rollkit.md)

@@ -6,11 +6,11 @@ This is a guide to connecting an L2 chain created using OP Stack to Sunrise chai
 
 ## Sunrise Data
 
-**Before optimism start, set up sunrised & sunrise-data, etc.**
-
-[Sunrise Consensus Node](../../../node/types/consensus/README.md)
-
+**Before optimism start, set up sunrise-data.**
 [Sunrise Data Document](./sunrise-data.md)
+
+It is recommended to run the full consensus node locally, without relying on an external RPC.
+[Sunrise Consensus Node Document](../../../node/types/consensus/README.md)
 
 ## OP Stack
 
