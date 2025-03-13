@@ -67,7 +67,7 @@ curl https://da-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
 
 [sunrise-data](https://github.com/sunriselayer/sunrise-data) provides validator assistance and functionality for L2 chain publishers.
 
-See [Sunrise Data](../../build/l2-blockchains/sunrise-data.md) and [Proof of Data Availability](../../build/validators/data-availability-proof.md) for details.
+See [Sunrise Data](../../build/l2-blockchains/rollkit/sunrise-data.md) and [Proof of Data Availability](../../build/validators/data-availability-proof.md) for details.
 
 Use the same version of `sunrise-data` as the `sunrised` binary.
 
