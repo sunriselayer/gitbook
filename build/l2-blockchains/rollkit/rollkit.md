@@ -1,18 +1,12 @@
-# Rollkit + Sunrise
-
-Sunrise's Data Availability Layer supports Layer 2 blockchains created using [Rollkit](https://github.com/rollkit/rollkit)
-
-This is a guide to connecting an L2 chain created using Rollkit to Sunrise chain with [Sunrise Data](https://github.com/sunriselayer/sunrise-data). Data Availability layer is supported in Sunrise v0.3.1-rc1 and later.
-
-## How to run Sunrise Rollkit
+# How to run Sunrise Rollkit
 
 As an example, here is how to use Rollkit to create an L2 chain and run it on the Sunrise's Data Availability Layer.
 
-### Dependencies
+## Dependencies
 
 Dependencies and general installation instructions for Ubuntu 22.04.
 
-### Set up Sunrise Data
+## Set up Sunrise Data
 
 Rollkit support is provided via a server included in sunrise-data.
 See [Rollkit documentation](https://rollkit.dev/tutorials/da/overview) for the role of the DA server.
@@ -20,7 +14,7 @@ See [Rollkit documentation](https://rollkit.dev/tutorials/da/overview) for the r
 See [Sunrise Data document](./sunrise-data.md) to set it up.
 By default, the GRPC server for Rollkit support listens on port 7980.
 
-### Run Rollkit
+## Run Rollkit
 
 1. Clone rollkit repo
 
