@@ -60,8 +60,10 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
    ```bash
    cd optimism
-   git checkout v1.9.1
+   git checkout v1.12.0
    ```
+
+　We have confirmed the operation with the latest version at the time of document update. If you use other versions, please check the differences.
 
 1. **Run the following to check you have all dependencies**
 
@@ -75,7 +77,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    make op-node op-batcher op-proposer
    ```
 
-   If you are having issues with this step, make sure your versions match those in the optimism docs. Specifically, you may have to downgrade your go version to 1.21
+   If you are having issues with this step, make sure your versions match those in the optimism docs. Specifically, you may have to downgrade your go version.
 
 1. **Clone and build op-geth**
 
@@ -83,8 +85,11 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    cd ~
    git clone https://github.com/ethereum-optimism/op-geth.git
    cd op-geth
+   git checkout v1.101503.0
    make geth
    ```
+
+　 For more information on supported `op-geth, please check the [Production Releases](https://github.com/ethereum-optimism/optimism/tree/v1.12.0?tab=readme-ov-file#production-releases) in the optimism repository.
 
 1. **Fill out environment variables**
 
@@ -200,7 +205,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    Add the following at the bottom of the config generated
 
    ```bash
-   nano **deploy-config/getting-started.json**
+   nano deploy-config/getting-started.json
    ```
 
    ```json
