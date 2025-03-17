@@ -79,7 +79,7 @@ Use the same version of `sunrise-data` as the `sunrised` binary.
 git clone https://github.com/sunriselayer/sunrise-data.git
 cd sunrise-data
 git checkout v0.4.2
-make build
+make install
 ```
 
 For validators, run the following command to register a proof deputy from your validator.
