@@ -22,7 +22,7 @@ npm i @sunriselayer/client
   - `buf.gen.yaml`
   - `buf.yaml`
 
-{% code title="buf.yaml" overflow="wrap" lineNumbers="true" %}
+{% code title="buf.yaml", overflow="wrap", lineNumbers="true" %}
 
 ```yaml
 version: v2
@@ -36,7 +36,7 @@ deps:
 
 {% endcode %}
 
-{% code title="buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
+{% code title="buf.gen.yaml", overflow="wrap", lineNumbers="true" %}
 
 ```yaml
 version: v2
