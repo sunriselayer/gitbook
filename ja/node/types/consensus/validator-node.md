@@ -53,12 +53,9 @@ sunrised tx staking create-validator [path/to/validator.json] \
 
 ```json
 {
-  "pubkey": {
-    "@type": "/cosmos.crypto.ed25519.PubKey",
-    "key": "oWg2ISpLF405Jcm2vXV+2v4fnjodh6aafuIdeoW+rUw="
-  },
-  "amount": "1000000urise",
-  "moniker": "myvalidator",
+  "pubkey": {"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AxQOOPKDcl9Zg50r5CXZ0pclBqfzufcVXNnwF7OP4Hgj"}
+  "amount": "1000uvrise",
+  "moniker": "your_validator's_name",
   "identity": "optional identity signature (ex. UPort or Keybase)",
   "website": "validator's (optional) website",
   "security": "validator's (optional) security contact email",
