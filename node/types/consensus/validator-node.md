@@ -57,7 +57,7 @@ sunrised tx staking create-validator [path/to/validator.json] \
 
 ```json
 {
-  "pubkey": {"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AxQOOPKDcl9Zg50r5CXZ0pclBqfzufcVXNnwF7OP4Hgj"}
+  "pubkey": "",
   "amount": "1000uvrise",
   "moniker": "your_validator's_name",
   "identity": "optional identity signature (ex. UPort or Keybase)",
@@ -72,6 +72,14 @@ sunrised tx staking create-validator [path/to/validator.json] \
 ```
 
 Next, edit `~/.sunrise/config/config.toml`
+
+### Set Tendermint Consensus Public Key
+
+```
+CONSENSUS_PUBKEY=$(sunrised tendermint show-validator)
+echo $CONSENSUS_PUBKEY
+sed -i "s|\"pubkey\": *\"[^\"]*\"|\"pubkey\": \"${CONSENSUS_PUBKEY}\"|" [path/to/validator.json]
+```
 
 ## Backup
 
