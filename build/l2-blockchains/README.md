@@ -29,10 +29,10 @@ Please Use Ganache, Hardhat, Anvil or etc as local L1 chain.
 
 ## Requirements
 
-| Type                    | CPU    | Mem   | Disk     | Bandwidth |
-| ----------------------- | ------ | ----- | -------- | --------- |
-| Rollkit + Sunrise Data  | 4 Core | 16 GB | 1 TB SSD | 1 Gbps    |
-| OP Stack + Sunrise Data | 6 Core | 32 GB | 1 TB SSD | 1 Gbps    |
+| Type                    | CPU    | Architecture | Mem   | Disk     | Bandwidth |
+| ----------------------- | ------ | ------------ | ----- | -------- | --------- |
+| Rollkit + Sunrise Data  | 4 Core | x86_64       | 16 GB | 1 TB SSD | 1 Gbps    |
+| OP Stack + Sunrise Data | 6 Core | x86_64       | 32 GB | 1 TB SSD | 1 Gbps    |
 
 ## Official Document
 
