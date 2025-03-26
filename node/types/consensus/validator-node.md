@@ -53,7 +53,7 @@ sunrised tendermint show-validator
 
 A minimum of 1 vRISE is required to create a validator. vRISE is non-transferable, so if you have no balance in your account, please create a position in the Liquidity Pool to earn vRISE.
 
-First, create validator config file [~/.sunrise/config/config.toml].
+First, create validator config file [~/.sunrise/config/validator.json].
  
 ```json
 {
