@@ -42,23 +42,23 @@ VALIDATOR_WALLET="validator"
 sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ```
 
-### Create Validator
-
-A minimum of 0.000001 vRISE is required to create a validator. vRISE is non-transferable, so if you have no balance in your account, please create a position in the Liquidity Pool to earn vRISE.
-
+### Validator Public Key
+The last thing needed before initializing the validator is to obtain your validator public key which was created when you first initialized your node. To obtain your validator pubkey:
 ```bash
-sunrised tx staking create-validator [path/to/validator.json] \
-    --chain-id=$CHAIN_ID \
-    --from=$VALIDATOR_WALLET \
-    --keyring-backend=test \
-    --fees=21000urise \
-    --gas=220000
+sunrised tendermint show-validator
+{"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="}
 ```
 
+### Create Validator
+
+A minimum of 1 vRISE is required to create a validator. vRISE is non-transferable, so if you have no balance in your account, please create a position in the Liquidity Pool to earn vRISE.
+
+First, create validator config file [~/.sunrise/config/config.toml].
+ 
 ```json
 {
-  "pubkey": "",
-  "amount": "1000uvrise",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="},
+  "amount": "1000000uvrise",
   "moniker": "your_validator's_name",
   "identity": "optional identity signature (ex. UPort or Keybase)",
   "website": "validator's (optional) website",
@@ -70,15 +70,15 @@ sunrised tx staking create-validator [path/to/validator.json] \
   "min-self-delegation": "1"
 }
 ```
+Next, run the following command
 
-Next, edit `~/.sunrise/config/config.toml`
-
-### Set Tendermint Consensus Public Key
-
-```
-CONSENSUS_PUBKEY=$(sunrised tendermint show-validator)
-echo $CONSENSUS_PUBKEY
-sed -i "s|\"pubkey\": *\"[^\"]*\"|\"pubkey\": \"${CONSENSUS_PUBKEY}\"|" [path/to/validator.json]
+```bash
+sunrised tx staking create-validator [path/to/validator.json] \
+    --chain-id=$CHAIN_ID \
+    --from=$VALIDATOR_WALLET \
+    --keyring-backend=test \
+    --fees=21000urise \
+    --gas=220000
 ```
 
 ## Backup
