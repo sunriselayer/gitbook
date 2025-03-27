@@ -36,11 +36,12 @@ Points are calculated based on your current staking amount
 ![LP Rewards](./lp.png)
 
 Claim your LP points once every 24 hours
-Points are based on your valid liquidity positions
+Points are based on your valid liquidity positions in a pool including $RISE
 
 {% hint style="info" %}
 `Valid` means that the current price is within the price range set for the position.
 Invalid positions is not counted for points. It is recommended that you close the invalid position and create a valid position.
+Also, positions in pools not including RISE are not eligible.
 {% endhint %}
 
 `RISE LP: 1 RISE = 12 points`
