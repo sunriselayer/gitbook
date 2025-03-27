@@ -25,6 +25,10 @@ Points are calculated based on your current staking amount
 
 `1 vRISE = 100 points`
 
+{% hint style="info" %}
+Only delegations to `Bonded` validators are calculated. If the validator you are delegating to is `Unbonded`, you can claim the reward by redelegating to another `Bonded` validator before.
+{% endhint %}
+
 - View your:
   - Available points to claim
     - Total staking amount
@@ -46,6 +50,8 @@ Also, positions in pools not including RISE are not eligible.
 
 `RISE LP: 1 RISE = 12 points`
 `Other LP: 1 RISE (converted to RISE) = 10 points`
+
+If RISE and other tokens are included in the position, they are calculated separately.
 
 - View your:
   - Available points to claim
