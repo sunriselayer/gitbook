@@ -1,11 +1,15 @@
-# OP-Stack + Sunrise OP DA Server
+# OP Stack L2 Chain
 
 Sunrise's Data Availability Layer supports Layer 2 blockchains created using [OP Stack](https://github.com/ethereum-optimism/optimism)
-This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise OP DA Server](https://docs.sunriselayer.io/build-l2-blockchains/op-stack/op-da-server). Data Availability layer is supported in Sunrise v0.3.0 and later.
+This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise Data](./sunrise-data.md). Data Availability layer is supported in Sunrise v0.3.0 and later.
+
+This version of the OP Stack requires the L1 EVM chain for operation. Use some kind of testnet or local chain.
 
 ## How to set up OP Stack
 
-As an example, here is how to use OP Stack to create an L2 chain for the Ethereum Sepolia testnet and run it on the Sunrise's Data Availability Layer.
+As an example, here is how to use OP Stack to create an L2 chain and run it on the Sunrise's Data Availability Layer.
+
+This guide uses the Ethereum Sepolia testnet to meet the OP Stack requirements, but a local EVM chain will also work.
 
 ```mermaid
 sequenceDiagram
@@ -56,12 +60,14 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    git clone https://github.com/ethereum-optimism/optimism.git
    ```
 
-1. **Check out the correct branch**
+1. Check out the correct branch
 
    ```bash
    cd optimism
    git checkout v1.9.1
    ```
+
+　We have confirmed the operation with the latest version at the time of document update. If you use other versions, please check the differences.
 
 1. **Run the following to check you have all dependencies**
 
@@ -69,15 +75,15 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    ./packages/contracts-bedrock/scripts/getting-started/versions.sh
    ```
 
-1. **Build all packages associated with Optimism**
+1. Build all packages associated with Optimism
 
    ```bash
    make op-node op-batcher op-proposer
    ```
 
-   If you are having issues with this step, make sure your versions match those in the optimism docs. Specifically, you may have to downgrade your go version to 1.21
+   If you are having issues with this step, make sure your versions match those in the optimism docs. Specifically, you may have to downgrade your go version.
 
-1. **Clone and build op-geth**
+1. Clone and build op-geth
 
    ```bash
    cd ~
@@ -86,7 +92,9 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    make geth
    ```
 
-1. **Fill out environment variables**
+　 For more information on supported `op-geth, please check the [Production Releases](https://github.com/ethereum-optimism/optimism/tree/v1.12.0?tab=readme-ov-file#production-releases) in the optimism repository.
+
+1. Fill out environment variables
 
    ```bash
    cd ~/optimism
@@ -150,7 +158,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
    API key for RPC URL can be found in [Infura](https://www.infura.io/) or other providers.
 
-1. **Fund the addresses with enough Sepolia ETH, the optimism docs recommend the following:**
+1. Fund the addresses with enough Sepolia ETH, the optimism docs recommend the following:
 
    - Admin — 0.5 Sepolia ETH
    - Proposer — 0.2 Sepolia ETH
@@ -158,7 +166,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
    Ref: [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)
 
-1. **Load environment variables with direnv**
+1. Load environment variables with direnv
    `direnv allow`
    You should see something similar to this after:
 
@@ -188,7 +196,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
    `source ~/.bashrc`
 
-1. **Configure the network**
+1. Configure the network
 
    ```bash
 
@@ -200,7 +208,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    Add the following at the bottom of the config generated
 
    ```bash
-   nano **deploy-config/getting-started.json**
+   nano deploy-config/getting-started.json
    ```
 
    ```json
@@ -217,7 +225,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    }
    ```
 
-1. **Deploy the L1 contracts**
+1. Deploy the L1 contracts
 
    ```bash
    just install
@@ -226,19 +234,24 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    forge script scripts/deploy/Deploy.s.sol:Deploy \
    --broadcast --private-key $GS_ADMIN_PRIVATE_KEY \
    --rpc-url $L1_RPC_URL --slow
+   ```
 
+   L2 Allocs
+
+   ```bash
    CONTRACT_ADDRESSES_PATH=deployments/artifact.json \
    DEPLOY_CONFIG_PATH=deploy-config/getting-started.json \
    STATE_DUMP_PATH=deploy-config/statedump.json \
    forge script scripts/L2Genesis.s.sol:L2Genesis \
    --sig 'runWithStateDump()' \
    --chain 42069
-   ## YOUR_L2_CHAINID
    ```
+
+   Use your L2 chain id in `--chain`.
 
    > If you see a nondescript error that includes `EvmError: Revert` and `Script failed` then you likely need to change the `IMPL_SALT` environment variable. This variable determines the addresses of various smart contracts that are deployed via [CREATE2(opens in a new tab)](https://eips.ethereum.org/EIPS/eip-1014). If the same `IMPL_SALT` is used to deploy the same contracts twice, the second deployment will fail. **You can generate a new `IMPL_SALT` by running `direnv allow` anywhere in the Optimism Monorepo.**
 
-1. **Generate the L2 config files**
+1. Generate the L2 config files
 
    ```bash
    cd ~/optimism/op-node
@@ -262,20 +275,20 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      }
    ```
 
-1. **Create an authentication key**
+1. Create an authentication key
 
    ```bash
    openssl rand -hex 32 > jwt.txt
    ```
 
-1. **Copy genesis files into op-geth directory**
+1. Copy genesis files into op-geth directory
 
    ```bash
    cp genesis.json ~/op-geth
    cp jwt.txt ~/op-geth
    ```
 
-1. **Initialize `op-geth`**
+1. Initialize `op-geth`
 
    ```bash
    cd ~/op-geth
@@ -286,11 +299,11 @@ Dependencies and general installation instructions for Ubuntu 22.04.
 
 ## Start L2
 
-**Before optimism start, set up sunrise & sunrise-op-da-server, etc.**
+**Before optimism start, set up `sunrised` & `sunrise-data`, etc.**
 
-[**Sunrise OP DA Server**](./op-da-server.md)
+[**Sunrise Data**](./sunrise-data.md)
 
-1. **Start `op-geth`**
+1. Start `op-geth`
 
    ```bash
    ./build/bin/geth \
@@ -317,7 +330,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --rollup.disabletxpoolgossip=true
    ```
 
-2. **Start `op-node`**
+2. Start `op-node`
 
    ```bash
    cd ~/optimism/op-node
@@ -336,14 +349,14 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --l1=$L1_RPC_URL \
      --l1.rpckind=$L1_RPC_KIND \
      --altda.enabled=true \
-     --altda.da-server=http://localhost:8000 \
+     --altda.da-server=http://localhost:3100 \
      --altda.da-service=true \
      --l1.beacon.ignore=true
    ```
 
    --altda.da-server is your da-serer’s http URL
 
-3. **Start `op-batcher`**
+3. Start `op-batcher`
 
    ```bash
    cd ~/optimism/op-batcher
@@ -363,10 +376,10 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --private-key=$GS_BATCHER_PRIVATE_KEY \
      --altda.enabled=true \
      --altda.da-service=true \
-     --altda.da-server=http://localhost:8000
+     --altda.da-server=http://localhost:3100
    ```
 
-4. **Start `op-proposer`**
+4. Start `op-proposer`
 
    ```bash
    cd ~/optimism/op-proposer
@@ -379,4 +392,4 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --l1-eth-rpc=$L1_RPC_URL
    ```
 
-5. **Work**
+5. Work

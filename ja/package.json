@@ -1,0 +1,19 @@
+{
+  "name": "ja",
+  "version": "1.0.0",
+  "description": "--- cover: .gitbook/assets/Sunrise_Cover.png coverY: 0 ---",
+  "main": "index.js",
+  "dependencies": {
+    "gitbook-plugin-atoc": "^1.0.3",
+    "gitbook-plugin-hints": "^1.0.2",
+    "gitbook-plugin-page-treeview": "^3.0.6",
+    "gitbook-plugin-tabs": "0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

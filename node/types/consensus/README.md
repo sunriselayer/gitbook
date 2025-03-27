@@ -7,7 +7,7 @@
 
 ### Requirements
 
-| Type           | CPU    | Mem  | Disk       | Bandwidth |
-| -------------- | ------ | ---- | ---------- | --------- |
-| Validator      | 6 Core | 8 GB | 500 GB SSD | 1 Gbps    |
-| Full Consensus | 4 Core | 8 GB | 250 GB SSD | 1 Gbps    |
+| Type           | CPU    | Architecture | Mem  | Disk       | Bandwidth |
+| -------------- | ------ | ------------ | ---- | ---------- | --------- |
+| Validator      | 6 Core | x86_64       | 8 GB | 500 GB SSD | 1 Gbps    |
+| Full Consensus | 4 Core | x86_64       | 8 GB | 250 GB SSD | 1 Gbps    |

@@ -23,7 +23,11 @@ sunrise-data provides validators with the functions to monitor and prove data th
 Although validators can send tx themselves to send proof data, it is recommended to use a deputy address to prevent leakage of keys.
 
 ```bash
-sunrised tx da register-proof-deputy [deputy_address] --from [your_validator_key]
+sunrised tx da register-proof-deputy [deputy_address] \
+   --from [your_validator_key] \
+   --chain-id=$CHAIN_ID \
+   --fees=21000urise \
+   --gas=220000
 ```
 
 To register you need to send a transaction with the validator key only once on `sunrised`.

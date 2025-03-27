@@ -41,41 +41,45 @@ Since our testnet does not support DA, please use it to test L2 chains, etc.
 
 ### DA Testnet Details
 
-[sunrise-test-da-1 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-1)
+[sunrise-test-da-2 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-2)
 
 | Detail | Value                                        |
 | ------ | -------------------------------------------- |
-| RPC    | <https://sunrise-test-da-1.cauchye.net>      |
-| REST   | <https://sunrise-test-da-1.cauchye.net:1318> |
+| RPC    | <https://sunrise-test-da-2.cauchye.net>      |
+| REST   | <https://sunrise-test-da-2.cauchye.net:1318> |
 
 ### DA Testnet Software
 
-Please check our proposals and community. See [sunrise-test-da-1](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-1) for setup.
+Please check our proposals and community. See [sunrise-test-da-2](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-2) for setup.
 Data Availability is supported in v0.3.0 and later.
 
 [Released Binary](https://github.com/sunriselayer/sunrise/releases)
+
+{% hint style="warning" %}
+`sunrise-test-da-1` is deprecated. Please migrate to `sunrise-test-da-2`.
+{% endhint %}
 
 ### DA Testnet Faucet
 
 RISE faucet is available for testing DA testnet.
 
 ```bash
-curl https://da-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
+curl https://da2-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
 ```
 
 ### How to use sunrise-data on DA Testnet
 
 [sunrise-data](https://github.com/sunriselayer/sunrise-data) provides validator assistance and functionality for L2 chain publishers.
 
-See [Sunrise Data](../../build/l2-blockchains/sunrise-data.md) and [Proof of Data Availability](../../build/validators/data-availability-proof.md) for details.
+See [Sunrise Data](../../build/l2-blockchains/rollkit/sunrise-data.md) and [Proof of Data Availability](../../build/validators/data-availability-proof.md) for details.
 
 Use the same version of `sunrise-data` as the `sunrised` binary.
 
 ```bash
 git clone https://github.com/sunriselayer/sunrise-data.git
 cd sunrise-data
-git checkout v0.4.0
-make build
+git checkout v0.4.2
+make install
 ```
 
 For validators, run the following command to register a proof deputy from your validator.

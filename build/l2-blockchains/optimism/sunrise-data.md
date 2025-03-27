@@ -1,7 +1,6 @@
-# Sunrise Data
+# Sunrise Data for OP Stack
 
 [Sunrise Data](https://github.com/sunriselayer/sunrise-data) acts as a relay server connecting the L2 chain to the Sunrise DA layer.
-In some cases, additional software is required to support the OP Stack, such as the [Sunrise OP DA Server](./op-da-server.md).
 
 ## Sunrise Consensus Node
 
@@ -41,7 +40,7 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    ipfs_addrinfo = ""
 
    [chain]
-   addr_prefix="sunrise"
+   address_prefix="sunrise"
    home_path="/home/ubuntu/.sunrise"
    keyring_backend="test"
    sunrised_rpc="http://localhost:26657"
@@ -50,11 +49,14 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    publisher_account="your_publisher_account"
    publish_fees="10000urise"
 
-   [rollkit]
-   port=7980
-   data_shard_count=5
-   parity_shard_count=5
+   [optimism]
+   listen_address="127.0.0.1"
+   port=3100
+   data_shard_count=10
+   parity_shard_count=10
    ```
+
+   The other fields can be left as is.
 
 ### Run IPFS on local
 
@@ -77,14 +79,6 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
 
 ### Start
 
-- Start Daemon for Rollkit
-
-   ```bash
-   sunrise-data rollkit
-   ```
-
-- Start Daemon for OP Stack
-
-   ```bash
-   sunrise-data api
-   ```
+```bash
+sunrise-data optimism
+```

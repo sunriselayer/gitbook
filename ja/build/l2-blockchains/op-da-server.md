@@ -43,7 +43,7 @@ L2 側の設定については[OP Stack](./optimism.md)のページを参照し�
    submit_proof = true
 
    [chain]
-   addr_prefix="sunrise"
+   address_prefix="sunrise"
    keyring_backend="test"
    home_path="/home/ubuntu/.sunrise"
    publisher_account="validator"

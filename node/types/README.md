@@ -15,13 +15,9 @@ Sunrise node operators can run several options on the network.
 
 ## Requirements
 
-| Type           | CPU    | Mem    | Disk       | Bandwidth |
-| -------------- | ------ | ------ | ---------- | --------- |
-| Light          | 2 Core | 500 MB | 50 GB SSD  | 56 Kbps   |
-| Full Storage   | 4 Core | 4 GB   | 10 TB SSD  | 1 Gbps    |
-| Bridge         | 6 Core | 4 GB   | 10 TB SSD  | 1 Gbps    |
-| -------------- | ------ | ----   | ---------- | --------- |
-| Validator      | 6 Core | 8 GB   | 500 GB SSD | 1 Gbps    |
-| Full Consensus | 4 Core | 8 GB   | 250 GB SSD | 1 Gbps    |
+| Type           | CPU    | Architecture | Mem  | Disk       | Bandwidth |
+| -------------- | ------ | ------------ | ---- | ---------- | --------- |
+| Validator      | 6 Core | x86_64       | 8 GB | 500 GB SSD | 1 Gbps    |
+| Full Consensus | 4 Core | x86_64       | 8 GB | 250 GB SSD | 1 Gbps    |
 
 You can learn more about how to set up each different node by going through each tutorial guide.
