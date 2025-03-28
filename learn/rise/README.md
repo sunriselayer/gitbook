@@ -44,7 +44,7 @@ To get $vRISE, users need to provide liquidity in
 
 ### Formal expression
 
-- Year: $$ t \in \{0,\ 1,\ 2,\ \dots\} $$
+- Year: $$ t \in \{0,\ 1,\ 2,\ \ldots\} $$
 - Supply of $RISE: $$ s_t^{\text{RISE}} $$
 - Supply of $vRISE: $$ s_t^{\text{vRISE}} $$
 - Supply: $$ s_t = s_t^{\text{RISE}} + s_t^{\text{vRISE}} $$
