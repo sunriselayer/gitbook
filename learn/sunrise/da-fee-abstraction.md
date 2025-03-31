@@ -102,7 +102,7 @@ async function provideLiquidityAndUseDA() {
     const msgPublishData = {
         sender: "sunrise1...",
         data: "0x...", // Your data to publish
-        fee: { denom: "uvrise", amount: "100000" }
+        fee: { denom: "uvRISE", amount: "100000" }
     };
     
     // Execute transactions
