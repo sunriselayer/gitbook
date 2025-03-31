@@ -56,6 +56,12 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    parity_shard_count=10
    ```
 
+　 `home_path`, `keyring_backend`, `publisher_account` must be entered values on your sunrised keyring.
+   See [Local Key Pair document](../../../node/types/consensus/full-consensus-node.md#create-or-restore-a-local-key-pair) and set with `--keyring-backend test` option.
+   For `home_path`, enter the path where the sunrise keyring exists.
+　 
+   For `sunrised_rpc`, it is preferable to run sunrised locally, but if this is not possible, use the published RPC. See our [Network Document](../../../node/networks/README.md). A local key pair is still required in such cases.
+
    The other fields can be left as is.
 
 ### Run IPFS on local
