@@ -2,6 +2,8 @@
 
 The `x/liquidityincentive` module incentivizes liquidity providers by distributing rewards based on their contributions to liquidity pools. It uses an epoch-based reward system and a gauge voting mechanism to allocate rewards dynamically. This module ensures sustainable liquidity provisioning while allowing users to participate in governance through gauge voting.
 
+See the [Bribes](./bribes.md) for more information on the bribe feature.
+
 ## Key Features
 
 1. **Epoch-Based Reward Distribution**:
@@ -26,7 +28,9 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
     1. **Past Epoch**: The epoch that has ended.
     2. **Current Epoch**: The ongoing epoch.
 - Each epoch has the following parameters:
+  - **`id`**: The unique epoch ID.
   - **`start_block`**: The block where the epoch begins.
+  - **`start_time`**: The Unix time where the epoch begins.
   - **`end_block`**: The block where the epoch ends.
   - **`gauges`**: A list of gauges (pool weights) for incentive distribution.
 
@@ -37,7 +41,7 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 - A gauge represents a specific liquidity pool's weight in reward allocation.
 - Parameters:
   - **`pool_id`**: The ID of the liquidity pool.
-  - **`ratio`**: The voting power allocated to this pool.
+  - **`voting_power`**: The voting power allocated to this pool.
 
 ### Lazy Accounting
 
@@ -50,19 +54,14 @@ $$
 
 ## Workflow
 
-### 1. BeginBlocker
+### BeginBlocker
 
-- Creates a new epoch if:
-  - The last epoch has ended.
-  - No epochs exist (first epoch).
+1. Transfers a portion of inflation rewards from the Fee Collector account to the **`x/liquidityincentive`** module account.
+1. Rewards are converted to **`$vRISE`** tokens (non-transferable staking tokens).
+1. Rewards are accumulated in each pool's fee accumulator.
 
-### 2. EndBlocker
+### MsgClaimRewards (`x/liquiditypool`)
 
-- Transfers a portion of inflation rewards from the**`x/distribution`**pool to the **`x/liquidityincentive`** pool.
-
-### 3. Reward Distribution
-
-- Rewards are accumulated in each pool's fee accumulator.
 - Users claim rewards by interacting with their positions in liquidity pools.
 
 ## Sequence Diagram: Reward Distribution
@@ -110,19 +109,17 @@ queryEpochs();
 
 ```json
 {
-  "current_epoch": {
-    "start_block": "100",
-    "end_block": "200",
-    "gauges": [
-      { "pool_id": "1", "ratio": "0.6" },
-      { "pool_id": "2", "ratio": "0.4" }
-    ]
-  },
-  "past_epoch": {
-    "start_block": "0",
-    "end_block": "100",
-    ...
-  }
+　"epochs": {
+  　"current_epoch": {
+   　 "start_block": "100",
+  　  "start_time": "1747197500",
+  　  "end_block": "200",
+  　　 "gauges": [
+   　   { "pool_id": "1", "voting_power": "6000000" },
+   　   { "pool_id": "2", "voting_power": "4000000" }
+  　  ]
+  　},
+　}
 }
 ```
 

@@ -90,14 +90,17 @@ sequenceDiagram
 
 Creates a new liquidity pool with specified parameters.
 
-```go
-type MsgCreatePool struct {
-    Authority   string
-    DenomBase   string
-    DenomQuote  string
-    FeeRate     string
-    PriceRatio  string
-    BaseOffset  string
+```protobuf
+message MsgCreatePool {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string denom_base = 2;
+  string denom_quote = 3;
+  string fee_rate = 4;
+  // Basically 1.0001
+  string price_ratio = 5;
+  // basically 0 and (-1, 0]. In the 1:1 stable pair, 0.5 would work
+  string base_offset = 6;
 }
 ```
 
@@ -105,16 +108,25 @@ type MsgCreatePool struct {
 
 Creates a position within a price range in a pool.
 
-```go
-type MsgCreatePosition struct {
-    Sender         string
-    PoolId         uint64
-    LowerTick      int64
-    UpperTick      int64
-    TokenBase      sdk.Coin
-    TokenQuote     sdk.Coin
-    MinAmountBase  string
-    MinAmountQuote string
+```protobuf
+message MsgCreatePosition {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  uint64 pool_id = 2;
+  int64 lower_tick = 3;
+  int64 upper_tick = 4;
+  cosmos.base.v1beta1.Coin token_base = 5 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin token_quote = 6 [(gogoproto.nullable) = false];
+  string min_amount_base = 7 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+  string min_amount_quote = 8 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
 }
 ```
 
@@ -122,14 +134,31 @@ type MsgCreatePosition struct {
 
 Adds liquidity to an existing position.
 
-```go
-type MsgIncreaseLiquidity struct {
-    Sender         string
-    Id             uint64
-    AmountBase     string
-    AmountQuote    string
-    MinAmountBase  string
-    MinAmountQuote string
+```protobuf
+message MsgIncreaseLiquidity {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  uint64 id = 2;
+  string amount_base = 3 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+  string amount_quote = 4 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+  string min_amount_base = 5 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+  string min_amount_quote = 6 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
 }
 ```
 
@@ -137,11 +166,12 @@ type MsgIncreaseLiquidity struct {
 
 Removes liquidity from an existing position.
 
-```go
-type MsgDecreaseLiquidity struct {
-    Sender    string
-    Id        uint64
-    Liquidity string
+```protobuf
+message MsgDecreaseLiquidity {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  uint64 id = 2;
+  string liquidity = 3;
 }
 ```
 
@@ -149,16 +179,17 @@ type MsgDecreaseLiquidity struct {
 
 Claims accumulated fees and incentives for positions.
 
-```go
-type MsgClaimRewards struct {
-    Sender      string
-    PositionIds []uint64
+```protobuf
+message MsgClaimRewards {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  repeated uint64 position_ids = 2;
 }
 ```
 
 ## Example Usage
 
-**Create a Position**
+### **Create a Position**
 
 ```javascript
 import { SunriseClient } from "@sunriselayer/client";
