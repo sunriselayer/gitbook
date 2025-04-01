@@ -5,6 +5,10 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
 
 ## Key Features
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Bidirectional Token Conversion:**
 
    - Convert `vRISE` (bond denomination) to `RISE` (fee denomination) and vice versa.
@@ -32,6 +36,10 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
 
 ## Core Functionality
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 ### Token Conversion
 
 The module provides a simple and direct conversion mechanism between `vRISE` and `RISE` tokens:
@@ -42,6 +50,10 @@ The module provides a simple and direct conversion mechanism between `vRISE` and
 This process maintains the total economic value in the system while allowing users to hold the token type that best suits their needs.
 
 ## Workflow: Token Conversion Process
+
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
 
 ```mermaid
 sequenceDiagram
@@ -62,6 +74,10 @@ sequenceDiagram
 
 ## Messages
 
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
+
 ### MsgConvert
 
 Converts tokens between the bond and fee denominations.
@@ -74,6 +90,10 @@ type MsgConvert struct {
 ```
 
 **Parameter Configuration**
+
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
 
 | Parameter                     | Description                                                                          |
 |------------------------------|--------------------------------------------------------------------------------------|
@@ -90,6 +110,10 @@ type MsgConvert struct {
 ```
 
 ## Example Usage
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 **Query Token Converter Parameters**
 
@@ -133,6 +157,10 @@ async function convertTokens() {
 
 ## Benefits
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Flexible Token Usage:**
 
    - Users can hold tokens in their preferred denomination.
@@ -149,6 +177,6 @@ async function convertTokens() {
 
    - Straightforward conversion with no fees or slippage.
    - Easy to understand and integrate with applications.
-   
+
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/tokenconverter) for details.
