@@ -1,8 +1,18 @@
 {
-  "plugins": ["page-treeview", "atoc", "hints", "tabs", "tabs2", "katex"],
+  "plugins": [
+    "page-treeview",
+    "atoc",
+    "hints",
+    "tabs",
+    "tabs2",
+    "katex"
+  ],
   "pluginsConfig": {
     "page-treeview": {
       "copyright": ""
     }
+  },
+  "styles": {
+    "website": "website.css"
   }
 }
