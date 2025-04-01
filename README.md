@@ -8,7 +8,7 @@ coverY: 0
 **Our documentation is under construction and is being updated regularly, please check back for updates.**
 
 {% hint style="info" %}
-For feature requests and suggestions, please visit our GitHub Discussions page: https://github.com/orgs/sunriselayer/discussions
+For feature requests and suggestions, please visit our <a href="https://github.com/orgs/sunriselayer/discussions" target="_blank">GitHub Discussions page</a>
 {% endhint %}
 
 Sunrise is a specialized Data Availability (DA) Layer for Proof of Liquidity and Fee Abstraction, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.
