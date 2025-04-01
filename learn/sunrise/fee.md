@@ -4,23 +4,31 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Key Features of `x/fee`
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Burn Mechanism:**
 
-   - A portion of $RISE tokens used as transaction fees is burned to reduce the circulating supply.
-   - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
+    - A portion of $RISE tokens used as transaction fees is burned to reduce the circulating supply.
+    - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
 2. **Fee Denomination (`fee_denom`):**
 
-   - Specifies the denomination required for transaction fees (default: **`"urise"`**).
-   - Transactions must pay fees in this denomination unless bypassed.
+    - Specifies the denomination required for transaction fees (default: **`"urise"`**).
+    - Transactions must pay fees in this denomination unless bypassed.
 3. **Bypass Denominations (`bypass_denoms`)**:
 
-   - Allows certain denominations to bypass standard fee restrictions.
-   - Default bypass denomination: **`"uvrise"`**.
+    - Allows certain denominations to bypass standard fee restrictions.
+    - Default bypass denomination: **`"uvrise"`**.
 4. **Dynamic Parameter Configuration**:
 
-   - Developers can configure parameters dynamically with validation enforced by the module.
+    - Developers can configure parameters dynamically with validation enforced by the module.
 
 ## Core Functionality
+
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### Fee Deduction and Burning
 
@@ -42,6 +50,10 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 **Parameter Configuration**
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 | Parameter                | Description                                                                 |
 |--------------------------|-----------------------------------------------------------------------------|
 | Fee Denomination (`fee_denom`)     | Specifies the denomination required for transaction fees (default: `"urise"`).       |
@@ -56,10 +68,13 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
   "burn_ratio": 0.5,
   "bypass_denoms": ["uvrise"]
 }
-
 ```
 
 ## Benefits of the Fee Module
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 - **Deflationary Pressure:**
   The burning mechanism introduces deflationary pressure on $RISE tokens, supporting long-term token value.
@@ -69,6 +84,10 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/main/x/fee).
 
 ## Workflow: Fee Deduction and Burning
+
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
 
 Below is a sequence diagram illustrating how transaction fees are processed:
 
@@ -83,10 +102,13 @@ sequenceDiagram
     FeeModule->>BankKeeper: Deduct Fees from Sender's Account
     BankKeeper->>FeeCollector: Transfer Fees to Fee Collector Account
     FeeModule->>FeeModule: Burn Portion of Fees (based on burn_ratio)
-
 ```
 
 ## Example Usage
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 Developers can query fee parameters using Sunrise Client JS:
 
@@ -107,7 +129,6 @@ async function queryFeeParams() {
     console.log("Fee Parameters:", feeParams.params);
 }
 queryFeeParams();
-
 ```
 
 **Example Output:**
@@ -118,6 +139,4 @@ queryFeeParams();
   "burn_ratio": "0.5",
   "bypass_denoms": ["uvrise"]
 }
-
 ```
-

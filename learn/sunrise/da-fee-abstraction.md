@@ -4,6 +4,10 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Key Features
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Liquidity-Based Access:**
 
    - Developers provide liquidity to pools in the `x/liquiditypool` module.
@@ -29,6 +33,10 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Core Functionality
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 ### Liquidity Provision and DA Access
 
 **When developers want to access data availability services:**
@@ -39,6 +47,10 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 - These `$vRISE` tokens can be used to pay for data availability transactions.
 
 ## Workflow: DA Fee Abstraction Process
+
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
 
 Below is a sequence diagram illustrating how the DA Fee Abstraction works:
 
@@ -59,6 +71,10 @@ sequenceDiagram
 
 ## Benefits
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Lower Entry Barriers:**
 
    - Developers can access data availability services without upfront token costs.
@@ -77,6 +93,10 @@ sequenceDiagram
    - Liquidity providers are incentivized through `$vRISE` rewards.
 
 ## Example Usage
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 **Providing Liquidity and Using DA**
 
@@ -112,4 +132,3 @@ async function provideLiquidityAndUseDA() {
 ```
 
 For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/liquidstaking/x/liquiditypool)
-
