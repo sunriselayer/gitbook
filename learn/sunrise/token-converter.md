@@ -5,7 +5,9 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
 
 ## Key Features
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Bidirectional Token Conversion:**
 
@@ -34,7 +36,9 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
 
 ## Core Functionality
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ### Token Conversion
 
@@ -47,7 +51,9 @@ This process maintains the total economic value in the system while allowing use
 
 ## Workflow: Token Conversion Process
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ```mermaid
 sequenceDiagram
@@ -68,7 +74,9 @@ sequenceDiagram
 
 ## Messages
 
-**[LEVEL 3: FOR MODULE DEVELOPERS]**
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### MsgConvert
 
@@ -83,7 +91,9 @@ type MsgConvert struct {
 
 **Parameter Configuration**
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 | Parameter                     | Description                                                                          |
 |------------------------------|--------------------------------------------------------------------------------------|
@@ -101,7 +111,9 @@ type MsgConvert struct {
 
 ## Example Usage
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 **Query Token Converter Parameters**
 
@@ -145,7 +157,9 @@ async function convertTokens() {
 
 ## Benefits
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Flexible Token Usage:**
 

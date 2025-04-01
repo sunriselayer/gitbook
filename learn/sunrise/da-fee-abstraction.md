@@ -4,7 +4,9 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Key Features
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Liquidity-Based Access:**
 
@@ -31,7 +33,9 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Core Functionality
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ### Liquidity Provision and DA Access
 
@@ -44,7 +48,9 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Workflow: DA Fee Abstraction Process
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 Below is a sequence diagram illustrating how the DA Fee Abstraction works:
 
@@ -65,7 +71,9 @@ sequenceDiagram
 
 ## Benefits
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Lower Entry Barriers:**
 
@@ -86,7 +94,9 @@ sequenceDiagram
 
 ## Example Usage
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 **Providing Liquidity and Using DA**
 

@@ -2,7 +2,9 @@
 
 ## What is a Gauge?
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vRISE` tokens. Currently, the primary gauge product is the Liquidity Pool system.
 
@@ -10,7 +12,9 @@ A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vR
 
 ## How the Voting System Works
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ### Epoch-Based Voting
 
@@ -40,7 +44,9 @@ sequenceDiagram
 
 ### Eligibility Requirements
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 To participate in gauge voting:
 
@@ -52,7 +58,9 @@ You can submit your vote even before you have `vRISE` tokens. Your voting prefer
 
 ### Viewing Current Voting Status
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 **System Parameters**
 
@@ -77,7 +85,9 @@ The system only retains data for the current and previous epochs. Historical dat
 
 ## How to Vote
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 ### Step 1: Access Your Voting Dashboard
 
@@ -116,7 +126,9 @@ You can modify your vote at any time:
 
 ## Strategic Voting Considerations
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 * **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
 * **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards

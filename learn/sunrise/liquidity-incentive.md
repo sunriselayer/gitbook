@@ -4,7 +4,9 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ## Key Features
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Epoch-Based Reward Distribution**:
     - Rewards are distributed at the end of each epoch.
@@ -22,7 +24,9 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Epochs
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 - Two epochs exist concurrently:
     1. **Past Epoch**: The epoch that has ended.
@@ -34,7 +38,9 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Gauge
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 - A gauge represents a specific liquidity pool's weight in reward allocation.
 - Parameters:
@@ -43,7 +49,9 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Lazy Accounting
 
-**[LEVEL 3: FOR MODULE DEVELOPERS]**
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
 - Rewards are not distributed immediately but are calculated when claimed.
 - Formula for calculating rewards:
@@ -55,7 +63,9 @@ $$
 
 ## Workflow
 
-**[LEVEL 3: FOR MODULE DEVELOPERS]**
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### 1. BeginBlocker
 
@@ -74,7 +84,9 @@ $$
 
 ## Sequence Diagram: Reward Distribution
 
-**[LEVEL 2: FOR ADVANCED USERS]**
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ```mermaid
 sequenceDiagram
@@ -92,7 +104,9 @@ sequenceDiagram
 
 ## Code Examples
 
-**[LEVEL 1: FOR APP DEVELOPERS]**
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 **Query Epoch Information:**
 
