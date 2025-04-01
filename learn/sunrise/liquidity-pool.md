@@ -4,6 +4,10 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Key Features
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Concentrated Liquidity AMM:**
 
    - Follows a similar model to Uniswap V3, allowing liquidity providers to concentrate their assets within specific price ranges.
@@ -29,6 +33,10 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Core Functionality
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 ### Pool Management
 
 **Each pool is defined by several parameters:**
@@ -41,6 +49,10 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 
 ### Tick System
+
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
 
 The tick system is based on a price ratio formula:
 
@@ -57,6 +69,10 @@ $$
 This allows for precise positioning of liquidity within specific price ranges.
 
 ## Workflow: Creating and Using Positions
+
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
 
 ```mermaid
 sequenceDiagram
@@ -85,6 +101,10 @@ sequenceDiagram
 ```
 
 ## Messages
+
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### MsgCreatePool
 
@@ -158,6 +178,10 @@ type MsgClaimRewards struct {
 
 ## Example Usage
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 **Create a Position**
 
 ```javascript
@@ -184,6 +208,10 @@ async function createPosition() {
 ```
 
 ## Queries
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 The module provides various query endpoints:
 
