@@ -4,9 +4,7 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Key Features
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 1. **Liquidity-Based Access:**
 
@@ -33,9 +31,7 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Core Functionality
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 ### Liquidity Provision and DA Access
 
@@ -48,9 +44,7 @@ Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to a
 
 ## Workflow: DA Fee Abstraction Process
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 Below is a sequence diagram illustrating how the DA Fee Abstraction works:
 
@@ -71,9 +65,7 @@ sequenceDiagram
 
 ## Benefits
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 1. **Lower Entry Barriers:**
 
@@ -94,9 +86,7 @@ sequenceDiagram
 
 ## Example Usage
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 **Providing Liquidity and Using DA**
 
@@ -105,29 +95,29 @@ import { SunriseClient } from "@sunriselayer/client";
 import { MsgCreatePosition } from "@sunriselayer/client/types";
 
 async function provideLiquidityAndUseDA() {
-    // Connect to Sunrise
-    const client = await SunriseClient.connect("https://sunrise-rpc.example.com");
-    
-    // Step 1: Provide liquidity to a pool
-    const msgCreatePosition = {
-        sender: "sunrise1...",
-        poolId: 1,
-        tokenBase: { denom: "urise", amount: "1000000" },
-        tokenQuote: { denom: "uusdc", amount: "1000000" },
-        lowerTick: "-10000",
-        upperTick: "10000"
-    };
-    
-    // Step 2: Submit DA data using vRISE for fees
-    const msgPublishData = {
-        sender: "sunrise1...",
-        data: "0x...", // Your data to publish
-        fee: { denom: "uvRISE", amount: "100000" }
-    };
-    
-    // Execute transactions
-    const result = await client.executeTransactions([msgCreatePosition, msgPublishData]);
-    console.log("Liquidity provided and DA accessed:", result);
+   // Connect to Sunrise
+   const client = await SunriseClient.connect("https://sunrise-rpc.example.com");
+
+   // Step 1: Provide liquidity to a pool
+   const msgCreatePosition = {
+      sender: "sunrise1...",
+      poolId: 1,
+      tokenBase: { denom: "urise", amount: "1000000" },
+      tokenQuote: { denom: "uusdc", amount: "1000000" },
+      lowerTick: "-10000",
+      upperTick: "10000"
+   };
+
+   // Step 2: Submit DA data using vRISE for fees
+   const msgPublishData = {
+      sender: "sunrise1...",
+      data: "0x...", // Your data to publish
+      fee: { denom: "uvRISE", amount: "100000" }
+   };
+
+   // Execute transactions
+   const result = await client.executeTransactions([msgCreatePosition, msgPublishData]);
+   console.log("Liquidity provided and DA accessed:", result);
 }
 ```
 

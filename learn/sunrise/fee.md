@@ -4,9 +4,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Key Features of `x/fee`
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 1. **Burn Mechanism:**
 
@@ -26,9 +24,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Core Functionality
 
-{% hint style="danger" %}
-**FOR MODULE DEVELOPERS**
-{% endhint %}
+**[LEVEL 3: FOR MODULE DEVELOPERS]**
 
 ### Fee Deduction and Burning
 
@@ -50,9 +46,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 **Parameter Configuration**
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 | Parameter                | Description                                                                 |
 |--------------------------|-----------------------------------------------------------------------------|
@@ -72,9 +66,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Benefits of the Fee Module
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 - **Deflationary Pressure:**
   The burning mechanism introduces deflationary pressure on $RISE tokens, supporting long-term token value.
@@ -85,9 +77,7 @@ For more details and implementation specifics, see the [GitHub repository](https
 
 ## Workflow: Fee Deduction and Burning
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 Below is a sequence diagram illustrating how transaction fees are processed:
 
@@ -106,9 +96,7 @@ sequenceDiagram
 
 ## Example Usage
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 Developers can query fee parameters using Sunrise Client JS:
 

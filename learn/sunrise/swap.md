@@ -4,9 +4,7 @@ The module `x/swap` serves the functionalities to swap tokens with the liquidity
 
 ### Interface Provider Fee Rewards
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 Any frontend application that is built on top of the swap module has the ability to earn fees. How is this done?
 
@@ -20,9 +18,7 @@ There are 2 important parameters to note:
 
 ### Swap Message Types
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 There are 2 message types that can be used to specify the amount received or the amount sent.
 
@@ -38,9 +34,7 @@ This message enables users to swap tokens by defining the exact amount of output
 
 ### Route
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 This module supports Swap Routes with a recursive structure, allowing for complex swaps involving multiple steps, either in sequence (Series) or simultaneously (Parallel). Each step in the route is validated and processed to ensure inputs and outputs are correctly handled.
 
@@ -84,11 +78,9 @@ message Route {
 
 ### Swap Middleware for ICS20 Token Transfers
 
-{% hint style="danger" %}
-**FOR MODULE DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
-Swap functionality can be automatically triggered by ICS20 token transfer packets.
+Swap functionality can be automatically triggered by ICS20 token transfer packets. This is similar to IBC Hooks and can be used by any developers who can use ICS20 in any chain (like Solidity IBC Eureka, CosmWasm on Sei, etc.) to interact with the swap module through IBC middleware.
 
 #### Metadata
 
@@ -133,9 +125,7 @@ The `ForwardMetadata` is derived from the [Packet Forward Middleware](https://gi
 
 ## **Sequence diagrams**
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 #### Basic Swap Without Forwarding
 
@@ -187,9 +177,7 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 **Receiver Address Handling**
 
