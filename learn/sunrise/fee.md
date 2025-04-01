@@ -6,6 +6,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 {% hint style="success" %}
 **LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Burn Mechanism:**
 
@@ -22,12 +23,13 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 4. **Dynamic Parameter Configuration**:
 
     - Developers can configure parameters dynamically with validation enforced by the module.
-      {% endhint %}
+      
 
 ## Core Functionality
 
 {% hint style="danger" %}
 **LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### Fee Deduction and Burning
 
@@ -46,12 +48,13 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
    ...
    }
    ```
-{% endhint %}
+
 
 **Parameter Configuration**
 
 {% hint style="info" %}
 **LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 | Parameter                | Description                                                                 |
 |--------------------------|-----------------------------------------------------------------------------|
@@ -68,18 +71,18 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
   "bypass_denoms": ["uvrise"]
 }
 ```
-{% endhint %}
 
 ## Benefits of the Fee Module
 
 {% hint style="success" %}
 **LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 - **Deflationary Pressure:**
   The burning mechanism introduces deflationary pressure on $RISE tokens, supporting long-term token value.
 - **Fee Flexibility:**
   Configurable parameters like bypass_denoms provide flexibility for specialized transaction scenarios.
-  {% endhint %}
+  
 
 For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/main/x/fee).
 
@@ -87,6 +90,8 @@ For more details and implementation specifics, see the [GitHub repository](https
 
 {% hint style="info" %}
 **LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
+
 
 Below is a sequence diagram illustrating how transaction fees are processed:
 
@@ -102,12 +107,12 @@ sequenceDiagram
     BankKeeper->>FeeCollector: Transfer Fees to Fee Collector Account
     FeeModule->>FeeModule: Burn Portion of Fees (based on burn_ratio)
 ```
-{% endhint %}
 
 ## Example Usage
 
 {% hint style="success" %}
 **LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 Developers can query fee parameters using Sunrise Client JS:
 
@@ -139,4 +144,3 @@ queryFeeParams();
   "bypass_denoms": ["uvrise"]
 }
 ```
-{% endhint %}
