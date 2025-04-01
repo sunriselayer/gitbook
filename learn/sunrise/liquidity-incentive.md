@@ -4,6 +4,10 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ## Key Features
 
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Epoch-Based Reward Distribution**:
     - Rewards are distributed at the end of each epoch.
     - Lazy accounting minimizes computational overhead by calculating rewards only when claimed.
@@ -20,6 +24,10 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Epochs
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 - Two epochs exist concurrently:
     1. **Past Epoch**: The epoch that has ended.
     2. **Current Epoch**: The ongoing epoch.
@@ -30,12 +38,20 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Gauge
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 - A gauge represents a specific liquidity pool's weight in reward allocation.
 - Parameters:
     - **`pool_id`**: The ID of the liquidity pool.
     - **`ratio`**: The voting power allocated to this pool.
 
 ### Lazy Accounting
+
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
 
 - Rewards are not distributed immediately but are calculated when claimed.
 - Formula for calculating rewards:
@@ -46,6 +62,10 @@ $$
 
 
 ## Workflow
+
+{% hint style="danger" %}
+**FOR MODULE DEVELOPERS**
+{% endhint %}
 
 ### 1. BeginBlocker
 
@@ -64,6 +84,10 @@ $$
 
 ## Sequence Diagram: Reward Distribution
 
+{% hint style="warning" %}
+**FOR ADVANCED USERS**
+{% endhint %}
+
 ```mermaid
 sequenceDiagram
     participant User as Liquidity Provider
@@ -76,10 +100,13 @@ sequenceDiagram
     IncentiveModule->>Distribution: Transfer Inflation Rewards
     User->>IncentiveModule: Claim Rewards
     IncentiveModule->>User: Calculate and Distribute Rewards
-
 ```
 
 ## Code Examples
+
+{% hint style="success" %}
+**FOR APP DEVELOPERS**
+{% endhint %}
 
 **Query Epoch Information:**
 
@@ -100,7 +127,6 @@ async function queryEpochs() {
     console.log("Epochs:", epochs);
 }
 queryEpochs();
-
 ```
 
 **Example Output:**
@@ -121,7 +147,6 @@ queryEpochs();
     ...
   }
 }
-
 ```
 
 
