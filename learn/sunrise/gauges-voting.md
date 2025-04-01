@@ -2,9 +2,7 @@
 
 ## What is a Gauge?
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vRISE` tokens. Currently, the primary gauge product is the Liquidity Pool system.
 
@@ -12,9 +10,7 @@ A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vR
 
 ## How the Voting System Works
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 ### Epoch-Based Voting
 
@@ -44,9 +40,7 @@ sequenceDiagram
 
 ### Eligibility Requirements
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 To participate in gauge voting:
 
@@ -54,15 +48,11 @@ To participate in gauge voting:
 * **Balance Timing:** Your valid `vRISE` balance at epoch start determines your voting power
 * **Token Status:** Locked vRISE tokens are not counted toward voting power
 
-{% hint style="info" %}
 You can submit your vote even before you have `vRISE` tokens. Your voting preferences will be applied based on whatever `vRISE` balance you have when the next epoch begins.
-{% endhint %}
 
 ### Viewing Current Voting Status
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 **System Parameters**
 
@@ -83,15 +73,11 @@ The complete list of voting gauges shows:
 * Each gauge's total accumulated voting power
 * Percentage of total votes directed to each gauge
 
-{% hint style="warning" %}
 The system only retains data for the current and previous epochs. Historical data from earlier epochs is pruned and cannot be retrieved from the blockchain.
-{% endhint %}
 
 ## How to Vote
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 ### Step 1: Access Your Voting Dashboard
 
@@ -130,9 +116,7 @@ You can modify your vote at any time:
 
 ## Strategic Voting Considerations
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 * **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
 * **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards

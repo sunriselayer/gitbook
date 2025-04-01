@@ -4,9 +4,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Key Features
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 1. **Concentrated Liquidity AMM:**
 
@@ -33,9 +31,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Core Functionality
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 ### Pool Management
 
@@ -50,9 +46,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ### Tick System
 
-{% hint style="danger" %}
-**FOR MODULE DEVELOPERS**
-{% endhint %}
+**[LEVEL 3: FOR MODULE DEVELOPERS]**
 
 The tick system is based on a price ratio formula:
 
@@ -70,9 +64,7 @@ This allows for precise positioning of liquidity within specific price ranges.
 
 ## Workflow: Creating and Using Positions
 
-{% hint style="warning" %}
-**FOR ADVANCED USERS**
-{% endhint %}
+**[LEVEL 2: FOR ADVANCED USERS]**
 
 ```mermaid
 sequenceDiagram
@@ -102,9 +94,7 @@ sequenceDiagram
 
 ## Messages
 
-{% hint style="danger" %}
-**FOR MODULE DEVELOPERS**
-{% endhint %}
+**[LEVEL 3: FOR MODULE DEVELOPERS]**
 
 ### MsgCreatePool
 
@@ -178,9 +168,7 @@ type MsgClaimRewards struct {
 
 ## Example Usage
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 **Create a Position**
 
@@ -209,9 +197,7 @@ async function createPosition() {
 
 ## Queries
 
-{% hint style="success" %}
-**FOR APP DEVELOPERS**
-{% endhint %}
+**[LEVEL 1: FOR APP DEVELOPERS]**
 
 The module provides various query endpoints:
 
