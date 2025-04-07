@@ -1,16 +1,16 @@
-# Validators
+# バリデータ
 
-- [Validator Node](../../node/types/consensus/validator-node.md)
-- [Data Availability Proof](./data-availability-proof.md)
-- [Self Delegation](./self-delegation.md)
+- [バリデータノード](../../node/types/consensus/validator-node.md)
+- [データ可用性の証明](./data-availability-proof.md)
+- [セルフデリゲーション](./self-delegation.md)
 
-First, create a validator node. After the validator node is started, blocks are validated and generated.
+まず、バリデータノードを作成します。バリデータノードが起動されると、ブロックの検証と生成が行われます。
 
-In Sunrise, validators are responsible for validating data in the Data Availability Layer in addition to generating blocks.
-sunrise-data includes code to automate this process, allowing validators to perform the validation work.
+Sunriseでは、バリデータはブロック生成に加えて、データ可用性層のデータを検証する責任も負っています。
+sunrise-dataにはこのプロセスを自動化するコードが含まれており、バリデータが検証作業を実行できるようになっています。
 
-Therefore, the validator node must run the following 3 daemons
+したがって、バリデータノードは以下の3つのデーモンを実行する必要があります
 
-1. sunrised (Recommended to work with cosmovisor)
+1. sunrised (cosmovisorと連携することを推奨)
 1. sunrise-data validator
 1. IPFS Daemon

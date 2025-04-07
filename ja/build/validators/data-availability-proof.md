@@ -1,26 +1,26 @@
-# Proof of the Data Availability Layer
+# データ可用性層の証明
 
-Sunrise's Data Availability Layer is validated by validators. Validators must validate data that may not be valid and send the proofs to chain.
+Sunriseのデータ可用性層はバリデータによって検証されます。バリデータは有効でない可能性のあるデータを検証し、その証明をチェーンに送信する必要があります。
 
-This section describes how validators prove data.
+このセクションでは、バリデータがどのようにデータを証明するかについて説明します。
 
-## Proof
+## 証明
 
-The only data that require proof are those that have been sent MsgSubmitInvalidity and the status has been changed to `CHALLENGING`.
+証明が必要なデータは、MsgSubmitInvalidityが送信され、ステータスが`CHALLENGING`に変更されたものだけです。
 
-The threshold for `CHALLENGING` is when MsgSubmitInvalidity is sent for 33% (the default in genesis) of the entire shards.
+`CHALLENGING`の閾値は、全シャードの33%（ジェネシスのデフォルト）に対してMsgSubmitInvalidityが送信された場合です。
 
-The validator is then validated. If more than a certain number of shards are proved, the status changes to `VERIFIED` as usual. If not, the status changes to `REJECTED`.
+その後、バリデータが検証されます。一定数以上のシャードが証明された場合、ステータスは通常通り`VERIFIED`に変更されます。そうでない場合、ステータスは`REJECTED`に変更されます。
 
-See [Data Availability](../../learn/sunrise/data-availability.md) for status and proof of data in the Data Availability Layer.
+データ可用性層におけるステータスとデータの証明については、[データ可用性](../../learn/sunrise/data-availability.md)を参照してください。
 
-## Sunrise-Data for Validator
+## バリデータのためのsunrise-data
 
-sunrise-data provides validators with the functions to monitor and prove data that has become `CHALLENGING`.
+sunrise-dataは、バリデータに`CHALLENGING`になったデータをモニタリングし証明する機能を提供します。
 
-### Register proof deputy of your validator
+### バリデータの証明代理を登録する
 
-Although validators can send tx themselves to send proof data, it is recommended to use a deputy address to prevent leakage of keys.
+バリデータは自身でトランザクションを送信してデータを証明することもできますが、鍵の漏洩を防ぐために代理アドレスを使用することをお勧めします。
 
 ```bash
 sunrised tx da register-proof-deputy [deputy_address] \
@@ -30,15 +30,15 @@ sunrised tx da register-proof-deputy [deputy_address] \
    --gas=220000
 ```
 
-To register you need to send a transaction with the validator key only once on `sunrised`.
-Register the address of the deputy to be used on `sunrise-data`.
+登録するには、`sunrised`でバリデータキーを使用してトランザクションを一度だけ送信する必要があります。
+`sunrise-data`で使用する代理のアドレスを登録します。
 
-### How to set up
+### セットアップ方法
 
-1. Running `sunrised` as a validator
-See [Validator Node](../../node/types/consensus/validator-node.md) for setting up.
+1. バリデータとして`sunrised`を実行する
+セットアップについては[バリデータノード](../../node/types/consensus/validator-node.md)を参照してください。
 
-1. Clone sunrise-data repo
+1. sunrise-dataリポジトリをクローンする
 
    ```bash
    cd ~
@@ -47,16 +47,16 @@ See [Validator Node](../../node/types/consensus/validator-node.md) for setting u
    make install
    ```
 
-1. Create and edit `config.toml`
+1. `config.toml`を作成して編集する
 
    ```bash
    cp config.default.toml config.toml
    vi config.toml
    ```
 
-   To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
+   ローカルのIPFSデーモンに接続するには、`ipfs_api_url`フィールドを空のままにしておきます
 
-   Change `home_path` to your .sunrise directory, `proof_deputy_account` to your sunrised key's name and `validator_address` to your validator address.
+   `home_path`を.sunriseディレクトリに、`proof_deputy_account`をsunrisedキーの名前に、`validator_address`をバリデータアドレスに変更します。
 
    ```toml
    [api]
@@ -77,9 +77,9 @@ See [Validator Node](../../node/types/consensus/validator-node.md) for setting u
     proof_interval=5
    ```
 
-### Run IPFS on local
+### ローカルでIPFSを実行する
 
-1. Run IPFS
+1. IPFSを実行する
 
    ```bash
    wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
@@ -90,21 +90,21 @@ See [Validator Node](../../node/types/consensus/validator-node.md) for setting u
    ipfs daemon
    ```
 
-1. Check the IPFS node ID and optionally share and add a remote peer
+1. IPFSノードIDを確認し、必要に応じてリモートピアを共有して追加する
 
    ```bash
    ipfs id
    ```
 
-### Start to proof data
+### データの証明を開始する
 
-On your sunrise-data directory,
+sunrise-dataディレクトリで、
 
 ```bash
 sunrise-data validator
 ```
 
-Or register as a service
+またはサービスとして登録する
 
 ```bash
 vi /etc/systemd/system/sunrise-data.service
@@ -129,7 +129,7 @@ LimitNOFILE=1400000
 WantedBy = multi-user.target
 ```
 
-If the setup is successful, the display will look like this
+セットアップが成功すると、表示は次のようになります
 
 ```bash
 $ sunrise-data validator

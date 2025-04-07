@@ -1,6 +1,6 @@
-# Self Delegation
+# セルフデリゲーション
 
-Validators can increase their Voting Power by staking &#36;RISE to themselves. This feature is only available for addresses registered as validators, such as MsgCreateValidator.
+バリデータは、自身に$RISEをステーキングすることで議決権（Voting Power）を増やすことができます。この機能は、MsgCreateValidatorなどでバリデータとして登録されたアドレスのみが利用できます。
 
 ## x/selfdelegation Msg
 
@@ -8,52 +8,52 @@ Validators can increase their Voting Power by staking &#36;RISE to themselves. T
 1. MsgWithdrawSelfDelegationUnbonded
 
 - MsgSelfDelegate
-It creates a self-delegation proxy account if one does not exist. &#36;RISE is sent to the proxy account to start delegation.
+セルフデリゲーションプロキシアカウントが存在しない場合、作成します。$RISEはプロキシアカウントに送信され、デリゲーションが開始されます。
 
 ```bash
 sunrised tx selfdelegation self-delegate [amount] [flags]
 ```
 
 - MsgWithdrawSelfDelegationUnbonded
-After Undelegate, after a certain period has expired, and when Unbonded, you can make a withdrawal; &#36;RISE will be refunded to the balance in your account.
-Undelegate can be done with Proxy Account Tx as described below.
+Undelegateの後、一定期間が経過し、Unbondedの状態になったとき、引き出しを行うことができます。$RISEはあなたのアカウントの残高に返金されます。
+Undelegateは、以下に説明するプロキシアカウントのTxで実行できます。
 
 ```bash
 sunrised tx selfdelegation withdraw-self-delegation-unbonded [amount] [flags]
 ```
 
-## Self Delegation Proxy Account
+## セルフデリゲーションプロキシアカウント
 
-&#36;RISE self-delegation is processing through the Self Delegation Proxy Account.
+$RISEのセルフデリゲーションは、セルフデリゲーションプロキシアカウントを通じて処理されます。
 
-When self-delegation takes place, the &#36;RISE is moved to the Proxy Account. The Proxy Account converts the &#36;RISE to &#36;vRISE and acts as your delegator.
+セルフデリゲーションが行われると、$RISEはプロキシアカウントに移動します。プロキシアカウントは$RISEを$vRISEに変換し、あなたのデリゲータとして機能します。
 
-### Query
+### クエリ
 
-Use `x/selfdelegation` query and find your proxy account.
+`x/selfdelegation`クエリを使用して、プロキシアカウントを見つけます。
 
 ```bash
 sunrised q selfdelegation self-delegation-proxy-account-by-owner [your-address]
 ```
 
-### Excute Msg
+### Msg実行
 
 1. MsgUndelegate
 1. MsgWithdrawReward
 1. MsgSend
 
-On CLI, use
+CLIでは、以下を使用します
 
 ```bash
 sunrised tx accounts execute [proxy-account-address] [execute-msg-type-url] [json-message] [flags]
 ```
 
 - MsgUndelegate
-Delegation from Proxy Account is cancelled. After a certain amount period, it becomes withdrawable by MsgWithdrawSelfDelegationUnbonded of x/selfdelegation.
+プロキシアカウントからのデリゲーションがキャンセルされます。一定期間後、x/selfdelegationのMsgWithdrawSelfDelegationUnbondedによって引き出し可能になります。
 - MsgWithdrawReward
-Withdraws the delegation reward. Withdrawn rewards can be sent to other accounts via MsgSend.
+デリゲーション報酬を引き出します。引き出された報酬はMsgSendを通じて他のアカウントに送信できます。
 - MsgSend
-Send available funds to other accounts.
+利用可能な資金を他のアカウントに送信します。
 
 #### sunrise.accounts.self_delegation_proxy.v1.MsgUndelegate
 
@@ -100,21 +100,21 @@ message MsgSend {
 }
 ```
 
-## Delegatable Lockup Account
+## デリゲート可能なロックアップアカウント
 
-In Sunrise mainnet, Airdrops and other funds granted by Genesis are locked for a certain period of time as a lockup account.
-For more details, see [Lockup Account](../../learn/sunrise/lockup-account.md).
+Sunrise メインネットでは、エアドロップやジェネシスで付与された他の資金は、ロックアップアカウントとして一定期間ロックされます。
+詳細については、[ロックアップアカウント](../../learn/sunrise/lockup-account.md)を参照してください。
 
-A self-delegatable lockup account allows validators to self-delegation.
+セルフデリゲータブルロックアップアカウントにより、バリデータはセルフデリゲーションを行うことができます。
 
-### Excute Tx
+### Tx実行
 
-The following Txs are supported with self-delegatable lockup accounts
+セルフデリゲータブルロックアップアカウントでは以下のTxがサポートされています
 
 1. MsgSelfDelegate
 1. MsgWithdrawSelfDelegationUnbonded
 
-On CLI, use
+CLIでは、以下を使用します
 
 ```bash
 sunrised tx accounts execute [account-address] [execute-msg-type-url] [json-message] [flags]
