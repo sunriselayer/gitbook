@@ -1,64 +1,64 @@
-# Lockup Account
+# ロックアップアカウント
 
-In Sunrise mainnet, Airdrops and other funds granted by Genesis are locked for a certain period of time.
-This will be unlocked gradually over time and can be sent to other accounts.
+Sunrise メインネットでは、エアドロップやジェネシスによって付与された資金は一定期間ロックされます。
+これは時間の経過とともに徐々にロック解除され、他のアカウントに送信できるようになります。
 
-## Lockup Account Types
+## ロックアップアカウントタイプ
 
-In Sunrise, the following lock-up accounts are exist
+Sunriseでは、以下のロックアップアカウントが存在します
 
 1. [continuous-locking-account](https://docs.cosmos.network/v0.52/build/modules/auth/vesting#continuously-vesting-accounts)
 1. [delayed-locking-account](https://docs.cosmos.network/v0.52/build/modules/auth/vesting#continuously-vesting-accounts)
 1. [periodic-locking-account](https://docs.cosmos.network/v0.52/build/modules/auth/vesting#continuously-vesting-accounts)
 1. permanent-locking-account
 
-- ContinuousLocking: A lockup account implementation that vests coins linearly over time.
-- DelayedLocking: A lockup account implementation that only fully vests all coins at a given time.
-- PeriodicLocking: A lockup account implementation that vests coins according to a custom lockup schedule.
-- PermanentLocking: It does not ever release coins, locking them indefinitely. Coins in this account can still be used for delegating and for governance votes even while locked.
+- ContinuousLocking: 時間の経過とともに直線的にコインがベスティングされるロックアップアカウントの実装。
+- DelayedLocking: 指定された時間に全てのコインが完全にベスティングされるロックアップアカウントの実装。
+- PeriodicLocking: カスタムロックアップスケジュールに従ってコインがベスティングされるロックアップアカウントの実装。
+- PermanentLocking: コインを永久にロックし、決して解放しません。このアカウントのコインはロックされた状態でも委任やガバナンス投票に使用できます。
 
-Basically, continuous-locking-account is used. The lock funds is gradually unlocked over time.
+基本的に、continuous-locking-accountが使用されます。ロックされた資金は時間の経過とともに徐々にロック解除されます。
 
-## Self Delegatable Lockup Account
+## セルフデリゲータブルロックアップアカウント
 
-In Sunrise, `seld-delegatable` is prefixed, as in `seld-delegatable-continuous-locking-account`. This means that self-delegating, a feature for validators, is available. See [Self Delegation](../../build/validators/self-delegation.md) for more details.
+Sunriseでは、`seld-delegatable-continuous-locking-account`のように`seld-delegatable`が接頭辞として付けられます。これは、バリデーター向けの機能であるセルフデリゲーションが利用可能であることを意味します。詳細は[セルフデリゲーション](../../build/validators/self-delegation.md)を参照してください。
 
-## Excute Tx
+## トランザクションの実行
 
-The following Txs are supported with lockup accounts
+ロックアップアカウントでは以下のトランザクションがサポートされています
 
 1. MsgSend
 <!-- 1. MsgDelegate
 1. MsgUndelegate
 1. MsgWithdrawReward -->
 
-MsgSend can move unlocked funds to other accounts.
-<!-- MsgDelegate can also delegate locked funds.
-MsgWithdrawReward can claim the delegation reward to the validator. The reward is added to the lockup account and is subject to lockup. -->
+MsgSendはロック解除された資金を他のアカウントに移動できます。
+<!-- MsgDelegateはロックされた資金も委任できます。
+MsgWithdrawRewardはバリデーターへの委任報酬を請求できます。報酬はロックアップアカウントに追加され、ロックアップの対象となります。 -->
 
-You can see the status of your lockup account by searching your account in [Risescan](https://risescan.sunriselayer.io). If you want to retrieve your lockup balance, go to [Sunrise App](https://app.sunriselayer.io/accounts/lockup) and send this tx.
+[Risescan](https://risescan.sunriselayer.io)でアカウントを検索することで、ロックアップアカウントのステータスを確認できます。ロックアップ残高を取得したい場合は、[Sunrise App](https://app.sunriselayer.io/accounts/lockup)にアクセスしてこのトランザクションを送信してください。
 
-On CLI, use
+CLIでは、以下を使用します
 
 ```bash
 sunrised tx accounts execute [lockup-account-address] sunrise.accounts.self_delegatable_lockup.v1.MsgSend "{\"sender\":<owner-account-address>,\"to_address\":<recipient-account-address>,\"amount\":[{\"amount\":\"4000\", \"denom\":\"urise\"}]}" [flags]
 ```
 
-## Query
+## クエリ
 
-Use `x/selfdelegation` query and find your lockup accounts.
+`x/selfdelegation`クエリを使用して、ロックアップアカウントを検索します。
 
 ```bash
 sunrised q selfdelegation lockup-accounts-by-owner [your-address]
 ```
 
-The following queries are supported with lockup accounts
+ロックアップアカウントでは以下のクエリがサポートされています
 
 1. QueryLockupAccountInfoRequest
 1. QuerySpendableAmountRequest
 
-Sunrise App & Risescan supports to display these info.
-On CLI, use
+Sunrise AppとRisescanはこれらの情報を表示することをサポートしています。
+CLIでは、以下を使用します
 
 ```bash
 sunrised query accounts query [lockup-account-address] [query-request-type-url] [json-message] [flags]
