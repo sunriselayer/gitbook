@@ -16,11 +16,10 @@
   - [Swap](learn/sunrise/swap.md)
   - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
+  - [Lockup Account](learn/sunrise/lockup-account.md)
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
 - [🏦 Gluon](learn/gluon/README.md)
-  - [Interest Rate Swap](learn/gluon/interest-rate-swap.md)
-  - [SPoL](learn/gluon/spol.md)
 - [💴 $GLU](learn/glu.md)
 - [🎓 Thesis](learn/thesis/README.md)
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
@@ -30,9 +29,15 @@
 
 - [Client](build/client/README.md)
 - [L2 Blockchains](build/l2-blockchains/README.md)
-  - [Rollkit](build-l2-blockchains/rollkit.md)
-  - [OP Stack](build-l2-blockchains/op-stack.md)
-    - [Sunrise OP DA Server](build-l2-blockchains/op-da-server.md)
+  - [Rollkit](build/l2-blockchains/rollkit/rollkit.md)
+    - [Sunrise Data](build/l2-blockchains/rollkit/sunrise-data.md)
+    - [Rollkit L2 Chain](build/l2-blockchains/rollkit/rollkit.md)
+  - [OP Stack](build/l2-blockchains/optimism/README.md)
+    - [Sunrise Data](build/l2-blockchains/optimism/sunrise-data.md)
+    - [OP Stack L2 Chain](build/l2-blockchains/optimism/op-stack.md)
+- [Validators](build/validators/README.md)
+  - [Proof of Data Availability](build/validators/data-availability-proof.md)
+  - [Self Delegation](build/validators/self-delegation.md)
 
 ## 🏗️ Run a Sunrise Node
 
@@ -59,11 +64,8 @@
 - [GitHub](https://github.com/sunriselayer)
 - [Discord](https://discord.com/invite/sunrise)
 - [X (Twitter)](https://twitter.com/SunriseLayer)
-- [X (Twitter) 日本](https://twitter.com/SunriseLayerJP)
 - [Medium](https://sunriselayer.medium.com/)
-- [Medium 日本語](https://medium.com/sunrise-jp)
-- [Qiita Organization](https://qiita.com/organizations/sunriselayer)
-- [Zenn Publication](https://zenn.dev/p/sunriselayerjp)
+- [dev.to](https://dev.to/sunriselayer_dev)
 
 ## 📓 Deprecated (UnUniFi)
 
