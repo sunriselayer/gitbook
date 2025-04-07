@@ -1,27 +1,29 @@
-# OP Stack L2 Chain
+I'll help you translate the OP Stack L2 Chain document into Japanese.
 
-Sunrise's Data Availability Layer supports Layer 2 blockchains created using [OP Stack](https://github.com/ethereum-optimism/optimism)
-This is a guide to connecting an L2 chain created using OP Stack to Sunrise chain with [Sunrise Data](./sunrise-data.md). Data Availability layer is supported in Sunrise v0.3.0 and later.
+# OP Stack L2チェーン
 
-This version of the OP Stack requires the L1 EVM chain for operation. Use some kind of testnet or local chain.
+SunriseのデータDA可用性レイヤーは、[OP Stack](https://github.com/ethereum-optimism/optimism)を使用して作成されたレイヤー2ブロックチェーンをサポートしています。
+これは、OP Stackを使用して作成したL2チェーンを[Sunrise Data](./sunrise-data.md)を通じてSunriseチェーンに接続するためのガイドです。データ可用性レイヤーはSunrise v0.3.0以降でサポートされています。
 
-## How to set up OP Stack
+このバージョンのOP Stackは、操作のためにL1 EVMチェーンを必要とします。テストネットまたはローカルチェーンを使用してください。
 
-As an example, here is how to use OP Stack to create an L2 chain and run it on the Sunrise's Data Availability Layer.
+## OP Stackのセットアップ方法
 
-This guide uses the Ethereum Sepolia testnet to meet the OP Stack requirements, but a local EVM chain will also work.
+例として、OP Stackを使用してL2チェーンを作成し、SunriseのデータDA可用性レイヤー上で実行する方法を紹介します。
+
+このガイドでは、OP Stackの要件を満たすためにEthereum Sepoliaテストネットを使用していますが、ローカルのEVMチェーンも同様に機能します。
 
 ```mermaid
 sequenceDiagram
    autonumber
-   L2 ->> Ethereum Sepolia: Send Tx (e.g. token transfer)
-   Ethereum Sepolia --> L2: API & Tx Response
-   L2 ->> Sunrise: Send Block Data and Save
+   L2 ->> Ethereum Sepolia: トランザクション送信（例：トークン転送）
+   Ethereum Sepolia --> L2: APIとトランザクションレスポンス
+   L2 ->> Sunrise: ブロックデータの送信と保存
 ```
 
-### Dependencies
+### 依存関係
 
-Dependencies and general installation instructions for Ubuntu 22.04.
+Ubuntu 22.04向けの依存関係と一般的なインストール手順です。
 
 - node
 
@@ -50,40 +52,40 @@ Dependencies and general installation instructions for Ubuntu 22.04.
     sudo apt install just
   ```
 
-### Set up Optimism Rollup Testnet
+### Optimism Rollupテストネットのセットアップ
 
 ### Optimism
 
-1. **Clone the optimism repo**
+1. **optimismリポジトリのクローン**
 
    ```bash
    git clone https://github.com/ethereum-optimism/optimism.git
    ```
 
-1. Check out the correct branch
+1. 正しいブランチをチェックアウト
 
    ```bash
    cd optimism
    git checkout v1.9.1
    ```
 
-　We have confirmed the operation with the latest version at the time of document update. If you use other versions, please check the differences.
+　ドキュメント更新時点での最新バージョンでの動作を確認しています。他のバージョンを使用する場合は、違いを確認してください。
 
-1. **Run the following to check you have all dependencies**
+1. **すべての依存関係があることを確認するために以下を実行**
 
    ```bash
    ./packages/contracts-bedrock/scripts/getting-started/versions.sh
    ```
 
-1. Build all packages associated with Optimism
+1. Optimismに関連するすべてのパッケージをビルド
 
    ```bash
    make op-node op-batcher op-proposer
    ```
 
-   If you are having issues with this step, make sure your versions match those in the optimism docs. Specifically, you may have to downgrade your go version.
+   このステップで問題が発生している場合は、バージョンがoptimismドキュメントのものと一致していることを確認してください。特に、goバージョンをダウングレードする必要があるかもしれません。
 
-1. Clone and build op-geth
+1. op-gethのクローンとビルド
 
    ```bash
    cd ~
@@ -92,19 +94,19 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    make geth
    ```
 
-　 For more information on supported `op-geth, please check the [Production Releases](https://github.com/ethereum-optimism/optimism/tree/v1.12.0?tab=readme-ov-file#production-releases) in the optimism repository.
+　 サポートされている`op-geth`の詳細については、optimismリポジトリの[Production Releases](https://github.com/ethereum-optimism/optimism/tree/v1.12.0?tab=readme-ov-file#production-releases)をご確認ください。
 
-1. Fill out environment variables
+1. 環境変数の設定
 
    ```bash
    cd ~/optimism
    cp .envrc.example .envrc
    ```
 
-   Run the script to generate addresses with the following command in the optimism repo:
+   optimismリポジトリで以下のコマンドを実行してアドレスを生成するスクリプトを実行します：
    `./packages/contracts-bedrock/scripts/getting-started/wallets.sh`
 
-   The output will look like the following which will you need to paste into the environment file as well:
+   出力は以下のようになり、これを環境ファイルに貼り付ける必要があります：
 
    ```bash
    ##################################################
@@ -156,31 +158,31 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    export L1_RPC_URL=https://sepolia.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
-   API key for RPC URL can be found in [Infura](https://www.infura.io/) or other providers.
+   RPC URLのAPIキーは[Infura](https://www.infura.io/)または他のプロバイダーで見つけることができます。
 
-1. Fund the addresses with enough Sepolia ETH, the optimism docs recommend the following:
+1. アドレスに十分なSepolia ETHを入金します。optimismのドキュメントでは以下を推奨しています：
 
    - Admin — 0.5 Sepolia ETH
    - Proposer — 0.2 Sepolia ETH
    - Batcher — 0.1 Sepolia ETH
 
-   Ref: [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)
+   参照: [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)
 
-1. Load environment variables with direnv
+1. direnvで環境変数を読み込む
    `direnv allow`
-   You should see something similar to this after:
+   実行後、以下のような出力が表示されるはずです：
 
    ```bash
        direnv: loading ~/optimism/.envrc                                                            direnv: export +DEPLOYMENT_CONTEXT +ETHERSCAN_API_KEY +GS_ADMIN_ADDRESS +GS_ADMIN_PRIVATE_KEY +GS_BATCHER_ADDRESS +GS_BATCHER_PRIVATE_KEY +GS_PROPOSER_ADDRESS +GS_PROPOSER_PRIVATE_KEY +GS_SEQUENCER_ADDRESS +GS_SEQUENCER_PRIVATE_KEY +IMPL_SALT +L1_RPC_KIND +L1_RPC_URL +PRIVATE_KEY +TENDERLY_PROJECT +TENDERLY_USERNAME
    ```
 
-   If you do not see any output, try
+   出力が表示されない場合は、以下を試してください
 
    `nano ~/.zshrc`
 
    `nano ~/.bashrc`
 
-   Add the following line depending on whether you use bash or zsh
+   bashとzshのどちらを使用しているかに応じて以下の行を追加します
 
    ```bash
    eval "$(direnv hook zsh)"
@@ -190,13 +192,13 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    eval "$(direnv hook bash)"
    ```
 
-   Save the changes with
+   以下で変更を保存します
 
    `source ~/.zshrc`
 
    `source ~/.bashrc`
 
-1. Configure the network
+1. ネットワークの設定
 
    ```bash
 
@@ -204,8 +206,8 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    ./scripts/getting-started/config.sh
    ```
 
-   You can view the config in the **`deploy-config/getting-started.json`** file
-   Add the following at the bottom of the config generated
+   **`deploy-config/getting-started.json`**ファイルで設定を確認できます
+   生成された設定ファイルの末尾に以下を追加します
 
    ```bash
    nano deploy-config/getting-started.json
@@ -225,7 +227,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    }
    ```
 
-1. Deploy the L1 contracts
+1. L1コントラクトのデプロイ
 
    ```bash
    just install
@@ -247,11 +249,11 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    --chain 42069
    ```
 
-   Use your L2 chain id in `--chain`.
+   `--chain`にはあなたのL2チェーンIDを使用してください。
 
-   > If you see a nondescript error that includes `EvmError: Revert` and `Script failed` then you likely need to change the `IMPL_SALT` environment variable. This variable determines the addresses of various smart contracts that are deployed via [CREATE2(opens in a new tab)](https://eips.ethereum.org/EIPS/eip-1014). If the same `IMPL_SALT` is used to deploy the same contracts twice, the second deployment will fail. **You can generate a new `IMPL_SALT` by running `direnv allow` anywhere in the Optimism Monorepo.**
+   > `EvmError: Revert`と`Script failed`を含む説明のないエラーが表示される場合は、`IMPL_SALT`環境変数を変更する必要がある可能性があります。この変数は、[CREATE2](https://eips.ethereum.org/EIPS/eip-1014)を介してデプロイされる様々なスマートコントラクトのアドレスを決定します。同じ`IMPL_SALT`を使って同じコントラクトを2回デプロイすると、2回目のデプロイは失敗します。**Optimism Monorepoのどこかで`direnv allow`を実行することで、新しい`IMPL_SALT`を生成できます。**
 
-1. Generate the L2 config files
+1. L2設定ファイルの生成
 
    ```bash
    cd ~/optimism/op-node
@@ -264,7 +266,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --l2-allocs ../packages/contracts-bedrock/deploy-config/statedump.json
    ```
 
-   Check the end of the generated `rollup.json`
+   生成された`rollup.json`の末尾を確認します
 
    ```json
     "alt_da": {
@@ -275,20 +277,20 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      }
    ```
 
-1. Create an authentication key
+1. 認証キーの作成
 
    ```bash
    openssl rand -hex 32 > jwt.txt
    ```
 
-1. Copy genesis files into op-geth directory
+1. genesisファイルをop-gethディレクトリにコピー
 
    ```bash
    cp genesis.json ~/op-geth
    cp jwt.txt ~/op-geth
    ```
 
-1. Initialize `op-geth`
+1. `op-geth`の初期化
 
    ```bash
    cd ~/op-geth
@@ -297,13 +299,13 @@ Dependencies and general installation instructions for Ubuntu 22.04.
    build/bin/geth init --datadir=datadir genesis.json
    ```
 
-## Start L2
+## L2の起動
 
-**Before optimism start, set up `sunrised` & `sunrise-data`, etc.**
+**optimismを起動する前に、`sunrised`と`sunrise-data`などをセットアップしてください。**
 
 [**Sunrise Data**](./sunrise-data.md)
 
-1. Start `op-geth`
+1. `op-geth`の起動
 
    ```bash
    ./build/bin/geth \
@@ -330,7 +332,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --rollup.disabletxpoolgossip=true
    ```
 
-2. Start `op-node`
+2. `op-node`の起動
 
    ```bash
    cd ~/optimism/op-node
@@ -354,9 +356,9 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --l1.beacon.ignore=true
    ```
 
-   --altda.da-server is your da-serer’s http URL
+   --altda.da-serverはあなたのDAサーバーのhttp URLです
 
-3. Start `op-batcher`
+3. `op-batcher`の起動
 
    ```bash
    cd ~/optimism/op-batcher
@@ -379,7 +381,7 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --altda.da-server=http://localhost:3100
    ```
 
-4. Start `op-proposer`
+4. `op-proposer`の起動
 
    ```bash
    cd ~/optimism/op-proposer
@@ -392,4 +394,4 @@ Dependencies and general installation instructions for Ubuntu 22.04.
      --l1-eth-rpc=$L1_RPC_URL
    ```
 
-5. Work
+5. 動作確認

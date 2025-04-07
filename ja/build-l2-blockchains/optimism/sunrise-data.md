@@ -1,19 +1,19 @@
-# Sunrise Data for OP Stack
+# OP Stack向けSunrise Data
 
-[Sunrise Data](https://github.com/sunriselayer/sunrise-data) acts as a relay server connecting the L2 chain to the Sunrise DA layer.
+[Sunrise Data](https://github.com/sunriselayer/sunrise-data)は、L2チェーンをSunrise DAレイヤーに接続するリレーサーバーとして機能します。
 
-## Sunrise Consensus Node
+## Sunriseコンセンサスノード
 
-Requires a networked Sunrise node to operate. [Networks](../../networks/README.md) running Sunrise v0.3.0 or higher support Data Availability Layer.
+動作にはネットワーク接続されたSunriseノードが必要です。Sunrise v0.3.0以上を実行している[ネットワーク](../../networks/README.md)はデータ可用性レイヤーをサポートしています。
 
-Follow the [Node Guide](../consensus/README.md) on how to create a consensus node.
+コンセンサスノードの作成方法については[ノードガイド](../consensus/README.md)をご参照ください。
 
-### How to set up sunrise-data
+### sunrise-dataのセットアップ方法
 
-1. Running `sunrised`
-See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for setting up.
+1. `sunrised`の実行
+設定に関しては[コンセンサスノード](../../node/types/consensus/full-consensus-node.md)をご参照ください。
 
-1. Clone sunrise-data repo
+1. sunrise-dataレポジトリのクローン
 
    ```bash
    cd ~
@@ -22,16 +22,16 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    make install
    ```
 
-1. Create and edit `config.toml`
+1. `config.toml`の作成と編集
 
    ```bash
    cp config.default.toml config.toml
    nano config.toml
    ```
 
-   To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
+   ローカルのIPFSデーモンに接続するには、`ipfs_api_url`フィールドを空のままにしておきます
 
-   Change `home_path` to your .sunrise directory and `publisher_account` to your sunrised key's name
+   `home_path`を.sunriseディレクトリに、`publisher_account`をsunrisedキーの名前に変更します
 
    ```toml
    [api]
@@ -56,11 +56,11 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    parity_shard_count=10
    ```
 
-   The other fields can be left as is.
+   その他のフィールドはそのままにしておくことができます。
 
-### Run IPFS on local
+### ローカルでIPFSを実行する
 
-1. Run IPFS
+1. IPFSの実行
 
    ```bash
    wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
@@ -71,13 +71,13 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    ipfs daemon
    ```
 
-1. Check the IPFS node ID and optionally share and add a remote peer
+1. IPFSノードIDを確認し、必要に応じてリモートピアを共有および追加する
 
    ```bash
    ipfs id
    ```
 
-### Start
+### 起動
 
 ```bash
 sunrise-data optimism

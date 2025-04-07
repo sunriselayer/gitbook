@@ -1,41 +1,41 @@
-# Supported L2 SDKs
+# サポートされるL2 SDK
 
-## Sunrise Documents
+## Sunriseドキュメント
 
 - [Rollkit](./rollkit/README.md)
   - [Sunrise Data](./rollkit/sunrise-data.md)
-  - [Rollkit L2 Chain](./rollkit/rollkit.md)
+  - [Rollkit L2チェーン](./rollkit/rollkit.md)
 - [Optimism OP Stack](./optimism/README.md)
   - [Sunrise Data](./optimism/sunrise-data.md)
-  - [OP Stack L2 Chain](./optimism/op-stack.md)
+  - [OP Stack L2チェーン](./optimism/op-stack.md)
 
-## How to create L2
+## L2の作成方法
 
-It is recommended to run the full consensus node locally, without relying on an external RPC.
+外部RPCに依存せず、完全なコンセンサスノードをローカルで実行することが推奨されます。
 
-[Sunrise Consensus Node Document](../../../node/types/consensus/README.md)
+[Sunriseコンセンサスノードドキュメント](../../../node/types/consensus/README.md)
 
 ### Rollkit
 
-`sunrise-data`, and `rollkit` need to be run.
+`sunrise-data`と`rollkit`を実行する必要があります。
 
 ### OP Stack
 
-`sunrise-data`, `optimism` and `op-geth` need to be run.
+`sunrise-data`、`optimism`および`op-geth`を実行する必要があります。
 
-The local EVM L1 chain is only used to meet OP Stack requirements. The actual data (metadata) is stored in Sunrise.
+ローカルのEVM L1チェーンは、OP Stackの要件を満たすためだけに使用されます。実際のデータ（メタデータ）はSunriseに保存されます。
 
-Please Use Ganache, Hardhat, Anvil or etc as local L1 chain.
+ローカルL1チェーンとしてGanache、Hardhat、Anvilなどを使用してください。
 
-## Requirements
+## 要件
 
-| Type                    | CPU    | Architecture | Mem   | Disk     | Bandwidth |
-| ----------------------- | ------ | ------------ | ----- | -------- | --------- |
-| Rollkit + Sunrise Data  | 4 Core | x86_64       | 16 GB | 1 TB SSD | 1 Gbps    |
-| OP Stack + Sunrise Data | 6 Core | x86_64       | 32 GB | 1 TB SSD | 1 Gbps    |
+| タイプ                    | CPU    | アーキテクチャ | メモリ | ディスク   | 帯域幅    |
+| ------------------------- | ------ | -------------- | ------ | ---------- | --------- |
+| Rollkit + Sunrise Data    | 4コア   | x86_64         | 16 GB  | 1 TB SSD   | 1 Gbps    |
+| OP Stack + Sunrise Data   | 6コア   | x86_64         | 32 GB  | 1 TB SSD   | 1 Gbps    |
 
-## Official Document
+## 公式ドキュメント
 
 - [Rollkit](https://rollkit.dev/learn/intro)
-  - [BeaconKit (option)](https://rollkit.dev/tutorials/execution/beaconkit): By combining BeaconKit and Rollkit, EVM compatible L2 blockchain is possible to develop.
+  - [BeaconKit (オプション)](https://rollkit.dev/tutorials/execution/beaconkit): BeaconKitとRollkitを組み合わせることで、EVM互換のL2ブロックチェーンの開発が可能になります。
 - [OP Stack](https://docs.optimism.io/stack/getting-started)

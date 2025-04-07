@@ -1,19 +1,19 @@
 # Rollkit + Sunrise
 
-Sunrise's Data Availability Layer supports Layer 2 blockchains created using [Rollkit](https://github.com/rollkit/rollkit)
+SunriseのデータDA可用性レイヤーは、[Rollkit](https://github.com/rollkit/rollkit)を使用して作成されたレイヤー2ブロックチェーンをサポートしています。
 
-This is a guide to connecting an L2 chain created using Rollkit to Sunrise chain with [Sunrise Data](https://github.com/sunriselayer/sunrise-data). Data Availability layer is supported in Sunrise v0.3.1-rc1 and later.
+これは、Rollkitを使用して作成したL2チェーンを[Sunrise Data](https://github.com/sunriselayer/sunrise-data)を通じてSunriseチェーンに接続するためのガイドです。データ可用性レイヤーはSunrise v0.3.1-rc1以降でサポートされています。
 
 ## Sunrise Data
 
-**Before optimism start, set up sunrise-data.**
-[Sunrise Data Document](./sunrise-data.md)
+**Optimismを開始する前に、sunrise-dataをセットアップしてください。**
+[Sunrise Dataドキュメント](./sunrise-data.md)
 
-It is recommended to run the full consensus node locally, without relying on an external RPC.
-[Sunrise Consensus Node Document](../../../node/types/consensus/README.md)
+外部RPCに依存せず、完全なコンセンサスノードをローカルで実行することが推奨されます。
+[Sunriseコンセンサスノードドキュメント](../../../node/types/consensus/README.md)
 
 ## Rollkit
 
-Start your Rollkit L2 chain.
+RollkitのL2チェーンを起動します。
 
-[Rollkit L2 Chain Document](./rollkit.md)
+[Rollkit L2チェーンドキュメント](./rollkit.md)

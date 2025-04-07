@@ -1,35 +1,35 @@
-# How to run Sunrise Rollkit
+# Sunrise Rollkitの実行方法
 
-As an example, here is how to use Rollkit to create an L2 chain and run it on the Sunrise's Data Availability Layer.
+例として、Rollkitを使用してL2チェーンを作成し、SunriseのデータDA可用性レイヤー上で実行する方法を紹介します。
 
-## Dependencies
+## 依存関係
 
-Dependencies and general installation instructions for Ubuntu 22.04.
+Ubuntu 22.04向けの依存関係と一般的なインストール手順です。
 
-## Set up Sunrise Data
+## Sunrise Dataのセットアップ
 
-Rollkit support is provided via a server included in sunrise-data.
-See [Rollkit documentation](https://rollkit.dev/tutorials/da/overview) for the role of the DA server.
+Rollkitサポートは、sunrise-dataに含まれるサーバーを通じて提供されています。
+DAサーバーの役割については[Rollkitドキュメント](https://rollkit.dev/tutorials/da/overview)を参照してください。
 
-See [Sunrise Data document](./sunrise-data.md) to set it up.
-By default, the GRPC server for Rollkit support listens on port 7980.
+セットアップについては[Sunrise Dataドキュメント](./sunrise-data.md)を参照してください。
+デフォルトでは、Rollkitサポート用のGRPCサーバーはポート7980でリッスンします。
 
-## Run Rollkit
+## Rollkitの実行
 
-1. Clone rollkit repo
+1. Rollkitリポジトリのクローン
 
    ```bash
    cd ~
    git clone https://github.com/rollkit/rollkit.git
    cd rollkit
-   git checkout v0.14.1 # latest major version
+   git checkout v0.14.1 # 最新のメジャーバージョン
    make install
    ```
 
-1. Start rollkit chain
-  Use `--rollkit.da_address` option to connect to the DA server.
-  The other port specification options are used to avoid conflicts when running sunrised locally.
-  See [Rollkit documentation](https://rollkit.dev/) for other chain configuration.
+1. Rollkitチェーンの起動
+  DAサーバーに接続するには`--rollkit.da_address`オプションを使用します。
+  その他のポート指定オプションは、sunrisedをローカルで実行する際の競合を避けるために使用されます。
+  その他のチェーン設定については[Rollkitドキュメント](https://rollkit.dev/)を参照してください。
 
    ```bash
    rollkit start --rollkit.aggregator \
@@ -38,8 +38,8 @@ By default, the GRPC server for Rollkit support listens on port 7980.
    --p2p.laddr tcp://0.0.0.0:25656 --rpc.laddr tcp://127.0.0.1:25657
    ```
 
-1. Work
+1. 動作確認
 
-## Links
+## リンク
 
 - [Rollkit](https://rollkit.dev/learn/intro)
