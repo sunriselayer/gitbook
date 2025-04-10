@@ -7,6 +7,10 @@ coverY: 0
 
 **Our documentation is under construction and is being updated regularly, please check back for updates.**
 
+{% hint style="info" %}
+For feature requests and suggestions, please visit our <a href="https://github.com/orgs/sunriselayer/discussions" target="_blank">GitHub Discussions page</a>
+{% endhint %}
+
 Sunrise is a specialized Data Availability (DA) Layer for Proof of Liquidity and Fee Abstraction, supporting the modular paradigm by allowing developers to build rollups/apps with enhanced security and liquidity.
 
 Sunrise extends Berachain’s Proof of Liquidity (PoL) model to rollups and L2s, featuring a flexible modular design compatible with Rollkit and OP Stack. Gluon is deployed as a Sovereign Rollup (L2) onto the Sunrise L1 blockchain, functioning as an orderbook-style trading platform. It features web2-like user authentication, an off-chain order matching engine with on-chain settlement, and IBC-based deposit/withdrawal capabilities. Gluon and Sunrise communicate directly to enable the provision of liquidity (replication of PoL) in exchange for blobspace, allowing for a scaling solution with less net-value extract than pre-existing AltDA providers. PoL on Sunrise mutually increases security and liquidity for both the rollup and Sunrise, a parallel flywheel effect to PoL as seen on Berachain.

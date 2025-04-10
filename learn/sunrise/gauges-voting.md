@@ -2,78 +2,135 @@
 
 ## What is a Gauge?
 
-A Gauge means our product that issues vRISE.
-The Gauge's first product in Sunrise is the Liquidity Pool.
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-vRISE holders use vRISE to vote and determine how much vRISE to allocate to which gauge.
-More vRISE newly issued will be allocated to the liquidity pool linked to the gauge that has collected more vRISE voting power.
+A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vRISE` tokens. Currently, the primary gauge product is the Liquidity Pool system.
 
-## How to Vote?
+`vRISE` holders can vote to determine the allocation of newly minted `vRISE` tokens across different gauges. Liquidity pools that attract more voting power will receive a larger share of newly issued vRISE tokens, creating an incentive mechanism that aligns with community preferences.
 
-### Epoch
-
-Gauges weight voting is conducted for each block determined by the parameters.
-When the next Epoch begins, the votes that exist at that time are counted.
-
-### Eligible
-
-For voting gauges, vRISE must first be earned. vRISE is earned primarily by supplying liquidity to liquidity pools.
-
-The valid vRISE balance at the start of the epoch will be used for voting. Locked vRISE will not be reflected.
+## How the Voting System Works
 
 {% hint style="info" %}
-Voting is possible even if you do not have vRISE; your vRISE balance at the start of Epoch will be reflected.
+**LEVEL 2: FOR ADVANCED USERS**
 {% endhint %}
 
-### Current Voting Result
+### Epoch-Based Voting
 
-Go to "View Current Gauges Voting" on the Governance tab.
+Gauge weight voting operates on an epoch system:
 
-- Current Votes
+* Each epoch spans a predefined number of blocks (configurable via governance)
+* Votes are tallied at the beginning of each new epoch
+* Vote weight is determined by the voter's `vRISE` balance at epoch start
+* Voting decisions persist across epochs until explicitly changed
 
-  - Epoch Blocks
-    How many blocks the Epoch is updated. It is determined by on-chain governance.
-  - Staking Rewards Ratio
-    What percentage of vRISE originally issued to Staking is allocated to gauges. It is determined by on-chain governance.
-  - Votes Cast
-    How many people are voting.
+```mermaid
+sequenceDiagram
+    participant Voter as vRISE Holder
+    participant Module as Liquidityincentive Module
+    participant Gauges as Liquidity Pool Gauges
+    
+    Voter->>Module: Submit Vote (% allocation per gauge)
+    Note over Module: Store vote preference
+    
+    Module->>Module: Epoch Begins
+    Module->>Module: Tally Votes
+    
+    Module->>Gauges: Distribute vRISE According to Vote Weight
+    Gauges->>Voter: Return Rewards Based on LP Position
+```
 
-- Current Epoch
 
-  - Total Votes
-  - Start
-  - End
-  - Previous Epoch
+### Eligibility Requirements
 
-At the bottom, there is a complete list of every voting gauges.
-"Votes" displays the voting power of each gauge and its percentage of the total.
-
-{% hint style="warning" %}
-Only two Epochs exist in the chain, "Current" and "Previous". The previous Epochs are deleted, so the information can no longer be referenced.
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
 {% endhint %}
 
-### Add gauges to vote
+To participate in gauge voting:
 
-To vote on a gauge, click `My Votes`.
-Click "Select Pool" and select any pool from the pop-up.
+* **Token Requirement**: You must earn `vRISE` tokens, primarily by providing liquidity to pools
+* **Balance Timing:** Your valid `vRISE` balance at epoch start determines your voting power
+* **Token Status:** Locked vRISE tokens are not counted toward voting power
 
-If you have already voted for gauges, your current voting status will be automatically filled in.
-To stop voting for a gauge, click the delete button.
+You can submit your vote even before you have `vRISE` tokens. Your voting preferences will be applied based on whatever `vRISE` balance you have when the next epoch begins.
 
-### Select how much % vRISE to vote on each gauges
+### Viewing Current Voting Status
 
-Once you have added the gauges, you may select how much % of your vRISE goes to each of the gauges.
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-- vRISE balances fluctuate. Locking, incentive grants, and etc. The voter's balance at the start of each epoch is not known, so a percentage must be specified.
-- It is troublesome to re-vote in every upcoming epoch. Therefore, gauges voting is designed to carry your voting decisions throughout all the upcoming epoch until you cast a new one.
+**System Parameters**
 
-"Preview Vote" displays the amount of votes for each gauge on the current balance.
+* **Epoch Blocks:** The number of blocks per epoch (governance parameter)
+* **Staking Rewards Ratio:** Percentage of `vRISE` originally allocated to staking that is redirected to gauges
+* **Votes Cast:** Total number of unique voters participating
 
-Once you have confirmed your decision, click `Vote` to send the transaction.
+**Current Epoch Data**
 
-### Update your vote
+* **Total Votes:** Cumulative voting power across all gauges
+* **Start/End:** Timestamp or block heights for the current epoch
+* **Previous Epoch:** Historical data from the last epoch
 
-Once your vote is submitted, you may see your votes being updated to "My Gauge Votes".
-Votes can be updated at any time and the latest vote will be applied at the start of the epoch.
+**Gauge Distribution**
 
-To update your vote decision, click `Vote` to send the transaction again.
+The complete list of voting gauges shows:
+
+* Each gauge's total accumulated voting power
+* Percentage of total votes directed to each gauge
+
+The system only retains data for the current and previous epochs. Historical data from earlier epochs is pruned and cannot be retrieved from the blockchain.
+
+## How to Vote
+
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
+### Step 1: Access Your Voting Dashboard
+
+Click **My Votes** to begin the voting process.
+
+### Step 2: Select Gauges
+
+1. Click "Select Pool" to open the pool selection interface
+2. Choose the pools/gauges you wish to support
+3. Your previous voting selections will be automatically loaded if applicable
+4. Remove unwanted gauges by clicking the delete button
+
+### Step 3: Allocate Voting Power
+
+Specify what percentage of your voting power to allocate to each selected gauge:
+
+- **Percentage-Based:** Allocations are specified as percentages rather than absolute amounts because:
+
+  * Your vRISE balance may fluctuate between epochs
+  * Percentage allocations automatically adjust to your current balance at epoch start
+  * This approach eliminates the need to revote every epoch
+
+### Step 4: Preview and Submit
+
+1. Use the "Preview Vote" feature to see how your current vRISE balance would be distributed
+2. Confirm your selections
+3. Click Vote to submit your transaction
+4. Your vote preferences will be applied to all future epochs until changed
+
+### Step 5: Update (Optional)
+You can modify your vote at any time:
+
+* Your latest voting decision before an epoch begins will be applied
+* Changes take effect at the next epoch boundary
+* Simply repeat the voting process to update your preferences
+
+## Strategic Voting Considerations
+
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
+
+* **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
+* **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards
+* **Market Efficiency:** Voting helps direct liquidity to where it's most valued by the community
+* **Long-Term Planning:** Vote allocations persist across epochs, allowing for strategic positioning

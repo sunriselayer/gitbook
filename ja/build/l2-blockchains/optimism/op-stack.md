@@ -1,24 +1,29 @@
-# OP-Stack + Sunrise Alt DA
+I'll help you translate the OP Stack L2 Chain document into Japanese.
 
-Sunrise ブロックチェーンのデータ可用性レイヤー（DA レイヤー）は[OP Stack](https://github.com/ethereum-optimism/optimism)を使用して作成された L2 ブロックチェーンをサポートしています。
-ここでは OP Stack を使用して L2 チェーンを作成し、[Sunrise OP DA Server](./op-da-server.md)を使用して Sunrise チェーンに接続する方法について説明します。
-DA レイヤーは Sunrise v0.3.0 以降を実行しているネットワークでサポートされます。
+# OP Stack L2チェーン
 
-## OP Stack のセットアップ
+SunriseのデータDA可用性レイヤーは、[OP Stack](https://github.com/ethereum-optimism/optimism)を使用して作成されたレイヤー2ブロックチェーンをサポートしています。
+これは、OP Stackを使用して作成したL2チェーンを[Sunrise Data](./sunrise-data.md)を通じてSunriseチェーンに接続するためのガイドです。データ可用性レイヤーはSunrise v0.3.0以降でサポートされています。
 
-例として、ここでは OP Stack を使用して Ethereum Sepolia テストネットの L2 チェーンを作成し、Sunrise のデータ可用性レイヤー上で動作させる方法を説明します。
+このバージョンのOP Stackは、操作のためにL1 EVMチェーンを必要とします。テストネットまたはローカルチェーンを使用してください。
+
+## OP Stackのセットアップ方法
+
+例として、OP Stackを使用してL2チェーンを作成し、SunriseのデータDA可用性レイヤー上で実行する方法を紹介します。
+
+このガイドでは、OP Stackの要件を満たすためにEthereum Sepoliaテストネットを使用していますが、ローカルのEVMチェーンも同様に機能します。
 
 ```mermaid
 sequenceDiagram
    autonumber
-   L2 ->> Ethereum Sepolia: Txの送信 (トークンの移動など)
-   Ethereum Sepolia --> L2: APIとTx応答
-   L2 ->> Sunrise: ブロックデータの送信・保存
+   L2 ->> Ethereum Sepolia: トランザクション送信（例：トークン転送）
+   Ethereum Sepolia --> L2: APIとトランザクションレスポンス
+   L2 ->> Sunrise: ブロックデータの送信と保存
 ```
 
 ### 依存関係
 
-依存関係のリストです。Ubuntu 22.04 LTS への一般的なインストール方法を紹介しています。詳細はリンク先を参照してください。
+Ubuntu 22.04向けの依存関係と一般的なインストール手順です。
 
 - node
 
@@ -47,38 +52,40 @@ sequenceDiagram
     sudo apt install just
   ```
 
-### Set up Optimism Rollup Testnet
+### Optimism Rollupテストネットのセットアップ
 
 ### Optimism
 
-1. OP Stack (optimism)のリポジトリをクローン
+1. **optimismリポジトリのクローン**
 
    ```bash
    git clone https://github.com/ethereum-optimism/optimism.git
    ```
 
-1. サポートされるバージョンのブランチへ切り替え
+1. 正しいブランチをチェックアウト
 
    ```bash
    cd optimism
    git checkout v1.9.1
    ```
 
-1. すべての依存関係がインストールされていることを確認
+　ドキュメント更新時点での最新バージョンでの動作を確認しています。他のバージョンを使用する場合は、違いを確認してください。
+
+1. **すべての依存関係があることを確認するために以下を実行**
 
    ```bash
    ./packages/contracts-bedrock/scripts/getting-started/versions.sh
    ```
 
-1. 必要なパッケージをビルド
+1. Optimismに関連するすべてのパッケージをビルド
 
    ```bash
    make op-node op-batcher op-proposer
    ```
 
-   このステップで問題が発生する場合、ソフトウェアのバージョンを optimism ドキュメントのものと合わせてください。
+   このステップで問題が発生している場合は、バージョンがoptimismドキュメントのものと一致していることを確認してください。特に、goバージョンをダウングレードする必要があるかもしれません。
 
-1. `op-geth`のリポジトリをクローンし、ビルド
+1. op-gethのクローンとビルド
 
    ```bash
    cd ~
@@ -87,6 +94,8 @@ sequenceDiagram
    make geth
    ```
 
+　 サポートされている`op-geth`の詳細については、optimismリポジトリの[Production Releases](https://github.com/ethereum-optimism/optimism/tree/v1.12.0?tab=readme-ov-file#production-releases)をご確認ください。
+
 1. 環境変数の設定
 
    ```bash
@@ -94,10 +103,10 @@ sequenceDiagram
    cp .envrc.example .envrc
    ```
 
-   以下のスクリプトを実行することでアドレスを作成できます。
+   optimismリポジトリで以下のコマンドを実行してアドレスを生成するスクリプトを実行します：
    `./packages/contracts-bedrock/scripts/getting-started/wallets.sh`
 
-   出力結果を`.envrc`ファイルに追加してください。すでに所有しているアドレスを使用する場合はこれを置き換えてください。
+   出力は以下のようになり、これを環境ファイルに貼り付ける必要があります：
 
    ```bash
    ##################################################
@@ -149,33 +158,31 @@ sequenceDiagram
    export L1_RPC_URL=https://sepolia.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
-1. 十分な Sepolia ETH をアドレスに入金
+   RPC URLのAPIキーは[Infura](https://www.infura.io/)または他のプロバイダーで見つけることができます。
 
-   Optimism のドキュメントの推奨値は以下の通りです。
+1. アドレスに十分なSepolia ETHを入金します。optimismのドキュメントでは以下を推奨しています：
 
    - Admin — 0.5 Sepolia ETH
    - Proposer — 0.2 Sepolia ETH
    - Batcher — 0.1 Sepolia ETH
 
-   Sepolia ETH の獲得には PoW Faucet が効率的です。
-   [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)
+   参照: [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)
 
-1. 環境変数の読み込み
-   以下を実行してください。
+1. direnvで環境変数を読み込む
    `direnv allow`
-   以下のような出力が得られることを確認してください。
+   実行後、以下のような出力が表示されるはずです：
 
    ```bash
        direnv: loading ~/optimism/.envrc                                                            direnv: export +DEPLOYMENT_CONTEXT +ETHERSCAN_API_KEY +GS_ADMIN_ADDRESS +GS_ADMIN_PRIVATE_KEY +GS_BATCHER_ADDRESS +GS_BATCHER_PRIVATE_KEY +GS_PROPOSER_ADDRESS +GS_PROPOSER_PRIVATE_KEY +GS_SEQUENCER_ADDRESS +GS_SEQUENCER_PRIVATE_KEY +IMPL_SALT +L1_RPC_KIND +L1_RPC_URL +PRIVATE_KEY +TENDERLY_PROJECT +TENDERLY_USERNAME
    ```
 
-   得られない場合は以下を環境に合わせて実行してください。
+   出力が表示されない場合は、以下を試してください
 
    `nano ~/.zshrc`
 
    `nano ~/.bashrc`
 
-   bash か zsh、使っている環境に応じて以下を追記します。
+   bashとzshのどちらを使用しているかに応じて以下の行を追加します
 
    ```bash
    eval "$(direnv hook zsh)"
@@ -185,13 +192,13 @@ sequenceDiagram
    eval "$(direnv hook bash)"
    ```
 
-   保存し反映します。
+   以下で変更を保存します
 
    `source ~/.zshrc`
 
    `source ~/.bashrc`
 
-1. ネットワークを設定
+1. ネットワークの設定
 
    ```bash
 
@@ -199,11 +206,11 @@ sequenceDiagram
    ./scripts/getting-started/config.sh
    ```
 
-   現在の設定を**`deploy-config/getting-started.json`**で確認できます。
-   以下のようにファイル末尾に追記してください。
+   **`deploy-config/getting-started.json`**ファイルで設定を確認できます
+   生成された設定ファイルの末尾に以下を追加します
 
    ```bash
-   nano **deploy-config/getting-started.json**
+   nano deploy-config/getting-started.json
    ```
 
    ```json
@@ -220,7 +227,7 @@ sequenceDiagram
    }
    ```
 
-1. L1 チェーンにコントラクトをデプロイ
+1. L1コントラクトのデプロイ
 
    ```bash
    just install
@@ -229,19 +236,24 @@ sequenceDiagram
    forge script scripts/deploy/Deploy.s.sol:Deploy \
    --broadcast --private-key $GS_ADMIN_PRIVATE_KEY \
    --rpc-url $L1_RPC_URL --slow
+   ```
 
+   L2 Allocs
+
+   ```bash
    CONTRACT_ADDRESSES_PATH=deployments/artifact.json \
    DEPLOY_CONFIG_PATH=deploy-config/getting-started.json \
    STATE_DUMP_PATH=deploy-config/statedump.json \
    forge script scripts/L2Genesis.s.sol:L2Genesis \
    --sig 'runWithStateDump()' \
    --chain 42069
-   ## YOUR_L2_CHAINID
    ```
 
-   > もし、`EvmError： Revert` と `Script failed` を含む nondscript エラーが表示される場合は、環境変数 `IMPL_SALT` を変更する必要がある可能性が高いです。 この変数は、[CREATE2(新しいタブで開く)](https://eips.ethereum.org/EIPS/eip-1014)を介してデプロイされる様々なスマートコントラクトのアドレスを決定します。 同じコントラクトを 2 回デプロイするために同じ`IMPL_SALT`を使用すると、2 回目のデプロイは失敗します。 \*\*新しい `IMPL_SALT` を生成するには、ディレクトリ内の任意の場所で `direnv allow` を実行します。
+   `--chain`にはあなたのL2チェーンIDを使用してください。
 
-1. L2 チェーンの config ファイルを作成
+   > `EvmError: Revert`と`Script failed`を含む説明のないエラーが表示される場合は、`IMPL_SALT`環境変数を変更する必要がある可能性があります。この変数は、[CREATE2](https://eips.ethereum.org/EIPS/eip-1014)を介してデプロイされる様々なスマートコントラクトのアドレスを決定します。同じ`IMPL_SALT`を使って同じコントラクトを2回デプロイすると、2回目のデプロイは失敗します。**Optimism Monorepoのどこかで`direnv allow`を実行することで、新しい`IMPL_SALT`を生成できます。**
+
+1. L2設定ファイルの生成
 
    ```bash
    cd ~/optimism/op-node
@@ -254,7 +266,7 @@ sequenceDiagram
      --l2-allocs ../packages/contracts-bedrock/deploy-config/statedump.json
    ```
 
-   作成された`rollup.json`の末尾が以下のようになっているかを確認します。
+   生成された`rollup.json`の末尾を確認します
 
    ```json
     "alt_da": {
@@ -271,14 +283,14 @@ sequenceDiagram
    openssl rand -hex 32 > jwt.txt
    ```
 
-1. genesis ファイルを`op-geth`ディレクトリにコピー
+1. genesisファイルをop-gethディレクトリにコピー
 
    ```bash
    cp genesis.json ~/op-geth
    cp jwt.txt ~/op-geth
    ```
 
-1. `op-geth`の初期設定
+1. `op-geth`の初期化
 
    ```bash
    cd ~/op-geth
@@ -287,12 +299,13 @@ sequenceDiagram
    build/bin/geth init --datadir=datadir genesis.json
    ```
 
-## L2 チェーンの開始
+## L2の起動
 
-OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-server`と`sunrise-data`を動作させる必要があります。
-詳しくは[**Sunrise OP DA Server**](./op-da-server.md)を参照してください。
+**optimismを起動する前に、`sunrised`と`sunrise-data`などをセットアップしてください。**
 
-1. `op-geth`を開始
+[**Sunrise Data**](./sunrise-data.md)
+
+1. `op-geth`の起動
 
    ```bash
    ./build/bin/geth \
@@ -319,7 +332,7 @@ OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-serve
      --rollup.disabletxpoolgossip=true
    ```
 
-2. `op-node`を開始
+2. `op-node`の起動
 
    ```bash
    cd ~/optimism/op-node
@@ -338,14 +351,14 @@ OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-serve
      --l1=$L1_RPC_URL \
      --l1.rpckind=$L1_RPC_KIND \
      --altda.enabled=true \
-     --altda.da-server=http://localhost:8000 \
+     --altda.da-server=http://localhost:3100 \
      --altda.da-service=true \
      --l1.beacon.ignore=true
    ```
 
-   --altda.da-server is your da-serer’s http URL
+   --altda.da-serverはあなたのDAサーバーのhttp URLです
 
-3. `op-batcher`を開始
+3. `op-batcher`の起動
 
    ```bash
    cd ~/optimism/op-batcher
@@ -365,10 +378,10 @@ OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-serve
      --private-key=$GS_BATCHER_PRIVATE_KEY \
      --altda.enabled=true \
      --altda.da-service=true \
-     --altda.da-server=http://localhost:8000
+     --altda.da-server=http://localhost:3100
    ```
 
-4. `op-proposer`を開始
+4. `op-proposer`の起動
 
    ```bash
    cd ~/optimism/op-proposer
@@ -381,4 +394,4 @@ OP Stack で作成したチェーンを動作させる前に`sunrise-op-da-serve
      --l1-eth-rpc=$L1_RPC_URL
    ```
 
-5. Ethereum Sepolia の L2 として Sunrise DA 上で動作
+5. 動作確認
