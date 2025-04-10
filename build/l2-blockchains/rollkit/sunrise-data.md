@@ -4,9 +4,9 @@
 
 ## Sunrise Consensus Node
 
-Requires a networked Sunrise node to operate. [Networks](../../networks/README.md) running Sunrise v0.3.0 or higher support Data Availability Layer.
+Requires a networked Sunrise node to operate. [Networks](../../../node/networks/README.md) running Sunrise v0.3.0 or higher support Data Availability Layer.
 
-Follow the [Node Guide](../consensus/README.md) on how to create a consensus node.
+Follow the [Node Guide](../../../node/types/consensus/README.md) on how to create a consensus node.
 
 ### How to set up sunrise-data
 
