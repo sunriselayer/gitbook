@@ -14,19 +14,16 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
    - Convert `vRISE` (bond denomination) to `RISE` (fee denomination) and vice versa.
    - Maintain a 1:1 equivalent value relationship between the tokens.
 
-
 2. **Parameter Governance:**
 
    - Configurable denominations through module parameters.
    - Default bond denomination: "uvRISE" (micro `vRISE`).
    - Default fee denomination: "urise" (micro `RISE`).
 
-
 3. **Integrated System Component:**
 
    - Works alongside other modules like `x/shareclass` and `x/fee`.
    - Supports the broader tokenomics of the Sunrise ecosystem.
-
 
 4. **Permissionless Operation:**
 
@@ -166,12 +163,10 @@ async function convertTokens() {
    - Users can hold tokens in their preferred denomination.
    - Seamlessly switch between tokens based on intended use (staking vs fees).
 
-
 2. **Ecosystem Integration:**
 
    - Supports the DA Fee Abstraction mechanism by allowing conversion between token types.
    - Facilitates the operation of other modules in the Sunrise ecosystem.
-
 
 3. **Simple Design:**
 

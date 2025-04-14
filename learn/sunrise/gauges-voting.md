@@ -27,18 +27,18 @@ Gauge weight voting operates on an epoch system:
 
 ```mermaid
 sequenceDiagram
-    participant Voter as vRISE Holder
-    participant Module as Liquidityincentive Module
-    participant Gauges as Liquidity Pool Gauges
-    
-    Voter->>Module: Submit Vote (% allocation per gauge)
-    Note over Module: Store vote preference
-    
-    Module->>Module: Epoch Begins
-    Module->>Module: Tally Votes
-    
-    Module->>Gauges: Distribute vRISE According to Vote Weight
-    Gauges->>Voter: Return Rewards Based on LP Position
+  participant Voter as vRISE Holder
+  participant Module as Liquidityincentive Module
+  participant Gauges as Liquidity Pool Gauges
+
+  Voter->>Module: Submit Vote (% allocation per gauge)
+  Note over Module: Store vote preference
+
+  Module->>Module: Epoch Begins
+  Module->>Module: Tally Votes
+
+  Module->>Gauges: Distribute vRISE According to Vote Weight
+  Gauges->>Voter: Return Rewards Based on LP Position
 ```
 
 

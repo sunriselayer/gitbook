@@ -8,13 +8,15 @@ The module `x/swap` serves the functionalities to swap tokens with the liquidity
 **LEVEL 1: FOR APP DEVELOPERS**
 {% endhint %}
 
-Any frontend application that is built on top of the swap module has the ability to earn fees. How is this done?
+Any frontend application, wallet, dApp, or protocol that is built on top of the swap module has the ability to earn fees. This incentivizes open, composable infrastructure around the Sunrise AMM.
 
 There are 2 important parameters to note:
 
 - <strong>`interface_fee_rate`:</strong> A fee, denoted in percentage, that is taken from the total amount of the swap.
 
 - <strong>`interface_provider`:</strong> An address that specifies where the fee will be sent. If no address is provided, no interface fee will be taken.
+
+When executing swaps through Sunrise AMM, you can **capture interface fees** by specifying your own fee recipient, maximizing profit per transaction. This function is designed to reward **any entity that facilitates swap volume**—from simple frontends to complex financial protocols.
 
 ---
 
@@ -46,37 +48,37 @@ This module supports Swap Routes with a recursive structure, allowing for comple
 
 ```typescript
 message RoutePool {
-  uint64 pool_id = 1;
+    uint64 pool_id = 1;
 }
 
 message RouteSeries {
-  repeated Route routes = 1 [
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
+    repeated Route routes = 1 [
+        (gogoproto.nullable)   = false,
+            (amino.dont_omitempty) = true
+        ];
 }
 
 message RouteParallel {
-  repeated Route routes = 1 [
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
-  repeated string weights = 2 [
-    (cosmos_proto.scalar)  = "cosmos.Dec",
-    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
+    repeated Route routes = 1 [
+        (gogoproto.nullable)   = false,
+            (amino.dont_omitempty) = true
+        ];
+    repeated string weights = 2 [
+        (cosmos_proto.scalar)  = "cosmos.Dec",
+            (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
+            (gogoproto.nullable)   = false,
+            (amino.dont_omitempty) = true
+        ];
 }
 
 message Route {
-  string denom_in = 1;
-  string denom_out = 2;
-  oneof strategy {
-    RoutePool pool = 3;
-    RouteSeries series = 4;
-    RouteParallel parallel = 5;
-  }
+    string denom_in = 1;
+    string denom_out = 2;
+    oneof strategy {
+        RoutePool pool = 3;
+        RouteSeries series = 4;
+        RouteParallel parallel = 5;
+    }
 }
 ```
 
@@ -96,36 +98,36 @@ A serialized `PacketMetadata` JSON string needs to be placed in the `memo` field
 
 ```typescript
 type PacketMetadata = {
-  [namespace: string]: unknown;
-  swap?: SwapMetadata;
+    [namespace: string]: unknown;
+    swap?: SwapMetadata;
 };
 
 type SwapMetadata = {
-  interface_provider: string;
-  route: Route;
+    interface_provider: string;
+    route: Route;
 
-  forward?: ForwardMetadata;
+    forward?: ForwardMetadata;
 } & (
-  | {
-      exact_amount_in: {
+    | {
+    exact_amount_in: {
         min_amount_out: string;
-      };
-    }
-  | {
-      exact_amount_out: {
+    };
+}
+    | {
+    exact_amount_out: {
         amount_out: string;
         change?: ForwardMetadata;
-      };
-    }
-);
+    };
+}
+    );
 
 type ForwardMetadata = {
-  receiver: string;
-  port: string;
-  channel: string;
-  timeout: string;
-  retries: number;
-  next?: PacketMetadata;
+    receiver: string;
+    port: string;
+    channel: string;
+    timeout: string;
+    retries: number;
+    next?: PacketMetadata;
 };
 ```
 

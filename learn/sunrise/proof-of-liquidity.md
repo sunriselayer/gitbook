@@ -1,62 +1,208 @@
 # Proof of Liquidity
 
-Proof of Liquidity sybil resistance mechanism utilizes the history of providing liquidity for the voting power in the network.
+Proof of Liquidity (PoL) is a novel Sybil resistance mechanism that utilizes a user's history of providing liquidity as the basis for voting power in the network. This approach aligns economic incentives between validators, liquidity providers, and applications in a more sustainable way than traditional models.
 
-## Gauge voting
+## Core Concepts
 
-Many DEXs have a gauge voting system to incentivize the liquidity providers. Typically the incentive is given by the inflation of the native token of the DEX, and it is not sustainable.
+### Theoretical Foundation
 
-There is an example of [Pancake Swap Docs](https://docs.pancakeswap.finance/products/vecake/gauges-voting)
+Proof of Liquidity builds upon established DeFi mechanisms while solving key issues:
 
-## ve(3,3)
+1. **Beyond ve-Tokenomics**: While ve (vote-escrowed) models like Curve's allow governance participation, PoL integrates liquidity provision directly with network security
+2. **Separation of Economic Activities**: PoL uses distinct tokens for consensus security, governance, and transaction fees
+3. **Sustainable Incentives**: Unlike traditional DEX inflation models that dilute token value, PoL creates a circular economic system
 
-The model "ve(3,3)" is an enhanced version of the model "ve" by combining the idea of the model "(3,3)". It contains a gauge voting system with "ve" voting mechanism, but the novelty of this mechanism is that the voter for each pool can get a reward from the profit of the pool. This mechanism incentivizes stakers to vote for the pool which has the potential to get more profit.
+## Implementation Models
 
-## Berachain model
+### Berachain Implementation
 
-- `$BGT`: Non transferrable token for staking.
-- `$BERA`: Transferrable token for a fee.
+Berachain pioneered the PoL model with a tri-token design:
 
-The blog [Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer) by Berachain is a good resource for understanding the model.
+- **$BERA**: Transferable token used for transaction fees and staking (security layer)
+- **$BGT**: Non-transferable governance token earned by providing liquidity
+- **$HONEY**: Stablecoin for value transfer within the ecosystem
 
-The important point of the model is
+**Key Technical Components:**
+- Validators stake $BERA to join the consensus set
+- Block rewards are paid in $BGT based on validator's "boost" percentage
+- "Boost" is calculated from delegated $BGT from token holders
+- Validators direct emissions to reward vaults, which distribute $BGT to liquidity providers
 
-- By making the staking token `$BGT` non transferrable. It enables the utilization of the staking token purely for staking without the need for holding it for the fee.
-- The inflation rewards will be distributed with `$BGT` token which doesn't lead to the dilution of `$BERA` token.
-- There is no interest in dApps on Ethereum for the sustainability of the DEXs, whereas the dApps on Berachain are always interested in the engagement of Berachain PoL.
+**Flow of Value:**
+1. Validators stake $BERA as security bond
+2. Validators receive $BGT rewards for block production
+3. Validators direct $BGT rewards to protocol reward vaults
+4. Liquidity providers stake receipt tokens in reward vaults to earn $BGT
+5. $BGT holders delegate to validators to boost their rewards
+6. Protocols provide incentives to validators to attract emissions
 
-## Sunrise model
+### Sunrise Implementation
 
-The Sunrise model incorporates and builds upon selected historical developments and evolutionary trajectories within its underlying architecture and design principles.
+Sunrise builds upon PoL concepts with its own architecture:
 
-- `$vRISE`: Non transferable token for staking.
-- `$RISE`: Transferable token for fees, serves as the native gas token
+- **$vRISE**: Non-transferable token for staking and governance
+- **$RISE**: Transferable token used as gas and fees
 
-The flow will be like this:
+**Technical Implementation:**
+- Liquidity providers in the `x/liquiditypool` module earn $vRISE
+- $vRISE holders can stake in the `x/staking` module
+- Stakers participate in gauge voting through the `x/liquidityincentive` module
+- Gauge voters decide which pools receive $vRISE incentives
+- Voters earn rewards from pool profits, aligning incentives
 
-- Some users provide liquidity in the `x/liquiditypool` module.
-  - They will get `$vRISE` for the reward.
-- Some users stake `$vRISE` token in the `x/staking` module
-- People who have voting power can vote for the pool in the `x/liquidityincentive` module which pool should get `$vRISE` for the incentive for liquidity providers.
-- The voter for each pool will receive the reward from the profit of the pool.
+## Technical Architecture
 
-Sunrise PoL inherits the perspective of Berachain that "dApps that use Sunrise DA are interested in the engagement of Sunrise PoL".
+### Sunrise Modules
 
-## How to stake $vRISE
+The Sunrise implementation consists of several key modules that interact to create the PoL ecosystem:
 
-- Sunrise Web App
+```
+├── x/liquiditypool     # Core AMM functionality
+├── x/liquidityincentive # Gauge voting and incentive distribution
+├── x/swap              # Token swap implementation
+└── x/staking           # vRISE staking management
+```
 
-## Specs
+### Gauge Voting System
 
-- Consensus algorithm: CometBFT (Tendermint)
-  - Investigation for Mysticeti is in progress.
-- Blockchain application framework: Cosmos SDK v0.50.2
-- Maximum validator set size: 100
+The gauge voting system is the cornerstone of PoL implementations:
 
-### Mysticeti
+1. **Epoch-Based Voting**:
+  - Voting power is determined by $vRISE balance at epoch start
+  - Each epoch spans a predefined number of blocks (configurable via governance)
+  - Votes persist across epochs until explicitly changed
 
-[Mysticeti](https://sui.io/mysticeti) is the latest consensus protocol adopted in the next version of Sui.
+2. **Vote Weight Calculation**:
+   ```
+   pool_allocation = (user_vrise * user_vote_percentage) / total_weighted_votes
+   ```
 
-Our basic idea is same to the [article](https://www.paradigm.xyz/2022/07/experiment-narwhal-bullshark-cosmos-stack) which Paradigm tried PoC to use Narwhal and Bullshark with ABCI.
+3. **Reward Distribution**:
+  - Emissions are calculated per block
+  - Distribution based on proportional gauge weights
+  - Rewards claimed by staking receipt tokens
 
-We are investigating the adoption of Mysticeti to ABCI and further Sunrise, to enhance the throughput of Sunrise.
+### Consensus Implementation
+
+Sunrise uses CometBFT (Tendermint) for consensus with the following specifications:
+
+- **Maximum Validator Set**: 100 validators
+- **Block Time**: ~2 seconds
+- **Validator Selection**: Based on stake weight
+
+Future plans include investigating Mysticeti integration to enhance throughput:
+
+```
+┌─────────────┐      ┌─────────────┐
+│  Mysticeti  │ ──── │    ABCI     │
+└─────────────┘      └─────────────┘
+                           │
+                           ▼
+                    ┌─────────────┐
+                    │ Sunrise App │
+                    └─────────────┘
+```
+
+## Technical Advantages
+
+### Capital Efficiency
+
+Unlike traditional PoS where staked tokens are idle, PoL enables:
+
+- Active capital utilization through liquidity provision
+- Dual earning opportunities (staking + liquidity fees)
+- Lower opportunity cost for network security
+
+### Economic Alignment
+
+The technical design creates circular dependencies that align incentives:
+
+- Validators need delegated $vRISE/$BGT to maximize rewards
+- Applications need validator emissions for liquidity
+- Users need to provide liquidity to earn governance tokens
+- The separation of security and governance tokens prevents dilution
+
+### Security Considerations
+
+The implementation includes several security measures:
+
+- **Slashing Conditions**: Validators risk losing staked assets for misbehavior
+- **Governance Safeguards**: Weighted voting prevents capture
+- **Incentive Compatibility**: Economic design disincentivizes attacks
+
+## Implementation Example: Voting Mechanism
+
+Here's a simplified implementation of the gauge voting mechanism in Go:
+
+```go
+// Vote structure for gauge voting
+type Vote struct {
+    Voter      sdk.AccAddress
+    GaugeID    uint64
+    Percentage sdk.Dec  // 0-1 range representing percentage
+}
+
+// ProcessVotes calculates gauge weights for the epoch
+func (k Keeper) ProcessVotes(ctx sdk.Context) {
+    // Get all votes for the current epoch
+    votes := k.GetAllVotes(ctx)
+    
+    // Calculate voting power per user based on vRISE balance
+    votingPowers := make(map[string]sdk.Dec)
+    for _, vote := range votes {
+        voterAddr := vote.Voter.String()
+        balance := k.stakingKeeper.GetBalance(ctx, vote.Voter, "vrise")
+        votingPowers[voterAddr] = sdk.NewDecFromInt(balance)
+    }
+    
+    // Calculate pool weights
+    poolWeights := make(map[uint64]sdk.Dec)
+    for _, vote := range votes {
+        voterAddr := vote.Voter.String()
+        votingPower := votingPowers[voterAddr]
+        weight := votingPower.Mul(vote.Percentage)
+        
+        poolWeight := poolWeights[vote.GaugeID]
+        poolWeight = poolWeight.Add(weight)
+        poolWeights[vote.GaugeID] = poolWeight
+    }
+    
+    // Store pool weights for the epoch
+    k.SetPoolWeightsForEpoch(ctx, poolWeights)
+}
+```
+
+## Integration with DeFi Ecosystem
+
+The PoL mechanism integrates deeply with the DeFi ecosystem through:
+
+1. **AMM Integration**: Liquidity pools serve dual purpose for trading and consensus
+2. **Receipt Token Staking**: LP tokens become productive assets in reward vaults
+3. **Protocol Competition**: Applications compete for emissions by offering incentives
+
+This creates a competitive ecosystem where applications are motivated to provide better economics to attract liquidity, which in turn secures the network.
+
+## Performance Considerations
+
+PoL implementations must balance several performance factors:
+
+- **Epoch Length**: Longer epochs reduce computational overhead but decrease responsiveness
+- **Validator Set Size**: Larger sets increase decentralization but may impact consensus speed
+- **Vote Processing**: Batch processing of votes at epoch boundaries to minimize gas costs
+- **Receipt Token Calculations**: Optimized tracking of liquidity positions and reward distribution
+
+## Future Directions
+
+Several technical enhancements are being explored:
+
+1. **Mysticeti Integration**: Investigating the adoption of Mysticeti consensus to enhance throughput
+2. **Cross-Chain Gauges**: Enabling voting for liquidity on connected chains
+3. **Dynamic Emission Schedules**: Algorithmic adjustment of emissions based on network metrics
+4. **Advanced Reward Mechanisms**: More sophisticated reward distribution using bonding curves
+
+## References
+
+- [Berachain: Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)
+- [ve(3,3) Tokenomics](https://andrecronje.medium.com/ve-3-3-44466eaa088b)
+- [Curve Finance ve-Token Model](https://curve.fi/files/CurveDAO.pdf)
+- [Mysticeti Consensus](https://sui.io/mysticeti)
