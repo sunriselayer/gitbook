@@ -186,5 +186,3 @@ The system has configurable parameters:
 
 - Bribe claim epochs (time window for claiming)
 - Other governance-controlled parameters
-
-See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/bribe) for details.
