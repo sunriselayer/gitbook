@@ -50,63 +50,19 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 **Fee Processing Flow:**
 
-```go
-func (k Keeper) ProcessFees(ctx sdk.Context, fees sdk.Coins) error {
-    // 1. Validate fees
-    if err := k.ValidateFees(ctx, fees); err != nil {
-        return err
-    }
-    
-    // 2. Calculate burn amount
-    burnAmount := k.CalculateBurnAmount(ctx, fees)
-    
-    // 3. Execute burn operation
-    if err := k.Burn(ctx, burnAmount); err != nil {
-        return err
-    }
-    
-    return nil
-}
-```
+1. Validate fees against configured parameters
+2. Calculate burn amount based on burn_ratio
+3. Execute burn operation for the calculated amount
+4. Transfer remaining fees to fee collector
 
 ### Integration with Bribe System
 
 **Bribe Fee Handling:**
 
-```go
-type BribeFee struct {
-    BribeId     uint64
-    EpochId     uint64
-    Amount      sdk.Coins
-    Claimed     bool
-}
-
-func (k Keeper) ProcessBribeFees(ctx sdk.Context, bribeId uint64) error {
-    // 1. Get bribe details
-    bribe := k.GetBribe(ctx, bribeId)
-    
-    // 2. Calculate unclaimed amount
-    unclaimed := bribe.Amount.Sub(bribe.ClaimedAmount)
-    
-    // 3. Process fees for unclaimed amount
-    return k.ProcessFees(ctx, unclaimed)
-}
-```
-
-### Key Data Structures
-
-```go
-type FeeParams struct {
-    FeeDenom     string   `protobuf:"bytes,1,opt,name=fee_denom,json=feeDenom,proto3" json:"fee_denom,omitempty"`
-    BurnRatio    string   `protobuf:"bytes,2,opt,name=burn_ratio,json=burnRatio,proto3" json:"burn_ratio,omitempty"`
-    BypassDenoms []string `protobuf:"bytes,3,rep,name=bypass_denoms,json=bypassDenoms,proto3" json:"bypass_denoms,omitempty"`
-}
-
-type FeeCollector struct {
-    Address string
-    Balance sdk.Coins
-}
-```
+1. Track bribe fees through the BribeFee structure
+2. Process unclaimed bribes at epoch end
+3. Calculate and handle fees for unclaimed amounts
+4. Transfer processed fees to appropriate accounts
 
 ## Parameter Configuration
 
