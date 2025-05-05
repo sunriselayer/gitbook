@@ -134,45 +134,20 @@ message BribeAllocation {
 
 ```mermaid
 flowchart TD
-    A[User] -->|Register Bribe| B[Bribe Account]
-    B -->|Store| C[Bribe Record]
-    C -->|Create| D[Bribe Allocations]
-    
-    E[Fee Collector] -->|Transfer| F[Module Account]
-    F -->|Convert| G[Bond Denom]
-    G -->|Distribute| H[Liquidity Pools]
-    
-    I[User] -->|Claim| J[Check Bribe]
-    J -->|Valid| K[Calculate Amount]
-    K -->|Transfer| L[User Account]
-    K -->|Update| M[Update Records]
-    
-    N[Expired Epoch] -->|Process| O[Calculate Unclaimed]
-    O -->|Return| P[Fee Collector]
-    O -->|Remove| Q[Clean Records]
-    
-    subgraph Bribe Management
-        C
-        D
-        J
-        K
-        M
-    end
-    
-    subgraph Fee Processing
-        E
-        F
-        G
-        H
-    end
-    
-    subgraph Cleanup
-        N
-        O
-        P
-        Q
-    end
+    User[User] -->|Register Bribe| BribeAccount[Bribe Account]
+    BribeAccount -->|Allocate| Allocation[Bribe Allocation]
+    User -->|Claim| Allocation
+    Allocation -->|Transfer| UserAccount[User Account]
+    Allocation -->|Unclaimed| FeeCollector[Fee Collector]
 ```
+
+**Flow Explanation:**
+
+1. The user registers a bribe, which is deposited into the Bribe Account.
+2. The system allocates bribe shares to eligible voters based on their voting weights.
+3. Users can claim their allocated bribe rewards from the Bribe Allocation.
+4. Claimed rewards are transferred to the user's account.
+5. Any unclaimed bribes after the claim period are sent to the Fee Collector for redistribution or burning.
 
 ---
 
