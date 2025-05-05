@@ -25,6 +25,7 @@
 - [🎓 Thesis](learn/thesis/README.md)
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
+- [💰 Point Program](learn/point-program/README.md)
 
 ## 🛠️ Build
 
