@@ -54,122 +54,139 @@ The system tracks how bribes are allocated to voters:
 - `weight`: Weight of the voter's votes
 - `claimed_bribe_ids`: List of bribe IDs already claimed
 
-## Workflow: Registering and Claiming Bribes
+---
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+## Bribe System Architecture & Flow
+
+### Key Components and Flows
+
+#### Bribe Registration
+
+- **User registers a bribe** by sending coins to the Bribe module.
+- The system **creates a Bribe record** (with unique ID, epoch, pool, amount, and claimed amount).
+- **Bribe allocations** are created for voters based on their vote weights for the pool in that epoch.
+- Funds are stored in the **Bribe Account** (module account).
+
+#### Bribe Claiming
+
+- **User initiates a claim** for their bribe allocation.
+- The system:
+  - Verifies the bribe exists and is valid for the epoch/pool.
+  - Checks the user's allocation and ensures the bribe hasn't been claimed.
+  - Calculates the claimable amount based on the user's vote weight.
+  - Transfers the appropriate amount from the Bribe Account to the user.
+  - Updates the claimed amount and allocation records.
+
+#### Fee Processing
+
+- Unclaimed bribes from expired epochs are **returned to the Fee Collector**.
+- Fees are processed:
+  - Transferred from the Fee Collector to the module account.
+  - Converted to the bond denomination if needed.
+  - Distributed to liquidity pools as incentives.
+
+#### Cleanup (Unclaimed Bribes)
+
+- At the end of each epoch, the system:
+  - Processes expired epochs.
+  - Calculates unclaimed bribe amounts.
+  - Returns unclaimed funds to the Fee Collector.
+  - Cleans up expired bribe and allocation records.
+
+#### State Transitions
+
+- **Bribe:** Created → Active → Claimed/Expired
+- **Allocation:** Created → Active → Claimed/Expired
+- **Funds:** User → Bribe Account → User/Fee Collector
+
+---
+
+### Data Structures
+
+**Bribe**
+
+```protobuf
+message Bribe {
+  uint64 id = 1;
+  uint64 epoch_id = 2;
+  uint64 pool_id = 3;
+  string address = 4 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  repeated cosmos.base.v1beta1.Coin amount = 5;
+  repeated cosmos.base.v1beta1.Coin claimed_amount = 6;
+}
+```
+
+**BribeAllocation**
+
+```protobuf
+message BribeAllocation {
+  string address = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  uint64 epoch_id = 2;  
+  uint64 pool_id = 3;
+  string weight = 4 [(cosmos_proto.scalar) = "cosmos.Dec"];
+  repeated uint64 claimed_bribe_ids = 5;
+}
+```
+
+---
+
+### Bribe System Flowchart
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant BribeModule as x/bribe Module
-    participant BankKeeper as Bank Module
-    participant StakingKeeper as Staking Module
-
-    User->>BribeModule: MsgRegisterBribe
-    BribeModule->>BankKeeper: Transfer Bribe Amount
-    BribeModule->>User: Return Bribe ID
+flowchart TD
+    A[User] -->|Register Bribe| B[Bribe Account]
+    B -->|Store| C[Bribe Record]
+    C -->|Create| D[Bribe Allocations]
     
-    StakingKeeper->>BribeModule: Save Vote Weights
-    BribeModule->>BribeModule: Calculate Allocations
+    E[Fee Collector] -->|Transfer| F[Module Account]
+    F -->|Convert| G[Bond Denom]
+    G -->|Distribute| H[Liquidity Pools]
     
-    User->>BribeModule: MsgClaimBribes
-    BribeModule->>BankKeeper: Transfer Claimed Amount
-    BribeModule->>User: Return Claim Result
+    I[User] -->|Claim| J[Check Bribe]
+    J -->|Valid| K[Calculate Amount]
+    K -->|Transfer| L[User Account]
+    K -->|Update| M[Update Records]
+    
+    N[Expired Epoch] -->|Process| O[Calculate Unclaimed]
+    O -->|Return| P[Fee Collector]
+    O -->|Remove| Q[Clean Records]
+    
+    subgraph Bribe Management
+        C
+        D
+        J
+        K
+        M
+    end
+    
+    subgraph Fee Processing
+        E
+        F
+        G
+        H
+    end
+    
+    subgraph Cleanup
+        N
+        O
+        P
+        Q
+    end
 ```
 
-## Messages
+---
 
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
+### Querying Bribes
 
-### MsgRegisterBribe
+The system provides endpoints to:
 
-Registers a new bribe for a future epoch.
-
-```go
-type MsgRegisterBribe struct {
-    Sender   string
-    EpochId  uint64
-    PoolId   uint64
-    Amount   sdk.Coin
-}
-```
-
-### MsgClaimBribes
-
-Claims bribes for a specific epoch and pool.
-
-```go
-type MsgClaimBribes struct {
-    Sender   string
-    EpochId  uint64
-    PoolId   uint64
-}
-```
-
-## Example Usage
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
-**Register a Bribe**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-import { MsgRegisterBribe } from "@sunriselayer/client/types";
-
-async function registerBribe() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    
-    const msgRegisterBribe = {
-        sender: "sunrise1...",
-        epochId: 100,
-        poolId: 1,
-        amount: { denom: "urise", amount: "1000000" }
-    };
-    
-    const result = await client.executeTransaction(msgRegisterBribe);
-    console.log("Bribe registered:", result);
-}
-```
-
-**Claim Bribes**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-import { MsgClaimBribes } from "@sunriselayer/client/types";
-
-async function claimBribes() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    
-    const msgClaimBribes = {
-        sender: "sunrise1...",
-        epochId: 100,
-        poolId: 1
-    };
-    
-    const result = await client.executeTransaction(msgClaimBribes);
-    console.log("Bribes claimed:", result);
-}
-```
-
-## Queries
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
-The module provides various query endpoints:
-
-- BribeAllocation: Get allocation for specific address/epoch/pool
-- BribesByPoolId: Get all bribes for a pool
-- BribesByEpochAndPoolId: Get bribes for specific epoch and pool
-- BribeAllocations: Get all bribe allocations
-- BribeAllocationsByAddress: Get allocations for specific address
+- `BribesByPoolId`: Query all bribes for a pool
+- `BribesByEpochAndPoolId`: Query bribes for a specific epoch and pool
+- `BribeAllocations`: Query all bribe allocations
+- `BribeAllocation`: Query allocation for a specific address/epoch/pool
+- `BribeAllocationsByAddress`: Get allocations for specific address
+- Query claimable amounts and claimed status
+- Query expired/cleaned up bribes
 
 ## Integration Points
 
