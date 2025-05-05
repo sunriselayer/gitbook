@@ -9,21 +9,28 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 {% endhint %}
 
 1. **Burn Mechanism:**
-
     - A portion of $RISE tokens used as transaction fees is burned to reduce the circulating supply.
     - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
-2. **Fee Denomination (`fee_denom`):**
+    - Burn operations are atomic and verified on-chain.
 
+2. **Fee Denomination (`fee_denom`):**
     - Specifies the denomination required for transaction fees (default: **`"urise"`**).
     - Transactions must pay fees in this denomination unless bypassed.
-3. **Bypass Denominations (`bypass_denoms`)**:
+    - Strict validation of fee denominations is enforced.
 
+3. **Bypass Denominations (`bypass_denoms`):**
     - Allows certain denominations to bypass standard fee restrictions.
     - Default bypass denomination: **`"uvrise"`**.
-4. **Dynamic Parameter Configuration**:
+    - Useful for specialized transaction scenarios.
 
+4. **Dynamic Parameter Configuration:**
     - Developers can configure parameters dynamically with validation enforced by the module.
-      
+    - Parameters can be updated through governance proposals.
+
+5. **Integration with Bribe System:**
+    - Handles unclaimed bribes from expired epochs
+    - Processes fees from bribe transactions
+    - Manages fee collection for bribe operations
 
 ## Core Functionality
 
@@ -31,82 +38,87 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 **LEVEL 3: FOR MODULE DEVELOPERS**
 {% endhint %}
 
-### Fee Deduction and Burning
+### Fee Collection and Processing
 
-**When a transaction is processed:**
+**Fee Collection Process:**
 
-1. Fees are deducted from the sender's account.
-2. A portion of the fees is sent to the fee collector module account.
-3. The remaining portion is burned to reduce **`$RISE`** token supply.
+1. Fees are collected through the FeeCollector module account
+2. The system validates:
+   - Only one fee denomination per transaction
+   - Fee denomination matches configured `fee_denom`
+   - Fee amount is valid and non-zero
 
-   ```go
-   func DeductFees(bankKeeper BankKeeper, ctx sdk.Context, acc sdk.AccountI, fees sdk.Coins, feeKeeper feekeeper.Keeper) error {
-   ...
-   if err := feeKeeper.Burn(ctx, fees); err != nil {
-   return err
-   }
-   ...
-   }
-   ```
+**Fee Processing Flow:**
 
-
-**Parameter Configuration**
-
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
-
-| Parameter                | Description                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-| Fee Denomination (`fee_denom`)     | Specifies the denomination required for transaction fees (default: `"urise"`).       |
-| Burn Ratio (`burn_ratio`)         | Percentage of transaction fees to burn (default: `0.5`). Must be between `0` and `1`. |
-| Bypass Denominations (`bypass_denoms`) | List of denominations that bypass fee restrictions (default: `["uvrise"]`).          |
-
-**Example Configuration:**
-
-```json
-{
-  "fee_denom": "urise",
-  "burn_ratio": 0.5,
-  "bypass_denoms": ["uvrise"]
+```go
+func (k Keeper) ProcessFees(ctx sdk.Context, fees sdk.Coins) error {
+    // 1. Validate fees
+    if err := k.ValidateFees(ctx, fees); err != nil {
+        return err
+    }
+    
+    // 2. Calculate burn amount
+    burnAmount := k.CalculateBurnAmount(ctx, fees)
+    
+    // 3. Execute burn operation
+    if err := k.Burn(ctx, burnAmount); err != nil {
+        return err
+    }
+    
+    return nil
 }
 ```
 
-## Benefits of the Fee Module
+### Integration with Bribe System
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
+**Bribe Fee Handling:**
 
-- **Deflationary Pressure:**
-  The burning mechanism introduces deflationary pressure on $RISE tokens, supporting long-term token value.
-- **Fee Flexibility:**
-  Configurable parameters like bypass_denoms provide flexibility for specialized transaction scenarios.
-  
+```go
+type BribeFee struct {
+    BribeId     uint64
+    EpochId     uint64
+    Amount      sdk.Coins
+    Claimed     bool
+}
 
-For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/main/x/fee).
+func (k Keeper) ProcessBribeFees(ctx sdk.Context, bribeId uint64) error {
+    // 1. Get bribe details
+    bribe := k.GetBribe(ctx, bribeId)
+    
+    // 2. Calculate unclaimed amount
+    unclaimed := bribe.Amount.Sub(bribe.ClaimedAmount)
+    
+    // 3. Process fees for unclaimed amount
+    return k.ProcessFees(ctx, unclaimed)
+}
+```
 
-## Workflow: Fee Deduction and Burning
+### Key Data Structures
+
+```go
+type FeeParams struct {
+    FeeDenom     string   `protobuf:"bytes,1,opt,name=fee_denom,json=feeDenom,proto3" json:"fee_denom,omitempty"`
+    BurnRatio    string   `protobuf:"bytes,2,opt,name=burn_ratio,json=burnRatio,proto3" json:"burn_ratio,omitempty"`
+    BypassDenoms []string `protobuf:"bytes,3,rep,name=bypass_denoms,json=bypassDenoms,proto3" json:"bypass_denoms,omitempty"`
+}
+
+type FeeCollector struct {
+    Address string
+    Balance sdk.Coins
+}
+```
+
+## Parameter Configuration
 
 {% hint style="info" %}
 **LEVEL 2: FOR ADVANCED USERS**
 {% endhint %}
 
-
-Below is a sequence diagram illustrating how transaction fees are processed:
-
-```mermaid
-sequenceDiagram
-    participant Sender as Sender (User)
-    participant FeeModule as x/fee Module
-    participant BankKeeper as Bank Keeper
-    participant FeeCollector as Fee Collector Account
-
-    Sender->>FeeModule: Submit Transaction with Fees
-    FeeModule->>BankKeeper: Deduct Fees from Sender's Account
-    BankKeeper->>FeeCollector: Transfer Fees to Fee Collector Account
-    FeeModule->>FeeModule: Burn Portion of Fees (based on burn_ratio)
-```
+| Parameter | Description | Default Value | Constraints |
+|-----------|-------------|---------------|-------------|
+| `fee_denom` | Required denomination for transaction fees | `"urise"` | Must be a valid denomination |
+| `burn_ratio` | Percentage of fees to burn | `0.5` | Must be between 0 and 1 |
+| `bypass_denoms` | Denominations exempt from fee restrictions | `["uvrise"]` | List of valid denominations |
 
 ## Example Usage
 
@@ -144,3 +156,28 @@ queryFeeParams();
   "bypass_denoms": ["uvrise"]
 }
 ```
+
+## Workflow: Fee Processing
+
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant FeeModule as x/fee Module
+    participant BankKeeper as Bank Keeper
+    participant FeeCollector as Fee Collector
+    participant BribeModule as x/bribe Module
+
+    User->>FeeModule: Submit Transaction
+    FeeModule->>BankKeeper: Validate Fee Denomination
+    BankKeeper->>FeeCollector: Transfer Fees
+    FeeModule->>FeeModule: Calculate Burn Amount
+    FeeModule->>FeeModule: Execute Burn
+    BribeModule->>FeeModule: Process Unclaimed Bribes
+    FeeModule->>FeeCollector: Transfer Unclaimed Amounts
+```
+
+For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/main/x/fee).
