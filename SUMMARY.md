@@ -17,6 +17,7 @@
   - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
   - [Lockup Account](learn/sunrise/lockup-account.md)
+  - [Bribes](learn/sunrise/bribes.md)
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
 - [🏦 Gluon](learn/gluon/README.md)
