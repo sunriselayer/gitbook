@@ -12,6 +12,8 @@ Several enhancements in Sunrise v2 increase throughput, decentralization, and lo
 
 ## Design patterns of other DA layers
 
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
+
 ### Data Availability Committee
 
 Data Availability Committee (DAC) is the traditional method to construct alternative Data Availability layer with low costs.
@@ -24,7 +26,7 @@ In the Data Availability layers which adopts Data Availability Sampling (DAS), b
 
 In typical DAS setup, full nodes must transfer and download transaction data within the mempool.
 
-As BLOB data sizes grow, the network’s throughput could be limited by these transaction transfers, creating challenges for applications handling large BLOB data.
+As BLOB data sizes grow, the network's throughput could be limited by these transaction transfers, creating challenges for applications handling large BLOB data.
 
 ### Sunrise's design
 
@@ -86,6 +88,8 @@ sequenceDiagram
 ```
 
 ## Specification for Zero-Knowledge Proof
+
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ### Terms and Notation
 
