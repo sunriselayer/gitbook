@@ -1,137 +1,229 @@
 # Liquidity Pool
 
-The `x/liquiditypool` module is a protocol-level mechanism for managing liquidity pools within the Sunrise ecosystem. It provides a flexible and efficient way to create and manage liquidity pools, ensuring sustainable protocol economics while maintaining user accessibility.
+The `x/liquiditypool` module implements a concentrated liquidity automated market maker (AMM) mechanism for the Sunrise blockchain. This module enables users to create liquidity pools, add positions with specific price ranges, and earn rewards from trading fees and incentives.
 
 ## Key Features
 
-- **Protocol-Level Pools:** Centralized pool management at the protocol level
-- **Flexible Pool Types:** Support for different types of liquidity pools
-- **Efficient Swaps:** Optimized token swap mechanisms
-- **Economic Sustainability:** Ensures long-term protocol viability
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
+1. **Concentrated Liquidity AMM:**
+
+   - Follows a similar model to Uniswap V3, allowing liquidity providers to concentrate their assets within specific price ranges.
+   - Improves capital efficiency compared to traditional constant product AMMs.
+
+
+2. **Position-Based Liquidity:**
+
+   - Users create positions with defined price ranges (ticks).
+   - Each position has a unique ID and tracks the liquidity provider's contribution.
+
+
+3. **Fee Generation:**
+
+   - Positions earn fees from trades that occur within their price range.
+   - Fees are collected in the base and quote denominations of the pool.
+
+
+4. **`vRISE` Incentives:**
+
+   - Liquidity providers earn vRISE tokens as additional incentives.
+   - These tokens can be used for DA Fee Abstraction in the Sunrise ecosystem.
 
 ## Core Functionality
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ### Pool Management
 
-The module manages different types of pools:
+**Each pool is defined by several parameters:**
 
-- **Constant Product Pools:** For standard token pairs
-- **Stable Pools:** For stablecoin pairs
-- **Weighted Pools:** For custom token weights
-- **Concentrated Pools:** For concentrated liquidity ranges
+- `id`: Unique identifier for the pool
+- `denom_base` & `denom_quote`: The token pair denominations
+- `fee_rate`: The fee charged on swaps within the pool
+- `tick_params`: Parameters defining the tick system
+- `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: Current state variables
 
-### Swap Mechanism
 
-Swaps are executed through:
+### Tick System
 
-- Price calculation
-- Fee computation
-- Slippage protection
-- Liquidity updates
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
-### Liquidity Provision
+The tick system is based on a price ratio formula:
 
-Liquidity can be provided through:
+$$
+\mathrm{price}(\mathrm{tick}) = \mathrm{price\_ratio}^{\mathrm{tick} - \mathrm{base\_offset}}
+$$
 
-- Single-sided deposits
-- Dual-sided deposits
-- Range-based deposits
-- Custom weight deposits
+In the typical case with `price_ratio = 1.0001` and `base_offset = 0`:
 
-## Integration Points
+$$
+\mathrm{price}(\mathrm{tick}) = 1.0001^{\mathrm{tick}}
+$$
 
-### With Other Modules
+This allows for precise positioning of liquidity within specific price ranges.
 
-- **x/liquidityincentive:** For liquidity rewards
-- **x/gauges:** For gauge voting integration
-- **x/governance:** For pool parameter management
-- **x/fee:** For fee collection and distribution
+## Workflow: Creating and Using Positions
 
-### With External Systems
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-- **DEXs:** For pool integration
-- **Price Feeds:** For price oracle integration
-- **Analytics:** For pool performance tracking
+```mermaid
+sequenceDiagram
+    participant User
+    participant LiquidityPool as x/liquiditypool Module
+    participant SwapModule as x/swap Module
+    participant BankKeeper as Bank Module
 
-## Parameters
+    User->>LiquidityPool: MsgCreatePosition
+    LiquidityPool->>BankKeeper: Transfer Tokens to Module
+    LiquidityPool->>User: Return Position ID
+    
+    User->>LiquidityPool: MsgIncreaseLiquidity
+    LiquidityPool->>BankKeeper: Transfer Additional Tokens
+    
+    User->>SwapModule: Perform Swap (via x/swap)
+    SwapModule->>LiquidityPool: Use Pool Liquidity
+    LiquidityPool->>LiquidityPool: Collect Fees for Positions
+    
+    User->>LiquidityPool: MsgClaimRewards
+    LiquidityPool->>BankKeeper: Transfer Earned Fees to User
+    LiquidityPool->>User: Transfer vRISE Incentives
+    
+    User->>LiquidityPool: MsgDecreaseLiquidity
+    LiquidityPool->>BankKeeper: Return Tokens to User
+```
 
-The module's behavior is controlled by several parameters:
+## Messages
 
-- `min_liquidity`: Minimum liquidity required for pools
-- `max_liquidity`: Maximum liquidity cap for pools
-- `swap_fee`: Base fee for swaps
-- `exit_fee`: Fee for removing liquidity
-- `pool_types`: Supported pool types
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
+
+### MsgCreatePool
+
+Creates a new liquidity pool with specified parameters.
+
+```go
+type MsgCreatePool struct {
+    Authority   string
+    DenomBase   string
+    DenomQuote  string
+    FeeRate     string
+    PriceRatio  string
+    BaseOffset  string
+}
+```
+
+### MsgCreatePosition
+
+Creates a position within a price range in a pool.
+
+```go
+type MsgCreatePosition struct {
+    Sender         string
+    PoolId         uint64
+    LowerTick      int64
+    UpperTick      int64
+    TokenBase      sdk.Coin
+    TokenQuote     sdk.Coin
+    MinAmountBase  string
+    MinAmountQuote string
+}
+```
+
+### MsgIncreaseLiquidity
+
+Adds liquidity to an existing position.
+
+```go
+type MsgIncreaseLiquidity struct {
+    Sender         string
+    Id             uint64
+    AmountBase     string
+    AmountQuote    string
+    MinAmountBase  string
+    MinAmountQuote string
+}
+```
+
+### MsgDecreaseLiquidity
+
+Removes liquidity from an existing position.
+
+```go
+type MsgDecreaseLiquidity struct {
+    Sender    string
+    Id        uint64
+    Liquidity string
+}
+```
+
+### MsgClaimRewards
+
+Claims accumulated fees and incentives for positions.
+
+```go
+type MsgClaimRewards struct {
+    Sender      string
+    PositionIds []uint64
+}
+```
 
 ## Example Usage
 
-### Creating a Pool
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-```go
-// Create a new constant product pool
-pool := types.Pool{
-    Id:          "pool-1",
-    Type:        types.PoolTypeConstantProduct,
-    Tokens:      []sdk.Coin{tokenA, tokenB},
-    Weights:     []sdk.Dec{weightA, weightB},
-    SwapFee:     sdk.NewDecWithPrec(3, 3), // 0.3%
-    ExitFee:     sdk.NewDecWithPrec(0, 3), // 0%
-    IsActive:    true,
-}
+**Create a Position**
 
-err := k.CreatePool(ctx, pool)
-if err != nil {
-    return err
-}
-```
+```javascript
+import { SunriseClient } from "@sunriselayer/client";
+import { MsgCreatePosition } from "@sunriselayer/client/types";
 
-### Executing a Swap
-
-```go
-// Execute a token swap
-swap := types.Swap{
-    PoolId:      "pool-1",
-    TokenIn:     tokenIn,
-    TokenOut:    tokenOut,
-    Slippage:    sdk.NewDecWithPrec(1, 2), // 1%
-}
-
-err := k.ExecuteSwap(ctx, swap)
-if err != nil {
-    return err
+async function createPosition() {
+    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
+    
+    const msgCreatePosition = {
+        sender: "sunrise1...",
+        poolId: 1,
+        lowerTick: -4155,  // Approximately price 0.66
+        upperTick: 4054,   // Approximately price 1.5
+        tokenBase: { denom: "urise", amount: "1000000" },
+        tokenQuote: { denom: "uusdc", amount: "1000000" },
+        minAmountBase: "0",
+        minAmountQuote: "0"
+    };
+    
+    const result = await client.executeTransaction(msgCreatePosition);
+    console.log("Position created:", result);
 }
 ```
 
-### Providing Liquidity
+## Queries
 
-```go
-// Provide liquidity to a pool
-liquidity := types.Liquidity{
-    PoolId:      "pool-1",
-    Tokens:      []sdk.Coin{tokenA, tokenB},
-    Slippage:    sdk.NewDecWithPrec(1, 2), // 1%
-}
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-err := k.ProvideLiquidity(ctx, liquidity)
-if err != nil {
-    return err
-}
-```
+The module provides various query endpoints:
 
-## Benefits
+* Params: Query module parameters
+* Pools: List all liquidity pools
+* Pool: Get details of a specific pool
+* Positions: List all positions
+* Position: Get details of a specific position
+* PoolPositions: List positions in a specific pool
+* AddressPositions: List positions owned by an address
+* PositionFees: Get accrued fees for a position
+* CalculationCreatePosition: Preview position creation
+* CalculationIncreaseLiquidity: Preview liquidity increase
 
-1. **Efficient Swaps:** Optimized token swap mechanisms
-2. **Flexible Pools:** Support for various pool types
-3. **Sustainable Economics:** Long-term protocol viability
-4. **Transparent Fees:** Clear fee structure
-5. **Protocol Integration:** Seamless integration with other components
-
-## Future Improvements
-
-1. **Dynamic Fee Adjustment:** Implement dynamic fees based on pool conditions
-2. **Advanced Pool Types:** Support for more complex pool mechanisms
-3. **Cross-Chain Pools:** Enable cross-chain liquidity pools
-4. **Pool Analytics:** Better tracking and analysis of pool performance
-5. **User Preferences:** Allow users to set preferences for pool interaction
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquiditypool) for details.

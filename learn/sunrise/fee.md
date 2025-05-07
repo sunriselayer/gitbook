@@ -1,131 +1,139 @@
 # Fee
 
-The `x/fee` module is a protocol-level mechanism for managing and distributing fees within the Sunrise ecosystem. It provides a flexible and efficient way to handle transaction fees, ensuring sustainable protocol economics while maintaining user accessibility.
+The `x/fee` module is a core component of the Sunrise blockchain responsible for managing transaction fees. It introduces mechanisms for burning a portion of $RISE tokens used as fees, enforcing fee denominations, and providing flexibility through bypass denominations. This module supports deflationary tokenomics while maintaining an efficient fee system.
 
-## Key Features
+## Key Features of `x/fee`
 
-- **Protocol-Level Fee Management:** Centralized fee handling at the protocol level
-- **Flexible Fee Distribution:** Configurable fee distribution between protocol and validators
-- **Fee Abstraction:** Support for fee abstraction mechanisms
-- **Economic Sustainability:** Ensures long-term protocol viability
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
+1. **Burn Mechanism:**
+    - A portion of $RISE tokens used as transaction fees is burned to reduce the circulating supply.
+    - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
+    - Burn operations are atomic and verified on-chain.
+
+2. **Fee Denomination (`fee_denom`):**
+    - Specifies the denomination required for transaction fees (default: **`"urise"`**).
+    - Transactions must pay fees in this denomination unless bypassed.
+    - Strict validation of fee denominations is enforced.
+
+3. **Bypass Denominations (`bypass_denoms`):**
+    - Allows certain denominations to bypass standard fee restrictions.
+    - Default bypass denomination: **`"uvrise"`**.
+    - Useful for specialized transaction scenarios.
+
+4. **Dynamic Parameter Configuration:**
+    - Developers can configure parameters dynamically with validation enforced by the module.
+    - Parameters can be updated through governance proposals.
+
+5. **Integration with Bribe System:**
+    - Handles unclaimed bribes from expired epochs
+    - Processes fees from bribe transactions
+    - Manages fee collection for bribe operations
 
 ## Core Functionality
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+{% hint style="danger" %}
+**LEVEL 3: FOR MODULE DEVELOPERS**
+{% endhint %}
 
-### Fee Collection
+### Fee Collection and Processing
 
-The module collects fees from various protocol activities:
+**Fee Collection Process:**
 
-- Transaction fees
-- Protocol-specific fees
-- Cross-chain fees
+1. Fees are collected through the FeeCollector module account
+2. The system validates:
+   - Only one fee denomination per transaction
+   - Fee denomination matches configured `fee_denom`
+   - Fee amount is valid and non-zero
 
-### Fee Distribution
+**Fee Processing Flow:**
 
-Fees are distributed according to configurable parameters:
+1. Validate fees against configured parameters
+2. Calculate burn amount based on burn_ratio
+3. Execute burn operation for the calculated amount
+4. Transfer remaining fees to fee collector
 
-- Protocol treasury
-- Validator rewards
-- Community pool
-- Fee abstraction pool
+### Integration with Bribe System
 
-### Fee Abstraction
+**Bribe Fee Handling:**
 
-The module supports fee abstraction mechanisms:
+1. Track bribe fees through the BribeFee structure
+2. Process unclaimed bribes at epoch end
+3. Calculate and handle fees for unclaimed amounts
+4. Transfer processed fees to appropriate accounts
 
-- Liquidity-based fee abstraction
-- Token-based fee abstraction
-- Cross-chain fee abstraction
+## Parameter Configuration
 
-## Integration Points
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-### With Other Modules
-
-- **x/liquidity:** For liquidity-based fee abstraction
-- **x/validator:** For validator reward distribution
-- **x/governance:** For fee parameter management
-- **x/crosschain:** For cross-chain fee handling
-
-### With External Systems
-
-- **Wallets:** For fee estimation and payment
-- **DEXs:** For token-based fee abstraction
-- **Bridges:** For cross-chain fee handling
-
-## Parameters
-
-The module's behavior is controlled by several parameters:
-
-- `fee_denom`: The denomination for fee payments
-- `fee_rate`: The base fee rate for transactions
-- `validator_share`: The share of fees allocated to validators
-- `protocol_share`: The share of fees allocated to the protocol
-- `community_share`: The share of fees allocated to the community pool
-- `abstraction_share`: The share of fees allocated to fee abstraction
+| Parameter | Description | Default Value | Constraints |
+|-----------|-------------|---------------|-------------|
+| `fee_denom` | Required denomination for transaction fees | `"urise"` | Must be a valid denomination |
+| `burn_ratio` | Percentage of fees to burn | `0.5` | Must be between 0 and 1 |
+| `bypass_denoms` | Denominations exempt from fee restrictions | `["uvrise"]` | List of valid denominations |
 
 ## Example Usage
 
-### Setting Fee Parameters
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-```go
-params := types.Params{
-    FeeDenom:        "urise",
-    FeeRate:         sdk.NewDecWithPrec(1, 3), // 0.1%
-    ValidatorShare:  sdk.NewDecWithPrec(6, 1), // 60%
-    ProtocolShare:   sdk.NewDecWithPrec(3, 1), // 30%
-    CommunityShare:  sdk.NewDecWithPrec(1, 1), // 10%
-    AbstractionShare: sdk.NewDecWithPrec(2, 1), // 20%
-}
-```
+Developers can query fee parameters using Sunrise Client JS:
 
-### Collecting Fees
+```javascript
+import { SunriseClient } from "@sunriselayer/client";
 
-```go
-// Collect transaction fee
-fee := sdk.NewCoin("urise", sdk.NewInt(1000))
-err := k.CollectFee(ctx, fee, sender)
-if err != nil {
-    return err
-}
+async function queryFeeParams() {
+    const cometRpc = "https://sunrise-test-da-1.cauchye.net/";
+    const client = await SunriseClient.connect(cometRpc);
+    const queryClient = client.getQueryClient();
 
-// Distribute collected fee
-err = k.DistributeFee(ctx, fee)
-if err != nil {
-    return err
-}
-```
-
-### Fee Abstraction
-
-```go
-// Check if fee abstraction is available
-available, err := k.IsFeeAbstractionAvailable(ctx, sender)
-if err != nil {
-    return err
-}
-
-if available {
-    // Process fee abstraction
-    err = k.ProcessFeeAbstraction(ctx, sender, fee)
-    if err != nil {
-        return err
+    if (!queryClient) {
+        console.error("Query client not initialized");
+        return;
     }
+
+    const feeParams = await queryClient.fee.params({});
+    console.log("Fee Parameters:", feeParams.params);
+}
+queryFeeParams();
+```
+
+**Example Output:**
+
+```json
+{
+  "fee_denom": "urise",
+  "burn_ratio": "0.5",
+  "bypass_denoms": ["uvrise"]
 }
 ```
 
-## Benefits
+## Workflow: Fee Processing
 
-1. **Sustainable Economics:** Ensures long-term protocol viability through proper fee management
-2. **User Accessibility:** Maintains reasonable fee levels while ensuring protocol sustainability
-3. **Flexibility:** Supports various fee abstraction mechanisms for different use cases
-4. **Transparency:** Clear and configurable fee distribution parameters
-5. **Integration:** Seamless integration with other protocol components
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-## Future Improvements
+```mermaid
+sequenceDiagram
+    participant User
+    participant FeeModule as x/fee Module
+    participant BankKeeper as Bank Keeper
+    participant FeeCollector as Fee Collector
+    participant BribeModule as x/bribe Module
 
-1. **Dynamic Fee Adjustment:** Implement dynamic fee rates based on network conditions
-2. **Advanced Fee Abstraction:** Support for more complex fee abstraction mechanisms
-3. **Cross-Chain Fee Optimization:** Improved handling of cross-chain fees
-4. **Fee Analytics:** Better tracking and analysis of fee distribution
-5. **User Fee Preferences:** Allow users to set preferences for fee payment methods
+    User->>FeeModule: Submit Transaction
+    FeeModule->>BankKeeper: Validate Fee Denomination
+    BankKeeper->>FeeCollector: Transfer Fees
+    FeeModule->>FeeModule: Calculate Burn Amount
+    FeeModule->>FeeModule: Execute Burn
+    BribeModule->>FeeModule: Process Unclaimed Bribes
+    FeeModule->>FeeCollector: Transfer Unclaimed Amounts
+```
+
+For more details and implementation specifics, see the [GitHub repository](https://github.com/sunriselayer/sunrise/tree/main/x/fee).

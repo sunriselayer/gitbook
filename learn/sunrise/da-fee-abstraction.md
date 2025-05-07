@@ -1,8 +1,12 @@
-# Fee Abstraction
+# DA Fee Abstraction
 
-Sunrise introduces "Fee Abstraction," a mechanism that allows developers to access blob spaces on Sunrise without paying direct fees. Instead, developers can provide liquidity to Sunrise liquidity pools to gain access to data availability services. This innovative approach reduces entry barriers for developers while maintaining the economic sustainability of the network.
+Sunrise introduces "DA Fee Abstraction," a mechanism that allows developers to access blob spaces on Sunrise without paying direct fees. Instead, developers can provide liquidity to Sunrise liquidity pools to gain access to data availability services. This innovative approach reduces entry barriers for developers while maintaining the economic sustainability of the network.
 
 ## Key Features
+
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 1. **Liquidity-Based Access:**
 
@@ -10,17 +14,20 @@ Sunrise introduces "Fee Abstraction," a mechanism that allows developers to acce
    - This contribution supports the network's overall liquidity and stability.
    - Multiple pool options allow flexibility for capital allocation.
 
+
 2. **Reward Mechanism (`$vRISE`):**
 
    - Liquidity providers receive `$vRISE` tokens as rewards proportional to their liquidity contribution.
    - These tokens can be used to pay for data availability transactions without being burned.
    - `$vRISE` rewards accumulate continuously while liquidity is provided.
 
+
 3. **Fee Segregation:**
 
    - Data availability transactions can use `$vRISE` tokens for fee payment.
    - Other transaction types still require `$RISE` tokens for fees.
    - Clear separation between DA access and standard transaction costs.
+
 
 4. **Economic Sustainability:**
 
@@ -30,9 +37,11 @@ Sunrise introduces "Fee Abstraction," a mechanism that allows developers to acce
 
 ## Core Functionality
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-### Liquidity Provision and Access
+### Liquidity Provision and DA Access
 
 **When developers want to access data availability services:**
 
@@ -44,18 +53,20 @@ Sunrise introduces "Fee Abstraction," a mechanism that allows developers to acce
 
 ### Technical Implementation
 
-The Fee Abstraction mechanism is implemented through interaction between several Sunrise modules:
+The DA Fee Abstraction mechanism is implemented through interaction between several Sunrise modules:
 
 - **`x/liquiditypool`**: Manages liquidity positions and distributes `$vRISE` rewards
 - **`x/fee`**: Handles transaction fee processing, including the special treatment for `$vRISE` fees
 - **`x/da`**: Processes data availability submissions and verifies fee payment
 - **`x/tokenconverter`**: Allows conversion between `$RISE` and `$vRISE` tokens when needed
 
-## Workflow: Fee Abstraction Process
+## Workflow: DA Fee Abstraction Process
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-Below is a sequence diagram illustrating how the Fee Abstraction works:
+Below is a sequence diagram illustrating how the DA Fee Abstraction works:
 
 ```mermaid
 sequenceDiagram
@@ -84,17 +95,23 @@ The system is designed to maintain equilibrium between liquidity provision rewar
 
 ## Benefits
 
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
 1. **Lower Entry Barriers:**
 
    - Developers can access data availability services without upfront token costs.
    - Promotes greater adoption of Sunrise's data availability layer.
    - Simplifies onboarding for new projects with limited initial capital.
 
+
 2. **Liquidity Enhancement:**
 
    - Encourages developers to provide liquidity to the network.
    - Improves overall market depth and reduces slippage for all participants.
    - Creates deeper, more resilient liquidity pools as more developers join.
+
 
 3. **Sustainable Economics:**
 
@@ -109,6 +126,10 @@ The system is designed to maintain equilibrium between liquidity provision rewar
    - Teams can optimize their capital efficiency while using Sunrise's DA.
 
 ## Example Usage
+
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
 **Providing Liquidity and Using DA**
 
@@ -185,7 +206,7 @@ async function calculateRequiredLiquidity(dataSize, usageDuration) {
 
 ## Integration with Liquidity Incentives
 
-The Fee Abstraction mechanism works in harmony with Sunrise's broader liquidity incentive system. Developers who provide liquidity for DA access also participate in the governance gauge voting system, allowing them to direct additional rewards to their preferred pools. This creates multiple streams of benefits for liquidity providers:
+The DA Fee Abstraction mechanism works in harmony with Sunrise's broader liquidity incentive system. Developers who provide liquidity for DA access also participate in the governance gauge voting system, allowing them to direct additional rewards to their preferred pools. This creates multiple streams of benefits for liquidity providers:
 
 1. Direct `$vRISE` rewards for DA access
 2. Trading fees from their liquidity position

@@ -1,131 +1,136 @@
 # Gauges Voting
 
-The `x/gauges` module is a protocol-level mechanism for managing liquidity incentives and voting power distribution within the Sunrise ecosystem. It provides a flexible and efficient way to allocate rewards and influence protocol decisions based on liquidity provision.
+## What is a Gauge?
 
-## Key Features
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-- **Liquidity-Based Voting:** Voting power determined by liquidity provision
-- **Epoch-Based Rewards:** Time-based reward distribution periods
-- **Flexible Gauge Types:** Support for different types of liquidity gauges
-- **Economic Incentives:** Sustainable reward mechanisms
+A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vRISE` tokens. Currently, the primary gauge product is the Liquidity Pool system.
 
-## Core Functionality
+`vRISE` holders can vote to determine the allocation of newly minted `vRISE` tokens across different gauges. Liquidity pools that attract more voting power will receive a larger share of newly issued vRISE tokens, creating an incentive mechanism that aligns with community preferences.
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+## How the Voting System Works
 
-### Gauge Management
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-The module manages different types of gauges:
+### Epoch-Based Voting
 
-- **Liquidity Gauges:** For liquidity pool rewards
-- **Staking Gauges:** For staking rewards
-- **Custom Gauges:** For protocol-specific rewards
+Gauge weight voting operates on an epoch system:
 
-### Voting Power
+* Each epoch spans a predefined number of blocks (configurable via governance)
+* Votes are tallied at the beginning of each new epoch
+* Vote weight is determined by the voter's `vRISE` balance at epoch start
+* Voting decisions persist across epochs until explicitly changed
 
-Voting power is calculated based on:
+```mermaid
+sequenceDiagram
+  participant Voter as vRISE Holder
+  participant Module as Liquidityincentive Module
+  participant Gauges as Liquidity Pool Gauges
 
-- Liquidity provided
-- Lock duration
-- Gauge type
-- User's total stake
+  Voter->>Module: Submit Vote (% allocation per gauge)
+  Note over Module: Store vote preference
 
-### Reward Distribution
+  Module->>Module: Epoch Begins
+  Module->>Module: Tally Votes
 
-Rewards are distributed according to:
-
-- Epoch schedule
-- Gauge weights
-- User's voting power
-- Total liquidity in gauge
-
-## Integration Points
-
-### With Other Modules
-
-- **x/liquidity:** For liquidity pool integration
-- **x/staking:** For staking reward distribution
-- **x/governance:** For gauge parameter management
-- **x/rewards:** For reward token distribution
-
-### With External Systems
-
-- **DEXs:** For liquidity pool integration
-- **Staking Platforms:** For staking reward distribution
-- **Analytics:** For gauge performance tracking
-
-## Parameters
-
-The module's behavior is controlled by several parameters:
-
-- `min_lock_duration`: Minimum duration for locking liquidity
-- `max_lock_duration`: Maximum duration for locking liquidity
-- `epoch_duration`: Duration of each reward epoch
-- `min_voting_power`: Minimum voting power required
-- `max_voting_power`: Maximum voting power cap
-- `gauge_types`: Supported gauge types
-
-## Example Usage
-
-### Creating a Gauge
-
-```go
-// Create a new liquidity gauge
-gauge := types.Gauge{
-    Id:          "gauge-1",
-    Type:        types.GaugeTypeLiquidity,
-    StartTime:   ctx.BlockTime(),
-    EndTime:     ctx.BlockTime().Add(epochDuration),
-    Rewards:     rewards,
-    TotalPower:  sdk.ZeroInt(),
-    IsActive:    true,
-}
-
-err := k.CreateGauge(ctx, gauge)
-if err != nil {
-    return err
-}
+  Module->>Gauges: Distribute vRISE According to Vote Weight
+  Gauges->>Voter: Return Rewards Based on LP Position
 ```
 
-### Voting on a Gauge
 
-```go
-// Vote on a gauge with liquidity
-vote := types.Vote{
-    GaugeId:    "gauge-1",
-    Voter:      voter,
-    Power:      power,
-    LockEnd:    ctx.BlockTime().Add(lockDuration),
-}
+### Eligibility Requirements
 
-err := k.Vote(ctx, vote)
-if err != nil {
-    return err
-}
-```
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
 
-### Distributing Rewards
+To participate in gauge voting:
 
-```go
-// Distribute rewards for an epoch
-err := k.DistributeRewards(ctx, "gauge-1")
-if err != nil {
-    return err
-}
-```
+* **Token Requirement**: You must earn `vRISE` tokens, primarily by providing liquidity to pools
+* **Balance Timing:** Your valid `vRISE` balance at epoch start determines your voting power
+* **Token Status:** Locked vRISE tokens are not counted toward voting power
 
-## Benefits
+You can submit your vote even before you have `vRISE` tokens. Your voting preferences will be applied based on whatever `vRISE` balance you have when the next epoch begins.
 
-1. **Fair Distribution:** Rewards distributed based on actual contribution
-2. **Flexible Incentives:** Support for various reward mechanisms
-3. **Sustainable Economics:** Long-term incentive alignment
-4. **Transparent Voting:** Clear voting power calculation
-5. **Protocol Integration:** Seamless integration with other components
+### Viewing Current Voting Status
 
-## Future Improvements
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
-1. **Dynamic Gauge Weights:** Implement dynamic weight adjustment based on performance
-2. **Advanced Voting Mechanisms:** Support for more complex voting strategies
-3. **Cross-Chain Gauges:** Enable cross-chain liquidity incentives
-4. **Gauge Analytics:** Better tracking and analysis of gauge performance
-5. **User Preferences:** Allow users to set preferences for reward distribution
+**System Parameters**
+
+* **Epoch Blocks:** The number of blocks per epoch (governance parameter)
+* **Staking Rewards Ratio:** Percentage of `vRISE` originally allocated to staking that is redirected to gauges
+* **Votes Cast:** Total number of unique voters participating
+
+**Current Epoch Data**
+
+* **Total Votes:** Cumulative voting power across all gauges
+* **Start/End:** Timestamp or block heights for the current epoch
+* **Previous Epoch:** Historical data from the last epoch
+
+**Gauge Distribution**
+
+The complete list of voting gauges shows:
+
+* Each gauge's total accumulated voting power
+* Percentage of total votes directed to each gauge
+
+The system only retains data for the current and previous epochs. Historical data from earlier epochs is pruned and cannot be retrieved from the blockchain.
+
+## How to Vote
+
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
+### Step 1: Access Your Voting Dashboard
+
+Click **My Votes** to begin the voting process.
+
+### Step 2: Select Gauges
+
+1. Click "Select Pool" to open the pool selection interface
+2. Choose the pools/gauges you wish to support
+3. Your previous voting selections will be automatically loaded if applicable
+4. Remove unwanted gauges by clicking the delete button
+
+### Step 3: Allocate Voting Power
+
+Specify what percentage of your voting power to allocate to each selected gauge:
+
+- **Percentage-Based:** Allocations are specified as percentages rather than absolute amounts because:
+
+  * Your vRISE balance may fluctuate between epochs
+  * Percentage allocations automatically adjust to your current balance at epoch start
+  * This approach eliminates the need to revote every epoch
+
+### Step 4: Preview and Submit
+
+1. Use the "Preview Vote" feature to see how your current vRISE balance would be distributed
+2. Confirm your selections
+3. Click Vote to submit your transaction
+4. Your vote preferences will be applied to all future epochs until changed
+
+### Step 5: Update (Optional)
+You can modify your vote at any time:
+
+* Your latest voting decision before an epoch begins will be applied
+* Changes take effect at the next epoch boundary
+* Simply repeat the voting process to update your preferences
+
+## Strategic Voting Considerations
+
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
+
+* **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
+* **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards
+* **Market Efficiency:** Voting helps direct liquidity to where it's most valued by the community
+* **Long-Term Planning:** Vote allocations persist across epochs, allowing for strategic positioning

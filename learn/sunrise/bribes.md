@@ -4,33 +4,39 @@ The `x/bribe` module implements a protocol-level mechanism that allows applicati
 
 ## Key Features
 
-1. Protocol-Level Bribes:
+{% hint style="success" %}
+**LEVEL 1: FOR APP DEVELOPERS**
+{% endhint %}
+
+1. **Protocol-Level Bribes:**
    - Applications can offer bribes to attract liquidity to specific pools
    - vRISE holders are incentivized to direct votes to pools with higher bribes
    - Creates an efficient market for liquidity allocation
 
-2. Epoch-Based System:
+2. **Epoch-Based System:**
    - Bribes are tied to specific epochs
    - System tracks expired epochs
    - Unclaimed bribes from expired epochs are processed and sent to fee collector
 
-3. Weight-Based Distribution:
+3. **Weight-Based Distribution:**
    - Fair allocation based on vote weights
    - Prevents double claiming
    - Transparent and verifiable on-chain
 
-4. Economic Efficiency:
+4. **Economic Efficiency:**
    - Creates a market for liquidity allocation
    - vRISE holders can maximize returns by directing votes
    - Unclaimed rewards are recycled to fee collector
 
 ## Core Functionality
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
+{% hint style="info" %}
+**LEVEL 2: FOR ADVANCED USERS**
+{% endhint %}
 
 ### Bribe Management
 
-Each bribe is defined by several parameters:
+**Each bribe is defined by several parameters:**
 
 - `id`: Unique identifier for the bribe
 - `epoch_id`: The epoch for which the bribe is valid
@@ -52,20 +58,18 @@ The system tracks how bribes are allocated to voters:
 
 ## Bribe System Architecture & Flow
 
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
-
 ### Key Components and Flows
 
 #### Bribe Registration
 
-- User registers a bribe by sending coins to the Bribe module.
-- The system creates a Bribe record (with unique ID, epoch, pool, amount, and claimed amount).
-- Bribe allocations are created for voters based on their vote weights for the pool in that epoch.
-- Funds are stored in the Bribe Account (module account).
+- **User registers a bribe** by sending coins to the Bribe module.
+- The system **creates a Bribe record** (with unique ID, epoch, pool, amount, and claimed amount).
+- **Bribe allocations** are created for voters based on their vote weights for the pool in that epoch.
+- Funds are stored in the **Bribe Account** (module account).
 
 #### Bribe Claiming
 
-- User initiates a claim for their bribe allocation.
+- **User initiates a claim** for their bribe allocation.
 - The system:
   - Verifies the bribe exists and is valid for the epoch/pool.
   - Checks the user's allocation and ensures the bribe hasn't been claimed.
@@ -75,7 +79,7 @@ The system tracks how bribes are allocated to voters:
 
 #### Fee Processing
 
-- Unclaimed bribes from expired epochs are returned to the Fee Collector.
+- Unclaimed bribes from expired epochs are **returned to the Fee Collector**.
 - Fees are processed:
   - Transferred from the Fee Collector to the module account.
   - Converted to the bond denomination if needed.
@@ -91,9 +95,9 @@ The system tracks how bribes are allocated to voters:
 
 #### State Transitions
 
-- Bribe: Created → Active → Claimed/Expired
-- Allocation: Created → Active → Claimed/Expired
-- Funds: User → Bribe Account → User/Fee Collector
+- **Bribe:** Created → Active → Claimed/Expired
+- **Allocation:** Created → Active → Claimed/Expired
+- **Funds:** User → Bribe Account → User/Fee Collector
 
 ---
 
@@ -174,5 +178,3 @@ The system has configurable parameters:
 
 - Bribe claim epochs (time window for claiming)
 - Other governance-controlled parameters
-
-See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/bribe) for details.
