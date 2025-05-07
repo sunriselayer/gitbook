@@ -4,10 +4,6 @@ The `x/bribe` module implements a protocol-level mechanism that allows applicati
 
 ## Key Features
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 1. **Protocol-Level Bribes:**
    - Applications can offer bribes to attract liquidity to specific pools
    - vRISE holders are incentivized to direct votes to pools with higher bribes
@@ -30,9 +26,7 @@ The `x/bribe` module implements a protocol-level mechanism that allows applicati
 
 ## Core Functionality
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ### Bribe Management
 

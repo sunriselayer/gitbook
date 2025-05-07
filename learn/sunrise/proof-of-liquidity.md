@@ -23,12 +23,14 @@ Berachain pioneered the PoL model with a tri-token design:
 - **$HONEY**: Stablecoin for value transfer within the ecosystem
 
 **Key Technical Components:**
+
 - Validators stake $BERA to join the consensus set
 - Block rewards are paid in $BGT based on validator's "boost" percentage
 - "Boost" is calculated from delegated $BGT from token holders
 - Validators direct emissions to reward vaults, which distribute $BGT to liquidity providers
 
 **Flow of Value:**
+
 1. Validators stake $BERA as security bond
 2. Validators receive $BGT rewards for block production
 3. Validators direct $BGT rewards to protocol reward vaults
@@ -44,6 +46,7 @@ Sunrise builds upon PoL concepts with its own architecture:
 - **$RISE**: Transferable token used as gas and fees
 
 **Technical Implementation:**
+
 - Liquidity providers in the `x/liquiditypool` module earn $vRISE
 - $vRISE holders can stake in the `x/staking` module
 - Stakers participate in gauge voting through the `x/liquidityincentive` module
@@ -68,19 +71,22 @@ The Sunrise implementation consists of several key modules that interact to crea
 The gauge voting system is the cornerstone of PoL implementations:
 
 1. **Epoch-Based Voting**:
-  - Voting power is determined by $vRISE balance at epoch start
-  - Each epoch spans a predefined number of blocks (configurable via governance)
-  - Votes persist across epochs until explicitly changed
+
+- Voting power is determined by $vRISE balance at epoch start
+- Each epoch spans a predefined number of blocks (configurable via governance)
+- Votes persist across epochs until explicitly changed
 
 2. **Vote Weight Calculation**:
+
    ```
    pool_allocation = (user_vrise * user_vote_percentage) / total_weighted_votes
    ```
 
 3. **Reward Distribution**:
-  - Emissions are calculated per block
-  - Distribution based on proportional gauge weights
-  - Rewards claimed by staking receipt tokens
+
+- Emissions are calculated per block
+- Distribution based on proportional gauge weights
+- Rewards claimed by staking receipt tokens
 
 ### Consensus Implementation
 

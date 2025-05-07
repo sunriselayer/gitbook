@@ -4,10 +4,6 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ## Key Features
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 1. **Epoch-Based Reward Distribution**:
     - Rewards are distributed at the end of each epoch.
     - Lazy accounting minimizes computational overhead by calculating rewards only when claimed.
@@ -24,34 +20,26 @@ The `x/liquidityincentive` module incentivizes liquidity providers by distributi
 
 ### Epochs
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 - Two epochs exist concurrently:
     1. **Past Epoch**: The epoch that has ended.
     2. **Current Epoch**: The ongoing epoch.
 - Each epoch has the following parameters:
-    - **`start_block`**: The block where the epoch begins.
-    - **`end_block`**: The block where the epoch ends.
-    - **`gauges`**: A list of gauges (pool weights) for incentive distribution.
+  - **`start_block`**: The block where the epoch begins.
+  - **`end_block`**: The block where the epoch ends.
+  - **`gauges`**: A list of gauges (pool weights) for incentive distribution.
 
 ### Gauge
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 - A gauge represents a specific liquidity pool's weight in reward allocation.
 - Parameters:
-    - **`pool_id`**: The ID of the liquidity pool.
-    - **`ratio`**: The voting power allocated to this pool.
+  - **`pool_id`**: The ID of the liquidity pool.
+  - **`ratio`**: The voting power allocated to this pool.
 
 ### Lazy Accounting
-
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
 
 - Rewards are not distributed immediately but are calculated when claimed.
 - Formula for calculating rewards:
@@ -60,18 +48,13 @@ $$
 \text{ClaimAmount}_{ij} = \frac{\text{PositionUnclaimedAccumulation}_{ij}}{\text{PoolUnclaimedAccumulation}_{i}} \times \text{PoolUnclaimed}_{i}
 $$
 
-
 ## Workflow
-
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
 
 ### 1. BeginBlocker
 
 - Creates a new epoch if:
-    - The last epoch has ended.
-    - No epochs exist (first epoch).
+  - The last epoch has ended.
+  - No epochs exist (first epoch).
 
 ### 2. EndBlocker
 
@@ -84,9 +67,7 @@ $$
 
 ## Sequence Diagram: Reward Distribution
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ```mermaid
 sequenceDiagram
@@ -103,10 +84,6 @@ sequenceDiagram
 ```
 
 ## Code Examples
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 **Query Epoch Information:**
 
@@ -148,6 +125,5 @@ queryEpochs();
   }
 }
 ```
-
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive) for details.
