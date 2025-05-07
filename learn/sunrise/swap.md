@@ -4,10 +4,6 @@ The module `x/swap` serves the functionalities to swap tokens with the liquidity
 
 ### Interface Provider Fee Rewards
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 Any frontend application, wallet, dApp, or protocol that is built on top of the swap module has the ability to earn fees. This incentivizes open, composable infrastructure around the Sunrise AMM.
 
 There are 2 important parameters to note:
@@ -21,10 +17,6 @@ When executing swaps through Sunrise AMM, you can **capture interface fees** by 
 ---
 
 ### Swap Message Types
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 There are 2 message types that can be used to specify the amount received or the amount sent.
 
@@ -40,9 +32,7 @@ This message enables users to swap tokens by defining the exact amount of output
 
 ### Route
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 This module supports Swap Routes with a recursive structure, allowing for complex swaps involving multiple steps, either in sequence (Series) or simultaneously (Parallel). Each step in the route is validated and processed to ensure inputs and outputs are correctly handled.
 
@@ -85,10 +75,6 @@ message Route {
 ---
 
 ### Swap Middleware for ICS20 Token Transfers
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 Swap functionality can be automatically triggered by ICS20 token transfer packets. This is similar to IBC Hooks and can be used by any developers who can use ICS20 in any chain (like Solidity IBC Eureka, CosmWasm on Sei, etc.) to interact with the swap module through IBC middleware.
 
@@ -135,9 +121,7 @@ The `ForwardMetadata` is derived from the [Packet Forward Middleware](https://gi
 
 ## **Sequence diagrams**
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 #### Basic Swap Without Forwarding
 
@@ -188,10 +172,6 @@ sequenceDiagram
     Chain B ->> Sunrise: ack
     Sunrise ->> Chain A: ack
 ```
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 **Receiver Address Handling**
 

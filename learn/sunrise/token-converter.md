@@ -2,12 +2,7 @@
 
 The `x/tokenconverter` module enables seamless conversion between `vRISE` and `RISE` tokens on the Sunrise blockchain. This module plays a crucial role in the ecosystem by allowing users to convert between the staking token and the fee token while maintaining an equivalent value relationship.
 
-
 ## Key Features
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 1. **Bidirectional Token Conversion:**
 
@@ -30,12 +25,9 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
    - Any user can perform token conversions at any time.
    - No slippage or fees applied to the conversion process.
 
-
 ## Core Functionality
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ### Token Conversion
 
@@ -48,9 +40,7 @@ This process maintains the total economic value in the system while allowing use
 
 ## Workflow: Token Conversion Process
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ```mermaid
 sequenceDiagram
@@ -71,10 +61,6 @@ sequenceDiagram
 
 ## Messages
 
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
-
 ### MsgConvert
 
 Converts tokens between the bond and fee denominations.
@@ -88,9 +74,7 @@ type MsgConvert struct {
 
 **Parameter Configuration**
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 | Parameter                     | Description                                                                          |
 |------------------------------|--------------------------------------------------------------------------------------|
@@ -151,12 +135,7 @@ async function convertTokens() {
 }
 ```
 
-
 ## Benefits
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 1. **Flexible Token Usage:**
 
@@ -172,6 +151,5 @@ async function convertTokens() {
 
    - Straightforward conversion with no fees or slippage.
    - Easy to understand and integrate with applications.
-
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/tokenconverter) for details.

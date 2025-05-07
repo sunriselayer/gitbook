@@ -4,27 +4,20 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Key Features
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 1. **Concentrated Liquidity AMM:**
 
    - Follows a similar model to Uniswap V3, allowing liquidity providers to concentrate their assets within specific price ranges.
    - Improves capital efficiency compared to traditional constant product AMMs.
-
 
 2. **Position-Based Liquidity:**
 
    - Users create positions with defined price ranges (ticks).
    - Each position has a unique ID and tracks the liquidity provider's contribution.
 
-
 3. **Fee Generation:**
 
    - Positions earn fees from trades that occur within their price range.
    - Fees are collected in the base and quote denominations of the pool.
-
 
 4. **`vRISE` Incentives:**
 
@@ -33,9 +26,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 ## Core Functionality
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ### Pool Management
 
@@ -47,12 +38,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 - `tick_params`: Parameters defining the tick system
 - `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: Current state variables
 
-
 ### Tick System
-
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
 
 The tick system is based on a price ratio formula:
 
@@ -70,9 +56,7 @@ This allows for precise positioning of liquidity within specific price ranges.
 
 ## Workflow: Creating and Using Positions
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ```mermaid
 sequenceDiagram
@@ -101,10 +85,6 @@ sequenceDiagram
 ```
 
 ## Messages
-
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
 
 ### MsgCreatePool
 
@@ -178,10 +158,6 @@ type MsgClaimRewards struct {
 
 ## Example Usage
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 **Create a Position**
 
 ```javascript
@@ -209,21 +185,17 @@ async function createPosition() {
 
 ## Queries
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 The module provides various query endpoints:
 
-* Params: Query module parameters
-* Pools: List all liquidity pools
-* Pool: Get details of a specific pool
-* Positions: List all positions
-* Position: Get details of a specific position
-* PoolPositions: List positions in a specific pool
-* AddressPositions: List positions owned by an address
-* PositionFees: Get accrued fees for a position
-* CalculationCreatePosition: Preview position creation
-* CalculationIncreaseLiquidity: Preview liquidity increase
+- Params: Query module parameters
+- Pools: List all liquidity pools
+- Pool: Get details of a specific pool
+- Positions: List all positions
+- Position: Get details of a specific position
+- PoolPositions: List positions in a specific pool
+- AddressPositions: List positions owned by an address
+- PositionFees: Get accrued fees for a position
+- CalculationCreatePosition: Preview position creation
+- CalculationIncreaseLiquidity: Preview liquidity increase
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquiditypool) for details.

@@ -2,19 +2,13 @@
 
 ## What is a Gauge?
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 A Gauge in the Sunrise ecosystem is a mechanism that governs the issuance of `vRISE` tokens. Currently, the primary gauge product is the Liquidity Pool system.
 
 `vRISE` holders can vote to determine the allocation of newly minted `vRISE` tokens across different gauges. Liquidity pools that attract more voting power will receive a larger share of newly issued vRISE tokens, creating an incentive mechanism that aligns with community preferences.
 
 ## How the Voting System Works
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ### Epoch-Based Voting
 
@@ -41,12 +35,7 @@ sequenceDiagram
   Gauges->>Voter: Return Rewards Based on LP Position
 ```
 
-
 ### Eligibility Requirements
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 To participate in gauge voting:
 
@@ -58,9 +47,7 @@ You can submit your vote even before you have `vRISE` tokens. Your voting prefer
 
 ### Viewing Current Voting Status
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 **System Parameters**
 
@@ -85,10 +72,6 @@ The system only retains data for the current and previous epochs. Historical dat
 
 ## How to Vote
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 ### Step 1: Access Your Voting Dashboard
 
 Click **My Votes** to begin the voting process.
@@ -104,7 +87,7 @@ Click **My Votes** to begin the voting process.
 
 Specify what percentage of your voting power to allocate to each selected gauge:
 
-- **Percentage-Based:** Allocations are specified as percentages rather than absolute amounts because:
+* **Percentage-Based:** Allocations are specified as percentages rather than absolute amounts because:
 
   * Your vRISE balance may fluctuate between epochs
   * Percentage allocations automatically adjust to your current balance at epoch start
@@ -118,6 +101,7 @@ Specify what percentage of your voting power to allocate to each selected gauge:
 4. Your vote preferences will be applied to all future epochs until changed
 
 ### Step 5: Update (Optional)
+
 You can modify your vote at any time:
 
 * Your latest voting decision before an epoch begins will be applied
@@ -126,9 +110,7 @@ You can modify your vote at any time:
 
 ## Strategic Voting Considerations
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 * **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
 * **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards
