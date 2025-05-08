@@ -31,14 +31,35 @@ Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs
 
 ## Core Modules
 
-| Module | Purpose |
-|--------|---------|
-| [`x/da`](learn/sunrise/data-availability.md) | blob publishing, sampling, proofs |
-| [`x/liquiditypool`](learn/sunrise/liquidity-pool.md) | PoL pools & LP tokens |
-| [`x/liquidityincentive`](learn/sunrise/liquidity-incentive.md) | vRISE gauges, emission schedule |
-| [`x/swap`](learn/sunrise/swap.md) | AMM router used by fee‑swap |
-| [`x/tokenconverter`](learn/sunrise/token-converter.md) | cross‑denom conversions, IBC hooks |
-| [`x/fee`](learn/sunrise/fee.md) | fee abstraction & revenue split |
+{% hint style="info" %}
+**[x/da](learn/sunrise/data-availability.md)**  
+*blob publishing, sampling, proofs*
+{% endhint %}
+
+{% hint style="info" %}
+**[x/liquiditypool](learn/sunrise/liquidity-pool.md)**  
+*PoL pools & LP tokens*
+{% endhint %}
+
+{% hint style="info" %}
+**[x/liquidityincentive](learn/sunrise/liquidity-incentive.md)**  
+*vRISE gauges, emission schedule*
+{% endhint %}
+
+{% hint style="info" %}
+**[x/swap](learn/sunrise/swap.md)**  
+*AMM router used by fee‑swap*
+{% endhint %}
+
+{% hint style="info" %}
+**[x/tokenconverter](learn/sunrise/token-converter.md)**  
+*cross‑denom conversions, IBC hooks*
+{% endhint %}
+
+{% hint style="info" %}
+**[x/fee](learn/sunrise/fee.md)**  
+*fee abstraction & revenue split*
+{% endhint %}
 
 ## Revenue Streams
 
