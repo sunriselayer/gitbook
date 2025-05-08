@@ -31,35 +31,32 @@ Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs
 
 ## Core Modules
 
-{% hint style="info" %}
-**[x/da](learn/sunrise/data-availability.md)**  
-*blob publishing, sampling, proofs*
-{% endhint %}
-
-{% hint style="info" %}
-**[x/liquiditypool](learn/sunrise/liquidity-pool.md)**  
-*PoL pools & LP tokens*
-{% endhint %}
-
-{% hint style="info" %}
-**[x/liquidityincentive](learn/sunrise/liquidity-incentive.md)**  
-*vRISE gauges, emission schedule*
-{% endhint %}
-
-{% hint style="info" %}
-**[x/swap](learn/sunrise/swap.md)**  
-*AMM router used by fee‑swap*
-{% endhint %}
-
-{% hint style="info" %}
-**[x/tokenconverter](learn/sunrise/token-converter.md)**  
-*cross‑denom conversions, IBC hooks*
-{% endhint %}
-
-{% hint style="info" %}
-**[x/fee](learn/sunrise/fee.md)**  
-*fee abstraction & revenue split*
-{% endhint %}
+<div style="display: flex; gap: 24px; flex-wrap: wrap;">
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/data-availability.md"><strong>x/da</strong></a>
+    <p>blob publishing, sampling, proofs</p>
+  </div>
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/liquidity-pool.md"><strong>x/liquiditypool</strong></a>
+    <p>PoL pools & LP tokens</p>
+  </div>
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/liquidity-incentive.md"><strong>x/liquidityincentive</strong></a>
+    <p>vRISE gauges, emission schedule</p>
+  </div>
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/swap.md"><strong>x/swap</strong></a>
+    <p>AMM router used by fee‑swap</p>
+  </div>
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/token-converter.md"><strong>x/tokenconverter</strong></a>
+    <p>cross‑denom conversions, IBC hooks</p>
+  </div>
+  <div style="background: #181A20; border-radius: 16px; padding: 24px; width: 300px; box-shadow: 0 2px 8px #0002;">
+    <a href="learn/sunrise/fee.md"><strong>x/fee</strong></a>
+    <p>fee abstraction & revenue split</p>
+  </div>
+</div>
 
 ## Revenue Streams
 
