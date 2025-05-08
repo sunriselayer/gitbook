@@ -7,10 +7,6 @@ coverY: 0
   ☀️ <strong>The base layer for Inter‑liquid rollups</strong>
 </p>
 
-# Sunrise
-
-☀️ **The base layer for Inter‑liquid rollups**  
-
 Sunrise is a modular **Data‑Availability (DA) platform** that integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Liquidity providers stake LP tokens to secure the network and, in return, receive "blobspace" for data publication—aligning economic incentives with network security. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise DA with minimal integration effort.
 
 The reference rollup **[Gluon](https://github.com/sunriselayer/gluon)** demonstrates Sunrise in production. Gluon functions as an order‑book rollup on the Sunrise L1, combining web‑style authentication, off‑chain order matching, on‑chain settlement, and IBC‑based asset transfer. Liquidity contributed to Gluon is reflected back into Sunrise through PoL, thereby increasing both liquidity depth and data‑availability capacity while reducing overall value extraction compared with traditional alternative‑DA solutions.
