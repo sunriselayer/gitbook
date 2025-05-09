@@ -1,32 +1,75 @@
-# Client
+# Sunrise Client SDKs
 
-## JavaScript
+The Sunrise client libraries let you **query** the chain, **submit blobs** and **sign / broadcast transactions** from your application without having to run custom protobuf tooling or hand‑craft Tendermint JSON‑RPC calls.
 
-<https://github.com/sunriselayer/sunrise-client-js>
+## Available SDKs
 
-```shell
-npm i @sunriselayer/client
+* **JavaScript / TypeScript** - Primary SDK available on npm
+* **Rust** - gRPC + protobuf type generation with Buf/Prost
+* **Go** and **Python** bindings - Coming soon (contributions welcome)
+
+## JavaScript / TypeScript SDK
+
+### Installation
+
+```bash
+npm install @sunriselayer/client
+# or
+pnpm add @sunriselayer/client
+# or
+yarn add @sunriselayer/client
 ```
 
-## Rust
+### Basic Usage
 
-Currently there is no support for client library, but you can easily generate the protobuf type definition files.
+```typescript
+import { SunriseClient } from "@sunriselayer/client";
 
-Installing [Buf CLI](https://buf.build/docs/installation/) is required.
+const RPC = "https://goldberg-rpc.sunrise.node";   // Replace with your node
+const SENDER_MNEMONIC = process.env.MNEMONIC!;     // Never commit private keys
 
-You need to create two YAML files as follows.
+async function main() {
+  // 1. Connect to the network
+  const client = await SunriseClient.connect(RPC);
 
-- `[project]`
-  - `src`
-    - `main.rs`
-  - `buf.gen.yaml`
-  - `buf.yaml`
+  // 2. Query chain parameters
+  const params = await client.da.params({});
+  console.log("DA params:", params);
 
-{% code title="buf.yaml" overflow="wrap" lineNumbers="true" %}
+  // 3. Submit a test blob transaction
+  const signer = await SunriseClient.fromMnemonic(SENDER_MNEMONIC);
+  const { transactionHash } = await client.da.submitBlob(
+    "Hello Sunrise",
+    { signer }
+  );
+  console.log("Transaction hash:", transactionHash);
+}
+
+main().catch(console.error);
+```
+
+All methods are fully typed when using TypeScript.
+
+## Rust SDK
+
+The Rust SDK is currently implemented through protobuf generation. Here's how to set it up:
+
+### Project Structure
+
+```
+my-sunrise-client/
+├── src/
+│   └── main.rs
+├── buf.yaml
+└── buf.gen.yaml
+```
+
+### Configuration Files
+
+1. `buf.yaml`:
 
 ```yaml
 version: v2
-
 deps:
   - buf.build/cosmos/cosmos-sdk
   - buf.build/cosmos/cosmos-proto
@@ -34,9 +77,7 @@ deps:
   - buf.build/protocolbuffers/wellknowntypes
 ```
 
-{% endcode %}
-
-{% code title="buf.gen.yaml" overflow="wrap" lineNumbers="true" %}
+2. `buf.gen.yaml`:
 
 ```yaml
 version: v2
@@ -63,11 +104,43 @@ inputs:
     subdir: proto
 ```
 
-{% endcode %}
+### Setup and Generation
 
-In the `[project]` directory, run the following commands.
+```bash
+# Add required dependencies
+cargo add tonic tonic-build pbjson-types
 
-```shell
+# Update dependencies and generate code
 buf dep update
 buf generate
 ```
+
+### Example Usage
+
+```rust
+use tonic::transport::Channel;
+use sunriselayer::sunrise::da::v1::query_client::QueryClient;
+use sunriselayer::sunrise::da::v1::ParamsRequest;
+
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    let mut client = QueryClient::connect("http://localhost:9090").await?;
+    let resp = client.params(ParamsRequest {}).await?;
+    println!("DA params: {:?}", resp.into_inner());
+    Ok(())
+}
+```
+
+## Additional Resources
+
+* [Full JavaScript Method Reference](/build/client/reference)
+* [Rollup Integration Examples](/build/l2-blockchains)
+* [Data Availability Proofs](/build/validators)
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| Connection refused | Verify RPC URL and ensure DA node is running |
+| Authentication error | Ensure account has sufficient funds |
+| Rust build failure | Update to Rust 1.74+ and run `cargo clean && buf generate` |
