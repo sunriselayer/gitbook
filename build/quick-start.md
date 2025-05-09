@@ -164,10 +164,10 @@ The demo UI:
 
 | What | Where | Description |
 |------|-------|-------------|
-| Full client reference | /build/client | Complete API documentation for @sunriselayer/client |
-| Build a production Rollkit chain | /build/l2-blockchains/rollkit | Guide to deploying a production rollup |
-| Validators & DA proofs | /build/validators | Learn about validator setup and DA proof generation |
-| Conceptual deep dives | /📜 Learn | Understanding Sunrise's core concepts |
+| Full client reference | [Client Documentation](/build/client/README.md) | Complete API documentation for @sunriselayer/client |
+| Build a production Rollkit chain | [Rollkit Guide](/build/l2-blockchains/rollkit/README.md) | Guide to deploying a production rollup |
+| Validators & DA proofs | [Validators Guide](/build/validators/README.md) | Learn about validator setup and DA proof generation |
+| Conceptual deep dives | [Learn Section](/learn/sunrise/README.md) | Understanding Sunrise's core concepts |
 
 ## Troubleshooting
 
