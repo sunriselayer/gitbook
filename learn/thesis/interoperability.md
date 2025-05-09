@@ -1,60 +1,83 @@
 # Interoperability in Sovereign Rollups
 
+Sovereign rollups mark a significant evolution in Layer 2 design. Instead of delegating cross‑chain validation to a settlement‑layer bridge contract, a sovereign rollup *runs its own light‑client verification* of counterpart chains and therefore decides—at the application level—*how* and *with whom* it communicates.  
+This architecture preserves rollup autonomy while still allowing trust‑minimised data availability (DA) and settlement on an external layer.
 
-Sovereign rollups represent a paradigm shift in Layer 2 scaling solutions, fundamentally reimagining how blockchains communicate with each other. Unlike their predecessors, sovereign rollups embrace true blockchain independence while maintaining secure cross-chain connectivity.
+---
 
-## Traditional Smart Contract Rollups
+## Traditional Smart‑Contract Rollups
 
-In conventional rollups, an enshrined bridge serves as the predefined communication channel.
+In a classical optimistic/ZK rollup, every cross‑chain action must pass through **one hard‑coded “enshrined” bridge** that lives on the Layer 1 settlement chain.
 
-How Enshrined Bridges Work:
+**Execution path**
 
-1. The L1 settlement layer hosts a rollup contract<br>
-2. This contract verifies all cross-chain transactions<br>
-3. Users are limited to this single, predetermined bridge<br>
-4. Bridge design is fixed and controlled by the L1 protocol
+1. **Rollup contract on L1** – stores state roots and bridge logic.  
+2. **Proof/optimistic window** – rollup posts proofs or roots; the bridge contract adjudicates fraud/ZK proofs.  
+3. **Outbound transfers** – users lock assets inside the bridge; withdrawal proofs are verified by the contract.  
+4. **Upgrade friction** – any change to bridge semantics requires an L1 contract upgrade (often via governance hard fork).
+
+**Limitations**
+
+* **Single‑point trust** – the bridge contract becomes systemic risk.  
+* **No heterogeneous bridges** – applications cannot add new channels without L1 governance.  
+* **Wrapped assets** – most bridges mint IOU tokens instead of native transfers.  
+* **Throughput bottleneck** – all messages queue in the same contract; gas spikes propagate to rollup users.
+
+---
 
 ## Sovereign Rollups
 
-Sovereign rollups break this dependency by implementing **self-sovereign verification**.
+A sovereign rollup publishes its data (blobs, state roots) to a DA layer but *self‑verifies* other chains via on‑chain light clients or validity proofs.  
+Bridges become regular modules that can be permissionlessly deployed and upgraded.
 
-Benefits of Sovereign Verification:
+### Technical Properties
 
-1. The rollup itself verifies cross-chain transactions<br>
-2. Multiple interoperability protocols can be supported simultaneously<br>
-3. Custom bridge designs specific to application needs<br>
-4. Freedom to evolve interoperability as technology advances
+| Capability | Implementation Detail |
+|------------|-----------------------|
+| **Self‑sovereign verification** | Embedded light client or ZK verifier for each remote chain; no dependency on an external bridge contract. |
+| **Multiple protocols** | Support for IBC, custom SNARK bridges, or token‑specific channels in parallel. |
+| **Native asset movement** | Light‑client verification lets the rollup unlock *original* tokens, avoiding wrapped IOUs. |
+| **Composable channels** | Each application can instantiate independent channels with custom fee logic, rate limits, or middleware. |
+| **Decoupled upgrades** | Bridge logic is a rollup module; upgrading does **not** require L1 governance—only rollup governance or code update. |
 
-## IBC: The Interoperability Standard for Sovereign Rollups
-The Inter-Blockchain Communication (IBC) protocol has emerged as the gold standard for sovereign rollup interoperability, providing:
+---
 
-* **Universal Connectivity** - Connect to any other IBC-enabled chain
-* **Trustless Operation** - No reliance on external validators or oracles
-* **Native Asset Transfers** - Move tokens and data without wrapping
-* **Composable Communication** - Build complex cross-chain applications
+## IBC — De‑Facto Standard for Sovereign Interoperability
+
+The **Inter‑Blockchain Communication (IBC)** protocol (originating in the Cosmos SDK) provides:
+
+* **Client–Connection–Channel abstraction** – layered handshake that cleanly separates authentication (light clients) from application semantics.  
+* **Commit‑only light clients** – each chain stores the other chain’s header commitments and verifies Merkle proofs on‑chain.  
+* **Permissionless relayers** – off‑chain processes broadcast packets; any actor can relay without gaining trust power.  
+* **ORDERED / UNORDERED channels** – deterministic packet sequencing suited for both fungible tokens (ICS‑20) and arbitrary data (ICS‑27, ICS‑721, etc.).  
+* **Timeout & upgrade paths** – channels can close on misbehaviour; light clients autonomously upgrade using on‑chain proof of new client state.
+
+Because sovereign rollups already own their state transition function, integrating IBC requires only:
+
+1. Importing an IBC *core* module (client, connection, channel logic).  
+2. Supplying a light‑client implementation for each counterparty (e.g., Tendermint‑BFT, zk‑based header proof, Ethereum‑SSZ).  
+3. Defining application modules (token transfers, cross‑rollup DEX, etc.) that marshal packets.
+
+---
 
 ## Comparison: Traditional vs. Sovereign Interoperability
 
 | Feature                  | Traditional Rollups                     | Sovereign Rollups                           |
 |--------------------------|-----------------------------------------|---------------------------------------------|
-| Bridge Authority         | L1 settlement layer                     | Self-sovereign verification                 |
-| Bridge Customization     | Limited or none                         | Fully customizable                          |
-| Protocol Support         | Proprietary bridges                     | Multiple (including IBC)                    |
-| Asset Types              | Often limited to tokens                 | Tokens, NFTs, and arbitrary data            |
-| Security Model           | Inherits from L1                        | Customizable per application                |
-| Upgrade Path             | Dependent on L1 changes                 | Independent evolution                       |
+| Bridge Authority         | L1 settlement layer                     | Self‑sovereign verification                 |
+| Bridge Customisation     | Limited or none                         | Fully customizable                          |
+| Protocol Support         | Proprietary, single bridge              | Multiple (IBC, ZK bridges, custom)          |
+| Asset Types              | Often limited to tokens                 | Tokens, NFTs, arbitrary data packets        |
+| Security Model           | Inherits L1 bridge contract             | Choice of light‑client or validity proof    |
+| Upgrade Path             | Dependent on L1 governance              | Independent—rollup‑level governance         |
 
+---
 
-## The Sovereign Rollup Ecosystem
-Sovereign rollups are rapidly gaining momentum with multiple frameworks now supporting this architecture:
+## Sovereign Rollup Tooling & Ecosystem
 
-1. **Rollkit**: Provides modular components for building sovereign rollups with built-in IBC support, allowing developers to leverage the vast Cosmos ecosystem.
-2. **Sovereign SDK**: Offers a comprehensive framework for creating sovereign rollups with advanced IBC capabilities and customizable consensus mechanisms.
-3. **Sunrise Integration**: Sunrise's DA layer works seamlessly with sovereign rollups, providing data availability with the added benefits of PoL (Proof of Liquidity) for enhanced economic security.
-4. **Real-World Applications**: Sovereign rollup interoperability is enabling powerful new use cases:
-   - **Cross-Chain DeFi** - Access liquidity from multiple blockchain ecosystems without wrapping assets
-   - **Interoperable Gaming** - Transfer game assets between specialized gaming chains
-   - **Multi-Chain Identity** - Maintain consistent identity and reputation across blockchain environments
-   - **Chain-Agnostic DAOs** - Operate governance systems that span multiple blockchain ecosystems
-
-
+| Framework / Component | Interoperability Features |
+|-----------------------|---------------------------|
+| **Rollkit** | Plug‑and‑play modular rollup framework; native IBC wiring; supports Tendermint, Celestia, and Sunrise DA back‑ends. |
+| **Sovereign SDK** | Rust toolkit for zero‑knowledge or fraud‑proof sovereign chains; ships generic IBC light‑client traits and relayer hooks. |
+| **Sunrise DA** | Provides data availability with Proof of Liquidity (PoL); exposes an IBC interface so sovereign rollups built on Sunrise inherit connectivity to the broader IBC mesh. |
+| **Application Patterns** | *Cross‑Chain DeFi* (omni‑liquidity pools), *Interoperable Gaming* (asset portability), *Multi‑Chain Identity* (DID packets), *Chain‑Agnostic DAOs* (governance spanning multiple rollups). |

@@ -4,10 +4,6 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Key Features of `x/fee`
 
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
 1. **Burn Mechanism:**
     - A portion of $RISE tokens used as transaction fees is burned to reduce the circulating supply.
     - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
@@ -33,10 +29,6 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
     - Manages fee collection for bribe operations
 
 ## Core Functionality
-
-{% hint style="danger" %}
-**LEVEL 3: FOR MODULE DEVELOPERS**
-{% endhint %}
 
 ### Fee Collection and Processing
 
@@ -66,9 +58,7 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 
 ## Parameter Configuration
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 | Parameter | Description | Default Value | Constraints |
 |-----------|-------------|---------------|-------------|
@@ -77,10 +67,6 @@ The `x/fee` module is a core component of the Sunrise blockchain responsible for
 | `bypass_denoms` | Denominations exempt from fee restrictions | `["uvrise"]` | List of valid denominations |
 
 ## Example Usage
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
 
 Developers can query fee parameters using Sunrise Client JS:
 
@@ -115,9 +101,7 @@ queryFeeParams();
 
 ## Workflow: Fee Processing
 
-{% hint style="info" %}
-**LEVEL 2: FOR ADVANCED USERS**
-{% endhint %}
+> **Note:** The following section covers advanced topics intended for experienced users or developers.
 
 ```mermaid
 sequenceDiagram
