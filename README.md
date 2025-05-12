@@ -9,8 +9,6 @@ coverY: 0
 
 Sunrise is a next-generation Layer 1 blockchain that combines high-throughput data availability with a native liquidity hub. It integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Liquidity providers stake LP tokens to secure the network and, in return, receive "blobspace" for data publication—aligning economic incentives with network security. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise with minimal integration effort.
 
-The reference rollup **[Gluon](https://github.com/sunriselayer/gluon)** demonstrates Sunrise in production. Gluon functions as an order‑book rollup on the Sunrise L1, combining web‑style authentication, off‑chain order matching, on‑chain settlement, and IBC‑based asset transfer. Liquidity contributed to Gluon is reflected back into Sunrise through PoL, thereby increasing both liquidity depth and data‑availability capacity while reducing overall value extraction compared with traditional alternative solutions.
-
 {% hint style="warning" %}
 Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs/sunriselayer/discussions" target="_blank">GitHub Discussions</a>.
 {% endhint %}
