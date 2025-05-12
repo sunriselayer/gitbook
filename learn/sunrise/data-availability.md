@@ -116,16 +116,17 @@ graph TD
 ### Flow of proof
 
 ```mermaid
-%%{init: {"theme": "dark", "themeVariables": {
+%%{init: {"theme": "default", "themeVariables": {
+  "background": "transparent",
   "primaryColor": "#22223b",
-  "primaryTextColor": "#f8f8f2",
-  "lineColor": "#f8f8f2",
-  "textColor": "#f8f8f2",
-  "actorBorder": "#f8f8f2",
-  "actorTextColor": "#f8f8f2",
-  "sequenceNumberColor": "#f8f8f2",
-  "messageTextColor": "#f8f8f2",
-  "signalColor": "#f8f8f2"
+  "primaryTextColor": "#22223b",
+  "lineColor": "#22223b",
+  "textColor": "#22223b",
+  "actorBorder": "#22223b",
+  "actorTextColor": "#22223b",
+  "sequenceNumberColor": "#22223b",
+  "messageTextColor": "#22223b",
+  "signalColor": "#22223b"
 }}}%%
 sequenceDiagram
     autonumber
