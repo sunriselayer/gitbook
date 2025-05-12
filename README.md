@@ -4,12 +4,12 @@ coverY: 0
 ---
 
 <p align="center">
-  ☀️ <strong>The base layer for Inter‑liquid rollups</strong>
+  ☀️ <strong>The base layer for Interliquid Networks</strong>
 </p>
 
-Sunrise is a modular **Data‑Availability (DA) platform** that integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Liquidity providers stake LP tokens to secure the network and, in return, receive "blobspace" for data publication—aligning economic incentives with network security. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise DA with minimal integration effort.
+Sunrise is a next-generation Layer 1 blockchain that combines high-throughput data availability with a native liquidity hub. It integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Liquidity providers stake LP tokens to secure the network and, in return, receive "blobspace" for data publication—aligning economic incentives with network security. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise with minimal integration effort.
 
-The reference rollup **[Gluon](https://github.com/sunriselayer/gluon)** demonstrates Sunrise in production. Gluon functions as an order‑book rollup on the Sunrise L1, combining web‑style authentication, off‑chain order matching, on‑chain settlement, and IBC‑based asset transfer. Liquidity contributed to Gluon is reflected back into Sunrise through PoL, thereby increasing both liquidity depth and data‑availability capacity while reducing overall value extraction compared with traditional alternative‑DA solutions.
+The reference rollup **[Gluon](https://github.com/sunriselayer/gluon)** demonstrates Sunrise in production. Gluon functions as an order‑book rollup on the Sunrise L1, combining web‑style authentication, off‑chain order matching, on‑chain settlement, and IBC‑based asset transfer. Liquidity contributed to Gluon is reflected back into Sunrise through PoL, thereby increasing both liquidity depth and data‑availability capacity while reducing overall value extraction compared with traditional alternative solutions.
 
 {% hint style="warning" %}
 Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs/sunriselayer/discussions" target="_blank">GitHub Discussions</a>.
@@ -20,12 +20,12 @@ Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs
 | Feature | Description |
 |---|---|
 | **Proof of Liquidity (PoL)** | Validators stake LP tokens, not idle coins, aligning security *and* liquidity. Earn rewards from both staking and trading fees. |
-| **Fee Abstraction** | Any token can pay gas; Sunrise swaps a tiny slice to \$RISE under the hood. No need to hold multiple tokens for gas. |
+| **Fee Abstraction** | Any token can pay gas; Sunrise swaps a tiny slice to $RISE under the hood. No need to hold multiple tokens for gas. |
 | **Off‑chain Blobspace** | Large blobs propagate off‑chain and reach availability in two blocks (< 15 s). Optimized for high‑throughput rollups. |
 
 ## Blazing Fast Data Availability
 
-Sunrise’s off‑chain DA design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
+Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
 
 1. **Off‑chain Erasure Coding**  
    → Dramatically cuts validator compute & storage: only coded shards live on chain, full data reconstruction happens off‑chain.
@@ -73,7 +73,7 @@ Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean a
 
 ## Revenue Streams
 
-- **Tx fees** – paid in \$RISE after auto‑swap (0.1% of transaction value)  
+- **Tx fees** – paid in $RISE after auto‑swap (0.1% of transaction value)  
 - **Swap fees** – accrued by PoL pools (0.3% per swap)  
 - **MEV share** – captured via [Skip Protocol](https://docs.skip.money/) (up to 90% of MEV)  
 

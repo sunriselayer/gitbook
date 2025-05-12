@@ -1,6 +1,7 @@
 # Gluon Sovereign Rollup
 
-Gluon is an order‑book Layer‑2 blockchain built with [Rollkit](https://rollkit.dev/) and secured by the **Sunrise Data‑Availability (DA) Layer**.  
+Gluon is an order‑book Layer‑2 blockchain built with [Rollkit](https://rollkit.dev/) and secured by Sunrise, a next-generation L1 combining data availability and liquidity.  
+The base layer for Interliquid Networks.
 The rollup implements Sunrise's Proof‑of‑Liquidity (PoL) and leverages IBC for seamless asset movement.
 
 ---
