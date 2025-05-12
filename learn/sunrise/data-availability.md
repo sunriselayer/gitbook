@@ -36,14 +36,14 @@ Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean a
 
 ## On-chain vs Off-chain DA: Comparison
 
-|                                          | On-chain DA attestation              | Off-chain DA attestation |
+|                                          | On-chain DA attestation              | Off-chain DA attestation (Sunrise v2) |
 | ---------------------------------------- | ------------------------------------ | ------------------------ |
 | Data Corruption Durability               | 〇                                   | 〇                       |
 | Tx Mempool Scalability                   | ×                                    | 〇                       |
 | Data Retrievability Control              | ×                                    | 〇                       |
 | Validators Load Mitigation               | ×                                    | 〇                       |
 | False-Positive DA Attestation Resistance | 〇                                   | 〇※                      |
-| Examples                                 | Celestia, Avail, EigenDA | Sunrise   |
+| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G   |
 
 ## Design Overview
 
@@ -56,13 +56,13 @@ Several enhancements in Sunrise v2 increase throughput, decentralization, and lo
 
 ### Design patterns of other DA layers
 
-#### Data Availability Committee
+**1. Data Availability Committee**
 
 Data Availability Committee (DAC) is the traditional method to construct alternative Data Availability layer with low costs.
 
 However, in DAC, it is impossible for clients to verify whether Data Availability attested by the committee is true or false, without downloading entire blob data.
 
-#### Data Availability Sampling
+**2. Data Availability Sampling**
 
 In the Data Availability layers which adopts Data Availability Sampling (DAS), block data are processed for Erasure Coding. Then clients can verify the Data Availability only with downloading a part of block data, and can verify the inclusion of blob data in the block by using Merkle Tree structure.
 
@@ -116,25 +116,30 @@ graph TD
 ### Flow of proof
 
 ```mermaid
+%%{init: {"theme": "dark", "themeVariables": {
+  "primaryColor": "#22223b",
+  "primaryTextColor": "#f8f8f2",
+  "lineColor": "#f8f8f2",
+  "textColor": "#f8f8f2",
+  "actorBorder": "#f8f8f2",
+  "actorTextColor": "#f8f8f2",
+  "sequenceNumberColor": "#f8f8f2",
+  "messageTextColor": "#f8f8f2",
+  "signalColor": "#f8f8f2"
+}}}%%
 sequenceDiagram
     autonumber
-    User ->> Publisher Node: blob data
-    Publisher Node --> Publisher Node: Erasure coding
-    Publisher Node ->> Decentralized Storage: Upload data shards
-    Publisher Node ->> Sunrise: MsgPublishData
-    Sunrise ->> Validator Set: Start Vote Extension
-    Validator Set ->> Sunrise: Vote Data Availability
-    Publisher Node ->> Sunrise: Fraud Challenge if it is needed
-    Validator Set ->> Sunrise: Zero Knowledge Validity Proof if challenge is submitted
+    User->>Publisher Node: blob data
+    Publisher Node->>Publisher Node: Erasure coding
+    Publisher Node->>Decentralized Storage: Upload data shards
+    Publisher Node->>Sunrise: MsgPublishData
+    Sunrise->>Validator Set: Start Vote Extension
+    Validator Set->>Sunrise: Vote Data Availability
+    Publisher Node->>Sunrise: Fraud Challenge if needed
+    Validator Set->>Sunrise: Zero Knowledge Validity Proof if challenged
 ```
 
 ### Zero-Knowledge Proof System
-
-- The hash function: $$H$$
-- Set of validators: $$ V $$
-- Set of data shards: $$ S_d $$
-- Set of parity shards: $$ S_p $$
-- Set of shards: $$ S = S_d \cup S_p $$
 
 1. **Circuit Constraints:**
 
@@ -182,3 +187,53 @@ $$
 | IPFS      | Hot storage   | Short     | Fast retrieval, not permanent|
 | Arweave   | Permanent     | Long      | Permaweb, pay-once           |
 | Filecoin  | Sealed/cold   | Medium    | Sealed deals, slower access  |
+
+### API Example
+
+```json
+{
+  "sender": "sunrise18...",
+  "metadata_uri": "ipfs://bafybeigd...",
+  "parity_shard_count": 10,
+  "shard_double_hashes": [
+    "0x4e3d...",
+    "0xa1b2..."
+  ],
+  "data_source_info": "app=gluon,blob=orderbook_batch_4711"
+}
+```
+
+**REST publish example:**
+
+```bash
+curl -X POST $NODE/api/da/v1/publish \
+  -d '{
+        "sender": "sunrise18...",
+        "metadata_uri": "ipfs://bafybeigd...",
+        "parity_shard_count": 10,
+        "shard_double_hashes": [
+          "0x4e3d...",
+          "0xa1b2..."
+        ],
+        "data_source_info": "app=gluon,blob=orderbook_batch_4711"
+      }'
+```
+
+### Light-client Verification Flow
+
+1. Fetch header
+2. Extract KZG commitment
+3. Sample random shards
+4. Fetch shard and proof
+5. Verify KZG proof, reconstruct if enough shards
+
+**Pseudocode:**
+
+```python
+header = rpc.fetch_header(height)
+commit  = header.kzg_commitment
+samples = sample_indices(k=25, seed=header.rand)
+for i in samples:
+    shard, proof = rpc.get_shard(i)
+    assert verify_kzg(commit, shard, proof)
+```
