@@ -14,6 +14,10 @@ Coming soon
 
 ## Testnet
 
+{% hint style="warning" %}
+**IMPORTANT**: Testnet is closed.
+{% endhint %}
+
 This network is used to test operations on the mainnet. Normally, the same environment as the mainnet is provided, but tokens have no value.
 
 ### Testnet Details
