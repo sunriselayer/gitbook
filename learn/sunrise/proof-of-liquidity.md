@@ -72,21 +72,20 @@ The gauge voting system is the cornerstone of PoL implementations:
 
 1. **Epoch-Based Voting**:
 
-- Voting power is determined by $vRISE balance at epoch start
+- Voting power is determined by staked $vRISE at epoch start
 - Each epoch spans a predefined number of blocks (configurable via governance)
-- Votes persist across epochs until explicitly changed
+- Votes is cleared each time a new epoch is created
 
-2. **Vote Weight Calculation**:
+1. **Reward Distribution**:
 
-   ```
-   pool_allocation = (user_vrise * user_vote_percentage) / total_weighted_votes
-   ```
-
-3. **Reward Distribution**:
+　```
+  each_pool_rewards = total rewards (x/liquidityincentive) * pool's voting power / total voting power of all pools
+  each_user_rewards = pool rewards * user voting power / pool's voting power
+　```
 
 - Emissions are calculated per block
-- Distribution based on proportional gauge weights
-- Rewards claimed by staking receipt tokens
+- Distribution based on voted gauge weights and each user's voting power
+- Rewards are accumulated in the user's position. Can be claimed at any time
 
 ### Consensus Implementation
 
