@@ -22,7 +22,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 4. **`vRISE` Incentives:**
 
    - Liquidity providers earn vRISE tokens as additional incentives.
-   - These tokens can be used for DA Fee Abstraction in the Sunrise ecosystem.
+   - These tokens can be used for Fee Abstraction in the Sunrise ecosystem.
 
 ## Core Functionality
 
