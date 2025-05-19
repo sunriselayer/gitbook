@@ -64,6 +64,12 @@ $$
 
 - Users claim rewards by interacting with their positions in liquidity pools.
 
+> **Note:**  
+> The rewards discussed here are specifically **Gauge Voting rewards, allocated according to your vRISE voting power**.  
+> These are distinct from standard LP rewards.  
+> You claim Gauge Voting rewards by participating in Gauge Voting with your vRISE, which determines your share of the rewards for each pool per epoch.  
+> This is separate from the usual LP incentives you receive for providing liquidity.
+
 ## Sequence Diagram: Reward Distribution
 
 > **Note:** The following section covers advanced topics intended for experienced users or developers.
