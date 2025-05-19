@@ -116,3 +116,97 @@ You can modify your vote at any time:
 * **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards
 * **Market Efficiency:** Voting helps direct liquidity to where it's most valued by the community
 * **Long-Term Planning:** Vote allocations persist across epochs, allowing for strategic positioning
+
+## Messages
+
+### MsgVoteGauge
+
+Votes for gauges.
+
+```protobuf
+message MsgVoteGauge {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  repeated PoolWeight pool_weights = 2 [(gogoproto.nullable) = false];
+}
+```
+
+## Data Structures
+
+### Gauge (TallyResult)
+
+Defines gauge information.
+
+```protobuf
+message Gauge {
+  uint64 pool_id = 1;
+  string voting_power = 2 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+}
+```
+
+### PoolWeight
+
+Defines pool weight.
+
+```protobuf
+message PoolWeight {
+  uint64 pool_id = 1;
+  string weight = 2 [(cosmos_proto.scalar) = "cosmos.Dec"];
+}
+```
+
+### Vote
+
+Defines vote information.
+
+```protobuf
+message Vote {
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  repeated PoolWeight pool_weights = 2 [(gogoproto.nullable) = false];
+}
+```
+
+## Queries
+
+The module provides the following query endpoints:
+
+* `Vote`: Queries voting information for a specific address.
+* `Votes`: Queries a list of all votes.
+* `TallyResult`: Queries the tally result for the next epoch.
+
+### Query Examples
+
+```protobuf
+// Query vote information
+message QueryVoteRequest {
+  string address = 1;
+}
+
+message QueryVoteResponse {
+  Vote vote = 1 [(gogoproto.nullable) = false];
+}
+
+// Query all votes
+message QueryVotesRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryVotesResponse {
+  repeated Vote votes = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// Query tally result
+message QueryTallyResultRequest {}
+
+message QueryTallyResultResponse {
+  int64 total_voting_power = 1;
+  repeated Gauge gauges = 2 [(gogoproto.nullable) = false];
+}
+```
+
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive) for details.

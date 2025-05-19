@@ -82,6 +82,120 @@ sequenceDiagram
     IncentiveModule->>User: Calculate and Distribute Rewards
 ```
 
+## Messages
+
+### MsgUpdateParams
+
+Updates the module parameters. This is typically a governance operation.
+
+```protobuf
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [(gogoproto.nullable) = false];
+}
+```
+
+### MsgStartNewEpoch
+
+Starts a new epoch.
+
+```protobuf
+message MsgStartNewEpoch {
+  option (cosmos.msg.v1.signer) = "sender";
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+}
+```
+
+## Data Structures
+
+### Params
+
+```protobuf
+message Params {
+  option (gogoproto.equal) = true;
+
+  int64 epoch_blocks = 1;
+  string staking_reward_ratio = 2 [(cosmos_proto.scalar) = "cosmos.Dec"];
+  uint64 bribe_claim_epochs = 3;
+}
+```
+
+### Epoch
+
+Defines epoch information.
+
+```protobuf
+message Epoch {
+  uint64 id = 1 [(amino.dont_omitempty) = true];
+  int64 start_block = 2 [(amino.dont_omitempty) = true];
+  int64 start_time = 3 [(amino.dont_omitempty) = true];
+  int64 end_block = 4 [(amino.dont_omitempty) = true];
+  repeated Gauge gauges = 5 [(gogoproto.nullable) = false];
+}
+```
+
+### Gauge (TallyResult)
+
+Defines gauge information.
+
+```protobuf
+message Gauge {
+  uint64 pool_id = 1;
+  string voting_power = 2 [
+    (cosmos_proto.scalar) = "cosmos.Int",
+    (gogoproto.customtype) = "cosmossdk.io/math.Int",
+    (gogoproto.nullable) = false
+  ];
+}
+```
+
+## Queries
+
+The module provides the following query endpoints:
+
+- `Params`: Queries the current parameters of the module.
+- `Epoch`: Queries information about a specific epoch.
+- `Epochs`: Queries a list of all epochs.
+
+### Query Examples
+
+```protobuf
+// Query params
+message QueryParamsRequest {}
+
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+// Query epoch information
+message QueryEpochRequest {
+  uint64 id = 1;
+}
+
+message QueryEpochResponse {
+  Epoch epoch = 1 [(gogoproto.nullable) = false];
+}
+
+// Query existing epoch information
+message QueryEpochsRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryEpochsResponse {
+  repeated Epoch epochs = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+```
+
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive) for details.
+
 ## Code Examples
 
 **Query Epoch Information:**
