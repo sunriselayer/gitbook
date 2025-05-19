@@ -22,7 +22,7 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 4. **`vRISE` Incentives:**
 
    - Liquidity providers earn vRISE tokens as additional incentives.
-   - These tokens can be used for Fee Abstraction in the Sunrise ecosystem.
+   - For more information, see [Liquidity Incentive](./liquidity-incentive.md)
 
 ## Core Functionality
 
@@ -132,7 +132,7 @@ message MsgCreatePosition {
 
 ### MsgIncreaseLiquidity
 
-Adds liquidity to an existing position.
+Claims unclaimed rewards and adds liquidity to an existing position. The position ID will be updated to new one.
 
 ```protobuf
 message MsgIncreaseLiquidity {
@@ -164,7 +164,7 @@ message MsgIncreaseLiquidity {
 
 ### MsgDecreaseLiquidity
 
-Removes liquidity from an existing position.
+Claims unclaimed rewards and removes liquidity from an existing position.
 
 ```protobuf
 message MsgDecreaseLiquidity {
