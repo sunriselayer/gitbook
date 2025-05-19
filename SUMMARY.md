@@ -10,14 +10,16 @@
   - [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
   - [Fee Abstraction](learn/sunrise/fee-abstraction.md)
   - [Data Availability](learn/sunrise/data-availability.md)
-  - [Gauges Voting](learn/sunrise/gauges-voting.md)
   - [Liquidity Pool](learn/sunrise/liquidity-pool.md)
-  - [Liquidity Incentive](learn/sunrise/liquidity-incentive.md)
   - [Swap](learn/sunrise/swap.md)
+  - [Liquidity Incentive](learn/sunrise/liquidity-incentive.md)
+    - [Gauges Voting](learn/sunrise/gauges-voting.md)
+    - [Bribes](learn/sunrise/bribes.md)
   - [TokenConverter](learn/sunrise/token-converter.md)
   - [Fee](learn/sunrise/fee.md)
-  - [Lockup Account](learn/sunrise/lockup-account.md)
-  - [Bribes](learn/sunrise/bribes.md)
+  - [Lockup Account](learn/sunrise/lockup.md)
+  - [Non-Voting Delegation](learn/sunrise/shareclass.md)
+
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
 - [🏦 Gluon](learn/gluon/README.md)
@@ -39,7 +41,6 @@
     - [OP Stack L2 Chain](build/l2-blockchains/optimism/op-stack.md)
 - [Validators](build/validators/README.md)
   - [Proof of Data Availability](build/validators/data-availability-proof.md)
-  - [Self Delegation](build/validators/self-delegation.md)
 
 ## 🏗️ Run a Sunrise Node
 

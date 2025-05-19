@@ -1,6 +1,6 @@
 # Bribes
 
-The `x/bribe` module implements a protocol-level mechanism that allows applications to reward vRISE holders for directing votes to specific pools. This creates an efficient market for liquidity allocation through a bribe-based incentive system.
+The `x/liquidityincentive` module implements a protocol-level mechanism that allows applications to reward vRISE holders for directing votes to specific pools. This creates an efficient market for liquidity allocation through a bribe-based incentive system.
 
 ## Key Features
 
@@ -35,6 +35,7 @@ The `x/bribe` module implements a protocol-level mechanism that allows applicati
 - `id`: Unique identifier for the bribe
 - `epoch_id`: The epoch for which the bribe is valid
 - `pool_id`: The pool to which the bribe applies
+- `address`: The sender's address
 - `amount`: Total amount of the bribe
 - `claimed_amount`: Amount already claimed by voters
 
@@ -56,10 +57,9 @@ The system tracks how bribes are allocated to voters:
 
 #### Bribe Registration
 
-- **User registers a bribe** by sending coins to the Bribe module.
+- **User registers a bribe** by sending coins to the Bribe Account in the Liquidity Incentive module.
 - The system **creates a Bribe record** (with unique ID, epoch, pool, amount, and claimed amount).
-- **Bribe allocations** are created for voters based on their vote weights for the pool in that epoch.
-- Funds are stored in the **Bribe Account** (module account).
+- When the epoch starts, **Bribe allocations** are created for voters based on their vote weights for the pool in that epoch.
 
 #### Bribe Claiming
 
@@ -97,7 +97,7 @@ The system tracks how bribes are allocated to voters:
 
 ### Data Structures
 
-**Bribe**
+#### **Bribe**
 
 ```protobuf
 message Bribe {
@@ -105,12 +105,18 @@ message Bribe {
   uint64 epoch_id = 2;
   uint64 pool_id = 3;
   string address = 4 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated cosmos.base.v1beta1.Coin amount = 5;
-  repeated cosmos.base.v1beta1.Coin claimed_amount = 6;
+  repeated cosmos.base.v1beta1.Coin amount = 5 [
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
+    (gogoproto.nullable) = false
+  ];
+  repeated cosmos.base.v1beta1.Coin claimed_amount = 6 [
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
+    (gogoproto.nullable) = false
+  ];
 }
 ```
 
-**BribeAllocation**
+#### **BribeAllocation**
 
 ```protobuf
 message BribeAllocation {
@@ -149,13 +155,11 @@ flowchart TD
 
 The system provides endpoints to:
 
-- `BribesByPoolId`: Query all bribes for a pool
-- `BribesByEpochAndPoolId`: Query bribes for a specific epoch and pool
-- `BribeAllocations`: Query all bribe allocations
-- `BribeAllocation`: Query allocation for a specific address/epoch/pool
-- `BribeAllocationsByAddress`: Get allocations for specific address
-- Query claimable amounts and claimed status
-- Query expired/cleaned up bribes
+- `QueryParams`: Query `x/liquidityincentive` params (includes `bribe_claim_epochs`)
+- `QueryBribes`: Query bribes list, the query param can specify epoch/pool.
+- `QueryBribe`: Query specific bribe by the ID.
+- `QueryBribeAllocations`: Query allocations list, the query param can specify address/epoch.
+- `QueryBribeAllocation`: Query allocation for a specific address/epoch/pool
 
 ## Integration Points
 
