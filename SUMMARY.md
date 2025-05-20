@@ -29,7 +29,6 @@
 
 ## 🛠️ Build
 
-- [🚀 Quick Start](build/quick-start.md)
 - [Client](build/client/README.md)
 - [L2 Blockchains](build/l2-blockchains/README.md)
   - [Rollkit](build/l2-blockchains/rollkit/README.md)
