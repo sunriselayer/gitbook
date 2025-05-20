@@ -16,8 +16,8 @@ Gauge weight voting operates on an epoch system:
 
 * Each epoch spans a predefined number of blocks (configurable via governance)
 * Votes are tallied at the beginning of each new epoch
-* Vote weight is determined by the voter's `vRISE` balance at epoch start
-* Voting decisions persist across epochs until explicitly changed
+* Vote weight is determined by the voter's voting power at epoch starts
+* Voting is cleared when a new epoch starts
 
 ```mermaid
 sequenceDiagram
@@ -38,43 +38,17 @@ sequenceDiagram
 > **Note:**  
 > The rewards discussed here are specifically **Gauge Voting rewards, allocated according to your vRISE voting power**.  
 > These are distinct from standard LP rewards.  
-> You claim Gauge Voting rewards by participating in Gauge Voting with your vRISE, which determines your share of the rewards for each pool per epoch.  
-> This is separate from the usual LP incentives you receive for providing liquidity.
+> Rewards are accumulated in the user's position and can be claimed at the same time as standard LP rewards in MsgClaimRewards (x/liquiditypool)
 
 ### Eligibility Requirements
 
 To participate in gauge voting:
 
 * **Token Requirement**: You must earn `vRISE` tokens, primarily by providing liquidity to pools
-* **Balance Timing:** Your valid `vRISE` balance at epoch start determines your voting power
-* **Token Status:** Locked vRISE tokens are not counted toward voting power
+* **Voting Power**: Voting Power can be gained by delegating to a validator.
+* **Tally Timing:** The voting pawer at the start of the epoch is applied.
 
-You can submit your vote even before you have `vRISE` tokens. Your voting preferences will be applied based on whatever `vRISE` balance you have when the next epoch begins.
-
-### Viewing Current Voting Status
-
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
-
-**System Parameters**
-
-* **Epoch Blocks:** The number of blocks per epoch (governance parameter)
-* **Staking Rewards Ratio:** Percentage of `vRISE` originally allocated to staking that is redirected to gauges
-* **Votes Cast:** Total number of unique voters participating
-
-**Current Epoch Data**
-
-* **Total Votes:** Cumulative voting power across all gauges
-* **Start/End:** Timestamp or block heights for the current epoch
-* **Previous Epoch:** Historical data from the last epoch
-
-**Gauge Distribution**
-
-The complete list of voting gauges shows:
-
-* Each gauge's total accumulated voting power
-* Percentage of total votes directed to each gauge
-
-The system only retains data for the current and previous epochs. Historical data from earlier epochs is pruned and cannot be retrieved from the blockchain.
+You can submit your vote even before you have voting power. Your voting preferences will be applied based on whatever voting power you have when the next epoch begins.
 
 ## How to Vote
 
@@ -114,105 +88,4 @@ You can modify your vote at any time:
 * Changes take effect at the next epoch boundary
 * Simply repeat the voting process to update your preferences
 
-## Strategic Voting Considerations
-
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
-
-* **Liquidity Incentives:** Pools with higher vote weight receive more vRISE emissions
-* **Compounding Effect:** Providing liquidity earns vRISE, which can be used to vote for more rewards
-* **Market Efficiency:** Voting helps direct liquidity to where it's most valued by the community
-* **Long-Term Planning:** Vote allocations persist across epochs, allowing for strategic positioning
-
-## Messages
-
-### MsgVoteGauge
-
-Votes for gauges.
-
-```protobuf
-message MsgVoteGauge {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated PoolWeight pool_weights = 2 [(gogoproto.nullable) = false];
-}
-```
-
-## Data Structures
-
-### Gauge (TallyResult)
-
-Defines gauge information.
-
-```protobuf
-message Gauge {
-  uint64 pool_id = 1;
-  string voting_power = 2 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
-```
-
-### PoolWeight
-
-Defines pool weight.
-
-```protobuf
-message PoolWeight {
-  uint64 pool_id = 1;
-  string weight = 2 [(cosmos_proto.scalar) = "cosmos.Dec"];
-}
-```
-
-### Vote
-
-Defines vote information.
-
-```protobuf
-message Vote {
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated PoolWeight pool_weights = 2 [(gogoproto.nullable) = false];
-}
-```
-
-## Queries
-
-The module provides the following query endpoints:
-
-* `Vote`: Queries voting information for a specific address.
-* `Votes`: Queries a list of all votes.
-* `TallyResult`: Queries the tally result for the next epoch.
-
-### Query Examples
-
-```protobuf
-// Query vote information
-message QueryVoteRequest {
-  string address = 1;
-}
-
-message QueryVoteResponse {
-  Vote vote = 1 [(gogoproto.nullable) = false];
-}
-
-// Query all votes
-message QueryVotesRequest {
-  cosmos.base.query.v1beta1.PageRequest pagination = 1;
-}
-
-message QueryVotesResponse {
-  repeated Vote votes = 1 [(gogoproto.nullable) = false];
-  cosmos.base.query.v1beta1.PageResponse pagination = 2;
-}
-
-// Query tally result
-message QueryTallyResultRequest {}
-
-message QueryTallyResultResponse {
-  int64 total_voting_power = 1;
-  repeated Gauge gauges = 2 [(gogoproto.nullable) = false];
-}
-```
-
-See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive) for details.
+See [Liquidity Incentive](./liquidity-incentive.md) for more system details.
