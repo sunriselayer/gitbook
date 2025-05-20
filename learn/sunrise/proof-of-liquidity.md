@@ -59,12 +59,12 @@ Sunrise builds upon PoL concepts with its own architecture:
 
 The Sunrise implementation consists of several key modules that interact to create the PoL ecosystem:
 
-```
-├── x/liquiditypool     # Core AMM functionality
-├── x/liquidityincentive # Gauge voting and incentive distribution
-├── x/swap              # Token swap implementation
-└── x/staking           # vRISE staking management
-```
+|                      | Function                                |
+| -------------------- | --------------------------------------- |
+| x/liquiditypool      | Core AMM functionality                  |
+| x/liquidityincentive | Gauge voting and incentive distribution |
+| x/swap               | Token swap implementation               |
+| x/staking            | vRISE staking management                |
 
 ### Gauge Voting System
 
@@ -78,10 +78,13 @@ The gauge voting system is the cornerstone of PoL implementations:
 
 1. **Reward Distribution**:
 
-　```
-  each_pool_rewards = total rewards (x/liquidityincentive) * pool's voting power / total voting power of all pools
-  each_user_rewards = pool rewards * user voting power / pool's voting power
-　```
+$$
+  \text{pool rewards} = \text{total rewards} \times \text{pool's voting power} / \text{total voting power of all pools}
+$$
+
+$$
+  \text{user rewards} = \text{pool rewards} \times \text{user voting power} / \text{pool's voting power}
+$$
 
 - Emissions are calculated per block
 - Distribution based on voted gauge weights and each user's voting power
@@ -92,21 +95,10 @@ The gauge voting system is the cornerstone of PoL implementations:
 Sunrise uses CometBFT (Tendermint) for consensus with the following specifications:
 
 - **Maximum Validator Set**: 100 validators
-- **Block Time**: ~2 seconds
+- **Block Time**: ~10 seconds
 - **Validator Selection**: Based on stake weight
 
-Future plans include investigating Mysticeti integration to enhance throughput:
-
-```
-┌─────────────┐      ┌─────────────┐
-│  Mysticeti  │ ──── │    ABCI     │
-└─────────────┘      └─────────────┘
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │ Sunrise App │
-                    └─────────────┘
-```
+Future plans include investigating Mysticeti integration to enhance throughput
 
 ## Technical Advantages
 
@@ -122,32 +114,35 @@ Unlike traditional PoS where staked tokens are idle, PoL enables:
 
 The technical design creates circular dependencies that align incentives:
 
-- Validators need delegated $vRISE/$BGT to maximize rewards
+- Validators need delegated $RISE/$vRISE to maximize rewards
 - Applications need validator emissions for liquidity
 - Users need to provide liquidity to earn governance tokens
+- The inflation rewards will be distributed with $RISE which doesn't lead to the dilution of $vRISE (governance token)
 
 <!-- Berachain-style summary table with icons and token names -->
-| Function            | Token(s)                                                                 |
-|---------------------|--------------------------------------------------------------------------|
-| Security            | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
-| Governance          | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
-| Security Emissions  | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE |
-| LP Emissions        | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
-| Fee                 | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE) |
+
+| Function           | Token(s)                                                                                                                                                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Security           | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
+| Governance         | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE                                                                                              |
+| Security Emissions | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE                                                                                               |
+| LP Emissions       | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE                                                                                              |
+| Fee                | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE)                                                                              |
 
 <!-- Detailed token roles table with icons and token names -->
-| Purpose                        | Token(s) Used                                                                 | Notes                                                      |
-|--------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------|
-| L1 consensus voting power      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | Both can be staked for consensus/security                  |
-| L1 consensus rewards           | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE | RISE is distributed as staking rewards                     |
-| Transaction fees               | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> RISE) | All fees are ultimately paid in RISE via conversion        |
-| Governance proposal voting     | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | vRISE is used for on-chain governance voting               |
-| Gauge voting power (incentives)| <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | vRISE is used to allocate liquidity incentives             |
-| LP rewards                     | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE, BASE, QUOTE | LPs earn vRISE and swap fees in both pool tokens           |
+
+| Purpose                         | Token(s) Used                                                                                                                                                                            | Notes                                               |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| L1 consensus voting power       | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE | Both can be staked for consensus/security           |
+| L1 consensus rewards            | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE                                                                                               | RISE is distributed as staking rewards              |
+| Transaction fees                | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE)                                                                              | All fees are ultimately paid in RISE via conversion |
+| Governance proposal voting      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE                                                                                              | vRISE is used for on-chain governance voting        |
+| Gauge voting power (incentives) | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE                                                                                              | vRISE is used to allocate liquidity incentives      |
+| LP rewards                      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE, BASE, QUOTE                                                                                 | LPs earn vRISE and swap fees in both pool tokens    |
 
 **Legend:**  
-<img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna_32.svg" height="20"/> = RISE  
-<img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> = vRISE
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> = RISE  
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> = vRISE
 
 > **Note:**  
 > In Sunrise, the roles and rewards for each token are clearly defined.  
@@ -177,7 +172,7 @@ type Vote struct {
 func (k Keeper) ProcessVotes(ctx sdk.Context) {
     // Get all votes for the current epoch
     votes := k.GetAllVotes(ctx)
-    
+
     // Calculate voting power per user based on vRISE balance
     votingPowers := make(map[string]sdk.Dec)
     for _, vote := range votes {
@@ -185,19 +180,19 @@ func (k Keeper) ProcessVotes(ctx sdk.Context) {
         balance := k.stakingKeeper.GetBalance(ctx, vote.Voter, "vrise")
         votingPowers[voterAddr] = sdk.NewDecFromInt(balance)
     }
-    
+
     // Calculate pool weights
     poolWeights := make(map[uint64]sdk.Dec)
     for _, vote := range votes {
         voterAddr := vote.Voter.String()
         votingPower := votingPowers[voterAddr]
         weight := votingPower.Mul(vote.Percentage)
-        
+
         poolWeight := poolWeights[vote.GaugeID]
         poolWeight = poolWeight.Add(weight)
         poolWeights[vote.GaugeID] = poolWeight
     }
-    
+
     // Store pool weights for the epoch
     k.SetPoolWeightsForEpoch(ctx, poolWeights)
 }
