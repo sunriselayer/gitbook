@@ -72,92 +72,23 @@ sequenceDiagram
 
 ## Messages
 
-### MsgUpdateParams
+The module provides various message types:
 
-Updates the module parameters. This is typically a governance operation.
-
-```protobuf
-message MsgUpdateParams {
-  option (cosmos.msg.v1.signer) = "authority";
-
-  // authority is the address that controls the module (defaults to x/gov unless overwritten).
-  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // params defines the module parameters to update.
-  // NOTE: All parameters must be supplied.
-  Params params = 2 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgNonVotingDelegate
-
-Allows a user to delegate RISE tokens to a validator without gaining voting rights.
-
-```protobuf
-message MsgNonVotingDelegate {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string validator_address = 2 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-  cosmos.base.v1beta1.Coin amount = 3 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgNonVotingUndelegate
-
-Allows a user to undelegate their RISE tokens from a non-voting delegation.
-
-```protobuf
-message MsgNonVotingUndelegate {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string validator_address = 2 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-  cosmos.base.v1beta1.Coin amount = 3 [(gogoproto.nullable) = false];
-  string recipient = 4 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-}
-```
-
-### MsgClaimRewards
-
-Allows a user to claim accumulated staking rewards from their non-voting delegation.
-
-```protobuf
-message MsgClaimRewards {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string validator_address = 2 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-}
-```
-
-### MsgCreateValidator
-
-Allows an account to create a new validator in the network.
-
-```protobuf
-message MsgCreateValidator {
-  option (cosmos.msg.v1.signer) = "validator_address";
-
-  cosmos.staking.v1beta1.Description description = 1 [(gogoproto.nullable) = false];
-  cosmos.staking.v1beta1.CommissionRates commission = 2 [(gogoproto.nullable) = false];
-  string min_self_delegation = 3 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-  string validator_address = 4 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-  google.protobuf.Any pubkey = 5 [(cosmos_proto.accepts_interface) = "cosmos.crypto.PubKey"];
-  cosmos.base.v1beta1.Coin amount = 6 [(gogoproto.nullable) = false];
-}
-```
+* MsgUpdateParams: Update module parameters (governance operation)
+* MsgNonVotingDelegate: Delegate RISE tokens to a validator without voting rights
+* MsgNonVotingUndelegate: Undelegate RISE tokens from a non-voting delegation
+* MsgClaimRewards: Claim accumulated staking rewards from non-voting delegation
+* MsgCreateValidator: Create a new validator in the network
 
 ## Queries
 
-The module provides various query endpoints to retrieve information:
+The module provides various query endpoints:
 
-* `Params`: Queries the current parameters of the `x/shareclass` module.
-* `CalculateBondingAmount`: Calculates the amount of tokens that would be bonded for a given amount of shares with a specific validator.
-* `CalculateShare`: Calculates the amount of shares that would be received for a given amount of bonded tokens with a specific validator.
-* `AddressBonded`: Queries the total bonded amount for a specific address across all validators they have delegated to via this module.
-* `ClaimableRewards`: Queries the amount of rewards an address can currently claim from a specific validator.
-* `AddressUnbonding`: Queries the unbonding delegations for a specific address.
+* Params: Query module parameters
+* CalculateBondingAmount: Calculate tokens that would be bonded for given shares
+* CalculateShare: Calculate shares that would be received for given tokens
+* AddressBonded: Get total bonded amount for a specific address
+* ClaimableRewards: Get claimable rewards for an address from a validator
+* AddressUnbonding: Get unbonding delegations for a specific address
 
-See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/shareclass) for details (assuming the link structure).
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/shareclass) for details.

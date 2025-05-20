@@ -85,158 +85,24 @@ sequenceDiagram
     LockupModule->>User: Send Rewards
 ```
 
-## Code Examples
-
-**Query Lockup Account Information:**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-
-async function queryLockupAccount() {
-    const cometRpc = "https://sunrise-test-da.cauchye.net/";
-    const client = await SunriseClient.connect(cometRpc);
-    const queryClient = client.getQueryClient();
-
-    if (!queryClient) {
-        console.error("Query client not initialized");
-        return;
-    }
-
-    const account = await queryClient.lockup.lockupAccount({
-        owner: "sunrise1...",
-        lockup_account_id: "1"
-    });
-    console.log("Lockup Account:", account);
-}
-queryLockupAccount();
-```
-
-**Example Output:**
-
-```json
-{
-  "lockup_account": {
-    "address": "sunrise1...",
-    "owner": "sunrise1...",
-    "id": "1",
-    "start_time": "1747197500",
-    "end_time": "1747197500",
-    "original_locking": "1000000",
-    "delegated_free": "0",
-    "delegated_locking": "1000000",
-    "unbond_entries": {
-      "entries": []
-    },
-    "additional_locking": "0"
-  },
-  "locked_amount": "1000000",
-  "unlocked_amount": "0"
-}
-```
-
 ## Messages
 
-### MsgUpdateParams
+The module provides various message types:
 
-Updates the module parameters.
-
-```protobuf
-message MsgUpdateParams {
-  option (cosmos.msg.v1.signer) = "authority";
-
-  // authority is the address that controls the module (defaults to x/gov unless overwritten).
-  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // params defines the module parameters to update.
-  // NOTE: All parameters must be supplied.
-  Params params = 2 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgInitLockupAccount
-
-Initializes a new lockup account.
-
-```protobuf
-message MsgInitLockupAccount {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string owner = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  // start of lockup as unix time (in seconds).
-  int64 start_time = 3;
-  // end of lockup as unix time (in seconds).
-  int64 end_time = 4;
-  cosmos.base.v1beta1.Coin amount = 5 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgNonVotingDelegate
-
-Delegates tokens from a lockup account without voting rights.
-
-```protobuf
-message MsgNonVotingDelegate {
-  option (cosmos.msg.v1.signer) = "owner";
-  string owner = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 lockup_account_id = 2;
-  string validator_address = 3 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-  cosmos.base.v1beta1.Coin amount = 4 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgNonVotingUndelegate
-
-Undelegates tokens from a non-voting delegation.
-
-```protobuf
-message MsgNonVotingUndelegate {
-  option (cosmos.msg.v1.signer) = "owner";
-  string owner = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 lockup_account_id = 2;
-  string validator_address = 3 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-  cosmos.base.v1beta1.Coin amount = 4 [(gogoproto.nullable) = false];
-}
-```
-
-### MsgClaimRewards
-
-Claims delegation rewards for a lockup account.
-
-```protobuf
-message MsgClaimRewards {
-  option (cosmos.msg.v1.signer) = "owner";
-  string owner = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 lockup_account_id = 2;
-  string validator_address = 3 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-}
-```
-
-### MsgSend
-
-Sends tokens from a lockup account to another address.
-
-```protobuf
-message MsgSend {
-  option (cosmos.msg.v1.signer) = "owner";
-  string owner = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 lockup_account_id = 2;
-  string recipient = 3 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated cosmos.base.v1beta1.Coin amount = 4 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty)   = true,
-    (amino.encoding)         = "legacy_coins",
-    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"
-  ];
-}
-```
+- MsgUpdateParams: Update module parameters (governance operation)
+- MsgInitLockupAccount: Initialize a new lockup account with specified parameters
+- MsgNonVotingDelegate: Delegate tokens from a lockup account without voting rights
+- MsgNonVotingUndelegate: Undelegate tokens from a non-voting delegation
+- MsgClaimRewards: Claim delegation rewards for a lockup account
+- MsgSend: Send tokens from a lockup account to another address
 
 ## Queries
 
 The module provides various query endpoints:
 
-- `Params`: Queries the parameters of the module.
-- `LockupAccounts`: Queries all lockup accounts for a given owner.
-- `LockupAccount`: Queries a lockup account for a given owner and id.
-- `SpendableAmount`: Queries the spendable amount for a given owner and id.
+- Params: Query module parameters
+- LockupAccounts: List all lockup accounts for a given owner
+- LockupAccount: Get details of a specific lockup account
+- SpendableAmount: Get the spendable amount for a specific lockup account
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/lockup) for details.
