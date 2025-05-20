@@ -7,7 +7,7 @@ coverY: 0
   ☀️ <strong>The base layer for Interliquid Networks</strong>
 </p>
 
-Sunrise is a next-generation Layer 1 blockchain that combines high-throughput data availability with a native liquidity hub. It integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Liquidity providers stake LP tokens to secure the network and, in return, receive "blobspace" for data publication—aligning economic incentives with network security. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise with minimal integration effort.
+Sunrise is a next-generation Layer 1 blockchain that combines high-throughput data availability with a native liquidity hub. It integrates **Proof of Liquidity (PoL)** and **fee abstraction**, delivering immediate liquidity and flexible gas‑payment options to rollups and application chains. Validators secure the network by staking RISE and/or vRISE. Liquidity providers supply liquidity to pools and earn vRISE and trading fees. Sunrise interoperates with both the [Rollkit](https://rollkit.dev/) framework for sovereign rollups and the [OP Stack](https://stack.optimism.io/) for Ethereum‑settled chains, allowing developers to adopt Sunrise with minimal integration effort.
 
 {% hint style="warning" %}
 Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs/sunriselayer/discussions" target="_blank">GitHub Discussions</a>.
@@ -17,13 +17,13 @@ Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs
 
 | Feature | Description |
 |---|---|
-| **Proof of Liquidity (PoL)** | Validators stake LP tokens, not idle coins, aligning security *and* liquidity. Earn rewards from both staking and trading fees. |
+| **Proof of Liquidity (PoL)** | Validators secure the network by staking RISE and/or vRISE, aligning security *and* liquidity. Liquidity providers earn vRISE and trading fees. |
 | **Fee Abstraction** | Any token can pay gas; Sunrise swaps a tiny slice to $RISE under the hood. No need to hold multiple tokens for gas. |
-| **Off‑chain Blobspace** | Large blobs propagate off‑chain and reach availability in two blocks (< 15 s). Optimized for high‑throughput rollups. |
+| **Off‑chain Data Availability** | Large data blobs are propagated and stored off-chain, while only metadata and coded shards are kept on-chain. Optimized for high-throughput rollups. |
 
 ## Blazing Fast Data Availability
 
-Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
+Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security. Only metadata and coded shards are kept on-chain; full data blobs are distributed and stored off-chain.
 
 1. **Off‑chain Erasure Coding**  
    → Dramatically cuts validator compute & storage: only coded shards live on chain, full data reconstruction happens off‑chain.
@@ -55,7 +55,7 @@ Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean a
 ## Why build on Sunrise?
 
 1. **Gasless onboarding** – Users don't need a special gas token; your project's token works.  
-2. **Instant liquidity** – Provide LP once and earn blobspace + vRISE gauge rewards.  
+2. **Instant liquidity** – Provide liquidity and earn vRISE gauge rewards and trading fees.  
 3. **Rollkit / OP‑Stack ready** – Drop‑in adapters for sovereign or Ethereum‑settled rollups.  
 
 ## Core Modules
@@ -72,8 +72,8 @@ Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean a
 ## Revenue Streams
 
 - **Tx fees** – paid in $RISE after auto‑swap (0.1% of transaction value)  
-- **Swap fees** – accrued by PoL pools (0.3% per swap)  
-- **MEV share** – captured via [Skip Protocol](https://docs.skip.money/) (up to 90% of MEV)  
+- **Swap fees** – accrued by liquidity providers (0.3% per swap)  
+- **MEV share** – (planned) to be captured via [Skip Protocol](https://docs.skip.money/) (up to 90% of MEV)  
 
 > Gauge voters decide how each stream is split between LPs, stakers, and the treasury.
 
