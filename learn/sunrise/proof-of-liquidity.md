@@ -151,7 +151,6 @@ The technical design creates circular dependencies that align incentives:
 
 > **Note:**  
 > In Sunrise, the roles and rewards for each token are clearly defined.  
-> While vRISE can be used for both consensus (staking) and governance (voting), only RISE is distributed as a consensus reward.  
 > This clear separation of functions helps prevent dilution of network security when governance or liquidity rewards are distributed.
 
 ### Security Considerations
