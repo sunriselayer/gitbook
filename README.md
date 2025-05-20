@@ -68,7 +68,6 @@ See [Data Availability](./learn/sunrise/data-availability.md) for more details.
 
 - **Tx fees** – Paid by RISE on sending transactions
 - **Swap fees** – Paid to liquidity providers
-- **MEV share** – (planned) to be captured via [Skip Protocol](https://docs.skip.money/) (up to 90% of MEV)
 
 ## Next Steps
 

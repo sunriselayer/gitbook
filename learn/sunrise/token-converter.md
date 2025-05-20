@@ -1,4 +1,4 @@
-# TokenConverter
+# Token Converter
 
 The `x/tokenconverter` module enables seamless conversion between `vRISE` and `RISE` tokens on the Sunrise blockchain. This module plays a crucial role in the ecosystem by allowing users to convert between the staking token and the fee token while maintaining an equivalent value relationship.
 
