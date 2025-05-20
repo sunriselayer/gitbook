@@ -222,7 +222,7 @@ $$
 - $ |S_d| = 10 $
 - It doesn't satisfy $ |S^\text{available}| \ge |S_d| $
 
-### Parameter Table
+## Parameters
 
 | Param                 | Default    | Units  | Description                                                           |
 | --------------------- | ---------- | ------ | --------------------------------------------------------------------- |
