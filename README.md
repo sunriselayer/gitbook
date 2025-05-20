@@ -23,7 +23,7 @@ Feature requests or ideas? Open a thread on our [GitHub Discussions](https://git
 
 ## Blazing Fast Data Availability
 
-Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security. Only metadata and coded shards are kept on-chain; full data blobs are distributed and stored off-chain.
+Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
 
 1. **Off‑chain Erasure Coding**  
    → Dramatically cuts validator compute & storage: only coded shards live on chain, full data reconstruction happens off‑chain.
