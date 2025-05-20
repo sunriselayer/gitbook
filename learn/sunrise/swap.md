@@ -2,15 +2,17 @@
 
 The module `x/swap` serves the functionalities to swap tokens with the liquidity in the `x/liquiditypool` module.
 
-### Interface Provider Fee Rewards
+## Interface Provider Fee Rewards
 
 Any frontend application, wallet, dApp, or protocol that is built on top of the swap module has the ability to earn fees. This incentivizes open, composable infrastructure around the Sunrise AMM.
 
 There are 2 important parameters to note:
 
-- <strong>`interface_fee_rate`:</strong> A fee, denoted in percentage, that is taken from the total amount of the swap.
+- **interface_fee_rate**
+    A fee, denoted in percentage, that is taken from the total amount of the swap.
 
-- <strong>`interface_provider`:</strong> An address that specifies where the fee will be sent. If no address is provided, no interface fee will be taken.
+- **interface_provider**
+    An address that specifies where the fee will be sent. If no address is provided, no interface fee will be taken.
 
 When executing swaps through Sunrise AMM, you can **capture interface fees** by specifying your own fee recipient, maximizing profit per transaction. This function is designed to reward **any entity that facilitates swap volume**—from simple frontends to complex financial protocols.
 
@@ -20,13 +22,12 @@ When executing swaps through Sunrise AMM, you can **capture interface fees** by 
 
 There are 2 message types that can be used to specify the amount received or the amount sent.
 
-<strong>`MsgSwapExactAmountIn`</strong> – Swap tokens with a specified input amount
+- **MsgSwapExactAmountIn** - Swap tokens with a specified input amount
+    This message allows users to swap tokens by defining the exact amount of input tokens they wish to provide. The corresponding output will be calculated based on the specified input.
 
-This message allows users to swap tokens by defining the exact amount of input tokens they wish to provide. The corresponding output will be calculated based on the specified input.
+- **MsgSwapExactAmountOut** – Swap tokens with a specified output amount
 
-<strong>`MsgSwapExactAmountOut`</strong> – Swap tokens with a specified output amount
-
-This message enables users to swap tokens by defining the exact amount of output tokens they want to receive. The system will calculate the necessary input amount to achieve the desired output.
+    This message enables users to swap tokens by defining the exact amount of output tokens they want to receive. The system will calculate the necessary input amount to achieve the desired output.
 
 ---
 
@@ -123,7 +124,7 @@ The `ForwardMetadata` is derived from the [Packet Forward Middleware](https://gi
 
 > **Note:** The following section covers advanced topics intended for experienced users or developers.
 
-#### Basic Swap Without Forwarding
+### Basic Swap Without Forwarding
 
 In this scenario, the token transfer occurs, followed by a swap, but there is no forwarding to another chain.
 
@@ -173,8 +174,28 @@ sequenceDiagram
     Sunrise ->> Chain A: ack
 ```
 
-**Receiver Address Handling**
+### Receiver Address Handling
 
 After the swap, even if a subsequent change or transfer fails, the confirmation of "token X transfer" will always succeed. The swapped tokens remain in the receiver's account.
+
+## Messages
+
+The module provides various message types:
+
+- MsgUpdateParams: Update module parameters (governance operation)
+- MsgSwapExactAmountIn: Swap tokens with a specified input amount
+- MsgSwapExactAmountOut: Swap tokens with a specified output amount
+
+## Queries
+
+The module provides various query endpoints:
+
+- Params: Query module parameters
+- IncomingInFlightPacket: Get details of an incoming in-flight packet
+- IncomingInFlightPackets: List all incoming in-flight packets
+- OutgoingInFlightPacket: Get details of an outgoing in-flight packet
+- OutgoingInFlightPackets: List all outgoing in-flight packets
+- CalculationSwapExactAmountIn: Preview swap with exact input amount
+- CalculationSwapExactAmountOut: Preview swap with exact output amount
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/swap) for more details.
