@@ -95,41 +95,6 @@ The system tracks how bribes are allocated to voters:
 
 ---
 
-### Data Structures
-
-#### **Bribe**
-
-```protobuf
-message Bribe {
-  uint64 id = 1;
-  uint64 epoch_id = 2;
-  uint64 pool_id = 3;
-  string address = 4 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated cosmos.base.v1beta1.Coin amount = 5 [
-    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.nullable) = false
-  ];
-  repeated cosmos.base.v1beta1.Coin claimed_amount = 6 [
-    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.nullable) = false
-  ];
-}
-```
-
-#### **BribeAllocation**
-
-```protobuf
-message BribeAllocation {
-  string address = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 epoch_id = 2;  
-  uint64 pool_id = 3;
-  string weight = 4 [(cosmos_proto.scalar) = "cosmos.Dec"];
-  repeated uint64 claimed_bribe_ids = 5;
-}
-```
-
----
-
 ### Bribe System Flowchart
 
 ```mermaid
@@ -151,16 +116,6 @@ flowchart TD
 
 ---
 
-### Querying Bribes
-
-The system provides endpoints to:
-
-- `QueryParams`: Query `x/liquidityincentive` params (includes `bribe_claim_epochs`)
-- `QueryBribes`: Query bribes list, the query param can specify epoch/pool.
-- `QueryBribe`: Query specific bribe by the ID.
-- `QueryBribeAllocations`: Query allocations list, the query param can specify address/epoch.
-- `QueryBribeAllocation`: Query allocation for a specific address/epoch/pool
-
 ## Integration Points
 
 The bribe module integrates with several other modules:
@@ -170,9 +125,4 @@ The bribe module integrates with several other modules:
 - Staking module for vRISE holders
 - Governance module for parameter updates
 
-## Parameters
-
-The system has configurable parameters:
-
-- Bribe claim epochs (time window for claiming)
-- Other governance-controlled parameters
+See [Liquidity Incentive](./liquidity-incentive.md) for more system details.

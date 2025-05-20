@@ -1,97 +1,72 @@
 # Data Availability
 
-> **Sunrise v2 DA at a glance**
->
-> - Blazing fast: 4 MB blocks, 5 MB/s sustained throughput, 14.2 s finality (30 validators)
-> - Off-chain erasure coding and blob propagation for unmatched scalability
-> - KZG commitments for sub-second proof verification and instant challenge resolution
-> - Flexible storage: IPFS (hot), Arweave (perma), Filecoin (sealed)
+Sunrise Data Availability Layer is designed for high-throughput data availability, offering enhanced scalability and flexibility for applications. To achieve this, Sunrise adopts off-chain BLOB data and executes Erasure Coding for each Blob data, not entire block data.
 
-## Blazing Fast Data Availability
+The `x/da` module provides these features.
+
+## Key Features
 
 Sunrise's off‑chain DA design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
 
-1. **Off‑chain Erasure Coding**  
-   Dramatically cuts validator compute & storage: only coded shards live on chain, full data reconstruction happens off‑chain.
-2. **Off‑chain Blob Propagation**  
-   Keeps the mempool lightweight and scales to **5 + MB/s**—validators sample availability while nodes fetch or prune blobs on demand.
-3. **KZG Commitments**  
-   Cryptographic anchors on‑chain enable sub‑second proof verification and instant challenge resolution.
+1. **Off-chain Erasure Encoding**  
+   Dramatically cuts validator compute & storage: only a metadata URI pointing to these erasure-coded data shares on chain, full data reconstruction happens off‑chain.
+2. **Off-chain Storage Integration**  
+   Utilizing decentralized storage solutions such as IPFS and Arweave, data shards are stored externally. MsgPublishData includes only a metadata URI pointing to these erasure-coded data shares, reducing the on-chain block size requirements for blob transactions and enhancing scalability.
 
-## Data Availability Features
+## DA Comparison
 
-Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean and verifiable.
-
-1. **Off‑chain Erasure Coding**
-   - Blob data is split and Reed–Solomon encoded outside the chain.
-   - Validators store only the 32‑byte double‑hash per shard, cutting disk I/O and memory overhead.
-2. **Off‑chain Blob Propagation**
-   - Transactions carry only metadata (shard hashes) into the mempool.
-   - Full blob payloads are P2P‑distributed via the blob network, supporting sustained **5 MB/s** throughput.
-   - Nodes fetch or prune blobs on demand, giving you control over local storage.
-3. **KZG Polynomial Commitments**
-   - A single on‑chain KZG commitment binds all shards.
-   - Verifiers check inclusion in **O(log n)** time with constant‑size proofs (~48 bytes).
-   - Rapid challenge/response cycles (< 1 s) ensure data‑availability guarantees.
-
-## On-chain vs Off-chain DA: Comparison
-
-|                                          | On-chain DA attestation              | Off-chain DA attestation (Sunrise v2) |
-| ---------------------------------------- | ------------------------------------ | ------------------------------------- |
-| Data Corruption Durability               | 〇                                   | 〇                                    |
-| Tx Mempool Scalability                   | ×                                    | 〇                                    |
-| Data Retrievability Control              | ×                                    | 〇                                    |
-| Validators Load Mitigation               | ×                                    | 〇                                    |
-| False-Positive DA Attestation Resistance | 〇                                   | 〇※                                   |
-| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G                |
+|                          | Sunrise                           | Avail DA              | Celestia              | EigenDA           | Ethereum (EIP-4844)   |
+| ------------------------ | --------------------------------- | --------------------- | --------------------- | ----------------- | --------------------- |
+| Architecture             | L1 with off-chain blobs           | L1 Blockchain         | L1 Blockchain         | DA Service        | L1 Blockchain (blobs) |
+| Throughput               | 5+ MB/s                           | 0.2 MB/s (4MB/block)  | 1.33 MB/s (8MB/block) | 15 MB/s           | 0.064 MB/s            |
+| Time to Finality         | ~4min (7s+240s)                   | 40 seconds            | 6 sec + 10 min        | 12 min            | 12 min                |
+| Data Storage             | Off-chain blobs                   | On-chain              | On-chain              | Committee storage | On-chain blobs        |
+| Proof Mechanism          | Optimistic with off-chain storage | Validity proof (KZG)  | Fraud proof           | Validity proof    | Validity proof        |
+| Long-term Retrievability | Seamless                          | Not native            | Not native            | Not native        | Not native            |
+| Cost Model               | Fee Abstraction via liquidity     | Direct fees           | Direct fees           | Committee fees    | On-chain gas fees     |
+| Consensus                | Proof of Liquidity                | Babe & Grandpa (NPoS) | Tendermint            | N/A               | Ghost & Casper        |
 
 ## Design Overview
 
-### Key Features of Sunrise v2
-
-Several enhancements in Sunrise v2 increase throughput, decentralization, and long-term data retrievability:
-
-- **Off-chain Erasure Encoding:** Blob data is erasure-coded off-chain, minimizing the computational and storage load on validators.
-- **Off-chain Storage Integration:** Utilizing decentralized storage solutions such as IPFS and Arweave, data shards are stored externally. MsgPublishData includes only a metadata URI pointing to these erasure-coded data shares, reducing the on-chain block size requirements for blob transactions and enhancing scalability.
-
 ### Design patterns of other DA layers
 
-**1. Data Availability Committee**
+1. **Data Availability Committee**
 
-Data Availability Committee (DAC) is the traditional method to construct alternative Data Availability layer with low costs.
+    Data Availability Committee (DAC) is the traditional method to construct alternative Data Availability layer with low costs.
 
-However, in DAC, it is impossible for clients to verify whether Data Availability attested by the committee is true or false, without downloading entire blob data.
+    However, in DAC, it is impossible for clients to verify whether Data Availability attested by the committee is true or false, without downloading entire blob data.
 
-**2. Data Availability Sampling**
+1. **Data Availability Sampling**
 
-In the Data Availability layers which adopts Data Availability Sampling (DAS), block data are processed for Erasure Coding. Then clients can verify the Data Availability only with downloading a part of block data, and can verify the inclusion of blob data in the block by using Merkle Tree structure.
+    In the Data Availability layers which adopts Data Availability Sampling (DAS), block data are processed for Erasure Coding. Then clients can verify the Data Availability only with downloading a part of block data, and can verify the inclusion of blob data in the block by using Merkle Tree structure.
 
-In typical DAS setup, full nodes must transfer and download transaction data within the mempool.
+    In typical DAS setup, full nodes must transfer and download transaction data within the mempool.
 
-As blob data sizes grow, the network's throughput could be limited by these transaction transfers, creating challenges for applications handling large blob data.
+    As blob data sizes grow, the network's throughput could be limited by these transaction transfers, creating challenges for applications handling large blob data.
 
 ### Sunrise's design
 
-To address these problems in DAC and DAS, Sunrise v2 implements the following solutions:
+To address these problems in DAC and DAS, Sunrise implements the following solutions:
 
-1. **Off-chain Erasure Encoding:** Blob data is processed for Erasure Coding in off-chain program, to reduce validator load.
-2. **Blob data sharding:** Not the entire block data but each blob is processed for Erasure Coding. Clients still can verify the Data Availability for each blob only with repeating to download shards, without downloading entire data. Clients also can verify the inclusion of blob in the block by using Merkle Tree structure.
-3. **External Storage:** Blob data is stored on decentralized storage platforms like IPFS and Arweave. Rather than containing blob data on-chain, MsgPublishData holds a metadata URI pointing to erasure-coded data shares.
+1. **Off-chain Erasure Encoding**
+    Blob data is processed for Erasure Coding in off-chain program, to reduce validator load.
+1. **Blob data sharding**
+    Not the entire block data but each blob is processed for Erasure Coding. Clients still can verify the Data Availability for each blob only with repeating to download shards, without downloading entire data. Clients also can verify the inclusion of blob in the block by using Merkle Tree structure.
+1. **External Storage**
+    Blob data is stored on decentralized storage platforms like IPFS and Arweave. Rather than containing blob data on-chain, MsgPublishData holds a metadata URI pointing to erasure-coded data shares.
 
-## Formal Specification
+    ```protobuf
+    message MsgPublishData {
+      option (cosmos.msg.v1.signer) = "sender";
+      string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+      string metadata_uri = 2;
+      uint64 parity_shard_count = 3;
+      repeated bytes shard_double_hashes = 4;
+      string data_source_info = 5;
+    }
+    ```
 
-### MsgPublishData ABI
-
-```protobuf
-message MsgPublishData {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string metadata_uri = 2;
-  uint64 parity_shard_count = 3;
-  repeated bytes shard_double_hashes = 4;
-  string data_source_info = 5;
-}
-```
+    Data availability is attested with Optimistic way. If enough invalidity challenges is submitted to the Sunrise network, validators will submit Zero-Knowledge Proofs (ZKP) using double-hashed shard data (`shard_double_hashes`), allowing validators to verify the presence of shard data without revealing it.
 
 ### Proof Lifecycle
 
@@ -139,29 +114,115 @@ sequenceDiagram
     Validator Set->>Sunrise: Zero Knowledge Validity Proof
 ```
 
-### Zero-Knowledge Proof System
+## Zero-Knowledge Proof System
 
-1. **Circuit Constraints:**
+### Terms and Notation
 
-$$
-  H_{\text{public}}^2(s) = H(H_{\text{private}}(s))
-$$
-
-1. **Proof size formula:**
-
-$$
-\text{proof\_size} = 48\text{B} + 32\text{B} \times \lceil \log_2(n_{\text{shards}}) \rceil
-$$
-
-### Slashing rule
-
-For validator $v$:
+- The hash function: $H$
+- Set of validators: $ V $
+- Set of data shards: $ S_d $
+- Set of parity shards: $ S_p $
+- Set of shards: $ S $
 
 $$
-\frac{|Z_v|}{n} < 0.67 \implies \text{slash}(v, \text{slash\_ratio})
+  S = S_d \cup S_p
 $$
 
-### Parameter Table
+### Overview
+
+This system verifies the possession of data shard hash $ H(s_i) $ without exposing $ H(s_i) $
+The circuit is for one shard $ s \in S $.
+
+1. Public Inputs
+  
+    $$ H\_{\text{public}}^2(s)$$
+
+1. Private Inputs
+
+    $$ H\_{\text{private}}(s) $$
+
+1. Circuit Constraints
+
+    $$
+      H_{\text{public}}^2(s) = H(H_{\text{private}}(s))
+    $$
+
+## The condition of Data Availability
+
+### Notations
+
+- Replication Factor (Based only on data shards): $$ r $$
+- Replication Factor (Based on including parity shards): $$ r_p $$
+
+$$
+  r_p = r \frac{|S_d|}{|S_d| + |S_p|}
+$$
+
+- The number of shards each validator is engaged in: $$ n $$
+
+$$
+  n = \text{ceil}\left( r_p \frac{|S_d| + |S_p|}{|V|} \right) = \text{ceil} \left( r\frac{|S_d|}{|V|} \right)
+$$
+
+### Requirements for each shard to prove Data Availability
+
+- Set of valid proofs for a shard `s` from validators engaged in this shard: $$ Z_s $$
+
+$$
+  \frac{|Z_s|}{r_p} \ge \frac{2}{3}
+$$
+
+- Set of shards which satisfy this condition: $$ S^\text{available} $$
+
+### Requirements for tally to prove Data Availability
+
+$$
+\begin{aligned}
+  \frac{|S^\text{available}|}{|S|} &\ge \frac{|S_d|}{|S_d| + |S_p|} \\
+\Rightarrow |S^\text{available}| &\ge |S_d|
+\end{aligned}
+$$
+
+#### Example parameters
+
+- 10 validators: $ v*1 , ..., v*{10} $
+- 20 shards: $ s*1, ..., s*{20} $
+  - 10 data shards
+  - 10 parity shards
+- $ r = 6 $
+- $ r_p = 6 \times \frac{10}{10 + 10} = 3 $
+- Each validator submits 6 shards proofs
+  - $ 3 \times \frac{20}{10} = 6 $
+
+#### Case A: valid shard `s_1`
+
+- Validator $ v_1 $, $ v_3 $ and $ v_9 $ 's proof contain shard $ s_1 $ and other 5 shards
+- Validator $ v_3 $ failed to contain the validity of shard $ s_1 $ in its proof
+- However validator $ v_1 $ and $ v_9 $ succeeded to contain the validity of shard $ s_1 $ in its proof, then
+  - $ |Z\_{s_1}| = 2 $
+  - It satisfies $ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $
+
+#### Case B: invalid shard `s_2`
+
+- Validator $ v*2 $, $ v_4 $ and $ v*{10} $ 's proof contain shard $ s_2 $ and other 5 shards
+- Validator $ v_2 $ and $ v_4 $ failed to contain the validity of shard $ s_2 $ in its proof
+- Only validator $ v\_{10} $ succeeded to contain the validity of shard $ s_2 $ in its proof, then
+  - $ |Z\_{s_2}| = 1 $
+  - It doesn't satisfy $ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $
+
+#### Case X: shard s_1, s_3-s_11 are valid with the condition above
+
+- $ |S^\text{available}| = 10 $
+- $ |S_d| = 10 $
+- It satisfies $ |S^\text{available}| \ge |S_d| $
+
+#### Case Y: Only shard s_1, s_3 are valid with the condition above
+
+- $ |S^\text{available}| = 2 $
+- $ |S_d| = 10 $
+- It doesn't satisfy $ |S^\text{available}| \ge |S_d| $
+
+## Parameters
 
 | Param                 | Default    | Units  | Description                                                           |
 | --------------------- | ---------- | ------ | --------------------------------------------------------------------- |
@@ -174,69 +235,30 @@ $$
 | challenge_period      | 4 minutes  | time   | Period for challenges after data published                            |
 | proof_period          | 10 minutes | time   | Period for submitting proofs after challenge                          |
 
-## Operational Details
+## Messages
 
-### Performance Metrics
+The module provides various message types:
 
-- 4 MB block, 5 MB/s sustained throughput, 14.2 s finality across 30 validators (synthetic benchmark)
+- MsgUpdateParams: Update module parameters (governance operation)
+- MsgPublishData: Publish data with metadata URI and shard information
+- MsgSubmitInvalidity: Report data invalidity for specific indices
+- MsgSubmitValidityProof: Submit validity proof from a validator
+- MsgRegisterProofDeputy: Register a proof deputy for a validator
+- MsgUnregisterProofDeputy: Unregister a proof deputy
 
-### Security Story
+## Queries
 
-- Validators are slashed for failing to provide valid proofs (see slashing rule above)
-- DoS resistance: lightweight on-chain proofs, off-chain heavy lifting
-- Light-client proofs: constant-size, O(log n) verification
+The module provides various query endpoints:
 
-### Storage Backends
+- Params: Query module parameters
+- PublishedData: Get details of published data for a specific metadata URI
+- AllPublishedData: List all published data
+- ValidityProof: Get validity proof from a specific validator
+- AllValidityProofs: List all validity proofs for a specific metadata URI
+- Invalidity: Get invalidity report for a specific metadata URI and sender
+- AllInvalidity: List all invalidity reports for a specific metadata URI
+- ValidatorShardIndices: Get shard indices for a specific validator
+- ZkpProofThreshold: Get ZKP proof threshold for a specific number of shards
+- ProofDeputy: Get proof deputy for a specific validator
 
-| Backend  | Use Case    | Retention | Notes                         |
-| -------- | ----------- | --------- | ----------------------------- |
-| IPFS     | Hot storage | Short     | Fast retrieval, not permanent |
-| Arweave  | Permanent   | Long      | Permaweb, pay-once            |
-| Filecoin | Sealed/cold | Medium    | Sealed deals, slower access   |
-
-### API Example
-
-```json
-{
-  "sender": "sunrise18...",
-  "metadata_uri": "ipfs://bafybeigd...",
-  "parity_shard_count": 10,
-  "shard_double_hashes": ["0x4e3d...", "0xa1b2..."],
-  "data_source_info": "app=gluon,blob=orderbook_batch_4711"
-}
-```
-
-**REST publish example:**
-
-```bash
-curl -X POST $NODE/api/da/v1/publish \
-  -d '{
-        "sender": "sunrise18...",
-        "metadata_uri": "ipfs://bafybeigd...",
-        "parity_shard_count": 10,
-        "shard_double_hashes": [
-          "0x4e3d...",
-          "0xa1b2..."
-        ],
-        "data_source_info": "app=gluon,blob=orderbook_batch_4711"
-      }'
-```
-
-### Light-client Verification Flow
-
-1. Fetch header
-2. Extract KZG commitment
-3. Sample random shards
-4. Fetch shard and proof
-5. Verify KZG proof, reconstruct if enough shards
-
-**Pseudocode:**
-
-```python
-header = rpc.fetch_header(height)
-commit  = header.kzg_commitment
-samples = sample_indices(k=25, seed=header.rand)
-for i in samples:
-    shard, proof = rpc.get_shard(i)
-    assert verify_kzg(commit, shard, proof)
-```
+See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/da) for details.
