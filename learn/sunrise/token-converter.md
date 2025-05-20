@@ -9,18 +9,7 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
    - Convert `vRISE` (bond denomination) to `RISE` (fee denomination) and vice versa.
    - Maintain a 1:1 equivalent value relationship between the tokens.
 
-2. **Parameter Governance:**
-
-   - Configurable denominations through module parameters.
-   - Default bond denomination: "uvRISE" (micro `vRISE`).
-   - Default fee denomination: "urise" (micro `RISE`).
-
-3. **Integrated System Component:**
-
-   - Works alongside other modules like `x/shareclass` and `x/fee`.
-   - Supports the broader tokenomics of the Sunrise ecosystem.
-
-4. **Permissionless Operation:**
+1. **Permissionless Operation:**
 
    - Any user can perform token conversions at any time.
    - No slippage or fees applied to the conversion process.
@@ -34,7 +23,7 @@ The `x/tokenconverter` module enables seamless conversion between `vRISE` and `R
 The module provides a simple and direct conversion mechanism between `vRISE` and `RISE` tokens:
 
 - When converting vRISE to RISE, the module burns vRISE and mints an equivalent amount of RISE.
-- When converting RISE to vRISE, the module burns RISE and mints an equivalent amount of vRISE.
+- When converting RISE to vRISE, the module burns RISE and mints an equivalent amount of vRISE. (Not available for users)
 
 This process maintains the total economic value in the system while allowing users to hold the token type that best suits their needs.
 
@@ -48,18 +37,18 @@ sequenceDiagram
     participant TokenConverter as x/tokenconverter Module
     participant BankKeeper as Bank Module
 
-    User->>TokenConverter: MsgConvert (vRISE to RISE)
+    User->>TokenConverter: MsgConvert
     TokenConverter->>BankKeeper: Burn vRISE Tokens
     TokenConverter->>BankKeeper: Mint RISE Tokens
     TokenConverter->>User: Return Converted RISE Tokens
-
-    User->>TokenConverter: MsgConvert (RISE to vRISE)
-    TokenConverter->>BankKeeper: Burn RISE Tokens
-    TokenConverter->>BankKeeper: Mint vRISE Tokens
-    TokenConverter->>User: Return Converted vRISE Tokens
 ```
 
 ## Messages
+
+The module provides various message types:
+
+- MsgUpdateParams: Update module parameters (governance operation)
+- MsgConvert: Convert tokens between bond and fee denominations
 
 ### MsgConvert
 
@@ -69,69 +58,6 @@ Converts tokens between the bond and fee denominations.
 type MsgConvert struct {
     Sender  string
     Amount  string
-}
-```
-
-**Parameter Configuration**
-
-> **Note:** The following section covers advanced topics intended for experienced users or developers.
-
-| Parameter                     | Description                                                                          |
-|------------------------------|--------------------------------------------------------------------------------------|
-| Bond Denomination (`bond_denom`) | The denomination used for staking and governance (default: `"uvRISE"`).             |
-| Fee Denomination (`fee_denom`)   | The denomination used for transaction fees (default: `"urise"`).                    |
-
-**Example Configuration:**
-
-```json
-{
-  "bond_denom": "uvRISE",
-  "fee_denom": "urise"
-}
-```
-
-## Example Usage
-
-{% hint style="success" %}
-**LEVEL 1: FOR APP DEVELOPERS**
-{% endhint %}
-
-**Query Token Converter Parameters**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-
-async function queryTokenConverterParams() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    const queryClient = client.getQueryClient();
-
-    if (!queryClient) {
-        console.error("Query client not initialized");
-        return;
-    }
-
-    const params = await queryClient.tokenconverter.params({});
-    console.log("Token Converter Parameters:", params.params);
-}
-```
-
-**Convert Tokens**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-import { MsgConvert } from "@sunriselayer/client/types";
-
-async function convertTokens() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    
-    // Convert 1 vRISE to RISE
-    const msgConvert = {
-        sender: "sunrise1...",
-        amount: "1000000"  // 1 vRISE (in micro units)
-    };
-    
-    const result = await client.executeTransaction(msgConvert);
-    console.log("Conversion result:", result);
 }
 ```
 
