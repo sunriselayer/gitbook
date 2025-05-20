@@ -129,25 +129,25 @@ The technical design creates circular dependencies that align incentives:
 <!-- Berachain-style summary table with icons and token names -->
 | Function            | Token(s)                                                                 |
 |---------------------|--------------------------------------------------------------------------|
-| Security            | <img src=".gitbook/assets/color.svg" height="20"/> RISE + <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE |
-| Governance          | <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE |
-| Security Emissions  | <img src=".gitbook/assets/color.svg" height="20"/> RISE |
-| LP Emissions        | <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE |
-| Fee                 | Any (swapped to <img src=".gitbook/assets/color.svg" height="20"/> RISE) |
+| Security            | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
+| Governance          | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
+| Security Emissions  | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE |
+| LP Emissions        | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
+| Fee                 | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE) |
 
 <!-- Detailed token roles table with icons and token names -->
 | Purpose                        | Token(s) Used                                                                 | Notes                                                      |
 |--------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------|
-| L1 consensus voting power      | <img src=".gitbook/assets/color.svg" height="20"/> RISE + <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE | Both can be staked for consensus/security                  |
-| L1 consensus rewards           | <img src=".gitbook/assets/color.svg" height="20"/> RISE | RISE is distributed as staking rewards                     |
-| Transaction fees               | Any (swapped to <img src=".gitbook/assets/color.svg" height="20"/> RISE) | All fees are ultimately paid in RISE via conversion        |
-| Governance proposal voting     | <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE | vRISE is used for on-chain governance voting               |
-| Gauge voting power (incentives)| <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE | vRISE is used to allocate liquidity incentives             |
-| LP rewards                     | <img src=".gitbook/assets/vRISE.svg" height="20"/> vRISE, BASE, QUOTE | LPs earn vRISE and swap fees in both pool tokens           |
+| L1 consensus voting power      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | Both can be staked for consensus/security                  |
+| L1 consensus rewards           | <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE | RISE is distributed as staking rewards                     |
+| Transaction fees               | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> RISE) | All fees are ultimately paid in RISE via conversion        |
+| Governance proposal voting     | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | vRISE is used for on-chain governance voting               |
+| Gauge voting power (incentives)| <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE | vRISE is used to allocate liquidity incentives             |
+| LP rewards                     | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE, BASE, QUOTE | LPs earn vRISE and swap fees in both pool tokens           |
 
 **Legend:**  
-<img src=".gitbook/assets/color.svg" height="20"/> = RISE  
-<img src=".gitbook/assets/vRISE.svg" height="20"/> = vRISE
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/logo_swarna.svg" height="20"/> = RISE  
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> = vRISE
 
 > **Note:**  
 > In Sunrise, the roles and rewards for each token are clearly defined.  
