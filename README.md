@@ -70,7 +70,7 @@ Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean a
 | [`x/swap`](learn/sunrise/swap.md)                              | AMM router supporting token swap                    |
 | [`x/tokenconverter`](learn/sunrise/token-converter.md)         | Conversion from vRISE to RISE                       |
 | [`x/fee`](learn/sunrise/fee.md)                                | fee abstraction & revenue split                     |
-| [`x/lockup`](learn/sunrise/lockup-account.md)                  | Locking of RISE for a certain period                |
+| [`x/lockup`](learn/sunrise/lockup.md)                          | Locking of RISE for a certain period                |
 | [`x/shareclass`](learn/sunrise/shareclass.md)                  | Staking RISE to secure the network                  |
 
 ## Revenue Streams
