@@ -8,7 +8,6 @@
 
 - [🌆 Sunrise](learn/sunrise/README.md)
   - [Proof of Liquidity](learn/sunrise/proof-of-liquidity.md)
-  - [Fee Abstraction](learn/sunrise/fee-abstraction.md)
   - [Data Availability](learn/sunrise/data-availability.md)
   - [Liquidity Pool](learn/sunrise/liquidity-pool.md)
   - [Swap](learn/sunrise/swap.md)
