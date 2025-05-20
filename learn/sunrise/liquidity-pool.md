@@ -63,166 +63,47 @@ sequenceDiagram
     participant User
     participant LiquidityPool as x/liquiditypool Module
     participant SwapModule as x/swap Module
-    participant BankKeeper as Bank Module
 
     User->>LiquidityPool: MsgCreatePosition
-    LiquidityPool->>BankKeeper: Transfer Tokens to Module
     LiquidityPool->>User: Return Position ID
     
     User->>LiquidityPool: MsgIncreaseLiquidity
-    LiquidityPool->>BankKeeper: Transfer Additional Tokens
+    LiquidityPool->>User: Return new Position ID
+
+    User->>LiquidityPool: MsgDecreaseLiquidity
+    LiquidityPool->>User: Return Tokens
     
     User->>SwapModule: Perform Swap (via x/swap)
     SwapModule->>LiquidityPool: Use Pool Liquidity
     LiquidityPool->>LiquidityPool: Collect Fees for Positions
+    LiquidityPool->>User: Send Swapped amount 
     
     User->>LiquidityPool: MsgClaimRewards
-    LiquidityPool->>BankKeeper: Transfer Earned Fees to User
-    LiquidityPool->>User: Transfer vRISE Incentives
+    LiquidityPool->>User: Transfer Earned Fees & vRISE Incentives
     
-    User->>LiquidityPool: MsgDecreaseLiquidity
-    LiquidityPool->>BankKeeper: Return Tokens to User
+
 ```
 
 ## Messages
 
-### MsgCreatePool
+The module provides various message types:
 
-Creates a new liquidity pool with specified parameters.
-
-```protobuf
-message MsgCreatePool {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string denom_base = 2;
-  string denom_quote = 3;
-  string fee_rate = 4;
-  // Basically 1.0001
-  string price_ratio = 5;
-  // basically 0 and (-1, 0]. In the 1:1 stable pair, 0.5 would work
-  string base_offset = 6;
-}
-```
-
-### MsgCreatePosition
-
-Creates a position within a price range in a pool.
-
-```protobuf
-message MsgCreatePosition {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 pool_id = 2;
-  int64 lower_tick = 3;
-  int64 upper_tick = 4;
-  cosmos.base.v1beta1.Coin token_base = 5 [(gogoproto.nullable) = false];
-  cosmos.base.v1beta1.Coin token_quote = 6 [(gogoproto.nullable) = false];
-  string min_amount_base = 7 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-  string min_amount_quote = 8 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
-```
-
-### MsgIncreaseLiquidity
-
-Claims unclaimed rewards and adds liquidity to an existing position. The position ID will be updated to new one.
-
-```protobuf
-message MsgIncreaseLiquidity {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 id = 2;
-  string amount_base = 3 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-  string amount_quote = 4 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-  string min_amount_base = 5 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-  string min_amount_quote = 6 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
-```
-
-### MsgDecreaseLiquidity
-
-Claims unclaimed rewards and removes liquidity from an existing position.
-
-```protobuf
-message MsgDecreaseLiquidity {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  uint64 id = 2;
-  string liquidity = 3;
-}
-```
-
-### MsgClaimRewards
-
-Claims accumulated fees and incentives for positions.
-
-```protobuf
-message MsgClaimRewards {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated uint64 position_ids = 2;
-}
-```
-
-## Example Usage
-
-### **Create a Position**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-import { MsgCreatePosition } from "@sunriselayer/client/types";
-
-async function createPosition() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    
-    const msgCreatePosition = {
-        sender: "sunrise1...",
-        poolId: 1,
-        lowerTick: -4155,  // Approximately price 0.66
-        upperTick: 4054,   // Approximately price 1.5
-        tokenBase: { denom: "urise", amount: "1000000" },
-        tokenQuote: { denom: "uusdc", amount: "1000000" },
-        minAmountBase: "0",
-        minAmountQuote: "0"
-    };
-    
-    const result = await client.executeTransaction(msgCreatePosition);
-    console.log("Position created:", result);
-}
-```
+- MsgUpdateParams: Update module parameters (governance operation)
+- MsgCreatePool: Create a new liquidity pool with specified parameters
+- MsgCreatePosition: Create a position within a price range in a pool
+- MsgIncreaseLiquidity: Add liquidity to an existing position
+- MsgDecreaseLiquidity: Remove liquidity from an existing position
+- MsgClaimRewards: Claim accumulated fees and incentives for positions
 
 ## Queries
 
 The module provides various query endpoints:
 
 - Params: Query module parameters
-- Pools: List all liquidity pools
 - Pool: Get details of a specific pool
-- Positions: List all positions
+- Pools: List all liquidity pools
 - Position: Get details of a specific position
+- Positions: List all positions
 - PoolPositions: List positions in a specific pool
 - AddressPositions: List positions owned by an address
 - PositionFees: Get accrued fees for a position
