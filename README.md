@@ -19,11 +19,11 @@ Feature requests or ideas? Open a thread on our <a href="https://github.com/orgs
 |---|---|
 | **Proof of Liquidity (PoL)** | Validators secure the network by staking RISE and/or vRISE, aligning security *and* liquidity. Liquidity providers earn vRISE and trading fees. |
 | **Fee Abstraction** | Any token can pay gas; Sunrise swaps a tiny slice to $RISE under the hood. No need to hold multiple tokens for gas. |
-| **Off‑chain Blobspace** | Large blobs propagate off‑chain and reach availability in two blocks (< 15 s). Optimized for high‑throughput rollups. |
+| **Off‑chain Data Availability** | Large data blobs are propagated and stored off-chain, while only metadata and coded shards are kept on-chain. Optimized for high-throughput rollups. |
 
 ## Blazing Fast Data Availability
 
-Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security.
+Sunrise's off‑chain data availability design unlocks unmatched throughput and cost‑efficiency without sacrificing on‑chain security. Only metadata and coded shards are kept on-chain; full data blobs are distributed and stored off-chain.
 
 1. **Off‑chain Erasure Coding**  
    → Dramatically cuts validator compute & storage: only coded shards live on chain, full data reconstruction happens off‑chain.
