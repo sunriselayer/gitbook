@@ -22,28 +22,28 @@ Sunrise's off‑chain DA design unlocks unmatched throughput and cost‑efficien
 
 Sunrise moves heavy data work off‑chain while keeping on‑chain proofs lean and verifiable.
 
-1. **Off‑chain Erasure Coding**  
-   - Blob data is split and Reed–Solomon encoded outside the chain.  
+1. **Off‑chain Erasure Coding**
+   - Blob data is split and Reed–Solomon encoded outside the chain.
    - Validators store only the 32‑byte double‑hash per shard, cutting disk I/O and memory overhead.
-2. **Off‑chain Blob Propagation**  
-   - Transactions carry only metadata (shard hashes) into the mempool.  
-   - Full blob payloads are P2P‑distributed via the blob network, supporting sustained **5 MB/s** throughput.  
+2. **Off‑chain Blob Propagation**
+   - Transactions carry only metadata (shard hashes) into the mempool.
+   - Full blob payloads are P2P‑distributed via the blob network, supporting sustained **5 MB/s** throughput.
    - Nodes fetch or prune blobs on demand, giving you control over local storage.
-3. **KZG Polynomial Commitments**  
-   - A single on‑chain KZG commitment binds all shards.  
-   - Verifiers check inclusion in **O(log n)** time with constant‑size proofs (~48 bytes).  
+3. **KZG Polynomial Commitments**
+   - A single on‑chain KZG commitment binds all shards.
+   - Verifiers check inclusion in **O(log n)** time with constant‑size proofs (~48 bytes).
    - Rapid challenge/response cycles (< 1 s) ensure data‑availability guarantees.
 
 ## On-chain vs Off-chain DA: Comparison
 
 |                                          | On-chain DA attestation              | Off-chain DA attestation (Sunrise v2) |
-| ---------------------------------------- | ------------------------------------ | ------------------------ |
-| Data Corruption Durability               | 〇                                   | 〇                       |
-| Tx Mempool Scalability                   | ×                                    | 〇                       |
-| Data Retrievability Control              | ×                                    | 〇                       |
-| Validators Load Mitigation               | ×                                    | 〇                       |
-| False-Positive DA Attestation Resistance | 〇                                   | 〇※                      |
-| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G   |
+| ---------------------------------------- | ------------------------------------ | ------------------------------------- |
+| Data Corruption Durability               | 〇                                   | 〇                                    |
+| Tx Mempool Scalability                   | ×                                    | 〇                                    |
+| Data Retrievability Control              | ×                                    | 〇                                    |
+| Validators Load Mitigation               | ×                                    | 〇                                    |
+| False-Positive DA Attestation Resistance | 〇                                   | 〇※                                   |
+| Examples                                 | Celestia, Avail, EigenDA, Sunrise V1 | Sunrise V2, Walrus, 0G                |
 
 ## Design Overview
 
@@ -134,10 +134,9 @@ sequenceDiagram
     Publisher Node->>Publisher Node: Erasure coding
     Publisher Node->>Decentralized Storage: Upload data shards
     Publisher Node->>Sunrise: MsgPublishData
-    Sunrise->>Validator Set: Start Vote Extension
-    Validator Set->>Sunrise: Vote Data Availability
-    Publisher Node->>Sunrise: Fraud Challenge if needed
-    Validator Set->>Sunrise: Zero Knowledge Validity Proof if challenged
+    User->>Sunrise: Fraud Challenge if needed
+    Sunrise->>Validator Set: Start Voting for Challenging
+    Validator Set->>Sunrise: Zero Knowledge Validity Proof
 ```
 
 ### Zero-Knowledge Proof System
@@ -148,7 +147,7 @@ $$
   H_{\text{public}}^2(s) = H(H_{\text{private}}(s))
 $$
 
-2. **Proof size formula:**
+1. **Proof size formula:**
 
 $$
 \text{proof\_size} = 48\text{B} + 32\text{B} \times \lceil \log_2(n_{\text{shards}}) \rceil
@@ -157,17 +156,23 @@ $$
 ### Slashing rule
 
 For validator $v$:
+
 $$
 \frac{|Z_v|}{n} < 0.67 \implies \text{slash}(v, \text{slash\_ratio})
 $$
 
 ### Parameter Table
 
-| Param              | Default   | Units   | CLI flag                |
-|--------------------|-----------|---------|-------------------------|
-| challenge_period   | 2         | blocks  | --da-challenge-period   |
-| parity_shards      | 10        | shards  | --da-parity             |
-| replication_factor | 6         | copies  | implicit                |
+| Param                 | Default    | Units  | Description                                                           |
+| --------------------- | ---------- | ------ | --------------------------------------------------------------------- |
+| publish_data_gas      | 1,000,000  | gas    | Gas cost for publishing data                                          |
+| challenge_threshold   | 0.33       | ratio  | Threshold of invalidity challenges required to enter challenge period |
+| replication_factor    | 5.0        | copies | Number of data shard replicas                                         |
+| slash_epoch           | 120,960    | blocks | Epoch period for slash judgment (approximately 1 week)                |
+| slash_fault_threshold | 0.5        | ratio  | Threshold of invalid proofs that triggers validator slashing          |
+| slash_fraction        | 0.001      | ratio  | Voting power reduction rate during slashing                           |
+| challenge_period      | 4 minutes  | time   | Period for challenges after data published                            |
+| proof_period          | 10 minutes | time   | Period for submitting proofs after challenge                          |
 
 ## Operational Details
 
@@ -183,11 +188,11 @@ $$
 
 ### Storage Backends
 
-| Backend   | Use Case      | Retention | Notes                        |
-|-----------|---------------|-----------|------------------------------|
-| IPFS      | Hot storage   | Short     | Fast retrieval, not permanent|
-| Arweave   | Permanent     | Long      | Permaweb, pay-once           |
-| Filecoin  | Sealed/cold   | Medium    | Sealed deals, slower access  |
+| Backend  | Use Case    | Retention | Notes                         |
+| -------- | ----------- | --------- | ----------------------------- |
+| IPFS     | Hot storage | Short     | Fast retrieval, not permanent |
+| Arweave  | Permanent   | Long      | Permaweb, pay-once            |
+| Filecoin | Sealed/cold | Medium    | Sealed deals, slower access   |
 
 ### API Example
 
@@ -196,10 +201,7 @@ $$
   "sender": "sunrise18...",
   "metadata_uri": "ipfs://bafybeigd...",
   "parity_shard_count": 10,
-  "shard_double_hashes": [
-    "0x4e3d...",
-    "0xa1b2..."
-  ],
+  "shard_double_hashes": ["0x4e3d...", "0xa1b2..."],
   "data_source_info": "app=gluon,blob=orderbook_batch_4711"
 }
 ```
