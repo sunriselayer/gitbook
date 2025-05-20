@@ -81,6 +81,7 @@ The gauge voting system is the cornerstone of PoL implementations:
 $$
   \text{pool rewards} = \text{total rewards} \times \text{pool's voting power} / \text{total voting power of all pools}
 $$
+
 $$
   \text{user rewards} = \text{pool rewards} \times \text{user voting power} / \text{pool's voting power}
 $$
@@ -117,6 +118,35 @@ The technical design creates circular dependencies that align incentives:
 - Applications need validator emissions for liquidity
 - Users need to provide liquidity to earn governance tokens
 - The inflation rewards will be distributed with $RISE which doesn't lead to the dilution of $vRISE (governance token)
+
+<!-- Berachain-style summary table with icons and token names -->
+
+| Function           | Token(s)                                                                                                                                                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Security           | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE |
+| Governance         | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE                                                                                              |
+| Security Emissions | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE                                                                                               |
+| LP Emissions       | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20"/> vRISE                                                                                              |
+| Fee                | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20"/> RISE)                                                                              |
+
+<!-- Detailed token roles table with icons and token names -->
+
+| Purpose                         | Token(s) Used                                                                                                                                                                            | Notes                                               |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| L1 consensus voting power       | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE + <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE | Both can be staked for consensus/security           |
+| L1 consensus rewards            | <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE                                                                                               | RISE is distributed as staking rewards              |
+| Transaction fees                | Any (swapped to <img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> RISE)                                                                              | All fees are ultimately paid in RISE via conversion |
+| Governance proposal voting      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE                                                                                              | vRISE is used for on-chain governance voting        |
+| Gauge voting power (incentives) | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE                                                                                              | vRISE is used to allocate liquidity incentives      |
+| LP rewards                      | <img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> vRISE, BASE, QUOTE                                                                                 | LPs earn vRISE and swap fees in both pool tokens    |
+
+**Legend:**  
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/color.svg" height="20" /> = RISE  
+<img src="https://github.com/sunriselayer/brand-kit/raw/main/vRISE.svg" height="20" /> = vRISE
+
+> **Note:**  
+> In Sunrise, the roles and rewards for each token are clearly defined.  
+> This clear separation of functions helps prevent dilution of network security when governance or liquidity rewards are distributed.
 
 ### Security Considerations
 
