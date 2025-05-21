@@ -52,8 +52,15 @@ Currently the latest is DA 3 Testnet.
 
 | Detail | Value                                        |
 | ------ | -------------------------------------------- |
-| RPC    | <https://sunrise-test-da-3.cauchye.net>      |
+| RPC    | <https://da-test.app>                        |
 | REST   | <https://sunrise-test-da-3.cauchye.net:1318> |
+
+### Frontend
+
+| Name                | URL                                         |
+| ------------------- | ------------------------------------------- |
+| APP (Tx Portal)     | <https://da-test.app.sunriselayer.io/>      |
+| Risescan (Explorer) | <https://da-test.risescan.sunriselayer.io/> |
 
 ### DA Testnet Software
 
