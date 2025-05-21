@@ -26,7 +26,23 @@ stakers will be distributed in proportion to the staked amount.
 To get $vRISE, users need to provide liquidity in
 [Liquidity Pool](../sunrise/liquidity-pool.md).
 
-## Tokenomics v2
+## Usage of Tokens
+
+<!-- Berachain-style summary table with icons and token names -->
+
+| Function           | Token(s)                                                                     | Details                                                |
+| ------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Security           | ![RISE](../../images/RISE.png) RISE + ![vRISE](../../images/vRISE.png) vRISE | Both vRISE & RISE can be staked for Consensus          |
+| Governance         | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is used for On-chain governance and Gauge Voting |
+| Security Emissions | ![RISE](../../images/RISE.png) RISE                                          | RISE is distributed for stakers as consensus rewards   |
+| LP Emissions       | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is distributed for LPs as incentives             |
+| Fee                | Any (swapped to ![RISE](../../images/RISE.png) RISE)                         | RISE is used as a transaction fee                      |
+
+**Legend:**  
+![RISE](../../images/RISE.png) = RISE  
+![vRISE](../../images/vRISE.png) = vRISE
+
+## Tokenomics
 
 ### Summary
 
@@ -49,18 +65,18 @@ To get $vRISE, users need to provide liquidity in
 - Supply of $vRISE: $$ s_t^{\text{vRISE}} $$
 - Supply: $$ s_t = s_t^{\text{RISE}} + s_t^{\text{vRISE}} $$
 - Initial Supply: $$ s_0 = \text{500,000,000} $$
-- Initial Inflation Rate Cap: $$ \bar{\pi}_0 = 0.1 = \text{10\%}$$
+- Initial Inflation Rate Cap: $$ \bar{\pi}\_0 = 0.1 = \text{10\%}$$
 - Disinflation rate: $$ \delta = 0.08 = \text{8\%} $$
 - Supply Cap: $$ \bar{s} = \text{1,000,000,000} $$
   - It must be satisfied: $$ s_t \le \bar{s} $$
-- Inflation Rate Cap: $$ \bar{\pi}_t $$
+- Inflation Rate Cap: $$ \bar{\pi}\_t $$
 - Tx fee burnt $RISE: $$ b_t $$
 - Supply transition:
-  $$ s_{t+1} = \min\{(1 + \bar{\pi}_t) (s_t - b_t),\ \bar{s}\} $$
+  $$ s\_{t+1} = \min\{(1 + \bar{\pi}\_t) (s_t - b_t),\ \bar{s}\} $$
 - Inflation Rate Cap transition:
-  $$ \bar{\pi}_{t+1} = \max\left\{(1 - \delta) \bar\pi_t,\ \text{0.02} \right\} $$
-  - It means: $$ \min_t \bar{\pi}_t = \text{0.02} = \text{2\%} $$
-- Observed Inflation Rate: $$ \pi_t = \frac{s_{t+1} - s_t}{s_t} $$
+  $$ \bar{\pi}\_{t+1} = \max\left\{(1 - \delta) \bar\pi_t,\ \text{0.02} \right\} $$
+  - It means: $$ \min_t \bar{\pi}\_t = \text{0.02} = \text{2\%} $$
+- Observed Inflation Rate: $$ \pi*t = \frac{s*{t+1} - s_t}{s_t} $$
 
 #### Simulation
 
@@ -99,79 +115,6 @@ which means that tx fee is not burnt.
 | 19   |              2.05% | 1,000,000,000 |                   0.00% |
 | 20   |              2.00% | 1,000,000,000 |                   0.00% |
 | 21   |              2.00% | 1,000,000,000 |                   0.00% |
-
-## Tokenomics v1 (deprecated)
-
-### Inflation rate schedule
-
-#### On chain parameters
-
-The actual inflation rate will vary from the target inflation rate according to
-the bonded ratio.
-
-|               |     |
-| ------------- | --- |
-| Max inflation | 10% |
-| Min inflation | 6%  |
-
-#### Theoretical parameters
-
-|                            |    |
-| -------------------------- | -- |
-| Disinflation rate per year | 8% |
-| Converged inflation        | 2% |
-
-### Simulations
-
-#### Low bonded ratio
-
-| Year | Inflation  |
-| ---- | ---------- |
-| 0    | 10.000000% |
-| 1    | 9.200000%  |
-| 2    | 8.464000%  |
-| 3    | 7.786880%  |
-| 4    | 7.163930%  |
-| 5    | 6.590815%  |
-| 6    | 6.063550%  |
-| 7    | 5.578466%  |
-| 8    | 5.132189%  |
-| 9    | 4.721614%  |
-| 10   | 4.343885%  |
-| 11   | 3.996374%  |
-| 12   | 3.676664%  |
-| 13   | 3.382531%  |
-| 14   | 3.111928%  |
-| 15   | 2.862974%  |
-| 16   | 2.633936%  |
-| 17   | 2.423221%  |
-| 18   | 2.229364%  |
-| 19   | 2.051014%  |
-
-#### High bonded ratio
-
-| Year | Inflation |
-| ---- | --------- |
-| 0    | 6.000000% |
-| 1    | 5.520000% |
-| 2    | 5.078400% |
-| 3    | 4.672128% |
-| 4    | 4.298358% |
-| 5    | 3.954489% |
-| 6    | 3.638130% |
-| 7    | 3.347080% |
-| 8    | 3.079313% |
-| 9    | 2.832968% |
-| 10   | 2.606331% |
-| 11   | 2.397824% |
-| 12   | 2.205998% |
-| 13   | 2.029518% |
-| 14   | 2.000000% |
-| 15   | 2.000000% |
-| 16   | 2.000000% |
-| 17   | 2.000000% |
-| 18   | 2.000000% |
-| 19   | 2.000000% |
 
 ## Supported wallet applications
 
