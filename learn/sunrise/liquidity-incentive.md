@@ -54,6 +54,16 @@ $$
 
 ## Workflow
 
+```mermaid
+graph TD
+    A{User A}-->|Provide Liquidity|B((Pool B))
+    A-->|Register a Bribe|C((Gauge for Pool B))
+    D{Users}-->|Vote|C
+    C-.->|Distribute the Bribe|D
+    C-.->|Allocate more vRISE|B
+    B-.->|Distribute vRISE incentives|A
+```
+
 ### BeginBlocker
 
 1. Transfers a portion of inflation rewards from the Fee Collector account to the **`x/liquidityincentive`** module account.
