@@ -75,7 +75,7 @@ Please check our proposals and community. See [sunrise-test-da-3](https://github
 ### DA Testnet Faucet
 
 RISE faucet is available for testing DA testnet.
-The binary version as of genesis is v0.5.1.
+The binary version as of genesis is v0.5.x. For details, see [sunrise-test-da-3](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3).
 
 ```bash
 curl https://da3-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
