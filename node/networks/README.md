@@ -81,6 +81,15 @@ The binary version as of genesis is v0.5.x. For details, see [sunrise-test-da-3]
 curl https://da3-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
 ```
 
+### Create Validator with RISE
+
+`x/shareclass` allows validators to create validators only with RISE.
+This feature is not shown in the header because it is for validators and developers.
+
+<https://da-test.app.sunriselayer.io/share-class>
+
+The feature of staking RISE is also provided on this page.
+
 ### How to use sunrise-data on DA Testnet
 
 [sunrise-data](https://github.com/sunriselayer/sunrise-data) provides validator assistance and functionality for L2 chain publishers.
@@ -97,7 +106,7 @@ git checkout v0.5.0
 make install
 ```
 
-### Report Invalidity
+#### Register Proof Deputy (for Validators)
 
 Run the following command to register a proof deputy from your validator.
 
