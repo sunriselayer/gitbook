@@ -41,6 +41,11 @@ Currently, Testnet uses v0.2.x binaries for blockchain compatibility.
 
 ## DA Testnet
 
+{% hint style="warning" %}
+**IMPORTANT**: DA Testnet is sometimes initialized to fix bugs or for upgrades that cannot be handled on-chain.
+Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3). If you need more RISE, please use the faucet again or contact our team.
+{% endhint %}
+
 This network is used to test Data Availability functions on the mainnet.
 Since our testnet does not support DA, please use it to test L2 chains, etc.
 
