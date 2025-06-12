@@ -43,7 +43,7 @@ Currently, Testnet uses v0.2.x binaries for blockchain compatibility.
 
 {% hint style="warning" %}
 **IMPORTANT**: DA Testnet is sometimes initialized to fix bugs or for upgrades that cannot be handled on-chain.
-Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3). If you need more RISE, please use the faucet again or contact our team.
+Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4). If you need more RISE, please use the faucet again or contact our team.
 {% endhint %}
 
 This network is used to test Data Availability functions on the mainnet.
@@ -53,37 +53,37 @@ Currently the latest is DA 3 Testnet.
 
 ### DA Testnet Details
 
-[sunrise-test-da-3 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3)
+[sunrise-test-da-4 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4)
 
 | Detail | Value                                        |
 | ------ | -------------------------------------------- |
-| RPC    | <https://da-test.app>                        |
-| REST   | <https://sunrise-test-da-3.cauchye.net:1318> |
+| RPC    | <https://sunrise-test-da-4.cauchye.net>      |
+| REST   | <https://sunrise-test-da-4.cauchye.net:1318> |
 
 ### Frontend
 
-| Name                | URL                                         |
-| ------------------- | ------------------------------------------- |
-| APP (Tx Portal)     | <https://da-test.app.sunriselayer.io/>      |
-| Risescan (Explorer) | <https://da-test.risescan.sunriselayer.io/> |
+| Name                | URL                                           |
+| ------------------- | --------------------------------------------- |
+| APP (Tx Portal)     | <https://da-test-4.app.sunriselayer.io>       |
+| Risescan (Explorer) | <https://da-test-4.risescan.sunriselayer.io/> |
 
 ### DA Testnet Software
 
-Please check our proposals and community. See [sunrise-test-da-3](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3) for setup.
+Please check our proposals and community. See [sunrise-test-da-4](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4) for setup.
 
 [Released Binary](https://github.com/sunriselayer/sunrise/releases)
 
 {% hint style="warning" %}
-`sunrise-test-da-1` and `sunrise-test-da-2` is deprecated. Please move to `sunrise-test-da-3`.
+`sunrise-test-da-1`, `sunrise-test-da-2` and `sunrise-test-da-3` is deprecated. Please move to `sunrise-test-da-4`.
 {% endhint %}
 
 ### DA Testnet Faucet
 
 RISE faucet is available for testing DA testnet.
-The binary version as of genesis is v0.5.x. For details, see [sunrise-test-da-3](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-3).
+The binary version as of genesis is v0.6.x. For details, see [sunrise-test-da-4](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4).
 
 ```bash
-curl https://da3-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
+curl https://da4-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
 ```
 
 ### Create Validator with RISE
