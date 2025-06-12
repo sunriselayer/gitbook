@@ -60,6 +60,15 @@ Currently the latest is DA 3 Testnet.
 | RPC    | <https://sunrise-test-da-4.cauchye.net>      |
 | REST   | <https://sunrise-test-da-4.cauchye.net:1318> |
 
+#### IBC Config
+
+| Src Chain           | Src Port   | Src Channel | Dst Chain  | Dst Port   | Dst Channel   |
+| ------------------- | ---------- | ----------- | ---------- | ---------- | ------------- |
+| `sunrise-test-da-4` | `transfer` | `channel-0` | `provider` | `transfer` | `channel-476` |
+
+`provider`is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
+[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet)
+
 ### Frontend
 
 | Name                | URL                                           |
