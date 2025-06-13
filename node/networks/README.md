@@ -116,7 +116,7 @@ Use `sunrise-data` which supports `sunrised` binary.
 ```bash
 git clone https://github.com/sunriselayer/sunrise-data.git
 cd sunrise-data
-git checkout v0.5.0
+git checkout v0.6.0
 make install
 ```
 
