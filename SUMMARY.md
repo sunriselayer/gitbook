@@ -18,9 +18,11 @@
   - [Fee](learn/sunrise/fee.md)
   - [Lockup Account](learn/sunrise/lockup.md)
   - [Non-Voting Delegation](learn/sunrise/shareclass.md)
+  - [Stable](learn/sunrise/stable.md)
 
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
+- [💲 $USDRise](learn/usdrise/README.md)
 - [🏦 Gluon](learn/gluon/README.md)
 - [💴 $GLU](learn/glu.md)
 - [🎓 Thesis](learn/thesis/README.md)
