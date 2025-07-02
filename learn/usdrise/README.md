@@ -10,8 +10,41 @@ For more detailed information on the `x/stable` module, please refer to the [x/s
 
 ## Key Features
 
-- **Yield Bearing:** USDrise offers a yield equivalent to that of USDN, allowing holders to earn passive income.
 - **Transaction Fees:** All transaction fees within the Sunrise protocol are paid in USDrise, making it a central component of the network's economy.
+- **Yield Bearing:** USDrise offers a yield equivalent to that of USDN, allowing holders to earn passive income.
+
+## Fee Mechanism and Distribution
+
+USDrise serves as the primary token for transaction fees within the Sunrise ecosystem. The collected fees are managed by the `x/fee` module and distributed to stakeholders, creating a sustainable economic loop.
+
+```mermaid
+graph TD;
+    subgraph Transaction Process
+        User -- "Pay Fee in USDrise" --> Transaction;
+        Transaction -- "Collect Fee" --> FeeCollector["FeeCollector Module"];
+    end
+
+    subgraph Fee Processing & Distribution
+        FeeCollector -- "A portion for burning" --> SwapModule;
+        SwapModule -- "Swap USDrise to RISE" --> Burn[("🔥 Burn RISE")];
+        FeeCollector -- "Remaining USDrise" --> Distribution;
+        Distribution -- "Rewards" --> vRISE_Stakers["vRISE Stakers"];
+        Distribution -- "Rewards" --> RISE_Stakers["RISE Stakers"];
+    end
+
+    style Burn fill:#ffcccc,stroke:#333,stroke-width:2px
+```
+
+### Flow Breakdown
+
+1. **Fee Payment:** Users pay transaction fees in **$USDrise**.
+2. **Fee Collection:** The fees are sent to the `FeeCollector` module account.
+3. **Burn Mechanism:** Based on the `burn_ratio` parameter in the `x/fee` module, a portion of the collected USDrise is swapped for **$RISE** and subsequently burned. This acts as a deflationary mechanism for $RISE.
+4. **Reward Distribution:** The remaining USDrise in the `FeeCollector` is distributed as rewards to both **$vRISE** and **$RISE** stakers, incentivizing participation in governance and network security.
+
+This process ensures that the usage of the network directly contributes to the value of the native tokens and rewards its most committed participants.
+
+For more detailed information on the `x/fee` module, please refer to the [x/fee](../sunrise/fee.md).
 
 ## About USDN
 
