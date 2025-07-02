@@ -4,7 +4,12 @@ $USDrise is the native stablecoin of the Sunrise protocol, issued by wrapping no
 
 ## Overview
 
-USDrise is designed to be a stable and reliable medium of exchange within the Sunrise protocol. It aims to maintain a 1:1 peg with the US Dollar. The issuance and burning of USDrise are managed by the `x/stable` module. The exchange rate for minting and burning is fixed at 1 USDN = 1 USDrise. This process ensures transparency and control over the token supply.
+USDrise is designed to be a stable and reliable medium of exchange within the Sunrise protocol. It aims to maintain a 1:1 peg with the US Dollar.
+
+There are two primary ways to acquire USDrise:
+
+1. **Swap:** Users can also obtain USDrise by swapping other tokens, such as USDC, USDN, or RISE, through the `x/swap` module within the Sunrise ecosystem.
+1. **Mint:** The issuance and burning of USDrise are managed by the `x/stable` module, which requires interaction through an authorized contract. Users can mint USDrise by depositing USDN at a fixed exchange rate of 1 USDN = 1 USDrise. This process ensures transparency and control over the token supply.
 
 For more detailed information on the `x/stable` module, please refer to the [x/stable module documentation](../sunrise/stable.md).
 
