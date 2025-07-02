@@ -22,7 +22,7 @@
 
 - [💴 $RISE](learn/rise/README.md)
   - [Allocations](learn/rise/allocation.md)
-- [💲 $USDRise](learn/usdrise/README.md)
+- [💲 $USDrise](learn/usdrise/README.md)
 - [🏦 Gluon](learn/gluon/README.md)
 - [💴 $GLU](learn/glu.md)
 - [🎓 Thesis](learn/thesis/README.md)
