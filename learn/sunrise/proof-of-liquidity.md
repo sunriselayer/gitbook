@@ -127,7 +127,7 @@ The technical design creates circular dependencies that align incentives:
 | Governance         | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is used for On-chain governance and Gauge Voting |
 | Security Emissions | ![RISE](../../images/RISE.png) RISE                                          | RISE is distributed for stakers as consensus rewards   |
 | LP Emissions       | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is distributed for LPs as incentives             |
-| Fee                | Any (swapped to ![RISE](../../images/RISE.png) RISE)                         | RISE is used as a transaction fee                      |
+| Fee                | Any (swapped to [Fee Token](./fee.md))                         | RISE is used as a transaction fee                      |
 
 **Legend:**  
 ![RISE](../../images/RISE.png) = RISE  
