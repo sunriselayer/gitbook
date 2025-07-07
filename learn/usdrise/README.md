@@ -20,19 +20,20 @@ For more detailed information on the `x/stable` module, please refer to the [x/s
 
 ## Fee Mechanism and Distribution
 
-USDrise serves as the primary token for transaction fees within the Sunrise ecosystem. The collected fees are managed by the `x/fee` module and distributed to stakeholders, creating a sustainable economic loop.
+USDrise serves as the primary token for transaction fees within the Sunrise ecosystem. The collected fees, along with yield from the underlying USDN, are distributed to stakeholders, creating a sustainable economic loop.
 
 ```mermaid
 graph TD;
-    subgraph Transaction Process
+    subgraph Revenue Collection
         User -- "Pay Fee in USDrise" --> Transaction;
         Transaction -- "Collect Fee" --> FeeCollector["FeeCollector Module"];
+        USDN_Yield["USDN Yield"] -- "Accumulates" --> FeeCollector;
     end
 
-    subgraph Fee Processing & Distribution
-        FeeCollector -- "A portion for burning" --> SwapModule;
+    subgraph Fee & Yield Processing
+        FeeCollector -- "A portion of fees for burning" --> SwapModule;
         SwapModule -- "Swap USDrise to RISE" --> Burn[("🔥 Burn RISE")];
-        FeeCollector -- "Remaining USDrise" --> Distribution;
+        FeeCollector -- "Remaining Funds (Fees + Yield)" --> Distribution;
         Distribution -- "Rewards" --> vRISE_Stakers["vRISE Stakers"];
         Distribution -- "Rewards" --> RISE_Stakers["RISE Stakers"];
     end
@@ -42,10 +43,11 @@ graph TD;
 
 ### Flow Breakdown
 
-1. **Fee Payment:** Users pay transaction fees in **$USDrise**.
-2. **Fee Collection:** The fees are sent to the `FeeCollector` module account.
-3. **Burn Mechanism:** Based on the `burn_ratio` parameter in the `x/fee` module, a portion of the collected USDrise is swapped for **$RISE** and subsequently burned. This acts as a deflationary mechanism for $RISE.
-4. **Reward Distribution:** The remaining USDrise in the `FeeCollector` is distributed as rewards to both **$vRISE** and **$RISE** stakers, incentivizing participation in governance and network security.
+1. **Revenue Collection:** The `FeeCollector` module account accumulates funds from two primary sources:
+    - **Transaction Fees:** Users pay transaction fees in **$USDrise**.
+    - **USDN Yield:** The yield generated from the underlying USDN backing USDrise is also directed to the `FeeCollector`.
+2. **Burn Mechanism:** Based on the `burn_ratio` parameter in the `x/fee` module, a portion of the collected **fees** is swapped for **$RISE** and subsequently burned. This acts as a deflationary mechanism for $RISE.
+3. **Reward Distribution:** All remaining funds in the `FeeCollector` (the portion of fees not burned, plus all USDN yield) are distributed as rewards to both **$vRISE** and **$RISE** stakers, incentivizing participation in governance and network security.
 
 This process ensures that the usage of the network directly contributes to the value of the native tokens and rewards its most committed participants.
 
