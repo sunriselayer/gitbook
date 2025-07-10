@@ -118,11 +118,11 @@ sequenceDiagram
 
 ### Terms and Notation
 
-- The hash function: $H$
-- Set of validators: $ V $
-- Set of data shards: $ S_d $
-- Set of parity shards: $ S_p $
-- Set of shards: $ S $
+- The hash function: $$H$$
+- Set of validators: $$ V $$
+- Set of data shards: $$ S_d $$
+- Set of parity shards: $$ S_p $$
+- Set of shards: $$ S $$
 
 $$
   S = S_d \cup S_p
@@ -130,7 +130,7 @@ $$
 
 ### Overview
 
-This system verifies the possession of data shard hash $ H(s_i) $ without exposing $ H(s_i) $
+This system verifies the possession of data shard hash $$ H(s_i) $$ without exposing $$ H(s_i) $$
 The circuit is for one shard $ s \in S $.
 
 1. Public Inputs
@@ -185,42 +185,42 @@ $$
 
 #### Example parameters
 
-- 10 validators: $ v*1 , ..., v*{10} $
-- 20 shards: $ s*1, ..., s*{20} $
+- 10 validators: $$ v_1 , ..., v_{10} $$
+- 20 shards: $$ s_1, ..., s_{20} $$
   - 10 data shards
   - 10 parity shards
-- $ r = 6 $
-- $ r_p = 6 \times \frac{10}{10 + 10} = 3 $
+- $$ r = 6 $$
+- $$ r_p = 6 \times \frac{10}{10 + 10} = 3 $$
 - Each validator submits 6 shards proofs
-  - $ 3 \times \frac{20}{10} = 6 $
+  - $$ 3 \times \frac{20}{10} = 6 $$
 
 #### Case A: valid shard `s_1`
 
-- Validator $ v_1 $, $ v_3 $ and $ v_9 $ 's proof contain shard $ s_1 $ and other 5 shards
-- Validator $ v_3 $ failed to contain the validity of shard $ s_1 $ in its proof
-- However validator $ v_1 $ and $ v_9 $ succeeded to contain the validity of shard $ s_1 $ in its proof, then
-  - $ |Z\_{s_1}| = 2 $
-  - It satisfies $ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $
+- Validator $$ v_1 $$, $$ v_3 $$ and $$ v_9 $$ 's proof contain shard $$ s_1 $$ and other 5 shards
+- Validator $$ v_3 $$ failed to contain the validity of shard $$ s_1 $$ in its proof
+- However validator $$ v_1 $$ and $$ v_9 $$ succeeded to contain the validity of shard $$ s_1 $$ in its proof, then
+  - $$ |Z\_{s_1}| = 2 $$
+  - It satisfies $$ \frac{|Z\_{s_1}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case B: invalid shard `s_2`
 
-- Validator $ v*2 $, $ v_4 $ and $ v*{10} $ 's proof contain shard $ s_2 $ and other 5 shards
-- Validator $ v_2 $ and $ v_4 $ failed to contain the validity of shard $ s_2 $ in its proof
-- Only validator $ v\_{10} $ succeeded to contain the validity of shard $ s_2 $ in its proof, then
-  - $ |Z\_{s_2}| = 1 $
-  - It doesn't satisfy $ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $
+- Validator $$ v_2 $$, $$ v_4 $$ and $$ v_{10} $$ 's proof contain shard $$ s_2 $$ and other 5 shards
+- Validator $$ v_2 $$ and $$ v_4 $$ failed to contain the validity of shard $$ s_2 $$ in its proof
+- Only validator $$ v_{10} $$ succeeded to contain the validity of shard $$ s_2 $$ in its proof, then
+  - $$ |Z\_{s_2}| = 1 $$
+  - It doesn't satisfy $$ \frac{|Z\_{s_2}|}{r_p} \ge \frac{2}{3} $$
 
 #### Case X: shard s_1, s_3-s_11 are valid with the condition above
 
-- $ |S^\text{available}| = 10 $
-- $ |S_d| = 10 $
-- It satisfies $ |S^\text{available}| \ge |S_d| $
+- $$ |S^\text{available}| = 10 $$
+- $$ |S_d| = 10 $$
+- It satisfies $$ |S^\text{available}| \ge |S_d| $$
 
 #### Case Y: Only shard s_1, s_3 are valid with the condition above
 
-- $ |S^\text{available}| = 2 $
-- $ |S_d| = 10 $
-- It doesn't satisfy $ |S^\text{available}| \ge |S_d| $
+- $$ |S^\text{available}| = 2 $$
+- $$ |S_d| = 10 $$
+- It doesn't satisfy $$ |S^\text{available}| \ge |S_d| $$
 
 ## Parameters
 
