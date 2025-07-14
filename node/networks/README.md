@@ -43,56 +43,53 @@ Currently, Testnet uses v0.2.x binaries for blockchain compatibility.
 
 {% hint style="warning" %}
 **IMPORTANT**: DA Testnet is sometimes initialized to fix bugs or for upgrades that cannot be handled on-chain.
-Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4). If you need more RISE, please use the faucet again or contact our team.
+Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5). If you need more USDrise, please use the faucet again or contact our team.
 {% endhint %}
 
 This network is used to test Data Availability functions on the mainnet.
-Since our testnet does not support DA, please use it to test L2 chains, etc.
-
-Currently the latest is DA 3 Testnet.
 
 ### DA Testnet Details
 
-[sunrise-test-da-4 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4)
+[sunrise-test-da-5 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5)
 
 | Detail | Value                                        |
 | ------ | -------------------------------------------- |
-| RPC    | <https://sunrise-test-da-4.cauchye.net>      |
-| REST   | <https://sunrise-test-da-4.cauchye.net:1318> |
+| RPC    | <https://sunrise-test-da-5.cauchye.net>      |
+| REST   | <https://sunrise-test-da-5.cauchye.net:1318> |
 
-#### IBC Config
+<!-- #### IBC Config
 
 | Src Chain           | Src Port   | Src Channel | Dst Chain  | Dst Port   | Dst Channel   |
 | ------------------- | ---------- | ----------- | ---------- | ---------- | ------------- |
-| `sunrise-test-da-4` | `transfer` | `channel-0` | `provider` | `transfer` | `channel-476` |
+| `sunrise-test-da-5` | `transfer` | `channel-0` | `provider` | `transfer` | `channel-476` |
 
-`provider`is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
-[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet)
+`provider` is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
+[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet) -->
 
 ### Frontend
 
 | Name                | URL                                           |
 | ------------------- | --------------------------------------------- |
-| APP (Tx Portal)     | <https://da-test-4.app.sunriselayer.io>       |
-| Risescan (Explorer) | <https://da-test-4.risescan.sunriselayer.io/> |
+| APP (Tx Portal)     | <https://da-5-test.app.sunriselayer.io>       |
+| Risescan (Explorer) | <https://da-5-test.risescan.sunriselayer.io/> |
 
 ### DA Testnet Software
 
-Please check our proposals and community. See [sunrise-test-da-4](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4) for setup.
+Please check our proposals and community. See [sunrise-test-da-5](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5) for setup.
 
 [Released Binary](https://github.com/sunriselayer/sunrise/releases)
 
 {% hint style="warning" %}
-`sunrise-test-da-1`, `sunrise-test-da-2` and `sunrise-test-da-3` is deprecated. Please move to `sunrise-test-da-4`.
+`sunrise-test-da-1`, `sunrise-test-da-2`, `sunrise-test-da-3`, `sunrise-test-da-4` is deprecated. Please move to `sunrise-test-da-5`.
 {% endhint %}
 
 ### DA Testnet Faucet
 
-RISE faucet is available for testing DA testnet.
-The binary version as of genesis is v0.6.x. For details, see [sunrise-test-da-4](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-4).
+USDrise faucet is available for DA testnet.
+DA 5 testnet and beyond will use USDrise as the fee token.
 
 ```bash
-curl https://da4-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
+curl https://da5-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
 ```
 
 ### Create Validator with RISE
@@ -126,5 +123,16 @@ Run the following command to register a proof deputy from your validator.
 
 ```bash
 sunrised tx da register-proof-deputy [deputy-address] \
---from [your-validator] --chain-id sunrise-test-da-1 --fees 10000urise --gas 1000000 --yes
+--from [your-validator] --chain-id sunrise-test-da-5 --fees 10000uusdrise --gas auto --yes
+```
+
+### Mint USDrise from USDN
+
+The address of the contract to mint USDrise is `sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75`.
+You can mint the same amount of USDrise using USDN.
+
+```bash
+sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
+'{"mint":{"amount":"1000000","recipient":"[your-address]"}}' --amount 1000000uusdn \
+--from [your-account] --fees 10000uusdrise --gas auto --yes
 ```
