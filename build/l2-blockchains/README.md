@@ -106,7 +106,7 @@ Additional considerations:
 ```yaml
 [da]
 rpc_address = "http://localhost:26657"
-fee_denom   = "urise"
+fee_denom   = "uusdrise"
 gas_price   = "0.025"
 
 [rollup]

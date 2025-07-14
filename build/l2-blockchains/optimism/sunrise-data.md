@@ -47,7 +47,7 @@ See [Consensus Node](../../node/types/consensus/full-consensus-node.md) for sett
    
    [publish]
    publisher_account="your_publisher_account"
-   publish_fees="10000urise"
+   publish_fees="10000uusdrise"
 
    [optimism]
    listen_address="127.0.0.1"

@@ -43,7 +43,9 @@ sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ```
 
 ### Validator Public Key
+
 The last thing needed before initializing the validator is to obtain your validator public key which was created when you first initialized your node. To obtain your validator pubkey:
+
 ```bash
 sunrised tendermint show-validator
 {"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="}
@@ -54,7 +56,7 @@ sunrised tendermint show-validator
 A minimum of 1 vRISE is required to create a validator. vRISE is non-transferable, so if you have no balance in your account, please create a position in the Liquidity Pool to earn vRISE.
 
 First, create validator config file [~/.sunrise/config/validator.json].
- 
+
 ```json
 {
   "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="},
@@ -70,6 +72,7 @@ First, create validator config file [~/.sunrise/config/validator.json].
   "min-self-delegation": "1"
 }
 ```
+
 Next, run the following command
 
 ```bash
@@ -77,8 +80,8 @@ sunrised tx staking create-validator [path/to/validator.json] \
     --chain-id=$CHAIN_ID \
     --from=$VALIDATOR_WALLET \
     --keyring-backend=test \
-    --fees=21000urise \
-    --gas=220000
+    --fees=10000uusdrise \
+    --gas=auto
 ```
 
 ## Backup

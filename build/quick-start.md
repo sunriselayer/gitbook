@@ -97,7 +97,7 @@ make demo                # builds demo binary 'demo-rollup'
 cat <<EOF > rollup.config.toml
 [da]
 rpc_address = "http://localhost:26657"
-fee_denom   = "urise"
+fee_denom   = "uusdrise"
 gas_price   = "0.025"
 [rollup]
 chain_id = "demo-rollup-1"
@@ -126,7 +126,7 @@ const main = async () => {
 
   const { transactionHash } = await client.da.submitBlob(
     "Hello Sunrise!",
-    { gasLimit: 200_000, feeDenom: "urise", gasPrice: "0.025" }
+    { gasLimit: 200_000, feeDenom: "uusdrise", gasPrice: "0.025" }
   );
   console.log("Blob tx:", transactionHash);
 

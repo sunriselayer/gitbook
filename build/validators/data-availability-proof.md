@@ -26,8 +26,8 @@ Although validators can send tx themselves to send proof data, it is recommended
 sunrised tx da register-proof-deputy [deputy_address] \
    --from [your_validator_key] \
    --chain-id=$CHAIN_ID \
-   --fees=21000urise \
-   --gas=220000
+   --fees=10000uusdrise \
+   --gas=auto
 ```
 
 To register you need to send a transaction with the validator key only once on `sunrised`.
@@ -73,7 +73,7 @@ See [Validator Node](../../node/types/consensus/validator-node.md) for setting u
    [validator]
     proof_deputy_account="your_deputy_account"
     validator_address="sunrisevaloper1a8jcsmla6heu99ldtazc27dna4qcd4jyv75vcz"
-    proof_fees="10000urise"
+    proof_fees="10000uusdrise"
     proof_interval=5
    ```
 
