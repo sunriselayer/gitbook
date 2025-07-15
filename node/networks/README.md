@@ -57,15 +57,6 @@ This network is used to test Data Availability functions on the mainnet.
 | RPC    | <https://sunrise-test-da-5.cauchye.net>      |
 | REST   | <https://sunrise-test-da-5.cauchye.net:1318> |
 
-<!-- #### IBC Config
-
-| Src Chain           | Src Port   | Src Channel | Dst Chain  | Dst Port   | Dst Channel   |
-| ------------------- | ---------- | ----------- | ---------- | ---------- | ------------- |
-| `sunrise-test-da-5` | `transfer` | `channel-0` | `provider` | `transfer` | `channel-476` |
-
-`provider` is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
-[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet) -->
-
 ### Frontend
 
 | Name                | URL                                           |
@@ -136,3 +127,16 @@ sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txm
 '{"mint":{"amount":"1000000","recipient":"[your-address]"}}' --amount 1000000uusdn \
 --from [your-account] --fees 10000uusdrise --gas auto --yes
 ```
+
+### IBC Config
+
+| Dst Chain  | Dst Port   | Dst Channel   | Src Chain           | Src Port   | Src Channel |
+| ---------- | ---------- | ------------- | ------------------- | ---------- | ----------- |
+| `provider` | `transfer` | `channel-489` | `sunrise-test-da-5` | `transfer` | `channel-0` |
+| `grand-1`  | `transfer` | `channel-532` | `sunrise-test-da-5` | `transfer` | `channel-1` |
+
+`provider` is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
+[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet)
+
+`grand-1` is current Noble testnet [Grand-1 Testnet](https://www.noble.xyz/dev-hub)
+[Noble Testnet chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/nobletestnet)
