@@ -36,11 +36,12 @@ To get $vRISE, users need to provide liquidity in
 | Governance         | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is used for On-chain governance and Gauge Voting |
 | Security Emissions | ![RISE](../../images/RISE.png) RISE                                          | RISE is distributed for stakers as consensus rewards   |
 | LP Emissions       | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is distributed for LPs as incentives             |
-| Fee                | Any (swapped to ![RISE](../../images/RISE.png) RISE)                         | RISE is used as a transaction fee                      |
+| Fee                | Any (swapped to ![USDrise](../../images/USDrise.png) USDrise)                | USDrise is used as a transaction fee                   |
 
 **Legend:**  
 ![RISE](../../images/RISE.png) = RISE  
 ![vRISE](../../images/vRISE.png) = vRISE
+![USDrise](../../images/USDrise.png) = USDrise
 
 ## Tokenomics
 
@@ -122,7 +123,6 @@ which means that tx fee is not burnt.
 
 - Keplr
 - Leap
-- XDEFI
 
 ### Command Line Interface (CLI)
 
