@@ -114,7 +114,7 @@ Run the following command to register a proof deputy from your validator.
 
 ```bash
 sunrised tx da register-proof-deputy [deputy-address] \
---from [your-validator] --chain-id sunrise-test-da-5 --fees 10000uusdrise --gas auto --yes
+--from [your-validator] --chain-id sunrise-test-da-5 --gas-prices 0.0025uusdrise --gas auto -y
 ```
 
 ### Mint USDrise from USDN
@@ -125,7 +125,7 @@ You can mint the same amount of USDrise using USDN.
 ```bash
 sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
 '{"mint":{"amount":"1000000","recipient":"[your-address]"}}' --amount 1000000uusdn \
---from [your-account] --fees 10000uusdrise --gas auto --yes
+--from [your-account] --gas-prices 0.0025uusdrise --gas auto -y
 ```
 
 ### IBC Config

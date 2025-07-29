@@ -22,15 +22,34 @@ sunrise-data provides validators with the functions to monitor and prove data th
 
 Although validators can send tx themselves to send proof data, it is recommended to use a deputy address to prevent leakage of keys.
 
+First, create a new account to serve as the deputy.
+
 ```bash
-sunrised tx da register-proof-deputy [deputy_address] \
-   --from [your_validator_key] \
-   --chain-id=$CHAIN_ID \
-   --fees=10000uusdrise \
-   --gas=auto
+sunrised keys add your_deputy_account --keyring-backend=test
 ```
 
-To register you need to send a transaction with the validator key only once on `sunrised`.
+Next, send some `uusdrise` to this account using the `tx bank send` command. This will be used to pay for gas fees when submitting `SubmitValidityProof` transactions.
+
+```bash
+DEPUTY_ADDRESS=$(sunrised keys show your_deputy_account -a --keyring-backend=test)
+sunrised tx bank send [your_validator_key] $DEPUTY_ADDRESS 1000000uusdrise \
+    --chain-id=$CHAIN_ID \
+    --gas-prices=0.0025uusdrise \
+    --gas=auto \
+    -y
+```
+
+Finally, register the deputy address with your validator. This transaction must be sent from your validator's account and only needs to be done once.
+
+```bash
+sunrised tx da register-proof-deputy $DEPUTY_ADDRESS \
+   --from [your_validator_key] \
+   --chain-id=$CHAIN_ID \
+   --gas-prices=0.0025uusdrise \
+   --gas=auto \
+   -y
+```
+
 Register the address of the deputy to be used on `sunrise-data`.
 
 ### How to set up

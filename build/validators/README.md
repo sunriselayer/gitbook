@@ -1,6 +1,6 @@
 # Validators
 
-- [Validator Node](../../node/types/consensus/validator-node.md)
+- [How to Become a Validator](./validator.md)
 - [Data Availability Proof](./data-availability-proof.md)
 - [Self Delegation](./self-delegation.md)
 
