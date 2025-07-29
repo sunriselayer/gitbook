@@ -28,10 +28,10 @@
 - [🎓 Thesis](learn/thesis/README.md)
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
-- [💰 Point Program](learn/point-program/README.md)
 
-- [💰 App](learn/sunrise-app/README.md)
+- [🌅 App](learn/sunrise-app/README.md)
   - [Fee](learn/sunrise-app/fee.md)
+  - [Point Program](learn/sunrise-app/point-program.md)
 
 ## 🛠️ Build
 
