@@ -29,6 +29,9 @@
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
 
+- [💰 App](learn/sunrise-app/README.md)
+  - [Fee](learn/sunrise-app/fee.md)
+
 ## 🛠️ Build
 
 - [Client](build/client/README.md)
@@ -56,11 +59,11 @@
   - [Upgrade](node/resources/upgrade.md)
   - [Environment](node/resources/environment.md)
 
-## 🏗️ Run a Gluon Node
+<!-- ## 🏗️ Run a Gluon Node
 
 - [Networks](gluon-node/networks/README.md)
 - [Node](gluon-node/nodes/README.md)
-  - [Validator Node](gluon-node/nodes/validator-node.md)
+  - [Validator Node](gluon-node/nodes/validator-node.md) -->
 
 ## 🔗 Links
 
