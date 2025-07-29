@@ -43,11 +43,12 @@ For detailed instructions, please refer to the [README in the sunriselayer/netwo
 
 ### Join as a Validator After the Chain Has Started
 
-If the chain is already running, you can create a validator using one of the following methods.
+If the chain is already running, you can create a validator with the following method.
 
-#### Method 1: `tx staking create-validator` (SDK Standard)
+#### `tx staking create-validator`
 
 This is the standard Cosmos SDK method, which uses a `validator.json` file to create a validator. This method requires `vRISE` for self-delegation.
+This method requires `vRISE` for self-delegation.
 
 1. **Get the Validator's Public Key**
 
@@ -91,43 +92,6 @@ This is the standard Cosmos SDK method, which uses a `validator.json` file to cr
     ```bash
     sunrised tx staking create-validator [path/to/validator.json] [flags]
     ```
-
-#### Method 2: `tx shareclass create-validator` (Custom)
-
-This method allows you to create a validator using `RISE` instead of `vRISE`. However, **the initial self-stake must be at least `1000000urise` (1 RISE)**.
-
-This command specifies parameters directly via flags instead of using a `validator.json` file.
-
-```bash
-# Get validator address
-VALIDATOR_ADDRESS=$(sunrised keys show <key_name> --bech val -a)
-
-sunrised tx shareclass create-validator $VALIDATOR_ADDRESS 1000000 1000000urise \
---from <key_name> \
---chain-id <chain_id> \
---pubkey=$(sunrised tendermint show-validator) \
---commission='{"rate":"0.1","max_rate":"0.2","max_change_rate":"0.01"}' \
---description='{"moniker":"<your_moniker>","identity":"","website":"","security_contact":"","details":""}' \
---gas="auto" \
---gas-prices="0.0025uusdrise" \
--y
-```
-
-**Parameter Description:**
-
-- `[validator_address]`: The validator's address (`sunrisevaloper...`)
-- `[min_self_delegation]`: The minimum self-delegation amount. Must be at least `1000000` (1 RISE).
-- `[amount]`: The amount of `RISE` to self-delegate. Example: `1000000urise`
-- `--from`: The name of the key to sign the transaction with.
-- `--pubkey`: The public key obtained from `sunrised tendermint show-validator`.
-- `--commission`: The commission rates.
-- `--description`: The validator's description.
-
-**Usage:**
-
-```bash
-sunrised tx shareclass create-validator [validator_address] [min_self_delegation] [amount] [flags]
-```
 
 ## Backup
 
