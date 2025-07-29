@@ -30,8 +30,12 @@
   - [Interoperability](learn/thesis/interoperability.md)
 
 - [🌅 App](learn/sunrise-app/README.md)
-  - [Fee](learn/sunrise-app/fee.md)
+  - [Liquidity Pool](learn/sunrise-app/liquidity-pool.md)
+  - [Swap](learn/sunrise-app/swap.md)
+  - [Governance](learn/sunrise-app/gov.md)
+  - [Lockup](learn/sunrise-app/lockup.md)
   - [Point Program](learn/sunrise-app/point-program.md)
+  - [Fee](learn/sunrise-app/fee.md)
 
 ## 🛠️ Build
 
