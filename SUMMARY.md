@@ -28,9 +28,13 @@
 - [🎓 Thesis](learn/thesis/README.md)
   - [App chain thesis](learn/thesis/app-chain-thesis.md)
   - [Interoperability](learn/thesis/interoperability.md)
-- [💰 Point Program](learn/point-program/README.md)
 
-- [💰 App](learn/sunrise-app/README.md)
+- [🌅 App](learn/sunrise-app/README.md)
+  - [Liquidity Pool](learn/sunrise-app/liquidity-pool.md)
+  - [Swap](learn/sunrise-app/swap.md)
+  - [Governance](learn/sunrise-app/gov.md)
+  - [Lockup](learn/sunrise-app/lockup.md)
+  - [Point Program](learn/sunrise-app/point-program.md)
   - [Fee](learn/sunrise-app/fee.md)
 
 ## 🛠️ Build
