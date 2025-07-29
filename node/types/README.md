@@ -5,13 +5,8 @@ Sunrise node operators can run several options on the network.
 
 ## Consensus
 
-- [Validator node](./consensus/build-validator-node.md): This type of node participates in consensus by producing and voting on blocks.
-- [Full consensus node](./consensus/build-full-node.md): A sunrise-app Full node to sync blockchain history.
-
-## Data Availability
-
-- [OP Stack](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/optimism): A guide to creating Sunrise L2 using OP Stack.
-- [Sunrise Alt DA](https://docs.sunriselayer.io/run-a-sunrise-node/types/data-availability/alt-da): The documentation for software that connects L2 and Sunrise chains; OP Stack is supported.
+- [Validator node](./consensus/validator-node.md): This type of node participates in consensus by producing and voting on blocks.
+- [Full consensus node](./consensus/full-consensus-node.md): A sunrise-app Full node to sync blockchain history.
 
 ## Requirements
 
