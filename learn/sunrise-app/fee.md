@@ -4,7 +4,7 @@ The Sunrise Chain utilizes a **Fee Abstraction** mechanism for paying transactio
 
 ## Base Currency for Transaction Fees
 
-The base currency for transaction fees on the Sunrise Chain is **$USDrise**.
+The base currency for transaction fees on the Sunrise Chain is ![USDrise](../../images/USDrise.png) **$USDrise** .
 All transaction fees are internally calculated and processed in USDrise.
 
 For more details on $USDrise, please refer to this document:
@@ -51,8 +51,8 @@ If your connected wallet address is on the whitelist, the "USDrise Converter" bu
 2. **Find the Converter Button**: If eligible, you will see a "USDrise Converter" button in the header menu.
 3. **Open the Converter**: Click the button to open the conversion dialog.
 4. **Review and Confirm**: The dialog will display the fixed conversion rate:
-    * **You Send**: 0.625 RISE
-    * **You Receive**: 0.05 USDrise
+    * **You Send**: ![RISE](../../images/RISE.png) 0.625 RISE
+    * **You Receive**: ![USDrise](../../images/USDrise.png) 0.05 USDrise
 5. **Submit the Request**: Click the "Send Request" button to proceed. The transaction will be processed, and you will receive USDrise in your wallet.
 
 ### Important Notes

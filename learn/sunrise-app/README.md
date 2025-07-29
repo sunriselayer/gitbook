@@ -6,11 +6,11 @@ Sunrise is a decentralized application (dApp) that provides a comprehensive suit
 
 The Sunrise ecosystem is powered by three distinct tokens, each with a specific purpose.
 
-- **RISE**: The primary value-accrual and consensus token of the network. It can be staked to help secure the network and earn rewards.
-- **vRISE**: The non-transferable governance and utility token. **vRISE is essential for participating in the protocol's governance.**
+- ![RISE](../../images/RISE.png) **RISE**: The primary value-accrual and consensus token of the network. It can be staked to help secure the network and earn rewards.
+- ![vRISE](../../images/vRISE.png) **vRISE**: The non-transferable governance and utility token. **vRISE is essential for participating in the protocol's governance.**
   - **How to Earn vRISE**: You can only earn vRISE by providing liquidity in the **[Liquidity Pool](./liquidity-pool.md)**.
   - **How to Use vRISE**: Stake your vRISE to gain voting power for **[Governance](./gov.md)** proposals and to direct liquidity pool incentives through Gauge Voting.
-- **USDrise**: The native stablecoin of the protocol. It is used as the base currency for all transaction fees.
+- ![USDrise](../../images/USDrise.png) **USDrise**: The native stablecoin of the protocol. It is used as the base currency for all transaction fees.
 
 ## Core Features
 

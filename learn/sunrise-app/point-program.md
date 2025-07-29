@@ -22,7 +22,7 @@ Sunrise Point Program rewards users across multiple dimensions:
 
 ---
 
-## Daily: vRISE Staking
+## Daily: ![vRISE](../../images/vRISE.png) vRISE Staking
 
 Claim your staking points once every 24 hours. Points are calculated based on your current staking amount.
 

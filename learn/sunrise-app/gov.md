@@ -15,12 +15,12 @@ There are two main aspects to governance:
 
 You can earn staking rewards by delegating your tokens to a validator. The characteristics of delegating differ between vRISE and RISE.
 
-| Feature             | vRISE                    | RISE               |
-| :------------------ | :----------------------- | :----------------- |
-| **Voting Power**    | Yes (Proposals & Gauges) | No                 |
-| **Staking Rewards** | Yes (Auto-compounding)   | Yes (Manual claim) |
-| **Transferability** | No                       | Yes                |
-| **Redelegation**    | Yes                      | No                 |
+| Feature             | 　![vRISE](../../images/vRISE.png) vRISE | ![RISE](../../images/RISE.png) RISE |
+| :------------------ | :--------------------------------------- | :---------------------------------- |
+| **Voting Power**    | Yes (Proposals & Gauges)                 | No                                  |
+| **Staking Rewards** | Yes (Auto-compounding)                   | Yes (Manual claim)                  |
+| **Transferability** | No                                       | Yes                                 |
+| **Redelegation**    | Yes                                      | No                                  |
 
 ### How to Stake
 
