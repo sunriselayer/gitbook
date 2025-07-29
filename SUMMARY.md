@@ -55,6 +55,8 @@
 ## 🏗️ Run a Sunrise Node
 
 - [Networks](node/networks/README.md)
+  - [Mainnet](node/networks/mainnet.md)
+  - [Testnet](node/networks/testnet.md)
 - [Types of Nodes](node/types/README.md)
   - [Consensus](node/types/consensus/README.md)
     - [Full Consensus Node](node/types/consensus/full-consensus-node.md)

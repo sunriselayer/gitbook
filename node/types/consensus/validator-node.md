@@ -80,8 +80,9 @@ sunrised tx staking create-validator [path/to/validator.json] \
     --chain-id=$CHAIN_ID \
     --from=$VALIDATOR_WALLET \
     --keyring-backend=test \
-    --fees=10000uusdrise \
-    --gas=auto
+    --gas-prices=0.0025uusdrise \
+    --gas=auto \
+    -y
 ```
 
 ## Backup
@@ -98,8 +99,10 @@ It is recommended that you encrypt the backup of these files.
 The core team will delegate RISE to validators who serve the following services:
 
 - IBC relayer
-  - `100000000microRISE` delegation per channel
+  - `100RISE` delegation per channel
 - Node snapshot
-  - `10000000000microRISE` delegation
+  - `10000RISE` delegation
 - REST API endpoints
-  - `10000000000microRISE` delegation
+  - `10000RISE` delegation
+
+If you wish to join, please contact the team via Discord or other methods.
