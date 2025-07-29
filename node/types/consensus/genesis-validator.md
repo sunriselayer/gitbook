@@ -29,7 +29,7 @@ sunrised tendermint unsafe-reset-all
 
 ### Initialize a working directory
 
-Run the following command:
+Check [our Github](https://github.com/sunriselayer/network) to know the current `chain-id` and run the following command:
 
 ```bash
 CHAIN_ID=sunrise-1
@@ -37,7 +37,12 @@ MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-Check [our Github](https://github.com/sunriselayer/network) to know the current chain-id.
+Change `genesis.json` to the one in the network repository.
+
+```bash
+wget https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/gentx/genesis.json
+cp genesis.json $HOME/.sunrise/config/genesis.json
+```
 
 ### Create a new key
 
@@ -49,7 +54,7 @@ sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ### Create the genesis transaction for new chain
 
 ```bash
-STAKING_AMOUNT=1000000urise
+STAKING_AMOUNT=1000000uvrise
 sunrised genesis gentx $VALIDATOR_WALLET $STAKING_AMOUNT --chain-id $CHAIN_ID \
    --pubkey=$(sunrised tendermint show-validator) \
    --moniker=$MONIKER \
@@ -64,15 +69,4 @@ You will find the generated gentx JSON file inside `$HOME/.sunrised/config/gentx
 
 ### Create Pull Request to register your gentx
 
-To register your gentx, run the commands as follows and create a pull-request on GitHub.
-
-```bash
- mv $HOME/.sunrised/config/gentx/gentx-*.json $HOME/.sunrised/config/gentx/gentx-${MONIKER}.json
- git clone https://github.com/sunriselayer/public-testnet/
- cd public-testnet
- git checkout -b gentx/$MONIKER
- cp $HOME/.sunrised/config/gentx/gentx-${MONIKER}.json gentx/sunrise-testnet-1
- git add gentx/sunrise-testnet-1
- git commit -m "Add gentx: $MONIKER"
- git push origin $(git branch --show-current)
-```
+To register your gentx, create a pull-request to the [network repository](https://github.com/sunriselayer/network/tree/main/sunrise-1/gentx).

@@ -41,7 +41,7 @@ The tutorial is done on Ubuntu 22.04 (LTS). Follow [the environment tutorial](..
 
 ### Install
 
-[Install Go](https://go.dev/doc/install) 1.22
+[Install Go](https://go.dev/doc/install) 1.24.2
 
 ```bash
 git clone https://github.com/sunriselayer/sunrise.git

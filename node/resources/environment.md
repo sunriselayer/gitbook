@@ -16,9 +16,9 @@ sudo apt install -y tar wget aria2 clang pkg-config libssl-dev jq build-essentia
 Install Golang
 
 ```bash
-wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
-sudo rm -rf /urise/local/go && sudo tar -C /urise/local -xzf go1.22.2.linux-amd64.tar.gz
-rm go1.22.2.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+sudo rm -rf /urise/local/go && sudo tar -C /urise/local -xzf go1.24.2.linux-amd64.tar.gz
+rm go1.24.2.linux-amd64.tar.gz
 echo "export PATH=$PATH:/urise/local/go/bin:$HOME/go/bin" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
