@@ -1,27 +1,27 @@
-# Validator Node (Genesis)
+# バリデータノード（ジェネシス）
 
-バリデータノードを使用すると、Sunrise ネットワークのコンセンサスに参加することができます。
+バリデータノードを使用すると、Sunriseネットワークのコンセンサスに参加することができます。
 
 {% hint style="info" %}
-この方法でバリデータとして参加できるのは、ネットワークが開始される前（ジェネシス時）のみです。ネットワークがすでに開始されている場合は、[このチュートリアル](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus/validator-node)をご覧ください。
+この方法でバリデータとして参加できるのは、ネットワークが開始される前（ジェネシス時）のみです。ネットワークがすでに開始されている場合は、[このチュートリアル](validator-node.md)をご覧ください。
 {% endhint %}
 
 ## ハードウェア要件
 
 バリデータノードを実行するために推奨される最小限のハードウェア要件は以下の通りです。
 
-- Memory: 8 GB RAM (minimum)
-- CPU: 6 cores
-- Disk: 500 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- メモリ：8 GB RAM（最小）
+- CPU：6コア
+- ディスク：500 GB SSDストレージ
+- 帯域幅：ダウンロード1 Gbps / アップロード1 Gbps
 
 ## ノードの実行
 
-まず、[フルコンセンサスノード](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus/full-consensus-node)の設定手順に従ってください。
+まず、[フルコンセンサスノード](full-consensus-node.md)の設定手順に従ってください。
 
 ### オプション: 作業ディレクトリのリセット
 
-過去に `sunrised` の作業ディレクトリをすでに初期化している場合、新しいディレクトリを再初期化する前にクリーンアップする必要があります。以下のコマンドを実行することでクリーンアップができます。
+過去に`sunrised`の作業ディレクトリをすでに初期化している場合、新しいディレクトリを再初期化する前にクリーンアップする必要があります。以下のコマンドを実行することでクリーンアップができます。
 
 ```bash
 sunrised tendermint unsafe-reset-all
@@ -32,10 +32,12 @@ sunrised tendermint unsafe-reset-all
 次のコマンドを実行してください。
 
 ```bash
-CHAIN_ID=sunrise-test-1
+CHAIN_ID=sunrise-1
 MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
+
+現在のchain-idを知るには、[私たちのGithub](https://github.com/sunriselayer/network)を確認してください。
 
 ### 新しいキーの作成
 
@@ -58,11 +60,11 @@ sunrised genesis gentx $VALIDATOR_WALLET $STAKING_AMOUNT --chain-id $CHAIN_ID \
    --keyring-backend test
 ```
 
-`$HOME/.sunrised/config/gentx/gentx-\*.json` の中に生成された gentx JSON ファイルが見つかります。
+`$HOME/.sunrised/config/gentx/gentx-*.json`の中に生成されたgentx JSONファイルが見つかります。
 
-### gentx の登録のためのプルリクエストの作成
+### gentxの登録のためのプルリクエストの作成
 
-GitHub でプルリクエストを作成するために、以下のコマンドを実行して gentx を登録してください。
+GitHubでプルリクエストを作成するために、以下のコマンドを実行してgentxを登録してください。
 
 ```bash
  mv $HOME/.sunrised/config/gentx/gentx-*.json $HOME/.sunrised/config/gentx/gentx-${MONIKER}.json

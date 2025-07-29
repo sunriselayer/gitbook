@@ -1,27 +1,27 @@
-# Sunrise Bridge Node（ブリッジノード）
+# Sunriseブリッジノード
 
-ブリッジノードは、ブロックチェーンのデータ可用性レイヤーとコンセンサス層を接続します。
+ブリッジノードは、データ可用性レイヤーとコンセンサスレイヤーを接続します。
 
 ## ハードウェア要件
 
-ブリッジノードを実行するために推奨される最小限のハードウェア要件は以下の通りです。
+ブリッジノードを実行するための最小ハードウェア要件は以下の通りです：
 
-- Memory: 4 GB RAM (最小)
-- CPU: 6 cores
-- Disk: 10 TB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- メモリ：4 GB RAM（最小）
+- CPU：6コア
+- ディスク：10 TB SSDストレージ
+- 帯域幅：ダウンロード1 Gbps / アップロード1 Gbps
 
 ## 依存関係
 
-このチュートリアルは Ubuntu 22.04（LTS）で実行されます。
-[環境構築チュートリアル](../../resources/enviromant.md)に従ってください。
+このチュートリアルはUbuntu 22.04（LTS）で行われます。
+[環境チュートリアル](../../resources/enviromant.md)に従ってください。
 
 ## ブリッジノードの実行
 
 ### インストール
 
 ```bash
-git clone https://github.com/SunriseLayer/sunrise-da.git
+git clone https://github.com/sunriselayer/sunrise-da.git
 cd sunrise-da
 git checkout $TAG
 make build
@@ -34,12 +34,10 @@ sudo make install
 sunrise bridge init --core.ip <URI> --p2p.network <NETWORK>
 ```
 
-`--core.ip` gRPC ポートのデフォルトは 9090 です。IP アドレスの後にポートを追加するか、`--core.grpc.port`フラグを使用して別のポートを指定することができます。
-必要なポートの開放については、[リソースページ](../../resources/README.md)を参照してください。
+`--core.ip`のgRPCポートはデフォルトで9090です。IPアドレスの後にポートを追加するか、`--core.grpc.port`フラグを使用して別のポートを指定できます。
+どのポートを開放する必要があるかについては、[リソースページ](../../resources/README.md)を参照してください。
 
-例:
-
-`--core.ip` gRPC ポートのデフォルト番号は 9090 です。IP アドレスの後にポートを追加するか、`--core.grpc.port` フラグを使用して別のポートを指定することができます。どのポートを開放する必要があるかについての情報は、[リソースページ](https://docs.sunriselayer.io/run-a-sunrise-node/resources)を参照してください。
+例：
 
 ```bash
 sunrise bridge init --core.ip sunrise-private-2.cauchye.net --p2p.network private
@@ -47,13 +45,13 @@ sunrise bridge init --core.ip sunrise-private-2.cauchye.net --p2p.network privat
 
 ### ノードの実行
 
-バリデータノードの gRPC エンドポイント（通常は Port:9090）への接続を使用してブリッジノードを起動します。
+バリデータノードのgRPCエンドポイント（通常はポート9090）に接続してブリッジノードを起動します：
 
 ```bash
 sunrise bridge start --core.ip <URI> --p2p.network <NETWORK>
 ```
 
-例:
+例：
 
 ```bash
 sunrise bridge start --core.ip sunrise-private-2.cauchye.net --p2p.network private
