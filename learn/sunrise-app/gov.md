@@ -15,12 +15,12 @@ There are two main aspects to governance:
 
 You can earn staking rewards by delegating your tokens to a validator. The characteristics of delegating differ between vRISE and RISE.
 
-| Feature | vRISE | RISE |
-| :--- | :--- | :--- |
-| **Voting Power** | Yes (Proposals & Gauges) | No |
-| **Staking Rewards** | Yes (Auto-compounding) | Yes (Manual claim) |
-| **Transferability** | No | Yes |
-| **Redelegation** | Yes | No |
+| Feature             | vRISE                    | RISE               |
+| :------------------ | :----------------------- | :----------------- |
+| **Voting Power**    | Yes (Proposals & Gauges) | No                 |
+| **Staking Rewards** | Yes (Auto-compounding)   | Yes (Manual claim) |
+| **Transferability** | No                       | Yes                |
+| **Redelegation**    | Yes                      | No                 |
 
 ### How to Stake
 
@@ -30,7 +30,7 @@ You can earn staking rewards by delegating your tokens to a validator. The chara
 4. Enter the amount of tokens you want to delegate and approve the transaction.
 
 {% hint style="warning" %}
-To stake locked RISE, you must do so from the **Lockup** page, not this one. Please refer to the "Lockup" documentation for details.
+To stake locked RISE, you must do so from the **[Lockup](./lockup.md)** page, not this one. Please refer to the "Lockup" documentation for details.
 {% endhint %}
 
 ### Managing Your Delegations
@@ -56,10 +56,10 @@ Important protocol decisions, such as chain parameter changes or the use of comm
 1. On the "Proposals" page, you can see a list of current and past proposals.
 2. Click on a proposal to view its details, current voting status (percentage of Yes, No, Abstain votes), and the voting period.
 3. If a proposal is in its voting period, you can cast your vote using your voting power (based on your staked vRISE amount). The voting options are:
-    - **Yes**
-    - **No**
-    - **Abstain**
-    - **No With Veto**: A strong "No" vote that can override a proposal and burn the deposit.
+   - **Yes**
+   - **No**
+   - **Abstain**
+   - **No With Veto**: A strong "No" vote that can override a proposal and burn the deposit.
 
 ## Gauge Voting
 
