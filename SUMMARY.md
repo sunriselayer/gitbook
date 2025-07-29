@@ -39,7 +39,8 @@
 
 ## 🛠️ Build
 
-- [Client](build/client/README.md)
+- [Validators](build/validators/README.md)
+  - [Proof of Data Availability](build/validators/data-availability-proof.md)
 - [L2 Blockchains](build/l2-blockchains/README.md)
   - [Rollkit](build/l2-blockchains/rollkit/README.md)
     - [Sunrise Data](build/l2-blockchains/rollkit/sunrise-data.md)
@@ -47,8 +48,7 @@
   - [OP Stack](build/l2-blockchains/optimism/README.md)
     - [Sunrise Data](build/l2-blockchains/optimism/sunrise-data.md)
     - [OP Stack L2 Chain](build/l2-blockchains/optimism/op-stack.md)
-- [Validators](build/validators/README.md)
-  - [Proof of Data Availability](build/validators/data-availability-proof.md)
+- [Client](build/client/README.md)
 
 ## 🏗️ Run a Sunrise Node
 
