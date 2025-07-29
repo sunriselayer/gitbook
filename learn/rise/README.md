@@ -39,9 +39,7 @@ To get $vRISE, users need to provide liquidity in
 | Fee                | Any (swapped to ![USDrise](../../images/USDrise.png) USDrise)                | USDrise is used as a transaction fee                   |
 
 **Legend:**  
-![RISE](../../images/RISE.png) = RISE  
-![vRISE](../../images/vRISE.png) = vRISE
-![USDrise](../../images/USDrise.png) = USDrise
+![RISE](../../images/RISE.png) = RISE  ![vRISE](../../images/vRISE.png) = vRISE  ![USDrise](../../images/USDrise.png) = USDrise
 
 ## Tokenomics
 
