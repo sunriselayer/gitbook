@@ -40,7 +40,9 @@
 ## 🛠️ Build
 
 - [Validators](build/validators/README.md)
+  - [How to Become a Validator](build/validators/validator.md)
   - [Proof of Data Availability](build/validators/data-availability-proof.md)
+  - [Self Delegation](build/validators/self-delegation.md)
 - [L2 Blockchains](build/l2-blockchains/README.md)
   - [Rollkit](build/l2-blockchains/rollkit/README.md)
     - [Sunrise Data](build/l2-blockchains/rollkit/sunrise-data.md)
@@ -53,6 +55,8 @@
 ## 🏗️ Run a Sunrise Node
 
 - [Networks](node/networks/README.md)
+  - [Mainnet](node/networks/mainnet.md)
+  - [Testnet](node/networks/testnet.md)
 - [Types of Nodes](node/types/README.md)
   - [Consensus](node/types/consensus/README.md)
     - [Full Consensus Node](node/types/consensus/full-consensus-node.md)
