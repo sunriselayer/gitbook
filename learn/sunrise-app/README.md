@@ -24,7 +24,7 @@ Here's a quick overview of the primary sections of the app. Each feature has its
   - Use your staked **vRISE** to vote on governance proposals and liquidity pool incentives. You can also stake RISE to earn consensus rewards.
 - **[Lockup](./lockup.md)**
   - Manage your locked tokens received from airdrops or other programs. You can stake these locked tokens to earn rewards while they vest.
-- **[Point Program](./point-program/README.md)**
+- **[Point Program](./point-program.md)**
   - Earn points by participating in various activities within the ecosystem, such as staking, providing liquidity, and referring new users.
 
 ## Understanding Fees on Sunrise
