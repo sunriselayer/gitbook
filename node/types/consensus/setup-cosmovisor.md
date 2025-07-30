@@ -20,25 +20,12 @@ go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 Some environment variables must be set to appropriate values for each node and each network.
 
 ```Bash
-echo "export CHAIN_REPO=https://github.com/sunriselayer/sunrise" >> ~/.bash_profile
-echo "export CHAIN_REPO_BRANCHE=main" >> ~/.bash_profile
-echo "export TARGET=sunrised" >> ~/.bash_profile
-echo "export TARGET_HOME=.sunrise" >> ~/.bash_profile
-# This value will be different for each node.
-echo "export MONIKER=<your-moniker>" >> ~/.bash_profile
-# This value is example of mainnet.
-echo "export CHAIN_ID=sunrise-1" >> ~/.bash_profile
-echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/genesis.json" >> ~/.bash_profile
-echo "export SETUP_NODE_CONFIG_ENV=TRUE" >> ~/.bash_profile
-echo "export SETUP_NODE_ENV=TRUE" >> ~/.bash_profile
-echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
-echo "export DAEMON_NAME=\$TARGET" >> ~/.bash_profile
-# This value will be different for each node.
-echo "export DAEMON_HOME=$HOME/.sunrise" >> ~/.bash_profile
-echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> ~/.bash_profile
-echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.bash_profile
-echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bash_profile
-echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.bash_profile
+echo "export DAEMON_NAME=sunrised" >> ~/.profile
+echo "export DAEMON_HOME=$HOME/.sunrised" >> ~/.profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> ~/.profile
+echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.profile
+echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.profile
+echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.profile
 ```
 
 Then source your profile to have access to these variables:
@@ -83,13 +70,13 @@ Description=Cosmovisor daemon
 After=network-online.target
 [Service]
 Environment="DAEMON_NAME=sunrised"
-Environment="DAEMON_HOME=/home/<your-user>/.sunrise"
+Environment="DAEMON_HOME=$DAEMON_HOME"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true" // Recommend
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
-User=<your-user>
-ExecStart=/home/<your-user>/go/bin/cosmovisor start
+User=$USER
+ExecStart=${HOME}/go/bin/cosmovisor start
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
