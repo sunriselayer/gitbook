@@ -1,6 +1,70 @@
-# Sunrise Testnet
+# Sunrise Testnets
 
-## DA Testnet
+## Dawn Testnet
+
+{% hint style="warning" %}
+**IMPORTANT**: Testnet is sometimes initialized to fix bugs or for upgrades that cannot be handled on-chain.
+Please update your software according to the [documentation](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5). If you need more USDrise, please use the faucet again or contact our team.
+{% endhint %}
+
+This network is used to test Data Availability functions on the mainnet.
+
+### Dawn Testnet Details
+
+[dawn-1 Network Details](https://github.com/sunriselayer/network/tree/main/dawn-1)
+
+| Detail | Value                                        |
+| ------ | -------------------------------------------- |
+| RPC    | <https://sunrise-dawn-1.cauchye.com>      |
+| REST   | <https://sunrise-dawn-1.cauchye.com:1318> |
+
+### Dawn Testnet Frontend
+
+| Name                | URL                                           |
+| ------------------- | --------------------------------------------- |
+| Dawn APP (Tx Portal)     | <https://dawn-1.app.sunriselayer.io>       |
+| Risescan (Explorer) | <https://dawn-1.risescan.sunriselayer.io> |
+
+### Dawn Testnet Software
+
+Please check our proposals and community. See [dawn-1 Github](https://github.com/sunriselayer/network/tree/main/dawn-1) for setup.
+
+[Released Binary](https://github.com/sunriselayer/sunrise/releases)
+
+### Dawn Testnet Faucet
+
+RISE & USDrise faucet is available for Dawn testnet.
+This faucet is provided within the Dawn APP.
+
+To use it, it must be signed in a wallet that has at least 0.01 ETH on the Ethereum mainnet. No cost.
+
+### Mint USDrise from USDN on Dawn Testnet
+
+The address of the contract to mint USDrise is `sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75`.
+You can mint the same amount of USDrise using USDN.
+
+```bash
+sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
+'{"mint":{"amount":"1000000","recipient":"[your-address]"}}' --amount 1000000uusdn \
+--from [your-account] --gas-prices 0.0025uusdrise --gas auto -y
+```
+
+### IBC Config on Dawn Testnet
+
+| Dst Chain  | Dst Port   | Dst Channel   | Src Chain           | Src Port   | Src Channel |
+| ---------- | ---------- | ------------- | ------------------- | ---------- | ----------- |
+| `grand-1`  | `transfer` | `channel-554` | `dawn-1` | `transfer` | `channel-0` |
+| `provider` | `transfer` | `channel-493` | `dawn-1` | `transfer` | `channel-1` |
+
+`grand-1` is current Noble testnet [Grand-1 Testnet](https://www.noble.xyz/dev-hub)
+[Noble Testnet chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/nobletestnet)
+
+`provider` is current CosmosHub testnet [Cosmos ICS Provider Testnet](https://hub.cosmos.network/main/hub-tutorials/join-testnet)
+[provider chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/cosmosicsprovidertestnet)
+
+## Deprecated Testnets
+
+### DA Testnet
 
 {% hint style="warning" %}
 **IMPORTANT**: DA Testnet is sometimes initialized to fix bugs or for upgrades that cannot be handled on-chain.
@@ -9,7 +73,7 @@ Please update your software according to the [documentation](https://github.com/
 
 This network is used to test Data Availability functions on the mainnet.
 
-### DA Testnet Details
+#### DA Testnet Details
 
 [sunrise-test-da-5 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5)
 
@@ -18,14 +82,7 @@ This network is used to test Data Availability functions on the mainnet.
 | RPC    | <https://sunrise-test-da-5.cauchye.net>      |
 | REST   | <https://sunrise-test-da-5.cauchye.net:1318> |
 
-### Frontend
-
-| Name                | URL                                           |
-| ------------------- | --------------------------------------------- |
-| APP (Tx Portal)     | <https://da-5-test.app.sunriselayer.io>       |
-| Risescan (Explorer) | <https://da-5-test.risescan.sunriselayer.io/> |
-
-### DA Testnet Software
+#### DA Testnet Software
 
 Please check our proposals and community. See [sunrise-test-da-5](https://github.com/sunriselayer/network/tree/main/sunrise-test-da-5) for setup.
 
@@ -34,24 +91,6 @@ Please check our proposals and community. See [sunrise-test-da-5](https://github
 {% hint style="warning" %}
 `sunrise-test-da-1`, `sunrise-test-da-2`, `sunrise-test-da-3`, `sunrise-test-da-4` is deprecated. Please move to `sunrise-test-da-5`.
 {% endhint %}
-
-### DA Testnet Faucet
-
-USDrise faucet is available for DA testnet.
-DA 5 testnet and beyond will use USDrise as the fee token.
-
-```bash
-curl https://da5-faucet-requests-le6vcwy6pa-an.a.run.app/?address=[your-address]
-```
-
-### Create Validator with RISE
-
-`x/shareclass` allows validators to create validators only with RISE.
-This feature is not shown in the header because it is for validators and developers.
-
-<https://da-test.app.sunriselayer.io/share-class>
-
-The feature of staking RISE is also provided on this page.
 
 ### How to use sunrise-data on DA Testnet
 
@@ -78,7 +117,7 @@ sunrised tx da register-proof-deputy [deputy-address] \
 --from [your-validator] --chain-id sunrise-test-da-5 --gas-prices 0.0025uusdrise --gas auto -y
 ```
 
-### Mint USDrise from USDN
+#### Mint USDrise from USDN on DA Testnet
 
 The address of the contract to mint USDrise is `sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75`.
 You can mint the same amount of USDrise using USDN.
@@ -89,7 +128,7 @@ sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txm
 --from [your-account] --gas-prices 0.0025uusdrise --gas auto -y
 ```
 
-### IBC Config
+#### IBC Config on DA Testnet
 
 | Dst Chain  | Dst Port   | Dst Channel   | Src Chain           | Src Port   | Src Channel |
 | ---------- | ---------- | ------------- | ------------------- | ---------- | ----------- |
@@ -101,8 +140,6 @@ sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txm
 
 `grand-1` is current Noble testnet [Grand-1 Testnet](https://www.noble.xyz/dev-hub)
 [Noble Testnet chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/nobletestnet)
-
-## Deprecated Testnets
 
 ### Incentivized Testnet 0.2
 
