@@ -13,17 +13,17 @@ This network is used to test Data Availability functions on the mainnet.
 
 [dawn-1 Network Details](https://github.com/sunriselayer/network/tree/main/dawn-1)
 
-| Detail | Value                                        |
-| ------ | -------------------------------------------- |
+| Detail | Value                                     |
+| ------ | ----------------------------------------- |
 | RPC    | <https://sunrise-dawn-1.cauchye.com>      |
 | REST   | <https://sunrise-dawn-1.cauchye.com:1318> |
 
 ### Dawn Testnet Frontend
 
-| Name                | URL                                           |
-| ------------------- | --------------------------------------------- |
-| Dawn APP (Tx Portal)     | <https://dawn-1.app.sunriselayer.io>       |
-| Risescan (Explorer) | <https://dawn-1.risescan.sunriselayer.io> |
+| Name                 | URL                                       |
+| -------------------- | ----------------------------------------- |
+| Dawn APP (Tx Portal) | <https://dawn-1.app.sunriselayer.io>      |
+| Risescan (Explorer)  | <https://dawn-1.risescan.sunriselayer.io> |
 
 ### Dawn Testnet Software
 
@@ -51,10 +51,10 @@ sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txm
 
 ### IBC Config on Dawn Testnet
 
-| Dst Chain  | Dst Port   | Dst Channel   | Src Chain           | Src Port   | Src Channel |
-| ---------- | ---------- | ------------- | ------------------- | ---------- | ----------- |
-| `grand-1`  | `transfer` | `channel-554` | `dawn-1` | `transfer` | `channel-0` |
-| `provider` | `transfer` | `channel-493` | `dawn-1` | `transfer` | `channel-1` |
+| Dst Chain  | Dst Port   | Dst Channel   | Src Chain | Src Port   | Src Channel |
+| ---------- | ---------- | ------------- | --------- | ---------- | ----------- |
+| `grand-1`  | `transfer` | `channel-554` | `dawn-1`  | `transfer` | `channel-0` |
+| `provider` | `transfer` | `channel-493` | `dawn-1`  | `transfer` | `channel-1` |
 
 `grand-1` is current Noble testnet [Grand-1 Testnet](https://www.noble.xyz/dev-hub)
 [Noble Testnet chain-registry](https://github.com/cosmos/chain-registry/tree/master/testnets/nobletestnet)
