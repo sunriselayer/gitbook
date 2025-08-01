@@ -16,7 +16,7 @@ For more detailed information on the `x/stable` module, please refer to the [x/s
 ## Key Features
 
 - **Transaction Fees:** All transaction fees within the Sunrise protocol are paid in USDrise, making it a central component of the network's economy.
-- **Yield Bearing:** USDrise offers a yield equivalent to that of USDN, allowing holders to earn passive income.
+- **Yield Generation:** Because USDrise is collateralized with USDN, it generates yield that is distributed to $RISE and $vRISE stakers.
 
 ## Fee Mechanism and Distribution
 
