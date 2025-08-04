@@ -80,7 +80,7 @@ sunrised tx staking create-validator [path/to/validator.json] \
     --chain-id=$CHAIN_ID \
     --from=$VALIDATOR_WALLET \
     --keyring-backend=test \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```

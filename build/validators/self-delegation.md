@@ -32,7 +32,7 @@ VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
 sunrised tx shareclass non-voting-delegate $VALIDATOR_ADDRESS 10000000urise \
     --from <your_validator_key> \
     --chain-id <your_chain_id> \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```
@@ -55,7 +55,7 @@ VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
 sunrised tx shareclass claim-rewards $VALIDATOR_ADDRESS \
     --from <your_validator_key> \
     --chain-id <your_chain_id> \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```
@@ -105,7 +105,7 @@ VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
 sunrised tx lockup non-voting-delegate $LOCKUP_ID $VALIDATOR_ADDRESS 10000000urise \
     --from <your_validator_key> \
     --chain-id <your_chain_id> \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```
@@ -132,7 +132,7 @@ LOCKUP_ID="<your_lockup_account_id>"
 sunrised tx lockup claim-rewards $LOCKUP_ID \
     --from <your_validator_key> \
     --chain-id <your_chain_id> \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```

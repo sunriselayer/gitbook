@@ -34,7 +34,7 @@ Next, send some `uusdrise` to this account using the `tx bank send` command. Thi
 DEPUTY_ADDRESS=$(sunrised keys show your_deputy_account -a --keyring-backend=test)
 sunrised tx bank send [your_validator_key] $DEPUTY_ADDRESS 1000000uusdrise \
     --chain-id=$CHAIN_ID \
-    --gas-prices=0.0025uusdrise \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
     --gas=auto \
     -y
 ```
@@ -45,7 +45,7 @@ Finally, register the deputy address with your validator. This transaction must 
 sunrised tx da register-proof-deputy $DEPUTY_ADDRESS \
    --from [your_validator_key] \
    --chain-id=$CHAIN_ID \
-   --gas-prices=0.0025uusdrise \
+   --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
    --gas=auto \
    -y
 ```
