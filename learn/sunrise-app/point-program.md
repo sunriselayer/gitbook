@@ -52,16 +52,15 @@ Creating a position with RISE will be possible after the RISE token is launched 
 {% endhint %}
 
 {% hint style="info" %}
-An LP position is considered `active` or `valid` when the current price is within the price range you set for the position. Invalid positions do not earn points.
+An LP position is considered `valid` when the current price is within the price range you set for the position. Invalid positions do not earn points.
 {% endhint %}
 
 ### Point Calculation
 
 Points are calculated based on the USD value of your liquidity.
 
-- **RISE LP**: `1 USD equivalent = 120 points`
-- **Other LP (with RISE)**: `1 USD equivalent = 100 points`
-- **USDrise / USDN LP**: `1 USD equivalent = 140 points` (bonus multiplier)
+- **USDrise / USDN LP**: `1 USD equivalent = 120 points`
+- **Other LP**: `1 USD equivalent = 100 points`
 
 The dashboard shows:
 
