@@ -6,10 +6,10 @@
 |                                 |                   | 2.62%  | Fully locked for 6 months, then unlocked linearly over 24 months.       |
 |                                 |                   | 3.31%  | Foundation                                                              |
 | Community Contributors & Grants | 24.50%            | 24.50% | Foundation                                                              |
-| Community Round                 | 1.50%             | 0.22%  | 100% unlocked at Genesis                                                |
+| Community Round                 | 1.30%             | 0.22%  | 100% unlocked at Genesis                                                |
 |                                 |                   | 0.24%  | Fully locked for 3 months, then unlocked linearly over 3 months.        |
 |                                 |                   | 1.04%  | Foundation                                                              |
-| Ecosystem                       | 27.20%            | 3.00%  | 100% unlocked at Genesis                                                |
+| Ecosystem                       | 27.40%            | 3.00%  | 100% unlocked at Genesis                                                |
 |                                 |                   | 24.20% | Foundation                                                              |
 | Early backers                   | 20.00%            | 1.34%  | 100% unlocked at Genesis                                                |
 |                                 |                   | 17.91% | Fully locked for 3 months, then unlocked linearly over 12 months.       |
