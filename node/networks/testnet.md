@@ -39,13 +39,14 @@ To use it, it must be signed in a wallet that has at least 0.01 ETH on the Ether
 
 ### Mint USDrise from USDN on Dawn Testnet
 
-The address of the contract to mint USDrise is `sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75`.
+The address of the contract to mint USDrise is `sunrise1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrs4ef8ka`.
 You can mint the same amount of USDrise using USDN.
 
 ```bash
-sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
-'{"mint":{"amount":"1000000","recipient":"[your-address]"}}' --amount 1000000uusdn \
---from [your-account] --gas-prices 0.0025uusdrise --gas auto -y
+sunrised tx wasm execute sunrise1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrs4ef8ka \
+'{"mint":{"amount":"1000000","recipient":"[your-address]"}}' \
+--amount 1000000ibc/A7AD825A4B48DDA0138D118655E60100D22A4D690C45B95221520B58C9A64B63 \
+--from=[your-account] --gas-prices=0.025uusdrise --gas-adjustment=1.2 --gas=auto -y
 ```
 
 ### IBC Config on Dawn Testnet
