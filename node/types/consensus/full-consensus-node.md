@@ -226,5 +226,8 @@ This command returning `true` means that your node is still catching up. Otherwi
 
 If you want to shorten the time to catch up to the latest block, consider using snapshots from other nodes.
 
-If you want to catch up from 0 height, you have to upgrade `sunrised` at each upgrade height.
-If Cosmovisor is running and automatic download option is enabled, the upgrade will also be processed automatically.
+### Option: Use a snapshot
+
+If you want to shorten the time to catch up to the latest block, consider using snapshots. Snapshots allow a node to be bootstrapped from a specific height, reducing the need to sync from genesis.
+
+Our partner at [Polkachu](https://www.polkachu.com/tendermint_snapshots/sunrise) provides daily snapshots for the Sunrise network. Please visit their website to get the latest snapshot URL.

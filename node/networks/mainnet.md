@@ -2,24 +2,26 @@
 
 The main network of Sunrise. Use tokens with real value.
 
-{% hint style="warning" %}
-**IMPORTANT**: This network is currently in the process of being launched.
-{% endhint %}
-
 ## Mainnet Details
 
-[sunrise-1 Network Details](https://github.com/sunriselayer/network/tree/main/sunrise-1)
+[sunrise-1 Network Configuration](https://github.com/sunriselayer/network/tree/main/sunrise-1)
+
+[genesis file](https://github.com/sunriselayer/network/blob/main/sunrise-1/genesis.json)
+
+[Snapshot (Provided by Polkachu)](https://www.polkachu.com/tendermint_snapshots/sunrise)
 
 | Detail | Value                                                                                                      |
 | ------ | ---------------------------------------------------------------------------------------------------------- |
 | RPC    | <https://a.consensus.sunrise-1.sunriselayer.io>, <https://b.consensus.sunrise-1.sunriselayer.io>           |
 | REST   | <https://a.consensus.sunrise-1.sunriselayer.io:1318>, <https://b.consensus.sunrise-1.sunriselayer.io:1318> |
 
+Explorer and APIs are also provided by third parties. For details, see [Chain Registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json).
+
 ## Frontend
 
 | Name                | URL                                 |
 | ------------------- | ----------------------------------- |
-| APP (Tx Portal)     | Coming soon                         |
+| APP (Tx Portal)     | <https://app.sunriselayer.io>       |
 | Risescan (Explorer) | <https://risescan.sunriselayer.io/> |
 
 ## Mainnet Software
