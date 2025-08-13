@@ -1,7 +1,7 @@
 # RISE
 
-$RISE token is the native token of Sunrise network. $RISE token can be used for
-fees. A part of RISE tx fee will be burnt in the [Fee](../sunrise/fee.md) module.
+$RISE token is the native token of Sunrise network. Fees are paid in $USDrise.
+A part of the $USDrise tx fee will be swapped to $RISE and then burnt in the [Fee](../sunrise/fee.md) module.
 
 $RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` on the
 Sunrise network converts to 1 RISE in the real world.
@@ -51,7 +51,7 @@ To get $vRISE, users need to provide liquidity in
 - Initial Inflation Rate Cap is 10%.
   - Inflation Rate Cap will gradually diminish by 8% per year.
     - For example, Inflation Rate of 2nd year is 9.2%.
-- A part of `[Supply of $RISE]` is burnt when it is used as tx fees.
+- A part of tx fees (paid in $USDrise) is swapped to $RISE and burnt.
 - Supply will grow with following the Supply Cap and Inflation Rate Cap.
 - Observed Inflation Rate is different from Inflation Rate Cap.
 - Inflationally minted $vRISE will be distributed among stakers validators and
