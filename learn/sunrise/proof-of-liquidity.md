@@ -18,16 +18,16 @@ Proof of Liquidity builds upon established DeFi mechanisms while solving key iss
 
 Berachain pioneered the PoL model with a tri-token design:
 
-- **$BERA**: Transferable token used for transaction fees and staking (security layer)
-- **$BGT**: Non-transferable governance token earned by providing liquidity
-- **$HONEY**: Stablecoin for value transfer within the ecosystem
+* **$BERA**: Transferable token used for transaction fees and staking (security layer)
+* **$BGT**: Non-transferable governance token earned by providing liquidity
+* **$HONEY**: Stablecoin for value transfer within the ecosystem
 
 **Key Technical Components:**
 
-- Validators stake $BERA to join the consensus set
-- Block rewards are paid in $BGT based on validator's "boost" percentage
-- "Boost" is calculated from delegated $BGT from token holders
-- Validators direct emissions to reward vaults, which distribute $BGT to liquidity providers
+* Validators stake $BERA to join the consensus set
+* Block rewards are paid in $BGT based on validator's "boost" percentage
+* "Boost" is calculated from delegated $BGT from token holders
+* Validators direct emissions to reward vaults, which distribute $BGT to liquidity providers
 
 **Flow of Value:**
 
@@ -42,16 +42,16 @@ Berachain pioneered the PoL model with a tri-token design:
 
 Sunrise builds upon PoL concepts with its own architecture:
 
-- **$vRISE**: Non-transferable token for staking and governance
-- **$RISE**: Transferable token used as gas and fees
+* **$vRISE**: Non-transferable token for staking and governance
+* **$RISE**: Transferable token used as gas and fees
 
 **Technical Implementation:**
 
-- Liquidity providers in the `x/liquiditypool` module earn $vRISE
-- $vRISE holders can stake in the `x/staking` module
-- Stakers participate in gauge voting through the `x/liquidityincentive` module
-- Gauge voters decide which pools receive $vRISE incentives
-- Voters earn rewards from pool profits, aligning incentives
+* Liquidity providers in the `x/liquiditypool` module earn $vRISE
+* $vRISE holders can stake in the `x/staking` module
+* Stakers participate in gauge voting through the `x/liquidityincentive` module
+* Gauge voters decide which pools receive $vRISE incentives
+* Voters earn rewards from pool profits, aligning incentives
 
 ## Technical Architecture
 
@@ -72,31 +72,31 @@ The gauge voting system is the cornerstone of PoL implementations:
 
 1. **Epoch-Based Voting**:
 
-- Voting power is determined by staked $vRISE at epoch start
-- Each epoch spans a predefined number of blocks (configurable via governance)
-- Votes is cleared each time a new epoch is created
+* Voting power is determined by staked $vRISE at epoch start
+* Each epoch spans a predefined number of blocks (configurable via governance)
+* Votes is cleared each time a new epoch is created
 
 1. **Reward Distribution**:
 
 $$
-  \text{pool rewards} = \text{total rewards} \times \text{pool's voting power} / \text{total voting power of all pools}
+\text{pool rewards} = \text{total rewards} \times \text{pool's voting power} / \text{total voting power of all pools}
 $$
 
 $$
-  \text{user rewards} = \text{pool rewards} \times \text{user voting power} / \text{pool's voting power}
+\text{user rewards} = \text{pool rewards} \times \text{user voting power} / \text{pool's voting power}
 $$
 
-- Emissions are calculated per block
-- Distribution based on voted gauge weights and each user's voting power
-- Rewards are accumulated in the user's position. Can be claimed at any time
+* Emissions are calculated per block
+* Distribution based on voted gauge weights and each user's voting power
+* Rewards are accumulated in the user's position. Can be claimed at any time
 
 ### Consensus Implementation
 
 Sunrise uses CometBFT (Tendermint) for consensus with the following specifications:
 
-- **Maximum Validator Set**: 100 validators
-- **Block Time**: ~10 seconds
-- **Validator Selection**: Based on stake weight
+* **Maximum Validator Set**: 100 validators
+* **Block Time**: \~10 seconds
+* **Validator Selection**: Based on stake weight
 
 Future plans include investigating Mysticeti integration to enhance throughput
 
@@ -106,53 +106,51 @@ Future plans include investigating Mysticeti integration to enhance throughput
 
 Unlike traditional PoS where staked tokens are idle, PoL enables:
 
-- Active capital utilization through liquidity provision
-- Dual earning opportunities (staking + liquidity fees)
-- Lower opportunity cost for network security
+* Active capital utilization through liquidity provision
+* Dual earning opportunities (staking + liquidity fees)
+* Lower opportunity cost for network security
 
 ### Economic Alignment
 
 The technical design creates circular dependencies that align incentives:
 
-- Validators need delegated $RISE/$vRISE to maximize rewards
-- Applications need validator emissions for liquidity
-- Users need to provide liquidity to earn governance tokens
-- The inflation rewards will be distributed with $RISE which doesn't lead to the dilution of $vRISE (governance token)
+* Validators need delegated $RISE/$vRISE to maximize rewards
+* Applications need validator emissions for liquidity
+* Users need to provide liquidity to earn governance tokens
+* The inflation rewards will be distributed with $RISE which doesn't lead to the dilution of $vRISE (governance token)
 
-<!-- Berachain-style summary table with icons and token names -->
+| Function           | Token(s)                                                                                       | Details                                                |
+| ------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Security           | ![RISE](../../.gitbook/assets/RISE.png) RISE + ![vRISE](../../.gitbook/assets/vRISE.png) vRISE | Both vRISE & RISE can be staked for Consensus          |
+| Governance         | ![vRISE](../../.gitbook/assets/vRISE.png) vRISE                                                | vRISE is used for On-chain governance and Gauge Voting |
+| Security Emissions | ![RISE](../../.gitbook/assets/RISE.png) RISE                                                   | RISE is distributed for stakers as consensus rewards   |
+| LP Emissions       | ![vRISE](../../.gitbook/assets/vRISE.png) vRISE                                                | vRISE is distributed for LPs as incentives             |
+| Fee                | Any (swapped to [Fee Token](fee.md))                                                           | RISE is used as a transaction fee                      |
 
-| Function           | Token(s)                                                                     | Details                                                |
-| ------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Security           | ![RISE](../../images/RISE.png) RISE + ![vRISE](../../images/vRISE.png) vRISE | Both vRISE & RISE can be staked for Consensus          |
-| Governance         | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is used for On-chain governance and Gauge Voting |
-| Security Emissions | ![RISE](../../images/RISE.png) RISE                                          | RISE is distributed for stakers as consensus rewards   |
-| LP Emissions       | ![vRISE](../../images/vRISE.png) vRISE                                       | vRISE is distributed for LPs as incentives             |
-| Fee                | Any (swapped to [Fee Token](./fee.md))                         | RISE is used as a transaction fee                      |
+**Legend:**\
+![RISE](../../.gitbook/assets/RISE.png) = RISE\
+![vRISE](../../.gitbook/assets/vRISE.png) = vRISE
 
-**Legend:**  
-![RISE](../../images/RISE.png) = RISE  
-![vRISE](../../images/vRISE.png) = vRISE
-
-> **Note:**  
-> In Sunrise, the roles and rewards for each token are clearly defined.  
+> **Note:**\
+> In Sunrise, the roles and rewards for each token are clearly defined.\
 > This clear separation of functions helps prevent dilution of network security when governance or liquidity rewards are distributed.
 
 ### Security Considerations
 
 The implementation includes several security measures:
 
-- **Slashing Conditions**: Validators risk losing staked assets for misbehavior
-- **Governance Safeguards**: Weighted voting prevents capture
-- **Incentive Compatibility**: Economic design disincentivizes attacks
+* **Slashing Conditions**: Validators risk losing staked assets for misbehavior
+* **Governance Safeguards**: Weighted voting prevents capture
+* **Incentive Compatibility**: Economic design disincentivizes attacks
 
 ## Performance Considerations
 
 PoL implementations must balance several performance factors:
 
-- **Epoch Length**: Longer epochs reduce computational overhead but decrease responsiveness
-- **Validator Set Size**: Larger sets increase decentralization but may impact consensus speed
-- **Vote Processing**: Batch processing of votes at epoch boundaries to minimize gas costs
-- **Receipt Token Calculations**: Optimized tracking of liquidity positions and reward distribution
+* **Epoch Length**: Longer epochs reduce computational overhead but decrease responsiveness
+* **Validator Set Size**: Larger sets increase decentralization but may impact consensus speed
+* **Vote Processing**: Batch processing of votes at epoch boundaries to minimize gas costs
+* **Receipt Token Calculations**: Optimized tracking of liquidity positions and reward distribution
 
 ## Future Directions
 
@@ -165,7 +163,7 @@ Several technical enhancements are being explored:
 
 ## References
 
-- [Berachain: Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)
-- [ve(3,3) Tokenomics](https://andrecronje.medium.com/ve-3-3-44466eaa088b)
-- [Curve Finance ve-Token Model](https://curve.fi/files/CurveDAO.pdf)
-- [Mysticeti Consensus](https://sui.io/mysticeti)
+* [Berachain: Flow of Value](https://blog.berachain.com/blog/flow-of-value-examining-the-differences-between-pos-and-pol-a-case-for-a-new-paradigm-in-sustainable-incentive-alignment-at-the-protocol-layer)
+* [ve(3,3) Tokenomics](https://andrecronje.medium.com/ve-3-3-44466eaa088b)
+* [Curve Finance ve-Token Model](https://curve.fi/files/CurveDAO.pdf)
+* [Mysticeti Consensus](https://sui.io/mysticeti)

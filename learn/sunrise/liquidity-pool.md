@@ -5,24 +5,17 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 ## Key Features
 
 1. **Concentrated Liquidity AMM:**
-
-   - Follows a similar model to Uniswap V3, allowing liquidity providers to concentrate their assets within specific price ranges.
-   - Improves capital efficiency compared to traditional constant product AMMs.
-
+   * Follows a similar model to Uniswap V3, allowing liquidity providers to concentrate their assets within specific price ranges.
+   * Improves capital efficiency compared to traditional constant product AMMs.
 2. **Position-Based Liquidity:**
-
-   - Users create positions with defined price ranges (ticks).
-   - Each position has a unique ID and tracks the liquidity provider's contribution.
-
+   * Users create positions with defined price ranges (ticks).
+   * Each position has a unique ID and tracks the liquidity provider's contribution.
 3. **Fee Generation:**
-
-   - Positions earn fees from trades that occur within their price range.
-   - Fees are collected in the base and quote denominations of the pool.
-
+   * Positions earn fees from trades that occur within their price range.
+   * Fees are collected in the base and quote denominations of the pool.
 4. **`vRISE` Incentives:**
-
-   - Liquidity providers earn vRISE tokens as additional incentives.
-   - For more information, see [Liquidity Incentive](./liquidity-incentive.md)
+   * Liquidity providers earn vRISE tokens as additional incentives.
+   * For more information, see [Liquidity Incentive](liquidity-incentive/)
 
 ## Core Functionality
 
@@ -32,11 +25,11 @@ The `x/liquiditypool` module implements a concentrated liquidity automated marke
 
 **Each pool is defined by several parameters:**
 
-- `id`: Unique identifier for the pool
-- `denom_base` & `denom_quote`: The token pair denominations
-- `fee_rate`: The fee charged on swaps within the pool
-- `tick_params`: Parameters defining the tick system
-- `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: Current state variables
+* `id`: Unique identifier for the pool
+* `denom_base` & `denom_quote`: The token pair denominations
+* `fee_rate`: The fee charged on swaps within the pool
+* `tick_params`: Parameters defining the tick system
+* `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: Current state variables
 
 ### Tick System
 
@@ -88,26 +81,26 @@ sequenceDiagram
 
 The module provides various message types:
 
-- MsgUpdateParams: Update module parameters (governance operation)
-- MsgCreatePool: Create a new liquidity pool with specified parameters
-- MsgCreatePosition: Create a position within a price range in a pool
-- MsgIncreaseLiquidity: Add liquidity to an existing position
-- MsgDecreaseLiquidity: Remove liquidity from an existing position
-- MsgClaimRewards: Claim accumulated fees and incentives for positions
+* MsgUpdateParams: Update module parameters (governance operation)
+* MsgCreatePool: Create a new liquidity pool with specified parameters
+* MsgCreatePosition: Create a position within a price range in a pool
+* MsgIncreaseLiquidity: Add liquidity to an existing position
+* MsgDecreaseLiquidity: Remove liquidity from an existing position
+* MsgClaimRewards: Claim accumulated fees and incentives for positions
 
 ## Queries
 
 The module provides various query endpoints:
 
-- Params: Query module parameters
-- Pool: Get details of a specific pool
-- Pools: List all liquidity pools
-- Position: Get details of a specific position
-- Positions: List all positions
-- PoolPositions: List positions in a specific pool
-- AddressPositions: List positions owned by an address
-- PositionFees: Get accrued fees for a position
-- CalculationCreatePosition: Preview position creation
-- CalculationIncreaseLiquidity: Preview liquidity increase
+* Params: Query module parameters
+* Pool: Get details of a specific pool
+* Pools: List all liquidity pools
+* Position: Get details of a specific position
+* Positions: List all positions
+* PoolPositions: List positions in a specific pool
+* AddressPositions: List positions owned by an address
+* PositionFees: Get accrued fees for a position
+* CalculationCreatePosition: Preview position creation
+* CalculationIncreaseLiquidity: Preview liquidity increase
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquiditypool) for details.

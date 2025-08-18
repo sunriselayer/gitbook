@@ -1,4 +1,4 @@
-# Proof of the Data Availability Layer
+# Proof of Data Availability
 
 Sunrise's Data Availability Layer is validated by validators. Validators must validate data that may not be valid and send the proofs to chain.
 
@@ -54,66 +54,62 @@ Register the address of the deputy to be used on `sunrise-data`.
 
 ### How to set up
 
-1. Running `sunrised` as a validator
-See [Validator Node](../../node/types/consensus/validator-node.md) for setting up.
+1. Running `sunrised` as a validator See [Validator Node](../../run-a-sunrise-node/types/consensus/validator-node.md) for setting up.
+2.  Clone sunrise-data repo
 
-1. Clone sunrise-data repo
+    ```bash
+    cd ~
+    git clone https://github.com/sunriselayer/sunrise-data.git
+    cd sunrise-data
+    make install
+    ```
+3.  Create and edit `config.toml`
 
-   ```bash
-   cd ~
-   git clone https://github.com/sunriselayer/sunrise-data.git
-   cd sunrise-data
-   make install
-   ```
+    ```bash
+    cp config.default.toml config.toml
+    vi config.toml
+    ```
 
-1. Create and edit `config.toml`
+    To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
 
-   ```bash
-   cp config.default.toml config.toml
-   vi config.toml
-   ```
+    Change `home_path` to your .sunrise directory, `proof_deputy_account` to your sunrised key's name and `validator_address` to your validator address.
 
-   To connect to a local IPFS daemon, leave the `ipfs_api_url` field empty
+    ```toml
+    [api]
+    port = 8000
+    ipfs_api_url = ""
+    ipfs_address_info = ""
 
-   Change `home_path` to your .sunrise directory, `proof_deputy_account` to your sunrised key's name and `validator_address` to your validator address.
+    [chain]
+    address_prefix="sunrise"
+    home_path="/home/ubuntu/.sunrise"
+    keyring_backend="test"
+    sunrised_rpc="http://localhost:26657"
 
-   ```toml
-   [api]
-   port = 8000
-   ipfs_api_url = ""
-   ipfs_address_info = ""
-
-   [chain]
-   address_prefix="sunrise"
-   home_path="/home/ubuntu/.sunrise"
-   keyring_backend="test"
-   sunrised_rpc="http://localhost:26657"
-   
-   [validator]
-    proof_deputy_account="your_deputy_account"
-    validator_address="sunrisevaloper1a8jcsmla6heu99ldtazc27dna4qcd4jyv75vcz"
-    proof_fees="10000uusdrise"
-    proof_interval=5
-   ```
+    [validator]
+     proof_deputy_account="your_deputy_account"
+     validator_address="sunrisevaloper1a8jcsmla6heu99ldtazc27dna4qcd4jyv75vcz"
+     proof_fees="10000uusdrise"
+     proof_interval=5
+    ```
 
 ### Run IPFS on local
 
-1. Run IPFS
+1.  Run IPFS
 
-   ```bash
-   wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
-   tar -xvzf kubo_v0.31.0_linux-amd64.tar.gz
-   cd kubo
-   sudo ./install.sh
-   ipfs init --profile=lowpower
-   ipfs daemon
-   ```
+    ```bash
+    wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
+    tar -xvzf kubo_v0.31.0_linux-amd64.tar.gz
+    cd kubo
+    sudo ./install.sh
+    ipfs init --profile=lowpower
+    ipfs daemon
+    ```
+2.  Check the IPFS node ID and optionally share and add a remote peer
 
-1. Check the IPFS node ID and optionally share and add a remote peer
-
-   ```bash
-   ipfs id
-   ```
+    ```bash
+    ipfs id
+    ```
 
 ### Start to proof data
 

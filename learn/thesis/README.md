@@ -1,13 +1,13 @@
-# Modular
+# 🎓 Thesis
 
 ## Monolithic vs Modular
 
 There are four layers in a blockchain:
 
-- Execution layer
-- Settlement layer
-- Consensus layer
-- Data Availability layer
+* Execution layer
+* Settlement layer
+* Consensus layer
+* Data Availability layer
 
 "Modular blockchain" is a paradigm that combines these separated layers, and allows us to build a scalable blockchain.
 

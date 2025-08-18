@@ -8,28 +8,26 @@ Any frontend application, wallet, dApp, or protocol that is built on top of the 
 
 There are 2 important parameters to note:
 
-- **interface_fee_rate**
-    A fee, denoted in percentage, that is taken from the total amount of the swap.
-
-- **interface_provider**
-    An address that specifies where the fee will be sent. If no address is provided, no interface fee will be taken.
+* **interface\_fee\_rate**\
+  A fee, denoted in percentage, that is taken from the total amount of the swap.
+* **interface\_provider**\
+  An address that specifies where the fee will be sent. If no address is provided, no interface fee will be taken.
 
 When executing swaps through Sunrise AMM, you can **capture interface fees** by specifying your own fee recipient, maximizing profit per transaction. This function is designed to reward **any entity that facilitates swap volume**—from simple frontends to complex financial protocols.
 
----
+***
 
 ### Swap Message Types
 
 There are 2 message types that can be used to specify the amount received or the amount sent.
 
-- **MsgSwapExactAmountIn** - Swap tokens with a specified input amount
-    This message allows users to swap tokens by defining the exact amount of input tokens they wish to provide. The corresponding output will be calculated based on the specified input.
-
-- **MsgSwapExactAmountOut** – Swap tokens with a specified output amount
+* **MsgSwapExactAmountIn** - Swap tokens with a specified input amount\
+  This message allows users to swap tokens by defining the exact amount of input tokens they wish to provide. The corresponding output will be calculated based on the specified input.
+*   **MsgSwapExactAmountOut** – Swap tokens with a specified output amount
 
     This message enables users to swap tokens by defining the exact amount of output tokens they want to receive. The system will calculate the necessary input amount to achieve the desired output.
 
----
+***
 
 ### Route
 
@@ -73,7 +71,7 @@ message Route {
 }
 ```
 
----
+***
 
 ### Swap Middleware for ICS20 Token Transfers
 
@@ -182,20 +180,20 @@ After the swap, even if a subsequent change or transfer fails, the confirmation 
 
 The module provides various message types:
 
-- MsgUpdateParams: Update module parameters (governance operation)
-- MsgSwapExactAmountIn: Swap tokens with a specified input amount
-- MsgSwapExactAmountOut: Swap tokens with a specified output amount
+* MsgUpdateParams: Update module parameters (governance operation)
+* MsgSwapExactAmountIn: Swap tokens with a specified input amount
+* MsgSwapExactAmountOut: Swap tokens with a specified output amount
 
 ## Queries
 
 The module provides various query endpoints:
 
-- Params: Query module parameters
-- IncomingInFlightPacket: Get details of an incoming in-flight packet
-- IncomingInFlightPackets: List all incoming in-flight packets
-- OutgoingInFlightPacket: Get details of an outgoing in-flight packet
-- OutgoingInFlightPackets: List all outgoing in-flight packets
-- CalculationSwapExactAmountIn: Preview swap with exact input amount
-- CalculationSwapExactAmountOut: Preview swap with exact output amount
+* Params: Query module parameters
+* IncomingInFlightPacket: Get details of an incoming in-flight packet
+* IncomingInFlightPackets: List all incoming in-flight packets
+* OutgoingInFlightPacket: Get details of an outgoing in-flight packet
+* OutgoingInFlightPackets: List all outgoing in-flight packets
+* CalculationSwapExactAmountIn: Preview swap with exact input amount
+* CalculationSwapExactAmountOut: Preview swap with exact output amount
 
 See [Github](https://github.com/sunriselayer/sunrise/tree/main/x/swap) for more details.

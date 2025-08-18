@@ -4,7 +4,7 @@ This document explains the steps to become a validator on the Sunrise chain.
 
 ## Prerequisites
 
-Before operating a validator, you must set up a [Full Consensus Node](../../node/types/consensus/full-consensus-node.md) and be fully synchronized with the network.
+Before operating a validator, you must set up a [Full Consensus Node](../../run-a-sunrise-node/types/consensus/full-consensus-node.md) and be fully synchronized with the network.
 
 ## Data Availability Verification
 
@@ -16,7 +16,7 @@ Validators on the Sunrise network are required to verify data for the Data Avail
 
 For mainnet, it is strongly recommended to use Cosmovisor to run your node. Cosmovisor allows you to perform chain upgrades smoothly with minimal downtime.
 
-Follow the [Cosmovisor setup tutorial](../../node/types/consensus/setup-cosmovisor.md) for details.
+Follow the [Cosmovisor setup tutorial](../../run-a-sunrise-node/types/consensus/setup-cosmovisor.md) for details.
 
 It is recommended to set the following environment variable to enable automatic upgrades:
 
@@ -28,8 +28,8 @@ export DAEMON_ALLOW_DOWNLOAD_BINARIES=true
 
 When setting up a validator, it is crucial to use the correct version of the binary and `genesis.json`.
 
-- **Binary:** The latest binary can be downloaded from the [GitHub releases](https://github.com/sunriselayer/sunrise/releases/tag/v1.0.0).
-- **Genesis File:** The `genesis.json` file is located in the [network repository](https://github.com/sunriselayer/network/tree/main/sunrise-1).
+* **Binary:** The latest binary can be downloaded from the [GitHub releases](https://github.com/sunriselayer/sunrise/releases/tag/v1.0.0).
+* **Genesis File:** The `genesis.json` file is located in the [network repository](https://github.com/sunriselayer/network/tree/main/sunrise-1).
 
 ## Creating a Validator
 
@@ -47,18 +47,16 @@ If the chain is already running, you can create a validator with the following m
 
 #### `tx staking create-validator`
 
-This is the standard Cosmos SDK method, which uses a `validator.json` file to create a validator. This method requires `vRISE` for self-delegation.
-This method requires `vRISE` for self-delegation.
+This is the standard Cosmos SDK method, which uses a `validator.json` file to create a validator. This method requires `vRISE` for self-delegation. This method requires `vRISE` for self-delegation.
 
-1. **Get the Validator's Public Key**
+1.  **Get the Validator's Public Key**
 
     Run the `sunrised tendermint show-validator` command to get the validator's public key (pubkey).
 
     ```bash
     sunrised tendermint show-validator
     ```
-
-2. **Create the `validator.json` file**
+2.  **Create the `validator.json` file**
 
     Create a `validator.json` file with the following content. Set the `pubkey` with the value obtained above.
 
@@ -78,10 +76,9 @@ This method requires `vRISE` for self-delegation.
     }
     ```
 
-    - The `amount` is specified in `uvrise`.
-    - The `min-self-delegation` is also the amount of `vRISE`.
-
-3. **Send the `create-validator` transaction**
+    * The `amount` is specified in `uvrise`.
+    * The `min-self-delegation` is also the amount of `vRISE`.
+3.  **Send the `create-validator` transaction**
 
     ```bash
     sunrised tx staking create-validator path/to/validator.json --from <keyname> --chain-id <chain-id> --gas="auto" --gas-prices=<gas-prices> -y
@@ -97,7 +94,7 @@ This method requires `vRISE` for self-delegation.
 
 Backing up key files is crucial for validator operations. Please back up the following files to a secure location:
 
-- `~/.sunrise/config/priv_validator_key.json`
-- `~/.sunrise/config/node_key.json`
+* `~/.sunrise/config/priv_validator_key.json`
+* `~/.sunrise/config/node_key.json`
 
 It is strongly recommended to encrypt these backup files.
