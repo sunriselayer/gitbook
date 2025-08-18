@@ -23,6 +23,12 @@ In many cases the chain ID will be changed.
 When synchronizing chains from the genesis, follow this guide and use the binary version current at the time of the genesis.
 <https://github.com/sunriselayer/network/tree/main/dawn-1>
 
+{% hint style="warning" %}
+Only on the dawn-1 testnet, it is necessary to change the v1.1.0 binary due to the state of the chain.
+If you encounter problems with automatic upgrades, etc., please replace the binary.
+<https://github.com/sunriselayer/sunrise/releases/download/v1.1.0/sunrised-linux-arm64-dawn-1-testnet>
+{% endhint %}
+
 ## Mainnet
 
 When synchronizing chains from the genesis, follow this guide and use the binary version current at the time of the genesis.
