@@ -79,7 +79,7 @@ async function main() {
 
   // 4. Define the fee and sign and broadcast the transaction
   const fee = {
-    amount: [coin("10000", "urise")],
+    amount: [coin("10000", "uusdrise")],
     gas: "400000", // Gas limit
   };
   const memo = "Created position via @sunriselayer/client";
