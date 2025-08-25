@@ -1,0 +1,59 @@
+# Sunriseメインネット
+
+Sunriseのメインネットワーク。実価値を持つトークンを使用します。
+
+## メインネットの詳細
+
+[sunrise-1ネットワーク設定](https://github.com/sunriselayer/network/tree/main/sunrise-1)
+
+[ジェネシスファイル](https://github.com/sunriselayer/network/blob/main/sunrise-1/genesis.json)
+
+[スナップショット（Polkachu提供）](https://www.polkachu.com/tendermint_snapshots/sunrise)
+
+| 詳細 | 値 |
+| ------ | ---------------------------------------------------------------------------------------------------------- |
+| RPC | <https://a.consensus.sunrise-1.sunriselayer.io>, <https://b.consensus.sunrise-1.sunriselayer.io> |
+| REST | <https://a.consensus.sunrise-1.sunriselayer.io:1318>, <https://b.consensus.sunrise-1.sunriselayer.io:1318> |
+
+エクスプローラーとAPIはサードパーティによっても提供されています。詳細は[Chain Registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json)を参照してください。
+
+## フロントエンド
+
+| 名前 | URL |
+| ------------------- | ----------------------------------- |
+| APP（Txポータル） | <https://app.sunriselayer.io> |
+| Risescan（エクスプローラー） | <https://risescan.sunriselayer.io/> |
+
+## メインネットソフトウェア
+
+私たちの提案とコミュニティを確認してください。設定については[sunrise-1](https://github.com/sunriselayer/network/tree/main/sunrise-1)を参照してください。
+ジェネシスバイナリは`v1.0.0`です。
+
+[リリース済みバイナリ](https://github.com/sunriselayer/sunrise/releases)
+
+## IBC設定
+
+| Dstチェーン | Dstポート | Dstチャネル | Srcチェーン | Srcポート | Srcチャネル |
+| ------------- | ---------- | ------------ | ----------- | ---------- | ----------- |
+| `noble-1` | `transfer` | channel-168 | `sunrise-1` | `transfer` | channel-0 |
+| `cosmoshub-4` | `transfer` | channel-1421 | `sunrise-1` | `transfer` | channel-1 |
+
+## IBC Denom
+
+| 名前 | チェーン | オリジナルDenom | IBC denom |
+| ---- | ------------- | -------------- | ---------------------------------------------------------------------- |
+| USDN | `noble-1` | `uusdn` | `ibc/A7AD825A4B48DDA0138D118655E60100D22A4D690C45B95221520B58C9A64B63` |
+| USDC | `noble-1` | `uusdc` | `ibc/8E27BA2D5493AF5636760E354E46004562C46AB7EC0CC4C1CA14E9E20E2545B5` |
+| ATOM | `cosmoshub-4` | `uatom` | `ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9` |
+
+## メインネットでUSDNからUSDriseをミントする
+
+USDriseをミントするためのコントラクトのアドレスは`sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75`です。
+USDNを使用して同量のUSDriseをミントできます。
+
+```bash
+sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
+'{"mint":{"amount":"1000000","recipient":"[your-address]"}}' \
+--amount 1000000ibc/A7AD825A4B48DDA0138D118655E60100D22A4D690C45B95221520B58C9A64B63 \
+--from=[your-account] --gas-prices=0.025uusdrise --gas-adjustment=1.2 --gas=auto -y
+```

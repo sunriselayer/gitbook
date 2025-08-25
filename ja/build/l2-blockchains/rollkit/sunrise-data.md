@@ -1,19 +1,17 @@
-# Rollkit向けSunrise Data
+# Sunriseデータ
 
 [Sunrise Data](https://github.com/sunriselayer/sunrise-data)は、L2チェーンをSunrise DAレイヤーに接続するリレーサーバーとして機能します。
 
 ## Sunriseコンセンサスノード
 
-動作にはネットワーク接続されたSunriseノードが必要です。Sunrise v0.3.0以上を実行している[ネットワーク](../../networks/README.md)はデータ可用性レイヤーをサポートしています。
+動作には、ネットワーク化されたSunriseノードが必要です。Sunrise v0.3.0以降を実行している[ネットワーク](../../../run-a-sunrise-node/networks/)は、データ可用性レイヤーをサポートしています。
 
-コンセンサスノードの作成方法については[ノードガイド](../consensus/README.md)をご参照ください。
+コンセンサスノードの作成方法については、[ノードガイド](../../../run-a-sunrise-node/types/consensus/)に従ってください。
 
-### sunrise-dataのセットアップ方法
+### sunrise-dataの設定方法
 
-1. `sunrised`の実行
-設定に関しては[コンセンサスノード](../../node/types/consensus/full-consensus-node.md)をご参照ください。
-
-1. sunrise-dataレポジトリのクローン
+1. `sunrised`を実行します。設定については、[コンセンサスノード](https://github.com/SunriseLayer/gitbook/blob/main/build/node/types/consensus/full-consensus-node.md)を参照してください。
+2. sunrise-dataリポジトリをクローンします。
 
    ```bash
    cd ~
@@ -22,16 +20,16 @@
    make install
    ```
 
-1. `config.toml`の作成と編集
+3. `config.toml`を作成して編集します。
 
    ```bash
    cp config.default.toml config.toml
    nano config.toml
    ```
 
-   ローカルのIPFSデーモンに接続するには、`ipfs_api_url`フィールドを空のままにしておきます
+   ローカルのIPFSデーモンに接続するには、`ipfs_api_url`フィールドを空のままにします。
 
-   `home_path`を.sunriseディレクトリに、`publisher_account`をsunrisedキーの名前に変更します
+   `home_path`を`.sunrise`ディレクトリに、`publisher_account`をsunrisedキーの名前に変更します。
 
    ```toml
    [api]
@@ -44,10 +42,10 @@
    home_path="/home/ubuntu/.sunrise"
    keyring_backend="test"
    sunrised_rpc="http://localhost:26657"
-   
+
    [publish]
    publisher_account="your_publisher_account"
-   publish_fees="10000urise"
+   publish_fees="10000uusdrise"
 
    [rollkit]
    port=7980
@@ -55,11 +53,13 @@
    parity_shard_count=5
    ```
 
-   その他のフィールドはそのままにしておくことができます。
+`home_path`、`keyring_backend`、`publisher_account`は、sunrisedキーリングで入力された値でなければなりません。[ローカルキーペアのドキュメント](../../../run-a-sunrise-node/types/consensus/full-consensus-node.md#create-or-restore-a-local-key-pair)を参照し、`--keyring-backend test`オプションで設定してください。`home_path`には、sunriseキーリングが存在するパスを入力してください。`sunrised_rpc`については、ローカルでsunrisedを実行することが望ましいですが、不可能な場合は公開されているRPCを使用してください。私たちの[ネットワークドキュメント](../../../run-a-sunrise-node/networks/)を参照してください。このような場合でも、ローカルキーペアは必要です。
+
+その他のフィールドはそのままにしておくことができます。
 
 ### ローカルでIPFSを実行する
 
-1. IPFSの実行
+1. IPFSを実行します。
 
    ```bash
    wget https://dist.ipfs.tech/kubo/v0.31.0/kubo_v0.31.0_linux-amd64.tar.gz
@@ -70,13 +70,13 @@
    ipfs daemon
    ```
 
-1. IPFSノードIDを確認し、必要に応じてリモートピアを共有および追加する
+2. IPFSノードIDを確認し、オプションでリモートピアを共有して追加します。
 
    ```bash
    ipfs id
    ```
 
-### 起動
+### 開始
 
 ```bash
 sunrise-data rollkit

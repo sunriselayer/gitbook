@@ -1,198 +1,110 @@
 # スワップ
 
-モジュール`x/swap`は`x/liquiditypool`モジュール内の流動性を使用してトークンをスワップする機能を提供します。
+`x/swap`モジュールは、`x/liquiditypool`モジュールから提供される流動性を使用して、トークンスワップを容易にします。
 
-### インターフェースプロバイダー手数料報酬
+## 主な特徴
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
+* **インターフェースプロバイダーの手数料報酬:** `x/swap`モジュールは、スワップ操作を容易にするインターフェースまたはフロントエンドに報酬を与える手数料メカニズムをサポートしています。
+* **正確な入力と出力:** モジュールは、スワップのための2つの主要なメッセージタイプをサポートしています。
+  * `MsgSwapExactAmountIn`: ユーザーは、スワップしたい入力トークンの正確な量を指定します。
+  * `MsgSwapExactAmountOut`: ユーザーは、スワップから受け取りたい出力トークンの正確な量を指定します。
+* **再帰的なルート構造:** `Route`構造は再帰的に定義されており、シリーズとパラレルの両方のスワップルートを可能にします。
+  * **シリーズ:** `[A -> B -> C]`のように、1つのプールから次のプールへの連続したスワップ。
+  * **パラレル:** `[A -> B, A -> C]`のように、複数のプールにわたる並列スワップ。
 
-スワップモジュール上に構築されるフロントエンドアプリケーションには手数料を獲得する能力があります。これはどのように行われるのでしょうか？
+## ICS20トークン転送のスワップミドルウェア
 
-注意すべき2つの重要なパラメータがあります：
+`x/swap`モジュールは、ICS20トークン転送と統合するためのミドルウェアを実装しています。これにより、ユーザーはIBC転送の一部としてスワップを実行できます。
 
-- <strong>`interface_fee_rate`:</strong> スワップの総額から取られる手数料で、パーセンテージで表示されます。
+### パケットメタデータ
 
-- <strong>`interface_provider`:</strong> 手数料の送信先を指定するアドレスです。アドレスが提供されない場合、インターフェース手数料は取られません。
+スワップ操作は、IBCパケットの`memo`フィールドにJSONオブジェクトとして埋め込まれた`PacketMetadata`を使用して指定されます。
 
----
-
-### スワップメッセージタイプ
-
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-受け取る金額または送る金額を指定するために使用できる2つのメッセージタイプがあります。
-
-<strong>`MsgSwapExactAmountIn`</strong> – 指定された入力金額でトークンをスワップ
-
-このメッセージを使用することで、ユーザーは提供したい正確な入力トークン量を定義してトークンをスワップできます。対応する出力は指定された入力に基づいて計算されます。
-
-<strong>`MsgSwapExactAmountOut`</strong> – 指定された出力金額でトークンをスワップ
-
-このメッセージを使用することで、ユーザーは受け取りたい正確な出力トークン量を定義してトークンをスワップできます。システムは希望する出力を達成するために必要な入力量を計算します。
-
----
-
-### ルート
-
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
-
-このモジュールは再帰的構造を持つスワップルートをサポートし、連続（シリーズ）または同時（パラレル）に複数のステップを含む複雑なスワップを可能にします。ルート内の各ステップは検証され、入力と出力が正しく処理されるように処理されます。
-
-```typescript
-message RoutePool {
-  uint64 pool_id = 1;
-}
-
-message RouteSeries {
-  repeated Route routes = 1 [
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
-}
-
-message RouteParallel {
-  repeated Route routes = 1 [
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
-  repeated string weights = 2 [
-    (cosmos_proto.scalar)  = "cosmos.Dec",
-    (gogoproto.customtype) = "cosmossdk.io/math.LegacyDec",
-    (gogoproto.nullable)   = false,
-    (amino.dont_omitempty) = true
-  ];
-}
-
-message Route {
-  string denom_in = 1;
-  string denom_out = 2;
-  oneof strategy {
-    RoutePool pool = 3;
-    RouteSeries series = 4;
-    RouteParallel parallel = 5;
+```json
+{
+  "swap": {
+    "routes": [
+      // Route objects
+    ],
+    "min_out_amount": "1000",
+    "receiver": "cosmos1..."
   }
 }
 ```
 
----
+### フォワードメタデータ
 
-### ICS20トークン転送のためのスワップミドルウェア
+`PacketMetadata`には、ICS20転送を別のチェーンに転送するための`ForwardMetadata`を含めることもできます。
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-スワップ機能はICS20トークン転送パケットによって自動的にトリガーされることがあります。これはIBC Hooksに似ており、あらゆるチェーン（Solidity IBC Eureka、Sei上のCosmWasmなど）でICS20を使用できる開発者がIBCミドルウェアを通じてスワップモジュールと対話するために使用できます。
-
-#### メタデータ
-
-シリアライズされた`PacketMetadata` JSON文字列をICS20転送パケットの`memo`フィールドに配置する必要があります。
-
-```typescript
-type PacketMetadata = {
-  [namespace: string]: unknown;
-  swap?: SwapMetadata;
-};
-
-type SwapMetadata = {
-  interface_provider: string;
-  route: Route;
-
-  forward?: ForwardMetadata;
-} & (
-  | {
-      exact_amount_in: {
-        min_amount_out: string;
-      };
-    }
-  | {
-      exact_amount_out: {
-        amount_out: string;
-        change?: ForwardMetadata;
-      };
-    }
-);
-
-type ForwardMetadata = {
-  receiver: string;
-  port: string;
-  channel: string;
-  timeout: string;
-  retries: number;
-  next?: PacketMetadata;
-};
+```json
+{
+  "forward": {
+    "receiver": "osmo1...",
+    "port": "transfer",
+    "channel": "channel-0"
+  }
+}
 ```
 
-`ForwardMetadata`は[Packet Forward Middleware](https://github.com/cosmos/ibc-apps/tree/main/middleware/packet-forward-middleware)から派生しています。
+### シーケンス図
 
-## **シーケンス図**
-
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
-
-#### 転送なしの基本的なスワップ
-
-このシナリオでは、トークン転送が発生し、続いてスワップが行われますが、別のチェーンへの転送はありません。
+#### 基本的なスワップ
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    Chain A ->> Sunrise: Transfer token X
-    Sunrise --> Sunrise: recv_packet
-    Sunrise ->> Sunrise: Swap token X to token Y
-    Sunrise ->> Chain A: ack
+    participant User as ユーザー
+    participant SwapModule as x/swap モジュール
+    participant LiquidityPoolModule as x/liquiditypool モジュール
+    participant BankModule as x/bank モジュール
+
+    User->>SwapModule: MsgSwapExactAmountIn
+    SwapModule->>LiquidityPoolModule: スワップのために流動性を要求
+    LiquidityPoolModule-->>SwapModule: スワップされたトークンを返す
+    SwapModule->>BankModule: ユーザーに出力トークンを転送
+    SwapModule-->>User: スワップ確認
 ```
 
-#### 転送を伴うスワップ
-
-このシナリオでは、トークンが転送され、スワップされ、その後別のチェーンに転送されます。
+#### フォワーディング付きスワップ
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    Chain A ->> Sunrise: Transfer token X
-    Sunrise --> Sunrise: recv_packet
-    Sunrise ->> Sunrise: Swap token X to token Y
+    participant User as ユーザー
+    participant SwapModule as x/swap モジュール
+    participant IBCModule as IBC モジュール
 
-    Sunrise ->> Chain B: Forward token Y
-    Chain B --> Chain B: recv_packet
-    Chain B ->> Sunrise: ack
-    Sunrise ->> Chain A: ack
+    User->>IBCModule: SendPacket with Swap Metadata
+    IBCModule->>SwapModule: OnRecvPacket
+    SwapModule->>SwapModule: スワップを実行
+    SwapModule->>IBCModule: Send Forwarded Packet
+    IBCModule-->>User: 確認
 ```
 
-#### 余剰の払い戻しと転送を伴うスワップ
-
-スワップが正確な出力量を指定する場合、過剰な入力は自動的に払い戻されます。スワップ後、残りのトークンは別のチェーンに転送されます。
+#### 過剰な返金とフォワーディング付きスワップ
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    Chain A ->> Sunrise: Transfer token X
-    Sunrise --> Sunrise: recv_packet
-    Sunrise ->> Sunrise: Swap token X to token Y
+    participant User as ユーザー
+    participant SwapModule as x/swap モジュール
+    participant IBCModule as IBC モジュール
+    participant BankModule as x/bank モジュール
 
-    Sunrise ->> Chain A: Change token X
-    Sunrise ->> Chain B: Forward token Y
-    Chain A --> Chain A: recv_packet
-    Chain B --> Chain B: recv_packet
-    Chain A ->> Sunrise: ack
-    Chain B ->> Sunrise: ack
-    Sunrise ->> Chain A: ack
+    User->>IBCModule: SendPacket with Swap and Forward Metadata
+    IBCModule->>SwapModule: OnRecvPacket
+    SwapModule->>SwapModule: スワップを実行（過剰なトークンが残る）
+    SwapModule->>BankModule: 過剰なトークンをユーザーに返金
+    SwapModule->>IBCModule: Send Forwarded Packet
+    IBCModule-->>User: 確認
 ```
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
+## メッセージ
 
-**受信者アドレスの取り扱い**
+* `MsgSwapExactAmountIn`: 正確な入力量でトークンをスワップします。
+* `MsgSwapExactAmountOut`: 正確な出力量でトークンをスワップします。
 
-スワップ後、その後の変更や転送が失敗しても、「トークンX転送」の確認は常に成功します。スワップされたトークンは受信者のアカウントに残ります。
+## クエリ
 
-詳細については[Github](https://github.com/sunriselayer/sunrise/tree/main/x/swap)を参照してください。
+* `Params`: モジュールパラメータのクエリ。
+* `Pools`: 利用可能なすべての流動性プールのクエリ。
+* `Routes`: 特定のトークンペア間の最適なスワップルートのクエリ。
+
+詳細については、[Github](https://github.com/sunriselayer/sunrise/tree/main/x/swap)を参照してください。

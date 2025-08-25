@@ -1,153 +1,154 @@
 # 流動性インセンティブ
 
-`x/liquidityincentive`モジュールは、流動性プールへの貢献に基づいて報酬を分配することで流動性提供者にインセンティブを与えます。このモジュールはエポックベースの報酬システムとゲージ投票メカニズムを使用して、報酬を動的に配分します。これにより持続可能な流動性提供を確保しながら、ユーザーがゲージ投票を通じてガバナンスに参加することを可能にします。
+`x/liquidityincentive`モジュールは、流動性プールへの貢献に基づいて報酬を分配することにより、流動性プロバイダーにインセンティブを与えます。エポックベースの報酬システムとゲージ投票メカニズムを使用して、報酬を動的に割り当てます。このモジュールは、持続可能な流動性供給を保証すると同時に、ユーザーがゲージ投票を通じてガバナンスに参加できるようにします。
+
+賄賂機能の詳細については、[賄賂](./bribes.md)を参照してください。
 
 ## 主な特徴
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
 1. **エポックベースの報酬分配**:
-    - 報酬は各エポックの終了時に分配されます。
-    - 遅延会計はクレーム時にのみ報酬を計算することで計算オーバーヘッドを最小化します。
+   - 報酬は各エポックの終わりに分配されます。
+   - 遅延会計は、請求時にのみ報酬を計算することで、計算オーバーヘッドを最小限に抑えます。
 2. **ゲージ投票**:
-    - ユーザーはどの流動性プールがインセンティブを受け取るべきかについて投票できます。
-    - 投票パワーは**`$vRISE`**トークン（譲渡不可のステーキングトークン）によって決定されます。
+   - ユーザーは、どの流動性プールがインセンティブを受け取るべきかについて投票できます。
+   - 投票力は**`$vRISE`**トークン（譲渡不可能なステーキングトークン）によって決定されます。
 3. **報酬の遅延会計**:
-    - 報酬はアキュムレーターを使用して追跡され、ユーザーがクレームする時にのみ分配されます。
-    - これによりネットワークの計算負荷が軽減されます。
-4. **動的インセンティブ配分**:
-    - インセンティブは投票によって決定されるプールウェイト（ゲージ）に基づいて配分されます。
+   - 報酬はアキュムレータを使用して追跡され、ユーザーが請求したときにのみ分配されます。
+   - これにより、ネットワークの計算負荷が軽減されます。
+4. **動的なインセンティブ割り当て**:
+   - インセンティブは、投票によって決定されるプールの重み（ゲージ）に基づいて割り当てられます。
 
 ## **コアコンセプト**
 
 ### エポック
 
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
-- 同時に2つのエポックが存在します:
-    1. **過去エポック**: 終了したエポック。
-    2. **現在エポック**: 進行中のエポック。
-- 各エポックには以下のパラメータがあります:
-    - **`start_block`**: エポックが開始するブロック。
-    - **`end_block`**: エポックが終了するブロック。
-    - **`gauges`**: インセンティブ分配のためのゲージ（プールウェイト）のリスト。
+- 2つのエポックが同時に存在します：
+  1. **過去のエポック**: 終了したエポック。
+  2. **現在のエポック**: 進行中のエポック。
+- 各エポックには、次のパラメータがあります：
+  - **`id`**: 一意のエポックID。
+  - **`start_block`**: エポックが開始するブロック。
+  - **`start_time`**: エポックが開始するUnix時間。
+  - **`end_block`**: エポックが終了するブロック。
+  - **`gauges`**: インセンティブ分配のためのゲージのリスト（プールの重み）。
 
 ### ゲージ
 
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
-- ゲージは報酬配分における特定の流動性プールのウェイトを表します。
-- パラメータ:
-    - **`pool_id`**: 流動性プールのID。
-    - **`ratio`**: このプールに割り当てられた投票パワー。
+- ゲージは、報酬割り当てにおける特定の流動性プールの重みを表します。
+- パラメータ：
+  - **`pool_id`**: 流動性プールのID。
+  - **`voting_power`**: このプールに割り当てられた投票力。
 
 ### 遅延会計
 
-{% hint style="danger" %}
-**レベル3: モジュール開発者向け**
-{% endhint %}
-
-- 報酬はすぐに分配されず、クレーム時に計算されます。
-- 報酬計算の式:
+- 報酬はすぐに分配されるのではなく、請求時に計算されます。
+- 報酬の計算式：
 
 $$
-\text{ClaimAmount}_{ij} = \frac{\text{PositionUnclaimedAccumulation}_{ij}}{\text{PoolUnclaimedAccumulation}_{i}} \times \text{PoolUnclaimed}_{i}
+\text{請求額}_{ij} = \frac{\text{ポジション未請求アキュムレーション}_{ij}}{\text{プール未請求アキュムレーション}_{i}} \times \text{プール未請求額}_{i}
 $$
-
 
 ## ワークフロー
 
-{% hint style="danger" %}
-**レベル3: モジュール開発者向け**
-{% endhint %}
+```mermaid
+graph TD
+    A{ユーザー A}-->|流動性を提供|B((プール B))
+    A-->|賄賂を登録|C((プール Bのゲージ))
+    D{ユーザー}-->|投票|C
+    C-.->|賄賂を分配|D
+    C-.->|より多くのvRISEを割り当て|B
+    B-.->|vRISEインセンティブを分配|A
+```
 
-### 1. BeginBlocker
+### BeginBlocker
 
-- 以下の条件で新しいエポックを作成します:
-    - 最後のエポックが終了した場合。
-    - エポックが存在しない場合（最初のエポック）。
+1. インフレ報酬の一部をFee Collectorアカウントから**`x/liquidityincentive`**モジュールアカウントに送金します。
+2. 報酬は**`$vRISE`**トークン（譲渡不可能なステーキングトークン）に変換されます。
+3. 報酬は各プールの手数料アキュムレータに蓄積されます。
 
-### 2. EndBlocker
+### MsgClaimRewards (`x/liquiditypool`)
 
-- インフレーション報酬の一部を**`x/distribution`**プールから**`x/liquidityincentive`**プールに転送します。
+- ユーザーは、流動性プール内の自分のポジションと対話することで報酬を請求します。
 
-### 3. 報酬分配
+> **注意:**
+> ここで説明する報酬は、特に**ゲージ投票の報酬であり、vRISEの投票力に応じて割り当てられます**。
+> これらは、標準のLP報酬とは異なります。
+> ゲージ投票の報酬は、vRISEでゲージ投票に参加することで請求します。これにより、エポックごとの各プールの報酬のシェアが決まります。
 
-- 報酬は各プールの手数料アキュムレーターに蓄積されます。
-- ユーザーは流動性プールのポジションとやり取りすることで報酬をクレームします。
+## シーケンス図：報酬分配
 
-## シーケンス図: 報酬分配
-
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
 ```mermaid
 sequenceDiagram
-    participant User as Liquidity Provider
-    participant LiquidityPool as x/liquiditypool Module
-    participant IncentiveModule as x/liquidityincentive Module
-    participant Distribution as x/distribution Module
+    participant User as 流動性プロバイダー
+    participant LiquidityPool as x/liquiditypool モジュール
+    participant IncentiveModule as x/liquidityincentive モジュール
+    participant Distribution as x/distribution モジュール
 
-    User->>LiquidityPool: Provide Liquidity
-    LiquidityPool->>IncentiveModule: Track Position Accumulation
-    IncentiveModule->>Distribution: Transfer Inflation Rewards
-    User->>IncentiveModule: Claim Rewards
-    IncentiveModule->>User: Calculate and Distribute Rewards
+    User->>LiquidityPool: 流動性を提供
+    LiquidityPool->>IncentiveModule: ポジションの蓄積を追跡
+    IncentiveModule->>Distribution: インフレ報酬を送金
+    User->>IncentiveModule: 報酬を請求
+    IncentiveModule->>User: 報酬を計算して分配
 ```
 
-## コード例
+## パラメータ
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
+| パラメータ | デフォルト | 単位 | 説明 |
+| -------------------- | ------- | ------ | --------------------------------------------------- |
+| epoch_blocks | 4,320 | ブロック | エポックあたりのブロック数（約12日） |
+| staking_reward_ratio | 0.50 | 比率 | ステーキングに割り当てられるvRISEの比率（50%） |
+| bribe_claim_epochs | 5 | エポック | 賄賂を請求できるエポック数 |
 
-**エポック情報をクエリする:**
+### パラメータの詳細
 
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
+1. **epoch_blocks**
 
-async function queryEpochs() {
-    const cometRpc = "https://sunrise-test-da.cauchye.net/";
-    const client = await SunriseClient.connect(cometRpc);
-    const queryClient = client.getQueryClient();
+   - 各エポックの長さをブロック単位で定義します
+   - デフォルト値は約12日です（`DefaultParams().BlocksPerYear/365*12`）
+   - エポックの開始と終了を制御し、報酬分配のタイミングを決定します
 
-    if (!queryClient) {
-        console.error("Query client not initialized");
-        return;
-    }
+2. **staking_reward_ratio**
 
-    const epochs = await queryClient.liquidityincentive.epochs({});
-    console.log("Epochs:", epochs);
-}
-queryEpochs();
-```
+   - 新たにミントされたvRISEトークンのうち、ステーキング報酬に割り当てられる比率
+   - デフォルト値は50%です（`math.LegacyNewDecWithPrec(50, 2)`）
+   - 残りの50%は流動性インセンティブに使用されます
 
-**出力例:**
+3. **bribe_claim_epochs**
+   - 賄賂を請求できる期間をエポック単位で定義します
+   - デフォルト値は5エポックです
+   - この期間が過ぎると、賄賂は請求できなくなります
 
-```json
-{
-  "current_epoch": {
-    "start_block": "100",
-    "end_block": "200",
-    "gauges": [
-      { "pool_id": "1", "ratio": "0.6" },
-      { "pool_id": "2", "ratio": "0.4" }
-    ]
-  },
-  "past_epoch": {
-    "start_block": "0",
-    "end_block": "100",
-    ...
-  }
-}
-```
+これらのパラメータは、ガバナンスを通じて更新できます。パラメータの変更はシステムの動作に大きな影響を与える可能性があるため、慎重に検討する必要があります。
 
+## メッセージ
 
-詳細については[Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive)を参照してください。
+このモジュールは、さまざまなメッセージタイプを提供します。
+
+- MsgUpdateParams：モジュールパラメータの更新（ガバナンス操作）
+- MsgStartNewEpoch：新しいエポックを開始
+- MsgVoteGauge：報酬分配のためのプールの重みに投票
+- MsgRegisterBribe：特定のプールとエポックの賄賂を登録
+- MsgClaimBribes：蓄積された賄賂を請求
+
+## クエリ
+
+このモジュールは、さまざまなクエリエンドポイントを提供します。
+
+- Params：モジュールパラメータのクエリ
+- Epoch：特定のエポックの詳細を取得
+- Epochs：すべてのエポックを一覧表示
+- Vote：特定のアドレスの投票情報を取得
+- Votes：すべての投票を一覧表示
+- Bribe：特定の賄賂の詳細を取得
+- Bribes：オプションのフィルター付きですべての賄賂を一覧表示
+- BribeAllocation：特定のアドレス、エポック、プールの賄賂の割り当てを取得
+- BribeAllocations：オプションのフィルター付きですべての賄賂の割り当てを一覧表示
+- TallyResult：次のエポックの集計結果を取得
+
+詳細については、[Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquidityincentive)を参照してください。

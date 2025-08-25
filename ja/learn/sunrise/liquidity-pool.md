@@ -1,229 +1,106 @@
 # 流動性プール
 
-`x/liquiditypool`モジュールは、Sunriseブロックチェーン向けの集中型流動性自動マーケットメーカー（AMM）メカニズムを実装しています。このモジュールにより、ユーザーは流動性プールを作成し、特定の価格範囲でポジションを追加し、取引手数料やインセンティブから報酬を獲得できます。
+`x/liquiditypool`モジュールは、Sunriseブロックチェーンに集中流動性自動マーケットメーカー（AMM）メカニズムを実装します。このモジュールにより、ユーザーは流動性プールを作成し、特定の価格範囲でポジションを追加し、取引手数料やインセンティブから報酬を得ることができます。
 
 ## 主な特徴
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-1. **集中型流動性AMM:**
-
-   - Uniswap V3と同様のモデルに従い、流動性提供者が特定の価格範囲内に資産を集中させることができます。
-   - 従来の定数積AMMと比較して資本効率が向上します。
-
-
+1. **集中流動性AMM:**
+   * Uniswap V3と同様のモデルに従い、流動性プロバイダーは特定の価格範囲内に資産を集中させることができます。
+   * 従来の定数積AMMと比較して、資本効率が向上します。
 2. **ポジションベースの流動性:**
-
-   - ユーザーは定義された価格範囲（ティック）でポジションを作成します。
-   - 各ポジションには固有のIDがあり、流動性提供者の貢献を追跡します。
-
-
+   * ユーザーは、定義された価格範囲（ティック）でポジションを作成します。
+   * 各ポジションには一意のIDがあり、流動性プロバイダーの貢献を追跡します。
 3. **手数料の生成:**
-
-   - ポジションは価格範囲内で発生する取引から手数料を獲得します。
-   - 手数料はプールのベースおよびクォートデノミネーションで収集されます。
-
-
+   * ポジションは、その価格範囲内で発生した取引から手数料を得ます。
+   * 手数料は、プールのベースデノミネーションとクォートデノミネーションで徴収されます。
 4. **`vRISE`インセンティブ:**
-
-   - 流動性提供者は追加のインセンティブとしてvRISEトークンを獲得します。
-   - これらのトークンはSunriseエコシステムでDA Fee Abstractionに使用できます。
+   * 流動性プロバイダーは、追加のインセンティブとしてvRISEトークンを獲得します。
+   * 詳細については、[流動性インセンティブ](liquidity-incentive/)を参照してください。
 
 ## コア機能
 
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
 ### プール管理
 
-**各プールはいくつかのパラメータで定義されます:**
+**各プールは、いくつかのパラメータによって定義されます:**
 
-- `id`: プールの一意の識別子
-- `denom_base` & `denom_quote`: トークンペアのデノミネーション
-- `fee_rate`: プール内のスワップに課される手数料
-- `tick_params`: ティックシステムを定義するパラメータ
-- `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: 現在のステート変数
-
+* `id`: プールの一意の識別子
+* `denom_base` & `denom_quote`: トークンペアのデノミネーション
+* `fee_rate`: プール内のスワップで請求される手数料
+* `tick_params`: ティックシステムを定義するパラメータ
+* `current_tick`, `current_tick_liquidity`, `current_sqrt_price`: 現在の状態変数
 
 ### ティックシステム
 
-{% hint style="danger" %}
-**レベル3: モジュール開発者向け**
-{% endhint %}
-
-ティックシステムは価格比率の公式に基づいています:
+ティックシステムは、価格比率の式に基づいています。
 
 $$
-\mathrm{price}(\mathrm{tick}) = \mathrm{price\_ratio}^{\mathrm{tick} - \mathrm{base\_offset}}
+\mathrm{価格}(\mathrm{ティック}) = \mathrm{価格比率}^{\mathrm{ティック} - \mathrm{ベースオフセット}}
 $$
 
-`price_ratio = 1.0001`および`base_offset = 0`の一般的なケースでは:
+`価格比率 = 1.0001`および`ベースオフセット = 0`の一般的なケースでは：
 
 $$
-\mathrm{price}(\mathrm{tick}) = 1.0001^{\mathrm{tick}}
+\mathrm{価格}(\mathrm{ティック}) = 1.0001^{\mathrm{ティック}}
 $$
 
-これにより、特定の価格範囲内に流動性を正確に配置することができます。
+これにより、特定の価格範囲内に流動性を正確に配置できます。
 
-## ワークフロー: ポジションの作成と使用
+## ワークフロー：ポジションの作成と使用
 
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant LiquidityPool as x/liquiditypool Module
-    participant SwapModule as x/swap Module
-    participant BankKeeper as Bank Module
+    participant User as ユーザー
+    participant LiquidityPool as x/liquiditypool モジュール
+    participant SwapModule as x/swap モジュール
 
     User->>LiquidityPool: MsgCreatePosition
-    LiquidityPool->>BankKeeper: Transfer Tokens to Module
-    LiquidityPool->>User: Return Position ID
+    LiquidityPool->>User: ポジションIDを返す
     
     User->>LiquidityPool: MsgIncreaseLiquidity
-    LiquidityPool->>BankKeeper: Transfer Additional Tokens
+    LiquidityPool->>User: 新しいポジションIDを返す
+
+    User->>LiquidityPool: MsgDecreaseLiquidity
+    LiquidityPool->>User: トークンを返す
     
-    User->>SwapModule: Perform Swap (via x/swap)
-    SwapModule->>LiquidityPool: Use Pool Liquidity
-    LiquidityPool->>LiquidityPool: Collect Fees for Positions
+    User->>SwapModule: スワップを実行（x/swap経由）
+    SwapModule->>LiquidityPool: プールの流動性を使用
+    LiquidityPool->>LiquidityPool: ポジションの手数料を徴収
+    LiquidityPool->>User: スワップされた金額を送信
     
     User->>LiquidityPool: MsgClaimRewards
-    LiquidityPool->>BankKeeper: Transfer Earned Fees to User
-    LiquidityPool->>User: Transfer vRISE Incentives
+    LiquidityPool->>User: 獲得した手数料とvRISEインセンティブを送金
     
-    User->>LiquidityPool: MsgDecreaseLiquidity
-    LiquidityPool->>BankKeeper: Return Tokens to User
+
 ```
 
 ## メッセージ
 
-{% hint style="danger" %}
-**レベル3: モジュール開発者向け**
-{% endhint %}
+このモジュールは、さまざまなメッセージタイプを提供します。
 
-### MsgCreatePool
-
-指定されたパラメータで新しい流動性プールを作成します。
-
-```go
-type MsgCreatePool struct {
-    Authority   string
-    DenomBase   string
-    DenomQuote  string
-    FeeRate     string
-    PriceRatio  string
-    BaseOffset  string
-}
-```
-
-### MsgCreatePosition
-
-プール内の価格範囲内でポジションを作成します。
-
-```go
-type MsgCreatePosition struct {
-    Sender         string
-    PoolId         uint64
-    LowerTick      int64
-    UpperTick      int64
-    TokenBase      sdk.Coin
-    TokenQuote     sdk.Coin
-    MinAmountBase  string
-    MinAmountQuote string
-}
-```
-
-### MsgIncreaseLiquidity
-
-既存のポジションに流動性を追加します。
-
-```go
-type MsgIncreaseLiquidity struct {
-    Sender         string
-    Id             uint64
-    AmountBase     string
-    AmountQuote    string
-    MinAmountBase  string
-    MinAmountQuote string
-}
-```
-
-### MsgDecreaseLiquidity
-
-既存のポジションから流動性を取り除きます。
-
-```go
-type MsgDecreaseLiquidity struct {
-    Sender    string
-    Id        uint64
-    Liquidity string
-}
-```
-
-### MsgClaimRewards
-
-ポジションに蓄積された手数料とインセンティブを請求します。
-
-```go
-type MsgClaimRewards struct {
-    Sender      string
-    PositionIds []uint64
-}
-```
-
-## 使用例
-
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-**ポジションの作成**
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-import { MsgCreatePosition } from "@sunriselayer/client/types";
-
-async function createPosition() {
-    const client = await SunriseClient.connect("https://rpc.sunriselayer.io");
-    
-    const msgCreatePosition = {
-        sender: "sunrise1...",
-        poolId: 1,
-        lowerTick: -4155,  // およそ価格0.66
-        upperTick: 4054,   // およそ価格1.5
-        tokenBase: { denom: "urise", amount: "1000000" },
-        tokenQuote: { denom: "uusdc", amount: "1000000" },
-        minAmountBase: "0",
-        minAmountQuote: "0"
-    };
-    
-    const result = await client.executeTransaction(msgCreatePosition);
-    console.log("Position created:", result);
-}
-```
+* MsgUpdateParams：モジュールパラメータの更新（ガバナンス操作）
+* MsgCreatePool：指定されたパラメータで新しい流動性プールを作成
+* MsgCreatePosition：プール内の価格範囲内にポジションを作成
+* MsgIncreaseLiquidity：既存のポジションに流動性を追加
+* MsgDecreaseLiquidity：既存のポジションから流動性を削除
+* MsgClaimRewards：ポジションで蓄積された手数料とインセンティブを請求
 
 ## クエリ
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
+このモジュールは、さまざまなクエリエンドポイントを提供します。
 
-このモジュールはさまざまなクエリエンドポイントを提供します:
+* Params：モジュールパラメータのクエリ
+* Pool：特定のプールの詳細を取得
+* Pools：すべての流動性プールを一覧表示
+* Position：特定のポジションの詳細を取得
+* Positions：すべてのポジションを一覧表示
+* PoolPositions：特定のプール内のポジションを一覧表示
+* AddressPositions：アドレスが所有するポジションを一覧表示
+* PositionFees：ポジションで発生した手数料を取得
+* CalculationCreatePosition：ポジション作成のプレビュー
+* CalculationIncreaseLiquidity：流動性増加のプレビュー
 
-* Params: モジュールパラメータをクエリする
-* Pools: すべての流動性プールを一覧表示する
-* Pool: 特定のプールの詳細を取得する
-* Positions: すべてのポジションを一覧表示する
-* Position: 特定のポジションの詳細を取得する
-* PoolPositions: 特定のプール内のポジションを一覧表示する
-* AddressPositions: アドレスが所有するポジションを一覧表示する
-* PositionFees: ポジションの発生手数料を取得する
-* CalculationCreatePosition: ポジション作成のプレビュー
-* CalculationIncreaseLiquidity: 流動性増加のプレビュー
-
-詳細については[Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquiditypool)を参照してください。
+詳細については、[Github](https://github.com/sunriselayer/sunrise/tree/main/x/liquiditypool)を参照してください。

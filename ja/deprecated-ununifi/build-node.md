@@ -1,200 +1,200 @@
-# Build a Node
+# ノードのビルド
 
-## Chain upgrades
+## チェーンのアップグレード
 
-For streamline chain upgrades and minimizing downtime, you may want to set up [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to manage your node.
+チェーンのアップグレードを効率化し、ダウンタイムを最小限に抑えるために、ノードを管理するために[cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html)を設定することをお勧めします。
 
-## Backups
+## バックアップ
 
-If you are using a recent version of Cosmovisor, then the default configuration is that a state backup will be created before upgrades are applied. This can be turned off using [environment flags](https://docs.cosmos.network/master/run-node/cosmovisor.html#command-line-arguments-and-environment-variables).
+Cosmovisorの最近のバージョンを使用している場合、デフォルト設定ではアップグレードが適用される前に状態のバックアップが作成されます。これは[環境フラグ](https://docs.cosmos.network/master/run-node/cosmovisor.html#command-line-arguments-and-environment-variables)を使用してオフにすることができます。
 
-## Alerting and monitoring
+## アラートと監視
 
-Alerting and monitoring is desirable as well - you are encouraged to explore solutions and find one that works for your setup. Prometheus is available out-of-the box, and there are a variety of open-source tools. Recommended reading:
+アラートと監視も望ましいです。解決策を検討し、自分の設定に合ったものを見つけることをお勧めします。Prometheusはすぐに利用でき、さまざまなオープンソースツールがあります。推奨される読み物：
 
-## Avoiding DDOS attacks
+## DDOS攻撃の回避
 
-> If you are comfortable with server ops, you might want to build out a [Sentry Node Architecture](https://docs.tendermint.com/master/nodes/validators.html) validator to protect against DDOS attacks.
+> サーバーの運用に慣れている場合は、DDOS攻撃から保護するために[セントリーノードアーキテクチャ](https://docs.tendermint.com/master/nodes/validators.html)のバリデータを構築することをお勧めします。
 
-The current best practice for running mainnet nodes is a Sentry Node Architecture. There are various approaches, as detailed [here](https://medium.com/@kidinamoto/tech-choices-for-cosmos-validators-27c7242061ea). Some validators advocate co-locating all three nodes in virtual partitions on a single box, using Docker or other virtualisation tools. However, if in doubt, just run each node on a different server.
+現在のメインネットノードを実行するためのベストプラクティスは、セントリーノードアーキテクチャです。[こちら](https://medium.com/@kidinamoto/tech-choices-for-cosmos-validators-27c7242061ea)で詳しく説明されているように、さまざまなアプローチがあります。一部のバリデータは、Dockerまたは他の仮想化ツールを使用して、単一のボックス上の仮想パーティションに3つのノードすべてを同じ場所に配置することを提唱しています。ただし、疑問がある場合は、各ノードを別のサーバーで実行してください。
 
-Bear in mind that Sentries can have pruning turned on, as outlined [here](https://hub.cosmos.network/main/hub-tutorials/join-mainnet.html#pruning-of-state). It is desirable, but not essential, to have pruning disabled on the validator node itself.
+[こちら](https://hub.cosmos.network/main/hub-tutorials/join-mainnet.html#pruning-of-state)で概説されているように、セントリーでプルーニングを有効にできることに注意してください。バリデータノード自体でプルーニングを無効にすることが望ましいですが、必須ではありません。
 
-## Managing storage
+## ストレージの管理
 
-> If you are using a cloud services provider, you may want to mount `$HOME` on an externally mountable storage volume, as you may need to shuffle the data onto a larger storage device later. You can specify the home directory in most commands, or just use symlinks.
+> クラウドサービスプロバイダーを使用している場合は、後でデータをより大きなストレージデバイスに移動する必要がある場合があるため、`$HOME`を外部マウント可能なストレージボリュームにマウントすることをお勧めします。ほとんどのコマンドでホームディレクトリを指定するか、シンボリックリンクを使用できます。
 
-Disk space is likely to fill up, so having a plan for managing storage is key.
+ディスク容量がいっぱいになる可能性が高いため、ストレージを管理する計画を立てることが重要です。
 
-If you are running sentry nodes:
+セントリーノードを実行している場合：
 
-* 1TB storage for the full node will give you a lot of runway
-* 200GB each for the sentries with pruning should be sufficient
+- フルノード用の1TBのストレージは、多くの余裕を与えます
+- プルーニングを行うセントリーごとに200GBで十分なはずです
 
-Managing backups is outside the scope of this documentation, but several validators keep public snapshots and backups.
+バックアップの管理はこのドキュメントの範囲外ですが、いくつかのバリデータが公開スナップショットとバックアップを保持しています。
 
-It is anticipated that state-sync will soon work for wasm chains, although it does not currettly.
+現在、wasmチェーンでは状態同期は機能していませんが、まもなく機能することが期待されています。
 
-## Joining network
+## ネットワークへの参加
 
-General instructions to join the UnUniFi mainnet after network genesis.
+ネットワークジェネシス後にUnUniFiメインネットに参加するための一般的な手順。
 
-### Configuration of Shell Variables
+### シェル変数の設定
 
-For this guide, we will be using shell variables. This will enable the use of the client commands verbatim. It is important to remember that shell commands are only valid for the current shell session, and if the shell session is closed, the shell variables will need to be re-defined.
+このガイドでは、シェル変数を使用します。これにより、クライアントコマンドをそのまま使用できるようになります。シェルコマンドは現在のシェルセッションに対してのみ有効であり、シェルセッションが閉じられると、シェル変数を再定義する必要があることを覚えておくことが重要です。
 
-If you want variables to persist for multiple sessions, then set them explicitly in your shell `.bash_profile`, as you did for the Go environment variables.
+変数を複数のセッションで永続化させたい場合は、Go環境変数で行ったように、シェルの`.bash_profile`で明示的に設定してください。
 
-To clear a variable binding, use `unset $VARIABLE_NAME`. Shell variables should be named with ALL CAPS.
+変数のバインドをクリアするには、`unset $VARIABLE_NAME`を使用します。シェル変数はすべて大文字で名前を付ける必要があります。
 
-### Choose the required mainnet chain-id
+### 必要なメインネットのchain-idを選択する
 
-The current UnUniFi Network `chain-id` is `ununifi-beta-v1`. Set the `CHAIN_ID`:
+現在のUnUniFiネットワークの`chain-id`は`ununifi-beta-v1`です。`CHAIN_ID`を設定します。
 
-For mainnet:
+メインネットの場合：
 
 ```bash
 CHAIN_ID=ununifi-beta-v1
 ```
 
-For testnet:
+テストネットの場合：
 
 ```bash
 CHAIN_ID=ununifi-test-v1
 ```
 
-### Set your server name
+### サーバー名を設定する
 
-Choose your `moniker`, it is just a name for your node. Set the `MONIKER`:
+`moniker`を選択します。これはノードの名前です。`MONIKER`を設定します。
 
 ```bash
 MONIKER=<moniker>
-# Example
+# 例
 MONIKER="yu-kimura-server-1"
 ```
 
-## Setting up the Node
+## ノードの設定
 
-These instructions will direct you on how to initialize your node, synchronize to the network and upgrade your node to a validator.
+これらの手順では、ノードを初期化し、ネットワークに同期し、ノードをバリデータにアップグレードする方法を説明します。
 
-### Initialize the chain
+### チェーンの初期化
 
 ```bash
 ununifid init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-This will generate the following files in `~/.ununifi/config/`
+これにより、`~/.ununifi/config/`に次のファイルが生成されます。
 
-* `genesis.json`
-* `node_key.json`
-* `priv_validator_key.json`
+- `genesis.json`
+- `node_key.json`
+- `priv_validator_key.json`
 
-### Download the genesis file
+### ジェネシスファイルのダウンロード
 
-For mainnet:
+メインネットの場合：
 
 ```bash
 rm ~/.ununifi/config/genesis.json
 curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-beta-v1/genesis.json -o ~/.ununifi/config/genesis.json
 ```
 
-For testnet:
+テストネットの場合：
 
 ```bash
 rm ~/.ununifi/config/genesis.json
 curl -L https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-test-v1/genesis.json -o ~/.ununifi/config/genesis.json
 ```
 
-This will replace the genesis file `genesis.json` created by `ununifid init` command.
+これにより、`ununifid init`コマンドで作成されたジェネシスファイル`genesis.json`が置き換えられます。
 
-### Set persistent peers
+### 永続ピアの設定
 
-Persistent peers will be required to tell your node where to connect to other nodes and join the network. To retrieve the peers for the chosen `chain-id`:
+永続ピアは、ノードが他のノードに接続してネットワークに参加する場所をノードに指示するために必要です。選択した`chain-id`のピアを取得するには：
 
-For mainnet:
+メインネットの場合：
 
 ```bash
-# Set the base repo URL for mainnet & retrieve peers
+# メインネットのベースリポジトリURLを設定し、ピアを取得します
 echo "export PEERS=\"fa38d2a851de43d34d9602956cd907eb3942ae89@a.ununifi.cauchye.net:26656,404ea79bd31b1734caacced7a057d78ae5b60348@b.ununifi.cauchye.net:26656,1357ac5cd92b215b05253b25d78cf485dd899d55@[2600:1f1c:534:8f02:7bf:6b31:3702:2265]:26656,25006d6b85daeac2234bcb94dafaa73861b43ee3@[2600:1f1c:534:8f02:a407:b1c6:e8f5:94b]:26656,caf792ed396dd7e737574a030ae8eabe19ecdf5c@[2600:1f1c:534:8f02:b0a4:dbf6:e50b:d64e]:26656,796c62bb2af411c140cf24ddc409dff76d9d61cf@[2600:1f1c:534:8f02:ca0e:14e9:8e60:989e]:26656,cea8d05b6e01188cf6481c55b7d1bc2f31de0eed@[2600:1f1c:534:8f02:ba43:1f69:e23a:df6b]:26656\"" >> ~/.bash_profile
 source .bash_profile
 ```
 
-For testnet:
+テストネットの場合：
 
 ```bash
-# Set the base repo URL for mainnet & retrieve peers
+# メインネットのベースリポジトリURLを設定し、ピアを取得します
 echo "export PEERS=\"65710949120e28f8af12f81b75efd2a509280f70@a.ununifi-test-v1.cauchye.net:26656,b20e3aad6b1bf7dc2d1635c388f578f335b13466@b.ununifi-test-v1.cauchye.net:26656,a8d5662130dd127dfcf82314e7a5b379a95d9daf@c.ununifi-test-v1.cauchye.net:26656,59361cdca33b1abbf85b46adb62bb680c6d59768@d.ununifi-test-v1.cauchye.net:26656\"" >> ~/.bash_profile
 source .bash_profile
 ```
 
-Using the peers variable above, we can set the persistent\_peers in `~/.ununifi/config/config.toml`:
+上記のピア変数を使用して、`~/.ununifi/config/config.toml`で`persistent_peers`を設定できます。
 
 ```bash
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.ununifi/config/config.toml
 ```
 
-### Set minimum gas prices
+### 最低ガス価格の設定
 
-For RPC nodes and Validator nodes we recommend setting the following minimum-gas-prices. As we are a permissionless wasm chain, this setting will help protect against contract spam and potential wasm contract attack vectors.
+RPCノードとバリデータノードには、次の`minimum-gas-prices`を設定することをお勧めします。私たちはパーミッションレスのwasmチェーンであるため、この設定は契約スパムや潜在的なwasm契約の攻撃ベクトルから保護するのに役立ちます。
 
-In `$HOME/.ununifi/config/app.toml`, set minimum gas prices:
+`$HOME/.ununifi/config/app.toml`で、最低ガス価格を設定します。
 
 ```Bash
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uguu\"/" $HOME/.ununifi/config/app.toml
 ```
 
-### Additional settings
+### 追加設定
 
-If you necessary, Edit config files `~/.ununifi/config/app.toml`
+必要に応じて、設定ファイル`~/.ununifi/config/app.toml`を編集します。
 
-* `pruning`
-* Enable defines if the API server should be enabled. `enable = true`
-* EnableUnsafeCORS defines if CORS should be enabled (unsafe - use it at your own risk). `enabled-unsafe-cors = true`
+- `pruning`
+- APIサーバーを有効にするかどうかを定義します。`enable = true`
+- CORSを有効にするかどうかを定義します（安全でないため、自己責任で使用してください）。`enabled-unsafe-cors = true`
 
-### Create (or restore) a local key pair
+### ローカルキーペアの作成（または復元）
 
-Either create a new key pair, or restore an existing wallet for your validator:
+バリデータ用に新しいキーペアを作成するか、既存のウォレットを復元します。
 
 ```Bash
-# Create new keypair
+# 新しいキーペアを作成する
 ununifid keys add <your-key>
-# Restore existing ununifi wallet with mnemonic seed phrase.
-# You will be prompted to enter mnemonic seed.
+# ニーモニックシードフレーズで既存のununifiウォレットを復元する
+# ニーモニックシードの入力を求められます
 ununifid keys add <your-key> --recover
-# Query the keystore for your public address
+# キーストアで公開アドレスを照会する
 ununifid keys show <your-key> -a
 ```
 
-Replace `<your-key>` with a key name of your choosing.
+`<your-key>`を任意のキー名に置き換えます。
 
-### Get some UnUniFi tokens
+### UnUniFiトークンを入手する
 
-You will require some UnUniFi tokens to bond to your validator. To be in the active set you will need to have enough tokens.
+バリデータにボンドするために、いくつかのUnUniFiトークンが必要になります。アクティブセットに入るには、十分なトークンが必要です。
 
-### Setup cosmovisor and start the node
+### cosmovisorのセットアップとノードの起動
 
-Follow instructions to setup cosmovisor and start the node.
+指示に従ってcosmovisorをセットアップし、ノードを起動します。
 
-> Using cosmovisor is completely optional. If you choose not to use cosmovisor, you will need to be sure to attend network upgrades to ensure your validator does not have downtime and get jailed.
+> cosmovisorの使用は完全にオプションです。cosmovisorを使用しないことを選択した場合は、バリデータがダウンタイムを経験してジェイルされないように、ネットワークのアップグレードに必ず参加する必要があります。
 
-If you are not using Cosmovisor you can start node: `ununifid start`
+Cosmovisorを使用しない場合は、ノードを起動できます：`ununifid start`
 
-### Syncing the node
+### ノードの同期
 
-After starting the `ununifid` daemon, the chain will begin to sync to the network. The time to sync to the network will vary depending on your setup and the current size of the blockchain, but could take a very long time. To query the status of your node:
+`ununifid`デーモンを起動した後、チェーンはネットワークへの同期を開始します。ネットワークへの同期にかかる時間は、設定とブロックチェーンの現在のサイズによって異なりますが、非常に長い時間がかかる場合があります。ノードのステータスを照会するには：
 
 ```Bash
-# Query via the RPC (default port: 26657)
+# RPC経由で照会する（デフォルトポート：26657）
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-This command returning `true` means that your node is still catching up. Otherwise your node has caught up to the network current block and you are safe to proceed to upgrade to a validator node.
+このコマンドが`true`を返す場合、ノードはまだ追いついていないことを意味します。それ以外の場合、ノードはネットワークの現在のブロックに追いついており、バリデータノードへのアップグレードに進んでも安全です。
 
-If you want to shorten the time to catch up to the latest block, consider to use snapshots from other nodes.
+最新のブロックに追いつくまでの時間を短縮したい場合は、他のノードのスナップショットを使用することを検討してください。
 
-* [NodeStake](https://nodestake.top/ununifi)
-* [NodeJumper](https://app.nodejumper.io/ununifi/sync)
-* [Nodeist](https://nodeist.net/Ununifi/)
-* [genznodes](https://genznodes.dev/services/)
+- [NodeStake](https://nodestake.top/ununifi)
+- [NodeJumper](https://app.nodejumper.io/ununifi/sync)
+- [Nodeist](https://nodeist.net/Ununifi/)
+- [genznodes](https://genznodes.dev/services/)
 
-If you want to catch up from 0 height, you have to upgrade `ununifid` at each upgrade heights. See [mainnet-upgrades](mainnet-upgrades.md).
+高さ0から追いつきたい場合は、アップグレードの高さごとに`ununifid`をアップグレードする必要があります。[mainnet-upgrades](mainnet-upgrades.md)を参照してください。

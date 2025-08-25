@@ -1,6 +1,6 @@
-# External CosmWasm chain with IBCHooks
+# IBCHooksを使用した外部CosmWasmチェーン
 
-This doesn't require `QueryMsg`, but requires `ExecuteMsg` as well as Strategy contract described [here](https://github.com/UnUniFi/gitbook/blob/main/develop/iya-strategy/strategy.md)
+これは`QueryMsg`を必要としませんが、[こちら](https://github.com/UnUniFi/gitbook/blob/main/develop/iya-strategy/strategy.md)で説明されている戦略コントラクトと同様に`ExecuteMsg`を必要とします。
 
 ```rust
 #[cw_serde]

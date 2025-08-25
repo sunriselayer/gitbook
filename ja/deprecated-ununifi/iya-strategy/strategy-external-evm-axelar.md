@@ -1,6 +1,6 @@
-# Strategy contracts interface on External EVM chain
+# 外部EVMチェーン上の戦略コントラクトインターフェース
 
-Strategy contracts satisfies the specific interface described below.
+戦略コントラクトは、以下に説明する特定のインターフェースを満たします。
 
 ```solidity
 interface IStrategy {

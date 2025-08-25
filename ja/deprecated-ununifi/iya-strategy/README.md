@@ -1,52 +1,52 @@
-# IYA Strategy
+# IYA戦略
 
 {% hint style="info" %}
-This feature is available on the mainnet!
+この機能はメインネットで利用可能です！
 {% endhint %}
 
-## Basic idea
+## 基本的な考え方
 
-The `yieldaggregator` module on UnUniFi can call a functionality of the smart contracts that are registered as a **Strategy**. When users deposit their funds into the **Vault** on `yieldaggregator` module, the module will automatically allocate the funds to strategies that are contained in the **Vault**. Strategy contracts satisfies the specific interface described [here](strategy-interface.md).
+UnUniFiの`yieldaggregator`モジュールは、**戦略**として登録されているスマートコントラクトの機能を呼び出すことができます。ユーザーが`yieldaggregator`モジュールの**Vault**に資金を入金すると、モジュールは自動的に**Vault**に含まれる戦略に資金を割り当てます。戦略コントラクトは、[こちら](strategy-interface.md)で説明されている特定のインターフェースを満たします。
 
-Example source codes are [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-example).
+サンプルソースコードは[こちら](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-example)です。
 
-### Interchain Strategy
+### インターチェーン戦略
 
-Strategies that can completely run only on UnUniFi chain without interoperability, can be developed easily by the way described [here](strategy-interface.md).
+相互運用性なしでUnUniFiチェーンのみで完全に実行できる戦略は、[こちら](strategy-interface.md)で説明されている方法で簡単に開発できます。
 
-However, developing interchain strategy only with CosmWasm smart contract on UnUniFi is not impossible but difficult. It is because Strategy contracts need to manage Interchain Account and Interchain Query, or something like that on EVM chains.
+しかし、UnUniFi上のCosmWasmスマートコントラクトのみでインターチェーン戦略を開発することは不可能ではありませんが、困難です。これは、戦略コントラクトがインターチェーンアカウントとインターチェーンクエリ、またはEVMチェーン上のそのようなものを管理する必要があるためです。
 
-To mitigate the difficulty, you can combine some ways to develop strategy contracts.
+その困難を軽減するために、戦略コントラクトを開発するためのいくつかの方法を組み合わせることができます。
 
-* Developing contract on external CosmWasm chain with IBC Hooks
-* Developing contract on external EVM chain with Axelar
+- IBCフックを使用して外部CosmWasmチェーンでコントラクトを開発する
+- Axelarを使用して外部EVMチェーンでコントラクトを開発する
 
-### Combination with contract on external CosmWasm chain
+### 外部CosmWasmチェーン上のコントラクトとの組み合わせ
 
-This way can be used for CosmWasm chains that is not requiring governance gate for deploying CosmWasm contracts, and supporting IBC Hooks module. For example, Neutron.
+この方法は、CosmWasmコントラクトのデプロイにガバナンスゲートを必要とせず、IBCフックモジュールをサポートしているCosmWasmチェーンに使用できます。たとえば、Neutronです。
 
-Development of IYA Strategy requires the knowledge of [CosmWasm](../cosmwasm/).
+IYA戦略の開発には、[CosmWasm](../cosmwasm/)の知識が必要です。
 
-Details are described in [here](strategy-external-cosmwasm-ibchooks.md).
+詳細は[こちら](strategy-external-cosmwasm-ibchooks.md)で説明されています。
 
-### Combination with contract on external EVM chain
+### 外部EVMチェーン上のコントラクトとの組み合わせ
 
-This way can be used for EVM chains. For example, Ethereum, Arbitrum, Avalanche c-chain, and Polygon.
+この方法は、EVMチェーンに使用できます。たとえば、Ethereum、Arbitrum、Avalanche c-chain、Polygonです。
 
-Details are described in [here](strategy-external-evm-axelar.md).
+詳細は[こちら](strategy-external-evm-axelar.md)で説明されています。
 
-### Only with CosmWasm Strategy contract on UnUniFi
+### UnUniFi上のCosmWasm戦略コントラクトのみ
 
-This way will be used for the strategy contracts that can't choose other ways. For example, Osmosis chain needs governance gate for deploying CosmWasm contracts. To avoid it, Osmosis LP farming strategy contract is developed with this way.
+この方法は、他の方法を選択できない戦略コントラクトに使用されます。たとえば、OsmosisチェーンはCosmWasmコントラクトをデプロイするためにガバナンスゲートを必要とします。これを回避するために、Osmosis LPファーミング戦略コントラクトはこの方法で開発されています。
 
-For example, Sei chain doesn't support IBC Hooks. So, for example, Astroport LP farming strategy contract will be developed with this way.
+たとえば、SeiチェーンはIBCフックをサポートしていません。したがって、たとえば、Astroport LPファーミング戦略コントラクトはこの方法で開発されます。
 
-#### Osmosis LP farming Strategy
+#### Osmosis LPファーミング戦略
 
-Source codes are [here](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-osmosis).
+ソースコードは[こちら](https://github.com/UnUniFi/contracts/tree/main/contracts/strategy-osmosis)です。
 
-## Proposal to register strategy
+## 戦略登録の提案
 
-Under construction.
+準備中です。
 
-If it is urgent, please contact us directly.
+お急ぎの場合は、直接お問い合わせください。

@@ -1,40 +1,41 @@
 # ununifid
 
-Instruction to install the ununifid binary
+ununifidバイナリをインストールするための手順
 
-## Choose an Operating System
+## オペレーティングシステムの選択
 
-The operating system you use for your node is entirely your personal preference. You will be able to compile the ununifid daemon on most modern linux distributions and recent versions of macOS
-> For the tutorial, it is assumed that you are using an Ubuntu LTS release.
-> If you have chosen a different operating system, you will need to modify your commands to suit your operating system.
+ノードに使用するオペレーティングシステムは、完全に個人の好みです。ほとんどの最新のLinuxディストリビューションと最近のバージョンのmacOSでununifidデーモンをコンパイルできます。
 
-## Requirements
+> このチュートリアルでは、Ubuntu LTSリリースを使用していることを前提としています。
+> 別のオペレーティングシステムを選択した場合は、オペレーティングシステムに合わせてコマンドを変更する必要があります。
 
-Validator Node Server
+## 要件
 
-- Memory: 8 GB or more
-- Storage: SSD 160 GB or more
-- The following ports: `26656` must be open for peer to peer communication between nodes.
+バリデータノードサーバー
 
-We will write examples as if you are using an Ubuntu LTS release.
+- メモリ：8 GB以上
+- ストレージ：SSD 160 GB以上
+- 次のポート：`26656`は、ノード間のピアツーピア通信のために開いている必要があります。
 
-## Install pre-requisites
+Ubuntu LTSリリースを使用しているかのように例を記述します。
+
+## 前提条件のインストール
 
 ```Bash
-# update the local package list and install any available upgrades
+# ローカルパッケージリストを更新し、利用可能なアップグレードをインストールする
 sudo apt update && sudo apt upgrade -y
-# install toolchain and ensure accurate time synchronization
+# ツールチェーンをインストールし、正確な時刻同期を確保する
 sudo apt install build-essential git jq -y
 ```
 
-## Install Go
+## Goのインストール
 
-Follow the instructions [here](https://go.dev/doc/install) to install Go.
-For an Ubuntu LTS, you can probably use:
+[こちら](https://go.dev/doc/install)の指示に従ってGoをインストールします。
+Ubuntu LTSの場合は、おそらく次を使用できます。
 
 ```Bash
-# Please install Go v1.19
-# from $HOME dir
+# Go v1.19をインストールしてください
+# $HOMEディレクトリから
 $ wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
 $ sudo rm -rf /usr/local/go
 $ sudo tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
@@ -42,7 +43,7 @@ $ go version
 go version go1.19 linux/amd64
 ```
 
-Unless you want to configure in a non standard way, then set these in the `.bash_profile` in the user's `home` (i.e. ~/) folder.
+標準的でない方法で設定したくない場合は、ユーザーの`home`（つまり~/）フォルダの`.bash_profile`にこれらを設定します。
 
 ```Bash
 echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
@@ -51,25 +52,25 @@ echo "export GO111MODULE=on" >> ~/.bash_profile
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
 ```
 
-After updating your `~/.bash_profile` you will need to source it:
+`~/.bash_profile`を更新した後、それを読み込む必要があります。
 
 ```Bash
 source ~/.bash_profile
 ```
 
-## Build UnUniFi from source
+## ソースからのUnUniFiのビルド
 
-Clone the UnUniFi blockchain repository, check out the given branch, and build it with `make install` to build binaries.
+UnUniFiブロックチェーンリポジトリをクローンし、指定されたブランチをチェックアウトし、`make install`でビルドしてバイナリをビルドします。
 
 ```Bash
-# from $HOME dir
-git clone https://github.com/UnUniFi/chain chain_repo  
+# $HOMEディレクトリから
+git clone https://github.com/UnUniFi/chain chain_repo
 cd chain_repo
 git checkout v3.1.0
 make install
 ```
 
-To confirm that the installation has succeeded, you can run:
+インストールが成功したことを確認するには、次を実行します。
 
 ```Bash
 ununifid version

@@ -1,67 +1,67 @@
-# Resource
+# リソース
 
-## Mainnet
+## メインネット
 
-Frontend Application: <https://ununifi.io>
+フロントエンドアプリケーション：<https://ununifi.io>
 
-- Explorer
+- エクスプローラー
   <https://ununifi.io/explorer>
-  Blockchain explorer for UnUniFi
-- Portal
+  UnUniFiのブロックチェーンエクスプローラー
+- ポータル
   <https://ununifi.io/portal>
-  Wallet & DeFi Application for UnUniFi
+  UnUniFiのウォレット＆DeFiアプリケーション
 
-### Public LCD
+### パブリックLCD
 
 UnUniFi Rest API
-Download OpenAPI specification: [swagger.yaml](https://github.com/UnUniFi/chain/blob/main/docs/client/swagger.yaml)
+OpenAPI仕様のダウンロード：[swagger.yaml](https://github.com/UnUniFi/chain/blob/main/docs/client/swagger.yaml)
 
-Cosmos SDK Rest & gRPC Gateway: [v1.cosmos.network](https://v1.cosmos.network/rpc)
+Cosmos SDK Rest＆gRPCゲートウェイ：[v1.cosmos.network](https://v1.cosmos.network/rpc)
 
-| Endpoint                      | Network         | Chain ID        |
+| エンドポイント | ネットワーク | チェーンID |
 | ----------------------------- | --------------- | --------------- |
-| **a.lcd.ununifi.cauchye.net** | UnUniFi mainnet | ununifi-beta-v1 |
-| **b.lcd.ununifi.cauchye.net** | UnUniFi mainnet | ununifi-beta-v1 |
+| **a.lcd.ununifi.cauchye.net** | UnUniFiメインネット | ununifi-beta-v1 |
+| **b.lcd.ununifi.cauchye.net** | UnUniFiメインネット | ununifi-beta-v1 |
 
-### Available Ports
+### 利用可能なポート
 
-| Port                 | Function                          |
+| ポート | 機能 |
 | -------------------- | --------------------------------- |
-| 9090                 | gRPC server                       |
-| 1317 (https: 1318)   | REST server                       |
-| 26657 (https: 26658) | CometBFT RPC endpoint (websocket) |
+| 9090 | gRPCサーバー |
+| 1317（https：1318） | RESTサーバー |
+| 26657（https：26658） | CometBFT RPCエンドポイント（websocket） |
 
-## Testnet
+## テストネット
 
-There are currently 3 public testnet chains.
+現在、3つのパブリックテストネットチェーンがあります。
 
-- Testnet
-  For mainnet development
+- テストネット
+  メインネット開発用
   <https://test.ununifi.io/>
-- Lab
-  Includes features planned for next release
+- ラボ
+  次期リリースで計画されている機能を含む
   <https://lab-testnet.ununifi.io/>
-- Alpha
-  Includes unstable and up-to-date features
+- アルファ
+  不安定で最新の機能を含む
   <https://alpha-test.ununifi.io/>
 
-All testnets have Explorer & Portal.
+すべてのテストネットにはエクスプローラーとポータルがあります。
 
-| Endpoint                           | Network         | chain ID           |
+| エンドポイント | ネットワーク | チェーンID |
 | ---------------------------------- | --------------- | ------------------ |
-| **a.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
-| **b.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
-| **c.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
-| **d.ununifi-test-v1.cauchye.net**  | UnUniFi Testnet | ununifi-test-v1    |
-| **ununifi-beta-test.cauchye.net**  | UnUniFi Lab     | ununifi-beta       |
-| **ununifi-alpha-test.cauchye.net** | UnUniFi Alpha   | ununifi-alpha-test |
+| **a.ununifi-test-v1.cauchye.net** | UnUniFiテストネット | ununifi-test-v1 |
+| **b.ununifi-test-v1.cauchye.net** | UnUniFiテストネット | ununifi-test-v1 |
+| **c.ununifi-test-v1.cauchye.net** | UnUniFiテストネット | ununifi-test-v1 |
+| **d.ununifi-test-v1.cauchye.net** | UnUniFiテストネット | ununifi-test-v1 |
+| **ununifi-beta-test.cauchye.net** | UnUniFiラボ | ununifi-beta |
+| **ununifi-alpha-test.cauchye.net** | UnUniFiアルファ | ununifi-alpha-test |
 
-### Available Ports (Testnet)
+### 利用可能なポート（テストネット）
 
-| Port                 | Function                          |
+| ポート | 機能 |
 | -------------------- | --------------------------------- |
-| 9090                 | gRPC server                       |
-| 1317 (https: 1318)   | REST server                       |
-| 26657 (https: 26658) | CometBFT RPC endpoint (websocket) |
-| 8000 (https: 8001)   | Faucet for BTC                    |
-| 8002 (https: 8003)   | Faucet for GUU & USDC             |
+| 9090 | gRPCサーバー |
+| 1317（https：1318） | RESTサーバー |
+| 26657（https：26658） | CometBFT RPCエンドポイント（websocket） |
+| 8000（https：8001） | BTC用フォーセット |
+| 8002（https：8003） | GUU＆USDC用フォーセット |

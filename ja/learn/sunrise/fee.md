@@ -1,146 +1,80 @@
-# Fee
+# 手数料
 
-`x/fee`モジュールはSunriseブロックチェーンの中核コンポーネントで、トランザクション手数料の管理を担当します。手数料として使用される$RISEトークンの一部をバーンするメカニズム、手数料のデノミネーション（単位）の適用、およびバイパスデノミネーションによる柔軟性を提供します。このモジュールは効率的な手数料システムを維持しながら、デフレーショナリーなトークノミクスをサポートします。
+`x/fee`モジュールは、Sunriseブロックチェーンのコアコンポーネントであり、取引手数料の管理を担当します。指定されたステーブルコイン（`fee_denom`）で手数料を徴収し、これらの手数料の一部を$RISE（`burned_denom`）にスワップして焼却します。このモジュールは、$RISEのデフレ型トークノミクスをサポートしつつ、ユーザーに安定した手数料体系を維持します。
 
 ## `x/fee`の主な特徴
 
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
+1. **焼却メカニズム:**
 
-1. **バーンメカニズム:**
+   - 徴収された手数料（`fee_denom`）の一部は、$RISE（`burned_denom`）にスワップされて焼却され、循環供給量を削減します。
+   - 焼却率は`burn_ratio`パラメータによって決定されます（デフォルト：50%）。
+   - スワップと焼却の操作はアトミックであり、オンチェーンで検証されます。
 
-    - トランザクション手数料として使用される$RISEトークンの一部が流通量を減らすためにバーンされます。
-    - バーン比率は`burn_ratio`パラメータによって決定されます（デフォルト: 50%）。
-2. **手数料デノミネーション（`fee_denom`）:**
+2. **手数料のデノミネーション（`fee_denom`）:**
 
-    - トランザクション手数料に必要なデノミネーションを指定します（デフォルト: **`"urise"`**）。
-    - トランザクションはバイパスされない限り、このデノミネーションで手数料を支払う必要があります。
-3. **バイパスデノミネーション（`bypass_denoms`）**:
+   - 取引手数料に必要なデノミネーションを指定します（デフォルト：**`"uusdrise"`**）。
+   - バイパスされない限り、取引はこのデノミネーションで手数料を支払う必要があります。
+   - 手数料のデノミネーションの厳密な検証が強制されます。
 
-    - 特定のデノミネーションが標準的な手数料制限をバイパスすることを許可します。
-    - デフォルトのバイパスデノミネーション: **`"uvrise"`**。
-4. **動的パラメータ設定**:
+3. **動的なパラメータ設定:**
+   - 開発者は、モジュールによって強制される検証付きで、パラメータを動的に設定できます。
+   - パラメータは、ガバナンス提案を通じて更新できます。
 
-    - 開発者はモジュールによって強制される検証を伴ってパラメータを動的に設定できます。
-      
+## コア機能
 
-## 主要機能
+### 手数料の徴収と処理
 
-{% hint style="danger" %}
-**レベル3: モジュール開発者向け**
-{% endhint %}
+**手数料徴収プロセス:**
 
-### 手数料控除とバーン
+1. 手数料は、`FeeCollector`モジュールアカウントを通じて`fee_denom`で徴収されます。
+2. システムは以下を検証します：
+   - トランザクションごとに1つの手数料デノミネーションのみ。
+   - 手数料デノミネーションが、設定された`fee_denom`と一致すること。
+   - 手数料額が有効で、ゼロでないこと。
 
-**トランザクションが処理されるとき:**
+**手数料処理フロー:**
 
-1. 手数料は送信者のアカウントから控除されます。
-2. 手数料の一部は手数料コレクターモジュールアカウントに送られます。
-3. 残りの部分は**`$RISE`**トークンの供給量を減らすためにバーンされます。
+1. `burn_ratio`によって決定される、徴収された手数料の一部が焼却用に指定されます。
+2. この部分は、`x/swap`モジュールを介して`fee_denom`から`burned_denom`にスワップされます。
+3. 結果として得られた`burned_denom`トークンは、供給から焼却されます。
+4. 残りの`fee_denom`（焼却用に指定されなかった部分）は、他のプロトコル用途のために`FeeCollector`アカウントに残ります。
 
-   ```go
-   func DeductFees(bankKeeper BankKeeper, ctx sdk.Context, acc sdk.AccountI, fees sdk.Coins, feeKeeper feekeeper.Keeper) error {
-   ...
-   if err := feeKeeper.Burn(ctx, fees); err != nil {
-   return err
-   }
-   ...
-   }
-   ```
+## パラメータ設定
 
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
-**パラメータ設定**
+| パラメータ | 説明 | デフォルト値 | 制約 |
+| -------------- | ------------------------------------------------------- | ------------- | ---------------------------- |
+| `fee_denom` | 取引手数料に必要なデノミネーション | `"uusdrise"` | 有効なデノミネーションである必要があります |
+| `burned_denom` | 手数料決済時に焼却されるデノミネーション | `"urise"` | 有効なデノミネーションである必要があります |
+| `burn_ratio` | 焼却する手数料の割合 | `0.5` | 0から1の間である必要があります |
 
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
+## ワークフロー：手数料処理
 
-| パラメータ                | 説明                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-| 手数料デノミネーション（`fee_denom`）     | トランザクション手数料に必要なデノミネーションを指定します（デフォルト: `"urise"`）。       |
-| バーン比率（`burn_ratio`）         | バーンするトランザクション手数料の割合（デフォルト: `0.5`）。`0`から`1`の間である必要があります。 |
-| バイパスデノミネーション（`bypass_denoms`） | 手数料制限をバイパスするデノミネーションのリスト（デフォルト: `["uvrise"]`）。          |
-
-**設定例:**
-
-```json
-{
-  "fee_denom": "urise",
-  "burn_ratio": 0.5,
-  "bypass_denoms": ["uvrise"]
-}
-```
-
-## 手数料モジュールの利点
-
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-- **デフレ圧力:**
-  バーンメカニズムは$RISEトークンにデフレ圧力をかけ、長期的なトークン価値をサポートします。
-- **手数料の柔軟性:**
-  bypass_denomsのような設定可能なパラメータは、特殊なトランザクションシナリオに対して柔軟性を提供します。
-  
-
-詳細と実装の仕様については、[GitHubリポジトリ](https://github.com/sunriselayer/sunrise/tree/main/x/fee)を参照してください。
-
-## ワークフロー: 手数料控除とバーン
-
-{% hint style="info" %}
-**レベル2: 上級ユーザー向け**
-{% endhint %}
-
-
-以下はトランザクション手数料の処理方法を示すシーケンス図です:
+> **注意:** 次のセクションでは、経験豊富なユーザーまたは開発者向けの高度なトピックについて説明します。
 
 ```mermaid
 sequenceDiagram
-    participant Sender as Sender (User)
-    participant FeeModule as x/fee Module
+    participant User as ユーザー
+    participant FeeModule as x/fee モジュール
     participant BankKeeper as Bank Keeper
-    participant FeeCollector as Fee Collector Account
+    participant SwapModule as x/swap モジュール
+    participant FeeCollector as 手数料徴収者
+    participant BribeModule as x/bribe モジュール
 
-    Sender->>FeeModule: Submit Transaction with Fees
-    FeeModule->>BankKeeper: Deduct Fees from Sender's Account
-    BankKeeper->>FeeCollector: Transfer Fees to Fee Collector Account
-    FeeModule->>FeeModule: Burn Portion of Fees (based on burn_ratio)
+    User->>FeeModule: トランザクションを送信
+    FeeModule->>BankKeeper: 手数料のデノミネーションを検証
+    BankKeeper->>FeeCollector: 手数料を送金（fee_denomで）
+    
+    note over FeeModule, SwapModule: 手数料処理
+    FeeModule->>FeeModule: スワップ＆焼却する量を計算
+    FeeModule->>SwapModule: fee_denomをburned_denomにスワップ
+    SwapModule-->>FeeModule: burned_denomを返す
+    FeeModule->>BankKeeper: 焼却を実行（burned_denom）
+
+    note over BribeModule, FeeCollector: 未請求の賄賂の処理
+    BribeModule->>FeeModule: 未請求の賄賂を処理
+    FeeModule->>FeeCollector: 未請求額を送金
 ```
 
-## 使用例
-
-{% hint style="success" %}
-**レベル1: アプリ開発者向け**
-{% endhint %}
-
-開発者はSunrise Client JSを使用して手数料パラメータをクエリできます:
-
-```javascript
-import { SunriseClient } from "@sunriselayer/client";
-
-async function queryFeeParams() {
-    const cometRpc = "https://sunrise-test-da-1.cauchye.net/";
-    const client = await SunriseClient.connect(cometRpc);
-    const queryClient = client.getQueryClient();
-
-    if (!queryClient) {
-        console.error("Query client not initialized");
-        return;
-    }
-
-    const feeParams = await queryClient.fee.params({});
-    console.log("Fee Parameters:", feeParams.params);
-}
-queryFeeParams();
-```
-
-**出力例:**
-
-```json
-{
-  "fee_denom": "urise",
-  "burn_ratio": "0.5",
-  "bypass_denoms": ["uvrise"]
-}
-```
+詳細および実装の詳細については、[GitHubリポジトリ](https://github.com/sunriselayer/sunrise/tree/main/x/fee)を参照してください。

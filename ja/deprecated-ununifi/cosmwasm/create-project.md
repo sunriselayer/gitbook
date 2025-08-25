@@ -1,16 +1,16 @@
-# Create your project
+# プロジェクトの作成
 
-See [here](https://github.com/CosmWasm/cw-template).
+[こちら](https://github.com/CosmWasm/cw-template)をご覧ください。
 
-By running this command,
+このコマンドを実行することで、
 
 ```bash
 cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
 ```
 
-you can start your CosmWasm smart contract project.
+CosmWasmスマートコントラクトプロジェクトを開始できます。
 
-If the command above doesn't work, try this command.
+上記のコマンドが機能しない場合は、このコマンドを試してください。
 
 ```bash
 cargo install cargo-generate --features vendored-openssl

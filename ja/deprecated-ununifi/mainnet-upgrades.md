@@ -1,53 +1,52 @@
 ---
 description: >-
-  Details of mainnet upgrades, installation block height and links to
-  instructions.
+  メインネットのアップグレードの詳細、インストールブロックの高さ、および手順へのリンク。
 ---
 
-# Mainnet Upgrades
+# メインネットのアップグレード
 
-Release procedures for validators and node operators are explained [here](https://github.com/UnUniFI/chain/blob/main/RELEASES.md). The `RELEASES.md` file in UnUniFi's GitHub repo is the canonical source of truth for release processes.
+バリデータとノードオペレーター向けのリリース手順は、[こちら](https://github.com/UnUniFI/chain/blob/main/RELEASES.md)で説明されています。UnUniFiのGitHubリポジトリにある`RELEASES.md`ファイルが、リリースプロセスの正式な情報源です。
 
-The UnUniFi Network mainnet is regularly upgraded to provide the latest security patches, Cosmos SDK module integrations and performance improvements.
+UnUniFiネットワークのメインネットは、最新のセキュリティパッチ、Cosmos SDKモジュールの統合、およびパフォーマンスの向上を提供するために定期的にアップグレードされます。
 
-Some upgrades are able to be undertaken automatically with Cosmovisor while other upgrades need to be manually installed at specified block heights. Others can be installed at any time after their predecessor.
+一部のアップグレードはCosmovisorで自動的に実行できますが、他のアップグレードは指定されたブロックの高さで手動でインストールする必要があります。その他は、先行するアップグレードの後にいつでもインストールできます。
 
-## Upgrade types
+## アップグレードの種類
 
-There are two types of upgrades that happen on UnUniFi Network. They are:
+UnUniFiネットワークでは、2種類のアップグレードが行われます。それらは次のとおりです。
 
-1. **Planned** feature upgrades or planned patches
-2. **Unplanned** security upgrades.
+1. **計画された**機能アップグレードまたは計画されたパッチ
+2. **計画外の**セキュリティアップグレード。
 
-### Planned upgrade (via governance)
+### 計画されたアップグレード（ガバナンス経由）
 
-Planned upgrades, as the name suggests, are upgrades that are developed and proposed via governance. If approved by the community, these upgrades are undertaken by the chain automatically halting at the planned upgrade height.
+計画されたアップグレードは、その名の通り、ガバナンスを通じて開発および提案されるアップグレードです。コミュニティによって承認された場合、これらのアップグレードは、計画されたアップグレードの高さでチェーンが自動的に停止することによって実行されます。
 
-Node operators are then required to swap the binary for the planned upgrade binary. After all node operators have upgraded and started their nodes the network will continue in the upgraded state.
+その後、ノードオペレーターは、計画されたアップグレードバイナリのバイナリを交換する必要があります。すべてのノードオペレーターがアップグレードしてノードを開始した後、ネットワークはアップグレードされた状態で継続します。
 
-### Unplanned upgrade
+### 計画外のアップグレード
 
-Where emergency security patches are required, node operators are notified via the official discord validator channels. Node operators will be required to halt their nodes manually at the required upgrade height, swap the patched binary and restart their nodes. After all node operators have upgraded and started their nodes the network will continue in the upgraded state.
+緊急のセキュリティパッチが必要な場合、ノードオペレーターは公式のDiscordバリデータチャネルを通じて通知されます。ノードオペレーターは、必要なアップグレードの高さで手動でノードを停止し、パッチを適用したバイナリを交換して、ノードを再起動する必要があります。すべてのノードオペレーターがアップグレードしてノードを開始した後、ネットワークはアップグレードされた状態で継続します。
 
-## Upgrade Path
+## アップグレードパス
 
-In order to sync a node with the current UnUniFi mainnet, you will need to follow these steps:
+現在のUnUniFiメインネットとノードを同期するには、次の手順に従う必要があります。
 
-### Genesis binary
+### ジェネシスバイナリ
 
-The genesis binary is [v1.0.0-beta.1](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-beta.1). This binary should be used with genesis file. Refer to instructions details in [Joining Mainnet](https://github.com/UnUniFi/gitbook/blob/main/node/validate-mainnet.md)
+ジェネシスバイナリは[v1.0.0-beta.1](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-beta.1)です。このバイナリはジェネシスファイルと一緒に使用する必要があります。[メインネットへの参加](https://github.com/UnUniFi/gitbook/blob/main/node/validate-mainnet.md)の詳細な手順を参照してください。
 
-### First Software upgrade
+### 最初のソフトウェアアップグレード
 
-Binary version is [v1.0.0-v3.1.0](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-v3.1.0).
+バイナリバージョンは[v1.0.0-v3.1.0](https://github.com/UnUniFi/chain/releases/tag/v1.0.0-v3.1.0)です。
 
-### Update Daemon for upgrade
+### アップグレードのためのデーモンの更新
 
-If you want ununifid to upgrade automatically, do the following steps prior to the upgrade height:
+ununifidが自動的にアップグレードされるようにするには、アップグレードの高さより前に次の手順を実行します。
 
 ```shell
-export UPGRADE_NAME= # upgrade name
-export NEW_VERSION= # release version for upgrade
+export UPGRADE_NAME= # アップグレード名
+export NEW_VERSION= # アップグレードのリリースバージョン
 
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades/$UPGRADE_NAME/bin
 cd $HOME/$CHAIN_REPO
@@ -57,4 +56,4 @@ make build
 cp build/ununifid $DAEMON_HOME/cosmovisor/upgrades/$UPGRADE_NAME/bin
 ```
 
-If you are setting true for automatic download in cosmosvisor, you don't need to do this. But, it's not recommended for validators.
+cosmosvisorで自動ダウンロードをtrueに設定している場合は、これを行う必要はありません。ただし、バリデータにはお勧めできません。

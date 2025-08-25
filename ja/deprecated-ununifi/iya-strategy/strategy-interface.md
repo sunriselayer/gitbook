@@ -1,6 +1,6 @@
-# Strategy contracts interface
+# 戦略コントラクトインターフェース
 
-Strategy contracts satisfies the specific interface described below.
+戦略コントラクトは、以下に説明する特定のインターフェースを満たします。
 
 ## ExecuteMsg
 
@@ -27,18 +27,18 @@ pub struct ExecuteEpochMsg {}
 
 ### `ExecuteMsg::Stake`
 
-On `ExecuteMsg::Stake`, staking amount is configured on `info.funds`.
+`ExecuteMsg::Stake`では、ステーキング額は`info.funds`で設定されます。
 
 ### `ExecuteMsg::Unstake`
 
-On `ExecuteMsg::Unstake`, unstaking amount is put as `Uint128` variable on `UnstakeMsg`.
+`ExecuteMsg::Unstake`では、アンステーキング額は`UnstakeMsg`の`Uint128`変数として入力されます。
 
 ### `ExecuteMsg::ExecuteEpoch`
 
-On `ExecuteMsg::ExecuteEpoch`, the strategy contract has to execute the periodical process of the strategy. For example, auto compounding.
+`ExecuteMsg::ExecuteEpoch`では、戦略コントラクトは戦略の定期的なプロセスを実行する必要があります。たとえば、自動複利です。
 
-This Msg is called by `yieldaggregator` module periodically.
-However, this Msg can be called by anyone (because this is not `SudoMsg`), so the strategy contract must not implement logics that can be abused by malicious users.
+このMsgは`yieldaggregator`モジュールによって定期的に呼び出されます。
+ただし、このMsgは誰でも呼び出すことができるため（これは`SudoMsg`ではないため）、戦略コントラクトは悪意のあるユーザーによって悪用される可能性のあるロジックを実装してはなりません。
 
 ## QueryMsg
 
@@ -57,25 +57,25 @@ pub enum QueryMsg {
 
 ### `QueryMsg::Bonded`
 
-`QueryMsg::Bonded` needs following info for querying:
+`QueryMsg::Bonded`は、クエリに次の情報を必要とします。
 
-- `addr`: address of the **Vault** that deposit funds to the strategy.
+- `addr`: 戦略に資金を入金する**Vault**のアドレス。
 
-This query returns the amount of bonded tokens of the address.
+このクエリは、アドレスのボンドされたトークンの量を返します。
 
 ### Unbonding
 
-`QueryMsg::Unbonding` needs following info for querying:
+`QueryMsg::Unbonding`は、クエリに次の情報を必要とします。
 
-- `addr`: address of the **Vault** that deposit funds to the strategy.
+- `addr`: 戦略に資金を入金する**Vault**のアドレス。
 
-This query returns the amount unbonding tokens of the address.
+このクエリは、アドレスのアンボンディング中のトークンの量を返します。
 
 ### `QueryMsg::Fee`
 
-`QueryMsg::Fee` needs no info for querying.
+`QueryMsg::Fee`は、クエリに情報を必要としません。
 
-This query returns `FeeResp` object that contains information of fees.
+このクエリは、手数料の情報を含む`FeeResp`オブジェクトを返します。
 
 ```rust
 pub struct FeeResp {
@@ -85,9 +85,9 @@ pub struct FeeResp {
 }
 ```
 
-Developers who developed strategy contracts have to implement this query properly, to show how much fees are charged on the strategy to users.
-Otherwise, the proposal for registering the strategy will be rejected.
+戦略コントラクトを開発した開発者は、戦略で請求される手数料の額をユーザーに示すために、このクエリを適切に実装する必要があります。
+そうしないと、戦略の登録に関する提案は拒否されます。
 
-### Source codes
+### ソースコード
 
 - <https://github.com/UnUniFi/contracts/blob/main/packages/strategy/src/v0/msgs.rs>
