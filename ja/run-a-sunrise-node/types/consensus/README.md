@@ -1,17 +1,17 @@
-# Consensus Nodes
+# コンセンサスノード
 
-## Overview
+## 概要
 
-- [Validator node](../consensus/validator-node.md): This type of node participates in consensus by producing and voting on blocks.
-- [Full consensus node](../consensus/full-consensus-node.md): A sunrise-app Full node to sync blockchain history.
+- [バリデーターノード](../consensus/validator-node.md): このタイプのノードは、ブロックを生成し、投票することによってコンセンサスに参加します。
+- [フルコンセンサスノード](../consensus/full-consensus-node.md): ブロックチェーンの履歴を同期するためのsunrise-appフルノード。
 
 {% hint style="info" %}
-**Data Availability Layer**: In addition to standard consensus tasks, Validator Nodes on Sunrise are responsible for verifying data for the Data Availability (DA) layer. This requires running additional daemons alongside the main `sunrised` process. See the [validator documentation](../../../build/validators/README.md) for more details.
+**データ可用性レイヤー**: 標準的なコンセンサスタスクに加えて、Sunriseのバリデーターノードはデータ可用性（DA）レイヤーのデータを検証する責任があります。これには、メインの`sunrised`プロセスと並行して追加のデーモンを実行する必要があります。詳細は[バリデータードキュメント](../../../build/validators/README.md)を参照してください。
 {% endhint %}
 
-### Requirements
+### 要件
 
-| Type           | CPU    | Architecture | Mem  | Disk       | Bandwidth |
-| -------------- | ------ | ------------ | ---- | ---------- | --------- |
-| Validator      | 6 Core | x86_64       | 8 GB | 500 GB SSD | 1 Gbps    |
-| Full Consensus | 4 Core | x86_64       | 8 GB | 250 GB SSD | 1 Gbps    |
+| タイプ | CPU | アーキテクチャ | メモリ | ディスク | 帯域幅 |
+| --- | --- | --- | --- | --- | --- |
+| バリデーター | 6コア | x86_64 | 8 GB | 500 GB SSD | 1 Gbps |
+| フルコンセンサス | 4コア | x86_64 | 8 GB | 250 GB SSD | 1 Gbps |

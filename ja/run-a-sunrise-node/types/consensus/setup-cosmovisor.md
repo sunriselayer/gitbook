@@ -1,23 +1,23 @@
-# Setup Cosmovisor
+# Cosmovisorの設定
 
-**For mainnet, it's recommended to use Cosmovisor to run your node.**
+**メインネットでは、ノードの実行にCosmovisorを使用することをお勧めします。**
 
-Setting up Cosmovisor is relatively straightforward. However, it does expect certain environment variables and folder structure to be set.\
-Cosmovisor allows you to download binaries ahead of time for chain upgrades, meaning that you can do zero (or close to zero) downtime chain upgrades. It's also useful if your local timezone means that a chain upgrade will fall at a bad time.\
-Rather than having to do stressful ops tasks late at night, it's always better if you can automate them away, and that's what Cosmovisor tries to do.
+Cosmovisorの設定は比較的簡単です。ただし、特定の環境変数とフォルダ構造が設定されている必要があります。\
+Cosmovisorを使用すると、チェーンのアップグレードのためにバイナリを事前にダウンロードできます。つまり、ダウンタイムをゼロ（またはほぼゼロ）に抑えてチェーンのアップグレードを実行できます。また、ローカルのタイムゾーンによってチェーンのアップグレードが不都合な時間に発生する場合にも便利です。\
+夜遅くにストレスの多い運用タスクを実行するよりも、それらを自動化できる方が常に優れています。それがCosmovisorが試みることです。
 
-## Install
+## インストール
 
-First, go and get cosmovisor (recommended approach):
+まず、cosmovisorを入手します（推奨されるアプローチ）：
 
 ```Bash
-# to target a specific version:
+# 特定のバージョンをターゲットにするには：
 go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 ```
 
-### Add environment variables to your shell
+### シェルに環境変数を追加する
 
-Some environment variables must be set to appropriate values for each node and each network.
+一部の環境変数は、各ノードと各ネットワークに対して適切な値に設定する必要があります。
 
 ```Bash
 echo "export DAEMON_NAME=sunrised" >> ~/.profile
@@ -28,13 +28,13 @@ echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.profile
 echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.profile
 ```
 
-Then source your profile to have access to these variables:
+次に、プロファイルをソースして、これらの変数にアクセスできるようにします。
 
 ```Bash
 source ~/.bash_profile
 ```
 
-### Set up folder structure
+### フォルダ構造の設定
 
 ```Bash
 mkdir -p $DAEMON_HOME/cosmovisor
@@ -43,26 +43,26 @@ mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades
 ```
 
-### Set up genesis binary
+### ジェネシスバイナリの設定
 
-Cosmovisor needs to know which binary to use at genesis. We put this in `$DAEMON_HOME/cosmovisor/genesis/bin`
+Cosmovisorは、ジェネシスで使用するバイナリを知る必要があります。これを`$DAEMON_HOME/cosmovisor/genesis/bin`に置きます。
 
-Check [our Github](https://github.com/sunriselayer/network) to know the binary version of genesis.
+[Github](https://github.com/sunriselayer/network)でジェネシスのバイナリバージョンを確認してください。
 
 ```Bash
 wget https://github.com/sunriselayer/sunrise/releases/download/<version>/sunrised
 cp sunrised $DAEMON_HOME/cosmovisor/genesis/bin
 ```
 
-### Set up service
+### サービスの設定
 
-Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `sunrised version`. Nevertheless, just as we would manage `sunrised` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example, an error or reboot. First, create the service file:
+Cosmovisorに送信されたコマンドは、基盤となるバイナリに送信されます。たとえば、`cosmovisor version`は`sunrised version`と入力するのと同じです。それでも、`sunrised`をプロセス管理ツールで管理するのと同じように、エラーや再起動などが発生した場合にCosmovisorが自動的に再起動されるようにしたいと考えています。まず、サービスファイルを作成します。
 
 ```Bash
 sudo vi /lib/systemd/system/cosmovisor.service
 ```
 
-Change the contents of the below to match your setup
+以下の内容を自分の設定に合わせて変更してください。
 
 ```Bash
 [Unit]
@@ -72,7 +72,7 @@ After=network-online.target
 Environment="DAEMON_NAME=sunrised"
 Environment="DAEMON_HOME=$DAEMON_HOME"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true" // Recommend
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true" // 推奨
 Environment="DAEMON_LOG_BUFFER_SIZE=512"
 Environment="UNSAFE_SKIP_BACKUP=true"
 User=$USER
@@ -86,13 +86,13 @@ WantedBy=multi-user.target
 ```
 
 {% hint style="info" %}
-A description of what the environment variables do can be found [here](https://docs.cosmos.network/main/run-node/cosmovisor.html). Change them depending on your setup.
+環境変数の説明は[こちら](https://docs.cosmos.network/main/run-node/cosmovisor.html)にあります。設定に応じて変更してください。
 {% endhint %}
 
-### Start Cosmovisor
+### Cosmovisorの起動
 
 {% hint style="warning" %}
-If syncing from a snapshot, do not start Cosmovisor yet. Download the snapshot and extract it to `$HOME/.sunrise/data`. Finally, enable the service and start it.
+スナップショットから同期する場合は、まだCosmovisorを起動しないでください。スナップショットをダウンロードして`$HOME/.sunrise/data`に展開します。最後に、サービスを有効にして起動します。
 {% endhint %}
 
 ```Bash
@@ -102,13 +102,13 @@ sudo systemctl enable cosmovisor
 sudo systemctl start cosmovisor
 ```
 
-Check it is running using:
+実行中であることを確認するには、次を使用します。
 
 ```Bash
 sudo systemctl status cosmovisor
 ```
 
-If you need to monitor the service after launch, you can view the logs using:
+起動後にサービスを監視する必要がある場合は、次を使用してログを表示できます。
 
 ```Bash
 sudo journalctl -u cosmovisor -f -o cat

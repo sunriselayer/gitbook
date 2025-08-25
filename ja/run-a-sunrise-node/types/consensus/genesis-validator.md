@@ -1,35 +1,35 @@
-# Validator Node (Genesis)
+# バリデーターノード（ジェネシス）
 
-Validator nodes allow you to participate in consensus in the Sunrise network.
+バリデーターノードを使用すると、Sunriseネットワークのコンセンサスに参加できます。
 
 {% hint style="info" %}
-You can only join as a validator in this way before the network starts(genesis). If the network has already started, please see [this tutorial](validator-node.md).
+この方法でバリデーターとして参加できるのは、ネットワークが開始する（ジェネシス）前のみです。ネットワークがすでに開始している場合は、[こちらのチュートリアル](validator-node.md)を参照してください。
 {% endhint %}
 
-## Hardware requirements
+## ハードウェア要件
 
-The following hardware minimum requirements are recommended for running the validator node:
+バリデーターノードを実行するために、以下の最低ハードウェア要件が推奨されます。
 
-- Memory: 8 GB RAM (minimum)
-- CPU: 6 cores
-- Disk: 500 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- メモリ：8 GB RAM（最小）
+- CPU：6コア
+- ディスク：500 GB SSDストレージ
+- 帯域幅：ダウンロード1 Gbps / アップロード1 Gbps
 
-## Run the Node
+## ノードの実行
 
-First, follow the instructions on [setting up a full consensus node](full-consensus-node.md).
+まず、[フルコンセンサスノードの設定](full-consensus-node.md)に関する指示に従ってください。
 
-### Optional: Reset working directory
+### オプション：作業ディレクトリのリセット
 
-If you have already initialized a working directory for sunrised in the past, you must clean up before reinitialized a new directory. You can do so by running the following command:
+過去にsunrisedの作業ディレクトリを初期化したことがある場合は、新しいディレクトリを再初期化する前にクリーンアップする必要があります。次のコマンドを実行することでクリーンアップできます。
 
 ```bash
 sunrised tendermint unsafe-reset-all
 ```
 
-### Initialize a working directory
+### 作業ディレクトリの初期化
 
-Check [our Github](https://github.com/sunriselayer/network) to know the current `chain-id` and run the following command:
+[Github](https://github.com/sunriselayer/network)で現在の`chain-id`を確認し、次のコマンドを実行してください。
 
 ```bash
 CHAIN_ID=sunrise-1
@@ -37,21 +37,21 @@ MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
 
-Change `genesis.json` to the one in the network repository.
+`genesis.json`をネットワークリポジトリのものに変更します。
 
 ```bash
 wget https://raw.githubusercontent.com/sunriselayer/network/main/sunrise-1/gentx/genesis.json
 cp genesis.json $HOME/.sunrise/config/genesis.json
 ```
 
-### Create a new key
+### 新しいキーの作成
 
 ```bash
 VALIDATOR_WALLET="validator"
 sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ```
 
-### Create the genesis transaction for new chain
+### 新しいチェーンのジェネシストランザクションの作成
 
 ```bash
 STAKING_AMOUNT=1000000uvrise
@@ -65,8 +65,8 @@ sunrised genesis gentx $VALIDATOR_WALLET $STAKING_AMOUNT --chain-id $CHAIN_ID \
    --keyring-backend test
 ```
 
-You will find the generated gentx JSON file inside `$HOME/.sunrised/config/gentx/gentx-*.json`
+生成されたgentx JSONファイルは`$HOME/.sunrised/config/gentx/gentx-*.json`内にあります。
 
-### Create Pull Request to register your gentx
+### gentxを登録するためのプルリクエストの作成
 
-To register your gentx, create a pull-request to the [network repository](https://github.com/sunriselayer/network/tree/main/sunrise-1/gentx).
+gentxを登録するには、[ネットワークリポジトリ](https://github.com/sunriselayer/network/tree/main/sunrise-1/gentx)にプルリクエストを作成してください。

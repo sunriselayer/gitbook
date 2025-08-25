@@ -1,20 +1,20 @@
-# IBC Relayer
+# IBCリレーヤー
 
-By setting up the IBC relayer, you can create new connections and channels of IBC between Sunrise and other blockchains.
+IBCリレーヤーを設定することで、Sunriseと他のブロックチェーンとの間にIBCの新しい接続とチャネルを作成できます。
 
-## Setting up relayer with Go relayer (Deprecated)
+## Goリレーヤーでのリレーヤー設定（非推奨）
 
-You can see details [here](https://github.com/cosmos/relayer).
+詳細はこちらで確認できます：[https://github.com/cosmos/relayer](https://github.com/cosmos/relayer)。
 
-First, install [Go](https://go.dev/doc/install)
+まず、[Go](https://go.dev/doc/install)をインストールしてください。
 
-## Setting up relayer with Rust relayer Hermes (Recommended)
+## RustリレーヤーHermesでのリレーヤー設定（推奨）
 
-You can see details [here](http://hermes.informal.systems).
+詳細はこちらで確認できます：[http://hermes.informal.systems](http://hermes.informal.systems)。
 
-First, install [Rust](https://www.rust-lang.org/tools/install)
+まず、[Rust](https://www.rust-lang.org/tools/install)をインストールしてください。
 
-Then, run the commands below:
+次に、以下のコマンドを実行します：
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -26,59 +26,59 @@ hermes version
 echo word1 ... word12or24 > ~/mnemonic.txt
 ```
 
-### Setup accounts
+### アカウントの設定
 
-First, you need a wallet with enough funds on both chains.
-This tutorial assumes that you already have wallets created on the chains you want to relay on, and that these wallets have funds allocated to each of them.
+まず、両方のチェーンで十分な資金を持つウォレットが必要です。
+このチュートリアルでは、リレーしたいチェーン上にすでにウォレットが作成されており、それぞれのウォレットに資金が割り当てられていることを前提としています。
 
 ```bash
 hermes keys add --key-name <user-name> --chain <ibc-0> --mnemonic-file mnemonic.txt
 hermes keys add --key-name <user-name> --chain <ibc-1> --mnemonic-file mnemonic.txt
 ```
 
-### Configuration file
+### 設定ファイル
 
-The command hermes config auto provides a way to automatically generate a configuration file for chains in the [chain-registry](https://github.com/cosmos/chain-registry):
+`hermes config auto`コマンドは、[chain-registry](https://github.com/cosmos/chain-registry)内のチェーンの設定ファイルを自動的に生成する方法を提供します：
 
-You must set each parameter yourself for the testnet. See the [documentation](https://hermes.informal.systems/documentation/configuration/index.html) for more details.
+テストネットの場合は、各パラメータを自分で設定する必要があります。詳細については、[ドキュメント](https://hermes.informal.systems/documentation/configuration/index.html)を参照してください。
 
 ```bash
 hermes config auto --output $HOME/.hermes/config.toml --chain <ibc-0>:<key-ibc-0> <ibc-1>:<key-ibc-1> --chain
 ```
 
-#### Add a new relay path
+#### 新しいリレーパスの追加
 
-The following settings are not required for mainnets that already have an established IBC channel. Follow only if you are starting a new connection.
+以下の設定は、すでに確立されたIBCチャネルを持つメインネットには不要です。新しい接続を開始する場合にのみ従ってください。
 
-- Create a connection
+- 接続の作成
 
-First, create a client on `ibc-1` tracking the state of `ibc-0`. It will be assigned 07-tendermint-0 as its identifier:
+まず、`ibc-0`の状態を追跡するクライアントを`ibc-1`上に作成します。これには`07-tendermint-0`が識別子として割り当てられます：
 
 ```bash
 hermes create client --host-chain <ibc-1> --reference-chain <ibc-0>
 ```
 
-- Create a connection
+- 接続の作成
 
-After creating clients on both chains, you have to establish a connection between them. Both chains will assign connection-0 as the identifier of their first connection:
+両方のチェーンにクライアントを作成した後、それらの間に接続を確立する必要があります。両方のチェーンは、最初の接続の識別子として`connection-0`を割り当てます：
 
 ```bash
 hermes create connection --a-chain <ibc-0> --b-chain <ibc-1>
 ```
 
-If the command runs successfully, it should output the `connection ID`.
+コマンドが正常に実行されると、`connection ID`が出力されるはずです。
 
-- Channel identifiers
+- チャネル識別子
 
-Finally, after the connection has been established, you can now open a new channel on top of it. Both chains will assign channel-0 as the identifier of their first channel:
+最後に、接続が確立された後、その上に新しいチャネルを開くことができます。両方のチェーンは、最初のチャネルの識別子として`channel-0`を割り当てます：
 
 ```bash
 hermes create channel --a-chain <ibc-0> --a-connection <connection-id> --a-port transfer --b-port transfer
 ```
 
-If the command runs successfully, it should output the channel IDs of both chains.
+コマンドが正常に実行されると、両方のチェーンのチャネルIDが出力されるはずです。
 
-Add these to `.hermes/config.toml`
+これらを`.hermes/config.toml`に追加します。
 
 ```yml
 [chains.packet_filter]
@@ -89,15 +89,15 @@ list = [[
 ]]
 ```
 
-Once the configuration is complete, you can start the relayer with the following command.
+設定が完了したら、次のコマンドでリレーヤーを起動できます。
 
 ```bash
 hermes start
 ```
 
-### Setting up daemon
+### デーモンの設定
 
-Recommend setting SystemD to run automatically after reboot.
+再起動後に自動的に実行されるようにSystemDを設定することをお勧めします。
 
 ```bash
 sudo tee /etc/systemd/system/hermes.service > /dev/null <<EOF
@@ -121,7 +121,7 @@ sudo systemctl daemon-reload
 sudo systemctl start hermes
 ```
 
-### Monitoring daemon
+### デーモンの監視
 
 ```bash
 journalctl -u hermes.service -f
