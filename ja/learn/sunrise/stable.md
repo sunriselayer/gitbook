@@ -50,19 +50,19 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as User
-    participant StableModule as x/stable Module
-    participant BankModule as x/bank Module
+    participant User as ユーザー
+    participant StableModule as x/stable モジュール
+    participant BankModule as x/bank モジュール
 
-    User->>StableModule: MsgMint (with collateral)
-    StableModule->>BankModule: Lock collateral
-    StableModule->>BankModule: Mint and send stablecoin to user
-    StableModule-->>User: Mint confirmation
+    User->>StableModule: MsgMint (担保付き)
+    StableModule->>BankModule: 担保をロック
+    StableModule->>BankModule: ステーブルコインをミントしてユーザーに送信
+    StableModule-->>User: ミント確認
 
-    User->>StableModule: MsgBurn (with stablecoin)
-    StableModule->>BankModule: Burn stablecoin from user
-    StableModule->>BankModule: Unlock and send collateral to user
-    StableModule-->>User: Burn confirmation
+    User->>StableModule: MsgBurn (ステーブルコイン付き)
+    StableModule->>BankModule: ユーザーからステーブルコインをバーン
+    StableModule->>BankModule: 担保をアンロックしてユーザーに送信
+    StableModule-->>User: バーン確認
 ```
 
 ## メッセージ

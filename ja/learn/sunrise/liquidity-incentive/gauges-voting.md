@@ -37,8 +37,8 @@ Sunriseエコシステムにおけるゲージは、流動性プロバイダー�
 
 ```mermaid
 graph TD
-    A[vRISE Holder] -->|Vote| B(Gauges)
-    B -->|Epoch End| C{vRISE Allocation}
-    C -->|Incentives| D[Liquidity Pool]
-    D -->|Rewards| E[Liquidity Provider]
+    A[vRISE保有者] -->|投票| B(ゲージ)
+    B -->|エポック終了| C{vRISEの割り当て}
+    C -->|インセンティブ| D[流動性プール]
+    D -->|報酬| E[流動性プロバイダー]
 ```

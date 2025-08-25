@@ -24,18 +24,18 @@ USDriseは、Sunriseエコシステム内の取引手数料の主要なトーク
 
 ```mermaid
 graph TD;
-    subgraph "Revenue Collection"
-        User -- "Pay fee in USDrise" --> Transaction;
-        Transaction -- "Collect fees" --> FeeCollector["FeeCollector Module"];
-        USDN_Yield["Yield from USDN"] -- "Accumulate" --> FeeCollector;
+    subgraph 収益収集
+        ユーザー -- "USDriseで手数料を支払う" --> トランザクション;
+        トランザクション -- "手数料を収集" --> FeeCollector["FeeCollectorモジュール"];
+        USDN_Yield["USDN利回り"] -- "蓄積" --> FeeCollector;
     end
 
-    subgraph "Fee & Yield Processing"
-        FeeCollector -- "Portion of fees for burning" --> SwapModule;
-        SwapModule -- "Swap USDrise to RISE" --> Burn[("🔥 Burn RISE")];
-        FeeCollector -- "Remaining funds (fees + yield)" --> Distribution;
-        Distribution -- "Rewards" --> vRISE_Stakers["vRISE Stakers"];
-        Distribution -- "Rewards" --> RISE_Stakers["RISE Stakers"];
+    subgraph 手数料と利回りの処理
+        FeeCollector -- "焼却用の手数料の一部" --> SwapModule;
+        SwapModule -- "USDriseをRISEにスワップ" --> Burn[("🔥 RISEを焼却")];
+        FeeCollector -- "残りの資金（手数料 + 利回り）" --> Distribution;
+        Distribution -- "報酬" --> vRISE_Stakers["vRISEステーカー"];
+        Distribution -- "報酬" --> RISE_Stakers["RISEステーカー"];
     end
 
     style Burn fill:#ffcccc,stroke:#333,stroke-width:2px

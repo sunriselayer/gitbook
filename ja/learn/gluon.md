@@ -45,8 +45,8 @@ Gluonは、ウェブで生成されたECDSAキーとオンチェーンアカウ�
 ```mermaid
 sequenceDiagram
     autonumber
-    User  ->>  App     : OAuth sign-up
-    App   -->  App     : Derive Sunrise address
+    User  ->>  App     : OAuthサインアップ
+    App   -->  App     : Sunriseアドレスを導出
 ```
 
 この合理化されたプロセスにより、ユーザーはブロックチェーンの複雑さなしに迅速に取引を開始できます。
@@ -62,12 +62,12 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User     ->> Browser : Initiate pairing
-    Browser  --> Browser : Generate AES key
-    Browser  --> Browser : Generate ECDSA key
-    Browser  --> Browser : Encrypt ECDSA with AES
-    Browser  ->> App     : Upload encrypted key + verification key
-    App      ->> Gluon   : Tx: register verification key
+    User     ->> Browser : ペアリングを開始
+    Browser  --> Browser : AESキーを生成
+    Browser  --> Browser : ECDSAキーを生成
+    Browser  --> Browser : ECDSAをAESで暗号化
+    Browser  ->> App     : 暗号化されたキーと検証キーをアップロード
+    App      ->> Gluon   : Tx: 検証キーを登録
 ```
 
 この複数ステップのプロセスにより、ユーザーのコントロールを維持しながら、安全なキー管理が保証されます。
@@ -83,10 +83,10 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User     ->> Browser : Place order
-    Browser  --> Browser : Decrypt ECDSA key
-    Browser  --> Browser : Sign order payload
-    Browser  ->> App     : Order + signature
+    User     ->> Browser : 注文を発注
+    Browser  --> Browser : ECDSAキーを復号
+    Browser  --> Browser : 注文ペイロードに署名
+    Browser  ->> App     : 注文と署名
 ```
 
 このアプローチにより、セキュリティを維持しながら、1秒未満での注文発注が可能になります。
@@ -102,8 +102,8 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> App   : Cancel order
-    App  ->> Gluon : Tx: register order + cancel
+    User ->> App   : 注文をキャンセル
+    App  ->> Gluon : Tx: 注文を登録してキャンセル
 ```
 
 このオンチェーンレコードは、オーダーブックの整合性を維持するために不可欠です。
@@ -119,13 +119,13 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User     ->> Browser : Withdraw request
-    Browser  --> Browser : Decrypt ECDSA key & sign tx
-    Browser  ->> App     : Signed withdrawal
-    App      --> App     : Operator signs tx
-    App      ->> Gluon   : Tx with dual signatures
-    Gluon    --> Gluon   : Verify signatures & 24h key-pairing delay
-    Gluon    ->> ChainX  : IBC transfer
+    User     ->> Browser : 出金リクエスト
+    Browser  --> Browser : ECDSAキーを復号してtxに署名
+    Browser  ->> App     : 署名済みの出金
+    App      --> App     : オペレーターがtxに署名
+    App      ->> Gluon   : 二重署名付きのTx
+    Gluon    --> Gluon   : 署名と24時間のキーペアリング遅延を検証
+    Gluon    ->> ChainX  : IBC転送
 ```
 
 この多層的なアプローチにより、チェーン間で安全で信頼性の高い資産移転が保証されます。
@@ -141,10 +141,10 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User     ->> Browser : Place order
-    Browser  --> Browser : Decrypt ECDSA key
-    Browser  --> Browser : Sign order payload
-    Browser  ->> App     : Order + signature
+    User     ->> Browser : 注文を発注
+    Browser  --> Browser : ECDSAキーを復号
+    Browser  --> Browser : 注文ペイロードに署名
+    Browser  ->> App     : 注文と署名
 ```
 
 ### 注文キャンセル（オンチェーン）
@@ -154,8 +154,8 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User ->> App   : Cancel order
-    App  ->> Gluon : Tx: register order + cancel
+    User ->> App   : 注文をキャンセル
+    App  ->> Gluon : Tx: 注文を登録してキャンセル
 ```
 
 ### 出金（IBC）
@@ -165,13 +165,13 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     autonumber
-    User     ->> Browser : Withdraw request
-    Browser  --> Browser : Decrypt ECDSA key & sign tx
-    Browser  ->> App     : Signed withdrawal
-    App      --> App     : Operator signs tx
-    App      ->> Gluon   : Tx with dual signatures
-    Gluon    --> Gluon   : Verify signatures & 24h key-pairing delay
-    Gluon    ->> ChainX  : IBC transfer
+    User     ->> Browser : 出金リクエスト
+    Browser  --> Browser : ECDSAキーを復号してtxに署名
+    Browser  ->> App     : 署名済みの出金
+    App      --> App     : オペレーターがtxに署名
+    App      ->> Gluon   : 二重署名付きのTx
+    Gluon    --> Gluon   : 署名と24時間のキーペアリング遅延を検証
+    Gluon    ->> ChainX  : IBC転送
 ```
 
 ## 注文モジュール（protobuf）

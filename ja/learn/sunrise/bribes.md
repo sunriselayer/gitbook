@@ -99,11 +99,11 @@
 
 ```mermaid
 flowchart TD
-    User[User] -->|Register Bribe| BribeAccount[Bribe Account]
-    BribeAccount -->|Allocate| Allocation[Bribe Allocation]
-    User -->|Claim| Allocation
-    Allocation -->|Transfer| UserAccount[User Account]
-    Allocation -->|Unclaimed| FeeCollector[Fee Collector]
+    User[ユーザー] -->|賄賂を登録| BribeAccount[賄賂アカウント]
+    BribeAccount -->|配分| Allocation[賄賂の配分]
+    User -->|請求| Allocation
+    Allocation -->|送金| UserAccount[ユーザーアカウント]
+    Allocation -->|未請求| FeeCollector[手数料徴収者]
 ```
 
 **フローの説明:**

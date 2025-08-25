@@ -53,26 +53,26 @@ $$
 
 ```mermaid
 sequenceDiagram
-    participant User as User
-    participant LiquidityPool as x/liquiditypool Module
-    participant SwapModule as x/swap Module
+    participant User as ユーザー
+    participant LiquidityPool as x/liquiditypool モジュール
+    participant SwapModule as x/swap モジュール
 
     User->>LiquidityPool: MsgCreatePosition
-    LiquidityPool->>User: Return Position ID
+    LiquidityPool->>User: ポジションIDを返す
     
     User->>LiquidityPool: MsgIncreaseLiquidity
-    LiquidityPool->>User: Return New Position ID
+    LiquidityPool->>User: 新しいポジションIDを返す
 
     User->>LiquidityPool: MsgDecreaseLiquidity
-    LiquidityPool->>User: Return tokens
+    LiquidityPool->>User: トークンを返す
     
-    User->>SwapModule: Execute Swap (via x/swap)
-    SwapModule->>LiquidityPool: Use pool liquidity
-    LiquidityPool->>LiquidityPool: Collect fees for position
-    LiquidityPool->>User: Send swapped amount
+    User->>SwapModule: スワップを実行（x/swap経由）
+    SwapModule->>LiquidityPool: プールの流動性を使用
+    LiquidityPool->>LiquidityPool: ポジションの手数料を徴収
+    LiquidityPool->>User: スワップされた金額を送信
     
     User->>LiquidityPool: MsgClaimRewards
-    LiquidityPool->>User: Send earned fees and vRISE incentives
+    LiquidityPool->>User: 獲得した手数料とvRISEインセンティブを送金
     
 
 ```

@@ -55,26 +55,26 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as User
-    participant FeeModule as x/fee Module
+    participant User as ユーザー
+    participant FeeModule as x/fee モジュール
     participant BankKeeper as Bank Keeper
-    participant SwapModule as x/swap Module
-    participant FeeCollector as Fee Collector
-    participant BribeModule as x/bribe Module
+    participant SwapModule as x/swap モジュール
+    participant FeeCollector as 手数料徴収者
+    participant BribeModule as x/bribe モジュール
 
-    User->>FeeModule: Submit transaction
-    FeeModule->>BankKeeper: Verify fee denomination
-    BankKeeper->>FeeCollector: Transfer fee (in fee_denom)
+    User->>FeeModule: トランザクションを送信
+    FeeModule->>BankKeeper: 手数料のデノミネーションを検証
+    BankKeeper->>FeeCollector: 手数料を送金（fee_denomで）
     
-    note over FeeModule, SwapModule: Fee Processing
-    FeeModule->>FeeModule: Calculate amount to swap & burn
-    FeeModule->>SwapModule: Swap fee_denom to burned_denom
-    SwapModule-->>FeeModule: Return burned_denom
-    FeeModule->>BankKeeper: Execute burn (burned_denom)
+    note over FeeModule, SwapModule: 手数料処理
+    FeeModule->>FeeModule: スワップ＆焼却する量を計算
+    FeeModule->>SwapModule: fee_denomをburned_denomにスワップ
+    SwapModule-->>FeeModule: burned_denomを返す
+    FeeModule->>BankKeeper: 焼却を実行（burned_denom）
 
-    note over BribeModule, FeeCollector: Unclaimed Bribe Processing
-    BribeModule->>FeeModule: Process unclaimed bribes
-    FeeModule->>FeeCollector: Transfer unclaimed amount
+    note over BribeModule, FeeCollector: 未請求の賄賂の処理
+    BribeModule->>FeeModule: 未請求の賄賂を処理
+    FeeModule->>FeeCollector: 未請求額を送金
 ```
 
 詳細および実装の詳細については、[GitHubリポジトリ](https://github.com/sunriselayer/sunrise/tree/main/x/fee)を参照してください。

@@ -48,26 +48,26 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as User
-    participant ShareclassModule as x/shareclass Module
-    participant StakingModule as x/staking Module
-    participant BankModule as x/bank Module
+    participant User as ユーザー
+    participant ShareclassModule as x/shareclass モジュール
+    participant StakingModule as x/staking モジュール
+    participant BankModule as x/bank モジュール
 
     User->>ShareclassModule: MsgNonVotingDelegate (RISE)
-    ShareclassModule->>StakingModule: Delegate to validator (internally)
-    ShareclassModule-->>User: Return shares and initial rewards (if any)
+    ShareclassModule->>StakingModule: バリデーターへのデリゲート（内部的に）
+    ShareclassModule-->>User: 株式と初期報酬を返す（もしあれば）
 
-    loop Reward Period
-        StakingModule-->>ShareclassModule: Distribute staking rewards
+    loop 報酬期間
+        StakingModule-->>ShareclassModule: ステーキング報酬を分配
     end
 
     User->>ShareclassModule: MsgClaimRewards
-    ShareclassModule->>BankModule: Transfer rewards to user
-    ShareclassModule-->>User: Confirm reward claim
+    ShareclassModule->>BankModule: ユーザーに報酬を転送
+    ShareclassModule-->>User: 報酬請求の確認
 
     User->>ShareclassModule: MsgNonVotingUndelegate
-    ShareclassModule->>StakingModule: Initiate undelegation (internally)
-    ShareclassModule-->>User: Confirm undelegation and completion time
+    ShareclassModule->>StakingModule: アンデリゲーションを開始（内部的に）
+    ShareclassModule-->>User: アンデリゲーションと完了時刻の確認
 ```
 
 ## メッセージ

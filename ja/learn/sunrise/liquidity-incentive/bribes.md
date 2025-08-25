@@ -43,13 +43,13 @@
 
 ```mermaid
 graph TD
-    A[Application] -->|RegisterBribe| B{x/liquidityincentive}
-    C[User] -->|VoteGauge| B
-    B -->|Epoch End| D[Bribe Allocation]
-    D -->|Weight-based| E[Allocation per User]
-    C -->|ClaimBribes| F[Claim Processing]
-    F -->|Valid Epoch| G[Bribe Distribution]
-    F -->|Expired Epoch| H[Reject Claim]
+    A[アプリケーション] -->|RegisterBribe| B{x/liquidityincentive}
+    C[ユーザー] -->|VoteGauge| B
+    B -->|エポック終了| D[賄賂の割り当て]
+    D -->|重みベース| E[ユーザーごとの割り当て]
+    C -->|ClaimBribes| F[請求処理]
+    F -->|有効なエポック| G[賄賂の分配]
+    F -->|期限切れのエポック| H[請求の拒否]
 ```
 
 ## **統合**
