@@ -21,16 +21,16 @@ Sunriseエコシステムにおけるゲージは、`vRISE`トークンの発行
 
 ```mermaid
 sequenceDiagram
-  participant Voter as vRISE保有者
-  participant Module as 流動性インセンティブモジュール
-  participant Gauges as 流動性プールゲージ
+  participant Voter as vRISE Holder
+  participant Module as Liquidity Incentive Module
+  participant Gauges as Liquidity Pool Gauges
 
-  Voter->>Module: 投票を送信（ゲージごとの割り当て率）
-  Note over Module: 投票の好みを保存
-  Module->>Module: エポック開始
-  Module->>Module: 投票を集計
-  Module->>Gauges: 投票の重みに応じてvRISEを分配
-  Gauges->>Voter: LPポジションに基づいて報酬を返す
+  Voter->>Module: Submit vote (allocation rate per gauge)
+  Note over Module: Save vote preference
+  Module->>Module: Epoch start
+  Module->>Module: Tally votes
+  Module->>Gauges: Distribute vRISE according to vote weight
+  Gauges->>Voter: Return rewards based on LP position
 ```
 
 > **注意:**

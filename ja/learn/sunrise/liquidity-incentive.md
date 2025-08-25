@@ -56,12 +56,12 @@ $$
 
 ```mermaid
 graph TD
-    A{ユーザー A}-->|流動性を提供|B((プール B))
-    A-->|賄賂を登録|C((プール Bのゲージ))
-    D{ユーザー}-->|投票|C
-    C-.->|賄賂を分配|D
-    C-.->|より多くのvRISEを割り当て|B
-    B-.->|vRISEインセンティブを分配|A
+    A{User A}-->|Provide Liquidity|B((Pool B))
+    A-->|Register Bribe|C((Gauge for Pool B))
+    D{User}-->|Vote|C
+    C-.->|Distribute Bribes|D
+    C-.->|Allocate more vRISE|B
+    B-.->|Distribute vRISE incentives|A
 ```
 
 ### BeginBlocker
@@ -85,16 +85,16 @@ graph TD
 
 ```mermaid
 sequenceDiagram
-    participant User as 流動性プロバイダー
-    participant LiquidityPool as x/liquiditypool モジュール
-    participant IncentiveModule as x/liquidityincentive モジュール
-    participant Distribution as x/distribution モジュール
+    participant User as Liquidity Provider
+    participant LiquidityPool as x/liquiditypool Module
+    participant IncentiveModule as x/liquidityincentive Module
+    participant Distribution as x/distribution Module
 
-    User->>LiquidityPool: 流動性を提供
-    LiquidityPool->>IncentiveModule: ポジションの蓄積を追跡
-    IncentiveModule->>Distribution: インフレ報酬を送金
-    User->>IncentiveModule: 報酬を請求
-    IncentiveModule->>User: 報酬を計算して分配
+    User->>LiquidityPool: Provide Liquidity
+    LiquidityPool->>IncentiveModule: Track position accumulation
+    IncentiveModule->>Distribution: Transfer inflation rewards
+    User->>IncentiveModule: Claim Rewards
+    IncentiveModule->>User: Calculate & distribute rewards
 ```
 
 ## パラメータ

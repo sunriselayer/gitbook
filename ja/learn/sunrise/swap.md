@@ -52,48 +52,48 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as ユーザー
-    participant SwapModule as x/swap モジュール
-    participant LiquidityPoolModule as x/liquiditypool モジュール
-    participant BankModule as x/bank モジュール
+    participant User as User
+    participant SwapModule as x/swap Module
+    participant LiquidityPoolModule as x/liquiditypool Module
+    participant BankModule as x/bank Module
 
     User->>SwapModule: MsgSwapExactAmountIn
-    SwapModule->>LiquidityPoolModule: スワップのために流動性を要求
-    LiquidityPoolModule-->>SwapModule: スワップされたトークンを返す
-    SwapModule->>BankModule: ユーザーに出力トークンを転送
-    SwapModule-->>User: スワップ確認
+    SwapModule->>LiquidityPoolModule: Request liquidity for swap
+    LiquidityPoolModule-->>SwapModule: Return swapped tokens
+    SwapModule->>BankModule: Transfer output tokens to user
+    SwapModule-->>User: Swap confirmation
 ```
 
 #### フォワーディング付きスワップ
 
 ```mermaid
 sequenceDiagram
-    participant User as ユーザー
-    participant SwapModule as x/swap モジュール
-    participant IBCModule as IBC モジュール
+    participant User as User
+    participant SwapModule as x/swap Module
+    participant IBCModule as IBC Module
 
     User->>IBCModule: SendPacket with Swap Metadata
     IBCModule->>SwapModule: OnRecvPacket
-    SwapModule->>SwapModule: スワップを実行
+    SwapModule->>SwapModule: Execute swap
     SwapModule->>IBCModule: Send Forwarded Packet
-    IBCModule-->>User: 確認
+    IBCModule-->>User: Confirmation
 ```
 
 #### 過剰な返金とフォワーディング付きスワップ
 
 ```mermaid
 sequenceDiagram
-    participant User as ユーザー
-    participant SwapModule as x/swap モジュール
-    participant IBCModule as IBC モジュール
-    participant BankModule as x/bank モジュール
+    participant User as User
+    participant SwapModule as x/swap Module
+    participant IBCModule as IBC Module
+    participant BankModule as x/bank Module
 
     User->>IBCModule: SendPacket with Swap and Forward Metadata
     IBCModule->>SwapModule: OnRecvPacket
-    SwapModule->>SwapModule: スワップを実行（過剰なトークンが残る）
-    SwapModule->>BankModule: 過剰なトークンをユーザーに返金
+    SwapModule->>SwapModule: Execute swap (excess tokens remain)
+    SwapModule->>BankModule: Refund excess tokens to user
     SwapModule->>IBCModule: Send Forwarded Packet
-    IBCModule-->>User: 確認
+    IBCModule-->>User: Confirmation
 ```
 
 ## メッセージ

@@ -25,14 +25,14 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as ユーザー
-    participant TokenConverterModule as x/tokenconverter モジュール
-    participant BankModule as x/bank モジュール
+    participant User as User
+    participant TokenConverterModule as x/tokenconverter Module
+    participant BankModule as x/bank Module
 
-    User->>TokenConverterModule: MsgConvert (vRISEからRISEへ)
-    TokenConverterModule->>BankModule: ユーザーからvRISEをバーン
-    TokenConverterModule->>BankModule: ユーザーのためにRISEをミント
-    TokenConverterModule-->>User: 変換確認
+    User->>TokenConverterModule: MsgConvert (vRISE to RISE)
+    TokenConverterModule->>BankModule: Burn vRISE from user
+    TokenConverterModule->>BankModule: Mint RISE for user
+    TokenConverterModule-->>User: Conversion confirmation
 ```
 
 ## メッセージ
