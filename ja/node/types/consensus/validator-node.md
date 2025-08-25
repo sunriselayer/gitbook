@@ -1,23 +1,23 @@
-# Validator Node（バリデータノード）
+# バリデーターノード
 
-バリデータノードを使用すると、Sunrise ネットワークのコンセンサスに参加することができます。
+バリデーターノードを使用すると、Sunriseネットワークのコンセンサスに参加できます。
 
 ## ハードウェア要件
 
-バリデータノードを実行するために推奨される最小限のハードウェア要件は以下の通りです：
+バリデーターノードを実行するために、以下の最低ハードウェア要件が推奨されます。
 
-- Memory: 8 GB RAM (最小)
-- CPU: 6 cores
-- Disk: 500 GB SSD Storage
-- Bandwidth: 1 Gbps for Download/1 Gbps for Upload
+- メモリ：8 GB RAM（最小）
+- CPU：6コア
+- ディスク：500 GB SSDストレージ
+- 帯域幅：ダウンロード1 Gbps / アップロード1 Gbps
 
 ## ノードの実行
 
-まず、[フルコンセンサスノードの設定手順](https://docs.sunriselayer.io/run-a-sunrise-node/types/consensus/full-consensus-node)に従ってください。
+まず、[フルコンセンサスノードの設定](full-consensus-node.md)に関する指示に従ってください。
 
-### オプション: 作業ディレクトリのリセット
+### オプション：作業ディレクトリのリセット
 
-過去に `sunrised` の作業ディレクトリをすでに初期化している場合、新しいディレクトリを再初期化する前にクリーンアップする必要があります。以下のコマンドを実行することでクリーンアップができます。
+過去にsunrisedの作業ディレクトリを初期化したことがある場合は、新しいディレクトリを再初期化する前にクリーンアップする必要があります。次のコマンドを実行することでクリーンアップできます。
 
 ```bash
 sunrised tendermint unsafe-reset-all
@@ -25,13 +25,15 @@ sunrised tendermint unsafe-reset-all
 
 ### 作業ディレクトリの初期化
 
-次のコマンドを実行してください。
+次のコマンドを実行します。
 
 ```bash
-CHAIN_ID=sunrise-1
+CHAIN_ID=sunrise-1 # メインネットの場合
 MONIKER="validator-name"
 sunrised init "$MONIKER" --chain-id $CHAIN_ID
 ```
+
+[Github](https://github.com/sunriselayer/network)で現在のchain-idを確認してください。
 
 ### 新しいキーの作成
 
@@ -40,21 +42,25 @@ VALIDATOR_WALLET="validator"
 sunrised keys add $VALIDATOR_WALLET --keyring-backend test
 ```
 
-### バリデータの作成
+### バリデーターの公開鍵
+
+バリデーターを初期化する前に最後に必要なのは、ノードを最初に初期化したときに作成されたバリデーターの公開鍵を取得することです。バリデーターの公開鍵を取得するには、次のようにします。
 
 ```bash
-sunrised tx staking create-validator [path/to/validator.json] \
-    --chain-id=$CHAIN_ID \
-    --from=$VALIDATOR_WALLET \
-    --keyring-backend=test \
-    --fees=21000urise \
-    --gas=220000
+sunrised tendermint show-validator
+{"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="}
 ```
+
+### バリデーターの作成
+
+バリデーターを作成するには、最低1 vRISEが必要です。vRISEは譲渡不可能なため、アカウントに残高がない場合は、流動性プールにポジションを作成してvRISEを獲得してください。
+
+まず、バリデーター設定ファイル[~/.sunrise/config/validator.json]を作成します。
 
 ```json
 {
-  "pubkey": {"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AxQOOPKDcl9Zg50r5CXZ0pclBqfzufcVXNnwF7OP4Hgj"}
-  "amount": "1000uvrise",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZQweivhEkT/akg5RT6RWkElt43rr5cf+qu/QQ5jOpmQ="},
+  "amount": "1000000uvrise",
   "moniker": "your_validator's_name",
   "identity": "optional identity signature (ex. UPort or Keybase)",
   "website": "validator's (optional) website",
@@ -67,24 +73,36 @@ sunrised tx staking create-validator [path/to/validator.json] \
 }
 ```
 
-次に、`~/.sunrise/config/config.toml` を編集します。
+次に、次のコマンドを実行します。
+
+```bash
+sunrised tx staking create-validator [path/to/validator.json] \
+    --chain-id=$CHAIN_ID \
+    --from=$VALIDATOR_WALLET \
+    --keyring-backend=test \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
+    --gas=auto \
+    -y
+```
 
 ## バックアップ
 
-何らかの理由でバリデータが損傷したり失われたりした場合に復元できるよう、特定のファイルをバックアップする必要があります。`~/.sunrise/config/` にある以下のファイルを安全にバックアップしてください。
+何らかの理由でバリデーターが損傷したり失われたりした場合に復元できるように、特定のファイルをバックアップする必要があります。`~/.sunrise/config/`にある以下のファイルを安全にバックアップしてください。
 
 - `priv_validator_key.json`
 - `node_key.json`
 
 これらのファイルのバックアップは暗号化することをお勧めします。
 
-## バリデータへの追加のインセンティブ
+## バリデーターへの追加インセンティブ
 
-コアチームは、以下のサービスを提供するバリデータに対して RISE をデリゲートします。
+コアチームは、以下のサービスを提供するバリデーターにRISEを委任します。
 
-- IBC relayer
-  - `100000000microRISE` delegation per channel
-- Node snapshot
-  - `10000000000microRISE` delegation
-- REST API endpoints
-  - `10000000000microRISE` delegation
+- IBCリレーヤー
+  - チャネルごとに`100RISE`の委任
+- ノードスナップショット
+  - `10000RISE`の委任
+- REST APIエンドポイント
+  - `10000RISE`の委任
+
+参加を希望する場合は、Discordまたはその他の方法でチームに連絡してください。

@@ -1,30 +1,30 @@
-# Develop a Frontend Application
+# フロントエンドアプリケーションの開発
 
-You can use these libraries to develop a frontend application.
+これらのライブラリを使用して、フロントエンドアプリケーションを開発できます。
 
 - [cosmos-client-ts](https://github.com/cosmos-client/cosmos-client-ts)
 - [ununifi-client](https://github.com/cosmos-client/ununifi-ts)
 - [ts-codegen](https://github.com/CosmWasm/ts-codegen)
 - [cosmjs](https://github.com/cosmos/cosmjs)
 
-## Ecosystem Incentive
+## エコシステムインセンティブ
 
 {% hint style="warn" %}
-This feature is available on the testnet, but does not yet exist on the mainnet.
+この機能はテストネットで利用可能ですが、メインネットにはまだ存在しません。
 {% endhint %}
 
-The Ecosystem Incentive of the UnUniFi protocol is designed to reward application developers.
-Thw developers will be rewarded with a portion of the Tx Gas bill served from their apps.
+UnUniFiプロトコルのエコシステムインセンティブは、アプリケーション開発者に報酬を与えるように設計されています。
+開発者は、アプリから提供されるTxガスの請求額の一部で報酬を受け取ります。
 
-Registration is required to use this feature.
-Please register via `Incentive` in the UnUniFi Portal. Rewards can be distributed to multiple addresses.
+この機能を使用するには登録が必要です。
+UnUniFiポータルの`Incentive`から登録してください。報酬は複数のアドレスに分配できます。
 
-After registration, the following JSON string is output.
+登録後、次のJSON文字列が出力されます。
 
 ```json
-{"version":"v1","recipient_container_id":"ununifi_core"}
+{ "version": "v1", "recipient_container_id": "ununifi_core" }
 ```
 
-Add this to the `TxMemo` of Txs sent out by your application.
+これを、アプリケーションから送信されるTxの`TxMemo`に追加します。
 
-Rewards will appear in the UnUniFi Portal, You get them by claiming tx.
+報酬はUnUniFiポータルに表示され、請求トランザクションによって取得できます。

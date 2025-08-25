@@ -1,43 +1,43 @@
-# Tutorial
+# チュートリアル
 
-## How to use wasm CLI
+## wasm CLIの使い方
 
-First of all, install `ununifid` to use wasm CLI and [Rust](https://www.rust-lang.org/tools/install). To learn how to install `ununifid`, see [here](../cli-introduction/)
+まず、wasm CLIと[Rust](https://www.rust-lang.org/tools/install)を使用するために`ununifid`をインストールします。`ununifid`のインストール方法については、[こちら](../cli-introduction/)をご覧ください。
 
-There are two ways of using wasm CLI.
+wasm CLIの使い方は2通りあります。
 
 ```bash
 ununifid tx wasm --help
 ununifid query wasm --help
 ```
 
-## Compiling and Testing a Contract
+## コントラクトのコンパイルとテスト
 
-Quoted from [CosmWasm Documentation](https://docs.cosmwasm.com/docs/getting-started/compile-contract)
+[CosmWasmドキュメント](https://docs.cosmwasm.com/docs/getting-started/compile-contract)より引用
 
 ```bash
-# Download the repository
+# リポジトリをダウンロードする
 git clone https://github.com/CosmWasm/cw-plus
 cd cw-plus
 git checkout main
 cd contracts/cw20-ics20
 
-# compile the wasm contract with stable toolchain
+# 安定したツールチェーンでwasmコントラクトをコンパイルする
 rustup default stable
 cargo wasm
 ```
 
-### Unit Tests
+### 単体テスト
 
-Quoted from [CosmWasm Documentation](https://docs.cosmwasm.com/docs/getting-started/compile-contract)
+[CosmWasmドキュメント](https://docs.cosmwasm.com/docs/getting-started/compile-contract)より引用
 
 ```bash
 RUST_BACKTRACE=1 cargo unit-test
 ```
 
-### Build with Optimizer
+### オプティマイザを使用したビルド
 
-Quoted from [CosmWasm Documentation](https://docs.cosmwasm.com/docs/getting-started/compile-contract)
+[CosmWasmドキュメント](https://docs.cosmwasm.com/docs/getting-started/compile-contract)より引用
 
 ```bash
 docker run --rm -v "$(pwd)":/code \
@@ -46,17 +46,17 @@ docker run --rm -v "$(pwd)":/code \
   cosmwasm/rust-optimizer:0.12.11
 ```
 
-### Deployment and Interaction
+### デプロイとインタラクション
 
-Quoted from [CosmWasm Documentation](https://docs.cosmwasm.com/docs/getting-started/compile-contract)
+[CosmWasmドキュメント](https://docs.cosmwasm.com/docs/getting-started/compile-contract)より引用
 
-To deploy your wasm smart contract that you built, use `ununifid tx wasm store` commands.
+ビルドしたwasmスマートコントラクトをデプロイするには、`ununifid tx wasm store`コマンドを使用します。
 
 ```bash
 ununifid tx wasm store --help
 ```
 
-Converse to Solidity smart contracts, CosmWasm has two stages to activate smart contracts. That are deploy and instantiate. So after you deployed your wasm smart contract, use `ununifid tx wasm instantiate` commands.
+Solidityスマートコントラクトとは対照的に、CosmWasmにはスマートコントラクトを有効にするための2つの段階があります。それはデプロイとインスタンス化です。したがって、wasmスマートコントラクトをデプロイした後、`ununifid tx wasm instantiate`コマンドを使用します。
 
 ```bash
 ununifid tx wasm instantiate --help

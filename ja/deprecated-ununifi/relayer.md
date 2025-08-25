@@ -1,20 +1,20 @@
-# IBC Relayer
+# IBCリレーヤー
 
-By setting up IBC relayer, you can create new connections and channels of IBC between UnUniFi and other blockchains.
+IBCリレーヤーを設定することで、UnUniFiと他のブロックチェーンとの間にIBCの新しい接続とチャネルを作成できます。
 
-UnUniFi is registered in [Chain Registry](https://github.com/cosmos/chain-registry) as `ununifi`.
+UnUniFiは[Chain Registry](https://github.com/cosmos/chain-registry)に`ununifi`として登録されています。
 
-## Setting up relayer with Go relayer (Recommended)
+## Goリレーヤーでのリレーヤーの設定（推奨）
 
-You can see details [here](https://github.com/cosmos/relayer).
+詳細は[こちら](https://github.com/cosmos/relayer)をご覧ください。
 
-At first, install [Go](https://go.dev/doc/install)
+まず、[Go](https://go.dev/doc/install)をインストールします。
 
-## Setting up relayer with Rust relayer Hermes (Not recommended)
+## RustリレーヤーHermesでのリレーヤーの設定（非推奨）
 
-At first, install [Rust](https://www.rust-lang.org/tools/install)
+まず、[Rust](https://www.rust-lang.org/tools/install)をインストールします。
 
-Then, run the commands below:
+次に、以下のコマンドを実行します。
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -26,13 +26,13 @@ hermes version
 echo word1 ... word12or24 > ~/mnemonic.txt
 ```
 
-### Setting up config
+### 設定のセットアップ
 
-* [CosmosHub](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/cosmoshub.md)
-* [Axelar](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/axelar.md)
-* [Neutron](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/neutron.md)
+- [CosmosHub](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/cosmoshub.md)
+- [Axelar](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/axelar.md)
+- [Neutron](https://github.com/UnUniFi/gitbook/blob/main/develop/relayer/neutron.md)
 
-### Setting up daemon
+### デーモンの設定
 
 ```bash
 sudo tee /etc/systemd/system/hermes.service > /dev/null <<EOF
@@ -53,19 +53,19 @@ sudo systemctl daemon-reload
 sudo systemctl restart hermes
 ```
 
-### Monitoring daemon
+### デーモンの監視
 
 ```bash
 journalctl -u hermes.service -f
 ```
 
-## Clients and Connections
+## クライアントと接続
 
-| Chain ID        | Client            | Connection     |
+| チェーンID | クライアント | 接続 |
 | --------------- | ----------------- | -------------- |
-| `osmosis-1`     | `07-tendermint-8` | `connection-6` |
-| `cosmoshub-4`   | `07-tendermint-3` | `connection-7` |
+| `osmosis-1` | `07-tendermint-8` | `connection-6` |
+| `cosmoshub-4` | `07-tendermint-3` | `connection-7` |
 | `axelar-dojo-1` | `07-tendermint-5` | `connection-8` |
-| `neutron-1`     | `07-tendermint-4` | `connection-9` |
+| `neutron-1` | `07-tendermint-4` | `connection-9` |
 
-For channels, see [here](ibc-channels.md).
+チャネルについては、[こちら](ibc-channels.md)をご覧ください。

@@ -1,41 +1,41 @@
-# Setup Cosmovisor
+# Cosmovisorのセットアップ
 
-**For mainnet, it's recommended to use Cosmovisor to run your node.**
+**メインネットでは、Cosmovisorを使用してノードを実行することをお勧めします。**
 
-Setting up Cosmovisor is relatively straightforward. However, it does expect certain environment variables and folder structure to be set. \
-Cosmovisor allows you to download binaries ahead of time for chain upgrades, meaning that you can do zero (or close to zero) downtime chain upgrades. It's also useful if your local timezone means that a chain upgrade will fall at a bad time. \
-Rather than having to do stressful ops tasks late at night, it's always better if you can automate them away, and that's what Cosmovisor tries to do.
+Cosmovisorのセットアップは比較的簡単です。ただし、特定の環境変数とフォルダ構造を設定する必要があります。
+Cosmovisorを使用すると、チェーンのアップグレードのために事前にバイナリをダウンロードできます。つまり、ダウンタイムをゼロ（またはほぼゼロ）にすることができます。また、ローカルのタイムゾーンによってチェーンのアップグレードが都合の悪い時間に行われる場合にも便利です。
+深夜にストレスの多い運用タスクを行うよりも、自動化できる方が常に優れています。Cosmovisorがやろうとしているのはまさにそれです。
 
-## Install
+## インストール
 
-First, go and get cosmovisor (recommended approach):
+まず、cosmovisorを入手します（推奨されるアプローチ）。
 
 ```Bash
-# to target a specific version:
+# 特定のバージョンをターゲットにする場合：
 go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
 ```
 
-> !! When using cosmovisor, make sure that you do not have auto download of binaries on.
+> !! Cosmovisorを使用する場合は、バイナリの自動ダウンロードがオンになっていないことを確認してください。
 
-### Add environment variables to your shell
+### シェルに環境変数を追加する
 
-Some environment variables must be set to appropriate values for each node and each network.
+一部の環境変数は、各ノードおよび各ネットワークに対して適切な値に設定する必要があります。
 
 ```Bash
 echo "export CHAIN_REPO=https://github.com/UnUniFi/chain" >> ~/.bash_profile
 echo "export CHAIN_REPO_BRANCHE=main" >> ~/.bash_profile
 echo "export TARGET=ununifid" >> ~/.bash_profile
 echo "export TARGET_HOME=.ununifi" >> ~/.bash_profile
-# This value will be different for each node.
+# この値はノードごとに異なります。
 echo "export MONIKER=<your-moniker>" >> ~/.bash_profile
 echo "export CHAIN_ID=ununifi-beta-v1" >> ~/.bash_profile
-# This value is example of mainnet.
+# この値はメインネットの例です。
 echo "export GENESIS_FILE_URL=https://raw.githubusercontent.com/UnUniFi/network/main/launch/ununifi-beta-v1/genesis.json" >> ~/.bash_profile
 echo "export SETUP_NODE_CONFIG_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_ENV=TRUE" >> ~/.bash_profile
 echo "export SETUP_NODE_MASTER=TRUE" >> ~/.bash_profile
 echo "export DAEMON_NAME=\$TARGET" >> ~/.bash_profile
-# This value will be different for each node.
+# この値はノードごとに異なります。
 echo "export DAEMON_HOME=$HOME/.ununifi" >> ~/.bash_profile
 echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> ~/.bash_profile
 echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.bash_profile
@@ -43,13 +43,13 @@ echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.bash_profile
 echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.bash_profile
 ```
 
-Then source your profile to have access to these variables:
+次に、プロファイルを読み込んでこれらの変数にアクセスできるようにします。
 
 ```Bash
 source ~/.bash_profile
 ```
 
-### Set up folder structure
+### フォルダ構造の設定
 
 ```Bash
 mkdir -p $DAEMON_HOME/cosmovisor
@@ -58,25 +58,25 @@ mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades
 ```
 
-### Set up genesis binary
+### ジェネシスバイナリの設定
 
-Cosmovisor needs to know which binary to use at genesis. We put this in `$DAEMON_HOME/cosmovisor/genesis/bin`
+Cosmovisorは、ジェネシスで使用するバイナリを知る必要があります。これを`$DAEMON_HOME/cosmovisor/genesis/bin`に置きます。
 
 ```Bash
 cp ~/go/bin/$DAEMON_NAME $DAEMON_HOME/cosmovisor/genesis/bin
 ```
 
-### Set up service
+### サービスの設定
 
-Commands sent to Cosmovisor are sent to the underlying binary. For example, `cosmovisor version` is the same as typing `ununifid version`.
-Nevertheless, just as we would manage `ununifid` using a process manager, we would like to make sure Cosmovisor is automatically restarted if something happens, for example an error or reboot.
-First, create the service file:
+Cosmovisorに送信されるコマンドは、基盤となるバイナリに送信されます。たとえば、`cosmovisor version`は`ununifid version`と入力するのと同じです。
+それにもかかわらず、プロセス管理ツールを使用して`ununifid`を管理するのと同じように、エラーや再起動などの問題が発生した場合にCosmovisorが自動的に再起動されるようにしたいと考えています。
+まず、サービスファイルを作成します。
 
 ```Bash
 sudo nano /lib/systemd/system/cosmovisor.service
 ```
 
-Change the contents of the below to match your setup
+以下の内容を自分の設定に合わせて変更します。
 
 ```Bash
 [Unit]
@@ -99,12 +99,12 @@ LimitNPROC=infinity
 WantedBy=multi-user.target
 ```
 
-> !! A description of what the environment variables do can be found [here](https://docs.cosmos.network/master/run-node/cosmovisor.html). Change them depending on your setup.
+> !! 環境変数の機能については、[こちら](https://docs.cosmos.network/master/run-node/cosmovisor.html)をご覧ください。設定に応じて変更してください。
 
-### Start Cosmovisor
+### Cosmovisorの起動
 
-> !! If syncing from a snapshot, do not start Cosmovisor yet.
-> Finally, enable the service and start it.
+> !! スナップショットから同期する場合は、まだCosmovisorを起動しないでください。
+> 最後に、サービスを有効にして起動します。
 
 ```Bash
 sudo systemctl daemon-reload
@@ -113,13 +113,13 @@ sudo systemctl enable cosmovisor
 sudo systemctl start cosmovisor
 ```
 
-Check it is running using:
+実行中であることを確認するには、次を使用します。
 
 ```Bash
 sudo systemctl status cosmovisor
 ```
 
-If you need to monitor the service after launch, you can view the logs using:
+起動後にサービスを監視する必要がある場合は、次を使用してログを表示できます。
 
 ```Bash
 sudo journalctl -u cosmovisor -f -o cat

@@ -1,12 +1,12 @@
-# Security
+# セキュリティ
 
-UnUniFi's source codes are currently audited once by Armors Labs.
+UnUniFiのソースコードは現在、Armors Labsによって一度監査されています。
 
-We will have second security audit after the next round fund raising.
+次回の資金調達ラウンドの後に、2回目のセキュリティ監査を実施します。
 
-## Reentrancy Attack
+## リエントランシー攻撃
 
-One of the biggest cause of security incidents in Ethereum ecosystem is "reentrancy attack".
+イーサリアムエコシステムにおけるセキュリティインシデントの最大の原因の1つは、「リエントランシー攻撃」です。
 
-The risk of reentrancy attack is ultimately alleviated in Cosmos SDK and CosmWasm.
-See [here](https://docs.cosmwasm.com/docs/architecture/smart-contracts#avoiding-reentrancy-attacks) for the details.
+リエントランシー攻撃のリスクは、Cosmos SDKとCosmWasmで最終的に軽減されます。
+詳細については、[こちら](https://docs.cosmwasm.com/docs/architecture/smart-contracts#avoiding-reentrancy-attacks)をご覧ください。

@@ -1,28 +1,37 @@
 # アップグレード
 
-Sunrise はオンチェーンガバナンスによってアップグレードされます。
+Sunriseはオンチェーンガバナンスによってアップグレードされます。
 
 ## ソフトフォーク
 
-ソフトフォークの場合、チェーン ID は変更されず、バイナリのバージョンが変更されます。さらに、アップグレードハンドラーがプロセスを処理します。詳細は各アップグレード提案で説明されます。
+ソフトフォークの場合、チェーンIDは変更されず、バイナリのバージョンが変更されます。また、アップグレードハンドラがプロセスを処理します。詳細は各アップグレード提案で説明されます。
 
-Cosmovisor を実行している場合、自動アップグレードが利用可能です。
-設定方法については[Cosmovisor チュートリアル](setup-cosmovisor.md)をご覧ください。
+Cosmovisorを実行している場合、自動アップグレードが利用可能です。
+設定方法については、[Cosmovisorチュートリアル](../types/consensus/setup-cosmovisor.md)を参照してください。
 
-Cosmovisor を使用しない場合は、バイナリを自身で変更してください。
+CosmoVisorを使用しない場合は、バイナリを自分で変更してください。
 
 ## ハードフォーク
 
 ソフトフォークでは対応できない変更を適用するために、ハードフォークが実行される場合があります。
 
-`genesis.json`が変更され、新しいブロックが height 1 から開始されます。
-多くの場合、チェーン ID も変更されます。
+`genesis.json`が変更され、新しいブロックは高さ1から始まります。
+多くの場合、チェーンIDが変更されます。
 
 ## テストネット
 
-ジェネシスからチェーンを同期する場合は、このガイドに従い、ジェネシス時点の最新のバイナリバージョンを使用してください。
-<https://github.com/sunriselayer/network/tree/main/sunrise-test-0.2>
+ジェネシスからチェーンを同期する場合、このガイドに従い、ジェネシス時点で最新のバイナリバージョンを使用してください。
+<https://github.com/sunriselayer/network/tree/main/dawn-1>
+
+{% hint style="warning" %}
+dawn-1テストネットでのみ、チェーンの状態によりv1.1.0バイナリの変更が必要です。
+自動アップグレードなどで問題が発生した場合は、バイナリを置き換えてください。
+<https://github.com/sunriselayer/sunrise/releases/download/v1.1.0/sunrised-linux-arm64-dawn-1-testnet>
+{% endhint %}
 
 ## メインネット
 
-近日公開予定
+ジェネシスからチェーンを同期する場合、このガイドに従い、ジェネシス時点で最新のバイナリバージョンを使用してください。
+<https://github.com/sunriselayer/network/tree/main/sunrise-1>
+
+現在使用されているバイナリのバージョンについては、[GitHub](https://github.com/sunriselayer/sunrise/releases)の最新リリースを参照してください。

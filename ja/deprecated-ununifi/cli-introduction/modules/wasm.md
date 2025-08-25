@@ -1,186 +1,186 @@
 ---
 description: >-
-  The `wasm` module allows you to manage CosmWasm smart contract.
+  `wasm`モジュールを使用すると、CosmWasmスマートコントラクトを管理できます。
 ---
 
 # `wasm`
 
-**Query:**
+**クエリ:**
 
-| Name                                                               | Description                                                  |
-| :----------------------------------------------------------------- | :----------------------------------------------------------- |
-| [build-address](wasm.md#build-address)                         | Build contract address                                       |
-| [code](wasm.md#code)                                           | Downloads wasm bytecode for given code id                    |
-| [code-info](wasm.md#code-info)                                 | Prints out metadata of a code id                             |
-| [contract](wasm.md#contract)                                   | Prints out metadata of a contract given its address          |
-| [contract-history](wasm.md#contract-history)                   | Prints out the code history for a contract given its address |
-| [contract-state](wasm.md#contract-state)                       | Querying commands for the wasm module                        |
-| [libwasmvm-version](wasm.md#libwasmvm-version)                 | Get libwasmvm version                                        |
-| [list-code](wasm.md#list-code)                                 | List all wasm bytecode on the chain                          |
-| [list-contract-by-code](wasm.md#list-contract-by-code)         | List wasm all bytecode on the chain for given code id        |
-| [list-contracts-by-creator](wasm.md#list-contracts-by-creator) | List all contracts by creator                                |
-| [params](wasm.md#params)                                       | Query the current wasm parameters                            |
-| [pinned](wasm.md#pinned)                                       | List all pinned code ids                                     |
+| 名前 | 説明 |
+| :------------------------------------------------------------- | :----------------------------------------------------------- |
+| [build-address](wasm.md#build-address) | コントラクトアドレスを構築する |
+| [code](wasm.md#code) | 指定されたコードIDのwasmバイトコードをダウンロードする |
+| [code-info](wasm.md#code-info) | コードIDのメタデータを出力する |
+| [contract](wasm.md#contract) | 指定されたアドレスのコントラクトのメタデータを出力する |
+| [contract-history](wasm.md#contract-history) | 指定されたアドレスのコントラクトのコード履歴を出力する |
+| [contract-state](wasm.md#contract-state) | wasmモジュールのクエリコマンド |
+| [libwasmvm-version](wasm.md#libwasmvm-version) | libwasmvmのバージョンを取得する |
+| [list-code](wasm.md#list-code) | チェーン上のすべてのwasmバイトコードを一覧表示する |
+| [list-contract-by-code](wasm.md#list-contract-by-code) | 指定されたコードIDのチェーン上のすべてのwasmバイトコードを一覧表示する |
+| [list-contracts-by-creator](wasm.md#list-contracts-by-creator) | 作成者別にすべてのコントラクトを一覧表示する |
+| [params](wasm.md#params) | 現在のwasmパラメータを照会する |
+| [pinned](wasm.md#pinned) | すべての固定されたコードIDを一覧表示する |
 
 **Tx:**
 
-| Name                                                               | Description                                               |
-| :----------------------------------------------------------------- | :-------------------------------------------------------- |
-| [clear-contract-admin](wasm.md#clear-contract-admin)           | Clears admin for a contract to prevent further migrations |
-| [execute](wasm.md#execute)                                     | Execute a command on a wasm contract                      |
-| [grant](wasm.md#grant)                                         | Grant authorization to an address                         |
-| [instantiate](wasm.md#instantiate)                             | Instantiate a wasm contract                               |
-| [instantiate2](wasm.md#instantiate2)                           | Instantiate a wasm contract with predictable address      |
-| [migrate](wasm.md#migrate)                                     | Migrate a wasm contract to a new code version             |
-| [set-contract-admin](wasm.md#set-contract-admin)               | Set new admin for a contract                              |
-| [store](wasm.md#store)                                         | Upload a wasm binary                                      |
-| [update-instantiate-config](wasm.md#update-instantiate-config) | Update instantiate config for a codeID                    |
+| 名前 | 説明 |
+| :------------------------------------------------------------- | :-------------------------------------------------------- |
+| [clear-contract-admin](wasm.md#clear-contract-admin) | さらなる移行を防ぐためにコントラクトの管理者をクリアする |
+| [execute](wasm.md#execute) | wasmコントラクトでコマンドを実行する |
+| [grant](wasm.md#grant) | アドレスに承認を付与する |
+| [instantiate](wasm.md#instantiate) | wasmコントラクトをインスタンス化する |
+| [instantiate2](wasm.md#instantiate2) | 予測可能なアドレスでwasmコントラクトをインスタンス化する |
+| [migrate](wasm.md#migrate) | wasmコントラクトを新しいコードバージョンに移行する |
+| [set-contract-admin](wasm.md#set-contract-admin) | コントラクトの新しい管理者を設定する |
+| [store](wasm.md#store) | wasmバイナリをアップロードする |
+| [update-instantiate-config](wasm.md#update-instantiate-config) | codeIDのインスタンス化設定を更新する |
 
-## Common flags in `wasm` query <a id="common-query-flags"></a>
+## `wasm`クエリの共通フラグ
 
-Common flags for the `wasm` query command are summarized.
+`wasm`クエリコマンドの共通フラグをまとめます。
 
-**Flags:**
+**フラグ:**
 
-| Name, shorthand | Type   | Required | Default               | Description                                                                           |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :----- | :------- | :-------------------- | :------------------------------------------------------------------------------------ |
-| --grpc-addr     | string |          |                       | the gRPC endpoint to use for this chain                                               |
-| --grpc-insecure |        |          |                       | allow gRPC over insecure channels, if not TLS the server must use TLS                 |
-| --height        | int    |          |                       | Use a specific height to query state at (this can error if the node is pruning state) |
-| -h, --help      |        |          |                       | Help for \<module name>                                                               |
-| --node          | string |          | tcp://localhost:26657 | \<host>:\<port> to Tendermint RPC interface for this chain                            |
-| -o, --output    | string |          | text                  | Output format (text \| json)                                                          |
+| --grpc-addr | string | | | このチェーンに使用するgRPCエンドポイント |
+| --grpc-insecure | | | | 安全でないチャネル経由のgRPCを許可する、TLSでない場合、サーバーはTLSを使用する必要があります |
+| --height | int | | | 状態を照会する特定の高さを使用する（ノードが状態をプルーニングしている場合、エラーになる可能性があります） |
+| -h, --help | | | | \<module name>のヘルプ |
+| --node | string | | tcp://localhost:26657 | このチェーンのTendermint RPCインターフェースへの\<host>:\<port> |
+| -o, --output | string | | text | 出力形式（text \| json） |
 
-**Global Flags:**
+**グローバルフラグ:**
 
-| Name, shorthand | Type   | Required | Default        | Description                                                                   |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :----- | :------- | :------------- | :---------------------------------------------------------------------------- |
-| --chain-id      | string |          |                | The network chain ID                                                          |
-| --home          | string |          | $HOME/.ununifi | directory for config and data                                                 |
-| --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
-| --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
-| --trace         |        |          |                | print out full stack trace on errors                                          |
+| --chain-id | string | | | ネットワークチェーンID |
+| --home | string | | $HOME/.ununifi | 設定とデータのディレクトリ |
+| --log_format | string | | | ログ形式（json \| plain）（デフォルトは"plain"） |
+| --log_level | string | | info | ログレベル（trace \| debug \| info \| warn \| error \| fatal \| panic） |
+| --trace | | | | エラー時に完全なスタックトレースを出力する |
 
-### Encode Flags <a id="encode-flags"></a>
+### エンコードフラグ
 
-**Flags:**
+**フラグ:**
 
-| Name, shorthand | Type | Required | Default | Description         |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :--- | :------- | :------ | :------------------ |
-| --ascii         |      |          |         | ascii encoded salt  |
-| --b64           |      |          |         | base64 encoded salt |
-| --hex           |      |          |         | hex encoded salt    |
+| --ascii | | | | asciiエンコードされたソルト |
+| --b64 | | | | base64エンコードされたソルト |
+| --hex | | | | hexエンコードされたソルト |
 
-### Pagination Flags <a id="pagination-flags"></a>
+### ページネーションフラグ
 
-**Flags:**
+**フラグ:**
 
-| Name, shorthand | Type   | Required | Default | Description                                                                                           |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :----- | :------- | :------ | :---------------------------------------------------------------------------------------------------- |
-| --count-total   |        |          |         | a count total number of records in contract history to query for                                      |
-| --limit         | uint   |          |         | pagination limit of contract history to query for (default 100)                                       |
-| --offset        | uint   |          |         | pagination offset of contract history to query for                                                    |
-| --page          | uint   |          |         | pagination page of contract history to query for. This sets offset to a multiple of limit (default 1) |
-| --page-key      | string |          |         | pagination page-key of contract history to query for                                                  |
-| --reverse       |        |          |         | results are sorted in descending order                                                                |
+| --count-total | | | | 照会するコントラクト履歴のレコードの総数をカウントする |
+| --limit | uint | | | 照会するコントラクト履歴のページネーション制限（デフォルトは100） |
+| --offset | uint | | | 照会するコントラクト履歴のページネーションオフセット |
+| --page | uint | | | 照会するコントラクト履歴のページネーションページ。これにより、オフセットがlimitの倍数に設定されます（デフォルトは1） |
+| --page-key | string | | | 照会するコントラクト履歴のページネーションページキー |
+| --reverse | | | | 結果を降順でソートする |
 
-## Query
+## クエリ
 
-### ununifid query wasm build-address <a id="build-address"></a>
+### ununifid query wasm build-address
 
-Build contract address
+コントラクトアドレスを構築する
 
 ```bash
-ununifid query wasm build-address [code-hash] [creator-address] [salt-hex-encoded] [json_encoded_init_args (required when set as fixed)] [flags]
+ununifid query wasm build-address [code-hash] [creator-address] [salt-hex-encoded] [json_encoded_init_args (fixedに設定されている場合は必須)] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Encode flags](wasm.md#encode-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[エンコードフラグ](wasm.md#encode-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm code <a id="code"></a>
+### ununifid query wasm code
 
-Downloads wasm bytecode for given code id
+指定されたコードIDのwasmバイトコードをダウンロードする
 
 ```bash
 ununifid query wasm code [code_id] [output filename] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm code-info <a id="code-info"></a>
+### ununifid query wasm code-info
 
-Prints out metadata of a code id
+コードIDのメタデータを出力する
 
 ```bash
 ununifid query wasm code-info [code_id] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm contract <a id="contract"></a>
+### ununifid query wasm contract
 
-Prints out metadata of a contract given its address
+指定されたアドレスのコントラクトのメタデータを出力する
 
 ```bash
 ununifid query wasm contract [bech32_address] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm contract-history <a id="contract-history"></a>
+### ununifid query wasm contract-history
 
-Prints out the code history for a contract given its address
+指定されたアドレスのコントラクトのコード履歴を出力する
 
 ```bash
 ununifid query wasm contract-history [bech32_address] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm contract-state <a id="contract-state"></a>
+### ununifid query wasm contract-state
 
-Querying commands for the wasm module
+wasmモジュールのクエリコマンド
 
 ```bash
 ununifid query wasm contract-state [flags]
 ununifid query wasm contract-state [command]
 ```
 
-**Command:**
+**コマンド:**
 
-| Name, shorthand | Type | Required | Default | Description                                                                      |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :--- | :------- | :------ | :------------------------------------------------------------------------------- |
-| all             |      |          |         | Prints out all internal state of a contract given its address                    |
-| raw             |      |          |         | Prints out internal state for key of a contract given its address                |
-| smart           |      |          |         | Calls contract with given address with query data and prints the returned result |
+| all | | | | 指定されたアドレスのコントラクトのすべての内部状態を出力する |
+| raw | | | | 指定されたアドレスのコントラクトのキーの内部状態を出力する |
+| smart | | | | 指定されたアドレスのコントラクトをクエリデータで呼び出し、返された結果を出力する |
 
 ```bash
 ununifid query wasm contract-state all [bech32_address] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
 ```bash
@@ -188,227 +188,226 @@ ununifid query wasm contract-state raw [bech32_address] [key] [flags]
 ununifid query wasm contract-state smart [bech32_address] [query] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Encode flags](wasm.md#encode-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[エンコードフラグ](wasm.md#encode-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm libwasmvm-version <a id="libwasmvm-version"></a>
+### ununifid query wasm libwasmvm-version
 
-Get libwasmvm version
+libwasmvmのバージョンを取得する
 
 ```bash
 ununifid query wasm libwasmvm-version [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm list-code <a id="list-code"></a>
+### ununifid query wasm list-code
 
-List all wasm bytecode on the chain
+チェーン上のすべてのwasmバイトコードを一覧表示する
 
 ```bash
 ununifid query wasm list-code [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm list-contract-by-code <a id="list-contract-by-code"></a>
+### ununifid query wasm list-contract-by-code
 
-List wasm all bytecode on the chain for given code id
+指定されたコードIDのチェーン上のすべてのwasmバイトコードを一覧表示する
 
 ```bash
 ununifid query wasm list-contract-by-code [code_id] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm list-contracts-by-creator <a id="list-contracts-by-creator"></a>
+### ununifid query wasm list-contracts-by-creator
 
-List all contracts by creator
+作成者別にすべてのコントラクトを一覧表示する
 
 ```bash
 ununifid query wasm list-contracts-by-creator [creator] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm params <a id="params"></a>
+### ununifid query wasm params
 
-Query the current wasm parameters
+現在のwasmパラメータを照会する
 
 ```bash
 ununifid query wasm params [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)を参照してください。
 {% endhint %}
 
-### ununifid query wasm pinned <a id="pinned"></a>
+### ununifid query wasm pinned
 
-List all pinned code ids
+すべての固定されたコードIDを一覧表示する
 
 ```bash
 ununifid query wasm pinned [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags](wasm.md#common-query-flags) & [Pagination flags](wasm.md#pagination-flags) for details of flags.
+フラグの詳細については、[共通フラグ](wasm.md#common-query-flags)と[ページネーションフラグ](wasm.md#pagination-flags)を参照してください。
 {% endhint %}
 
-## Common flags in nftmint tx <a id="common-tx-flags"></a>
+## nftmint txの共通フラグ
 
-Common flags for the nftmint tx command are summarized.
+nftmint txコマンドの共通フラグをまとめます。
 
-**Flags:**
+**フラグ:**
 
-| Name, shorthand      | Type   | Required | Default               | Description                                                                                                                                                                                             |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :------------------- | :----- | :------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| -a, --account-number | uint   |          |                       | The account number of the signing account (offline mode only)                                                                                                                                           |
-| --aux                |        |          |                       | Generate aux signer data instead of sending a tx                                                                                                                                                        |
-| -b, --broadcast-mode | string |          | sync                  | Transaction broadcasting mode (sync \| async \| block)                                                                                                                                                  |
-| --dry-run            |        |          |                       | ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it (when enabled, the local Keybase is not accessible)                                                             |
-| --fee-granter        | string |          |                       | Fee granter grants fees for the transaction                                                                                                                                                             |
-| --fee-payer          | string |          |                       | Fee payer pays fees for the transaction instead of deducting from the signer                                                                                                                            |
-| --fees               | string |          |                       | Fees to pay along with transaction; eg: 10uatom                                                                                                                                                         |
-| --from               | string |          |                       | Name or address of private key with which to sign                                                                                                                                                       |
-| --gas                | string |          | 200000                | gas limit to set per-transaction; set to "auto" to calculate sufficient gas automatically                                                                                                               |
-| --gas-adjustment     | float  |          | 1                     | adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored                                                            |
-| --gas-prices         | string |          |                       | Gas prices in decimal format to determine the transaction fee (e.g. 0.1uatom)                                                                                                                           |
-| --generate-only      |        |          |                       | Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase only accessed when providing a key name)                                                                          |
-| -h, --help           |        |          |                       | help for \<module name>                                                                                                                                                                                 |
-| --keyring-backend    | string |          | test                  | Select keyring's backend (os \| file \| kwallet \| pass \| test \| memory)                                                                                                                              |
-| --keyring-dir        | string |          |                       | The client Keyring directory; if omitted, the default 'home' directory will be used                                                                                                                     |
-| --ledger             |        |          |                       | Use a connected Ledger device                                                                                                                                                                           |
-| --node               | string |          | tcp://localhost:26657 | \<host>:\<port> to tendermint rpc interface for this chain                                                                                                                                              |
-| --note               | string |          |                       | Note to add a description to the transaction (previously --memo)                                                                                                                                        |
-| --offline            |        |          |                       | Offline mode (does not allow any online functionality)                                                                                                                                                  |
-| -o, --output         | string |          | json                  | Output format (text \| json)                                                                                                                                                                            |
-| -s, --sequence       | uint   |          |                       | The sequence number of the signing account (offline mode only)                                                                                                                                          |
-| --sign-mode          | string |          |                       | Choose sign mode (direct \| amino-json \| direct-aux), this is an advanced feature                                                                                                                      |
-| --timeout-height     | uint   |          |                       | Set a block timeout height to prevent the tx from being committed past a certain height                                                                                                                 |
-| --tip                | string |          |                       | Tip is the amount that is going to be transferred to the fee payer on the target chain. This flag is only valid when used with --aux, and is ignored if the target chain didn't enable the TipDecorator |
-| -y, --yes            |        |          |                       | Skip tx broadcasting prompt confirmation                                                                                                                                                                |
+| -a, --account-number | uint | | | 署名アカウントのアカウント番号（オフラインモードのみ） |
+| --aux | | | | txを送信する代わりにaux署名者データを生成する |
+| -b, --broadcast-mode | string | | sync | トランザクションブロードキャストモード（sync \| async \| block） |
+| --dry-run | | | | --gasフラグを無視してトランザクションのシミュレーションを実行するが、ブロードキャストしない（有効にすると、ローカルキーベースにアクセスできなくなります） |
+| --fee-granter | string | | | 手数料支払人がトランザクションの手数料を支払う |
+| --fee-payer | string | | | 手数料支払人が署名者から差し引く代わりにトランザクションの手数料を支払う |
+| --fees | string | | | トランザクションと一緒に支払う手数料。例：10uatom |
+| --from | string | | | 署名する秘密鍵の名前またはアドレス |
+| --gas | string | | 200000 | トランザクションごとに設定するガス制限。"auto"に設定すると、十分なガスが自動的に計算されます |
+| --gas-adjustment | float | | 1 | txシミュレーションによって返された推定値に乗算される調整係数。ガス制限が手動で設定されている場合、このフラグは無視されます |
+| --gas-prices | string | | | トランザクション手数料を決定するための10進形式のガス価格（例：0.1uatom） |
+| --generate-only | | | | 未署名のトランザクションをビルドし、STDOUTに書き込む（有効にすると、キー名を提供する場合にのみローカルキーベースにアクセスできます） |
+| -h, --help | | | | \<module name>のヘルプ |
+| --keyring-backend | string | | test | キーリングのバックエンドを選択する（os \| file \| kwallet \| pass \| test \| memory） |
+| --keyring-dir | string | | | クライアントキーリングディレクトリ。省略した場合、デフォルトの「ホーム」ディレクトリが使用されます |
+| --ledger | | | | 接続されたLedgerデバイスを使用する |
+| --node | string | | tcp://localhost:26657 | このチェーンのtendermint rpcインターフェースへの\<host>:\<port> |
+| --note | string | | | トランザクションに説明を追加するためのメモ（以前は--memo） |
+| --offline | | | | オフラインモード（オンライン機能は許可されません） |
+| -o, --output | string | | json | 出力形式（text \| json） |
+| -s, --sequence | uint | | | 署名アカウントのシーケンス番号（オフラインモードのみ） |
+| --sign-mode | string | | | 署名モードを選択する（direct \| amino-json \| direct-aux）、これは高度な機能です |
+| --timeout-height | uint | | | txが特定の高さを超えてコミットされないようにブロックタイムアウトの高さを設定する |
+| --tip | string | | | チップは、ターゲットチェーンの手数料支払人に転送される金額です。このフラグは--auxと一緒に使用する場合にのみ有効で、ターゲットチェーンがTipDecoratorを有効にしていない場合は無視されます |
+| -y, --yes | | | | txブロードキャストのプロンプト確認をスキップする |
 
-**Global Flags:**
+**グローバルフラグ:**
 
-| Name, shorthand | Type   | Required | Default        | Description                                                                   |
+| 名前、省略形 | 型 | 必須 | デフォルト | 説明 |
 | :-------------- | :----- | :------- | :------------- | :---------------------------------------------------------------------------- |
-| --chain-id      | string |          |                | The network chain ID                                                          |
-| --home          | string |          | $HOME/.ununifi | directory for config and data                                                 |
-| --log_format    | string |          |                | The logging format (json \| plain) (default "plain")                          |
-| --log_level     | string |          | info           | The logging level (trace \| debug \| info \| warn \| error \| fatal \| panic) |
-| --trace         |        |          |                | print out full stack trace on errors                                          |
+| --chain-id | string | | | ネットワークチェーンID |
+| --home | string | | $HOME/.ununifi | 設定とデータのディレクトリ |
+| --log_format | string | | | ログ形式（json \| plain）（デフォルトは"plain"） |
+| --log_level | string | | info | ログレベル（trace \| debug \| info \| warn \| error \| fatal \| panic） |
+| --trace | | | | エラー時に完全なスタックトレースを出力する |
 
 ## Tx
 
-### ununifid tx wasm clear-contract-admin <a id="clear-contract-admin"></a>
+### ununifid tx wasm clear-contract-admin
 
-Clears admin for a contract to prevent further migrations
+さらなる移行を防ぐためにコントラクトの管理者をクリアする
 
 ````bash
 ununifid tx wasm clear-contract-admin [contract_addr_bech32] [flags]```
 ````
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm execute <a id="execute"></a>
+### ununifid tx wasm execute
 
-Execute a command on a wasm contract
+wasmコントラクトでコマンドを実行する
 
 ```bash
 ununifid tx wasm execute [contract_addr_bech32] [json_encoded_send_args] --amount [coins,optional] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm grant <a id="grant"></a>
+### ununifid tx wasm grant
 
-Grant authorization to an address
+アドレスに承認を付与する
 
 ```bash
 ununifid tx wasm grant [grantee] [message_type="execution"|"migration"] [contract_addr_bech32] --allow-raw-msgs [msg1,msg2,...] --allow-msg-keys [key1,key2,...] --allow-all-messages [flags]
 ```
 
-**Example:**
+**例:**
 
 ```bash
-$ ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-calls 1 --no-token-transfer --expiration 1667979596
+ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-calls 1 --no-token-transfer --expiration 1667979596
 
-$ ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-funds 100000uwasm --expiration 1667979596
+ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-funds 100000uwasm --expiration 1667979596
 
-$ ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-calls 5 --max-funds 100000uwasm --expiration 1667979596
+ununifid tx grant <grantee_addr> execution <contract_addr> --allow-all-messages --max-calls 5 --max-funds 100000uwasm --expiration 1667979596
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm instantiate <a id="instantiate"></a>
+### ununifid tx wasm instantiate
 
-Creates a new instance of an uploaded wasm code with the given 'constructor' message.
-Each contract instance has a unique address assigned.
+アップロードされたwasmコードの新しいインスタンスを、指定された「コンストラクタ」メッセージで作成します。
+各コントラクトインスタンスには、一意のアドレスが割り当てられます。
 
 ```bash
-ununifid tx wasm instantiate [code_id_int64] [json_encoded_init_args] --label [text] --admin [address,optional] --amount [coins,optional]  [flags]
+ununifid tx wasm instantiate [code_id_int64] [json_encoded_init_args] --label [text] --admin [address,optional] --amount [coins,optional] [flags]
 ```
 
-**Example:**
+**例:**
 
 ```bash
 $ ununifid tx wasm instantiate 1 '{"foo":"bar"}' --admin="$(ununifid keys show mykey -a)" \
   --from mykey --amount="100ustake" --label "local0.1.0"
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm instantiate2 <a id="instantiate2"></a>
+### ununifid tx wasm instantiate2
 
-Creates a new instance of an uploaded wasm code with the given 'constructor' message.
-Each contract instance has a unique address assigned. They are assigned automatically but in order to have predictable addresses
-for special use cases, the given 'salt' argument and '--fix-msg' parameters can be used to generate a custom address.
+アップロードされたwasmコードの新しいインスタンスを、指定された「コンストラクタ」メッセージで作成します。
+各コントラクトインスタンスには、一意のアドレスが割り当てられます。それらは自動的に割り当てられますが、特別なユースケースのために予測可能なアドレスを持つために、指定された「salt」引数と「--fix-msg」パラメータを使用してカスタムアドレスを生成できます。
 
 ```bash
 ununifid tx wasm instantiate2 [code_id_int64] [json_encoded_init_args] [salt] --label [text] --admin [address,optional] --amount [coins,optional] --fix-msg [bool,optional] [flags]
 ```
 
-**Predictable address example (also see 'ununifid query wasm build-address -h'):**
+**予測可能なアドレスの例（「ununifid query wasm build-address -h」も参照してください）：**
 
 ```bash
 $ ununifid tx wasm instantiate2 1 '{"foo":"bar"}' $(echo -n "testing" | xxd -ps) --admin="$(ununifid keys show mykey -a)" \
@@ -416,64 +415,64 @@ $ ununifid tx wasm instantiate2 1 '{"foo":"bar"}' $(echo -n "testing" | xxd -ps)
    --fix-msg
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm migrate <a id="migrate"></a>
+### ununifid tx wasm migrate
 
-Migrate a wasm contract to a new code version
+wasmコントラクトを新しいコードバージョンに移行する
 
 ```bash
 ununifid tx wasm migrate [contract_addr_bech32] [new_code_id_int64] [json_encoded_migration_args] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm set-contract-admin <a id="set-contract-admin"></a>
+### ununifid tx wasm set-contract-admin
 
-Set new admin for a contract
+コントラクトの新しい管理者を設定する
 
 ```bash
 ununifid tx wasm set-contract-admin [contract_addr_bech32] [new_admin_addr_bech32] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm store <a id="store"></a>
+### ununifid tx wasm store
 
-Upload a wasm binary
+wasmバイナリをアップロードする
 
 ```bash
 ununifid tx wasm store [wasm file] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}
 
-### ununifid tx wasm update-instantiate-config <a id="update-instantiate-config"></a>
+### ununifid tx wasm update-instantiate-config
 
-Update instantiate config for a codeID
+codeIDのインスタンス化設定を更新する
 
 ```bash
 ununifid tx wasm update-instantiate-config [code_id_int64] [flags]
 ```
 
-**Flags:**
+**フラグ:**
 
 {% hint style="info" %}
-Please refer to [Common flags in cosmwasm tx](wasm.md#common-tx-flags) for details of flags.
+フラグの詳細については、[cosmwasm txの共通フラグ](wasm.md#common-tx-flags)を参照してください。
 {% endhint %}

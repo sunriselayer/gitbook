@@ -1,153 +1,149 @@
-# セルフデリゲーション
+# RISEの自己委任
 
-バリデータは、自身に$RISEをステーキングすることで議決権（Voting Power）を増やすことができます。この機能は、MsgCreateValidatorなどでバリデータとして登録されたアドレスのみが利用できます。
+バリデーターは、ステーキング報酬を得るためにRISEを自己委任することができます。
 
-## x/selfdelegation Msg
+{% hint style="warning" %}
+**注**: vRISEの委任とは異なり、RISEを委任してもガバナンスの投票権は付与されません。
+{% endhint %}
 
-1. MsgSelfDelegate
-1. MsgWithdrawSelfDelegationUnbonded
+RISEを委任する方法は、トークンが通常のウォレット残高にあるか、ロックアップアカウントにあるかによって異なります。それぞれの場合で使用するモジュールとコマンドは異なります。
 
-- MsgSelfDelegate
-セルフデリゲーションプロキシアカウントが存在しない場合、作成します。$RISEはプロキシアカウントに送信され、デリゲーションが開始されます。
+---
 
-```bash
-sunrised tx selfdelegation self-delegate [amount] [flags]
-```
+## 通常の残高からの委任（`x/shareclass`）
 
-- MsgWithdrawSelfDelegationUnbonded
-Undelegateの後、一定期間が経過し、Unbondedの状態になったとき、引き出しを行うことができます。$RISEはあなたのアカウントの残高に返金されます。
-Undelegateは、以下に説明するプロキシアカウントのTxで実行できます。
+ウォレットに直接保有されているRISEを委任するには、`x/shareclass`モジュールの`non-voting-delegate`コマンドを使用します。
 
-```bash
-sunrised tx selfdelegation withdraw-self-delegation-unbonded [amount] [flags]
-```
+### 委任方法
 
-## セルフデリゲーションプロキシアカウント
-
-$RISEのセルフデリゲーションは、セルフデリゲーションプロキシアカウントを通じて処理されます。
-
-セルフデリゲーションが行われると、$RISEはプロキシアカウントに移動します。プロキシアカウントは$RISEを$vRISEに変換し、あなたのデリゲータとして機能します。
-
-### クエリ
-
-`x/selfdelegation`クエリを使用して、プロキシアカウントを見つけます。
+**使用法:**
 
 ```bash
-sunrised q selfdelegation self-delegation-proxy-account-by-owner [your-address]
+sunrised tx shareclass non-voting-delegate [validator_address] [amount] [flags]
 ```
 
-### Msg実行
-
-1. MsgUndelegate
-1. MsgWithdrawReward
-1. MsgSend
-
-CLIでは、以下を使用します
+**例:**
 
 ```bash
-sunrised tx accounts execute [proxy-account-address] [execute-msg-type-url] [json-message] [flags]
+# バリデーターアドレスを取得
+VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
+
+# 委任を実行
+sunrised tx shareclass non-voting-delegate $VALIDATOR_ADDRESS 10000000urise \
+    --from <your_validator_key> \
+    --chain-id <your_chain_id> \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
+    --gas=auto \
+    -y
 ```
 
-- MsgUndelegate
-プロキシアカウントからのデリゲーションがキャンセルされます。一定期間後、x/selfdelegationのMsgWithdrawSelfDelegationUnbondedによって引き出し可能になります。
-- MsgWithdrawReward
-デリゲーション報酬を引き出します。引き出された報酬はMsgSendを通じて他のアカウントに送信できます。
-- MsgSend
-利用可能な資金を他のアカウントに送信します。
+### 報酬の請求方法
 
-#### sunrise.accounts.self_delegation_proxy.v1.MsgUndelegate
+`x/shareclass`モジュールの`claim-rewards`コマンドを使用して、蓄積されたステーキング報酬を請求します。報酬はウォレットに送られます。
+
+**使用法:**
 
 ```bash
-sunrised tx accounts execute sunrise1jpaxtum2vckspj6nqe0pjkk7pxel0avuyz8dehpe87qxk5w0yc5s4qtzul sunrise.accounts.self_delegation_proxy.v1.MsgUndelegate "{\"amount\":\"4000\"}"
+sunrised tx shareclass claim-rewards [validator_address] [flags]
 ```
 
-```protobuf
-message MsgUndelegate {
-  option (cosmos.msg.v1.signer) = "sender";
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  // Amount of bond denom
-  string amount = 2 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
-```
-
-#### sunrise.accounts.self_delegation_proxy.v1.MsgWithdrawReward
-
-```protobuf
-message MsgWithdrawReward {
-  option (cosmos.msg.v1.signer) = "sender";
-
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string validator_address = 2 [(cosmos_proto.scalar) = "cosmos.ValidatorAddressString"];
-}
-```
-
-#### sunrise.accounts.self_delegation_proxy.v1.MsgSend
-
-```protobuf
-message MsgSend {
-  option (cosmos.msg.v1.signer) = "sender";
-
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string to_address = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  repeated cosmos.base.v1beta1.Coin amount = 3 [
-    (gogoproto.nullable) = false,
-    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"
-  ];
-}
-```
-
-## デリゲート可能なロックアップアカウント
-
-Sunrise メインネットでは、エアドロップやジェネシスで付与された他の資金は、ロックアップアカウントとして一定期間ロックされます。
-詳細については、[ロックアップアカウント](../../learn/sunrise/lockup-account.md)を参照してください。
-
-セルフデリゲータブルロックアップアカウントにより、バリデータはセルフデリゲーションを行うことができます。
-
-### Tx実行
-
-セルフデリゲータブルロックアップアカウントでは以下のTxがサポートされています
-
-1. MsgSelfDelegate
-1. MsgWithdrawSelfDelegationUnbonded
-
-CLIでは、以下を使用します
+**例:**
 
 ```bash
-sunrised tx accounts execute [account-address] [execute-msg-type-url] [json-message] [flags]
+VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
+
+sunrised tx shareclass claim-rewards $VALIDATOR_ADDRESS \
+    --from <your_validator_key> \
+    --chain-id <your_chain_id> \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
+    --gas=auto \
+    -y
 ```
 
-#### sunrise.accounts.self_delegatable_lockup.v1.MsgSelfDelegate
+---
+
+## ロックアップアカウントからの委任（`x/lockup`）
+
+ロックアップの一部であるRISE（例：エアドロップから）を委任するには、`x/lockup`モジュールを使用する必要があります。
+
+### 1. ロックアップアカウントIDを見つける
+
+まず、委任したいロックアップアカウントのIDを特定する必要があります。`lockup-accounts`クエリを使用して、キーが所有するすべてのロックアップアカウントを一覧表示できます。
+
+**使用法:**
 
 ```bash
-sunrised tx accounts execute sunrise1jpaxtum2vckspj6nqe0pjkk7pxel0avuyz8dehpe87qxk5w0yc5s4qtzul sunrise.accounts.self_delegatable_lockup.v1.MsgSelfDelegate "{\"amount\":\"4000\"}"
+sunrised query lockup lockup-accounts [owner] [flags]
 ```
 
-```protobuf
-message MsgSelfDelegate {
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  // Amount of fee denom
-  string amount = 2 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
+**例:**
+
+```bash
+OWNER_ADDRESS=$(sunrised keys show <your_validator_key> -a)
+
+sunrised query lockup lockup-accounts $OWNER_ADDRESS --output json
 ```
 
-#### sunrise.accounts.self_delegatable_lockup.v1.MsgWithdrawSelfDelegationUnbonded
+このコマンドの出力から、正しいアカウントを見つけてその`id`をメモします。
 
-```protobuf
-message MsgWithdrawSelfDelegationUnbonded {
-  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  // Amount of bond denom
-  string amount = 2 [
-    (cosmos_proto.scalar) = "cosmos.Int",
-    (gogoproto.customtype) = "cosmossdk.io/math.Int",
-    (gogoproto.nullable) = false
-  ];
-}
+### 2. 委任方法
+
+ロックアップアカウントIDを取得したら、`x/lockup`モジュールの`non-voting-delegate`コマンドを使用します。
+
+**使用法:**
+
+```bash
+sunrised tx lockup non-voting-delegate [lockup_account_id] [validator_address] [amount] [flags]
 ```
+
+**例:**
+
+```bash
+LOCKUP_ID="<your_lockup_account_id>"
+VALIDATOR_ADDRESS=$(sunrised keys show <your_validator_key> --bech val -a)
+
+sunrised tx lockup non-voting-delegate $LOCKUP_ID $VALIDATOR_ADDRESS 10000000urise \
+    --from <your_validator_key> \
+    --chain-id <your_chain_id> \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
+    --gas=auto \
+    -y
+```
+
+### 3. 報酬の請求方法
+
+`x/lockup`モジュールの`claim-rewards`コマンドを使用します。
+
+{% hint style="info" %}
+**重要**: ロックアップ委任から請求された報酬は、メインウォレットではなく、ロックアップアカウント自体に送り返されます。報酬のRISE部分は、元のロックアップスケジュールに従います。
+{% endhint %}
+
+**使用法:**
+
+```bash
+sunrised tx lockup claim-rewards [lockup_account_id] [flags]
+```
+
+**例:**
+
+```bash
+LOCKUP_ID="<your_lockup_account_id>"
+
+sunrised tx lockup claim-rewards $LOCKUP_ID \
+    --from <your_validator_key> \
+    --chain-id <your_chain_id> \
+    --gas-prices=0.025uusdrise --gas-adjustment 1.2 \
+    --gas=auto \
+    -y
+```
+
+---
+
+## Sunriseアプリの使用
+
+これらの委任および報酬請求操作は、**Sunriseアプリ**インターフェースを介して簡単に行うこともできます。
+
+詳細については、次のドキュメントを参照してください。
+
+- **通常の委任の場合:** [ガバナンス](../../learn/sunrise-app/gov.md)
+- **ロックされた資産の委任の場合:** [ロックアップ](../../learn/sunrise-app/lockup.md)

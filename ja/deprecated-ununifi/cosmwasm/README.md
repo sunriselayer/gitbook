@@ -1,14 +1,14 @@
 # CosmWasm
 
-All developers can deploy smart contracts made with **CosmWasm** on UnUniFi. Development requires the knowledge of **CosmWasm**. For more information about CosmWasm, visit [CosmWasm Documentation](https://docs.cosmwasm.com/docs/).
+すべての開発者は、UnUniFi上で**CosmWasm**で作成されたスマートコントラクトをデプロイできます。開発には**CosmWasm**の知識が必要です。CosmWasmの詳細については、[CosmWasmドキュメント](https://docs.cosmwasm.com/docs/)をご覧ください。
 
-You can replace `wasmd` with `ununifid` in the sentences of the following pages:
+次のページの文章では、`wasmd`を`ununifid`に置き換えることができます。
 
-* [Setting up Environment](https://docs.cosmwasm.com/docs/getting-started/setting-env)
-* [Deployment and Interaction](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract)
+- [環境のセットアップ](https://docs.cosmwasm.com/docs/getting-started/setting-env)
+- [デプロイとインタラクション](https://docs.cosmwasm.com/docs/getting-started/interact-with-contract)
 
-You can learn more at [CosmWasm Academy](https://academy.cosmwasm.com/) as well.
+[CosmWasmアカデミー](https://academy.cosmwasm.com/)でも詳しく学ぶことができます。
 
-For more information on CosmWasm CLI commands such as deploy, see [wasm module CLI](../cli-introduction/modules/wasm.md) page.
+デプロイなどのCosmWasm CLIコマンドの詳細については、[wasmモジュールCLI](../cli-introduction/modules/wasm.md)ページをご覧ください。
 
-UnUniFi don't require **Governance Gate** for deploying and instantiating CosmWasm smart contracts. It means that you can deploy and instantiate your CosmWasm smart contracts without proposal and voting.
+UnUniFiでは、CosmWasmスマートコントラクトのデプロイとインスタンス化に**ガバナンスゲート**は必要ありません。つまり、提案や投票なしでCosmWasmスマートコントラクトをデプロイおよびインスタンス化できます。

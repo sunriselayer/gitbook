@@ -1,83 +1,83 @@
-# Useful CLI Commands
+# 便利なCLIコマンド
 
-Get standard debug info from the `ununifi` daemon:
+`ununifi`デーモンから標準のデバッグ情報を取得します。
 
 ```bash
 ununifid status
 ```
 
-Check if your node is catching up:
+ノードが追いついているかどうかを確認します。
 
 ```bash
-# Query via the RPC (default port: 26657)
+# RPC経由でクエリ（デフォルトポート：26657）
 curl http://localhost:26657/status | jq .result.sync_info.catching_up
 ```
 
-Get your node ID:
+ノードIDを取得します。
 
 ```bash
 ununifid tendermint show-node-id
 ```
 
 {% hint style="info" %}
-Your peer address will be the result of this plus host and port, i.e. `<id>@<host>:26656` if you are using the default port.
+ピアアドレスは、これにホストとポートを加えたものになります。つまり、デフォルトポートを使用している場合は`<id>@<host>:26656`です。
 {% endhint %}
 
-Check if you are jailed or tombstoned:
+ジェイルされているか、トゥームストーンになっているかを確認します。
 
 ```bash
 ununifid query slashing signing-info $(ununifid tendermint show-validator)
 ```
 
-Get your `valoper` address:
+`valoper`アドレスを取得します。
 
 ```bash
 ununifid keys show <your-key-name> -a --bech val
 ```
 
-See keys on the current box:
+現在のボックスのキーを表示します。
 
 ```bash
 ununifid keys list
 ```
 
-Import a key from a mnemonic:
+ニーモニックからキーをインポートします。
 
 ```bash
 ununifid keys add <new-key-name> --recover
 ```
 
-Export a private key (warning: don't do this unless you know what you're doing!)
+秘密鍵をエクスポートします（警告：何をしているか理解していない限り、これを行わないでください！）
 
 ```bash
 ununifid keys export <your-key-name> --unsafe --unarmored-hex
 ```
 
-Withdraw rewards (including validator commission), where `ununifivaloper1...` is the validator address:
+報酬（バリデータ手数料を含む）を引き出します。`ununifivaloper1...`はバリデータアドレスです。
 
 ```bash
 ununifid tx distribution withdraw-rewards <ununifivaloper1...> --from <your-key>  --commission
 ```
 
-Stake:
+ステーク：
 
 ```bash
 ununifid tx staking delegate <ununifivaloper1...> <AMOUNT>uununifi --from <your-key>
 ```
 
-Find out what the JSON for a command would be using `--generate-only`:
+`--generate-only`を使用して、コマンドのJSONがどうなるかを確認します。
 
 ```bash
 ununifid tx bank send $(ununifid keys show <your-key-name> -a) <recipient addr> <AMOUNT>uununifi --generate-only
 ```
 
-Query the validator set (and jailed status) via CLI:
+CLI経由でバリデータセット（およびジェイルステータス）をクエリします。
 
 ```bash
 ununifid query staking validators --limit 1000 -o json | jq -r '.validators[] | [.operator_address, (.tokens|tonumber / pow(10; 6)), .description.moniker, .jail, .status] | @csv' | column -t -s"," | sort -k2 -n -r | nl
 ```
 
-Get contract state:
+コントラクトの状態を取得します。
 
 ```bash
 ununifid q wasm contract-state all <contract-address>

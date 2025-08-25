@@ -1,21 +1,21 @@
 # Cosmos Client TS
 
-The [cosmos-client](cosmos-client.md#cosmos-client) is a library of Cosmos Client for `Javascript` or `Typescript` Application.
+[cosmos-client](cosmos-client.md#cosmos-client)は、`Javascript`または`Typescript`アプリケーション向けのCosmosクライアントのライブラリです。
 
-The [ununifi-client](cosmos-client.md#ununifi-client) is a library of UnUniFi client. Extend API, types, and other information for UnUniFi proprietary functions to cosmos-client-ts.
+[ununifi-client](cosmos-client.md#ununifi-client)は、UnUniFiクライアントのライブラリです。UnUniFi独自の機能のために、API、型、その他の情報をcosmos-client-tsに拡張します。
 
 ## cosmos-client
 
-REST API client for Cosmos SDK blockchain
-For more information about cosmos-client, visit [`@cosmos-client/core`](https://github.com/cosmos-client/cosmos-client-ts) page.
+Cosmos SDKブロックチェーン用のREST APIクライアント
+cosmos-clientの詳細については、[`@cosmos-client/core`](https://github.com/cosmos-client/cosmos-client-ts)ページをご覧ください。
 
-**Install:**
+**インストール:**
 
 ```bash
 npm install @cosmos-client/core
 ```
 
-**Plugin modules:**
+**プラグインモジュール:**
 
 - [`@cosmos-client/ibc`](https://github.com/cosmos-client/ibc-ts)
 - [`@cosmos-client/liquidity`](https://github.com/cosmos-client/liquidity-ts)
@@ -24,10 +24,10 @@ npm install @cosmos-client/core
 
 ## ununifi-client
 
-JavaScript / TypeScript client for UnUniFi blockchain.
-For more information about ununifi-client, visit [`ununifi-client`](https://github.com/cosmos-client/ununifi-ts) page.
+UnUniFiブロックチェーン用のJavaScript / TypeScriptクライアント。
+ununifi-clientの詳細については、[`ununifi-client`](https://github.com/cosmos-client/ununifi-ts)ページをご覧ください。
 
-**Install:**
+**インストール:**
 
 ```bash
 npm install --save ununifi-client
