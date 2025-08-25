@@ -81,11 +81,11 @@ DACとDASにおけるこれらの問題に対処するために、Sunriseは次�
 
 ```mermaid
 graph TD
-    A[作成済み] --> B[異議申し立て期間]
-    B -->|異議なし| C[検証済み]
-    B -->|異議あり| D[異議申し立て中]
-    D -->|有効| C
-    D -->|無効| E[拒否済み]
+    A[Created] --> B[Challenge Period]
+    B -->|No Challenge| C[Verified]
+    B -->|Challenge| D[Challenging]
+    D -->|Valid| C
+    D -->|Invalid| E[Rejected]
 ```
 
 ### 証明の流れ
@@ -105,13 +105,13 @@ graph TD
 }}}%%
 sequenceDiagram
     autonumber
-    User->>Publisher Node: ブロブデータ
-    Publisher Node->>Publisher Node: イレージャーコーディング
-    Publisher Node->>Decentralized Storage: データシャードをアップロード
+    User->>Publisher Node: Blob data
+    Publisher Node->>Publisher Node: Erasure coding
+    Publisher Node->>Decentralized Storage: Upload data shards
     Publisher Node->>Sunrise: MsgPublishData
-    User->>Sunrise: 必要に応じて不正チャレンジ
-    Sunrise->>Validator Set: 異議申し立ての投票を開始
-    Validator Set->>Sunrise: ゼロ知識有効性証明
+    User->>Sunrise: Fraud challenge if necessary
+    Sunrise->>Validator Set: Start voting for challenge
+    Validator Set->>Sunrise: Zero-knowledge validity proof
 ```
 
 ## ゼロ知識証明システム

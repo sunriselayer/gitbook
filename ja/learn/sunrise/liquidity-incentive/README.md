@@ -56,17 +56,17 @@ $$
 
 ```mermaid
 graph TD
-    A{ユーザーA}-->|流動性を提供|B((プールB))
-    A-->|賄賂を登録|C((プールBのゲージ))
-    D{ユーザー}-->|投票|C
-    C-.->|賄賂を分配|D
-    C-.->|より多くのvRISEを割り当て|B
-    B-.->|vRISEインセンティブを分配|A
+    A{User A}-->|Provide Liquidity|B((Pool B))
+    A-->|Register Bribe|C((Gauge for Pool B))
+    D{User}-->|Vote|C
+    C-.->|Distribute Bribes|D
+    C-.->|Allocate more vRISE|B
+    B-.->|Distribute vRISE incentives|A
 ```
 
 ### BeginBlocker
 
-1. インフレ報酬の一部をFee Collectorアカウントから**`x/liquidityincentive`**モジュールアカウントに転送します。
+1. インフレ報酬の一部をFee Collectorアカウントから**`x/liquidityincentive`**モジュールアカウントに送金します。
 2. 報酬は**`$vRISE`**トークン（譲渡不可能なステーキングトークン）に変換されます。
 3. 報酬は各プールの手数料アキュムレータに蓄積されます。
 
@@ -85,16 +85,16 @@ graph TD
 
 ```mermaid
 sequenceDiagram
-    participant User as 流動性プロバイダー
-    participant LiquidityPool as x/liquiditypool モジュール
-    participant IncentiveModule as x/liquidityincentive モジュール
-    participant Distribution as x/distribution モジュール
+    participant User as Liquidity Provider
+    participant LiquidityPool as x/liquiditypool Module
+    participant IncentiveModule as x/liquidityincentive Module
+    participant Distribution as x/distribution Module
 
-    User->>LiquidityPool: 流動性を提供
-    LiquidityPool->>IncentiveModule: ポジションの蓄積を追跡
-    IncentiveModule->>Distribution: インフレ報酬を転送
-    User->>IncentiveModule: 報酬を請求
-    IncentiveModule->>User: 報酬を計算して分配
+    User->>LiquidityPool: Provide Liquidity
+    LiquidityPool->>IncentiveModule: Track position accumulation
+    IncentiveModule->>Distribution: Transfer inflation rewards
+    User->>IncentiveModule: Claim Rewards
+    IncentiveModule->>User: Calculate & distribute rewards
 ```
 
 ## パラメータ

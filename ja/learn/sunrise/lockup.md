@@ -71,18 +71,18 @@
 
 ```mermaid
 sequenceDiagram
-    participant User as ユーザー
-    participant LockupModule as x/lockup モジュール
-    participant Validator as バリデーター
-    participant Bank as x/bank モジュール
+    participant User as User
+    participant LockupModule as x/lockup Module
+    participant Validator as Validator
+    participant Bank as x/bank Module
 
-    User->>LockupModule: ロックアップアカウントを作成
-    LockupModule->>Bank: トークンをロック
-    User->>LockupModule: 非投票デリゲート
-    LockupModule->>Validator: トークンをデリゲート
-    Validator->>LockupModule: 報酬を生成
-    User->>LockupModule: 報酬を請求
-    LockupModule->>User: 報酬を送信
+    User->>LockupModule: Create Lockup Account
+    LockupModule->>Bank: Lock tokens
+    User->>LockupModule: Non-voting Delegate
+    LockupModule->>Validator: Delegate tokens
+    Validator->>LockupModule: Generate rewards
+    User->>LockupModule: Claim rewards
+    LockupModule->>User: Send rewards
 ```
 
 ## メッセージ

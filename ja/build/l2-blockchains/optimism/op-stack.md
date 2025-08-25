@@ -14,9 +14,9 @@ Sunriseのデータ可用性レイヤーは、[OP Stack](https://github.com/ethe
 ```mermaid
 sequenceDiagram
    autonumber
-   L2 ->> Ethereum Sepolia: トランザクションを送信（例：トークン転送）
-   Ethereum Sepolia --> L2: APIとトランザクションの応答
-   L2 ->> Sunrise: ブロックデータを送信して保存
+   L2 ->> Ethereum Sepolia: Send transaction (e.g., token transfer)
+   Ethereum Sepolia --> L2: API and transaction response
+   L2 ->> Sunrise: Send block data for storage
 ```
 
 ### 依存関係
