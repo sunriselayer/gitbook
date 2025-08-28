@@ -59,7 +59,8 @@ You can mint the same amount of USDrise using USDN.
 sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
 '{"mint":{"amount":"1000000","recipient":"[your-address]"}}' \
 --amount 1000000ibc/A7AD825A4B48DDA0138D118655E60100D22A4D690C45B95221520B58C9A64B63 \
---from=[your-account] --gas-prices=0.025uusdrise --gas-adjustment=1.5 --gas=auto -y
+--from=[your-account] --chain-id=sunrise-1\
+--gas-prices=0.025uusdrise --gas-adjustment=1.5 --gas=auto -y
 ```
 
 ## Redeem USDrise to USDN on Mainnet
@@ -71,5 +72,6 @@ You can redeem the same amount of USDN using USDrise.
 sunrised tx wasm execute sunrise14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s2v9j75 \
 '{"burn":{"amount":"1000000"}}' \
 --amount 1000000uusdrise \
---from=[your-account] --gas-prices=0.025uusdrise --gas-adjustment=1.5 --gas=auto -y
+--from=[your-account] --chain-id=sunrise-1 \
+--gas-prices=0.025uusdrise --gas-adjustment=1.5 --gas=auto -y
 ```
