@@ -109,7 +109,7 @@ The core team will delegate more RISE to validators who serve the following serv
 
 - **Delegation Amount:** 25,000 RISE.
 - **Conditions:**
-  - Your explorer must be submitted via a pull request to [chain-registry](https://github.com/sunriselayer/chain-registry) and get merged.
+  - Your explorer must be submitted via a pull request to [chain-registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json) and get merged.
 - **Additional Delegation:**
   - We offer additional delegation if your explorer is used within the official Sunrise services. We will contact you individually.
 
