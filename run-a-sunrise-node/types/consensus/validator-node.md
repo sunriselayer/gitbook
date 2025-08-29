@@ -114,5 +114,3 @@ The core team will delegate more RISE to validators who serve the following serv
   - We offer additional delegation if your explorer is used within the official Sunrise services. We will contact you individually.
 
 Please note that the content of these incentives may change depending on the number of participants.
-
-If you wish to join, please contact the team via Discord or Telegram.
