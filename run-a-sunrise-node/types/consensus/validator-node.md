@@ -96,13 +96,23 @@ It is recommended that you encrypt the backup of these files.
 
 ## Additional incentives for validators
 
-The core team will delegate RISE to validators who serve the following services:
+The core team will delegate more RISE to validators who serve the following services:
 
-- IBC relayer
-  - `100RISE` delegation per channel
-- Node snapshot
-  - `10000RISE` delegation
-- REST API endpoints
-  - `10000RISE` delegation
+### RPC/API/gRPC
 
-If you wish to join, please contact the team via Discord or other methods.
+- **Delegation Amount:** 500,000 RISE for each service (RPC, API, gRPC), up to a maximum of 1,500,000 RISE.
+- **Conditions:**
+  - Your endpoint must be submitted via a pull request to `chain-registry` and get merged.
+  - Transaction indexer and CORS must be enabled.
+
+### Explorer
+
+- **Delegation Amount:** 50,000 RISE.
+- **Conditions:**
+  - Your explorer must be submitted via a pull request to `chain-registry` and get merged.
+- **Additional Delegation:**
+  - We offer additional delegation if your explorer is used within the official Sunrise services. We will contact you individually.
+
+Please note that the content of these incentives may change depending on the number of participants.
+
+If you wish to join, please contact the team via Discord or Telegram.
