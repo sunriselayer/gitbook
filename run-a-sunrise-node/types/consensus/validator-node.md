@@ -100,16 +100,16 @@ The core team will delegate more RISE to validators who serve the following serv
 
 ### RPC/API/gRPC
 
-- **Delegation Amount:** 500,000 RISE for each service (RPC, API, gRPC), up to a maximum of 1,500,000 RISE.
+- **Delegation Amount:** 250,000 RISE for each service (RPC, API, gRPC), up to a maximum of 750,000 RISE.
 - **Conditions:**
-  - Your endpoint must be submitted via a pull request to `chain-registry` and get merged.
+  - Your endpoint must be submitted via a pull request to [chain-registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json) and get merged.
   - Transaction indexer and CORS must be enabled.
 
 ### Explorer
 
-- **Delegation Amount:** 50,000 RISE.
+- **Delegation Amount:** 25,000 RISE.
 - **Conditions:**
-  - Your explorer must be submitted via a pull request to `chain-registry` and get merged.
+  - Your explorer must be submitted via a pull request to [chain-registry](https://github.com/sunriselayer/chain-registry) and get merged.
 - **Additional Delegation:**
   - We offer additional delegation if your explorer is used within the official Sunrise services. We will contact you individually.
 
