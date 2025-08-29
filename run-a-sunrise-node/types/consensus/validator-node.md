@@ -105,13 +105,6 @@ The core team will delegate more RISE to validators who serve the following serv
   - Your endpoint must be submitted via a pull request to `chain-registry` and get merged.
   - Transaction indexer and CORS must be enabled.
 
-### Node Snapshot
-
-- **Delegation Amount:** 1,000,000 RISE.
-- **Conditions:**
-  - Create node snapshots periodically.
-  - Make the snapshots publicly available on your website.
-
 ### Explorer
 
 - **Delegation Amount:** 50,000 RISE.
