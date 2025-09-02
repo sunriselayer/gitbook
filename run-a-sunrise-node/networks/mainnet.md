@@ -19,13 +19,13 @@ The main network of Sunrise. Use tokens with real value.
 
 In addition to the official endpoints, several third parties provide public endpoints and other services for the Sunrise mainnet. For a more comprehensive list of RPC, REST, gRPC endpoints, and explorers, please refer to the [Chain Registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json).
 
-| Provider      | RPC                                    | REST                                   | gRPC                               | Other Services (Snapshot, Peers, etc.)                   |
-| ------------- | -------------------------------------- | -------------------------------------- | ---------------------------------- | -------------------------------------------------------- |
-| Polkachu      | `https://sunrise-rpc.polkachu.com:443` | `https://sunrise-api.polkachu.com:443` | `sunrise-grpc.polkachu.com:17590`  | [Link](https://www.polkachu.com/networks/sunrise)        |
-| NodeStake     | `https://rpc.sunrise.nodestake.org`    | `https://api.sunrise.nodestake.org`    | `grpc.sunrise.nodestake.org:443`   | [Link](https://nodestake.org/sunrise)                    |
-| Krews         | `https://rpc.sunrise.krews.org`        | `https://api.sunrise.krews.org`        | `grpc.sunrise.krews.org:9090`      | [Link](https://sunrise-services.krews.xyz/sunrise)       |
-| MekongLabs    | `https://rpc-sunrise.mekonglabs.tech`  | `https://api-sunrise.mekonglabs.tech`  | `grpc-sunrise.mekonglabs.tech:443` | [Link](https://mekonglabs.tech/services/mainnet/sunrise) |
-| Synergy Nodes | `https://sunrise.rpc.synergynodes.com` | `https://sunrise.api.synergynodes.com` | `sunrise.grpc.synergynodes.com`    | [Link](https://www.synergynodes.com/service/sunrise)     |
+| Provider      | Node Services (Snapshot, Peers, etc.)              |
+| ------------- | -------------------------------------------------- |
+| Polkachu      | <https://www.polkachu.com/networks/sunrise>        |
+| NodeStake     | <https://nodestake.org/sunrise>                    |
+| Krews         | <https://sunrise-services.krews.xyz/sunrise>       |
+| MekongLabs    | <https://mekonglabs.tech/services/mainnet/sunrise> |
+| Synergy Nodes | <https://www.synergynodes.com/service/sunrise>     |
 
 ## Frontend
 
