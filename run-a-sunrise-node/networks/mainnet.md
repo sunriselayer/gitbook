@@ -41,6 +41,13 @@ The genesis binary is `v1.0.0`.
 
 [Released Binary](https://github.com/sunriselayer/sunrise/releases)
 
+### Network Upgrade
+
+| Name                                                                  | Height |
+| --------------------------------------------------------------------- | ------ |
+| [v1.1.0](https://github.com/sunriselayer/sunrise/releases/tag/v1.1.0) | 234700 |
+| [v1.2.0](https://github.com/sunriselayer/sunrise/releases/tag/v1.2.0) | 765000 |
+
 ## IBC Config
 
 | Dst Chain     | Dst Port   | Dst Channel  | Src Chain   | Src Port   | Src Channel |
