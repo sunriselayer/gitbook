@@ -96,10 +96,11 @@ It is recommended that you encrypt the backup of these files.
 
 ## Additional incentives for validators
 
-> **Warning**
-> The application period for "Additional incentives for validators" closed on October 15th, 2025. The reopening date is undecided. For those who have already registered in the chain-registry and meet the requirements, the delegation has been completed.
->
-> Due to the depletion of the funding pool for the program, fulfilling the requirements now (e.g., enabling the tx indexer) will not make you eligible for additional delegation. Please be aware of this.
+{% hint style="warning" %}
+The application period for "Additional incentives for validators" closed on October 15th, 2025. The reopening date is undecided. For those who have already registered in the chain-registry and meet the requirements, the delegation has been completed.
+
+Due to the depletion of the funding pool for the program, fulfilling the requirements now (e.g., enabling the tx indexer) will not make you eligible for additional delegation. Please be aware of this.
+{% endhint %}
 
 The core team will delegate more RISE to validators who serve the following services:
 
