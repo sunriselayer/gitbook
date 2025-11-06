@@ -1,6 +1,6 @@
-# $USDrise
+# USDrise
 
-$USDrise is the native stablecoin of the Sunrise protocol, issued by wrapping noble's USDN. This document provides an overview of USDrise, its features, and how it integrates into the Sunrise ecosystem.
+USDrise is the native stablecoin of the Sunrise protocol, issued by wrapping noble's USDN. This document provides an overview of USDrise, its features, and how it integrates into the Sunrise ecosystem.
 
 ## Overview
 
@@ -16,7 +16,7 @@ For more detailed information on the `x/stable` module, please refer to the [x/s
 ## Key Features
 
 - **Transaction Fees:** All transaction fees within the Sunrise protocol are paid in USDrise, making it a central component of the network's economy.
-- **Yield Generation:** Because USDrise is collateralized with USDN, it generates yield that is distributed to $RISE and $vRISE stakers.
+- **Yield Generation:** Because USDrise is collateralized with USDN, it generates yield that is distributed to RISE and vRISE stakers.
 
 ## Fee Mechanism and Distribution
 
@@ -44,10 +44,10 @@ graph TD;
 ### Flow Breakdown
 
 1. **Revenue Collection:** The `FeeCollector` module account accumulates funds from two primary sources:
-    - **Transaction Fees:** Users pay transaction fees in **$USDrise**.
+    - **Transaction Fees:** Users pay transaction fees in **USDrise**.
     - **USDN Yield:** The yield generated from the underlying USDN backing USDrise is also directed to the `FeeCollector`.
-2. **Burn Mechanism:** Based on the `burn_ratio` parameter in the `x/fee` module, a portion of the collected **fees** is swapped for **$RISE** and subsequently burned. This acts as a deflationary mechanism for $RISE.
-3. **Reward Distribution:** All remaining funds in the `FeeCollector` (the portion of fees not burned, plus all USDN yield) are distributed as rewards to both **$vRISE** and **$RISE** stakers, incentivizing participation in governance and network security.
+2. **Burn Mechanism:** Based on the `burn_ratio` parameter in the `x/fee` module, a portion of the collected **fees** is swapped for **RISE** and subsequently burned. This acts as a deflationary mechanism for RISE.
+3. **Reward Distribution:** All remaining funds in the `FeeCollector` (the portion of fees not burned, plus all USDN yield) are distributed as rewards to both **vRISE** and **RISE** stakers, incentivizing participation in governance and network security.
 
 This process ensures that the usage of the network directly contributes to the value of the native tokens and rewards its most committed participants.
 

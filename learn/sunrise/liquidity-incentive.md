@@ -11,7 +11,7 @@ See the [Bribes](./bribes.md) for more information on the bribe feature.
    - Lazy accounting minimizes computational overhead by calculating rewards only when claimed.
 2. **Gauge Voting**:
    - Users can vote on which liquidity pools should receive incentives.
-   - Voting power is determined by **`$vRISE`** tokens (non-transferable staking tokens).
+   - Voting power is determined by **`vRISE`** tokens (non-transferable staking tokens).
 3. **Lazy Accounting for Rewards**:
    - Rewards are tracked using accumulators and distributed only when users claim them.
    - This reduces the computational load on the network.
@@ -67,7 +67,7 @@ graph TD
 ### BeginBlocker
 
 1. Transfers a portion of inflation rewards from the Fee Collector account to the **`x/liquidityincentive`** module account.
-1. Rewards are converted to **`$vRISE`** tokens (non-transferable staking tokens).
+1. Rewards are converted to **`vRISE`** tokens (non-transferable staking tokens).
 1. Rewards are accumulated in each pool's fee accumulator.
 
 ### MsgClaimRewards (`x/liquiditypool`)

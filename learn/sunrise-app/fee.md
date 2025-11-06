@@ -4,9 +4,9 @@ The Sunrise Chain utilizes a **Fee Abstraction** mechanism for paying transactio
 
 ## Base Currency for Transaction Fees
 
-The base currency for transaction fees on the Sunrise Chain is ![USDrise](../../.gitbook/assets/USDrise.png) **$USDrise** . All transaction fees are internally calculated and processed in USDrise.
+The base currency for transaction fees on the Sunrise Chain is ![USDrise](../../.gitbook/assets/USDrise.png) **USDrise** . All transaction fees are internally calculated and processed in USDrise.
 
-For more details on $USDrise, please refer to this document:
+For more details on USDrise, please refer to this document:
 
 * [What is USDrise?](../usdrise.md)
 
@@ -18,7 +18,7 @@ Even when a token other than USDrise is set as the fee token using this feature,
 
 ### Available Tokens for Fees
 
-Only tokens that have a liquidity pair with $USDrise in a liquidity pool can be set as a fee token through Fee Abstraction.
+Only tokens that have a liquidity pair with USDrise in a liquidity pool can be set as a fee token through Fee Abstraction.
 
 ***
 
@@ -28,7 +28,7 @@ You can change the token used for transaction fees from the application's settin
 
 1. **Open Settings**: Click the gear icon in the application header to open the settings menu.
 2. **Fee Token Section**: In the settings menu, you will find a "Fee Token" section.
-3. **Select a Token**: Choose your desired fee token from the dropdown menu. Only tokens that are swappable with $USDrise will be displayed.
+3. **Select a Token**: Choose your desired fee token from the dropdown menu. Only tokens that are swappable with USDrise will be displayed.
 
 After selection, future transactions will use the specified token for fees.
 

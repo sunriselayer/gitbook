@@ -9,4 +9,4 @@
 | Early backers                                    | 14.5%             | 5% unlocked at TGE, 95% fully locked for 3 months and unlocked linearly for 12 months  |
 | Initial Core Contributors                        | 20%               | Fully locked for 6 months and unlocked linearly for 18 months                          |
 
-Some parts will be converted to $RISE in the genesis.
+Some parts will be converted to RISE in the genesis.
