@@ -18,7 +18,7 @@ Feature requests or ideas? Open a thread on our [GitHub Discussions](https://git
 | Feature                         | Description                                                                                                                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Proof of Liquidity (PoL)**    | Validators secure the network by staking RISE and/or vRISE, aligning security _and_ liquidity. Liquidity providers earn vRISE and trading fees.                                       |
-| **Fee Abstraction**             | Any token can pay gas; Sunrise swaps a tiny slice to $RISE under the hood. No need to hold multiple tokens for gas.                                                                   |
+| **Fee Abstraction**             | Any token can pay gas; Sunrise swaps a tiny slice to RISE under the hood. No need to hold multiple tokens for gas.                                                                   |
 | **Off‑chain Data Availability** | Large data blobs are propagated and stored off-chain, while only a metadata URI pointing to these erasure-coded data shares are kept on-chain. Optimized for high-throughput rollups. |
 
 ## Blazing Fast Data Availability

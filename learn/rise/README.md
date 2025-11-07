@@ -1,23 +1,23 @@
-# 💴 $RISE
+# 💴 RISE
 
-$RISE token is the native token of Sunrise network. Fees are paid in $USDrise. A part of the $USDrise tx fee will be swapped to $RISE and then burnt in the [Fee](../sunrise/fee.md) module.
+RISE token is the native token of Sunrise network. Fees are paid in USDrise. A part of the USDrise tx fee will be swapped to RISE and then burnt in the [Fee](../sunrise/fee.md) module.
 
-$RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` on the Sunrise network converts to 1 RISE in the real world.
+RISE is preserved as `urise` in the Sunrise blockchain. `1000000urise` on the Sunrise network converts to 1 RISE in the real world.
 
-* Ticker: RISE Denomination on blockchain: `urise`
+* Ticker: $SUNRISE
+* Denomination on blockchain: `urise`
 
-$RISE can be minted by burning $vRISE 1 to 1.
+RISE can be minted by burning vRISE 1 to 1.
 
 ## vRISE
 
-$vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
+vRISE token is a non-transferable token for staking. The staked amount will be calculated as a voting power for the governance.
 
-* Ticker: vRISE
-* Denom in the blockchain: `uvrise`
+* Denomination on blockchain: `uvrise`
 
-$vRISE can be staked to the Sunrise network. The staked amount will be calculated as voting power for governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
+vRISE can be staked to the Sunrise network. The staked amount will be calculated as voting power for governance. Furthermore, the rewards for stakers will be distributed in proportion to the staked amount.
 
-To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/liquidity-pool.md).
+To get vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/liquidity-pool.md).
 
 ## Usage of Tokens
 
@@ -36,22 +36,22 @@ To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/li
 
 ### Summary
 
-* `[Supply] = [Supply of $RISE] + [Supply of $vRISE]`
+* `[Supply] = [Supply of RISE] + [Supply of vRISE]`
 * Supply cap is 1,000,000,000.
-  * It means `[Supply of $RISE] + [Supply of $vRISE] <= 1,000,000,000`
+  * It means `[Supply of RISE] + [Supply of vRISE] <= 1,000,000,000`
 * Initial Inflation Rate Cap is 10%.
   * Inflation Rate Cap will gradually diminish by 8% per year.
     * For example, Inflation Rate of 2nd year is 9.2%.
-* A part of tx fees (paid in $USDrise) is swapped to $RISE and burnt.
+* A part of tx fees (paid in USDrise) is swapped to RISE and burnt.
 * Supply will grow with following the Supply Cap and Inflation Rate Cap.
 * Observed Inflation Rate is different from Inflation Rate Cap.
-* Inflationally minted $vRISE will be distributed among stakers validators and delegators for rewards.
+* Inflationally minted vRISE will be distributed among stakers validators and delegators for rewards.
 
 ### Formal expression
 
 * Year: $$t \in \{0,\ 1,\ 2,\ \ldots\}$$
-* Supply of $RISE: $$s_t^{\text{RISE}}$$
-* Supply of $vRISE: $$s_t^{\text{vRISE}}$$
+* Supply of RISE: $$s_t^{\text{RISE}}$$
+* Supply of vRISE: $$s_t^{\text{vRISE}}$$
 * Supply: $$s_t = s_t^{\text{RISE}} + s_t^{\text{vRISE}}$$
 * Initial Supply: $$s_0 = \text{500,000,000}$$
 * Initial Inflation Rate Cap: $$\bar{\pi}\_0 = 0.1 = \text{10\%}$$
@@ -59,7 +59,7 @@ To get $vRISE, users need to provide liquidity in [Liquidity Pool](../sunrise/li
 * Supply Cap: $$\bar{s} = \text{1,000,000,000}$$
   * It must be satisfied: $$s_t \le \bar{s}$$
 * Inflation Rate Cap: $$\bar{\pi}\_t$$
-* Tx fee burnt $RISE: $$b_t$$
+* Tx fee burnt RISE: $$b_t$$
 * Supply transition: $$s\_{t+1} = \min\{(1 + \bar{\pi}\_t) (s_t - b_t),\ \bar{s}\}$$
 * Inflation Rate Cap transition: $$\bar{\pi}\_{t+1} = \max\left\{(1 - \delta) \bar\pi_t,\ \text{0.02} \right\}$$
   * It means: $$\min_t \bar{\pi}\_t = \text{0.02} = \text{2\%}$$
@@ -72,7 +72,7 @@ This simulation assumes that $$b_t = 0$$
 which means that tx fee is not burnt.
 
 * During year 0 to 10, actual Inflation Rate will be lower than this simulation because there must be burnt tx fees.
-* Zero Observed Inflation Rate doesn't mean zero rewards for validators and stakers. If $$b_t > 0$$ , then $b\_t$ amount of $vRISE will be minted for rewards
+* Zero Observed Inflation Rate doesn't mean zero rewards for validators and stakers. If $$b_t > 0$$ , then $b\_t$ amount of vRISE will be minted for rewards
 * Inflation Rate Cap is strictly complied, so there is also a possibility of Observed Inflation Rate being negative value.
 
 | Year | Inflation Rate Cap |  Total Supply | Observed Inflation Rate |

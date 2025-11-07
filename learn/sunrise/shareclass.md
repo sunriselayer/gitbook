@@ -1,6 +1,6 @@
 # Shareclass
 
-The `x/shareclass` module enables users to delegate their RISE tokens without voting rights and earn staking rewards. This allows participation in staking using RISE tokens even without holding `$vRISE` (non-transferable staking tokens).
+The `x/shareclass` module enables users to delegate their RISE tokens without voting rights and earn staking rewards. This allows participation in staking using RISE tokens even without holding `vRISE` (non-transferable staking tokens).
 
 ## Key Features
 
@@ -17,7 +17,7 @@ The `x/shareclass` module enables users to delegate their RISE tokens without vo
 
 ### Non-Voting Delegation
 
-Users can delegate their RISE tokens to a chosen validator. The module handles the calculation of shares and rewards. This mechanism allows users to benefit from staking rewards without needing to manage `$vRISE` tokens or participate in governance directly.
+Users can delegate their RISE tokens to a chosen validator. The module handles the calculation of shares and rewards. This mechanism allows users to benefit from staking rewards without needing to manage `vRISE` tokens or participate in governance directly.
 
 ### Reward Calculation
 

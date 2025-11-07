@@ -42,15 +42,15 @@ Berachain pioneered the PoL model with a tri-token design:
 
 Sunrise builds upon PoL concepts with its own architecture:
 
-* **$vRISE**: Non-transferable token for staking and governance
-* **$RISE**: Transferable token used as gas and fees
+* **vRISE**: Non-transferable token for staking and governance
+* **RISE**: Transferable token used as gas and fees
 
 **Technical Implementation:**
 
-* Liquidity providers in the `x/liquiditypool` module earn $vRISE
-* $vRISE holders can stake in the `x/staking` module
+* Liquidity providers in the `x/liquiditypool` module earn vRISE
+* vRISE holders can stake in the `x/staking` module
 * Stakers participate in gauge voting through the `x/liquidityincentive` module
-* Gauge voters decide which pools receive $vRISE incentives
+* Gauge voters decide which pools receive vRISE incentives
 * Voters earn rewards from pool profits, aligning incentives
 
 ## Technical Architecture
@@ -72,7 +72,7 @@ The gauge voting system is the cornerstone of PoL implementations:
 
 1. **Epoch-Based Voting**:
 
-* Voting power is determined by staked $vRISE at epoch start
+* Voting power is determined by staked vRISE at epoch start
 * Each epoch spans a predefined number of blocks (configurable via governance)
 * Votes is cleared each time a new epoch is created
 
@@ -114,10 +114,10 @@ Unlike traditional PoS where staked tokens are idle, PoL enables:
 
 The technical design creates circular dependencies that align incentives:
 
-* Validators need delegated $RISE/$vRISE to maximize rewards
+* Validators need delegated RISE/vRISE to maximize rewards
 * Applications need validator emissions for liquidity
 * Users need to provide liquidity to earn governance tokens
-* The inflation rewards will be distributed with $RISE which doesn't lead to the dilution of $vRISE (governance token)
+* The inflation rewards will be distributed with RISE which doesn't lead to the dilution of vRISE (governance token)
 
 | Function           | Token(s)                                                                                       | Details                                                |
 | ------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------ |

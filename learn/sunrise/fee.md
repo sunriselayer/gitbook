@@ -1,12 +1,12 @@
 # Fee
 
-The `x/fee` module is a core component of the Sunrise blockchain responsible for managing transaction fees. It collects fees in a designated stablecoin (`fee_denom`) and then swaps a portion of these fees into $RISE (`burned_denom`) to be burned. This module supports deflationary tokenomics for $RISE while maintaining a stable fee system for users.
+The `x/fee` module is a core component of the Sunrise blockchain responsible for managing transaction fees. It collects fees in a designated stablecoin (`fee_denom`) and then swaps a portion of these fees into RISE (`burned_denom`) to be burned. This module supports deflationary tokenomics for RISE while maintaining a stable fee system for users.
 
 ## Key Features of `x/fee`
 
 1. **Burn Mechanism:**
 
-   - A portion of collected fees (in `fee_denom`) is swapped to $RISE (`burned_denom`) and then burned, reducing the circulating supply.
+   - A portion of collected fees (in `fee_denom`) is swapped to RISE (`burned_denom`) and then burned, reducing the circulating supply.
    - The burn ratio is determined by the `burn_ratio` parameter (default: 50%).
    - The swap and burn operations are atomic and verified on-chain.
 
