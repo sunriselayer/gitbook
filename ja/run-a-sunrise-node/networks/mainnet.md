@@ -12,8 +12,8 @@ Sunriseのメインネットワーク。実価値を持つトークンを使用�
 
 | 詳細 | 値 |
 | ------ | ---------------------------------------------------------------------------------------------------------- |
-| RPC | <https://a.consensus.sunrise-1.sunriselayer.io>, <https://b.consensus.sunrise-1.sunriselayer.io> |
-| REST | <https://a.consensus.sunrise-1.sunriselayer.io:1318>, <https://b.consensus.sunrise-1.sunriselayer.io:1318> |
+| RPC | <https://a.consensus.sunrise-1.sunriselayer.io> |
+| REST | <https://a.consensus.sunrise-1.sunriselayer.io:1318> |
 
 エクスプローラーとAPIはサードパーティによっても提供されています。詳細は[Chain Registry](https://github.com/cosmos/chain-registry/blob/master/sunrise/chain.json)を参照してください。
 
