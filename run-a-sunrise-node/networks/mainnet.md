@@ -10,10 +10,10 @@ The main network of Sunrise. Use tokens with real value.
 
 [Snapshot (Provided by Polkachu)](https://www.polkachu.com/tendermint_snapshots/sunrise)
 
-| Detail | Value                                                                                                      |
-| ------ | ---------------------------------------------------------------------------------------------------------- |
-| RPC    | <https://a.consensus.sunrise-1.sunriselayer.io>, <https://b.consensus.sunrise-1.sunriselayer.io>           |
-| REST   | <https://a.consensus.sunrise-1.sunriselayer.io:1318>, <https://b.consensus.sunrise-1.sunriselayer.io:1318> |
+| Detail | Value                                                |
+| ------ | ---------------------------------------------------- |
+| RPC    | <https://a.consensus.sunrise-1.sunriselayer.io>      |
+| REST   | <https://a.consensus.sunrise-1.sunriselayer.io:1318> |
 
 ## Third-party Services
 
